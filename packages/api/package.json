@@ -9,7 +9,8 @@
   },
   "files": [
     "dist/**/*.js",
-    "dist/**/*.d.ts"
+    "dist/**/*.d.ts",
+    "dist/**/*.d.ts.map"
   ],
   "sideEffects": false,
   "type": "module",
