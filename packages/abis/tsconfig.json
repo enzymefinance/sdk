@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "types": ["node", "web"]
+  }
+}

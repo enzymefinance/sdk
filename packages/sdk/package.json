@@ -1,11 +1,11 @@
 {
-  "name": "@enzymefinance/api",
+  "name": "@enzymefinance/sdk",
   "version": "0.0.1",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/enzymefinance/enzyme-sdk.git",
-    "directory": "packages/api"
+    "directory": "packages/sdk"
   },
   "files": [
     "dist/**/*.js",
@@ -24,21 +24,15 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "codegen": "buf generate buf.build/avantgardefinance/enzyme",
     "build": "tsc --project tsconfig.build.json",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/connect": "^0.8.4",
-    "@bufbuild/protobuf": "^1.1.1"
+    "@enzymefinance/abis": "workspace:*",
+    "viem": "^0.1.22"
   },
   "devDependencies": {
-    "@bufbuild/buf": "^1.15.0",
-    "@bufbuild/protoc-gen-connect-es": "^0.8.4",
-    "@bufbuild/protoc-gen-es": "^1.1.1",
-    "@types/node": "^18.15.5",
-    "@types/web": "^0.0.99",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vitest": "^0.29.7"
