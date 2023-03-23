@@ -15,9 +15,6 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
-      - name: Generate code
-        run: pnpm run codegen
-
       - name: Check linting
         run: pnpm run lint
 
@@ -32,9 +29,6 @@ jobs:
 
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
-
-      - name: Generate code
-        run: pnpm run codegen
 
       - name: Check types
         run: pnpm run typecheck
@@ -51,8 +45,8 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
-      - name: Generate code
-        run: pnpm run codegen
+      - name: Run build
+        run: pnpm run build
 
       - name: Run tests
         run: pnpm run test
