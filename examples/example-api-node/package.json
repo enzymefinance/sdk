@@ -1,0 +1,20 @@
+{
+  "name": "example-api-node",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@bufbuild/connect-node": "^0.8.4",
+    "@bufbuild/protobuf": "^1.1.1",
+    "@enzymefinance/api": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.5",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.2"
+  }
+}

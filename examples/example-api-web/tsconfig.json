@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "types": ["web"],
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@enzymefinance/api": ["../../packages/api/src/index.js"]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "packageManager": "pnpm@7.30.0",
+  "scripts": {
+    "api:node": "pnpm run --recursive --filter example-api-node start",
+    "api:web": "pnpm run --recursive --filter example-api-web start",
+    "start": "pnpm run start:web",
+    "codegen": "pnpm run --recursive codegen",
+    "build": "pnpm run --recursive build",
+    "test": "pnpm run --recursive test",
+    "typecheck": "pnpm run --recursive typecheck",
+    "prettier": "prettier --check \"**/*.{ts,tsx,json,md,yml,yaml}\" --cache",
+    "eslint": "eslint \"**/*.{ts,tsx}\" --cache",
+    "format": "pnpm prettier --write && pnpm eslint --fix",
+    "lint": "pnpm prettier && pnpm eslint"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.6",
+    "typescript": "^5.0.2"
+  }
+}
