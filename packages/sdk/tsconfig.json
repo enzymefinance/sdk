@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.build.json",
   "include": ["src/**/*.ts", "tests/**/*.ts"],
+  "exclude": [],
   "references": [{ "path": "./tsconfig.node.json" }],
   "compilerOptions": {
     // TODO: `NodeNext` moduleResolution currently doesn't work well with viem, see: https://github.com/wagmi-dev/viem/issues/244
