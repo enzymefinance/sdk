@@ -1,4 +1,4 @@
-import { IVault } from "@enzymefinance/abis";
+import { IVault } from "@enzymefinance/abis/IVault";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
 import { expect, it } from "vitest";
