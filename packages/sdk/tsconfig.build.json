@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
     "outDir": "./dist",
-    "declarationDir": "./dist",
     // TODO: `NodeNext` moduleResolution currently doesn't work well with viem, see: https://github.com/wagmi-dev/viem/issues/244
     "moduleResolution": "Node"
   }

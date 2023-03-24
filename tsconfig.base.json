@@ -20,8 +20,6 @@
     "moduleResolution": "NodeNext",
 
     // Emit
-    "declaration": true,
-    "declarationMap": true,
     "stripInternal": true,
 
     // JavaScript Support
