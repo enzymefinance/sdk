@@ -1,5 +1,6 @@
 # Ignore all dotfiles except the whitelisted ones
 .*
+!.changeset
 !.github
 !.gitignore
 !.vscode
