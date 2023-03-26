@@ -2,10 +2,7 @@
 .*
 !.github
 !.gitignore
-!.eslintrc.js
-!.eslintignore
-!.prettierignore
-!.prettierrc.js
+!.vscode
 !.node-version
 !.env.tpl
 
