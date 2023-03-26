@@ -28,5 +28,12 @@
     "tsx": "^3.12.6",
     "typescript": "^5.0.2",
     "vite": "^4.2.1"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "prop-types"
+      ]
+    }
   }
 }
