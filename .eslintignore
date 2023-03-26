@@ -1,7 +1,0 @@
-# Ignore various outputs
-dist/
-generated/
-coverage/
-
-*.js
-*.cjs

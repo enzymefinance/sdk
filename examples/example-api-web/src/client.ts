@@ -1,8 +1,5 @@
 import { createQueryService } from "@bufbuild/connect-query";
-import {
-  ConnectTransportOptions,
-  createConnectTransport,
-} from "@bufbuild/connect-web";
+import { ConnectTransportOptions, createConnectTransport } from "@bufbuild/connect-web";
 import { EnzymeService, withTokenAuth } from "@enzymefinance/api";
 
 const token = import.meta.env.VITE_ENZYME_API_TOKEN as string | undefined;
@@ -13,7 +10,7 @@ if (!token) {
 const transport = createConnectTransport(
   withTokenAuth<ConnectTransportOptions>(token, {
     baseUrl: "https://api.enzyme.finance",
-  })
+  }),
 );
 
 export const enzyme = createQueryService({

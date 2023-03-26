@@ -1,0 +1,9 @@
+{
+  "files": {
+    "ignore": ["dist", "generated", "coverage", "pnpm-lock.yaml"]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 120
+  }
+}

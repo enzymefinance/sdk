@@ -169,8 +169,7 @@ export const ISolvV2ConvertibleBuyerPositionLib = [
             type: "uint32",
           },
         ],
-        internalType:
-          "struct SolvV2ConvertibleBuyerPositionLibBase1.VoucherTokenId[]",
+        internalType: "struct SolvV2ConvertibleBuyerPositionLibBase1.VoucherTokenId[]",
         name: "voucherTokenIds_",
         type: "tuple[]",
       },

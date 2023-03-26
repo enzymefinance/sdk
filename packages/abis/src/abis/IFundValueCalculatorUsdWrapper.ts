@@ -130,8 +130,7 @@ export const IFundValueCalculatorUsdWrapper = [
     name: "getEthUsdAggregatorContract",
     outputs: [
       {
-        internalType:
-          "contract IChainlinkAggregatorFundValueCalculatorUsdWrapper",
+        internalType: "contract IChainlinkAggregatorFundValueCalculatorUsdWrapper",
         name: "ethUsdAggregatorContract_",
         type: "address",
       },

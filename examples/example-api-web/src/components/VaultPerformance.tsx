@@ -1,10 +1,5 @@
 import { PartialMessage, Timestamp } from "@bufbuild/protobuf";
-import {
-  Currency,
-  Deployment,
-  GetVaultTimeSeriesRequest,
-  Resolution,
-} from "@enzymefinance/api";
+import { Currency, Deployment, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
 import { useQuery } from "@tanstack/react-query";
 import { Card, Title, AreaChart } from "@tremor/react";
 import { Spinner } from "./Spinner.js";

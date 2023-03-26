@@ -1,10 +1,5 @@
 import { createGrpcTransport } from "@bufbuild/connect-node";
-import {
-  createClient,
-  Currency,
-  Deployment,
-  withTokenAuth,
-} from "@enzymefinance/api";
+import { createClient, Currency, Deployment, withTokenAuth } from "@enzymefinance/api";
 import { GrpcTransportOptions } from "./types.js";
 
 const token = process.env.ENZYME_API_TOKEN;
@@ -22,7 +17,7 @@ const transport = createGrpcTransport(
   withTokenAuth<GrpcTransportOptions>(token, {
     baseUrl: "https://api.enzyme.finance",
     httpVersion: "2",
-  })
+  }),
 );
 
 const client = createClient(transport);

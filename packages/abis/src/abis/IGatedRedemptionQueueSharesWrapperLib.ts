@@ -662,8 +662,7 @@ export const IGatedRedemptionQueueSharesWrapperLib = [
             type: "uint128",
           },
         ],
-        internalType:
-          "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionRequest",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionRequest",
         name: "request_",
         type: "tuple",
       },
@@ -724,8 +723,7 @@ export const IGatedRedemptionQueueSharesWrapperLib = [
             type: "uint64",
           },
         ],
-        internalType:
-          "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         name: "redemptionWindowConfig_",
         type: "tuple",
       },
@@ -849,8 +847,7 @@ export const IGatedRedemptionQueueSharesWrapperLib = [
             type: "uint64",
           },
         ],
-        internalType:
-          "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         name: "_windowConfig",
         type: "tuple",
       },
@@ -1058,8 +1055,7 @@ export const IGatedRedemptionQueueSharesWrapperLib = [
             type: "uint64",
           },
         ],
-        internalType:
-          "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         name: "_nextWindowConfig",
         type: "tuple",
       },

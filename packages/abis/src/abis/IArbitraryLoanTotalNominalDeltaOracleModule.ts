@@ -84,8 +84,7 @@ export const IArbitraryLoanTotalNominalDeltaOracleModule = [
             type: "uint32",
           },
         ],
-        internalType:
-          "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
+        internalType: "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
         name: "oracleInfo_",
         type: "tuple",
       },

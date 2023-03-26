@@ -28,8 +28,7 @@ export const IArbitraryLoanFixedInterestModule = [
       },
       {
         indexed: false,
-        internalType:
-          "enum ArbitraryLoanFixedInterestModule.RepaymentTrackingType",
+        internalType: "enum ArbitraryLoanFixedInterestModule.RepaymentTrackingType",
         name: "repaymentTrackingType",
         type: "uint8",
       },
@@ -161,8 +160,7 @@ export const IArbitraryLoanFixedInterestModule = [
             type: "uint112",
           },
           {
-            internalType:
-              "enum ArbitraryLoanFixedInterestModule.RepaymentTrackingType",
+            internalType: "enum ArbitraryLoanFixedInterestModule.RepaymentTrackingType",
             name: "repaymentTrackingType",
             type: "uint8",
           },

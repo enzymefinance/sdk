@@ -102,8 +102,7 @@ export const IGatedRedemptionQueueSharesWrapperFactory = [
             type: "uint64",
           },
         ],
-        internalType:
-          "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         name: "_windowConfig",
         type: "tuple",
       },

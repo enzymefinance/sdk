@@ -1,9 +1,4 @@
-import {
-  createPromiseClient,
-  PromiseClient,
-  Transport,
-  Interceptor,
-} from "@bufbuild/connect";
+import { createPromiseClient, PromiseClient, Transport, Interceptor } from "@bufbuild/connect";
 import { EnzymeService } from "./protobuf.js";
 
 export type EnzymeClient = PromiseClient<typeof EnzymeService>;
@@ -24,10 +19,7 @@ export interface TransportOptions {
   interceptors?: Interceptor[];
 }
 
-export function withTokenAuth<TOptions extends TransportOptions>(
-  token: string,
-  options: TOptions
-): TOptions {
+export function withTokenAuth<TOptions extends TransportOptions>(token: string, options: TOptions): TOptions {
   const auth = createTokenAuthInterceptor(token);
   const interceptors = (options.interceptors ?? []).concat(auth);
   return { ...options, interceptors };
