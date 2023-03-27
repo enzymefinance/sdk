@@ -1,4 +1,4 @@
-import { encodePacked } from "viem/abi";
+import { encodeAbiParameters } from "viem/abi";
 import { Address } from "../types.js";
 
 export function encodeSettlePreBuySharesArgs({
@@ -8,7 +8,19 @@ export function encodeSettlePreBuySharesArgs({
   sharesBuyer: Address;
   investmentAmount: bigint;
 }) {
-  return encodePacked(["address", "uint256"], [sharesBuyer, investmentAmount]);
+  return encodeAbiParameters(
+    [
+      {
+        type: "address",
+        name: "sharesBuyer",
+      },
+      {
+        type: "uint256",
+        name: "investmentAmount",
+      },
+    ],
+    [sharesBuyer, investmentAmount],
+  );
 }
 
 export function encodeSettlePostBuySharesArgs({
@@ -20,7 +32,23 @@ export function encodeSettlePostBuySharesArgs({
   investmentAmount: bigint;
   sharesBought: bigint;
 }) {
-  return encodePacked(["address", "uint256", "uint256"], [sharesBuyer, investmentAmount, sharesBought]);
+  return encodeAbiParameters(
+    [
+      {
+        type: "address",
+        name: "sharesBuyer",
+      },
+      {
+        type: "uint256",
+        name: "investmentAmount",
+      },
+      {
+        type: "uint256",
+        name: "sharesBought",
+      },
+    ],
+    [sharesBuyer, investmentAmount, sharesBought],
+  );
 }
 
 export function encodeSettlePreRedeemSharesArgs({
@@ -32,19 +60,21 @@ export function encodeSettlePreRedeemSharesArgs({
   sharesToRedeem: bigint;
   forSpecifiedAssets: boolean;
 }) {
-  return encodePacked(["address", "uint256", "bool"], [sharesRedeemer, sharesToRedeem, forSpecifiedAssets]);
-}
-
-export function calculateSharesDueWithInflation({
-  rawSharesDue,
-  sharesSupply,
-}: {
-  rawSharesDue: bigint;
-  sharesSupply: bigint;
-}) {
-  if (rawSharesDue === 1n || sharesSupply === 1n) {
-    return 1n;
-  }
-
-  return (rawSharesDue * sharesSupply) / (sharesSupply - rawSharesDue);
+  return encodeAbiParameters(
+    [
+      {
+        type: "address",
+        name: "sharesRedeemer",
+      },
+      {
+        type: "uint256",
+        name: "sharesToRedeem",
+      },
+      {
+        type: "bool",
+        name: "forSpecifiedAssets",
+      },
+    ],
+    [sharesRedeemer, sharesToRedeem, forSpecifiedAssets],
+  );
 }

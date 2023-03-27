@@ -1,16 +1,36 @@
-import { encodePacked } from "viem";
+import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
 export function encodeEntranceRateBurnFeeConfigArgs({ feeRate }: { feeRate: bigint }) {
-  return encodePacked(["uint256"], [feeRate]);
+  return encodeAbiParameters(
+    [
+      {
+        type: "uint256",
+        name: "feeRate",
+      },
+    ],
+    [feeRate],
+  );
 }
 
 export function encodeEntranceRateDirectFeeConfigArgs({
   feeRate,
   feeRecipient = ZERO_ADDRESS,
 }: { feeRate: bigint; feeRecipient?: Address }) {
-  return encodePacked(["uint256", "address"], [feeRate, feeRecipient]);
+  return encodeAbiParameters(
+    [
+      {
+        type: "uint256",
+        name: "feeRate",
+      },
+      {
+        type: "address",
+        name: "feeRecipient",
+      },
+    ],
+    [feeRate, feeRecipient],
+  );
 }
 
 export function calculateEntranceRateFeeSharesDue({

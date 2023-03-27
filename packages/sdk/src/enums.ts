@@ -30,7 +30,6 @@ export const ListUpdateType = {
   AddAndRemove: 3,
 } as const;
 
-
 export type MigrationOutHook = typeof MigrationOutHook[keyof typeof MigrationOutHook];
 export const MigrationOutHook = {
   PreSignal: 0,
