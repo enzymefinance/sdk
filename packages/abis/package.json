@@ -9,8 +9,11 @@
   },
   "files": [
     "dist/**/*.js",
+    "dist/**/*.js.map",
     "dist/**/*.d.ts",
-    "dist/**/*.d.ts.map"
+    "dist/**/*.d.ts.map",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
   ],
   "sideEffects": false,
   "type": "module",
