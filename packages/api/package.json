@@ -35,13 +35,13 @@
   },
   "dependencies": {
     "@bufbuild/connect": "^0.8.4",
-    "@bufbuild/protobuf": "^1.1.1"
+    "@bufbuild/protobuf": "^1.2.0"
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.15.0",
     "@bufbuild/protoc-gen-connect-es": "^0.8.4",
-    "@bufbuild/protoc-gen-es": "^1.1.1",
-    "@types/node": "^18.15.5",
+    "@bufbuild/protoc-gen-es": "^1.2.0",
+    "@types/node": "^18.15.10",
     "@types/web": "^0.0.99",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",

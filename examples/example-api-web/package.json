@@ -10,7 +10,7 @@
   "dependencies": {
     "@bufbuild/connect-query": "^0.1.1",
     "@bufbuild/connect-web": "^0.8.4",
-    "@bufbuild/protobuf": "^1.1.1",
+    "@bufbuild/protobuf": "^1.2.0",
     "@enzymefinance/api": "workspace:*",
     "@tanstack/react-query": "^4.28.0",
     "@tremor/react": "^2.0.2",
@@ -21,7 +21,7 @@
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
-    "@types/react": "^18.0.27",
+    "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.10",
     "@types/web": "^0.0.99",
     "@vitejs/plugin-react": "^3.1.0",

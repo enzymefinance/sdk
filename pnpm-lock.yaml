@@ -17,17 +17,17 @@ importers:
   examples/example-api-node:
     specifiers:
       '@bufbuild/connect-node': ^0.8.4
-      '@bufbuild/protobuf': ^1.1.1
+      '@bufbuild/protobuf': ^1.2.0
       '@enzymefinance/api': workspace:*
-      '@types/node': ^18.15.5
+      '@types/node': ^18.15.10
       tsx: ^3.12.6
       typescript: ^5.0.2
     dependencies:
-      '@bufbuild/connect-node': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect-node': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
       '@enzymefinance/api': link:../../packages/api
     devDependencies:
-      '@types/node': 18.15.5
+      '@types/node': 18.15.10
       tsx: 3.12.6
       typescript: 5.0.2
 
@@ -35,11 +35,11 @@ importers:
     specifiers:
       '@bufbuild/connect-query': ^0.1.1
       '@bufbuild/connect-web': ^0.8.4
-      '@bufbuild/protobuf': ^1.1.1
+      '@bufbuild/protobuf': ^1.2.0
       '@enzymefinance/api': workspace:*
       '@tanstack/react-query': ^4.28.0
       '@tremor/react': ^2.0.2
-      '@types/react': ^18.0.27
+      '@types/react': ^18.0.29
       '@types/react-dom': ^18.0.10
       '@types/web': ^0.0.99
       '@vitejs/plugin-react': ^3.1.0
@@ -53,8 +53,8 @@ importers:
       vite: ^4.2.1
     dependencies:
       '@bufbuild/connect-query': 0.1.1_q4teel2yjbizrm4naiaqcdpjum
-      '@bufbuild/connect-web': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect-web': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
       '@enzymefinance/api': link:../../packages/api
       '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
       '@tremor/react': 2.0.2_biqbaboplfbrettd7655fr4n2y
@@ -64,7 +64,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       tailwindcss: 3.2.7_postcss@8.4.21
     devDependencies:
-      '@types/react': 18.0.28
+      '@types/react': 18.0.29
       '@types/react-dom': 18.0.11
       '@types/web': 0.0.99
       '@vitejs/plugin-react': 3.1.0_vite@4.2.1
@@ -86,25 +86,25 @@ importers:
     specifiers:
       '@bufbuild/buf': ^1.15.0
       '@bufbuild/connect': ^0.8.4
-      '@bufbuild/protobuf': ^1.1.1
+      '@bufbuild/protobuf': ^1.2.0
       '@bufbuild/protoc-gen-connect-es': ^0.8.4
-      '@bufbuild/protoc-gen-es': ^1.1.1
-      '@types/node': ^18.15.5
+      '@bufbuild/protoc-gen-es': ^1.2.0
+      '@types/node': ^18.15.10
       '@types/web': ^0.0.99
       typescript: ^5.0.2
       vite: ^4.2.1
       vitest: ^0.29.7
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
     devDependencies:
       '@bufbuild/buf': 1.15.0
-      '@bufbuild/protoc-gen-connect-es': 0.8.4_us4aatsaklqvo3xht2wwolvsee
-      '@bufbuild/protoc-gen-es': 1.1.1_@bufbuild+protobuf@1.1.1
-      '@types/node': 18.15.5
+      '@bufbuild/protoc-gen-connect-es': 0.8.4_fcwk7pvm4zphkbjd4q477p6rvy
+      '@bufbuild/protoc-gen-es': 1.2.0_@bufbuild+protobuf@1.2.0
+      '@types/node': 18.15.10
       '@types/web': 0.0.99
       typescript: 5.0.2
-      vite: 4.2.1_@types+node@18.15.5
+      vite: 4.2.1_@types+node@18.15.10
       vitest: 0.29.7
 
   packages/sdk:
@@ -426,14 +426,14 @@ packages:
       '@bufbuild/buf-win32-x64': 1.15.0
     dev: true
 
-  /@bufbuild/connect-node/0.8.4_@bufbuild+protobuf@1.1.1:
+  /@bufbuild/connect-node/0.8.4_@bufbuild+protobuf@1.2.0:
     resolution: {integrity: sha512-i2C5Q/BiVA29Uj9msn7hiFvlzPp0jiU+P+MBfZVf3vg2PmklnAoA9UETt3MNjpOHd54fvJkAK964koc7iVyCKA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@bufbuild/protobuf': ^1.0.0
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
       headers-polyfill: 3.1.2
     dev: false
 
@@ -444,9 +444,9 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/connect-web': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/connect-web': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
       '@bufbuild/protoc-gen-connect-web': 0.8.4_@bufbuild+connect@0.8.4
       '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
@@ -457,26 +457,29 @@ packages:
       - supports-color
     dev: false
 
-  /@bufbuild/connect-web/0.8.4_@bufbuild+protobuf@1.1.1:
+  /@bufbuild/connect-web/0.8.4_@bufbuild+protobuf@1.2.0:
     resolution: {integrity: sha512-GlM0wC/htfqBNEqn+s/+bIAD1OCCeoyqddS35Zjl+STKnfGfURbGjpfNyuci2RwmNQmotov0KKYshvowMn15yQ==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.0.0
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
     dev: false
 
-  /@bufbuild/connect/0.8.4_@bufbuild+protobuf@1.1.1:
+  /@bufbuild/connect/0.8.4_@bufbuild+protobuf@1.2.0:
     resolution: {integrity: sha512-99FwsvhEDTUJAXLJEyqdKhAle/MuFrRtkRBdRFLH2oNdI5Tv0Qaa7oMcQXKPFPQDfRdJEZe+dt8scmRVN55njA==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.0.0
     dependencies:
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/protobuf': 1.2.0
 
   /@bufbuild/protobuf/1.1.1:
     resolution: {integrity: sha512-1dS2m3jabfW2XL2K6//41wZkO4XJOZtpe0bKLuta0BvK5LxNRyUBSSN5835n3bIFiNJKFWhDnzZEMrV7QVGFfQ==}
 
-  /@bufbuild/protoc-gen-connect-es/0.8.4_us4aatsaklqvo3xht2wwolvsee:
+  /@bufbuild/protobuf/1.2.0:
+    resolution: {integrity: sha512-MBVuQMOBHxgGnZ9XCUIi8WOy5O/T4ma3TduCRhRvndv3UDbG9cHgd8h6nOYSGyBYPEvXf1z9nTwhp8mVIDbq2g==}
+
+  /@bufbuild/protoc-gen-connect-es/0.8.4_fcwk7pvm4zphkbjd4q477p6rvy:
     resolution: {integrity: sha512-BtHrR1ixU+vAWmyh4/T/JT13n2tTb6NJbxn7+aUdr7OjeCcT+wTceTu6W/s96rMITMkdAKm/h8JyO5b32LfhDg==}
     engines: {node: '>=14'}
     hasBin: true
@@ -489,9 +492,9 @@ packages:
       '@bufbuild/protoc-gen-es':
         optional: true
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
-      '@bufbuild/protoc-gen-es': 1.1.1_@bufbuild+protobuf@1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
+      '@bufbuild/protoc-gen-es': 1.2.0_@bufbuild+protobuf@1.2.0
       '@bufbuild/protoplugin': 1.1.1
     transitivePeerDependencies:
       - supports-color
@@ -510,25 +513,25 @@ packages:
       '@bufbuild/protoc-gen-es':
         optional: true
     dependencies:
-      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.1.1
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/connect': 0.8.4_@bufbuild+protobuf@1.2.0
+      '@bufbuild/protobuf': 1.2.0
       '@bufbuild/protoplugin': 1.1.1
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@bufbuild/protoc-gen-es/1.1.1_@bufbuild+protobuf@1.1.1:
-    resolution: {integrity: sha512-TaT3xvUrlikuq7bN63d/FlpbecdnrKgerrUD+ArFGIN5CLIdBU+FMVlup/wvP+iTNxf0k6Qrpg2x7XhyLIHZMg==}
+  /@bufbuild/protoc-gen-es/1.2.0_@bufbuild+protobuf@1.2.0:
+    resolution: {integrity: sha512-rdg2+Co4H+cImZ81EEzHLEi9bmzmMnS/bsf7XLHKtWYskj1PZVIalfquQejcSV6eWbdmVGKa29JwI5zEkSmkCQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
-      '@bufbuild/protobuf': 1.1.1
+      '@bufbuild/protobuf': 1.2.0
     peerDependenciesMeta:
       '@bufbuild/protobuf':
         optional: true
     dependencies:
-      '@bufbuild/protobuf': 1.1.1
-      '@bufbuild/protoplugin': 1.1.1
+      '@bufbuild/protobuf': 1.2.0
+      '@bufbuild/protoplugin': 1.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -541,6 +544,16 @@ packages:
       typescript: 4.5.2
     transitivePeerDependencies:
       - supports-color
+
+  /@bufbuild/protoplugin/1.2.0:
+    resolution: {integrity: sha512-TX0mEk+LdIbpK2xr5RqeUswR8jGZs6uCX6Cq8azADj8hhiUr7Xty8agEOU/zR+J71D4dV5SnyEPYyw0nGJ6dGQ==}
+    dependencies:
+      '@bufbuild/protobuf': 1.2.0
+      '@typescript/vfs': 1.4.0
+      typescript: 4.5.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
 
   /@changesets/apply-release-plan/6.1.3:
     resolution: {integrity: sha512-ECDNeoc3nfeAe1jqJb5aFQX7CqzQhD2klXRez2JDb/aVpGUbX673HgKrnrgJRuQR/9f2TtLoYIzrGB9qwD77mg==}
@@ -1234,8 +1247,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node/18.15.5:
-    resolution: {integrity: sha512-Ark2WDjjZO7GmvsyFFf81MXuGTA/d6oP38anyxWOL6EREyBKAxKoFHwBhaZxCfLRLpO8JgVXwqOwSwa7jRcjew==}
+  /@types/node/18.15.10:
+    resolution: {integrity: sha512-9avDaQJczATcXgfmMAW3MIWArOO7A+m90vuCFLr8AotWf8igO/mRoYukrk2cqZVtv38tHs33retzHEilM7FpeQ==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -1249,11 +1262,11 @@ packages:
   /@types/react-dom/18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
-      '@types/react': 18.0.28
+      '@types/react': 18.0.29
     dev: true
 
-  /@types/react/18.0.28:
-    resolution: {integrity: sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==}
+  /@types/react/18.0.29:
+    resolution: {integrity: sha512-wXHktgUABxplw1+UnljseDq4+uztQyp2tlWZRIxHlpchsCFqiYkvaDS8JR7eKOQm8wziTH/el5qL7D6gYNkYcw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -3754,7 +3767,7 @@ packages:
       - zod
     dev: false
 
-  /vite-node/0.29.7_@types+node@18.15.5:
+  /vite-node/0.29.7_@types+node@18.15.10:
     resolution: {integrity: sha512-PakCZLvz37yFfUPWBnLa1OYHPCGm5v4pmRrTcFN4V/N/T3I6tyP3z07S//9w+DdeL7vVd0VSeyMZuAh+449ZWw==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -3764,7 +3777,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.2.1_@types+node@18.15.5
+      vite: 4.2.1_@types+node@18.15.10
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -3808,7 +3821,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.2.1_@types+node@18.15.5:
+  /vite/4.2.1_@types+node@18.15.10:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3833,7 +3846,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.15.5
+      '@types/node': 18.15.10
       esbuild: 0.17.12
       postcss: 8.4.21
       resolve: 1.22.1
@@ -3872,7 +3885,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.15.5
+      '@types/node': 18.15.10
       '@vitest/expect': 0.29.7
       '@vitest/runner': 0.29.7
       '@vitest/spy': 0.29.7
@@ -3891,8 +3904,8 @@ packages:
       tinybench: 2.4.0
       tinypool: 0.4.0
       tinyspy: 1.1.1
-      vite: 4.2.1_@types+node@18.15.5
-      vite-node: 0.29.7_@types+node@18.15.5
+      vite: 4.2.1_@types+node@18.15.10
+      vite-node: 0.29.7_@types+node@18.15.10
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
