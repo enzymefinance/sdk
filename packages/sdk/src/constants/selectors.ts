@@ -10,4 +10,5 @@ export const CURVE_MINTER_MINT_MANY_SELECTOR = "0xa51e1904"; // mint_many(addres
 export const CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR = "0xdd289d60"; // toggle_approve_mint(address)
 export const PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR = "0x07d2890e"; // startAssetBypassTimelock(address)
 export const SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR = "0x447fbc63"; // approveExchangeOnBehalf(address)
+export const SETTLE_CONTINUOUS_FEES_SELECTOR = "0xc071fe93"; // settleContinuousFees(address,bytes)
 export const VAULT_CALL_ANY_DATA_HASH = "0x5bf1898dd28c4d29f33c4c1bb9b8a7e2f6322847d70be63e8f89de024d08a669"; // mln.vaultCall.any

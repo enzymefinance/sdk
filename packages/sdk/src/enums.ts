@@ -1,8 +1,10 @@
+export type ChainlinkRateAsset = typeof ChainlinkRateAsset[keyof typeof ChainlinkRateAsset];
 export const ChainlinkRateAsset = {
   ETH: "0",
   USD: "1",
 } as const;
 
+export type VaultAction = typeof VaultAction[keyof typeof VaultAction];
 export const VaultAction = {
   None: 0,
   // Shares management
@@ -20,6 +22,7 @@ export const VaultAction = {
   RemoveExternalPosition: 10,
 } as const;
 
+export type ListUpdateType = typeof ListUpdateType[keyof typeof ListUpdateType];
 export const ListUpdateType = {
   None: 0,
   AddOnly: 1,
@@ -27,6 +30,8 @@ export const ListUpdateType = {
   AddAndRemove: 3,
 } as const;
 
+
+export type MigrationOutHook = typeof MigrationOutHook[keyof typeof MigrationOutHook];
 export const MigrationOutHook = {
   PreSignal: 0,
   PostSignal: 1,

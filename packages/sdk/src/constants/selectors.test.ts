@@ -15,6 +15,7 @@ import {
   PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR,
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   VAULT_CALL_ANY_DATA_HASH,
+  SETTLE_CONTINUOUS_FEES_SELECTOR,
 } from "./selectors.js";
 
 it("AAVE_V2_CLAIM_REWARDS_TO_SELF_SELECTOR is correct", () => {
@@ -75,6 +76,11 @@ it("PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR is correct", () 
 it("SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR is correct", () => {
   const expected = getFunctionSelector("approveExchangeOnBehalf(address)");
   expect(SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR).toBe(expected);
+});
+
+it("SETTLE_CONTINUOUS_FEES_SELECTOR is correct", () => {
+  const expected = getFunctionSelector("settleContinuousFees(address,bytes)");
+  expect(SETTLE_CONTINUOUS_FEES_SELECTOR).toBe(expected);
 });
 
 it("VAULT_CALL_ANY_DATA_HASH is correct", () => {
