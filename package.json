@@ -7,9 +7,9 @@
     "start": "pnpm run start:web",
     "codegen": "pnpm run --recursive codegen",
     "build": "pnpm run --recursive build",
-    "test": "pnpm run --recursive test",
+    "test": "pnpm run --recursive --parallel test",
     "typecheck": "pnpm run --recursive typecheck",
-    "format": "rome format .",
+    "format": "rome format --write .",
     "lint": "rome check ."
   },
   "devDependencies": {

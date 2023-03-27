@@ -6,6 +6,7 @@
 
     // Type Checking
     "strict": true,
+    "useDefineForClassFields": true,
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -21,6 +22,7 @@
 
     // Emit
     "stripInternal": true,
+    "sourceMap": true,
 
     // JavaScript Support
     "allowJs": false,
@@ -34,7 +36,6 @@
     // Language and Environment
     "lib": ["ESNext"],
     "target": "ESNext",
-    "useDefineForClassFields": true,
 
     // Completeness
     "skipLibCheck": true
