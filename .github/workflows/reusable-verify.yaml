@@ -45,6 +45,10 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
+        # TODO: Let's create an anvil service container for this instead.
+      - name: Launch anvil
+        run: anvil --fork-url ${{ vars.ANVIL_FORK_URL }} --fork-block-number ${{ vars.ANVIL_FORK_BLOCK_NUMBER }} &
+
       - name: Run build
         run: pnpm run build
 

@@ -8,7 +8,7 @@ import {
   TEN_PERCENT_IN_BPS,
   TEN_PERCENT_IN_WEI,
 } from "../src/index.js";
-import { sendSimulatedTransactionUnsafe } from "./utils/transactions.js";
+import { createTestSender } from "./utils/transactions.js";
 
 const testAccount = getAccount("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
 const testClient = createTestClient({
@@ -19,6 +19,8 @@ const testClient = createTestClient({
 const publicClient = createPublicClient({
   transport: http("http://127.0.0.1:8545"),
 });
+
+const sendTestTransaction = createTestSender(testClient);
 
 it("should be able to create a vault", async () => {
   const fees = encodeFeeManagerConfigArgs([
@@ -32,7 +34,7 @@ it("should be able to create a vault", async () => {
     },
   ]);
 
-  const simulation = await publicClient.simulateContract({
+  const [_, vaultProxy] = await sendTestTransaction(publicClient, {
     account: testAccount,
     abi: IFundDeployer,
     functionName: "createNewFund",
@@ -40,7 +42,6 @@ it("should be able to create a vault", async () => {
     address: "0x4f1c53f096533c04d8157efb6bca3eb22ddc6360",
   });
 
-  const [_, vaultProxy] = await sendSimulatedTransactionUnsafe(testClient, simulation);
   const vaultOwner = await publicClient.readContract({
     abi: IVault,
     address: vaultProxy,
