@@ -33,7 +33,7 @@ export function convertRateToScaledPerSecondRate({
   const effectiveRate = adjustInflation ? rateDecimal.div(new LocalDecimal(1).minus(rateDecimal)) : rateDecimal;
   const scaledRate = new LocalDecimal(1)
     .plus(effectiveRate)
-    .pow((1n / toSeconds({ years: 1 })).toString())
+    .pow(new LocalDecimal(1).div(`${toSeconds({ years: 1 })}`))
     .toSignificantDigits(27)
     .mul(scaledPerSecondRateScaleDecimal);
 
@@ -48,7 +48,7 @@ export function convertScaledPerSecondRateToRate({
   adjustInflation: boolean;
 }) {
   const scaledPerSecondRateD = new LocalDecimal(`${scaledPerSecondRate}`).div(scaledPerSecondRateScaleDecimal);
-  const effectiveRate = scaledPerSecondRateD.pow(Number(toSeconds({ years: 1 }))).minus(new LocalDecimal(1));
+  const effectiveRate = scaledPerSecondRateD.pow(`${toSeconds({ years: 1 })}`).minus(new LocalDecimal(1));
   const scaledPerAnnumRate = adjustInflation
     ? effectiveRate.div(new LocalDecimal(1).plus(effectiveRate))
     : effectiveRate;
