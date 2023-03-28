@@ -3,10 +3,10 @@ import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
 export function encodeExitRateBurnFeeConfigArgs({
-  inKindRate = 0n,
+  inKindRateInBps = 0n,
   specificAssetsRate = 0n,
 }: {
-  inKindRate?: bigint;
+  inKindRateInBps?: bigint;
   specificAssetsRate?: bigint;
 }) {
   return encodeAbiParameters(
@@ -20,16 +20,16 @@ export function encodeExitRateBurnFeeConfigArgs({
         name: "specificAssetsRate",
       },
     ],
-    [inKindRate, specificAssetsRate],
+    [inKindRateInBps, specificAssetsRate],
   );
 }
 
 export function encodeExitRateDirectFeeConfigArgs({
-  inKindRate = 0n,
+  inKindRateInBps = 0n,
   specificAssetsRate = 0n,
   feeRecipient = ZERO_ADDRESS,
 }: {
-  inKindRate?: bigint;
+  inKindRateInBps?: bigint;
   specificAssetsRate?: bigint;
   feeRecipient?: Address;
 }) {
@@ -48,7 +48,7 @@ export function encodeExitRateDirectFeeConfigArgs({
         name: "feeRecipient",
       },
     ],
-    [inKindRate, specificAssetsRate, feeRecipient],
+    [inKindRateInBps, specificAssetsRate, feeRecipient],
   );
 }
 

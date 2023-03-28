@@ -1,6 +1,6 @@
+import { parseEther } from "viem";
 import { Decimal } from "decimal.js";
-import { formatEther, parseEther } from "viem";
-import { ONE_YEAR_IN_SECONDS } from "../constants/time.js";
+import { toSeconds } from "./conversion.js";
 
 const LocalDecimal = Decimal.clone({ precision: 2 * 27 });
 
@@ -23,17 +23,17 @@ export function calculateAmountDueForScaledPerSecondRate({
 }
 
 export function convertRateToScaledPerSecondRate({
-  scaledPerAnnumRate,
+  perAnnumRateInBps,
   adjustInflation,
 }: {
-  scaledPerAnnumRate: bigint;
+  perAnnumRateInBps: bigint;
   adjustInflation: boolean;
 }) {
-  const rateDecimal = new LocalDecimal(formatEther(scaledPerAnnumRate));
+  const rateDecimal = new LocalDecimal(`${perAnnumRateInBps}`).div(10000);
   const effectiveRate = adjustInflation ? rateDecimal.div(new LocalDecimal(1).minus(rateDecimal)) : rateDecimal;
   const scaledRate = new LocalDecimal(1)
     .plus(effectiveRate)
-    .pow((1n / ONE_YEAR_IN_SECONDS).toString())
+    .pow((1n / toSeconds({ years: 1 })).toString())
     .toSignificantDigits(27)
     .mul(scaledPerSecondRateScaleDecimal);
 
@@ -47,8 +47,8 @@ export function convertScaledPerSecondRateToRate({
   scaledPerSecondRate: bigint;
   adjustInflation: boolean;
 }) {
-  const scaledPerSecondRateD = new LocalDecimal(scaledPerSecondRate.toString()).div(scaledPerSecondRateScaleDecimal);
-  const effectiveRate = scaledPerSecondRateD.pow(Number(ONE_YEAR_IN_SECONDS)).minus(new LocalDecimal(1));
+  const scaledPerSecondRateD = new LocalDecimal(`${scaledPerSecondRate}`).div(scaledPerSecondRateScaleDecimal);
+  const effectiveRate = scaledPerSecondRateD.pow(Number(toSeconds({ years: 1 }))).minus(new LocalDecimal(1));
   const scaledPerAnnumRate = adjustInflation
     ? effectiveRate.div(new LocalDecimal(1).plus(effectiveRate))
     : effectiveRate;

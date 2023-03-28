@@ -7,25 +7,25 @@ type ManagementFeeConfig = {
   feeRecipient?: Address;
 } & (
   | {
-      scaledPerAnnumRate?: never;
+      perAnnumRateInBps?: never;
       scaledPerSecondRate: bigint;
     }
   | {
-      scaledPerAnnumRate: bigint;
+      perAnnumRateInBps: bigint;
       scaledPerSecondRate?: never;
     }
 );
 
 export function encodeManagementFeeConfigArgs({
   scaledPerSecondRate,
-  scaledPerAnnumRate,
+  perAnnumRateInBps,
   feeRecipient = ZERO_ADDRESS,
 }: ManagementFeeConfig) {
   let feeRate: bigint;
   if (scaledPerSecondRate !== undefined) {
     feeRate = scaledPerSecondRate;
   } else {
-    feeRate = convertRateToScaledPerSecondRate({ scaledPerAnnumRate, adjustInflation: true });
+    feeRate = convertRateToScaledPerSecondRate({ perAnnumRateInBps, adjustInflation: true });
   }
 
   return encodeAbiParameters(

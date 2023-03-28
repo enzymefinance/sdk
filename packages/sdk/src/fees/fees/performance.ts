@@ -3,10 +3,10 @@ import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
 export function encodePerformanceFeeConfigArgs({
-  feeRate,
+  feeRateInBps,
   feeRecipient = ZERO_ADDRESS,
 }: {
-  feeRate: bigint;
+  feeRateInBps: bigint;
   feeRecipient?: Address;
 }) {
   return encodeAbiParameters(
@@ -20,6 +20,6 @@ export function encodePerformanceFeeConfigArgs({
         name: "feeRecipient",
       },
     ],
-    [feeRate, feeRecipient],
+    [feeRateInBps, feeRecipient],
   );
 }

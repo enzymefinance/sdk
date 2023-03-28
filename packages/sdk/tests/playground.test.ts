@@ -5,9 +5,8 @@ import {
   encodeFeeManagerConfigArgs,
   encodeManagementFeeConfigArgs,
   encodePerformanceFeeConfigArgs,
-  TEN_PERCENT_IN_BPS,
-  TEN_PERCENT_IN_WEI,
 } from "../src/index.js";
+import { toBps } from "../src/utils/conversion.js";
 import { createTestSender } from "./utils/transactions.js";
 
 const testAccount = getAccount("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
@@ -26,11 +25,11 @@ it("should be able to create a vault", async () => {
   const fees = encodeFeeManagerConfigArgs([
     {
       address: "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
-      settings: encodePerformanceFeeConfigArgs({ feeRate: TEN_PERCENT_IN_BPS }),
+      settings: encodePerformanceFeeConfigArgs({ feeRateInBps: toBps(0.1) }),
     },
     {
       address: "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
-      settings: encodeManagementFeeConfigArgs({ scaledPerAnnumRate: TEN_PERCENT_IN_WEI }),
+      settings: encodeManagementFeeConfigArgs({ perAnnumRateInBps: toBps(0.1) }),
     },
   ]);
 
