@@ -1,6 +1,6 @@
 import { encodeAbiParameters } from "viem";
 
-export function encodeAllowedExternalPositionTypesPolicy({
+export function encodeAllowedExternalPositionTypesPolicyConfig({
   externalPositionTypeIds,
 }: {
   externalPositionTypeIds: bigint[];

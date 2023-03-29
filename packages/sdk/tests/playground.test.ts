@@ -3,7 +3,7 @@ import { createTestClient, createPublicClient, getAccount, http } from "viem";
 import { expect, it } from "vitest";
 import {
   encodeManagementFeeConfig,
-  encodeMinMaxInvestmentPolicy,
+  encodeMinMaxInvestmentPolicyConfig,
   encodePerformanceFeeConfig,
   setupVaultParams,
 } from "../src/index.js";
@@ -45,7 +45,7 @@ it("should allow vault creation", async () => {
       policySettings: [
         {
           address: "0xebdadfc929c357d12281118828aea556db5be30c",
-          settings: encodeMinMaxInvestmentPolicy({ minInvestmentAmount: 100n, maxInvestmentAmount: 5000n }),
+          settings: encodeMinMaxInvestmentPolicyConfig({ minInvestmentAmount: 100n, maxInvestmentAmount: 5000n }),
         },
       ],
     }),

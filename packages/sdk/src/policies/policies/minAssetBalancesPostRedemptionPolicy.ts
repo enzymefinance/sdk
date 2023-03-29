@@ -1,7 +1,7 @@
 import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 
-export function encodeMinAssetBalancesPostRedemptionPolicy({
+export function encodeMinAssetBalancesPostRedemptionPolicyConfig({
   assets,
   minBalances,
 }: {

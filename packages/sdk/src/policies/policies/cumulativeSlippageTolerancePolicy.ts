@@ -1,6 +1,6 @@
 import { encodeAbiParameters } from "viem";
 
-export function encodeCumulativeSlippageTolerancePolicy({
+export function encodeCumulativeSlippageTolerancePolicyConfig({
   tolerance,
 }: {
   tolerance: bigint;
