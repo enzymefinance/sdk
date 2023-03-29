@@ -3,7 +3,7 @@ import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondRate } from "../../utils/rates.js";
 
-type ManagementFeeConfig = {
+export type ManagementFeeConfig = {
   feeRecipient?: Address;
 } & (
   | {
@@ -16,7 +16,7 @@ type ManagementFeeConfig = {
     }
 );
 
-export function encodeManagementFeeConfigArgs({
+export function encodeManagementFeeConfig({
   scaledPerSecondRate,
   perAnnumRateInBps,
   feeRecipient = ZERO_ADDRESS,
@@ -25,7 +25,10 @@ export function encodeManagementFeeConfigArgs({
   if (scaledPerSecondRate !== undefined) {
     feeRate = scaledPerSecondRate;
   } else {
-    feeRate = convertRateToScaledPerSecondRate({ perAnnumRateInBps, adjustInflation: true });
+    feeRate = convertRateToScaledPerSecondRate({
+      perAnnumRateInBps,
+      adjustInflation: true,
+    });
   }
 
   return encodeAbiParameters(

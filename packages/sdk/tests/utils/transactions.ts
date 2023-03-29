@@ -1,4 +1,5 @@
-import { encodeFunctionData, TestClient, Chain, Transport, PublicClient, AbiItem } from "viem";
+import type { Abi } from "abitype";
+import { encodeFunctionData, TestClient, Chain, Transport, PublicClient } from "viem";
 import { SimulateContractParameters, SimulateContractReturnType, WriteContractParameters } from "viem/contract";
 
 export function createTestSender<TTransport extends Transport>(testClient: TestClient<TTransport>) {
@@ -6,7 +7,7 @@ export function createTestSender<TTransport extends Transport>(testClient: TestC
     TTransport extends Transport,
     TChain extends Chain,
     TClient extends PublicClient<TTransport, TChain, true>,
-    TAbi extends AbiItem[] | readonly unknown[] = AbiItem[],
+    TAbi extends Abi | readonly unknown[] = Abi,
     TFunctionName extends string = string,
     TChainOverride extends Chain | undefined = undefined,
   >(

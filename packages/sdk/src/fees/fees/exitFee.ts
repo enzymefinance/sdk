@@ -2,7 +2,7 @@ import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
-export function encodeExitRateBurnFeeConfigArgs({
+export function encodeExitRateBurnFeeConfig({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
 }: {
@@ -24,7 +24,7 @@ export function encodeExitRateBurnFeeConfigArgs({
   );
 }
 
-export function encodeExitRateDirectFeeConfigArgs({
+export function encodeExitRateDirectFeeConfig({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
   feeRecipient = ZERO_ADDRESS,
@@ -55,6 +55,9 @@ export function encodeExitRateDirectFeeConfigArgs({
 export function calculateExitRateFeeSharesDue({
   feeRate,
   sharesRedeemed,
-}: { feeRate: bigint; sharesRedeemed: bigint }) {
+}: {
+  feeRate: bigint;
+  sharesRedeemed: bigint;
+}) {
   return (sharesRedeemed * feeRate) / 10000n;
 }

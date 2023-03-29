@@ -112,6 +112,7 @@ importers:
   packages/sdk:
     specifiers:
       '@enzymefinance/abis': workspace:*
+      abitype: ^0.7.1
       decimal.js: ^10.4.3
       typescript: ^5.0.2
       viem: ^0.1.22
@@ -120,6 +121,7 @@ importers:
       vitest: ^0.29.7
     dependencies:
       '@enzymefinance/abis': link:../abis
+      abitype: 0.7.1_typescript@5.0.2
       decimal.js: 10.4.3
       viem: 0.1.22_typescript@5.0.2
     devDependencies:
@@ -3826,7 +3828,7 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1_typescript@5.0.2
-      vite: 4.2.1_@types+node@18.15.10
+      vite: 4.2.1
     transitivePeerDependencies:
       - supports-color
       - typescript

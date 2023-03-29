@@ -1,7 +1,7 @@
-export type ChainlinkRateAsset = typeof ChainlinkRateAsset[keyof typeof ChainlinkRateAsset];
-export const ChainlinkRateAsset = {
-  ETH: "0",
-  USD: "1",
+export type RateAsset = typeof RateAsset[keyof typeof RateAsset];
+export const RateAsset = {
+  ETH: 0,
+  USD: 1,
 } as const;
 
 export type VaultAction = typeof VaultAction[keyof typeof VaultAction];
