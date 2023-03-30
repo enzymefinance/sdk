@@ -662,6 +662,14 @@
       "require": "./dist/cjs/abis/IZeroExV2Adapter.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/types/abis/*.d.ts",
+        "./dist/types/index.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "clean": "rm -rf dist",
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
