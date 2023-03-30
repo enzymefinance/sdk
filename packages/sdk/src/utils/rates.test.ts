@@ -32,5 +32,5 @@ test.each([
     });
 
     expect(result).toBe(expected);
-  }
+  },
 );

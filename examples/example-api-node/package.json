@@ -13,7 +13,7 @@
     "@enzymefinance/api": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^18.15.10",
+    "@types/node": "^18.15.11",
     "tsx": "^3.12.6",
     "typescript": "^5.0.2"
   }

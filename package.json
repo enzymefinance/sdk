@@ -8,6 +8,7 @@
     "codegen": "pnpm run --recursive codegen",
     "build": "pnpm run --recursive build",
     "test": "pnpm run --recursive --parallel test",
+    "test:coverage": "pnpm run --recursive --parallel test:coverage",
     "clean": "pnpm run --recursive --parallel clean",
     "typecheck": "pnpm run --recursive --parallel typecheck",
     "format": "rome format --write .",

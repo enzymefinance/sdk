@@ -32,19 +32,22 @@
     "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
-    "test": "vitest run",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@enzymefinance/abis": "workspace:*",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
-    "viem": "^0.1.22"
+    "viem": "^0.1.24"
   },
   "devDependencies": {
+    "@vitest/coverage-c8": "^0.29.2",
+    "@vitest/ui": "^0.29.2",
     "typescript": "^5.0.2",
     "vite": "^4.2.1",
     "vite-tsconfig-paths": "^4.0.7",
-    "vitest": "^0.29.7"
+    "vitest": "^0.29.8"
   }
 }
