@@ -9,7 +9,7 @@
     "build": "pnpm run --recursive build",
     "test": "pnpm run --recursive --parallel test",
     "clean": "pnpm run --recursive --parallel clean",
-    "typecheck": "pnpm run --recursive typecheck",
+    "typecheck": "pnpm run --recursive --parallel typecheck",
     "format": "rome format --write .",
     "lint": "rome check ."
   },
