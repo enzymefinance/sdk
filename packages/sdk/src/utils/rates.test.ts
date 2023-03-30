@@ -1,9 +1,9 @@
-import { it, expect } from "vitest";
+import { test, expect } from "vitest";
 import { toSeconds } from "./conversion.js";
 import { calculateAmountDueForScaledPerSecondRate } from "./rates.js";
 
 // TODO: Provide better test fixtures.
-it.each([
+test.each([
   {
     rate: 1000000000158946658547141210n,
     since: toSeconds({ years: 1 }),
@@ -32,5 +32,5 @@ it.each([
     });
 
     expect(result).toBe(expected);
-  },
+  }
 );

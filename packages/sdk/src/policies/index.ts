@@ -1,5 +1,5 @@
 export * from "./enums.js";
-export * from "./config.js";
+export * from "./settings.js";
 
 export * from "./policies/allowedExternalPositionTypesPolicy.js";
 export * from "./policies/cumulativeSlippageTolerancePolicy.js";

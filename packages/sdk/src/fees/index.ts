@@ -1,5 +1,5 @@
 export * from "./enums.js";
-export * from "./config.js";
+export * from "./settings.js";
 
 export * from "./fees/entranceFee.js";
 export * from "./fees/exitFee.js";

@@ -2,7 +2,7 @@ import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
-export function encodeEntranceRateBurnFeeConfig({ feeRateInBps }: { feeRateInBps: bigint }) {
+export function encodeEntranceRateBurnFeeSettings({ feeRateInBps }: { feeRateInBps: bigint }) {
   return encodeAbiParameters(
     [
       {
@@ -14,7 +14,7 @@ export function encodeEntranceRateBurnFeeConfig({ feeRateInBps }: { feeRateInBps
   );
 }
 
-export function encodeEntranceRateDirectFeeConfig({
+export function encodeEntranceRateDirectFeeSettings({
   feeRateInBps,
   feeRecipient = ZERO_ADDRESS,
 }: { feeRateInBps: bigint; feeRecipient?: Address }) {

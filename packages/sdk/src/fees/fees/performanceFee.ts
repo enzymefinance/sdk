@@ -2,7 +2,7 @@ import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
-export function encodePerformanceFeeConfig({
+export function encodePerformanceFeeSettings({
   feeRateInBps,
   feeRecipient = ZERO_ADDRESS,
 }: {

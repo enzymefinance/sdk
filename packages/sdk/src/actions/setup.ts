@@ -1,9 +1,7 @@
 import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
 import { Address, Bytes } from "../types.js";
-import { encodeFeeManagerConfig } from "../fees/config.js";
 import { prepareFunctionParams } from "../utils/viem.js";
 import { toSeconds } from "../utils/conversion.js";
-import { encodePolicyManagerConfig } from "../policies/config.js";
 
 export interface SetupVaultParams {
   vaultOwner: Address;
@@ -11,8 +9,8 @@ export interface SetupVaultParams {
   vaultSymbol: string;
   denominationAsset: Address;
   sharesActionTimelock?: bigint;
-  feeSettings?: { address: Address; settings: Bytes }[];
-  policySettings?: { address: Address; settings: Bytes }[];
+  feeSettings?: Bytes;
+  policySettings?: Bytes;
 }
 
 export function setupVaultParams({
@@ -21,16 +19,12 @@ export function setupVaultParams({
   vaultSymbol,
   denominationAsset,
   sharesActionTimelock = toSeconds({ days: 1 }),
-  feeSettings,
-  policySettings,
+  feeSettings = "0x",
+  policySettings = "0x",
 }: SetupVaultParams) {
-  const fees = feeSettings !== undefined && feeSettings.length > 0 ? encodeFeeManagerConfig(feeSettings) : "0x";
-  const policies =
-    policySettings !== undefined && policySettings.length > 0 ? encodePolicyManagerConfig(policySettings) : "0x";
-
   return prepareFunctionParams({
     abi: IFundDeployer,
     functionName: "createNewFund",
-    args: [vaultOwner, vaultName, vaultSymbol, denominationAsset, sharesActionTimelock, fees, policies],
+    args: [vaultOwner, vaultName, vaultSymbol, denominationAsset, sharesActionTimelock, feeSettings, policySettings],
   });
 }

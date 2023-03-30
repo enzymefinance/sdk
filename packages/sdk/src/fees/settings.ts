@@ -1,24 +1,24 @@
 import { encodeAbiParameters } from "viem";
 import { Address, Bytes } from "../types.js";
 
-export function encodePolicyManagerConfig(
-  policies: {
+export function encodeFeeSettings(
+  fees: {
     address: Address;
     settings: Bytes;
   }[],
 ) {
-  const addresses = policies.map(({ address }) => address);
-  const settings = policies.map(({ settings }) => settings);
+  const addresses = fees.map(({ address }) => address);
+  const settings = fees.map(({ settings }) => settings);
 
   return encodeAbiParameters(
     [
       {
         type: "address[]",
-        name: "policyAddresses",
+        name: "feeAddresses",
       },
       {
         type: "bytes[]",
-        name: "policySettings",
+        name: "feeSettings",
       },
     ],
     [addresses, settings],

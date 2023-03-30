@@ -1,6 +1,6 @@
 import { encodeAbiParameters } from "viem";
 
-export function encodeMinMaxInvestmentPolicyConfig({
+export function encodeMinMaxInvestmentPolicySettings({
   minInvestmentAmount,
   maxInvestmentAmount,
 }: {

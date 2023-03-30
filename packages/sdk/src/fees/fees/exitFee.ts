@@ -2,7 +2,7 @@ import { encodeAbiParameters } from "viem";
 import { Address } from "../../types.js";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
-export function encodeExitRateBurnFeeConfig({
+export function encodeExitRateBurnFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
 }: {
@@ -24,7 +24,7 @@ export function encodeExitRateBurnFeeConfig({
   );
 }
 
-export function encodeExitRateDirectFeeConfig({
+export function encodeExitRateDirectFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
   feeRecipient = ZERO_ADDRESS,
