@@ -2,7 +2,7 @@ import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
 import { Address, Bytes } from "../types.js";
 import { prepareFunctionParams } from "../utils/viem.js";
 import { toSeconds } from "../utils/conversion.js";
-import { decodeAbiParameters, decodeFunctionData, getAbiItem } from "viem";
+import { decodeFunctionData, getAbiItem } from "viem";
 import { AbiParametersToPrimitiveTypes } from "abitype";
 import { decodeFeeSettings } from "../fees/settings.js";
 import { decodePolicySettings } from "../policies/settings.js";
