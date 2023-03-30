@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "name": "✨ root",
+      "path": "../"
+    },
+    {
+      "name": "📦 package: abis",
+      "path": "../packages/abis"
+    },
+    {
+      "name": "📦 package: api",
+      "path": "../packages/api"
+    },
+    {
+      "name": "📦 package: sdk",
+      "path": "../packages/sdk"
+    },
+    {
+      "name": "🚀 example: api-node",
+      "path": "../examples/example-api-node"
+    },
+    {
+      "name": "🚀 example: api-web",
+      "path": "../examples/example-api-web"
+    }
+  ],
+  "settings": {
+    // Required so that the vitest vscode extension uses the proper vitest.config.ts file and doesn't try to run tests from the root folder.
+    "vitest.disabledWorkspaceFolders": ["✨ root"],
+    "editor.defaultFormatter": "rome.rome",
+    "editor.formatOnSave": true,
+    "[typescript]": {
+      "editor.defaultFormatter": "rome.rome"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "rome.rome"
+    }
+  }
+}
