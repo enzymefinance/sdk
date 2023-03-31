@@ -1,4 +1,4 @@
-import Decimal from "decimal.js";
+import { Decimal } from "decimal.js";
 
 export function toBps(decimal: Decimal.Value): bigint {
   return BigInt(new Decimal(decimal).mul(10000).toFixed(0));
