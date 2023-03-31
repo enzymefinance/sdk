@@ -3,8 +3,6 @@
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
-    "outDir": "./dist",
-    // TODO: `NodeNext` moduleResolution currently doesn't work well with viem, see: https://github.com/wagmi-dev/viem/issues/244
-    "moduleResolution": "Node"
+    "outDir": "./dist"
   }
 }
