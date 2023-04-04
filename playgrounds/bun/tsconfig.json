@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["index.ts"],
+  "compilerOptions": {
+    "types": ["bun-types"],
+    "baseUrl": ".",
+    "paths": {
+      "@enzymefinance/abis": ["../../packages/abis/src"],
+      "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*"],
+      "@enzymefinance/api": ["../../packages/api/src"],
+      "@enzymefinance/sdk": ["../../packages/sdk/src"]
+    }
+  }
+}

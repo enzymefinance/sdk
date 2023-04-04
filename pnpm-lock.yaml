@@ -72,6 +72,47 @@ importers:
       typescript: 5.0.3
       vite: 4.2.1
 
+  examples/example-sdk-web:
+    specifiers:
+      '@enzymefinance/abis': workspace:*
+      '@enzymefinance/sdk': workspace:*
+      '@tanstack/react-query': ^4.28.0
+      '@tremor/react': ^2.1.0
+      '@types/react': ^18.0.33
+      '@types/react-dom': ^18.0.10
+      '@types/web': ^0.0.99
+      '@vitejs/plugin-react': ^3.1.0
+      abitype: ^0.7.1
+      autoprefixer: ^10.4.14
+      postcss: ^8.4.21
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      tailwindcss: ^3.3.1
+      tsx: ^3.12.6
+      typescript: ^5.0.3
+      viem: ^0.2.5
+      vite: ^4.2.1
+    dependencies:
+      '@enzymefinance/abis': link:../../packages/abis
+      '@enzymefinance/sdk': link:../../packages/sdk
+      '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
+      '@tremor/react': 2.1.0_biqbaboplfbrettd7655fr4n2y
+      abitype: 0.7.1_typescript@5.0.3
+      autoprefixer: 10.4.14_postcss@8.4.21
+      postcss: 8.4.21
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      tailwindcss: 3.3.1_postcss@8.4.21
+      viem: 0.2.5_typescript@5.0.3
+    devDependencies:
+      '@types/react': 18.0.33
+      '@types/react-dom': 18.0.11
+      '@types/web': 0.0.99
+      '@vitejs/plugin-react': 3.1.0_vite@4.2.1
+      tsx: 3.12.6
+      typescript: 5.0.3
+      vite: 4.2.1
+
   packages/abis:
     specifiers:
       '@vitest/coverage-c8': ^0.29.2
@@ -3318,6 +3359,9 @@ packages:
       prop-types: ^15.6.0
       react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      prop-types:
+        optional: true
     dependencies:
       fast-equals: 4.0.3
       react: 18.2.0
@@ -3415,6 +3459,9 @@ packages:
       prop-types: ^15.6.0
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      prop-types:
+        optional: true
     dependencies:
       classnames: 2.3.2
       eventemitter3: 4.0.7

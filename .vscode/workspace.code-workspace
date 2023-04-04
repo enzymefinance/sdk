@@ -23,6 +23,14 @@
     {
       "name": "🚀 example: api-web",
       "path": "../examples/example-api-web"
+    },
+    {
+      "name": "🚀 example: sdk-web",
+      "path": "../examples/example-sdk-web"
+    },
+    {
+      "name": "🤹‍♀️ playground: bun",
+      "path": "../playgrounds/bun"
     }
   ],
   "settings": {

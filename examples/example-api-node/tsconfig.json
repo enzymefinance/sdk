@@ -6,7 +6,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/api": ["../../packages/api/src/index.js"]
+      "@enzymefinance/api": ["../../packages/api/src"]
     }
   }
 }
