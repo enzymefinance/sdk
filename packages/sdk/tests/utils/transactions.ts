@@ -1,27 +1,34 @@
 import type { Abi } from "abitype";
+import { parseAccount } from "viem/utils";
 import { encodeFunctionData, TestClient, Chain, Transport, PublicClient } from "viem";
-import { SimulateContractParameters, SimulateContractReturnType, WriteContractParameters } from "viem/contract";
+import { SimulateContractParameters, WriteContractParameters } from "viem/contract";
 
-export function createTestSender<TTransport extends Transport>(testClient: TestClient<TTransport>) {
+export function createTestSender<TTransport extends Transport, TChain extends Chain | undefined = undefined>(
+  testClient: TestClient<"anvil", TTransport, TChain, true>,
+) {
   return async function sendTestTransaction<
-    TTransport extends Transport,
-    TChain extends Chain,
-    TClient extends PublicClient<TTransport, TChain, true>,
-    TAbi extends Abi | readonly unknown[] = Abi,
+    TAbi extends Abi | readonly unknown[],
     TFunctionName extends string = string,
+    TTransport extends Transport = Transport,
+    TChain extends Chain | undefined = undefined,
     TChainOverride extends Chain | undefined = undefined,
   >(
-    publicClient: TClient,
-    args: SimulateContractParameters<TChain, TAbi, TFunctionName, TChainOverride>,
-  ): Promise<SimulateContractReturnType<TChain, TAbi, TFunctionName>["result"]> {
+    publicClient: PublicClient<TTransport, TChain, true>,
+    args: SimulateContractParameters<TAbi, TFunctionName, TChain, TChainOverride>,
+  ) {
     const { request, result } = await publicClient.simulateContract(args);
-    // rome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const params = request as any as WriteContractParameters;
+    const account = parseAccount(request.account);
+
+    // rome-ignore lint/suspicious/noExplicitAny: expand the generic type to include all the optional parameters.
+    const params = request as any as WriteContractParameters<TAbi, TFunctionName, TChain> & {
+      value?: bigint;
+    };
 
     // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
-    await testClient.impersonateAccount(request.account);
-    await testClient.sendUnsignedTransaction({
-      from: params.account.address,
+    await testClient.impersonateAccount(account);
+
+    const hash = await testClient.sendUnsignedTransaction({
+      from: account.address,
       to: params.address,
       data: encodeFunctionData(params),
       ...(params.value === undefined ? {} : { value: params.value }),
@@ -33,6 +40,8 @@ export function createTestSender<TTransport extends Transport>(testClient: TestC
       ...(params.maxPriorityFeePerGas === undefined ? {} : { maxPriorityFeePerGas: params.maxPriorityFeePerGas }),
     });
 
-    return result;
+    const receipt = await publicClient.waitForTransactionReceipt({ hash });
+
+    return { request, result, receipt, hash };
   };
 }

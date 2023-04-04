@@ -41,14 +41,14 @@
     "@enzymefinance/abis": "workspace:*",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
-    "viem": "^0.1.24"
+    "viem": "^0.2.5"
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.2",
     "@vitest/ui": "^0.29.2",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1",
-    "vite-tsconfig-paths": "^4.0.7",
+    "vite-tsconfig-paths": "^4.0.8",
     "vitest": "^0.29.8"
   }
 }

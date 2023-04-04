@@ -8,13 +8,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@bufbuild/connect-node": "^0.8.4",
+    "@bufbuild/connect-node": "^0.8.5",
     "@bufbuild/protobuf": "^1.2.0",
     "@enzymefinance/api": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",
     "tsx": "^3.12.6",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.3"
   }
 }

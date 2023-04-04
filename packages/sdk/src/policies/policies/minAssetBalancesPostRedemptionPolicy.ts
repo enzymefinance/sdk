@@ -1,5 +1,4 @@
-import { encodeAbiParameters } from "viem";
-import { Address } from "../../types.js";
+import { Address, encodeAbiParameters } from "viem";
 
 export function encodeMinAssetBalancesPostRedemptionPolicySettings({
   assets,

@@ -1,11 +1,9 @@
 import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
-import { Address, Bytes } from "../types.js";
-import { prepareFunctionParams } from "../utils/viem.js";
+import { decodeFunctionData, prepareFunctionParams } from "../utils/viem.js";
 import { toSeconds } from "../utils/conversion.js";
-import { decodeFunctionData, getAbiItem } from "viem";
-import { AbiParametersToPrimitiveTypes } from "abitype";
 import { decodeFeeSettings } from "../fees/settings.js";
 import { decodePolicySettings } from "../policies/settings.js";
+import { Hex, Address, getAbiItem } from "viem";
 
 export interface SetupVaultParams {
   vaultOwner: Address;
@@ -13,11 +11,11 @@ export interface SetupVaultParams {
   vaultSymbol: string;
   denominationAsset: Address;
   sharesActionTimelock?: bigint;
-  feeSettings?: Bytes;
-  policySettings?: Bytes;
+  feeSettings?: Hex;
+  policySettings?: Hex;
 }
 
-export function setupVaultParams({
+export function prepareSetupVaultParams({
   vaultOwner,
   vaultName,
   vaultSymbol,
@@ -26,19 +24,27 @@ export function setupVaultParams({
   feeSettings = "0x",
   policySettings = "0x",
 }: SetupVaultParams) {
-  return prepareFunctionParams({
+  const abi = getAbiItem({
     abi: IFundDeployer,
+    name: "createNewFund",
+  });
+
+  return prepareFunctionParams({
+    abi: [abi],
     functionName: "createNewFund",
     args: [vaultOwner, vaultName, vaultSymbol, denominationAsset, sharesActionTimelock, feeSettings, policySettings],
   });
 }
 
-export function decodeSetupVaultParams(params: Bytes) {
-  const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });
+export function decodeSetupVaultParams(params: Hex) {
   const decoded = decodeFunctionData({
-    abi: [abi],
+    abi: IFundDeployer,
     data: params,
   });
+
+  if (decoded.functionName !== "createNewFund") {
+    throw new Error('Expected `functionName` to be "createNewFund"');
+  }
 
   const [
     vaultOwner,
@@ -48,7 +54,7 @@ export function decodeSetupVaultParams(params: Bytes) {
     sharesActionTimelock,
     encodedFeeSettings,
     encodedPolicySettings,
-  ] = decoded.args as AbiParametersToPrimitiveTypes<typeof abi.inputs>;
+  ] = decoded.args;
 
   const feeSettings = decodeFeeSettings(encodedFeeSettings);
   const policySettings = decodePolicySettings(encodedPolicySettings);

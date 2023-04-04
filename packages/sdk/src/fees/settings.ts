@@ -1,5 +1,4 @@
-import { decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Address, Bytes } from "../types.js";
+import { Address, Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 const feeSettingsAbi = [
   {
@@ -15,7 +14,7 @@ const feeSettingsAbi = [
 export function encodeFeeSettings(
   fees: {
     address: Address;
-    settings: Bytes;
+    settings: Hex;
   }[],
 ) {
   const addresses = fees.map(({ address }) => address);
@@ -24,11 +23,12 @@ export function encodeFeeSettings(
   return encodeAbiParameters(feeSettingsAbi, [addresses, settings]);
 }
 
-export function decodeFeeSettings(encoded: Bytes) {
+export function decodeFeeSettings(encoded: Hex) {
   const [addresses, settings] = decodeAbiParameters(feeSettingsAbi, encoded);
   if (addresses.length !== settings.length) {
     throw new Error("Expected fee addresses and settings to have the same length");
   }
 
+  // rome-ignore lint/style/noNonNullAssertion: length is checked above
   return addresses.map((address, i) => ({ address, settings: settings[i]! }));
 }

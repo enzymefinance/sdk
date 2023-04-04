@@ -1,5 +1,4 @@
-import { encodeAbiParameters } from "viem";
-import { Address } from "../../types.js";
+import { Address, encodeAbiParameters } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
 export function encodeExitRateBurnFeeSettings({

@@ -1,5 +1,4 @@
-import { decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Address, Bytes } from "../types.js";
+import { Address, Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 const policySettingsAbi = [
   {
@@ -15,7 +14,7 @@ const policySettingsAbi = [
 export function encodePolicySettings(
   policies: {
     address: Address;
-    settings: Bytes;
+    settings: Hex;
   }[],
 ) {
   const addresses = policies.map(({ address }) => address);
@@ -36,11 +35,12 @@ export function encodePolicySettings(
   );
 }
 
-export function decodePolicySettings(encoded: Bytes) {
+export function decodePolicySettings(encoded: Hex) {
   const [addresses, settings] = decodeAbiParameters(policySettingsAbi, encoded);
   if (addresses.length !== settings.length) {
     throw new Error("Expected policy addresses and settings to have the same length");
   }
 
+  // rome-ignore lint/style/noNonNullAssertion: length is checked above
   return addresses.map((address, i) => ({ address, settings: settings[i]! }));
 }
