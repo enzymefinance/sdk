@@ -5,10 +5,10 @@
     "types": ["bun-types"],
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/abis": ["../../packages/abis/src"],
-      "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*"],
-      "@enzymefinance/api": ["../../packages/api/src"],
-      "@enzymefinance/sdk": ["../../packages/sdk/src"]
+      "@enzymefinance/abis": ["../../packages/abis/src/index.js"],
+      "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*.js"],
+      "@enzymefinance/api": ["../../packages/api/src/index.js"],
+      "@enzymefinance/sdk": ["../../packages/sdk/src/index.js"]
     }
   }
 }

@@ -8,7 +8,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/api": ["../../packages/api/src"]
+      "@enzymefinance/api": ["../../packages/api/src/index.js"]
     }
   }
 }

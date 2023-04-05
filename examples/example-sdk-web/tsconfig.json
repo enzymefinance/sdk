@@ -8,9 +8,9 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@enzymefinance/abis": ["../../packages/abis/src"],
-      "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*"],
-      "@enzymefinance/sdk": ["../../packages/sdk/src"]
+      "@enzymefinance/abis": ["../../packages/abis/src/index.js"],
+      "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*.js"],
+      "@enzymefinance/sdk": ["../../packages/sdk/src/index.js"]
     }
   }
 }
