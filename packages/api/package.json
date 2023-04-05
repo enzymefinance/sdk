@@ -19,7 +19,7 @@
   },
   "files": [
     "dist",
-    "!dist/*.tsbuildinfo",
+    "!dist/**/*.tsbuildinfo",
     "src/**/*.ts",
     "!src/**/*.test.ts"
   ],
