@@ -1,4 +1,5 @@
-import { Address, Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { decodeAbiParameters, encodeAbiParameters } from "viem";
+import type { Address, Hex } from "viem";
 
 const feeSettingsAbi = [
   {

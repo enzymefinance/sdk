@@ -1,4 +1,5 @@
-import { createPromiseClient, PromiseClient, Transport, Interceptor } from "@bufbuild/connect";
+import type { PromiseClient, Transport, Interceptor } from "@bufbuild/connect";
+import { createPromiseClient } from "@bufbuild/connect";
 import { EnzymeService } from "./protobuf.js";
 
 export type EnzymeClient = PromiseClient<typeof EnzymeService>;

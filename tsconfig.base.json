@@ -4,7 +4,7 @@
     // Incremental builds
     "incremental": true,
 
-    // Type Checking
+    // Type checking
     "strict": true,
     "useDefineForClassFields": true,
     "exactOptionalPropertyTypes": true,
@@ -20,24 +20,20 @@
     "module": "ESNext",
     "moduleResolution": "NodeNext",
 
-    // Emit
-    "stripInternal": true,
-    "sourceMap": true,
-
-    // JavaScript Support
+    // JavaScript support
     "allowJs": false,
     "checkJs": false,
 
-    // Interop Constraints
+    // Interop constraints
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
 
-    // Language and Environment
+    // Language and environment
     "lib": ["ESNext"],
     "target": "ESNext",
 
-    // Completeness
+    // Skip type checking for node modules
     "skipLibCheck": true
   }
 }

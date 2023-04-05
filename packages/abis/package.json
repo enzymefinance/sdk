@@ -7,11 +7,18 @@
     "url": "https://github.com/enzymefinance/enzyme-sdk.git",
     "directory": "packages/abis"
   },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
+    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
+    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --verbatimModuleSyntax --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
   "files": [
-    "dist/**/*.js",
-    "dist/**/*.js.map",
-    "dist/**/*.d.ts",
-    "dist/**/*.d.ts.map",
+    "dist",
+    "!dist/*.tsbuildinfo",
     "src/**/*.ts",
     "!src/**/*.test.ts"
   ],
@@ -20,647 +27,648 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "default": "./dist/cjs/index.js"
     },
     "./package.json": "./package.json",
     "./IAaveDebtPositionLib": {
       "types": "./dist/types/abis/IAaveDebtPositionLib.d.ts",
       "import": "./dist/esm/abis/IAaveDebtPositionLib.js",
-      "require": "./dist/cjs/abis/IAaveDebtPositionLib.js"
+      "default": "./dist/cjs/abis/IAaveDebtPositionLib.js"
     },
     "./IAaveDebtPositionParser": {
       "types": "./dist/types/abis/IAaveDebtPositionParser.d.ts",
       "import": "./dist/esm/abis/IAaveDebtPositionParser.js",
-      "require": "./dist/cjs/abis/IAaveDebtPositionParser.js"
+      "default": "./dist/cjs/abis/IAaveDebtPositionParser.js"
     },
     "./IAaveV2Adapter": {
       "types": "./dist/types/abis/IAaveV2Adapter.d.ts",
       "import": "./dist/esm/abis/IAaveV2Adapter.js",
-      "require": "./dist/cjs/abis/IAaveV2Adapter.js"
+      "default": "./dist/cjs/abis/IAaveV2Adapter.js"
     },
     "./IAaveV2ATokenListOwner": {
       "types": "./dist/types/abis/IAaveV2ATokenListOwner.d.ts",
       "import": "./dist/esm/abis/IAaveV2ATokenListOwner.js",
-      "require": "./dist/cjs/abis/IAaveV2ATokenListOwner.js"
+      "default": "./dist/cjs/abis/IAaveV2ATokenListOwner.js"
     },
     "./IAaveV3Adapter": {
       "types": "./dist/types/abis/IAaveV3Adapter.d.ts",
       "import": "./dist/esm/abis/IAaveV3Adapter.js",
-      "require": "./dist/cjs/abis/IAaveV3Adapter.js"
+      "default": "./dist/cjs/abis/IAaveV3Adapter.js"
     },
     "./IAaveV3ATokenListOwner": {
       "types": "./dist/types/abis/IAaveV3ATokenListOwner.d.ts",
       "import": "./dist/esm/abis/IAaveV3ATokenListOwner.js",
-      "require": "./dist/cjs/abis/IAaveV3ATokenListOwner.js"
+      "default": "./dist/cjs/abis/IAaveV3ATokenListOwner.js"
     },
     "./IAddressListRegistry": {
       "types": "./dist/types/abis/IAddressListRegistry.d.ts",
       "import": "./dist/esm/abis/IAddressListRegistry.js",
-      "require": "./dist/cjs/abis/IAddressListRegistry.js"
+      "default": "./dist/cjs/abis/IAddressListRegistry.js"
     },
     "./IAllowedAdapterIncomingAssetsPolicy": {
       "types": "./dist/types/abis/IAllowedAdapterIncomingAssetsPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedAdapterIncomingAssetsPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedAdapterIncomingAssetsPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedAdapterIncomingAssetsPolicy.js"
     },
     "./IAllowedAdaptersPerManagerPolicy": {
       "types": "./dist/types/abis/IAllowedAdaptersPerManagerPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedAdaptersPerManagerPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedAdaptersPerManagerPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedAdaptersPerManagerPolicy.js"
     },
     "./IAllowedAdaptersPolicy": {
       "types": "./dist/types/abis/IAllowedAdaptersPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedAdaptersPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedAdaptersPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedAdaptersPolicy.js"
     },
     "./IAllowedAssetsForRedemptionPolicy": {
       "types": "./dist/types/abis/IAllowedAssetsForRedemptionPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedAssetsForRedemptionPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedAssetsForRedemptionPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedAssetsForRedemptionPolicy.js"
     },
     "./IAllowedDepositRecipientsPolicy": {
       "types": "./dist/types/abis/IAllowedDepositRecipientsPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedDepositRecipientsPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedDepositRecipientsPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedDepositRecipientsPolicy.js"
     },
     "./IAllowedExternalPositionTypesPerManagerPolicy": {
       "types": "./dist/types/abis/IAllowedExternalPositionTypesPerManagerPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedExternalPositionTypesPerManagerPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedExternalPositionTypesPerManagerPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedExternalPositionTypesPerManagerPolicy.js"
     },
     "./IAllowedExternalPositionTypesPolicy": {
       "types": "./dist/types/abis/IAllowedExternalPositionTypesPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedExternalPositionTypesPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedExternalPositionTypesPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedExternalPositionTypesPolicy.js"
     },
     "./IAllowedSharesTransferRecipientsPolicy": {
       "types": "./dist/types/abis/IAllowedSharesTransferRecipientsPolicy.d.ts",
       "import": "./dist/esm/abis/IAllowedSharesTransferRecipientsPolicy.js",
-      "require": "./dist/cjs/abis/IAllowedSharesTransferRecipientsPolicy.js"
+      "default": "./dist/cjs/abis/IAllowedSharesTransferRecipientsPolicy.js"
     },
     "./IArbitraryLoanFixedInterestModule": {
       "types": "./dist/types/abis/IArbitraryLoanFixedInterestModule.d.ts",
       "import": "./dist/esm/abis/IArbitraryLoanFixedInterestModule.js",
-      "require": "./dist/cjs/abis/IArbitraryLoanFixedInterestModule.js"
+      "default": "./dist/cjs/abis/IArbitraryLoanFixedInterestModule.js"
     },
     "./IArbitraryLoanPositionLib": {
       "types": "./dist/types/abis/IArbitraryLoanPositionLib.d.ts",
       "import": "./dist/esm/abis/IArbitraryLoanPositionLib.js",
-      "require": "./dist/cjs/abis/IArbitraryLoanPositionLib.js"
+      "default": "./dist/cjs/abis/IArbitraryLoanPositionLib.js"
     },
     "./IArbitraryLoanPositionParser": {
       "types": "./dist/types/abis/IArbitraryLoanPositionParser.d.ts",
       "import": "./dist/esm/abis/IArbitraryLoanPositionParser.js",
-      "require": "./dist/cjs/abis/IArbitraryLoanPositionParser.js"
+      "default": "./dist/cjs/abis/IArbitraryLoanPositionParser.js"
     },
     "./IArbitraryLoanTotalNominalDeltaOracleModule": {
       "types": "./dist/types/abis/IArbitraryLoanTotalNominalDeltaOracleModule.d.ts",
       "import": "./dist/esm/abis/IArbitraryLoanTotalNominalDeltaOracleModule.js",
-      "require": "./dist/cjs/abis/IArbitraryLoanTotalNominalDeltaOracleModule.js"
+      "default": "./dist/cjs/abis/IArbitraryLoanTotalNominalDeltaOracleModule.js"
     },
     "./IArbitraryTokenPhasedSharesWrapperFactory": {
       "types": "./dist/types/abis/IArbitraryTokenPhasedSharesWrapperFactory.d.ts",
       "import": "./dist/esm/abis/IArbitraryTokenPhasedSharesWrapperFactory.js",
-      "require": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperFactory.js"
+      "default": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperFactory.js"
     },
     "./IArbitraryTokenPhasedSharesWrapperLib": {
       "types": "./dist/types/abis/IArbitraryTokenPhasedSharesWrapperLib.d.ts",
       "import": "./dist/esm/abis/IArbitraryTokenPhasedSharesWrapperLib.js",
-      "require": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperLib.js"
+      "default": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperLib.js"
     },
     "./IArbitraryTokenPhasedSharesWrapperProxy": {
       "types": "./dist/types/abis/IArbitraryTokenPhasedSharesWrapperProxy.d.ts",
       "import": "./dist/esm/abis/IArbitraryTokenPhasedSharesWrapperProxy.js",
-      "require": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperProxy.js"
+      "default": "./dist/cjs/abis/IArbitraryTokenPhasedSharesWrapperProxy.js"
     },
     "./IArbitraryValueOracle": {
       "types": "./dist/types/abis/IArbitraryValueOracle.d.ts",
       "import": "./dist/esm/abis/IArbitraryValueOracle.js",
-      "require": "./dist/cjs/abis/IArbitraryValueOracle.js"
+      "default": "./dist/cjs/abis/IArbitraryValueOracle.js"
     },
     "./IAuraBalancerV2LpStakingAdapter": {
       "types": "./dist/types/abis/IAuraBalancerV2LpStakingAdapter.d.ts",
       "import": "./dist/esm/abis/IAuraBalancerV2LpStakingAdapter.js",
-      "require": "./dist/cjs/abis/IAuraBalancerV2LpStakingAdapter.js"
+      "default": "./dist/cjs/abis/IAuraBalancerV2LpStakingAdapter.js"
     },
     "./IAuraBalancerV2LpStakingWrapperFactory": {
       "types": "./dist/types/abis/IAuraBalancerV2LpStakingWrapperFactory.d.ts",
       "import": "./dist/esm/abis/IAuraBalancerV2LpStakingWrapperFactory.js",
-      "require": "./dist/cjs/abis/IAuraBalancerV2LpStakingWrapperFactory.js"
+      "default": "./dist/cjs/abis/IAuraBalancerV2LpStakingWrapperFactory.js"
     },
     "./IAuraBalancerV2LpStakingWrapperPriceFeed": {
       "types": "./dist/types/abis/IAuraBalancerV2LpStakingWrapperPriceFeed.d.ts",
       "import": "./dist/esm/abis/IAuraBalancerV2LpStakingWrapperPriceFeed.js",
-      "require": "./dist/cjs/abis/IAuraBalancerV2LpStakingWrapperPriceFeed.js"
+      "default": "./dist/cjs/abis/IAuraBalancerV2LpStakingWrapperPriceFeed.js"
     },
     "./IBalancerV2GaugeTokenPriceFeed": {
       "types": "./dist/types/abis/IBalancerV2GaugeTokenPriceFeed.d.ts",
       "import": "./dist/esm/abis/IBalancerV2GaugeTokenPriceFeed.js",
-      "require": "./dist/cjs/abis/IBalancerV2GaugeTokenPriceFeed.js"
+      "default": "./dist/cjs/abis/IBalancerV2GaugeTokenPriceFeed.js"
     },
     "./IBalancerV2LiquidityAdapter": {
       "types": "./dist/types/abis/IBalancerV2LiquidityAdapter.d.ts",
       "import": "./dist/esm/abis/IBalancerV2LiquidityAdapter.js",
-      "require": "./dist/cjs/abis/IBalancerV2LiquidityAdapter.js"
+      "default": "./dist/cjs/abis/IBalancerV2LiquidityAdapter.js"
     },
     "./IBalancerV2StablePoolPriceFeed": {
       "types": "./dist/types/abis/IBalancerV2StablePoolPriceFeed.d.ts",
       "import": "./dist/esm/abis/IBalancerV2StablePoolPriceFeed.js",
-      "require": "./dist/cjs/abis/IBalancerV2StablePoolPriceFeed.js"
+      "default": "./dist/cjs/abis/IBalancerV2StablePoolPriceFeed.js"
     },
     "./IBalancerV2WeightedPoolPriceFeed": {
       "types": "./dist/types/abis/IBalancerV2WeightedPoolPriceFeed.d.ts",
       "import": "./dist/esm/abis/IBalancerV2WeightedPoolPriceFeed.js",
-      "require": "./dist/cjs/abis/IBalancerV2WeightedPoolPriceFeed.js"
+      "default": "./dist/cjs/abis/IBalancerV2WeightedPoolPriceFeed.js"
     },
     "./ICompoundAdapter": {
       "types": "./dist/types/abis/ICompoundAdapter.d.ts",
       "import": "./dist/esm/abis/ICompoundAdapter.js",
-      "require": "./dist/cjs/abis/ICompoundAdapter.js"
+      "default": "./dist/cjs/abis/ICompoundAdapter.js"
     },
     "./ICompoundDebtPositionLib": {
       "types": "./dist/types/abis/ICompoundDebtPositionLib.d.ts",
       "import": "./dist/esm/abis/ICompoundDebtPositionLib.js",
-      "require": "./dist/cjs/abis/ICompoundDebtPositionLib.js"
+      "default": "./dist/cjs/abis/ICompoundDebtPositionLib.js"
     },
     "./ICompoundDebtPositionParser": {
       "types": "./dist/types/abis/ICompoundDebtPositionParser.d.ts",
       "import": "./dist/esm/abis/ICompoundDebtPositionParser.js",
-      "require": "./dist/cjs/abis/ICompoundDebtPositionParser.js"
+      "default": "./dist/cjs/abis/ICompoundDebtPositionParser.js"
     },
     "./ICompoundPriceFeed": {
       "types": "./dist/types/abis/ICompoundPriceFeed.d.ts",
       "import": "./dist/esm/abis/ICompoundPriceFeed.js",
-      "require": "./dist/cjs/abis/ICompoundPriceFeed.js"
+      "default": "./dist/cjs/abis/ICompoundPriceFeed.js"
     },
     "./ICompoundV3Adapter": {
       "types": "./dist/types/abis/ICompoundV3Adapter.d.ts",
       "import": "./dist/esm/abis/ICompoundV3Adapter.js",
-      "require": "./dist/cjs/abis/ICompoundV3Adapter.js"
+      "default": "./dist/cjs/abis/ICompoundV3Adapter.js"
     },
     "./ICompoundV3CTokenListOwner": {
       "types": "./dist/types/abis/ICompoundV3CTokenListOwner.d.ts",
       "import": "./dist/esm/abis/ICompoundV3CTokenListOwner.js",
-      "require": "./dist/cjs/abis/ICompoundV3CTokenListOwner.js"
+      "default": "./dist/cjs/abis/ICompoundV3CTokenListOwner.js"
     },
     "./IComptroller": {
       "types": "./dist/types/abis/IComptroller.d.ts",
       "import": "./dist/esm/abis/IComptroller.js",
-      "require": "./dist/cjs/abis/IComptroller.js"
+      "default": "./dist/cjs/abis/IComptroller.js"
     },
     "./IConvexCurveLpStakingAdapter": {
       "types": "./dist/types/abis/IConvexCurveLpStakingAdapter.d.ts",
       "import": "./dist/esm/abis/IConvexCurveLpStakingAdapter.js",
-      "require": "./dist/cjs/abis/IConvexCurveLpStakingAdapter.js"
+      "default": "./dist/cjs/abis/IConvexCurveLpStakingAdapter.js"
     },
     "./IConvexCurveLpStakingWrapperFactory": {
       "types": "./dist/types/abis/IConvexCurveLpStakingWrapperFactory.d.ts",
       "import": "./dist/esm/abis/IConvexCurveLpStakingWrapperFactory.js",
-      "require": "./dist/cjs/abis/IConvexCurveLpStakingWrapperFactory.js"
+      "default": "./dist/cjs/abis/IConvexCurveLpStakingWrapperFactory.js"
     },
     "./IConvexCurveLpStakingWrapperLib": {
       "types": "./dist/types/abis/IConvexCurveLpStakingWrapperLib.d.ts",
       "import": "./dist/esm/abis/IConvexCurveLpStakingWrapperLib.js",
-      "require": "./dist/cjs/abis/IConvexCurveLpStakingWrapperLib.js"
+      "default": "./dist/cjs/abis/IConvexCurveLpStakingWrapperLib.js"
     },
     "./IConvexCurveLpStakingWrapperPriceFeed": {
       "types": "./dist/types/abis/IConvexCurveLpStakingWrapperPriceFeed.d.ts",
       "import": "./dist/esm/abis/IConvexCurveLpStakingWrapperPriceFeed.js",
-      "require": "./dist/cjs/abis/IConvexCurveLpStakingWrapperPriceFeed.js"
+      "default": "./dist/cjs/abis/IConvexCurveLpStakingWrapperPriceFeed.js"
     },
     "./IConvexVotingPositionLib": {
       "types": "./dist/types/abis/IConvexVotingPositionLib.d.ts",
       "import": "./dist/esm/abis/IConvexVotingPositionLib.js",
-      "require": "./dist/cjs/abis/IConvexVotingPositionLib.js"
+      "default": "./dist/cjs/abis/IConvexVotingPositionLib.js"
     },
     "./IConvexVotingPositionParser": {
       "types": "./dist/types/abis/IConvexVotingPositionParser.d.ts",
       "import": "./dist/esm/abis/IConvexVotingPositionParser.js",
-      "require": "./dist/cjs/abis/IConvexVotingPositionParser.js"
+      "default": "./dist/cjs/abis/IConvexVotingPositionParser.js"
     },
     "./ICumulativeSlippageTolerancePolicy": {
       "types": "./dist/types/abis/ICumulativeSlippageTolerancePolicy.d.ts",
       "import": "./dist/esm/abis/ICumulativeSlippageTolerancePolicy.js",
-      "require": "./dist/cjs/abis/ICumulativeSlippageTolerancePolicy.js"
+      "default": "./dist/cjs/abis/ICumulativeSlippageTolerancePolicy.js"
     },
     "./ICurveExchangeAdapter": {
       "types": "./dist/types/abis/ICurveExchangeAdapter.d.ts",
       "import": "./dist/esm/abis/ICurveExchangeAdapter.js",
-      "require": "./dist/cjs/abis/ICurveExchangeAdapter.js"
+      "default": "./dist/cjs/abis/ICurveExchangeAdapter.js"
     },
     "./ICurveLiquidityAdapter": {
       "types": "./dist/types/abis/ICurveLiquidityAdapter.d.ts",
       "import": "./dist/esm/abis/ICurveLiquidityAdapter.js",
-      "require": "./dist/cjs/abis/ICurveLiquidityAdapter.js"
+      "default": "./dist/cjs/abis/ICurveLiquidityAdapter.js"
     },
     "./ICurvePriceFeed": {
       "types": "./dist/types/abis/ICurvePriceFeed.d.ts",
       "import": "./dist/esm/abis/ICurvePriceFeed.js",
-      "require": "./dist/cjs/abis/ICurvePriceFeed.js"
+      "default": "./dist/cjs/abis/ICurvePriceFeed.js"
     },
     "./IDepositWrapper": {
       "types": "./dist/types/abis/IDepositWrapper.d.ts",
       "import": "./dist/esm/abis/IDepositWrapper.js",
-      "require": "./dist/cjs/abis/IDepositWrapper.js"
+      "default": "./dist/cjs/abis/IDepositWrapper.js"
     },
     "./IDerivativePriceFeed": {
       "types": "./dist/types/abis/IDerivativePriceFeed.d.ts",
       "import": "./dist/esm/abis/IDerivativePriceFeed.js",
-      "require": "./dist/cjs/abis/IDerivativePriceFeed.js"
+      "default": "./dist/cjs/abis/IDerivativePriceFeed.js"
     },
     "./IDispatcher": {
       "types": "./dist/types/abis/IDispatcher.d.ts",
       "import": "./dist/esm/abis/IDispatcher.js",
-      "require": "./dist/cjs/abis/IDispatcher.js"
+      "default": "./dist/cjs/abis/IDispatcher.js"
     },
     "./IEntranceRateBurnFee": {
       "types": "./dist/types/abis/IEntranceRateBurnFee.d.ts",
       "import": "./dist/esm/abis/IEntranceRateBurnFee.js",
-      "require": "./dist/cjs/abis/IEntranceRateBurnFee.js"
+      "default": "./dist/cjs/abis/IEntranceRateBurnFee.js"
     },
     "./IEntranceRateDirectFee": {
       "types": "./dist/types/abis/IEntranceRateDirectFee.d.ts",
       "import": "./dist/esm/abis/IEntranceRateDirectFee.js",
-      "require": "./dist/cjs/abis/IEntranceRateDirectFee.js"
+      "default": "./dist/cjs/abis/IEntranceRateDirectFee.js"
     },
     "./IExitRateBurnFee": {
       "types": "./dist/types/abis/IExitRateBurnFee.d.ts",
       "import": "./dist/esm/abis/IExitRateBurnFee.js",
-      "require": "./dist/cjs/abis/IExitRateBurnFee.js"
+      "default": "./dist/cjs/abis/IExitRateBurnFee.js"
     },
     "./IExitRateDirectFee": {
       "types": "./dist/types/abis/IExitRateDirectFee.d.ts",
       "import": "./dist/esm/abis/IExitRateDirectFee.js",
-      "require": "./dist/cjs/abis/IExitRateDirectFee.js"
+      "default": "./dist/cjs/abis/IExitRateDirectFee.js"
     },
     "./IExternalPosition": {
       "types": "./dist/types/abis/IExternalPosition.d.ts",
       "import": "./dist/esm/abis/IExternalPosition.js",
-      "require": "./dist/cjs/abis/IExternalPosition.js"
+      "default": "./dist/cjs/abis/IExternalPosition.js"
     },
     "./IExternalPositionFactory": {
       "types": "./dist/types/abis/IExternalPositionFactory.d.ts",
       "import": "./dist/esm/abis/IExternalPositionFactory.js",
-      "require": "./dist/cjs/abis/IExternalPositionFactory.js"
+      "default": "./dist/cjs/abis/IExternalPositionFactory.js"
     },
     "./IExternalPositionManager": {
       "types": "./dist/types/abis/IExternalPositionManager.d.ts",
       "import": "./dist/esm/abis/IExternalPositionManager.js",
-      "require": "./dist/cjs/abis/IExternalPositionManager.js"
+      "default": "./dist/cjs/abis/IExternalPositionManager.js"
     },
     "./IFee": {
       "types": "./dist/types/abis/IFee.d.ts",
       "import": "./dist/esm/abis/IFee.js",
-      "require": "./dist/cjs/abis/IFee.js"
+      "default": "./dist/cjs/abis/IFee.js"
     },
     "./IFeeManager": {
       "types": "./dist/types/abis/IFeeManager.d.ts",
       "import": "./dist/esm/abis/IFeeManager.js",
-      "require": "./dist/cjs/abis/IFeeManager.js"
+      "default": "./dist/cjs/abis/IFeeManager.js"
     },
     "./IFiduPriceFeed": {
       "types": "./dist/types/abis/IFiduPriceFeed.d.ts",
       "import": "./dist/esm/abis/IFiduPriceFeed.js",
-      "require": "./dist/cjs/abis/IFiduPriceFeed.js"
+      "default": "./dist/cjs/abis/IFiduPriceFeed.js"
     },
     "./IFundDeployer": {
       "types": "./dist/types/abis/IFundDeployer.d.ts",
       "import": "./dist/esm/abis/IFundDeployer.js",
-      "require": "./dist/cjs/abis/IFundDeployer.js"
+      "default": "./dist/cjs/abis/IFundDeployer.js"
     },
     "./IFundValueCalculator": {
       "types": "./dist/types/abis/IFundValueCalculator.d.ts",
       "import": "./dist/esm/abis/IFundValueCalculator.js",
-      "require": "./dist/cjs/abis/IFundValueCalculator.js"
+      "default": "./dist/cjs/abis/IFundValueCalculator.js"
     },
     "./IFundValueCalculatorRouter": {
       "types": "./dist/types/abis/IFundValueCalculatorRouter.d.ts",
       "import": "./dist/esm/abis/IFundValueCalculatorRouter.js",
-      "require": "./dist/cjs/abis/IFundValueCalculatorRouter.js"
+      "default": "./dist/cjs/abis/IFundValueCalculatorRouter.js"
     },
     "./IFundValueCalculatorUsdWrapper": {
       "types": "./dist/types/abis/IFundValueCalculatorUsdWrapper.d.ts",
       "import": "./dist/esm/abis/IFundValueCalculatorUsdWrapper.js",
-      "require": "./dist/cjs/abis/IFundValueCalculatorUsdWrapper.js"
+      "default": "./dist/cjs/abis/IFundValueCalculatorUsdWrapper.js"
     },
     "./IGasRelayPaymasterFactory": {
       "types": "./dist/types/abis/IGasRelayPaymasterFactory.d.ts",
       "import": "./dist/esm/abis/IGasRelayPaymasterFactory.js",
-      "require": "./dist/cjs/abis/IGasRelayPaymasterFactory.js"
+      "default": "./dist/cjs/abis/IGasRelayPaymasterFactory.js"
     },
     "./IGasRelayPaymasterLib": {
       "types": "./dist/types/abis/IGasRelayPaymasterLib.d.ts",
       "import": "./dist/esm/abis/IGasRelayPaymasterLib.js",
-      "require": "./dist/cjs/abis/IGasRelayPaymasterLib.js"
+      "default": "./dist/cjs/abis/IGasRelayPaymasterLib.js"
     },
     "./IGatedRedemptionQueueSharesWrapperFactory": {
       "types": "./dist/types/abis/IGatedRedemptionQueueSharesWrapperFactory.d.ts",
       "import": "./dist/esm/abis/IGatedRedemptionQueueSharesWrapperFactory.js",
-      "require": "./dist/cjs/abis/IGatedRedemptionQueueSharesWrapperFactory.js"
+      "default": "./dist/cjs/abis/IGatedRedemptionQueueSharesWrapperFactory.js"
     },
     "./IGatedRedemptionQueueSharesWrapperLib": {
       "types": "./dist/types/abis/IGatedRedemptionQueueSharesWrapperLib.d.ts",
       "import": "./dist/esm/abis/IGatedRedemptionQueueSharesWrapperLib.js",
-      "require": "./dist/cjs/abis/IGatedRedemptionQueueSharesWrapperLib.js"
+      "default": "./dist/cjs/abis/IGatedRedemptionQueueSharesWrapperLib.js"
     },
     "./IGlobalConfigLib": {
       "types": "./dist/types/abis/IGlobalConfigLib.d.ts",
       "import": "./dist/esm/abis/IGlobalConfigLib.js",
-      "require": "./dist/cjs/abis/IGlobalConfigLib.js"
+      "default": "./dist/cjs/abis/IGlobalConfigLib.js"
     },
     "./IIdleAdapter": {
       "types": "./dist/types/abis/IIdleAdapter.d.ts",
       "import": "./dist/esm/abis/IIdleAdapter.js",
-      "require": "./dist/cjs/abis/IIdleAdapter.js"
+      "default": "./dist/cjs/abis/IIdleAdapter.js"
     },
     "./IIdlePriceFeed": {
       "types": "./dist/types/abis/IIdlePriceFeed.d.ts",
       "import": "./dist/esm/abis/IIdlePriceFeed.js",
-      "require": "./dist/cjs/abis/IIdlePriceFeed.js"
+      "default": "./dist/cjs/abis/IIdlePriceFeed.js"
     },
     "./IIntegrationAdapter": {
       "types": "./dist/types/abis/IIntegrationAdapter.d.ts",
       "import": "./dist/esm/abis/IIntegrationAdapter.js",
-      "require": "./dist/cjs/abis/IIntegrationAdapter.js"
+      "default": "./dist/cjs/abis/IIntegrationAdapter.js"
     },
     "./IIntegrationManager": {
       "types": "./dist/types/abis/IIntegrationManager.d.ts",
       "import": "./dist/esm/abis/IIntegrationManager.js",
-      "require": "./dist/cjs/abis/IIntegrationManager.js"
+      "default": "./dist/cjs/abis/IIntegrationManager.js"
     },
     "./IKilnStakingPositionLib": {
       "types": "./dist/types/abis/IKilnStakingPositionLib.d.ts",
       "import": "./dist/esm/abis/IKilnStakingPositionLib.js",
-      "require": "./dist/cjs/abis/IKilnStakingPositionLib.js"
+      "default": "./dist/cjs/abis/IKilnStakingPositionLib.js"
     },
     "./IKilnStakingPositionParser": {
       "types": "./dist/types/abis/IKilnStakingPositionParser.d.ts",
       "import": "./dist/esm/abis/IKilnStakingPositionParser.js",
-      "require": "./dist/cjs/abis/IKilnStakingPositionParser.js"
+      "default": "./dist/cjs/abis/IKilnStakingPositionParser.js"
     },
     "./ILiquityDebtPositionLib": {
       "types": "./dist/types/abis/ILiquityDebtPositionLib.d.ts",
       "import": "./dist/esm/abis/ILiquityDebtPositionLib.js",
-      "require": "./dist/cjs/abis/ILiquityDebtPositionLib.js"
+      "default": "./dist/cjs/abis/ILiquityDebtPositionLib.js"
     },
     "./ILiquityDebtPositionParser": {
       "types": "./dist/types/abis/ILiquityDebtPositionParser.d.ts",
       "import": "./dist/esm/abis/ILiquityDebtPositionParser.js",
-      "require": "./dist/cjs/abis/ILiquityDebtPositionParser.js"
+      "default": "./dist/cjs/abis/ILiquityDebtPositionParser.js"
     },
     "./IManagementFee": {
       "types": "./dist/types/abis/IManagementFee.d.ts",
       "import": "./dist/esm/abis/IManagementFee.js",
-      "require": "./dist/cjs/abis/IManagementFee.js"
+      "default": "./dist/cjs/abis/IManagementFee.js"
     },
     "./IManualValueOracleFactory": {
       "types": "./dist/types/abis/IManualValueOracleFactory.d.ts",
       "import": "./dist/esm/abis/IManualValueOracleFactory.js",
-      "require": "./dist/cjs/abis/IManualValueOracleFactory.js"
+      "default": "./dist/cjs/abis/IManualValueOracleFactory.js"
     },
     "./IManualValueOracleLib": {
       "types": "./dist/types/abis/IManualValueOracleLib.d.ts",
       "import": "./dist/esm/abis/IManualValueOracleLib.js",
-      "require": "./dist/cjs/abis/IManualValueOracleLib.js"
+      "default": "./dist/cjs/abis/IManualValueOracleLib.js"
     },
     "./IMapleLiquidityPositionLib": {
       "types": "./dist/types/abis/IMapleLiquidityPositionLib.d.ts",
       "import": "./dist/esm/abis/IMapleLiquidityPositionLib.js",
-      "require": "./dist/cjs/abis/IMapleLiquidityPositionLib.js"
+      "default": "./dist/cjs/abis/IMapleLiquidityPositionLib.js"
     },
     "./IMapleLiquidityPositionParser": {
       "types": "./dist/types/abis/IMapleLiquidityPositionParser.d.ts",
       "import": "./dist/esm/abis/IMapleLiquidityPositionParser.js",
-      "require": "./dist/cjs/abis/IMapleLiquidityPositionParser.js"
+      "default": "./dist/cjs/abis/IMapleLiquidityPositionParser.js"
     },
     "./IMapleV1ToV2PoolMapper": {
       "types": "./dist/types/abis/IMapleV1ToV2PoolMapper.d.ts",
       "import": "./dist/esm/abis/IMapleV1ToV2PoolMapper.js",
-      "require": "./dist/cjs/abis/IMapleV1ToV2PoolMapper.js"
+      "default": "./dist/cjs/abis/IMapleV1ToV2PoolMapper.js"
     },
     "./IMinAssetBalancesPostRedemptionPolicy": {
       "types": "./dist/types/abis/IMinAssetBalancesPostRedemptionPolicy.d.ts",
       "import": "./dist/esm/abis/IMinAssetBalancesPostRedemptionPolicy.js",
-      "require": "./dist/cjs/abis/IMinAssetBalancesPostRedemptionPolicy.js"
+      "default": "./dist/cjs/abis/IMinAssetBalancesPostRedemptionPolicy.js"
     },
     "./IMinMaxInvestmentPolicy": {
       "types": "./dist/types/abis/IMinMaxInvestmentPolicy.d.ts",
       "import": "./dist/esm/abis/IMinMaxInvestmentPolicy.js",
-      "require": "./dist/cjs/abis/IMinMaxInvestmentPolicy.js"
+      "default": "./dist/cjs/abis/IMinMaxInvestmentPolicy.js"
     },
     "./IMinSharesSupplyFee": {
       "types": "./dist/types/abis/IMinSharesSupplyFee.d.ts",
       "import": "./dist/esm/abis/IMinSharesSupplyFee.js",
-      "require": "./dist/cjs/abis/IMinSharesSupplyFee.js"
+      "default": "./dist/cjs/abis/IMinSharesSupplyFee.js"
     },
     "./INotionalV2PositionLib": {
       "types": "./dist/types/abis/INotionalV2PositionLib.d.ts",
       "import": "./dist/esm/abis/INotionalV2PositionLib.js",
-      "require": "./dist/cjs/abis/INotionalV2PositionLib.js"
+      "default": "./dist/cjs/abis/INotionalV2PositionLib.js"
     },
     "./INotionalV2PositionParser": {
       "types": "./dist/types/abis/INotionalV2PositionParser.d.ts",
       "import": "./dist/esm/abis/INotionalV2PositionParser.js",
-      "require": "./dist/cjs/abis/INotionalV2PositionParser.js"
+      "default": "./dist/cjs/abis/INotionalV2PositionParser.js"
     },
     "./IOlympusV2Adapter": {
       "types": "./dist/types/abis/IOlympusV2Adapter.d.ts",
       "import": "./dist/esm/abis/IOlympusV2Adapter.js",
-      "require": "./dist/cjs/abis/IOlympusV2Adapter.js"
+      "default": "./dist/cjs/abis/IOlympusV2Adapter.js"
     },
     "./IOnlyRemoveDustExternalPositionPolicy": {
       "types": "./dist/types/abis/IOnlyRemoveDustExternalPositionPolicy.d.ts",
       "import": "./dist/esm/abis/IOnlyRemoveDustExternalPositionPolicy.js",
-      "require": "./dist/cjs/abis/IOnlyRemoveDustExternalPositionPolicy.js"
+      "default": "./dist/cjs/abis/IOnlyRemoveDustExternalPositionPolicy.js"
     },
     "./IOnlyUntrackDustOrPricelessAssetsPolicy": {
       "types": "./dist/types/abis/IOnlyUntrackDustOrPricelessAssetsPolicy.d.ts",
       "import": "./dist/esm/abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js",
-      "require": "./dist/cjs/abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js"
+      "default": "./dist/cjs/abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js"
     },
     "./IParaSwapV5Adapter": {
       "types": "./dist/types/abis/IParaSwapV5Adapter.d.ts",
       "import": "./dist/esm/abis/IParaSwapV5Adapter.js",
-      "require": "./dist/cjs/abis/IParaSwapV5Adapter.js"
+      "default": "./dist/cjs/abis/IParaSwapV5Adapter.js"
     },
     "./IPerformanceFee": {
       "types": "./dist/types/abis/IPerformanceFee.d.ts",
       "import": "./dist/esm/abis/IPerformanceFee.js",
-      "require": "./dist/cjs/abis/IPerformanceFee.js"
+      "default": "./dist/cjs/abis/IPerformanceFee.js"
     },
     "./IPolicy": {
       "types": "./dist/types/abis/IPolicy.d.ts",
       "import": "./dist/esm/abis/IPolicy.js",
-      "require": "./dist/cjs/abis/IPolicy.js"
+      "default": "./dist/cjs/abis/IPolicy.js"
     },
     "./IPolicyManager": {
       "types": "./dist/types/abis/IPolicyManager.d.ts",
       "import": "./dist/esm/abis/IPolicyManager.js",
-      "require": "./dist/cjs/abis/IPolicyManager.js"
+      "default": "./dist/cjs/abis/IPolicyManager.js"
     },
     "./IPoolTogetherV4Adapter": {
       "types": "./dist/types/abis/IPoolTogetherV4Adapter.d.ts",
       "import": "./dist/esm/abis/IPoolTogetherV4Adapter.js",
-      "require": "./dist/cjs/abis/IPoolTogetherV4Adapter.js"
+      "default": "./dist/cjs/abis/IPoolTogetherV4Adapter.js"
     },
     "./IPoolTogetherV4PriceFeed": {
       "types": "./dist/types/abis/IPoolTogetherV4PriceFeed.d.ts",
       "import": "./dist/esm/abis/IPoolTogetherV4PriceFeed.js",
-      "require": "./dist/cjs/abis/IPoolTogetherV4PriceFeed.js"
+      "default": "./dist/cjs/abis/IPoolTogetherV4PriceFeed.js"
     },
     "./IProtocolFeeReserveLib": {
       "types": "./dist/types/abis/IProtocolFeeReserveLib.d.ts",
       "import": "./dist/esm/abis/IProtocolFeeReserveLib.js",
-      "require": "./dist/cjs/abis/IProtocolFeeReserveLib.js"
+      "default": "./dist/cjs/abis/IProtocolFeeReserveLib.js"
     },
     "./IProtocolFeeTracker": {
       "types": "./dist/types/abis/IProtocolFeeTracker.d.ts",
       "import": "./dist/esm/abis/IProtocolFeeTracker.js",
-      "require": "./dist/cjs/abis/IProtocolFeeTracker.js"
+      "default": "./dist/cjs/abis/IProtocolFeeTracker.js"
     },
     "./IRevertingPriceFeed": {
       "types": "./dist/types/abis/IRevertingPriceFeed.d.ts",
       "import": "./dist/esm/abis/IRevertingPriceFeed.js",
-      "require": "./dist/cjs/abis/IRevertingPriceFeed.js"
+      "default": "./dist/cjs/abis/IRevertingPriceFeed.js"
     },
     "./ISharesSplitterFactory": {
       "types": "./dist/types/abis/ISharesSplitterFactory.d.ts",
       "import": "./dist/esm/abis/ISharesSplitterFactory.js",
-      "require": "./dist/cjs/abis/ISharesSplitterFactory.js"
+      "default": "./dist/cjs/abis/ISharesSplitterFactory.js"
     },
     "./ISharesSplitterLib": {
       "types": "./dist/types/abis/ISharesSplitterLib.d.ts",
       "import": "./dist/esm/abis/ISharesSplitterLib.js",
-      "require": "./dist/cjs/abis/ISharesSplitterLib.js"
+      "default": "./dist/cjs/abis/ISharesSplitterLib.js"
     },
     "./ISolvV2BondBuyerPositionLib": {
       "types": "./dist/types/abis/ISolvV2BondBuyerPositionLib.d.ts",
       "import": "./dist/esm/abis/ISolvV2BondBuyerPositionLib.js",
-      "require": "./dist/cjs/abis/ISolvV2BondBuyerPositionLib.js"
+      "default": "./dist/cjs/abis/ISolvV2BondBuyerPositionLib.js"
     },
     "./ISolvV2BondBuyerPositionParser": {
       "types": "./dist/types/abis/ISolvV2BondBuyerPositionParser.d.ts",
       "import": "./dist/esm/abis/ISolvV2BondBuyerPositionParser.js",
-      "require": "./dist/cjs/abis/ISolvV2BondBuyerPositionParser.js"
+      "default": "./dist/cjs/abis/ISolvV2BondBuyerPositionParser.js"
     },
     "./ISolvV2BondIssuerPositionLib": {
       "types": "./dist/types/abis/ISolvV2BondIssuerPositionLib.d.ts",
       "import": "./dist/esm/abis/ISolvV2BondIssuerPositionLib.js",
-      "require": "./dist/cjs/abis/ISolvV2BondIssuerPositionLib.js"
+      "default": "./dist/cjs/abis/ISolvV2BondIssuerPositionLib.js"
     },
     "./ISolvV2BondIssuerPositionParser": {
       "types": "./dist/types/abis/ISolvV2BondIssuerPositionParser.d.ts",
       "import": "./dist/esm/abis/ISolvV2BondIssuerPositionParser.js",
-      "require": "./dist/cjs/abis/ISolvV2BondIssuerPositionParser.js"
+      "default": "./dist/cjs/abis/ISolvV2BondIssuerPositionParser.js"
     },
     "./ISolvV2ConvertibleBuyerPositionLib": {
       "types": "./dist/types/abis/ISolvV2ConvertibleBuyerPositionLib.d.ts",
       "import": "./dist/esm/abis/ISolvV2ConvertibleBuyerPositionLib.js",
-      "require": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionLib.js"
+      "default": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionLib.js"
     },
     "./ISolvV2ConvertibleBuyerPositionParser": {
       "types": "./dist/types/abis/ISolvV2ConvertibleBuyerPositionParser.d.ts",
       "import": "./dist/esm/abis/ISolvV2ConvertibleBuyerPositionParser.js",
-      "require": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionParser.js"
+      "default": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionParser.js"
     },
     "./ISolvV2ConvertibleIssuerPositionLib": {
       "types": "./dist/types/abis/ISolvV2ConvertibleIssuerPositionLib.d.ts",
       "import": "./dist/esm/abis/ISolvV2ConvertibleIssuerPositionLib.js",
-      "require": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionLib.js"
+      "default": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionLib.js"
     },
     "./ISolvV2ConvertibleIssuerPositionParser": {
       "types": "./dist/types/abis/ISolvV2ConvertibleIssuerPositionParser.d.ts",
       "import": "./dist/esm/abis/ISolvV2ConvertibleIssuerPositionParser.js",
-      "require": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionParser.js"
+      "default": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionParser.js"
     },
     "./ISynthetixAdapter": {
       "types": "./dist/types/abis/ISynthetixAdapter.d.ts",
       "import": "./dist/esm/abis/ISynthetixAdapter.js",
-      "require": "./dist/cjs/abis/ISynthetixAdapter.js"
+      "default": "./dist/cjs/abis/ISynthetixAdapter.js"
     },
     "./ITheGraphDelegationPositionLib": {
       "types": "./dist/types/abis/ITheGraphDelegationPositionLib.d.ts",
       "import": "./dist/esm/abis/ITheGraphDelegationPositionLib.js",
-      "require": "./dist/cjs/abis/ITheGraphDelegationPositionLib.js"
+      "default": "./dist/cjs/abis/ITheGraphDelegationPositionLib.js"
     },
     "./ITheGraphDelegationPositionParser": {
       "types": "./dist/types/abis/ITheGraphDelegationPositionParser.d.ts",
       "import": "./dist/esm/abis/ITheGraphDelegationPositionParser.js",
-      "require": "./dist/cjs/abis/ITheGraphDelegationPositionParser.js"
+      "default": "./dist/cjs/abis/ITheGraphDelegationPositionParser.js"
     },
     "./IUintListRegistry": {
       "types": "./dist/types/abis/IUintListRegistry.d.ts",
       "import": "./dist/esm/abis/IUintListRegistry.js",
-      "require": "./dist/cjs/abis/IUintListRegistry.js"
+      "default": "./dist/cjs/abis/IUintListRegistry.js"
     },
     "./IUniswapV2ExchangeAdapter": {
       "types": "./dist/types/abis/IUniswapV2ExchangeAdapter.d.ts",
       "import": "./dist/esm/abis/IUniswapV2ExchangeAdapter.js",
-      "require": "./dist/cjs/abis/IUniswapV2ExchangeAdapter.js"
+      "default": "./dist/cjs/abis/IUniswapV2ExchangeAdapter.js"
     },
     "./IUniswapV2LiquidityAdapter": {
       "types": "./dist/types/abis/IUniswapV2LiquidityAdapter.d.ts",
       "import": "./dist/esm/abis/IUniswapV2LiquidityAdapter.js",
-      "require": "./dist/cjs/abis/IUniswapV2LiquidityAdapter.js"
+      "default": "./dist/cjs/abis/IUniswapV2LiquidityAdapter.js"
     },
     "./IUniswapV2PoolPriceFeed": {
       "types": "./dist/types/abis/IUniswapV2PoolPriceFeed.d.ts",
       "import": "./dist/esm/abis/IUniswapV2PoolPriceFeed.js",
-      "require": "./dist/cjs/abis/IUniswapV2PoolPriceFeed.js"
+      "default": "./dist/cjs/abis/IUniswapV2PoolPriceFeed.js"
     },
     "./IUniswapV3Adapter": {
       "types": "./dist/types/abis/IUniswapV3Adapter.d.ts",
       "import": "./dist/esm/abis/IUniswapV3Adapter.js",
-      "require": "./dist/cjs/abis/IUniswapV3Adapter.js"
+      "default": "./dist/cjs/abis/IUniswapV3Adapter.js"
     },
     "./IUniswapV3LiquidityPositionLib": {
       "types": "./dist/types/abis/IUniswapV3LiquidityPositionLib.d.ts",
       "import": "./dist/esm/abis/IUniswapV3LiquidityPositionLib.js",
-      "require": "./dist/cjs/abis/IUniswapV3LiquidityPositionLib.js"
+      "default": "./dist/cjs/abis/IUniswapV3LiquidityPositionLib.js"
     },
     "./IUniswapV3LiquidityPositionParser": {
       "types": "./dist/types/abis/IUniswapV3LiquidityPositionParser.d.ts",
       "import": "./dist/esm/abis/IUniswapV3LiquidityPositionParser.js",
-      "require": "./dist/cjs/abis/IUniswapV3LiquidityPositionParser.js"
+      "default": "./dist/cjs/abis/IUniswapV3LiquidityPositionParser.js"
     },
     "./IUnpermissionedActionsWrapper": {
       "types": "./dist/types/abis/IUnpermissionedActionsWrapper.d.ts",
       "import": "./dist/esm/abis/IUnpermissionedActionsWrapper.js",
-      "require": "./dist/cjs/abis/IUnpermissionedActionsWrapper.js"
+      "default": "./dist/cjs/abis/IUnpermissionedActionsWrapper.js"
     },
     "./IValueInterpreter": {
       "types": "./dist/types/abis/IValueInterpreter.d.ts",
       "import": "./dist/esm/abis/IValueInterpreter.js",
-      "require": "./dist/cjs/abis/IValueInterpreter.js"
+      "default": "./dist/cjs/abis/IValueInterpreter.js"
     },
     "./IVault": {
       "types": "./dist/types/abis/IVault.d.ts",
       "import": "./dist/esm/abis/IVault.js",
-      "require": "./dist/cjs/abis/IVault.js"
+      "default": "./dist/cjs/abis/IVault.js"
     },
     "./IWstethPriceFeed": {
       "types": "./dist/types/abis/IWstethPriceFeed.d.ts",
       "import": "./dist/esm/abis/IWstethPriceFeed.js",
-      "require": "./dist/cjs/abis/IWstethPriceFeed.js"
+      "default": "./dist/cjs/abis/IWstethPriceFeed.js"
     },
     "./IYearnVaultV2Adapter": {
       "types": "./dist/types/abis/IYearnVaultV2Adapter.d.ts",
       "import": "./dist/esm/abis/IYearnVaultV2Adapter.js",
-      "require": "./dist/cjs/abis/IYearnVaultV2Adapter.js"
+      "default": "./dist/cjs/abis/IYearnVaultV2Adapter.js"
     },
     "./IYearnVaultV2PriceFeed": {
       "types": "./dist/types/abis/IYearnVaultV2PriceFeed.d.ts",
       "import": "./dist/esm/abis/IYearnVaultV2PriceFeed.js",
-      "require": "./dist/cjs/abis/IYearnVaultV2PriceFeed.js"
+      "default": "./dist/cjs/abis/IYearnVaultV2PriceFeed.js"
     },
     "./IZeroExV2Adapter": {
       "types": "./dist/types/abis/IZeroExV2Adapter.d.ts",
       "import": "./dist/esm/abis/IZeroExV2Adapter.js",
-      "require": "./dist/cjs/abis/IZeroExV2Adapter.js"
+      "default": "./dist/cjs/abis/IZeroExV2Adapter.js"
     }
   },
   "typesVersions": {
@@ -670,15 +678,6 @@
         "./dist/types/index.d.ts"
       ]
     }
-  },
-  "scripts": {
-    "clean": "rm -rf dist",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.2",

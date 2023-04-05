@@ -1,6 +1,7 @@
 import type { Abi, Narrow } from "abitype";
 import type { ExtractAbiFunctionNames } from "abitype";
-import { GetFunctionArgs, Hex, decodeFunctionData as decodeFunctionDataViem } from "viem";
+import { decodeFunctionData as decodeFunctionDataViem } from "viem";
+import type { GetFunctionArgs, Hex } from "viem";
 
 export type FunctionParams<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = {
   abi: Narrow<TAbi>;

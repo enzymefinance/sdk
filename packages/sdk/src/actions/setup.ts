@@ -3,7 +3,8 @@ import { decodeFunctionData, prepareFunctionParams } from "../utils/viem.js";
 import { toSeconds } from "../utils/conversion.js";
 import { decodeFeeSettings } from "../fees/settings.js";
 import { decodePolicySettings } from "../policies/settings.js";
-import { Hex, Address, getAbiItem } from "viem";
+import { getAbiItem } from "viem";
+import type { Hex, Address } from "viem";
 
 export interface SetupVaultParams {
   vaultOwner: Address;

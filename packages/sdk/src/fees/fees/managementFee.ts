@@ -1,4 +1,5 @@
-import { Address, encodeAbiParameters } from "viem";
+import { encodeAbiParameters } from "viem";
+import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondRate } from "../../utils/rates.js";
 

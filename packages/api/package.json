@@ -7,11 +7,19 @@
     "url": "https://github.com/enzymefinance/enzyme-sdk.git",
     "directory": "packages/api"
   },
+  "scripts": {
+    "codegen": "buf generate buf.build/avantgardefinance/enzyme",
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
+    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
+    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --verbatimModuleSyntax --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "typecheck": "tsc --noEmit"
+  },
   "files": [
-    "dist/**/*.js",
-    "dist/**/*.js.map",
-    "dist/**/*.d.ts",
-    "dist/**/*.d.ts.map",
+    "dist",
+    "!dist/*.tsbuildinfo",
     "src/**/*.ts",
     "!src/**/*.test.ts"
   ],
@@ -20,23 +28,14 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
+      "default": "./dist/cjs/index.js"
     },
     "./package.json": "./package.json"
-  },
-  "scripts": {
-    "codegen": "buf generate buf.build/avantgardefinance/enzyme",
-    "clean": "rm -rf dist",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@bufbuild/connect": "^0.8.5",

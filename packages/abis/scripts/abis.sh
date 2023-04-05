@@ -24,7 +24,7 @@ for abi in $abis; do
   echo "export { $name } from \"./abis/$name.js\";" >> $root/src/index.ts
  
   # Add the export declaration for the abi file to the stored exports.
-  exports=$(echo $exports | jq ". += { \"./$name\": { \"types\": \"./dist/types/abis/$name.d.ts\", \"import\": \"./dist/esm/abis/$name.js\", \"require\": \"./dist/cjs/abis/$name.js\" } }")
+  exports=$(echo $exports | jq ". += { \"./$name\": { \"types\": \"./dist/types/abis/$name.d.ts\", \"import\": \"./dist/esm/abis/$name.js\", \"default\": \"./dist/cjs/abis/$name.js\" } }")
 done
 
 # Write the exports to the package.json file.
