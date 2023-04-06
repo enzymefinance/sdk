@@ -7,6 +7,7 @@
     "start": "pnpm run start:web",
     "codegen": "pnpm run --recursive codegen",
     "build": "pnpm run --recursive build",
+    "release": "pnpm changeset version && pnpm run --recursive release && pnpm changeset publish",
     "test": "pnpm run --recursive --parallel test",
     "test:coverage": "pnpm run --recursive --parallel test:coverage",
     "clean": "pnpm run --recursive --parallel clean",

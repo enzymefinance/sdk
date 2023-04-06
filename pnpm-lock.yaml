@@ -181,6 +181,23 @@ importers:
       vite-tsconfig-paths: 4.0.8_mqt6hr36lqfsnn3kcfure5ceka
       vitest: 0.29.8_@vitest+ui@0.29.8
 
+  playgrounds/bun:
+    specifiers:
+      '@enzymefinance/abis': workspace:*
+      '@enzymefinance/sdk': workspace:*
+      abitype: ^0.7.1
+      bun: ^0.5.9
+      bun-types: ^0.5.0
+      viem: ^0.2.5
+    dependencies:
+      '@enzymefinance/abis': link:../../packages/abis
+      '@enzymefinance/sdk': link:../../packages/sdk
+      abitype: 0.7.1
+      viem: 0.2.7
+    devDependencies:
+      bun: 0.5.9
+      bun-types: 0.5.8
+
 packages:
 
   /@ampproject/remapping/2.2.0:
@@ -1166,6 +1183,54 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
+  /@oven/bun-darwin-aarch64/0.5.9:
+    resolution: {integrity: sha512-4AfiEln+yA5FzR1mEpcd8816ziq0rPT9IQOFMmGbtMLXvYRfWul3ywaquI7nl8c8RU3Lzu5Itlwirx65DKJ19A==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@oven/bun-darwin-x64-baseline/0.5.9:
+    resolution: {integrity: sha512-hhsUtMHor9h4fQozPOzSy82P0smT8xaFJouumJv6ekxngZ5Xa13BWfUJZsdTcB+pBsdMUC8V8MRfNFyfiZZiog==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@oven/bun-darwin-x64/0.5.9:
+    resolution: {integrity: sha512-YYYg9qIFcvwQqO4GKs7SkpOLCERxHUKpmrZ7yl0DWPAfZWm7xqoTOs1ceCgAUygkKZ9/eLcj5VD8qjhth4Ynyg==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@oven/bun-linux-aarch64/0.5.9:
+    resolution: {integrity: sha512-D0kZM+VDLhxPKXnczG3d2LlrzWp+bv6LIhjIC/2UTUNdipjO5tFHoCbsQvcPpg+hJYsj0We43pdFPbIC7cL+dg==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@oven/bun-linux-x64-baseline/0.5.9:
+    resolution: {integrity: sha512-HO4HMmOMRz7SWEUR4P+iZe3RHDgkrYkNmW1clKIddgrVNf3pS+lKOZBW/GcX2cjjHMRp6vcjPvOxa9oXfqLuVA==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@oven/bun-linux-x64/0.5.9:
+    resolution: {integrity: sha512-ORE/a3XpDZPZwL/2dvlkJOt3lBd637eonsluY49IcjhYci3eDXKA3S6A2x9H7MVTUhv8G7z6fDztRVh+W7Rz6A==}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
@@ -1458,6 +1523,15 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
+  /@wagmi/chains/0.2.16:
+    resolution: {integrity: sha512-rkWaI2PxCnbD8G07ZZff5QXftnSkYL0h5f4DkHCG3fGYYr/ZDvmCL4bMae7j7A9sAif1csPPBmbCzHp3R5ogCQ==}
+    peerDependencies:
+      typescript: '>=4.9.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dev: false
+
   /@wagmi/chains/0.2.16_typescript@5.0.3:
     resolution: {integrity: sha512-rkWaI2PxCnbD8G07ZZff5QXftnSkYL0h5f4DkHCG3fGYYr/ZDvmCL4bMae7j7A9sAif1csPPBmbCzHp3R5ogCQ==}
     peerDependencies:
@@ -1467,6 +1541,16 @@ packages:
         optional: true
     dependencies:
       typescript: 5.0.3
+    dev: false
+
+  /abitype/0.7.1:
+    resolution: {integrity: sha512-VBkRHTDZf9Myaek/dO3yMmOzB/y2s3Zo6nVU7yaw1G+TvCHAjwaJzNGN9yo4K5D8bU/VZXKP1EJpRhFr862PlQ==}
+    peerDependencies:
+      typescript: '>=4.9.4'
+      zod: ^3 >=3.19.1
+    peerDependenciesMeta:
+      zod:
+        optional: true
     dev: false
 
   /abitype/0.7.1_typescript@5.0.3:
@@ -1657,6 +1741,25 @@ packages:
 
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+    dev: true
+
+  /bun-types/0.5.8:
+    resolution: {integrity: sha512-VHwD0MAHo3wraYAeqTWH2NDmXOdGfC3wWWOnZvK93ytI6yq/LkgsCjDudWNmN7MlfPvJb2zoLMnkzhjxNwLsLw==}
+    dev: true
+
+  /bun/0.5.9:
+    resolution: {integrity: sha512-gX4ped5KlWCf6HZId0O4lU2hcbfELeL3Sp6uKjbsTZR3Wu1/grOuXI/jrKd38aFiPdgMnWR0+mWcKuQuIbMUzw==}
+    cpu: [arm64, x64]
+    os: [darwin, linux]
+    hasBin: true
+    requiresBuild: true
+    optionalDependencies:
+      '@oven/bun-darwin-aarch64': 0.5.9
+      '@oven/bun-darwin-x64': 0.5.9
+      '@oven/bun-darwin-x64-baseline': 0.5.9
+      '@oven/bun-linux-aarch64': 0.5.9
+      '@oven/bun-linux-x64': 0.5.9
+      '@oven/bun-linux-x64-baseline': 0.5.9
     dev: true
 
   /c8/7.13.0:
@@ -4116,6 +4219,25 @@ packages:
       d3-shape: 3.2.0
       d3-time: 3.1.0
       d3-timer: 3.0.1
+    dev: false
+
+  /viem/0.2.7:
+    resolution: {integrity: sha512-cMUEVBSA7qCIxqZNVd/XPsV7XmG0re5uUPi1giwIJkLvoTkPLHXAWWLM/SgUAG1sz765erPfMvkqmhUWR0hodw==}
+    dependencies:
+      '@noble/curves': 0.9.0
+      '@noble/hashes': 1.3.0
+      '@scure/bip32': 1.2.0
+      '@scure/bip39': 1.2.0
+      '@wagmi/chains': 0.2.16
+      abitype: 0.7.1
+      idna-uts46-hx: 4.1.2
+      isomorphic-ws: 5.0.0_ws@8.12.0
+      ws: 8.12.0
+    transitivePeerDependencies:
+      - bufferutil
+      - typescript
+      - utf-8-validate
+      - zod
     dev: false
 
   /viem/0.2.7_typescript@5.0.3:

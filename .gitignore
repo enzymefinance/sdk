@@ -10,6 +10,9 @@
 # Ignore log output
 *.log
 
+# Ignore backup files
+*.bkp
+
 # Ignore tsbuildinfo
 *.tsbuildinfo
 
