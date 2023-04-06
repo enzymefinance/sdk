@@ -1,5 +1,4 @@
-import type { Hex } from "viem";
-import { decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
