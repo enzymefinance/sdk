@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.0.4
+
+### Patch Changes
+
+- [`d8a2376`](https://github.com/enzymefinance/enzyme-sdk/commit/d8a2376050fded0a99c0f99360f870881bd16bc4) Thanks [@fubhy](https://github.com/fubhy)! - Fix pnpm workspace deps
+
+- Updated dependencies [[`d8a2376`](https://github.com/enzymefinance/enzyme-sdk/commit/d8a2376050fded0a99c0f99360f870881bd16bc4)]:
+  - @enzymefinance/abis@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
