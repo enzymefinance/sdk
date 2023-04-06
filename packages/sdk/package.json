@@ -38,7 +38,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@enzymefinance/abis": "*",
+    "@enzymefinance/abis": "^0.0.4",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
     "viem": "^0.2.9"
