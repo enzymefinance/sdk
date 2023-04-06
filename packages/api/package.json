@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit"
   },
   "files": [
-    "dist",
+    "dist/**",
     "!dist/**/*.tsbuildinfo",
     "src/**/*.ts",
     "!src/**/*.test.ts"
