@@ -1,4 +1,10 @@
-import { prepareSetupVaultParams, toSeconds } from "@enzymefinance/sdk";
+import {
+  encodeFeeSettings,
+  encodePerformanceFeeSettings,
+  prepareSetupVaultParams,
+  toBps,
+  toSeconds,
+} from "@enzymefinance/sdk";
 import { createPublicClient, http } from "viem";
 import { mainnet, polygon } from "viem/chains";
 
@@ -26,6 +32,12 @@ const {
     vaultOwner: vitalik,
     denominationAsset: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     sharesActionTimelock: toSeconds({ days: 1 }),
+    feeSettings: encodeFeeSettings([
+      {
+        address: "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
+        settings: encodePerformanceFeeSettings({ feeRateInBps: toBps(0.1) }),
+      },
+    ]),
   }),
 });
 

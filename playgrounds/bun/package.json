@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "pnpm bun --watch index.ts"
+  },
   "dependencies": {
     "@enzymefinance/abis": "*",
     "@enzymefinance/sdk": "*",

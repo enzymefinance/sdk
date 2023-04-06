@@ -1,6 +1,5 @@
 import type { Abi, Narrow } from "abitype";
 import type { ExtractAbiFunctionNames } from "abitype";
-import { decodeFunctionData as decodeFunctionDataViem } from "viem";
 import type { GetFunctionArgs, Hex } from "viem";
 
 export type FunctionParams<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = {
@@ -29,30 +28,3 @@ export type DecodeFunctionDataParameters<TAbi extends Abi | readonly unknown[]> 
   abi: TAbi;
   data: Hex;
 };
-
-export type DecodeFunctionDataReturnType<
-  TAbi extends Abi | readonly unknown[],
-  _FunctionNames extends string = TAbi extends Abi
-    ? Abi extends TAbi
-      ? string
-      : ExtractAbiFunctionNames<TAbi>
-    : string,
-> = {
-  [TName in _FunctionNames]: {
-    args: GetFunctionArgs<TAbi, TName>["args"];
-    functionName: TName;
-  };
-}[_FunctionNames];
-
-export function decodeFunctionData<TAbi extends Abi>({
-  data,
-  abi,
-}: {
-  data: Hex;
-  abi: TAbi;
-}) {
-  return decodeFunctionDataViem({
-    abi,
-    data,
-  }) as DecodeFunctionDataReturnType<TAbi>;
-}

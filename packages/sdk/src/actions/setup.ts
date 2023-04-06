@@ -1,9 +1,9 @@
 import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
-import { decodeFunctionData, prepareFunctionParams } from "../utils/viem.js";
+import { prepareFunctionParams } from "../utils/viem.js";
 import { toSeconds } from "../utils/conversion.js";
 import { decodeFeeSettings } from "../fees/settings.js";
 import { decodePolicySettings } from "../policies/settings.js";
-import { getAbiItem } from "viem";
+import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex, Address } from "viem";
 
 export interface SetupVaultParams {
@@ -25,10 +25,7 @@ export function prepareSetupVaultParams({
   feeSettings = "0x",
   policySettings = "0x",
 }: SetupVaultParams) {
-  const abi = getAbiItem({
-    abi: IFundDeployer,
-    name: "createNewFund",
-  });
+  const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });
 
   return prepareFunctionParams({
     abi: [abi],
@@ -38,14 +35,11 @@ export function prepareSetupVaultParams({
 }
 
 export function decodeSetupVaultParams(params: Hex) {
+  const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });
   const decoded = decodeFunctionData({
-    abi: IFundDeployer,
+    abi: [abi],
     data: params,
   });
-
-  if (decoded.functionName !== "createNewFund") {
-    throw new Error('Expected `functionName` to be "createNewFund"');
-  }
 
   const [
     vaultOwner,
@@ -57,8 +51,8 @@ export function decodeSetupVaultParams(params: Hex) {
     encodedPolicySettings,
   ] = decoded.args;
 
-  const feeSettings = decodeFeeSettings(encodedFeeSettings);
-  const policySettings = decodePolicySettings(encodedPolicySettings);
+  const feeSettings = encodedFeeSettings !== "0x" ? decodeFeeSettings(encodedFeeSettings) : [];
+  const policySettings = encodedPolicySettings !== "0x" ? decodePolicySettings(encodedPolicySettings) : [];
 
   return {
     vaultOwner,
