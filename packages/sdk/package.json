@@ -38,10 +38,10 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@enzymefinance/abis": "workspace:*",
+    "@enzymefinance/abis": "*",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
-    "viem": "^0.2.7"
+    "viem": "^0.2.9"
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.2",

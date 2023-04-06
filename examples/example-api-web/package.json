@@ -13,7 +13,7 @@
     "@bufbuild/connect-query": "^0.2.0",
     "@bufbuild/connect-web": "^0.8.5",
     "@bufbuild/protobuf": "^1.2.0",
-    "@enzymefinance/api": "workspace:*",
+    "@enzymefinance/api": "*",
     "@tanstack/react-query": "^4.28.0",
     "@tremor/react": "^2.1.0",
     "autoprefixer": "^10.4.14",

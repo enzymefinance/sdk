@@ -10,7 +10,7 @@
   "dependencies": {
     "@bufbuild/connect-node": "^0.8.5",
     "@bufbuild/protobuf": "^1.2.0",
-    "@enzymefinance/api": "workspace:*"
+    "@enzymefinance/api": "*"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

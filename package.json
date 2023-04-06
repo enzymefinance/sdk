@@ -22,6 +22,11 @@
     "typescript": "^5.0.3"
   },
   "pnpm": {
+    "overrides": {
+      "@enzymefinance/api": "workspace:*",
+      "@enzymefinance/abis": "workspace:*",
+      "@enzymefinance/sdk": "workspace:*"
+    },
     "peerDependencyRules": {
       "ignoreMissing": [
         "prop-types"
