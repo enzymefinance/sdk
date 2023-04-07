@@ -1,42 +1,29 @@
 # Enzyme SDK
 
-Work in progress. Your mileage may vary.
+This is a work in progress. Your mileage may vary.
 
-## Prerequisites
+## Getting started
 
-- [Node.js](https://www.nodejs.org) (>= v18.3.0)
-- [pnpm](https://pnpm.io) (>= 7.30.0)
+We are currently in the process of writing thorough documentation & tutorials. In the meantime, take a look
+at [our examples](https://github.com/enzymefinances/enzyme-sdk/tree/main/example).
 
-## Quickstart
+## Community
 
-First, you need to obtain an api key. Please reach out to us to have your account unlocked for the beta.
+Check out the following places for support, discussions & feedback:
 
-```sh
-# Install npm dependencies.
-pnpm install
-```
+- Join our [Discord server](https://discord.enzyme.finance)
+- Join our [Telegram group](https://telegram.enzyme.finance)
+- Join the [discussions on GitHub](https://github.com/enzymefinance/enzyme-sdk/discussions)
 
-### Web
+## Authors
 
-For the web example you'll first have to configure the api token in your `.env` file:
+- [@fubhy](https://github.com/fubhy) (fubhy.eth, [Twitter](https://twitter.com/thefubhy))
 
-Copy the `examples/example-api-web/.env.tpl` file to `examples/example-api-web/.env` and set the api token.
+## Shoutouts
 
-Now, run this command:
+- [Wagmi](https://wagmi.sh) for their excellent work on the Ethereum TypeScript ecosystem
+- [Connect Protocol](https://connect.build) for bringing gRPC to the web
 
-```sh
-pnpm api:web
-```
+## License
 
-You should now be able to access http://localhost:3000.
-
-### Node
-
-For the node example, you'll have to set or export the `ENZYME_API_TOKEN` environment variable.
-
-```sh
-export ENZYME_API_TOKEN=<YOUR API TOKEN>
-
-# For instance, `pnpm api:node 0x1b83ba4527c837d462d5b78d65a097dabae5ea89`
-pnpm api:node <VAULT ADDRESS>
-```
+[MIT](/LICENSE) License
