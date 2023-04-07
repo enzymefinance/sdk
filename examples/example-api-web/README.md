@@ -8,4 +8,4 @@
 ## Getting started
 
 We are currently in the process of writing thorough documentation & tutorials. In the meantime, take a look
-at [our examples](https://github.com/enzymefinances/enzyme-sdk/tree/main/example).
+at [our examples](https://github.com/enzymefinance/enzyme-sdk/tree/main/examples).
