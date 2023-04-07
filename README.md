@@ -19,7 +19,7 @@ Check out the following places for support, discussions & feedback:
 
 - [@fubhy](https://github.com/fubhy) (fubhy.eth, [Twitter](https://twitter.com/thefubhy))
 
-## Shoutouts
+## Acknowledgements
 
 - [Wagmi](https://wagmi.sh) for their excellent work on the Ethereum TypeScript ecosystem
 - [Connect Protocol](https://connect.build) for bringing gRPC to the web
