@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.0.7
+
+### Patch Changes
+
+- [`04ddd6b`](https://github.com/enzymefinance/enzyme-sdk/commit/04ddd6be6c8d08cf697382cbee3c7aade5e1fa3f) Thanks [@fubhy](https://github.com/fubhy)! - Fixing readmes
+
 ## 0.0.6
 
 ### Patch Changes
