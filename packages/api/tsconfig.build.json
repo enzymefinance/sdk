@@ -3,6 +3,7 @@
   "include": ["src/**/*.ts"],
   "exclude": ["src/**/*.test.ts"],
   "compilerOptions": {
-    "sourceMap": true
+    "sourceMap": true,
+    "verbatimModuleSyntax": false // We need to disable this here so the commonjs build target works. But we re-enable it for the esm build.
   }
 }
