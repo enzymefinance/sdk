@@ -1,4 +1,4 @@
-import { PartialMessage, Timestamp } from "@bufbuild/protobuf";
+import { type PartialMessage, Timestamp } from "@bufbuild/protobuf";
 import { Currency, Deployment, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
 import { useQuery } from "@tanstack/react-query";
 import { Card, Title, AreaChart } from "@tremor/react";
