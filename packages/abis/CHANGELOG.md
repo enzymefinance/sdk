@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.0.6
+
+### Patch Changes
+
+- [#9](https://github.com/enzymefinance/enzyme-sdk/pull/9) [`8073558`](https://github.com/enzymefinance/enzyme-sdk/commit/8073558e485f12478e066075719f9f310d542a2f) Thanks [@fubhy](https://github.com/fubhy)! - Publish with readmes
+
 ## 0.0.5
 
 ### Patch Changes

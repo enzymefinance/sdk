@@ -1,6 +1,6 @@
 {
   "name": "@enzymefinance/sdk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -38,7 +38,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@enzymefinance/abis": "^0.0.5",
+    "@enzymefinance/abis": "^0.0.6",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
     "viem": "^0.2.9"
