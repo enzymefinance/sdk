@@ -1,6 +1,6 @@
 import { createGrpcTransport } from "@bufbuild/connect-node";
 import { createClient, Currency, Deployment, withTokenAuth } from "@enzymefinance/api";
-import { GrpcTransportOptions } from "./types.js";
+import type { GrpcTransportOptions } from "./types.js";
 
 const token = process.env.ENZYME_API_TOKEN;
 if (!token) {
