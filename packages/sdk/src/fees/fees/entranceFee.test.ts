@@ -23,13 +23,13 @@ test("should decode entrance rate burn fee settings correctly", () => {
   });
 });
 
-test("should encode entrace rate direct fee settings correctly", () => {
+test("should encode entrance rate direct fee settings correctly", () => {
   expect(encodeEntranceRateDirectFeeSettings({ feeRateInBps: toBps(0.567), feeRecipient: vitalik })).toEqual(
     "0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
   );
 });
 
-test("should decode entrace rate direct fee settings correctly", () => {
+test("should decode entrance rate direct fee settings correctly", () => {
   expect(
     decodeEntranceRateDirectFeeSettings(
       "0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
