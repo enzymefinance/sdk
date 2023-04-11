@@ -1,7 +1,7 @@
 import type { Abi } from "abitype";
 import { parseAccount } from "viem/utils";
-import { encodeFunctionData, TestClient, Chain, Transport, PublicClient } from "viem";
-import { SimulateContractParameters, WriteContractParameters } from "viem/contract";
+import { encodeFunctionData, type TestClient, type Chain, type Transport, type PublicClient } from "viem";
+import type { SimulateContractParameters, WriteContractParameters } from "viem/contract";
 
 export function createTestSender<TTransport extends Transport, TChain extends Chain | undefined = undefined>(
   testClient: TestClient<"anvil", TTransport, TChain, true>,
