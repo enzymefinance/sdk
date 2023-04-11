@@ -6,6 +6,7 @@
 
     // Type checking
     "strict": true,
+    "skipLibCheck": true,
     "useDefineForClassFields": true,
     "exactOptionalPropertyTypes": true,
     "noFallthroughCasesInSwitch": true,
@@ -27,14 +28,13 @@
     // Interop constraints
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
     "verbatimModuleSyntax": true,
 
     // Language and environment
     "lib": ["ESNext"],
     "target": "ESNext",
 
-    // Skip type checking for node modules
-    "skipLibCheck": true
+    // Sourcemaps
+    "sourceMap": true
   }
 }
