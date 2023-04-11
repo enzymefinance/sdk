@@ -1,6 +1,6 @@
 import { decodeSetupVaultParams } from "@enzymefinance/sdk";
 import { useQuery } from "@tanstack/react-query";
-import { Hash, createPublicClient, http } from "viem";
+import { type Hash, createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
 import { Spinner } from "./Spinner.js";
 

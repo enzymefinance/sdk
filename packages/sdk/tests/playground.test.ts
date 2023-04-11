@@ -10,6 +10,7 @@ import {
   encodePolicySettings,
   prepareSetupVaultParams,
   toBps,
+  toSeconds,
 } from "../src/index.js";
 import { mainnet } from "viem/chains";
 
@@ -33,7 +34,7 @@ test("should allow vault creation", async () => {
     vaultName: "Test Vault",
     vaultSymbol: "TEST",
     denominationAsset: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    sharesActionTimelock: 0n,
+    sharesActionTimelock: toSeconds({ days: 1 }),
     feeSettings: encodeFeeSettings([
       {
         address: "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
