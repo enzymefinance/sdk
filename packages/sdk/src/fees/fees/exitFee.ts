@@ -2,6 +2,17 @@ import { encodeAbiParameters } from "viem";
 import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 
+export const exitRateBurnFeeSettingsEncoding = [
+  {
+    type: "uint256",
+    name: "inKindRate",
+  },
+  {
+    type: "uint256",
+    name: "specificAssetsRate",
+  },
+] as const;
+
 export function encodeExitRateBurnFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
@@ -9,20 +20,23 @@ export function encodeExitRateBurnFeeSettings({
   inKindRateInBps?: bigint;
   specificAssetsRate?: bigint;
 }) {
-  return encodeAbiParameters(
-    [
-      {
-        type: "uint256",
-        name: "inKindRate",
-      },
-      {
-        type: "uint256",
-        name: "specificAssetsRate",
-      },
-    ],
-    [inKindRateInBps, specificAssetsRate],
-  );
+  return encodeAbiParameters(exitRateBurnFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate]);
 }
+
+export const exitRateDirectFeeSettingsEncoding = [
+  {
+    type: "uint256",
+    name: "inKindRate",
+  },
+  {
+    type: "uint256",
+    name: "specificAssetsRate",
+  },
+  {
+    type: "address",
+    name: "feeRecipient",
+  },
+] as const;
 
 export function encodeExitRateDirectFeeSettings({
   inKindRateInBps = 0n,
@@ -33,23 +47,7 @@ export function encodeExitRateDirectFeeSettings({
   specificAssetsRate?: bigint;
   feeRecipient?: Address;
 }) {
-  return encodeAbiParameters(
-    [
-      {
-        type: "uint256",
-        name: "inKindRate",
-      },
-      {
-        type: "uint256",
-        name: "specificAssetsRate",
-      },
-      {
-        type: "address",
-        name: "feeRecipient",
-      },
-    ],
-    [inKindRateInBps, specificAssetsRate, feeRecipient],
-  );
+  return encodeAbiParameters(exitRateDirectFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, feeRecipient]);
 }
 
 export function calculateExitRateFeeSharesDue({
