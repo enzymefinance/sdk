@@ -6,8 +6,8 @@ import {
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
 } from "./exitFee.js";
-import { toBps } from "src/index.js";
-import { vitalik } from "tests/utils/constants.js";
+import { toBps } from "../../index.js";
+import { vitalik } from "../../../tests/utils/constants.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
   expect(encodeExitRateBurnFeeSettings({})).toMatchInlineSnapshot(
@@ -40,7 +40,9 @@ test("exitRateBurnFeeSettingsEncoding should have correct properties", () => {
 });
 
 test("encodeExitRateDirectFeeSettings should work correctly", () => {
-  expect(encodeExitRateDirectFeeSettings({})).toMatchInlineSnapshot('"0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"');
+  expect(encodeExitRateDirectFeeSettings({})).toMatchInlineSnapshot(
+    '"0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"',
+  );
 
   expect(
     encodeExitRateDirectFeeSettings({
@@ -48,7 +50,9 @@ test("encodeExitRateDirectFeeSettings should work correctly", () => {
       specificAssetsRate: 572208134435n,
       feeRecipient: vitalik,
     }),
-  ).toMatchInlineSnapshot('"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"');
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+  );
 });
 
 test("exitRateDirectFeeSettingsEncoding should have correct properties", () => {

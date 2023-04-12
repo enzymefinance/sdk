@@ -4,35 +4,43 @@ import {
   managementFeeSettingsEncoding,
   calculateManagementFeeSharesDue,
 } from "./managementFee.js";
-import { toBps, toSeconds } from "src/index.js";
-import { vitalik } from "tests/utils/constants.js";
+import { toBps, toSeconds } from "../../index.js";
+import { vitalik } from "../../../tests/utils/constants.js";
 
 test("encodeManagementFeeSettings should work correctly", () => {
   expect(
     encodeManagementFeeSettings({
       perAnnumRateInBps: toBps(0.123),
     }),
-  ).toMatchInlineSnapshot('"0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e60000000000000000000000000000000000000000000000000000000000000000"');
+  ).toMatchInlineSnapshot(
+    '"0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e60000000000000000000000000000000000000000000000000000000000000000"',
+  );
 
   expect(
     encodeManagementFeeSettings({
       scaledPerSecondRate: toBps(0.123),
     }),
-  ).toMatchInlineSnapshot('"0x00000000000000000000000000000000000000000000000000000000000004ce0000000000000000000000000000000000000000000000000000000000000000"');
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004ce0000000000000000000000000000000000000000000000000000000000000000"',
+  );
 
   expect(
     encodeManagementFeeSettings({
       perAnnumRateInBps: toBps(0.123),
       feeRecipient: vitalik,
     }),
-  ).toMatchInlineSnapshot('"0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e6000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"');
+  ).toMatchInlineSnapshot(
+    '"0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e6000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+  );
 
   expect(
     encodeManagementFeeSettings({
       scaledPerSecondRate: toBps(0.123),
       feeRecipient: vitalik,
     }),
-  ).toMatchInlineSnapshot('"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"');
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+  );
 });
 
 test("managementFeeSettingsEncoding should have correct properties", () => {
