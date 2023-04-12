@@ -10,8 +10,8 @@ import { toBps } from "src/index.js";
 import { vitalik } from "tests/utils/constants.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
-  expect(encodeExitRateBurnFeeSettings({})).toEqual(
-    "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+  expect(encodeExitRateBurnFeeSettings({})).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"',
   );
 
   expect(
@@ -19,23 +19,28 @@ test("encodeExitRateBurnFeeSettings should work correctly", () => {
       inKindRateInBps: toBps(0.12345),
       specificAssetsRate: 123n,
     }),
-  ).toEqual(
-    "0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000000000007b",
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000000000007b"',
   );
 });
 
 test("exitRateBurnFeeSettingsEncoding should have correct properties", () => {
-  expect(exitRateBurnFeeSettingsEncoding.length).toEqual(2);
-  expect(exitRateBurnFeeSettingsEncoding[0].type).toEqual("uint256");
-  expect(exitRateBurnFeeSettingsEncoding[0].name).toEqual("inKindRate");
-  expect(exitRateBurnFeeSettingsEncoding[1].type).toEqual("uint256");
-  expect(exitRateBurnFeeSettingsEncoding[1].name).toEqual("specificAssetsRate");
+  expect(exitRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
+    [
+      {
+        "name": "inKindRate",
+        "type": "uint256",
+      },
+      {
+        "name": "specificAssetsRate",
+        "type": "uint256",
+      },
+    ]
+  `);
 });
 
 test("encodeExitRateDirectFeeSettings should work correctly", () => {
-  expect(encodeExitRateDirectFeeSettings({})).toEqual(
-    "0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-  );
+  expect(encodeExitRateDirectFeeSettings({})).toMatchInlineSnapshot('"0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"');
 
   expect(
     encodeExitRateDirectFeeSettings({
@@ -43,19 +48,26 @@ test("encodeExitRateDirectFeeSettings should work correctly", () => {
       specificAssetsRate: 572208134435n,
       feeRecipient: vitalik,
     }),
-  ).toEqual(
-    "0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
-  );
+  ).toMatchInlineSnapshot('"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"');
 });
 
 test("exitRateDirectFeeSettingsEncoding should have correct properties", () => {
-  expect(exitRateDirectFeeSettingsEncoding.length).toEqual(3);
-  expect(exitRateDirectFeeSettingsEncoding[0].type).toEqual("uint256");
-  expect(exitRateDirectFeeSettingsEncoding[0].name).toEqual("inKindRate");
-  expect(exitRateDirectFeeSettingsEncoding[1].type).toEqual("uint256");
-  expect(exitRateDirectFeeSettingsEncoding[1].name).toEqual("specificAssetsRate");
-  expect(exitRateDirectFeeSettingsEncoding[2].type).toEqual("address");
-  expect(exitRateDirectFeeSettingsEncoding[2].name).toEqual("feeRecipient");
+  expect(exitRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
+    [
+      {
+        "name": "inKindRate",
+        "type": "uint256",
+      },
+      {
+        "name": "specificAssetsRate",
+        "type": "uint256",
+      },
+      {
+        "name": "feeRecipient",
+        "type": "address",
+      },
+    ]
+  `);
 });
 
 test("calculateExitRateFeeSharesDue should work correctly", () => {
