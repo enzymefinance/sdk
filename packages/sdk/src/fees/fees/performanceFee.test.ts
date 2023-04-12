@@ -1,5 +1,9 @@
 import { test, expect } from "vitest";
-import { decodePerformanceFeeSettings, encodePerformanceFeeSettings } from "./performanceFee.js";
+import {
+  decodePerformanceFeeSettings,
+  encodePerformanceFeeSettings,
+  performanceFeeSettingsEncoding,
+} from "./performanceFee.js";
 
 import { toBps } from "../../index.js";
 import { vitalik } from "../../../tests/utils/constants.js";
@@ -24,4 +28,12 @@ test("should decode performance fee settings correctly", () => {
     feeRateInBps: toBps(0.123),
     feeRecipient: vitalik,
   });
+});
+
+test("performanceFeeSettingsEncoding should have correct properties", () => {
+  expect(performanceFeeSettingsEncoding.length).toEqual(2);
+  expect(performanceFeeSettingsEncoding[0].type).toEqual("uint256");
+  expect(performanceFeeSettingsEncoding[0].name).toEqual("feeRate");
+  expect(performanceFeeSettingsEncoding[1].type).toEqual("address");
+  expect(performanceFeeSettingsEncoding[1].name).toEqual("feeRecipient");
 });

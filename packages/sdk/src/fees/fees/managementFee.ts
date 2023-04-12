@@ -3,6 +3,17 @@ import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondRate } from "../../utils/rates.js";
 
+export const managementFeeSettingsEncoding = [
+  {
+    type: "uint256",
+    name: "feeRate",
+  },
+  {
+    type: "address",
+    name: "feeRecipient",
+  },
+] as const;
+
 export type ManagementFeeSettings = {
   feeRecipient?: Address;
 } & (
@@ -21,29 +32,15 @@ export function encodeManagementFeeSettings({
   perAnnumRateInBps,
   feeRecipient = ZERO_ADDRESS,
 }: ManagementFeeSettings) {
-  let feeRate: bigint;
-  if (scaledPerSecondRate !== undefined) {
-    feeRate = scaledPerSecondRate;
-  } else {
-    feeRate = convertRateToScaledPerSecondRate({
-      perAnnumRateInBps,
-      adjustInflation: true,
-    });
-  }
+  const fee: bigint =
+    scaledPerSecondRate !== undefined
+      ? scaledPerSecondRate
+      : convertRateToScaledPerSecondRate({
+          perAnnumRateInBps,
+          adjustInflation: true,
+        });
 
-  return encodeAbiParameters(
-    [
-      {
-        type: "uint256",
-        name: "feeRate",
-      },
-      {
-        type: "address",
-        name: "feeRecipient",
-      },
-    ],
-    [feeRate, feeRecipient],
-  );
+  return encodeAbiParameters(managementFeeSettingsEncoding, [fee, feeRecipient]);
 }
 
 export function calculateManagementFeeSharesDue({
