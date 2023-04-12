@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-added tests to constants and fees directories
+Added tests to constants and fees directories
