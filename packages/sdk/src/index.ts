@@ -81,31 +81,47 @@ export {
 } from "./fees/settings.js";
 
 export {
+  type CalculateEntranceRateFeeSharesDueArgs,
   calculateEntranceRateFeeSharesDue,
-  decodeEntranceRateBurnFeeSettings,
-  decodeEntranceRateDirectFeeSettings,
+  type EntranceRateBurnFeeSettings,
   encodeEntranceRateBurnFeeSettings,
+  decodeEntranceRateBurnFeeSettings,
+  entranceRateBurnFeeSettingsEncoding,
+  type EntranceRateDirectFeeSettings,
+  type EncodeEntranceRateDirectFeeSettingsArgs,
   encodeEntranceRateDirectFeeSettings,
-  entraceRateBurnFeeSettingsEncoding,
-  entraceRateDirectFeeSettingsEncoding,
+  decodeEntranceRateDirectFeeSettings,
+  entranceRateDirectFeeSettingsEncoding,
 } from "./fees/fees/entranceFee.js";
 
 export {
+  type CalculateExitRateFeeSharesDueArgs,
   calculateExitRateFeeSharesDue,
+  type ExitRateBurnFeeSettings,
+  type EncodeExitRateBurnFeeSettingsArgs,
   encodeExitRateBurnFeeSettings,
-  encodeExitRateDirectFeeSettings,
+  decodeExitRateBurnFeeSettings,
   exitRateBurnFeeSettingsEncoding,
+  type ExitRateDirectFeeSettings,
+  type EncodeExitRateDirectFeeSettingsArgs,
+  encodeExitRateDirectFeeSettings,
+  decodeExitRateDirectFeeSettings,
   exitRateDirectFeeSettingsEncoding,
 } from "./fees/fees/exitFee.js";
 
 export {
-  type ManagementFeeSettings,
+  type CalculateManagementFeeSharesDueArgs,
   calculateManagementFeeSharesDue,
+  type ManagementFeeSettings,
+  type EncodeManagementFeeSettingsArgs,
   encodeManagementFeeSettings,
+  decodeManagementFeeSettings,
   managementFeeSettingsEncoding,
 } from "./fees/fees/managementFee.js";
 
 export {
+  type PerformanceFeeSettings,
+  type EncodePerformanceFeeSettingsArgs,
   encodePerformanceFeeSettings,
   decodePerformanceFeeSettings,
   performanceFeeSettingsEncoding,

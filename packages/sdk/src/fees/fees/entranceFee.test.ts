@@ -5,8 +5,8 @@ import {
   encodeEntranceRateBurnFeeSettings,
   encodeEntranceRateDirectFeeSettings,
   calculateEntranceRateFeeSharesDue,
-  entraceRateBurnFeeSettingsEncoding,
-  entraceRateDirectFeeSettingsEncoding,
+  entranceRateBurnFeeSettingsEncoding,
+  entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
 
 import { vitalik } from "../../../tests/utils/constants.js";
@@ -63,8 +63,8 @@ test("should calculate entrance fee shares due correctly", () => {
   ).toEqual(123400000000000000n);
 });
 
-test("entraceRateBurnFeeSettingsEncoding should have correct properties", () => {
-  expect(entraceRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
+test("entranceRateBurnFeeSettingsEncoding should have correct properties", () => {
+  expect(entranceRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
     [
       {
         "name": "feeRate",
@@ -74,8 +74,8 @@ test("entraceRateBurnFeeSettingsEncoding should have correct properties", () => 
   `);
 });
 
-test("entraceRateDirectFeeSettingsEncoding should have correct properties", () => {
-  expect(entraceRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
+test("entranceRateDirectFeeSettingsEncoding should have correct properties", () => {
+  expect(entranceRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
     [
       {
         "name": "feeRate",
