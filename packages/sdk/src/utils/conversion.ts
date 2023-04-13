@@ -45,3 +45,8 @@ export function toSeconds({
 
   return result;
 }
+
+export function applySlippage(value: bigint, slippageInBps: bigint) {
+  const output = value - (value * slippageInBps) / 10000n;
+  return output >= 0n ? output : 0n;
+}

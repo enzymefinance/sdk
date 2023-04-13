@@ -41,7 +41,7 @@
     "@enzymefinance/abis": "^0.0.8",
     "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
-    "viem": "^0.2.9"
+    "viem": "^0.3.1"
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.2",

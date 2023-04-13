@@ -25,11 +25,8 @@ export function prepareSetupVaultParams({
   feeSettings = "0x",
   policySettings = "0x",
 }: PrepareSetupVaultParamsArgs) {
-  const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });
-
   return prepareFunctionParams({
-    abi: [abi],
-    functionName: "createNewFund",
+    abi: getAbiItem({ abi: IFundDeployer, name: "createNewFund" }),
     args: [vaultOwner, vaultName, vaultSymbol, denominationAsset, sharesActionTimelock, feeSettings, policySettings],
   });
 }

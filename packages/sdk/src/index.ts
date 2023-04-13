@@ -39,6 +39,7 @@ export {
   toBps,
   toSeconds,
   toWei,
+  applySlippage,
 } from "./utils/conversion.js";
 
 export {
@@ -132,4 +133,12 @@ export {
   type PrepareSetupVaultParamsArgs,
   decodeSetupVaultParams,
   prepareSetupVaultParams,
-} from "./actions/setup.js";
+} from "./actions/setupVault.js";
+
+export {
+  type BuySharesParams,
+  decodeBuySharesParams,
+  prepareBuySharesParams,
+  type SimulateBuySharesArgs,
+  simulateBuyShares,
+} from "./actions/buyShares.js";
