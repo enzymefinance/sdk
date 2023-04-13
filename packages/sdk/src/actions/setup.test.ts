@@ -1,18 +1,15 @@
 import { IVault } from "@enzymefinance/abis";
 import { createTestClient, createPublicClient, http } from "viem";
 import { expect, test } from "vitest";
-import { createTestSender } from "./utils/transactions.js";
-import {
-  encodeFeeSettings,
-  encodeManagementFeeSettings,
-  encodeMinMaxInvestmentPolicySettings,
-  encodePerformanceFeeSettings,
-  encodePolicySettings,
-  prepareSetupVaultParams,
-  toBps,
-  toSeconds,
-} from "../src/index.js";
 import { mainnet } from "viem/chains";
+import { createTestSender } from "../../tests/utils/transactions.js";
+import { prepareSetupVaultParams } from "./setup.js";
+import { toBps, toSeconds } from "../utils/conversion.js";
+import { encodeFeeSettings } from "../fees/settings.js";
+import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
+import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
+import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
+import { encodePolicySettings } from "../policies/settings.js";
 
 const testAccount = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 const testClient = createTestClient({

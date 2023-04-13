@@ -1,3 +1,5 @@
+// TODO: Move these to their respective directories once we have a better idea of how to organize them.
+
 export type RateAsset = typeof RateAsset[keyof typeof RateAsset];
 export const RateAsset = {
   ETH: 0,

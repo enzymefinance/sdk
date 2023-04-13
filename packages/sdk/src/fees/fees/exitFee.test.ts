@@ -6,8 +6,8 @@ import {
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
 } from "./exitFee.js";
-import { toBps } from "../../index.js";
 import { vitalik } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
   expect(encodeExitRateBurnFeeSettings({})).toMatchInlineSnapshot(

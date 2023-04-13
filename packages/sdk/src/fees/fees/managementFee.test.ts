@@ -4,8 +4,8 @@ import {
   managementFeeSettingsEncoding,
   calculateManagementFeeSharesDue,
 } from "./managementFee.js";
-import { toBps, toSeconds } from "../../index.js";
 import { vitalik } from "../../../tests/utils/constants.js";
+import { toBps, toSeconds } from "../../utils/conversion.js";
 
 test("encodeManagementFeeSettings should work correctly", () => {
   expect(

@@ -9,8 +9,8 @@ import {
   entraceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
 
-import { toBps } from "../../index.js";
 import { vitalik } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("should encode entrance rate burn fee settings correctly", () => {
   expect(encodeEntranceRateBurnFeeSettings({ feeRateInBps: toBps(0.123) })).toMatchInlineSnapshot(

@@ -1,7 +1,8 @@
 import { test, expect } from "vitest";
 import { encodeFeeSettings, decodeFeeSettings } from "./settings.js";
-import { encodeManagementFeeSettings, encodePerformanceFeeSettings } from "./index.js";
-import { toBps } from "../index.js";
+import { toBps } from "../utils/conversion.js";
+import { encodeManagementFeeSettings } from "./fees/managementFee.js";
+import { encodePerformanceFeeSettings } from "./fees/performanceFee.js";
 
 test("encodeFeeSettings should work correctly", () => {
   expect(
