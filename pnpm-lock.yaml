@@ -99,7 +99,7 @@ importers:
       tailwindcss: ^3.3.1
       tsx: ^3.12.6
       typescript: ^5.0.3
-      viem: ^0.2.9
+      viem: ^0.3.1
       vite: ^4.2.1
       vite-tsconfig-paths: ^4.0.8
     dependencies:
@@ -113,7 +113,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tailwindcss: 3.3.1_postcss@8.4.21
-      viem: 0.2.9_typescript@5.0.3
+      viem: 0.3.1_typescript@5.0.3
     devDependencies:
       '@types/react': 18.0.33
       '@types/react-dom': 18.0.11
@@ -175,7 +175,7 @@ importers:
       abitype: ^0.7.1
       decimal.js: ^10.4.3
       typescript: ^5.0.3
-      viem: ^0.2.9
+      viem: ^0.3.1
       vite: ^4.2.1
       vite-tsconfig-paths: ^4.0.8
       vitest: ^0.29.8
@@ -183,7 +183,7 @@ importers:
       '@enzymefinance/abis': link:../abis
       abitype: 0.7.1_typescript@5.0.3
       decimal.js: 10.4.3
-      viem: 0.2.9_typescript@5.0.3
+      viem: 0.3.1_typescript@5.0.3
     devDependencies:
       '@vitest/coverage-c8': 0.29.8_vitest@0.29.8
       '@vitest/ui': 0.29.8
@@ -200,12 +200,12 @@ importers:
       bun: ^0.5.9
       bun-types: ^0.5.0
       typescript: ^5.0.3
-      viem: ^0.2.9
+      viem: ^0.3.1
     dependencies:
       '@enzymefinance/abis': link:../../packages/abis
       '@enzymefinance/sdk': link:../../packages/sdk
       abitype: 0.7.1_typescript@5.0.3
-      viem: 0.2.9_typescript@5.0.3
+      viem: 0.3.1_typescript@5.0.3
     devDependencies:
       bun: 0.5.9
       bun-types: 0.5.8
@@ -4231,8 +4231,8 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
-  /viem/0.2.9_typescript@5.0.3:
-    resolution: {integrity: sha512-UK6mAxDjN9ChmClBi6GNgj4E123ZbkQuboHYoWL+/QKuuM6eeJ0HGo0L3vze4LvzU8k5RXMV83Es2lSJ2dWRRg==}
+  /viem/0.3.1_typescript@5.0.3:
+    resolution: {integrity: sha512-snWgwW3ZZzZts0fI4cqweOTzNV6vKTxTpktGxkOz4np31w6b7YUjczHU6SZ5JmWhNPWAw3PTckzj7e1V6DuPJA==}
     dependencies:
       '@adraffy/ens-normalize': 1.9.0
       '@noble/curves': 0.9.0

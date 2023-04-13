@@ -5,17 +5,13 @@ import type { SimulateContractParameters, WriteContractParameters } from "viem/c
 
 export function createTestSender<TTransport extends Transport, TChain extends Chain | undefined = undefined>(
   testClient: TestClient<"anvil", TTransport, TChain, true>,
+  publicClient: PublicClient<TTransport, TChain, true>,
 ) {
   return async function sendTestTransaction<
     TAbi extends Abi | readonly unknown[],
     TFunctionName extends string = string,
-    TTransport extends Transport = Transport,
-    TChain extends Chain | undefined = undefined,
     TChainOverride extends Chain | undefined = undefined,
-  >(
-    publicClient: PublicClient<TTransport, TChain, true>,
-    args: SimulateContractParameters<TAbi, TFunctionName, TChain, TChainOverride>,
-  ) {
+  >(args: SimulateContractParameters<TAbi, TFunctionName, TChain, TChainOverride>) {
     const { request, result } = await publicClient.simulateContract(args);
     const account = parseAccount(request.account);
 
