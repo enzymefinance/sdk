@@ -5,8 +5,8 @@ import {
   performanceFeeSettingsEncoding,
 } from "./performanceFee.js";
 
-import { toBps } from "../../index.js";
 import { vitalik } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("should encode performance fee settings correctly", () => {
   expect(

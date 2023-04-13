@@ -1,8 +1,8 @@
 import type { Abi, Narrow } from "abitype";
 import type { ExtractAbiFunctionNames } from "abitype";
-import type { GetFunctionArgs, Hex } from "viem";
+import type { GetFunctionArgs } from "viem";
 
-export type FunctionParams<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = {
+export type PrepareFunctionParamsArgs<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = {
   abi: Narrow<TAbi>;
   functionName: TFunctionName;
 } & GetFunctionArgs<TAbi, TFunctionName>;
@@ -11,7 +11,7 @@ export function prepareFunctionParams<TAbi extends Abi, TFunctionName extends st
   abi,
   args,
   functionName,
-}: FunctionParams<TAbi, TFunctionName>) {
+}: PrepareFunctionParamsArgs<TAbi, TFunctionName>) {
   const output: {
     abi: Narrow<TAbi>;
     functionName: TFunctionName;
@@ -23,8 +23,3 @@ export function prepareFunctionParams<TAbi extends Abi, TFunctionName extends st
 
   return output;
 }
-
-export type DecodeFunctionDataParameters<TAbi extends Abi | readonly unknown[]> = {
-  abi: TAbi;
-  data: Hex;
-};

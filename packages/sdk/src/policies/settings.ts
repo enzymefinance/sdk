@@ -1,7 +1,7 @@
 import { decodeAbiParameters, encodeAbiParameters } from "viem";
 import type { Address, Hex } from "viem";
 
-const policySettingsAbi = [
+export const policySettingsAbi = [
   {
     type: "address[]",
     name: "policyAddresses",
@@ -12,12 +12,12 @@ const policySettingsAbi = [
   },
 ] as const;
 
-export function encodePolicySettings(
-  policies: {
-    address: Address;
-    settings: Hex;
-  }[],
-) {
+export interface PolicySettingsTuple {
+  address: Address;
+  settings: Hex;
+}
+
+export function encodePolicySettings(policies: PolicySettingsTuple[]): Hex {
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
 
@@ -36,7 +36,7 @@ export function encodePolicySettings(
   );
 }
 
-export function decodePolicySettings(encoded: Hex) {
+export function decodePolicySettings(encoded: Hex): PolicySettingsTuple[] {
   const [addresses, settings] = decodeAbiParameters(policySettingsAbi, encoded);
   if (addresses.length !== settings.length) {
     throw new Error("Expected policy addresses and settings to have the same length");
