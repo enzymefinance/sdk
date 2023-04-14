@@ -1,7 +1,7 @@
 import { decodeAbiParameters, encodeAbiParameters } from "viem";
 import type { Address, Hex } from "viem";
 
-const policySettingsAbi = [
+export const policySettingsAbi = [
   {
     type: "address[]",
     name: "policyAddresses",
@@ -21,19 +21,7 @@ export function encodePolicySettings(
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
 
-  return encodeAbiParameters(
-    [
-      {
-        type: "address[]",
-        name: "policyAddresses",
-      },
-      {
-        type: "bytes[]",
-        name: "policySettings",
-      },
-    ],
-    [addresses, settings],
-  );
+  return encodeAbiParameters(policySettingsAbi, [addresses, settings]);
 }
 
 export function decodePolicySettings(encoded: Hex) {

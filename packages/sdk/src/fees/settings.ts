@@ -1,7 +1,7 @@
 import { decodeAbiParameters, encodeAbiParameters } from "viem";
 import type { Address, Hex } from "viem";
 
-const feeSettingsAbi = [
+export const feeSettingsAbi = [
   {
     type: "address[]",
     name: "feeAddresses",

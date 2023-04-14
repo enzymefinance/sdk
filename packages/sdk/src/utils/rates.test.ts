@@ -1,6 +1,10 @@
 import { test, expect } from "vitest";
-import { toSeconds } from "./conversion.js";
-import { calculateAmountDueForScaledPerSecondRate } from "./rates.js";
+import { toBps, toSeconds } from "./conversion.js";
+import {
+  calculateAmountDueForScaledPerSecondRate,
+  convertScaledPerSecondRateToRate,
+  convertRateToScaledPerSecondRate,
+} from "./rates.js";
 
 // TODO: Provide better test fixtures.
 test.each([
@@ -34,3 +38,35 @@ test.each([
     expect(result).toBe(expected);
   },
 );
+
+test("convertScaledPerSecondRateToRate should work correctly", () => {
+  expect(
+    convertScaledPerSecondRateToRate({
+      scaledPerSecondRate: 1000000000158946658547141210n,
+      adjustInflation: true,
+    }),
+  ).toMatchInlineSnapshot("5003416075721110n");
+
+  expect(
+    convertScaledPerSecondRateToRate({
+      scaledPerSecondRate: 1000000000158946658547141210n,
+      adjustInflation: false,
+    }),
+  ).toMatchInlineSnapshot("5028576134389900n");
+});
+
+test("convertRateToScaledPerSecondRate should work correctly", () => {
+  expect(
+    convertRateToScaledPerSecondRate({
+      perAnnumRateInBps: toBps(0.123),
+      adjustInflation: true,
+    }),
+  ).toMatchInlineSnapshot("1000000004159007240185733350n");
+
+  expect(
+    convertRateToScaledPerSecondRate({
+      perAnnumRateInBps: toBps(0.123),
+      adjustInflation: false,
+    }),
+  ).toMatchInlineSnapshot('1000000003675934670872217630n');
+});
