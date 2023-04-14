@@ -7,15 +7,19 @@ export const cumulativeSlippageTolerancePolicyEncoding = [
   },
 ] as const;
 
+export interface CumulativeSlippageTolerancePolicySettings {
+  tolerance: bigint;
+}
+
 export function encodeCumulativeSlippageTolerancePolicySettings({
   tolerance,
-}: {
-  tolerance: bigint;
-}) {
+}: CumulativeSlippageTolerancePolicySettings): Hex {
   return encodeAbiParameters(cumulativeSlippageTolerancePolicyEncoding, [tolerance]);
 }
 
-export function decodeCumulativeSlippageTolerancePolicySettings(settings: Hex) {
+export function decodeCumulativeSlippageTolerancePolicySettings(
+  settings: Hex,
+): CumulativeSlippageTolerancePolicySettings {
   const [tolerance] = decodeAbiParameters(cumulativeSlippageTolerancePolicyEncoding, settings);
 
   return {

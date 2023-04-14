@@ -69,6 +69,6 @@ export type CalculateEntranceRateFeeSharesDueArgs = {
 export function calculateEntranceRateFeeSharesDue({
   feeRateInBps,
   sharesBought,
-}: CalculateEntranceRateFeeSharesDueArgs) {
+}: CalculateEntranceRateFeeSharesDueArgs): bigint {
   return (sharesBought * feeRateInBps) / 10000n;
 }

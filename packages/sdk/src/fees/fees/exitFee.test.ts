@@ -19,6 +19,22 @@ test("encodeExitRateBurnFeeSettings should work correctly", () => {
   expect(
     encodeExitRateBurnFeeSettings({
       inKindRateInBps: toBps(0.12345),
+    }),
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004d20000000000000000000000000000000000000000000000000000000000000000"',
+  );
+
+  expect(
+    encodeExitRateBurnFeeSettings({
+      specificAssetsRate: 123n,
+    }),
+  ).toMatchInlineSnapshot(
+    '"0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000007b"',
+  );
+
+  expect(
+    encodeExitRateBurnFeeSettings({
+      inKindRateInBps: toBps(0.12345),
       specificAssetsRate: 123n,
     }),
   ).toMatchInlineSnapshot(
@@ -118,5 +134,5 @@ test("calculateExitRateFeeSharesDue should work correctly", () => {
       feeRate: toBps(4),
       sharesRedeemed: 2n,
     }),
-  ).toEqual(8n);
+  ).toMatchInlineSnapshot('8n');
 });

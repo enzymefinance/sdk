@@ -70,6 +70,39 @@ test("decodeManagementFeeSettings should decode correctly", () => {
       "scaledPerSecondRate": 1230n,
     }
   `);
+
+  expect(
+    decodeManagementFeeSettings(
+      "0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e6000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRecipient": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "scaledPerSecondRate": 1000000004159007240185733350n,
+    }
+  `);
+
+  expect(
+    decodeManagementFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000004ce0000000000000000000000000000000000000000000000000000000000000000",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRecipient": "0x0000000000000000000000000000000000000000",
+      "scaledPerSecondRate": 1230n,
+    }
+  `);
+
+  expect(
+    decodeManagementFeeSettings(
+      "0x0000000000000000000000000000000000000000033b2e3cd9884349998c60e60000000000000000000000000000000000000000000000000000000000000000",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRecipient": "0x0000000000000000000000000000000000000000",
+      "scaledPerSecondRate": 1000000004159007240185733350n,
+    }
+  `);
 });
 
 test("calculateManagementFeeSharesDue should work correctly", () => {
@@ -79,5 +112,5 @@ test("calculateManagementFeeSharesDue should work correctly", () => {
       sharesSupply: 1000000000000000000n,
       secondsSinceLastSettled: toSeconds({ years: 1 }),
     }),
-  ).toEqual(5028576134389896n);
+  ).toMatchInlineSnapshot('5028576134389896n');
 });

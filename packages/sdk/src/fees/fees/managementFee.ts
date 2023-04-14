@@ -36,7 +36,7 @@ export function encodeManagementFeeSettings({
   scaledPerSecondRate,
   perAnnumRateInBps,
   feeRecipient = ZERO_ADDRESS,
-}: EncodeManagementFeeSettingsArgs) {
+}: EncodeManagementFeeSettingsArgs): Hex {
   const fee: bigint =
     scaledPerSecondRate !== undefined
       ? scaledPerSecondRate
@@ -64,7 +64,7 @@ export function calculateManagementFeeSharesDue({
   scaledPerSecondRate,
   sharesSupply,
   secondsSinceLastSettled,
-}: CalculateManagementFeeSharesDueArgs) {
+}: CalculateManagementFeeSharesDueArgs): bigint {
   return calculateAmountDueForScaledPerSecondRate({
     scaledPerSecondRate,
     totalAmount: sharesSupply,

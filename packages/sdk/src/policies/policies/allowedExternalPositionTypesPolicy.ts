@@ -7,15 +7,19 @@ export const allowedExternalPositionTypesPolicySettingsEncoding = [
   },
 ] as const;
 
+export interface AllowedExternalPositionTypesPolicySettings {
+  externalPositionTypeIds: readonly bigint[];
+}
+
 export function encodeAllowedExternalPositionTypesPolicySettings({
   externalPositionTypeIds,
-}: {
-  externalPositionTypeIds: bigint[];
-}) {
+}: AllowedExternalPositionTypesPolicySettings): Hex {
   return encodeAbiParameters(allowedExternalPositionTypesPolicySettingsEncoding, [externalPositionTypeIds]);
 }
 
-export function decodeAllowedExternalPositionTypesPolicySettings(encoded: Hex) {
+export function decodeAllowedExternalPositionTypesPolicySettings(
+  encoded: Hex,
+): AllowedExternalPositionTypesPolicySettings {
   const [externalPositionTypeIds] = decodeAbiParameters(allowedExternalPositionTypesPolicySettingsEncoding, encoded);
 
   return {

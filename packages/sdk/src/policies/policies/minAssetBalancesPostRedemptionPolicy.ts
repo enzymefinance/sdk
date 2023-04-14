@@ -12,19 +12,23 @@ export const minAssetBalancesPostRedemptionPolicySettingsEncoding = [
   },
 ] as const;
 
+export interface MinAssetBalancesPostRedemptionPolicySettings {
+  asset: Address;
+  minBalance: bigint;
+}
+
 export function encodeMinAssetBalancesPostRedemptionPolicySettings(
-  settings: {
-    assets: Address;
-    minBalances: bigint;
-  }[],
-) {
-  const assets = settings.map(({ assets }) => assets);
-  const minBalances = settings.map(({ minBalances }) => minBalances);
+  policies: MinAssetBalancesPostRedemptionPolicySettings[],
+): Hex {
+  const assets = policies.map(({ asset }) => asset);
+  const minBalances = policies.map(({ minBalance }) => minBalance);
 
   return encodeAbiParameters(minAssetBalancesPostRedemptionPolicySettingsEncoding, [assets, minBalances]);
 }
 
-export function decodeMinAssetBalancesPostRedemptionPolicySettings(encoded: Hex) {
+export function decodeMinAssetBalancesPostRedemptionPolicySettings(
+  encoded: Hex,
+): MinAssetBalancesPostRedemptionPolicySettings[] {
   const [assets, minBalances] = decodeAbiParameters(minAssetBalancesPostRedemptionPolicySettingsEncoding, encoded);
   if (assets.length !== minBalances.length) {
     throw new Error("Expected minBalances and assets to have the same length");

@@ -11,20 +11,22 @@ export const minMaxInvestmentPolicySettingsEncoding = [
   },
 ] as const;
 
+export interface MinMaxInvestmentPolicySettings {
+  minInvestmentAmount: bigint;
+  maxInvestmentAmount: bigint;
+}
+
 export function encodeMinMaxInvestmentPolicySettings({
   minInvestmentAmount,
   maxInvestmentAmount,
-}: {
-  minInvestmentAmount: bigint;
-  maxInvestmentAmount: bigint;
-}) {
+}: MinMaxInvestmentPolicySettings): Hex {
   if (minInvestmentAmount > maxInvestmentAmount) {
     throw new Error("maxInvestmentAmount should be greater than or equal to minInvestmentAmount");
   }
   return encodeAbiParameters(minMaxInvestmentPolicySettingsEncoding, [minInvestmentAmount, maxInvestmentAmount]);
 }
 
-export function decodeMinMaxInvestmentPolicySettings(settings: Hex) {
+export function decodeMinMaxInvestmentPolicySettings(settings: Hex): MinMaxInvestmentPolicySettings {
   const [minInvestmentAmount, maxInvestmentAmount] = decodeAbiParameters(
     minMaxInvestmentPolicySettingsEncoding,
     settings,

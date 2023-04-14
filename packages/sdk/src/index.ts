@@ -64,24 +64,28 @@ export {
 } from "./policies/settings.js";
 
 export {
+  type AllowedExternalPositionTypesPolicySettings,
   allowedExternalPositionTypesPolicySettingsEncoding,
   encodeAllowedExternalPositionTypesPolicySettings,
   decodeAllowedExternalPositionTypesPolicySettings,
 } from "./policies/policies/allowedExternalPositionTypesPolicy.js";
 
 export {
+  type CumulativeSlippageTolerancePolicySettings,
   cumulativeSlippageTolerancePolicyEncoding,
   encodeCumulativeSlippageTolerancePolicySettings,
   decodeCumulativeSlippageTolerancePolicySettings,
 } from "./policies/policies/cumulativeSlippageTolerancePolicy.js";
 
 export {
+  type MinAssetBalancesPostRedemptionPolicySettings,
   minAssetBalancesPostRedemptionPolicySettingsEncoding,
   encodeMinAssetBalancesPostRedemptionPolicySettings,
   decodeMinAssetBalancesPostRedemptionPolicySettings,
 } from "./policies/policies/minAssetBalancesPostRedemptionPolicy.js";
 
 export {
+  type MinMaxInvestmentPolicySettings,
   minMaxInvestmentPolicySettingsEncoding,
   encodeMinMaxInvestmentPolicySettings,
   decodeMinMaxInvestmentPolicySettings,
