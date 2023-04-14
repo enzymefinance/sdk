@@ -1,8 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`should decode entrance rate direct fee settings correctly 1`] = `
-{
-  "feeRateInBps": 5670n,
-  "feeRecipient": "0x0000000000000000000000000000000000000000",
-}
-`;
