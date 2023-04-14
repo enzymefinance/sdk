@@ -63,13 +63,33 @@ export {
   decodePolicySettings,
 } from "./policies/settings.js";
 
-export { encodeAllowedExternalPositionTypesPolicySettings } from "./policies/policies/allowedExternalPositionTypesPolicy.js";
+export {
+  type AllowedExternalPositionTypesPolicySettings,
+  allowedExternalPositionTypesPolicySettingsEncoding,
+  encodeAllowedExternalPositionTypesPolicySettings,
+  decodeAllowedExternalPositionTypesPolicySettings,
+} from "./policies/policies/allowedExternalPositionTypesPolicy.js";
 
-export { encodeCumulativeSlippageTolerancePolicySettings } from "./policies/policies/cumulativeSlippageTolerancePolicy.js";
+export {
+  type CumulativeSlippageTolerancePolicySettings,
+  cumulativeSlippageTolerancePolicyEncoding,
+  encodeCumulativeSlippageTolerancePolicySettings,
+  decodeCumulativeSlippageTolerancePolicySettings,
+} from "./policies/policies/cumulativeSlippageTolerancePolicy.js";
 
-export { encodeMinAssetBalancesPostRedemptionPolicySettings } from "./policies/policies/minAssetBalancesPostRedemptionPolicy.js";
+export {
+  type MinAssetBalancesPostRedemptionPolicySettings,
+  minAssetBalancesPostRedemptionPolicySettingsEncoding,
+  encodeMinAssetBalancesPostRedemptionPolicySettings,
+  decodeMinAssetBalancesPostRedemptionPolicySettings,
+} from "./policies/policies/minAssetBalancesPostRedemptionPolicy.js";
 
-export { encodeMinMaxInvestmentPolicySettings } from "./policies/policies/minMaxInvestmentPolicy.js";
+export {
+  type MinMaxInvestmentPolicySettings,
+  minMaxInvestmentPolicySettingsEncoding,
+  encodeMinMaxInvestmentPolicySettings,
+  decodeMinMaxInvestmentPolicySettings,
+} from "./policies/policies/minMaxInvestmentPolicy.js";
 
 // Fees
 export { FeeHook, FeeManagerAction, FeeSettlementType } from "./fees/enums.js";

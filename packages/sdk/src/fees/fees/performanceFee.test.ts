@@ -16,6 +16,14 @@ test("should encode performance fee settings correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
   );
+
+  expect(
+    encodePerformanceFeeSettings({
+      feeRateInBps: toBps(0.123),
+    }),
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004ce0000000000000000000000000000000000000000000000000000000000000000"',
+  );
 });
 
 test("should decode performance fee settings correctly", () => {
@@ -27,6 +35,17 @@ test("should decode performance fee settings correctly", () => {
     {
       "feeRateInBps": 1230n,
       "feeRecipient": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+    }
+  `);
+
+  expect(
+    decodePerformanceFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000004ce0000000000000000000000000000000000000000000000000000000000000000",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRateInBps": 1230n,
+      "feeRecipient": "0x0000000000000000000000000000000000000000",
     }
   `);
 });

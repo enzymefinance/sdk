@@ -46,6 +46,17 @@ test("should encode entrance rate direct fee settings correctly", () => {
 test("should decode entrance rate direct fee settings correctly", () => {
   expect(
     decodeEntranceRateDirectFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000016260000000000000000000000000000000000000000000000000000000000000000",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRateInBps": 5670n,
+      "feeRecipient": "0x0000000000000000000000000000000000000000",
+    }
+  `);
+
+  expect(
+    decodeEntranceRateDirectFeeSettings(
       "0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
     ),
   ).toMatchInlineSnapshot(`
@@ -59,7 +70,7 @@ test("should decode entrance rate direct fee settings correctly", () => {
 test("should calculate entrance fee shares due correctly", () => {
   expect(
     calculateEntranceRateFeeSharesDue({ feeRateInBps: toBps(0.12345), sharesBought: 1000000000000000000n }),
-  ).toEqual(123400000000000000n);
+  ).toMatchInlineSnapshot("123400000000000000n");
 });
 
 test("entranceRateBurnFeeSettingsEncoding should have correct properties", () => {

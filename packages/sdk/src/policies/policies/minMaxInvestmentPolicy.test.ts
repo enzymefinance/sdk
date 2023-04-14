@@ -2,6 +2,7 @@ import { test, expect } from "vitest";
 import {
   minMaxInvestmentPolicySettingsEncoding,
   encodeMinMaxInvestmentPolicySettings,
+  decodeMinMaxInvestmentPolicySettings,
 } from "./minMaxInvestmentPolicy.js";
 
 test("minMaxInvestmentPolicySettingsEncoding should have the correct properties", () => {
@@ -37,4 +38,17 @@ test("encodeMinMaxInvestmentPolicySettings should encode correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000001388"',
   );
+});
+
+test("decodeMinMaxInvestmentPolicySettings should decode correctly", () => {
+  expect(
+    decodeMinMaxInvestmentPolicySettings(
+      "0x00000000000000000000000000000000000000000000000000000000000000640000000000000000000000000000000000000000000000000000000000001388",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "maxInvestmentAmount": 5000n,
+      "minInvestmentAmount": 100n,
+    }
+  `);
 });
