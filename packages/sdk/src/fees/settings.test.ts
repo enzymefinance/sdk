@@ -1,7 +1,8 @@
 import { test, expect } from "vitest";
 import { encodeFeeSettings, decodeFeeSettings, feeSettingsAbi } from "./settings.js";
-import { encodeManagementFeeSettings, encodePerformanceFeeSettings } from "./index.js";
-import { toBps } from "../index.js";
+import { toBps } from "../utils/conversion.js";
+import { encodeManagementFeeSettings } from "./fees/managementFee.js";
+import { encodePerformanceFeeSettings } from "./fees/performanceFee.js";
 import { encodeAbiParameters } from "viem";
 
 test("feeSettingsAbi should have the correct properties", () => {

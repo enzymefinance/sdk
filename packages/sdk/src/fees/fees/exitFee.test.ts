@@ -6,8 +6,8 @@ import {
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
 } from "./exitFee.js";
-import { toBps } from "../../index.js";
-import { vitalik } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
   expect(encodeExitRateBurnFeeSettings({})).toMatchInlineSnapshot(
@@ -48,7 +48,7 @@ test("encodeExitRateDirectFeeSettings should work correctly", () => {
     encodeExitRateDirectFeeSettings({
       inKindRateInBps: toBps(0.12345),
       specificAssetsRate: 572208134435n,
-      feeRecipient: vitalik,
+      feeRecipient: VITALIK,
     }),
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',

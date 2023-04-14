@@ -1,4 +1,4 @@
-import { encodeAbiParameters } from "viem";
+import { decodeAbiParameters, encodeAbiParameters, type Hex } from "viem";
 import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
 import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondRate } from "../../utils/rates.js";
@@ -6,7 +6,7 @@ import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondR
 export const managementFeeSettingsEncoding = [
   {
     type: "uint256",
-    name: "feeRate",
+    name: "feeRate", // scaled per second
   },
   {
     type: "address",
@@ -14,7 +14,12 @@ export const managementFeeSettingsEncoding = [
   },
 ] as const;
 
-export type ManagementFeeSettings = {
+export interface ManagementFeeSettings {
+  scaledPerSecondRate: bigint;
+  feeRecipient: Address;
+}
+
+export type EncodeManagementFeeSettingsArgs = {
   feeRecipient?: Address;
 } & (
   | {
@@ -31,7 +36,7 @@ export function encodeManagementFeeSettings({
   scaledPerSecondRate,
   perAnnumRateInBps,
   feeRecipient = ZERO_ADDRESS,
-}: ManagementFeeSettings) {
+}: EncodeManagementFeeSettingsArgs) {
   const fee: bigint =
     scaledPerSecondRate !== undefined
       ? scaledPerSecondRate
@@ -43,15 +48,23 @@ export function encodeManagementFeeSettings({
   return encodeAbiParameters(managementFeeSettingsEncoding, [fee, feeRecipient]);
 }
 
+export function decodeManagementFeeSettings(settings: Hex): ManagementFeeSettings {
+  const [scaledPerSecondRate, feeRecipient] = decodeAbiParameters(managementFeeSettingsEncoding, settings);
+
+  return { scaledPerSecondRate, feeRecipient };
+}
+
+export interface CalculateManagementFeeSharesDueArgs {
+  scaledPerSecondRate: bigint;
+  sharesSupply: bigint;
+  secondsSinceLastSettled: bigint;
+}
+
 export function calculateManagementFeeSharesDue({
   scaledPerSecondRate,
   sharesSupply,
   secondsSinceLastSettled,
-}: {
-  scaledPerSecondRate: bigint;
-  sharesSupply: bigint;
-  secondsSinceLastSettled: bigint;
-}) {
+}: CalculateManagementFeeSharesDueArgs) {
   return calculateAmountDueForScaledPerSecondRate({
     scaledPerSecondRate,
     totalAmount: sharesSupply,

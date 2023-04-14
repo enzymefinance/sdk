@@ -4,15 +4,14 @@ import {
   encodePerformanceFeeSettings,
   performanceFeeSettingsEncoding,
 } from "./performanceFee.js";
-
-import { toBps } from "../../index.js";
-import { vitalik } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("should encode performance fee settings correctly", () => {
   expect(
     encodePerformanceFeeSettings({
       feeRateInBps: toBps(0.123),
-      feeRecipient: vitalik,
+      feeRecipient: VITALIK,
     }),
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',

@@ -5,12 +5,11 @@ import {
   encodeEntranceRateBurnFeeSettings,
   encodeEntranceRateDirectFeeSettings,
   calculateEntranceRateFeeSharesDue,
-  entraceRateBurnFeeSettingsEncoding,
-  entraceRateDirectFeeSettingsEncoding,
+  entranceRateBurnFeeSettingsEncoding,
+  entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
-
-import { toBps } from "../../index.js";
-import { vitalik } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/utils/constants.js";
+import { toBps } from "../../utils/conversion.js";
 
 test("should encode entrance rate burn fee settings correctly", () => {
   expect(encodeEntranceRateBurnFeeSettings({ feeRateInBps: toBps(0.123) })).toMatchInlineSnapshot(
@@ -38,7 +37,7 @@ test("should encode entrance rate direct fee settings correctly", () => {
   );
 
   expect(
-    encodeEntranceRateDirectFeeSettings({ feeRateInBps: toBps(0.567), feeRecipient: vitalik }),
+    encodeEntranceRateDirectFeeSettings({ feeRateInBps: toBps(0.567), feeRecipient: VITALIK }),
   ).toMatchInlineSnapshot(
     '"0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
   );
@@ -63,8 +62,8 @@ test("should calculate entrance fee shares due correctly", () => {
   ).toEqual(123400000000000000n);
 });
 
-test("entraceRateBurnFeeSettingsEncoding should have correct properties", () => {
-  expect(entraceRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
+test("entranceRateBurnFeeSettingsEncoding should have correct properties", () => {
+  expect(entranceRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
     [
       {
         "name": "feeRate",
@@ -74,8 +73,8 @@ test("entraceRateBurnFeeSettingsEncoding should have correct properties", () => 
   `);
 });
 
-test("entraceRateDirectFeeSettingsEncoding should have correct properties", () => {
-  expect(entraceRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
+test("entranceRateDirectFeeSettingsEncoding should have correct properties", () => {
+  expect(entranceRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
     [
       {
         "name": "feeRate",

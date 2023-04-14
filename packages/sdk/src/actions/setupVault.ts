@@ -6,7 +6,7 @@ import { decodePolicySettings } from "../policies/settings.js";
 import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex, Address } from "viem";
 
-export interface SetupVaultParams {
+export interface PrepareSetupVaultParamsArgs {
   vaultOwner: Address;
   vaultName: string;
   vaultSymbol: string;
@@ -24,12 +24,9 @@ export function prepareSetupVaultParams({
   sharesActionTimelock = toSeconds({ days: 1 }),
   feeSettings = "0x",
   policySettings = "0x",
-}: SetupVaultParams) {
-  const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });
-
+}: PrepareSetupVaultParamsArgs) {
   return prepareFunctionParams({
-    abi: [abi],
-    functionName: "createNewFund",
+    abi: getAbiItem({ abi: IFundDeployer, name: "createNewFund" }),
     args: [vaultOwner, vaultName, vaultSymbol, denominationAsset, sharesActionTimelock, feeSettings, policySettings],
   });
 }

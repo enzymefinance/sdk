@@ -1,30 +1,22 @@
-import type { Abi, Narrow } from "abitype";
-import type { ExtractAbiFunctionNames } from "abitype";
-import type { GetFunctionArgs, Hex } from "viem";
+import type { AbiFunction } from "abitype";
+import type { GetFunctionArgs } from "viem";
 
-export type FunctionParams<TAbi extends Abi, TFunctionName extends ExtractAbiFunctionNames<TAbi>> = {
-  abi: Narrow<TAbi>;
-  functionName: TFunctionName;
-} & GetFunctionArgs<TAbi, TFunctionName>;
+export type PrepareFunctionParamsArgs<TFunction extends AbiFunction,> = {
+  abi: TFunction;
+} & GetFunctionArgs<[TFunction], TFunction["name"]>;
 
-export function prepareFunctionParams<TAbi extends Abi, TFunctionName extends string>({
+export type PrepareFunctionParamsReturnType<TFunction extends AbiFunction> = {
+  functionName: TFunction["name"];
+  abi: [TFunction];
+} & GetFunctionArgs<[TFunction], TFunction["name"]>;
+
+export function prepareFunctionParams<TFunction extends AbiFunction>({
   abi,
   args,
-  functionName,
-}: FunctionParams<TAbi, TFunctionName>) {
-  const output: {
-    abi: Narrow<TAbi>;
-    functionName: TFunctionName;
-  } & GetFunctionArgs<TAbi, TFunctionName> = {
-    functionName: functionName as TFunctionName,
-    abi,
-    ...((args !== undefined ? { args } : {}) as GetFunctionArgs<TAbi, TFunctionName>),
-  };
-
-  return output;
+}: PrepareFunctionParamsArgs<TFunction>): PrepareFunctionParamsReturnType<TFunction> {
+  return {
+    functionName: abi.name,
+    abi: [abi],
+    ...(args !== undefined ? { args } : {}),
+  } as PrepareFunctionParamsReturnType<TFunction>;
 }
-
-export type DecodeFunctionDataParameters<TAbi extends Abi | readonly unknown[]> = {
-  abi: TAbi;
-  data: Hex;
-};
