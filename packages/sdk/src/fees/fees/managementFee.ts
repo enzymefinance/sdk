@@ -64,7 +64,7 @@ export function calculateManagementFeeSharesDue({
   scaledPerSecondRate,
   sharesSupply,
   secondsSinceLastSettled,
-}: CalculateManagementFeeSharesDueArgs): bigint {
+}: CalculateManagementFeeSharesDueArgs) {
   return calculateAmountDueForScaledPerSecondRate({
     scaledPerSecondRate,
     totalAmount: sharesSupply,

@@ -78,6 +78,6 @@ export interface CalculateExitRateFeeSharesDueArgs {
   sharesRedeemed: bigint;
 }
 
-export function calculateExitRateFeeSharesDue({ feeRate, sharesRedeemed }: CalculateExitRateFeeSharesDueArgs): bigint {
+export function calculateExitRateFeeSharesDue({ feeRate, sharesRedeemed }: CalculateExitRateFeeSharesDueArgs) {
   return (sharesRedeemed * feeRate) / 10000n;
 }
