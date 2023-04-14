@@ -1,6 +1,6 @@
 import { test, expect } from "vitest";
 import { decodePolicySettings, encodePolicySettings, policySettingsAbi } from "./settings.js";
-import { encodeMinMaxInvestmentPolicySettings } from "./index.js";
+import { encodeMinMaxInvestmentPolicySettings } from "./policies/minMaxInvestmentPolicy.js";
 import { encodeAbiParameters } from "viem";
 
 test("policySettingsAbi should contain the correct properties", () => {
