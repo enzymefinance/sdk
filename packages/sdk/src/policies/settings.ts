@@ -21,19 +21,7 @@ export function encodePolicySettings(policies: PolicySettingsTuple[]): Hex {
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
 
-  return encodeAbiParameters(
-    [
-      {
-        type: "address[]",
-        name: "policyAddresses",
-      },
-      {
-        type: "bytes[]",
-        name: "policySettings",
-      },
-    ],
-    [addresses, settings],
-  );
+  return encodeAbiParameters(policySettingsAbi, [addresses, settings]);
 }
 
 export function decodePolicySettings(encoded: Hex): PolicySettingsTuple[] {
