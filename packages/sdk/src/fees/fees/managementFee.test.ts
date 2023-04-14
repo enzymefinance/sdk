@@ -3,6 +3,7 @@ import {
   encodeManagementFeeSettings,
   managementFeeSettingsEncoding,
   calculateManagementFeeSharesDue,
+  decodeManagementFeeSettings,
 } from "./managementFee.js";
 import { VITALIK } from "../../../tests/utils/constants.js";
 import { toBps, toSeconds } from "../../utils/conversion.js";
@@ -55,6 +56,19 @@ test("managementFeeSettingsEncoding should have correct properties", () => {
         "type": "address",
       },
     ]
+  `);
+});
+
+test("decodeManagementFeeSettings should decode correctly", () => {
+  expect(
+    decodeManagementFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRecipient": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "scaledPerSecondRate": 1230n,
+    }
   `);
 });
 

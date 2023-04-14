@@ -28,7 +28,7 @@ export function encodeExitRateBurnFeeSettings({
 }
 
 export function decodeExitRateBurnFeeSettings(settings: Hex): ExitRateBurnFeeSettings {
-  const [inKindRateInBps, specificAssetsRate] = decodeAbiParameters(exitRateDirectFeeSettingsEncoding, settings);
+  const [inKindRateInBps, specificAssetsRate] = decodeAbiParameters(exitRateBurnFeeSettingsEncoding, settings);
 
   return { inKindRateInBps, specificAssetsRate };
 }

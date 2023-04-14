@@ -1,7 +1,9 @@
 import { test, expect } from "vitest";
 import {
   encodeExitRateBurnFeeSettings,
+  decodeExitRateBurnFeeSettings,
   encodeExitRateDirectFeeSettings,
+  decodeExitRateDirectFeeSettings,
   exitRateBurnFeeSettingsEncoding,
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
@@ -39,9 +41,31 @@ test("exitRateBurnFeeSettingsEncoding should have correct properties", () => {
   `);
 });
 
+test("decodeExitRateBurnFeeSettings should decode correctly", () => {
+  expect(
+    decodeExitRateBurnFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000000000007b",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "inKindRateInBps": 1234n,
+      "specificAssetsRate": 123n,
+    }
+  `);
+});
+
 test("encodeExitRateDirectFeeSettings should work correctly", () => {
   expect(encodeExitRateDirectFeeSettings({})).toMatchInlineSnapshot(
     '"0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"',
+  );
+
+  expect(
+    encodeExitRateDirectFeeSettings({
+      inKindRateInBps: toBps(0.12345),
+      specificAssetsRate: 572208134435n,
+    }),
+  ).toMatchInlineSnapshot(
+    '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a4339230000000000000000000000000000000000000000000000000000000000000000"',
   );
 
   expect(
@@ -71,6 +95,20 @@ test("exitRateDirectFeeSettingsEncoding should have correct properties", () => {
         "type": "address",
       },
     ]
+  `);
+});
+
+test("decodeExitRateDirectFeeSettings should decode correctly", () => {
+  expect(
+    decodeExitRateDirectFeeSettings(
+      "0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045",
+    ),
+  ).toMatchInlineSnapshot(`
+    {
+      "feeRecipient": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "inKindRateInBps": 1234n,
+      "specificAssetsRate": 572208134435n,
+    }
   `);
 });
 
