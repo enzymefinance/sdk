@@ -6,7 +6,7 @@ import { approveSpend, createTestVault, depositWeth } from "../../tests/utils/he
 import { simulateBuyShares } from "./buyShares.js";
 import { encodePolicySettings } from "../policies/settings.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { POLICY_VIOLATION_MIN_MAX_INVESTMENT, ProtocolError } from "../errors.js";
+import { POLICY_VIOLATION_MIN_MAX_INVESTMENT, EnzymeError } from "../errors.js";
 
 test("should allow buying shares", async () => {
   const { comptrollerProxy } = await createTestVault();
@@ -73,7 +73,7 @@ test("should fail to buy shares if there's a policy violation", async () => {
       comptrollerProxy,
     });
   } catch (error) {
-    expect(error).toBeInstanceOf(ProtocolError);
+    expect(error).toBeInstanceOf(EnzymeError);
     expect(error.code).toBe(POLICY_VIOLATION_MIN_MAX_INVESTMENT);
   }
 });

@@ -3,7 +3,7 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
 import type { Hex } from "viem";
 import { applySlippage, toBps } from "../utils/conversion.js";
-import { catchProtocolError } from "../errors.js";
+import { catchEnzymeError } from "../errors.js";
 
 export interface BuySharesParams {
   investmentAmount: bigint;
@@ -75,6 +75,6 @@ export async function simulateBuyShares({
       transactionRequest: request,
     };
   } catch (error) {
-    throw catchProtocolError(error);
+    throw catchEnzymeError(error);
   }
 }

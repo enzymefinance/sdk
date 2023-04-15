@@ -5,25 +5,25 @@ export const BUY_SHARES_MIN_SHARES_QUANTITY_CANNOT_BE_ZERO = Symbol("ENZF61343")
 export const BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION = Symbol("ENZF61344"); // __buyShares: Pending migration or reconfiguration
 export const BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT = Symbol("ENZF61345"); // __buyShares: Shares received < _minSharesQuantity
 
-export type ProtocolErrorCode =
+export type EnzymeErrorCode =
   | typeof POLICY_VIOLATION_MIN_MAX_INVESTMENT
   | typeof BUY_SHARES_MIN_SHARES_QUANTITY_CANNOT_BE_ZERO
   | typeof BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION
   | typeof BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT;
 
-export class ProtocolError extends Error {
-  constructor(public override readonly cause: ContractFunctionExecutionError, public readonly code: ProtocolErrorCode) {
+export class EnzymeError extends Error {
+  constructor(public override readonly cause: ContractFunctionExecutionError, public readonly code: EnzymeErrorCode) {
     super(cause.message);
   }
 }
 
-export function catchProtocolError<TError extends Error>(error: TError): TError | ProtocolError {
+export function catchEnzymeError<TError extends Error>(error: TError): TError | EnzymeError {
   if (error instanceof ContractFunctionExecutionError) {
     if (error.cause instanceof ContractFunctionRevertedError) {
-      const code = getProtocolErrorCode(error.cause);
+      const code = getEnzymeErrorCode(error.cause);
 
       if (code !== undefined) {
-        return new ProtocolError(error, code);
+        return new EnzymeError(error, code);
       }
     }
   }
@@ -31,7 +31,7 @@ export function catchProtocolError<TError extends Error>(error: TError): TError 
   return error;
 }
 
-export function getProtocolErrorCode(error: ContractFunctionRevertedError): ProtocolErrorCode | undefined {
+export function getEnzymeErrorCode(error: ContractFunctionRevertedError): EnzymeErrorCode | undefined {
   if (error.reason === undefined) {
     return undefined;
   }
