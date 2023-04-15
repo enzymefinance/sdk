@@ -4,12 +4,6 @@ SwapperBase.sol:
  require(asset != address(0), "__swap: empty value in _assetsFromIntegratee");
  require(amount > 0, "__swap: empty value in _assetsFromIntegrateeAmounts");
  
-MockToken.sol:
- require(addressToIsMinter[msg.sender] || owner() == msg.sender, "msg.sender is not owner or minter");
- 
-MockGenericExternalPositionLib.sol:
- revert("receiveCallFromVault: Invalid actionId");
- 
 FeeManager.sol:
  require(fees.length == settingsData.length, "setConfigForFund: fees and settingsData array lengths unequal");
  require(fees.isUniqueSet(), "setConfigForFund: fees cannot include duplicates");

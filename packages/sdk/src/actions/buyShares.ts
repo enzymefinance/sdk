@@ -3,6 +3,7 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
 import type { Hex } from "viem";
 import { applySlippage, toBps } from "../utils/conversion.js";
+import { catchProtocolError } from "../errors.js";
 
 export interface BuySharesParams {
   investmentAmount: bigint;
@@ -46,30 +47,34 @@ export async function simulateBuyShares({
   investmentAmount,
   maxSlippageBps = toBps(0.03),
 }: SimulateBuySharesArgs) {
-  let { request, result } = await publicClient.simulateContract({
-    ...prepareBuySharesParams({
-      investmentAmount,
-      minSharesQuantity: 1n,
-    }),
-    account: depositorAddress,
-    address: comptrollerProxy,
-  });
+  try {
+    let { request, result } = await publicClient.simulateContract({
+      ...prepareBuySharesParams({
+        investmentAmount,
+        minSharesQuantity: 1n,
+      }),
+      account: depositorAddress,
+      address: comptrollerProxy,
+    });
 
-  const minSharesQuantity = applySlippage(result, maxSlippageBps);
+    const minSharesQuantity = applySlippage(result, maxSlippageBps);
 
-  ({ request, result } = await publicClient.simulateContract({
-    ...prepareBuySharesParams({
-      investmentAmount,
+    ({ request, result } = await publicClient.simulateContract({
+      ...prepareBuySharesParams({
+        investmentAmount,
+        minSharesQuantity,
+      }),
+      account: depositorAddress,
+      address: comptrollerProxy,
+    }));
+
+    return {
       minSharesQuantity,
-    }),
-    account: depositorAddress,
-    address: comptrollerProxy,
-  }));
-
-  return {
-    minSharesQuantity,
-    appliedSlippageBps: maxSlippageBps,
-    expectedSharesQuantity: result,
-    transactionRequest: request,
-  };
+      appliedSlippageBps: maxSlippageBps,
+      expectedSharesQuantity: result,
+      transactionRequest: request,
+    };
+  } catch (error) {
+    throw catchProtocolError(error);
+  }
 }
