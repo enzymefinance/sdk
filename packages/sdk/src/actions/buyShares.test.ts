@@ -2,16 +2,17 @@ import { expect, test } from "vitest";
 import { toBps, toWei } from "../utils/conversion.js";
 import { publicClient } from "../../tests/client.js";
 import { ALICE, WETH } from "../../tests/utils/constants.js";
-import { approveSpend, createTestVault, depositWeth } from "../../tests/utils/helpers.js";
+import { approveSpend, createTestVault, wrapEther } from "../../tests/utils/helpers.js";
 import { simulateBuyShares } from "./buyShares.js";
 import { encodePolicySettings } from "../policies/settings.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { POLICY_VIOLATION_MIN_MAX_INVESTMENT, EnzymeError } from "../errors.js";
+import { POLICY_VIOLATION_MIN_MAX_INVESTMENT } from "../errors/errorCodes.js";
+import { EnzymeError } from "../errors/catchError.js";
 
 test("should allow buying shares", async () => {
   const { comptrollerProxy } = await createTestVault();
 
-  await depositWeth({
+  await wrapEther({
     account: ALICE,
     amount: toWei(250),
   });
@@ -52,7 +53,7 @@ test("should fail to buy shares if there's a policy violation", async () => {
     ]),
   });
 
-  await depositWeth({
+  await wrapEther({
     account: ALICE,
     amount: toWei(250),
   });
