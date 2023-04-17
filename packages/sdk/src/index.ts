@@ -39,6 +39,7 @@ export {
   toBps,
   toSeconds,
   toWei,
+  fromWei,
   applySlippage,
 } from "./utils/conversion.js";
 

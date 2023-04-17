@@ -4,8 +4,12 @@ export function toBps(decimal: Decimal.Value): bigint {
   return BigInt(new Decimal(decimal).mul(10000).toFixed(0, Decimal.ROUND_DOWN));
 }
 
-export function toWei(decimal: Decimal.Value): bigint {
-  return BigInt(new Decimal(decimal).mul(1000000000000000000).toFixed(0, Decimal.ROUND_DOWN));
+export function toWei(value: Decimal.Value, decimals: number = 18): bigint {
+  return BigInt(new Decimal(value).mul(new Decimal(10).pow(decimals)).toFixed(0, Decimal.ROUND_DOWN));
+}
+
+export function fromWei(value: bigint, decimals: number = 18): number {
+  return new Decimal(`${value}`).div(new Decimal(10).pow(decimals)).toNumber();
 }
 
 export function toSeconds({

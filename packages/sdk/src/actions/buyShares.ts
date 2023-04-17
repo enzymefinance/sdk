@@ -32,13 +32,12 @@ export function decodeBuySharesParams(params: Hex): BuySharesParams {
   };
 }
 
-export interface SimulateBuySharesArgs {
+export type SimulateBuySharesArgs = Pick<BuySharesParams, "investmentAmount"> & {
   publicClient: PublicClient;
   depositorAddress: Address;
   comptrollerProxy: Address;
-  investmentAmount: bigint;
   maxSlippageBps: bigint;
-}
+};
 
 export async function simulateBuyShares({
   publicClient,
