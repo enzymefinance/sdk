@@ -12,19 +12,19 @@ export const feeSettingsAbi = [
   },
 ] as const;
 
-export interface FeeSettingsTuple {
+export interface FeeSettings {
   address: Address;
   settings: Hex;
 }
 
-export function encodeFeeSettings(fees: FeeSettingsTuple[]): Hex {
+export function encodeFeeSettings(fees: FeeSettings[]): Hex {
   const addresses = fees.map(({ address }) => address);
   const settings = fees.map(({ settings }) => settings);
 
   return encodeAbiParameters(feeSettingsAbi, [addresses, settings]);
 }
 
-export function decodeFeeSettings(encoded: Hex): FeeSettingsTuple[] {
+export function decodeFeeSettings(encoded: Hex): FeeSettings[] {
   const [addresses, settings] = decodeAbiParameters(feeSettingsAbi, encoded);
   if (addresses.length !== settings.length) {
     throw new Error("Expected fee addresses and settings to have the same length");

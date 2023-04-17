@@ -8,7 +8,7 @@ import {
   entranceRateBurnFeeSettingsEncoding,
   entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
-import { VITALIK } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
 
 test("should encode entrance rate burn fee settings correctly", () => {

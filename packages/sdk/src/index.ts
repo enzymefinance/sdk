@@ -58,7 +58,7 @@ export {
 export { PolicyHook } from "./policies/enums.js";
 
 export {
-  type PolicySettingsTuple,
+  type PolicySettings,
   policySettingsAbi,
   encodePolicySettings,
   decodePolicySettings,
@@ -96,7 +96,7 @@ export {
 export { FeeHook, FeeManagerAction, FeeSettlementType } from "./fees/enums.js";
 
 export {
-  type FeeSettingsTuple,
+  type FeeSettings,
   feeSettingsAbi,
   encodeFeeSettings,
   decodeFeeSettings,
@@ -151,8 +151,9 @@ export {
 
 // Actions
 export {
-  type PrepareSetupVaultParamsArgs,
+  type SetupVaultParams,
   decodeSetupVaultParams,
+  type PrepareSetupVaultParamsArgs,
   prepareSetupVaultParams,
 } from "./actions/setupVault.js";
 
@@ -160,6 +161,4 @@ export {
   type BuySharesParams,
   decodeBuySharesParams,
   prepareBuySharesParams,
-  type SimulateBuySharesArgs,
-  simulateBuyShares,
 } from "./actions/buyShares.js";

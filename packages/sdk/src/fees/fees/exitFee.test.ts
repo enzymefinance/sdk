@@ -8,7 +8,7 @@ import {
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
 } from "./exitFee.js";
-import { VITALIK } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {

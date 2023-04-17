@@ -7,7 +7,7 @@ export class EnzymeError extends Error {
   public readonly label: string;
   public readonly description: string;
 
-  constructor(public override readonly cause: Error, public readonly code: ErrorCode) {
+  constructor(public readonly code: ErrorCode) {
     const error = errorDictionary[code];
     super(`${error.label}: ${error.description}`);
 
@@ -22,7 +22,10 @@ export function catchError<TError extends Error>(error: TError): TError | Enzyme
       const code = getErrorCode(error.cause);
 
       if (code !== undefined) {
-        return new EnzymeError(error, code);
+        const err = new EnzymeError(code);
+        error.cause = error;
+
+        return err;
       }
     }
   }

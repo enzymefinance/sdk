@@ -5,7 +5,7 @@ import {
   calculateManagementFeeSharesDue,
   decodeManagementFeeSettings,
 } from "./managementFee.js";
-import { VITALIK } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/constants.js";
 import { toBps, toSeconds } from "../../utils/conversion.js";
 
 test("encodeManagementFeeSettings should work correctly", () => {
