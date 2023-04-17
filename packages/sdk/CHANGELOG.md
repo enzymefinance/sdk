@@ -1,5 +1,17 @@
 # @enzymefinance/sdk
 
+## 0.0.9
+
+### Patch Changes
+
+- [#19](https://github.com/enzymefinance/enzyme-sdk/pull/19) [`42fc76c`](https://github.com/enzymefinance/enzyme-sdk/commit/42fc76cb1da75e08e2b155ff67e21a3196417398) Thanks [@rayphelan](https://github.com/rayphelan)! - Created tests for policies and updated tests for fees
+
+- [#17](https://github.com/enzymefinance/enzyme-sdk/pull/17) [`ee63573`](https://github.com/enzymefinance/enzyme-sdk/commit/ee63573c5918e2b440eeb7922ca841cc652b3a97) Thanks [@fubhy](https://github.com/fubhy)! - Restructured exports
+
+- [`57ec097`](https://github.com/enzymefinance/enzyme-sdk/commit/57ec0979e84e9faec2552f90e5cb456130e9fcac) Thanks [@fubhy](https://github.com/fubhy)! - Added buy shares functionality
+
+- [#15](https://github.com/enzymefinance/enzyme-sdk/pull/15) [`3047b1a`](https://github.com/enzymefinance/enzyme-sdk/commit/3047b1a428c4e5789e10b58dc9a438822e29d659) Thanks [@rayphelan](https://github.com/rayphelan)! - Added tests to constants and fees directories
+
 ## 0.0.8
 
 ### Patch Changes
