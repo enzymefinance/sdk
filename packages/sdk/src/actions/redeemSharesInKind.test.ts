@@ -82,5 +82,5 @@ test("test", async () => {
   });
 
   // Test that all shares were redeemed as expected.
-  expect(sharesBalanceAfterWithdraw).toBe(0);
+  expect(sharesBalanceAfterWithdraw).toBe(0n);
 });
