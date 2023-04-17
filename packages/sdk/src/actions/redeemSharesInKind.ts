@@ -68,11 +68,13 @@ export async function simulateRedeemSharesInKind({
     address: comptrollerProxy,
   });
 
-  console.log("REQUEST", request);
-  console.log("RESULT", result);
+  const [assets, amounts] = result;
 
   return {
-    shares: result, // @TODO: This is not correct, the output is [payoutAssets_[], payoutAmounts_[]]. We need to decode that tuple into sth. like `{ assets: Address, amounts: bigint }[]`
+    result: assets.map((asset, i) => ({
+      asset,
+      amount: amounts[i],
+    })),
     transactionRequest: request,
   };
 }

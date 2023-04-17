@@ -1,8 +1,9 @@
 import { type Address, parseAbiItem } from "viem";
-import { sendTestTransaction } from "../client.js";
+import { sendTestTransaction, publicClient, testClient } from "../client.js";
 import { ALICE, DEPLOYER, WETH } from "./constants.js";
 import { prepareSetupVaultParams, type PrepareSetupVaultParamsArgs } from "../../src/actions/setupVault.js";
-import { toSeconds } from "../../src/utils/conversion.js";
+import { toBps, toSeconds } from "../../src/utils/conversion.js";
+import { simulateBuyShares } from "../../src/actions/buyShares.js";
 
 export async function wrapEther({
   account,
@@ -61,4 +62,38 @@ export async function createTestVault(settings?: Partial<PrepareSetupVaultParams
   });
 
   return { vaultProxy, comptrollerProxy };
+}
+
+export interface DepositIntoVaultArgs {
+  comptrollerProxy: Address;
+  investmentAmount: bigint;
+  depositorAddress: Address;
+  maxSlippageBps?: bigint;
+}
+
+export async function depositIntoVault({
+  comptrollerProxy,
+  investmentAmount,
+  depositorAddress,
+  maxSlippageBps = toBps(0.1),
+}: DepositIntoVaultArgs) {
+  const { expectedSharesQuantity, transactionRequest } = await simulateBuyShares({
+    depositorAddress,
+    investmentAmount,
+    comptrollerProxy,
+    maxSlippageBps,
+    publicClient,
+  });
+
+  return {
+    expectedSharesQuantity,
+    transactionRequest,
+  };
+}
+
+export async function increaseTimeAndMine({ days, blocks }: { days: number; blocks: number }) {
+  return Promise.all([
+    await testClient.increaseTime({ seconds: Number(toSeconds({ days })) }),
+    await testClient.mine({ blocks }),
+  ]);
 }
