@@ -4,7 +4,7 @@ import { ALICE, DEPLOYER, WETH } from "./constants.js";
 import { prepareSetupVaultParams, type PrepareSetupVaultParamsArgs } from "../../src/actions/setupVault.js";
 import { toSeconds } from "../../src/utils/conversion.js";
 
-export async function depositWeth({
+export async function wrapEther({
   account,
   amount,
 }: {
