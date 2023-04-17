@@ -4,21 +4,21 @@ import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from 
 import type { Hex } from "viem";
 
 export interface RedeemSharesInKindParams {
-  recipient: Address;
+  withdrawalReceipient: Address;
   sharesQuantity: bigint;
   additionalAssets: readonly Address[];
   assetsToSkip: readonly Address[];
 }
 
 export function prepareRedeemSharesInKindParams({
-  recipient,
+  withdrawalReceipient,
   sharesQuantity,
   additionalAssets = [],
   assetsToSkip = [],
 }: RedeemSharesInKindParams) {
   return prepareFunctionParams({
     abi: getAbiItem({ abi: IComptroller, name: "redeemSharesInKind" }),
-    args: [recipient, sharesQuantity, additionalAssets, assetsToSkip],
+    args: [withdrawalReceipient, sharesQuantity, additionalAssets, assetsToSkip],
   });
 }
 
@@ -29,10 +29,10 @@ export function decodeRedeemSharesParams(params: Hex): RedeemSharesInKindParams 
     data: params,
   });
 
-  const [recipient, sharesQuantity, additionalAssets, assetsToSkip] = decoded.args;
+  const [withdrawalReceipient, sharesQuantity, additionalAssets, assetsToSkip] = decoded.args;
 
   return {
-    recipient,
+    withdrawalReceipient,
     sharesQuantity,
     additionalAssets,
     assetsToSkip,
@@ -41,8 +41,8 @@ export function decodeRedeemSharesParams(params: Hex): RedeemSharesInKindParams 
 
 export interface SimulateRedeemSharesInKindArgs {
   publicClient: PublicClient;
-  signer: Address;
-  recipient?: Address;
+  sharesOwner: Address;
+  withdrawalReceipient?: Address;
   sharesQuantity: bigint;
   additionalAssets: Address[];
   assetsToSkip: Address[];
@@ -50,8 +50,8 @@ export interface SimulateRedeemSharesInKindArgs {
 }
 export async function simulateRedeemSharesInKind({
   publicClient,
-  signer,
-  recipient = signer,
+  sharesOwner,
+  withdrawalReceipient = sharesOwner,
   sharesQuantity,
   additionalAssets,
   assetsToSkip,
@@ -59,11 +59,12 @@ export async function simulateRedeemSharesInKind({
 }: SimulateRedeemSharesInKindArgs) {
   const { request, result } = await publicClient.simulateContract({
     ...prepareRedeemSharesInKindParams({
-      recipient,
+      withdrawalReceipient,
       sharesQuantity,
       additionalAssets,
       assetsToSkip,
     }),
+    account: sharesOwner,
     address: comptrollerProxy,
   });
 
@@ -71,7 +72,7 @@ export async function simulateRedeemSharesInKind({
   console.log("RESULT", result);
 
   return {
-    shares: result,
+    shares: result, // @TODO: This is not correct, the output is [payoutAssets_[], payoutAmounts_[]]. We need to decode that tuple into sth. like `{ assets: Address, amounts: bigint }[]`
     transactionRequest: request,
   };
 }

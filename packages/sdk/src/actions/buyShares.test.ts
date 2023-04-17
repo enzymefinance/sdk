@@ -2,13 +2,13 @@ import { expect, test } from "vitest";
 import { toBps, toWei } from "../utils/conversion.js";
 import { publicClient } from "../../tests/client.js";
 import { ALICE, WETH } from "../../tests/utils/constants.js";
-import { approveSpend, createTestVault, depositWeth } from "../../tests/utils/helpers.js";
+import { approveSpend, createTestVault, wrapEther } from "../../tests/utils/helpers.js";
 import { simulateBuyShares } from "./buyShares.js";
 
 test("should set up a vault with the given parameters", async () => {
   const { comptrollerProxy } = await createTestVault();
 
-  await depositWeth({
+  await wrapEther({
     account: ALICE,
     amount: toWei(250),
   });
