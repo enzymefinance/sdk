@@ -3,11 +3,16 @@ import { getErrorCode } from "./getErrorCode.js";
 import { errorDictionary, type ErrorCode } from "./errorCodes.js";
 
 export class EnzymeError extends Error {
-  public override name = "EnzymeError";
+  public override readonly name = "EnzymeError";
+  public readonly label: string;
+  public readonly description: string;
 
   constructor(public override readonly cause: Error, public readonly code: ErrorCode) {
     const error = errorDictionary[code];
     super(`${error.label}: ${error.description}`);
+
+    this.label = error.label;
+    this.description = error.description;
   }
 }
 

@@ -134,5 +134,5 @@ test("calculateExitRateFeeSharesDue should work correctly", () => {
       feeRate: toBps(4),
       sharesRedeemed: 2n,
     }),
-  ).toMatchInlineSnapshot('8n');
+  ).toMatchInlineSnapshot("8n");
 });

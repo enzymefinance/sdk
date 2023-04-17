@@ -112,5 +112,5 @@ test("calculateManagementFeeSharesDue should work correctly", () => {
       sharesSupply: 1000000000000000000n,
       secondsSinceLastSettled: toSeconds({ years: 1 }),
     }),
-  ).toMatchInlineSnapshot('5028576134389896n');
+  ).toMatchInlineSnapshot("5028576134389896n");
 });

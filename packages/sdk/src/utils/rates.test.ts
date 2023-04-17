@@ -68,5 +68,5 @@ test("convertRateToScaledPerSecondRate should work correctly", () => {
       perAnnumRateInBps: toBps(0.123),
       adjustInflation: false,
     }),
-  ).toMatchInlineSnapshot('1000000003675934670872217630n');
+  ).toMatchInlineSnapshot("1000000003675934670872217630n");
 });
