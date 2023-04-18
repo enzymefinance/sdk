@@ -35,6 +35,7 @@ test("Redeem shares in kind should work correctly", async () => {
     comptrollerProxy,
   });
 
+  expect(buySharesTransactionRequest).toBeDefined();
   expect(depositAmount).toBe(expectedSharesQuantity);
 
   await sendTestTransaction(buySharesTransactionRequest);
@@ -58,6 +59,8 @@ test("Redeem shares in kind should work correctly", async () => {
     additionalAssets: [],
     assetsToSkip: [],
   });
+
+  expect(redeemSharesTransactionRequest).toBeDefined();
 
   await sendTestTransaction(redeemSharesTransactionRequest);
 

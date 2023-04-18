@@ -92,8 +92,8 @@ export async function depositIntoVault({
 }
 
 export async function increaseTimeAndMine({ days, blocks }: { days: number; blocks: number }) {
-  return Promise.all([
-    await testClient.increaseTime({ seconds: Number(toSeconds({ days })) }),
-    await testClient.mine({ blocks }),
+  return await Promise.all([
+    testClient.increaseTime({ seconds: Number(toSeconds({ days })) }),
+    testClient.mine({ blocks }),
   ]);
 }
