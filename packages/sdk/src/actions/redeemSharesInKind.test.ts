@@ -3,6 +3,9 @@ import { toSeconds, toWei } from "../utils/conversion.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { simulateRedeemSharesInKind } from "./redeemSharesInKind.js";
+import { setupAnvil } from "../../tests/anvil.js";
+
+setupAnvil();
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({

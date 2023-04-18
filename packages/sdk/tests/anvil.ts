@@ -45,14 +45,14 @@ export function setupAnvil({
         await new Promise((resolve) => setTimeout(resolve, 100));
       }
     }
-  }, 1000);
+  }, 10000);
 
   beforeEach(async () => {
     await testClient.reset({
       blockNumber: BigInt(forkBlockNumber),
       ...(forkUrl ? { jsonRpcUrl: forkUrl } : {}),
     });
-  }, 1000);
+  }, 10000);
 
   afterAll(async () => {
     signal.abort();
@@ -60,5 +60,5 @@ export function setupAnvil({
     try {
       await subprocess;
     } catch (error) {}
-  }, 1000);
+  }, 10000);
 }
