@@ -38,7 +38,7 @@
     "vitest.disabledWorkspaceFolders": ["✨ root"],
     "editor.defaultFormatter": "rome.rome",
     "editor.formatOnSave": true,
-    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "typescript.preferences.importModuleSpecifier": "relative",
     "typescript.preferences.autoImportFileExcludePatterns": ["**/index.ts"],
     "[typescript]": {
       "editor.defaultFormatter": "rome.rome"

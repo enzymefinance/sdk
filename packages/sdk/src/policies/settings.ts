@@ -12,19 +12,19 @@ export const policySettingsAbi = [
   },
 ] as const;
 
-export interface PolicySettingsTuple {
+export interface PolicySettings {
   address: Address;
   settings: Hex;
 }
 
-export function encodePolicySettings(policies: PolicySettingsTuple[]): Hex {
+export function encodePolicySettings(policies: PolicySettings[]): Hex {
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
 
   return encodeAbiParameters(policySettingsAbi, [addresses, settings]);
 }
 
-export function decodePolicySettings(encoded: Hex): PolicySettingsTuple[] {
+export function decodePolicySettings(encoded: Hex): PolicySettings[] {
   const [addresses, settings] = decodeAbiParameters(policySettingsAbi, encoded);
   if (addresses.length !== settings.length) {
     throw new Error("Expected policy addresses and settings to have the same length");

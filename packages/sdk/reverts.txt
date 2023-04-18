@@ -1,0 +1,717 @@
+SwapperBase.sol:
+ require(asset != address(0), "__swap: empty value in _assetsToIntegratee");
+ require(amount > 0, "__swap: empty value in _assetsToIntegrateeAmounts");
+ require(asset != address(0), "__swap: empty value in _assetsFromIntegratee");
+ require(amount > 0, "__swap: empty value in _assetsFromIntegrateeAmounts");
+ 
+FeeManager.sol:
+ require(fees.length == settingsData.length, "setConfigForFund: fees and settingsData array lengths unequal");
+ require(fees.isUniqueSet(), "setConfigForFund: fees cannot include duplicates");
+ require(vaultProxy != address(0), "__invokeHook: Fund is not active");
+ revert("receiveCallFromComptroller: Invalid _actionId");
+ revert("__settleFee: Invalid SettlementType");
+ 
+ManagementFee.sol:
+ require(scaledPerSecondRate > 0, "addFundSettings: scaledPerSecondRate must be greater than 0");
+ 
+UpdatableFeeRecipientBase.sol:
+ require(msg.sender == VaultLib(payable(ComptrollerLib(_comptrollerProxy).getVaultProxy())).getOwner(), "__setRecipientForFund: Only vault owner callable");
+ 
+EntranceRateFeeBase.sol:
+ require(_settlementType == IFeeManager.SettlementType.Burn || _settlementType == IFeeManager.SettlementType.Direct, "constructor: Invalid _settlementType");
+ require(rate > 0, "addFundSettings: Fee rate must be >0");
+ require(rate < ONE_HUNDRED_PERCENT, "addFundSettings: Fee rate max exceeded");
+ 
+FeeBase.sol:
+ require(msg.sender == FEE_MANAGER, "Only the FeeManger can make this call");
+ 
+ExitRateFeeBase.sol:
+ require(_settlementType == IFeeManager.SettlementType.Burn || _settlementType == IFeeManager.SettlementType.Direct, "constructor: Invalid _settlementType");
+ require(inKindRate < ONE_HUNDRED_PERCENT, "addFundSettings: inKindRate max exceeded");
+ require(specificAssetsRate < ONE_HUNDRED_PERCENT, "addFundSettings: specificAssetsRate max exceeded");
+ 
+PerformanceFee.sol:
+ require(feeRate > 0, "addFundSettings: feeRate must be greater than 0");
+ require(feeRate <= ONE_HUNDRED_PERCENT, "addFundSettings: feeRate max exceeded");
+ 
+IntegrationManager.sol:
+ require(vaultProxy != address(0), "receiveCallFromComptroller: Fund is not valid");
+ require(IVault(vaultProxy).canManageAssets(_caller), "receiveCallFromComptroller: Unauthorized");
+ require(IValueInterpreter(getValueInterpreter()).isSupportedAsset(assets[i]), "__addTrackedAssetsToVault: Unsupported asset");
+ require(_comptrollerProxy == IVault(_vaultProxy).getAccessor(), "receiveCallFromComptroller: Fund is not active");
+ require(spendAssets_.length == maxSpendAssetAmounts_.length, "__preProcessCoI: Spend assets arrays unequal");
+ require(incomingAssets_.length == minIncomingAssetAmounts_.length, "__preProcessCoI: Incoming assets arrays unequal");
+ require(spendAssets_.isUniqueSet(), "__preProcessCoI: Duplicate spend asset");
+ require(incomingAssets_.isUniqueSet(), "__preProcessCoI: Duplicate incoming asset");
+ require(IValueInterpreter(getValueInterpreter()).isSupportedAsset(incomingAssets_[i]), "__preProcessCoI: Non-receivable incoming asset");
+ require(incomingAssetAmounts_[i] >= _minIncomingAssetAmounts[i], "__postProcessCoI: Received incoming asset less than expected");
+ require(spendAssetAmounts_[i] <= _maxSpendAssetAmounts[i], "__postProcessCoI: Spent amount greater than expected");
+ revert("receiveCallFromComptroller: Invalid _actionId");
+ 
+CompoundAdapterBase.sol:
+ require(token != address(0), "__parseAssetsForLend: Unsupported cToken");
+ require(token != address(0), "__parseAssetsForRedeem: Unsupported cToken");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+AaveAdapterBase.sol:
+ revert("parseAssetsForAction: _selector invalid");
+ 
+BalancerV2LiquidityAdapterBase.sol:
+ require(assetDeltas[i] == 0, "takeOrder: leftover intermediary");
+ require(ERC20(_request.assets[i]).balanceOf(_vaultProxy) == preTxTokenBalancesIfUnused[i], "__balancerRedeem: Unexpected asset received");
+ require(spendAsset == __getBptForStakingToken(stakingToken), "__parseAssetsForTakeOrder: BPT mismatch");
+ require(incomingAsset == __getBptForStakingToken(stakingToken), "__parseAssetsForTakeOrder: BPT mismatch");
+ require(__getBptForStakingToken(_stakingToken) == __parseBalancerPoolAddress(_poolId), "__validateBptForStakingToken: Invalid");
+ require(!_useInternalBalances, "__validateNoInternalBalances: Invalid");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+AdapterBase.sol:
+ require(msg.sender == INTEGRATION_MANAGER, "Only the IntegrationManager can call this function");
+ 
+UniswapV2LiquidityAdapter.sol:
+ revert("parseAssetsForAction: _selector invalid");
+ 
+SynthetixAdapter.sol:
+ require(!VALUE_INTERPRETER_CONTRACT.isSupportedAsset(outgoingAsset), "parseAssetsForAction: Unallowed synth");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+PoolTogetherV4Adapter.sol:
+ require(token != address(0), "__parseAssetsForLend: Unsupported ptToken");
+ require(token != address(0), "__parseAssetsForRedeem: Unsupported ptToken");
+ revert("parseAssetsForMethod: _selector invalid");
+ 
+ConvexCurveLpStakingAdapter.sol:
+ require(lpToken == CURVE_PRICE_FEED_CONTRACT.getLpTokenForPool(_pool), "__validatePoolForWrapper: Invalid");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+UniswapV3Adapter.sol:
+ require(_selector == TAKE_ORDER_SELECTOR, "parseAssetsForAction: _selector invalid");
+ require(pathAddresses.length >= 2, "parseAssetsForAction: pathAddresses must be >= 2");
+ require(pathAddresses.length == pathFees.length + 1, "parseAssetsForAction: incorrect pathAddresses or pathFees length");
+ 
+IdleAdapter.sol:
+ require(__getUnderlyingForIdleToken(idleToken) != address(0), "__parseAssetsForClaimRewards: Unsupported idleToken");
+ require(underlying != address(0), "__parseAssetsForLend: Unsupported idleToken");
+ require(underlying != address(0), "__parseAssetsForRedeem: Unsupported idleToken");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+OlympusV2Adapter.sol:
+ revert("parseAssetsForAction: _selector invalid");
+ 
+CurveLiquidityAdapter.sol:
+ require(CURVE_PRICE_FEED_CONTRACT.getPoolForDerivative(_gauge) == _pool, "__validateGauge: Invalid");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+UniswapV2ExchangeAdapter.sol:
+ require(_selector == TAKE_ORDER_SELECTOR, "parseAssetsForAction: _selector invalid");
+ require(path.length >= 2, "__parseAssetsForTakeOrder: _path must be >= 2");
+ 
+CompoundV3Adapter.sol:
+ revert("parseAssetsForAction: _selector invalid");
+ 
+YearnVaultV2Adapter.sol:
+ require(underlying != address(0), "__parseAssetsForLend: Unsupported yVault");
+ require(underlying != address(0), "__parseAssetsForRedeem: Unsupported yVault");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+ParaSwapV5Adapter.sol:
+ require(ERC20(incomingAsset).balanceOf(_vaultProxy).sub(preIncomingAssetBal) >= minIncomingAssetAmount, "__takeOrderAndValidateIncoming: Received incoming asset less than expected");
+ revert("parseAssetsForAction: _selector invalid");
+ 
+ZeroExV2Adapter.sol:
+ require(_selector == TAKE_ORDER_SELECTOR, "parseAssetsForAction: _selector invalid");
+ require(isAllowedMaker(order.makerAddress), "parseAssetsForAction: Order maker is not allowed");
+ require(takerAssetFillAmount <= order.takerAssetAmount, "parseAssetsForAction: Taker asset fill amount greater than available");
+ require(order.takerFee < order.makerAssetAmount, "parseAssetsForAction: Fee greater than makerAssetAmount");
+ require(_accountsToRemove.length > 0, "removeAllowedMakers: Empty _accountsToRemove");
+ require(isAllowedMaker(_accountsToRemove[i]), "removeAllowedMakers: Account is not an allowed maker");
+ require(_accountsToAdd.length > 0, "__addAllowedMakers: Empty _accountsToAdd");
+ require(!isAllowedMaker(_accountsToAdd[i]), "__addAllowedMakers: Value already set");
+ 
+CurveExchangeAdapter.sol:
+ require(_selector == TAKE_ORDER_SELECTOR, "parseAssetsForAction: _selector invalid");
+ require(pool != address(0), "parseAssetsForAction: No pool address provided");
+ 
+ExtensionBase.sol:
+ require(msg.sender == getFundDeployer(), "Only the FundDeployer can make this call");
+ revert("receiveCallFromComptroller: Unimplemented for Extension");
+ 
+SolvV2ConvertibleIssuerPositionParser.sol:
+ require(_asset != NATIVE_TOKEN_ADDRESS, "__validateNotNativeToken: Native asset is unsupported");
+ 
+SolvV2ConvertibleIssuerPositionLib.sol:
+ require(block.timestamp >= slotDetail.maturity, "__getWithdrawableAssetAmountsAndRemoveWithdrawnVouchers: pre-mature issued voucher slot");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+SolvV2ConvertibleBuyerPositionParser.sol:
+ require(_asset != NATIVE_TOKEN_ADDRESS, "__validateNotNativeToken: Native asset is unsupported");
+ revert("unsupported feeType");
+ 
+SolvV2ConvertibleBuyerPositionLib.sol:
+ require(settlePrice > 0, "Price not settled");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+AaveDebtPositionParser.sol:
+ require(IValueInterpreter(VALUE_INTERPRETER).isSupportedAsset(_assets[i]), "__validateSupportedAssets: Unsupported asset");
+ 
+AaveDebtPositionLib.sol:
+ require(assetIsCollateral(aTokens[i]), "__removeCollateralAssets: Invalid collateral asset");
+ require(assetIsBorrowed(tokens[i]), "__repayBorrowedAssets: Invalid borrowed asset");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+ArbitraryLoanFixedInterestModule.sol:
+ require(maturity > block.timestamp || (maturity == 0 && scaledPerSecondRatePreMaturity == scaledPerSecondRatePostMaturity), "configure: Post-maturity rate without valid maturity");
+ require(!faceValueIsPrincipalOnly || repaymentTrackingType != RepaymentTrackingType.None, "configure: Invalid face value config");
+ require(_repayAmountInput <= loanBalance, "preRepay: Overpayment");
+ require(value < 2**112, "__safeCastUint112: Value doesn't fit in 112 bits");
+ revert("receiveCallFromLoan: Invalid actionId");
+ 
+ArbitraryLoanTotalNominalDeltaOracleModule.sol:
+ require(oracle != address(0), "configure: Empty oracle");
+ require(oracleInfo.stalenessThreshold >= block.timestamp.sub(lastUpdated) || oracleValue == 0, "calcFaceValue: Stale oracle");
+ revert("receiveCallFromLoan: Invalid actionId");
+ 
+ArbitraryLoanPositionLib.sol:
+ require(!loanIsClosed(), "onlyNotClosed: Loan closed");
+ require(getLoanAsset() == address(0), "__actionConfigureLoan: Already configured");
+ require(borrowerMem != address(0), "__actionConfigureLoan: Empty borrower");
+ require(loanAssetMem != address(0), "__actionConfigureLoan: Empty loan asset");
+ require(!_extraAssetsToSweep.contains(address(loanAssetContract)), "__reconcile: Extra assets contains loan asset");
+ require(msg.sender == getBorrower(), "borrow: Unauthorized");
+ require(_amount > 0, "borrow: Empty _amount");
+ require(repayAmount > 0, "repay: Nothing to repay");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+KilnStakingPositionLib.sol:
+ revert("__claimFees: Unsupported claimFee type");
+ 
+KilnStakingPositionParser.sol:
+ require(IKilnStakingContract(stakingContractAddress).getWithdrawer(publicKeys[i]) == _externalPosition, "parseAssetsForAction: Invalid validator");
+ require(ADDRESS_LIST_REGISTRY_CONTRACT.isInList(STAKING_CONTRACTS_LIST_ID, _who), "__validateStakingContract: Invalid staking contract");
+ 
+LiquityDebtPositionLib.sol:
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+NotionalV2PositionLib.sol:
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+NotionalV2PositionParser.sol:
+ require(uint8(bytes1(encodedTrade)) == LEND_TRADE_ACTION_TYPE, "parseAssetsForAction: Incorrect trade action type");
+ require(uint8(bytes1(encodedTrade)) == BORROW_TRADE_ACTION_TYPE, "parseAssetsForAction: Incorrect trade action type");
+ 
+TheGraphDelegationPositionLib.sol:
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+MapleLiquidityPositionLib.sol:
+ require(amount > 0, "getManagedAssets: No pool v1 snapshot");
+ require(MAPLE_V1_TO_V2_POOL_MAPPER_CONTRACT.snapshotsAreAllowed(), "snapshotPoolTokenV1BalanceValues: Snapshots frozen");
+ require(MAPLE_V1_TO_V2_POOL_MAPPER_CONTRACT.migrationIsAllowed(), "migratePoolsV1ToV2: Migration not allowed");
+ require(poolV2 != address(0), "migratePoolsV1ToV2: No mapping");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+MapleLiquidityPositionParser.sol:
+ require(IMapleV2PoolManager(poolManager).pool() == _poolV2, "__validatePoolV2: Invalid PoolManager relation");
+ require(IMapleV2ProxyFactory(poolManagerFactory).isInstance(poolManager), "__validatePoolV2: Invalid PoolManagerFactory relation");
+ require(IMapleV2Globals(MAPLE_V2_GLOBALS).isFactory("POOL_MANAGER", poolManagerFactory), "__validatePoolV2: Invalid Globals relation");
+ require(IMapleV1MplRewardsFactory(MAPLE_V1_MPL_REWARDS_FACTORY).isMplRewards(_rewardsContract), "__validateRewardsContract: Invalid rewards contract");
+ 
+SolvV2BondIssuerPositionParser.sol:
+ require(_asset != NATIVE_TOKEN_ADDRESS, "__validateNotNativeToken: Native asset is unsupported");
+ 
+SolvV2BondIssuerPositionLib.sol:
+ require(block.timestamp >= slotDetail.maturity, "__getWithdrawableAssetAmountsAndRemoveWithdrawnVouchers: pre-mature issued voucher slot");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+ConvexVotingPositionLib.sol:
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+UniswapV3LiquidityPositionParser.sol:
+ require(__poolIsSupportable(token0, token1), "parseAssetsForAction: Unsupported pair");
+ require(_externalPosition == ERC721(getUniswapV3NonfungiblePositionManager()).ownerOf(nftId), "__decodeEncodedActionArgs: Invalid nftId");
+ 
+UniswapV3LiquidityPositionLib.sol:
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+SolvV2BondBuyerPositionLib.sol:
+ require(settlePrice > 0, "Price not settled");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+CompoundDebtPositionParser.sol:
+ require(ICERC20(cToken).accrueInterest() == 0, "parseAssetsForAction: Error while calling accrueInterest");
+ require(IValueInterpreter(getValueInterpreter()).isSupportedAsset(assets[i]), "parseAssetsForAction: Unsupported asset");
+ require(CompoundPriceFeed(getCompoundPriceFeed()).getTokenFromCToken(cTokens[i]) == assets[i], "parseAssetsForAction: Bad token cToken pair");
+ 
+CompoundDebtPositionLib.sol:
+ require(enterMarketErrorCodes[i] == 0, "__addCollateralAssets: Error while calling enterMarkets on Compound");
+ require(cTokenStored == cTokens[i], "__borrowAssets: Can only borrow from one cToken for a given underlying");
+ require(ICERC20(cTokens[i]).borrow(_amounts[i]) == 0, "__borrowAssets: Problem while borrowing from Compound");
+ require(assetIsCollateral(_assets[i]), "__removeCollateralAssets: Asset is not collateral");
+ require(ICERC20(_cToken).repayBorrow(_amount) == 0, "__repayBorrowedAsset: Error while repaying borrow");
+ revert("receiveCallFromVault: Invalid actionId");
+ 
+ExternalPositionManager.sol:
+ require(vaultProxy != address(0), "receiveCallFromComptroller: Fund is not valid");
+ require(IVault(vaultProxy).canManageAssets(_caller), "receiveCallFromComptroller: Unauthorized");
+ require(parser != address(0), "__createExternalPosition: Invalid typeId");
+ require(ExternalPositionFactory(getExternalPositionFactory()).isExternalPositionProxy(externalPosition), "__reactivateExternalPosition: Account provided is not a valid external position");
+ require(IExternalPositionProxy(externalPosition).getVaultProxy() == _vaultProxy, "__reactivateExternalPosition: External position belongs to a different vault");
+ require(_typeIds.length == _parsers.length && _libs.length == _parsers.length, "updateExternalPositionTypesInfo: Unequal arrays");
+ require(_typeIds[i] < ExternalPositionFactory(getExternalPositionFactory()).getPositionTypeCounter(), "updateExternalPositionTypesInfo: Type does not exist");
+ revert("receiveCallFromComptroller: Invalid _actionId");
+ 
+AllowedExternalPositionTypesPolicy.sol:
+ require(externalPositionTypeIsAllowedForFund(_comptrollerProxy, IExternalPositionProxy(activeExternalPositions[i]).getExternalPositionType()), "activateForFund: Disallowed ExternalPositionType");
+ 
+CumulativeSlippageTolerancePolicy.sol:
+ require(tolerance < ONE_HUNDRED_PERCENT, "addFundSettings: Max tolerance exceeded");
+ 
+MinMaxInvestmentPolicy.sol:
+ require(maxInvestmentAmount == 0 || minInvestmentAmount < maxInvestmentAmount, "__setFundSettings: minInvestmentAmount must be less than maxInvestmentAmount");
+ 
+MinAssetBalancesPostRedemptionPolicy.sol:
+ require(assets.length == minBalances.length, "addFundSettings: Unequal array lengths");
+ 
+AddressListRegistryPolicyBase.sol:
+ require(nextListIds.length != 0, "__updateListsForFund: No lists specified");
+ 
+UintListRegistryPerUserPolicyBase.sol:
+ require(users.length == listsData.length, "__updateListsForFund: unequal arrays");
+ 
+PricelessAssetBypassMixin.sol:
+ require(msg.sender == ComptrollerLib(comptrollerProxy).getVaultProxy(), "startAssetBypassTimelock: Sender is not the VaultProxy of the associated ComptrollerProxy");
+ require(assetIsBypassableForFund(_comptrollerProxy, _baseAsset), "__calcValueExcludingBypassablePricelessAsset: Invalid asset not bypassable");
+ revert("startAssetBypassTimelock: Asset has a price");
+ 
+PolicyBase.sol:
+ require(msg.sender == POLICY_MANAGER, "Only the PolicyManager can make this call");
+ revert("updateFundSettings: Updates not allowed for this policy");
+ 
+AddressListRegistryPerUserPolicyBase.sol:
+ require(users.length == listsData.length, "__updateListsForFund: unequal arrays");
+ 
+PolicyManager.sol:
+ require(__msgSender() == IVault(getVaultProxyForFund(_comptrollerProxy)).getOwner(), "Only the fund owner can call this function");
+ require(IPolicy(_policy).canDisable(), "disablePolicyForFund: _policy cannot be disabled");
+ require(!__policyHookRestrictsCurrentInvestorActions(implementedHooks[i]), "enablePolicyForFund: _policy restricts actions of current investors");
+ require(policies.length == settingsData.length, "setConfigForFund: policies and settingsData array lengths unequal");
+ require(msg.sender == _comptrollerProxy || msg.sender == IComptroller(_comptrollerProxy).getIntegrationManager() || msg.sender == IComptroller(_comptrollerProxy).getExternalPositionManager(), "validatePolicies: Caller not allowed");
+ require(IPolicy(policies[i]).validateRule(_comptrollerProxy, _hook, _validationData), string(abi.encodePacked("Rule evaluated to false: ", IPolicy(policies[i]).identifier())));
+ require(!policyIsEnabledOnHookForFund(_comptrollerProxy, _hooks[i], _policy), "__enablePolicyForFund: Policy is already enabled");
+ 
+DepositWrapper.sol:
+ require(exchangeSelector != BUY_SHARES_ON_BEHALF_SELECTOR, "exchangeEthAndBuyShares: Disallowed selector");
+ require(investmentAmount >= _minInvestmentAmount, "exchangeEthAndBuyShares: _minInvestmentAmount not met");
+ 
+ArbitraryTokenPhasedSharesWrapperLib.sol:
+ require(!isReentered, "nonReentrant: Reentrancy");
+ require(msg.sender == __getOwnerOfVaultProxy(getVaultProxy()), "onlyOwner: Unauthorized");
+ require(getTransfersAllowed(), "onlyTransfersAllowed: Disallowed");
+ require(msg.sender == INITIALIZER, "init: Unauthorized");
+ require(DISPATCHER_CONTRACT.getFundDeployerForVaultProxy(_vaultProxy) == FUND_DEPLOYER_V4, "init: Bad vault version");
+ require(_feeBps < MAX_BPS, "init: Max fee exceeded");
+ require(getState() == State.Deposit, "deposit: Unallowed State");
+ require(ADDRESS_LIST_REGISTRY_CONTRACT.isInList(allowedDepositorListIdMem, msg.sender), "deposit: Unallowed caller");
+ require(depositTokenContract.balanceOf(address(this)).add(_amount) <= totalDepositMaxMem, "deposit: Max exceeded");
+ require(stateMem != State.Locked, "withdraw: Unallowed State");
+ require(_additionalAssets.length == 0, "withdraw: Only deposit token withdrawable");
+ require(_additionalAssets.isUniqueSet(), "withdraw: Duplicate _additionalAssets");
+ require(getState() == State.Deposit, "enterLockedState: Invalid state");
+ require(thirdPartyShares == 0 || receivedShares > thirdPartyShares.mul(MAX_BPS), "enterLockedState: Min shares not met");
+ require(getState() == State.Locked, "enterRedeemState: Invalid state");
+ require(managedAssetAmounts[j] == 0, "enterRedeemState: Non-zero value external position");
+ require(_who == getManager() || _who == __getOwnerOfVaultProxy(_vaultProxy), "__validateIsManagerOrOwner: Unauthorized");
+ 
+GasRelayPaymasterLib.sol:
+ require(msg.sender == getParentComptroller(), "Can only be called by the parent comptroller");
+ require(msg.sender == getHubAddr(), "Can only be called by RelayHub");
+ require(getParentVault() == address(0), "init: Paymaster already initialized");
+ require(_relayRequest.relayData.forwarder == TRUSTED_FORWARDER, "preRelayedCall: Unauthorized forwarder");
+ require(_relayRequest.relayData.baseRelayFee <= RELAY_FEE_MAX_BASE, "preRelayedCall: High baseRelayFee");
+ require(_relayRequest.relayData.pctRelayFee <= RELAY_FEE_MAX_PERCENT, "preRelayedCall: High pctRelayFee");
+ require(IVault(vaultProxy).canRelayCalls(_relayRequest.request.from), "preRelayedCall: Unauthorized caller");
+ require(__isAllowedCall(vaultProxy, _relayRequest.request.to, selector, _relayRequest.request.data), "preRelayedCall: Function call not permitted");
+ require(msg.sender == IVault(vaultProxy).getOwner() || msg.sender == __getComptrollerForVault(vaultProxy), "withdrawBalance: Only owner or comptroller is authorized");
+ require(_txData.length >= 36, "__parseTxDataFirstParameterAsAddress: _txData is not a valid length");
+ require(_txData.length >= 4, "__parseTxDataFunctionSelector: _txData is not a valid length");
+ 
+ValueInterpreter.sol:
+ require(_baseAssets.length == _amounts.length, "calcCanonicalAssetsTotalValue: Arrays unequal lengths");
+ require(isSupportedPrimitiveAsset(_quoteAsset), "calcCanonicalAssetsTotalValue: Unsupported _quoteAsset");
+ require(underlyings.length > 0, "__calcDerivativeValue: No underlyings");
+ require(underlyings.length == underlyingAmounts.length, "__calcDerivativeValue: Arrays unequal lengths");
+ require(primitiveAmountForDerivativeUnit > MIN_INVERSE_RATE_AMOUNT, "__calcPrimitiveToDerivativeValue: Insufficient rate");
+ revert("calcCanonicalAssetValue: Unsupported conversion");
+ revert("__calcAssetValue: Unsupported _baseAsset");
+ 
+ConvexCurveLpStakingWrapperFactory.sol:
+ require(msg.sender == getOwner(), "Only the owner can call this function");
+ require(getWrapperForConvexPool(_pid) == address(0), "deploy: Wrapper already exists");
+ 
+ConvexCurveLpStakingWrapperLib.sol:
+ require(getCurveLpToken() == address(0), "init: Initialized");
+ 
+StakingWrapperBase.sol:
+ require(msg.sender == OWNER, "Only owner callable");
+ require(!isPaused(), "__deposit: Paused");
+ 
+CurvePriceFeed.sol:
+ require(pool != address(0), "calcUnderlyingValues: _derivative is not supported");
+ require(_pools.length == _invariantProxyAssets.length && _pools.length == _reentrantVirtualPrices.length, "updatePoolInfo: Unequal arrays");
+ require(getPoolForDerivative(_derivative) == address(0), "__addDerivative: Already exists");
+ require(ERC20(_derivative).decimals() == 18, "__addDerivative: Not 18-decimal");
+ require(_gaugeTokens.length == _pools.length, "__addGaugeTokens: Unequal arrays");
+ require(getLpTokenForPool(_pools[i]) != address(0), "__addGaugeTokens: Pool not registered");
+ require(_pools.length == _invariantProxyAssets.length && _pools.length == _reentrantVirtualPrices.length && _pools.length == _lpTokens.length && _pools.length == _gaugeTokens.length, "__addPools: Unequal arrays");
+ require(_lpTokens[i] != address(0), "__addPools: Empty lpToken");
+ require(getLpTokenForPool(_pools[i]) == address(0), "__addPools: Already registered");
+ require(_gauge == _metapoolFactoryRegistryContract.get_gauge(_pool), "__validateGaugeMetapoolFactoryRegistry: Invalid gauge");
+ require(ICurveLiquidityPool(_pool).get_virtual_price() > 0, "__validatePoolCompatibility: Incompatible");
+ revert("addPools: Invalid inputs");
+ revert("__validateGaugeMainRegistry: Invalid gauge");
+ 
+FiduPriceFeed.sol:
+ require(isSupportedAsset(_derivative), "calcUnderlyingValues: Unsupported derivative");
+ 
+BalancerV2StablePoolPriceFeed.sol:
+ require(_pools.length == _invariantProxyAssets.length, "addPools: Unequal arrays");
+ require(!isSupportedAsset(_pools[i]), "addPools: Already registered");
+ require(__isPoolFromFactory(_pools[i]), "addPools: Invalid factory");
+ 
+SinglePeggedDerivativePriceFeedBase.sol:
+ require(ERC20(_derivative).decimals() == ERC20(_underlying).decimals(), "constructor: Unequal decimals");
+ require(isSupportedAsset(_derivative), "calcUnderlyingValues: Not a supported derivative");
+ 
+SingleUnderlyingDerivativeRegistryMixin.sol:
+ require(_derivatives.length > 0, "addDerivatives: Empty _derivatives");
+ require(_derivatives.length == _underlyings.length, "addDerivatives: Unequal arrays");
+ require(_derivatives[i] != address(0), "addDerivatives: Empty derivative");
+ require(_underlyings[i] != address(0), "addDerivatives: Empty underlying");
+ require(getUnderlyingForDerivative(_derivatives[i]) == address(0), "addDerivatives: Value already set");
+ require(_derivatives.length > 0, "removeDerivatives: Empty _derivatives");
+ require(getUnderlyingForDerivative(_derivatives[i]) != address(0), "removeDerivatives: Value not set");
+ 
+PeggedDerivativesPriceFeedBase.sol:
+ require(underlying != address(0), "calcUnderlyingValues: Not a supported derivative");
+ require(ERC20(_derivative).decimals() == ERC20(_underlying).decimals(), "__validateDerivative: Unequal decimals");
+ 
+CompoundPriceFeed.sol:
+ require(underlyings_[0] != address(0), "calcUnderlyingValues: Unsupported derivative");
+ require(_cTokens.length > 0, "addCTokens: Empty _cTokens");
+ require(cTokenToToken[_cTokens[i]] == address(0), "addCTokens: Value already set");
+ 
+UniswapV2PoolPriceFeed.sol:
+ require(_poolTokens.length > 0, "addPoolTokens: Empty _poolTokens");
+ require(_poolTokens[i] != address(0), "addPoolTokens: Empty poolToken");
+ require(poolTokenToInfo[_poolTokens[i]].token0 == address(0), "addPoolTokens: Value already set");
+ require(__poolTokenIsSupportable(token0, token1), "addPoolTokens: Unsupported pool token");
+ 
+PoolTogetherV4PriceFeed.sol:
+ require(prizePoolAsset == _underlying, "__validateDerivative: Invalid ptToken or token provided");
+ 
+IdlePriceFeed.sol:
+ require(underlyings_[0] != address(0), "calcUnderlyingValues: Unsupported derivative");
+ require(IIdleTokenV4(_derivative).token() == _underlying, "__validateDerivative: Invalid underlying for IdleToken");
+ 
+RevertingPriceFeed.sol:
+ revert("calcUnderlyingValues: RevertingPriceFeed");
+ 
+YearnVaultV2PriceFeed.sol:
+ require(underlyings_[0] != address(0), "calcUnderlyingValues: Unsupported derivative");
+ require(isValidYearnVaultV2, "__validateDerivative: Invalid yVault for underlying");
+ require(ERC20(_derivative).decimals() == ERC20(_underlying).decimals(), "__validateDerivative: Incongruent decimals");
+ 
+AggregatedDerivativePriceFeedMixin.sol:
+ require(derivativePriceFeed != address(0), "calcUnderlyingValues: _derivative is not supported");
+ require(_derivatives.length == _priceFeeds.length, "__addDerivatives: Unequal _derivatives and _priceFeeds array lengths");
+ require(getPriceFeedForDerivative(_derivatives[i]) == address(0), "__addDerivatives: Already added");
+ require(getPriceFeedForDerivative(_derivatives[i]) != address(0), "removeDerivatives: Derivative not yet added");
+ require(IDerivativePriceFeed(_priceFeed).isSupportedAsset(_derivative), "__validateDerivativePriceFeed: Unsupported derivative");
+ 
+ChainlinkPriceFeedMixin.sol:
+ require(baseAssetRate > 0, "__calcCanonicalValue: Invalid base asset rate");
+ require(quoteAssetRate > 0, "__calcCanonicalValue: Invalid quote asset rate");
+ require(_nextEthUsdAggregator != prevEthUsdAggregator, "__setEthUsdAggregator: Value already set");
+ require(ethPerUsdRate > 0, "__calcConversionAmount: Bad ethUsd rate");
+ require(aggregator != address(0), "__getLatestRateData: Primitive does not exist");
+ require(_latestUpdatedAt >= block.timestamp.sub(getStaleRateThreshold()), "__validateRateIsNotStale: Stale rate detected");
+ require(_primitives.length == _aggregators.length, "__addPrimitives: Unequal _primitives and _aggregators array lengths");
+ require(_primitives.length == _rateAssets.length, "__addPrimitives: Unequal _primitives and _rateAssets array lengths");
+ require(getAggregatorForPrimitive(_primitives[i]) == address(0), "__addPrimitives: Value already set");
+ require(getAggregatorForPrimitive(_primitives[i]) != address(0), "__removePrimitives: Primitive not yet added");
+ require(answer > 0, "__validateAggregator: No rate detected");
+ 
+ProtocolFeeTracker.sol:
+ require(SECONDS_IN_YEAR == (60 * 60 * 24 * 36525) / 100, "constructor: Incorrect SECONDS_IN_YEAR");
+ require(msg.sender == getFundDeployer(), "Only the FundDeployer can call this function");
+ require(lastPaid > 0, "payFee: VaultProxy not initialized");
+ require(_nextFeeBpsDefault < MAX_BPS, "setDefaultFeeBps: Exceeds max");
+ require(_nextFeeBpsOverride < MAX_BPS, "setFeeBpsOverrideForVault: Exceeds max");
+ require(prevTimestamp > 0, "setLastPaidForVault: _vaultProxy not initialized");
+ require(_nextTimestamp > prevTimestamp || _nextTimestamp > block.timestamp, "setLastPaidForVault: Can only increase or set a future timestamp");
+ 
+FundDeployerOwnerMixin.sol:
+ require(msg.sender == getOwner(), "onlyFundDeployerOwner: Only the FundDeployer owner can call this function");
+ 
+NominatedOwnerMixin.sol:
+ require(msg.sender == getOwner(), "onlyOwner: Unauthorized");
+ require(msg.sender == nextOwner, "claimOwnership: Unauthorized");
+ 
+BeaconProxyFactory.sol:
+ require(msg.sender == getOwner(), "setCanonicalLib: Only the owner can call this function");
+
+FundDeployer.sol:
+ require(msg.sender == DISPATCHER, "Only Dispatcher can call this function");
+ require(releaseIsLive(), "Release is not yet live");
+ require(msg.sender == getOwner(), "Only the contract owner can call this function");
+ require(_storageValue == address(0), "This value can only be set once");
+ require(IVault(_vaultProxy).canMigrate(_who), "Only a permissioned migrator can call this function");
+ require(ANY_VAULT_CALL == keccak256(abi.encodePacked("mln.vaultCall.any")), "constructor: Incorrect ANY_VAULT_CALL");
+ require(_nextDeactivateFeeManagerGasLimit > 0 && _nextPayProtocolFeeGasLimit > 0, "setGasLimitsForDestructCall: Zero value not allowed");
+ require(msg.sender == getCreator(), "setReleaseLive: Only the creator can call this function");
+ require(!releaseIsLive(), "setReleaseLive: Already live");
+ require(getComptrollerLib() != address(0), "setReleaseLive: comptrollerLib is not set");
+ require(getProtocolFeeTracker() != address(0), "setReleaseLive: protocolFeeTracker is not set");
+ require(getVaultLib() != address(0), "setReleaseLive: vaultLib is not set");
+ require(!IDispatcher(getDispatcher()).hasMigrationRequest(_vaultProxy), "createMigrationRequest: A MigrationRequest already exists");
+ require(IDispatcher(getDispatcher()).getFundDeployerForVaultProxy(_vaultProxy) == address(this), "createReconfigurationRequest: VaultProxy not on this release");
+ require(!hasReconfigurationRequest(_vaultProxy), "createReconfigurationRequest: VaultProxy has a pending reconfiguration request");
+ require(nextComptrollerProxy != address(0), "cancelReconfiguration: No reconfiguration request exists for _vaultProxy");
+ require(request.nextComptrollerProxy != address(0), "executeReconfiguration: No reconfiguration request exists for _vaultProxy");
+ require(block.timestamp >= request.executableTimestamp, "executeReconfiguration: The reconfiguration timelock has not elapsed");
+ require(IDispatcher(getDispatcher()).getFundDeployerForVaultProxy(_vaultProxy) == address(this), "executeReconfiguration: _vaultProxy is no longer on this release");
+ require(isAllowedBuySharesOnBehalfCaller(_callers[i]), "deregisterBuySharesOnBehalfCallers: Caller not registered");
+ require(!isAllowedBuySharesOnBehalfCaller(_callers[i]), "registerBuySharesOnBehalfCallers: Caller already registered");
+ require(_contracts.length > 0, "deregisterVaultCalls: Empty _contracts");
+ require(_contracts.length == _selectors.length && _contracts.length == _dataHashes.length, "deregisterVaultCalls: Uneven input arrays");
+ require(isRegisteredVaultCall(_contracts[i], _selectors[i], _dataHashes[i]), "deregisterVaultCalls: Call not registered");
+ require(_contracts.length > 0, "registerVaultCalls: Empty _contracts");
+ require(_contracts.length == _selectors.length && _contracts.length == _dataHashes.length, "registerVaultCalls: Uneven input arrays");
+ require(!isRegisteredVaultCall(_contracts[i], _selectors[i], _dataHashes[i]), "registerVaultCalls: Call already registered");
+ 
+VaultLib.sol:
+ require(_asset != address(this), "Cannot act on shares");
+ require(msg.sender == accessor, "Only the designated accessor can make this call");
+ require(__msgSender() == owner, "Only the owner can call this function");
+ require(!sharesAreFreelyTransferable(), "setFreelyTransferableShares: Already set");
+ require(__msgSender() == owner || msg.sender == getFundDeployer(), "Unauthorized");
+ require(!isAssetManager(_managers[i]), "addAssetManagers: Manager already registered");
+ require(msg.sender == nextOwner, "claimOwnership: Only the nominatedOwner can call this function");
+ require(isAssetManager(_managers[i]), "removeAssetManagers: Manager not registered");
+ require(removedNominatedOwner != address(0), "removeNominatedOwner: There is no nominated owner");
+ require(_nextMigrator != prevMigrator, "setMigrator: Value already set");
+ require(_nextNominatedOwner != address(0), "setNominatedOwner: _nextNominatedOwner cannot be empty");
+ require(_nextNominatedOwner != owner, "setNominatedOwner: _nextNominatedOwner is already the owner");
+ require(_nextNominatedOwner != nominatedOwner, "setNominatedOwner: _nextNominatedOwner is already nominated");
+ require(msg.sender == getFundDeployer(), "Only the FundDeployer can make this call");
+ require(isActiveExternalPosition(_externalPosition), "__callOnExternalPosition: Not an active external position");
+ require(trackedAssets.length + activeExternalPositions.length < getPositionsLimit(), "__validatePositionsLimit: Limit exceeded");
+ 
+ComptrollerLib.sol:
+ require(msg.sender == getFundDeployer(), "Only FundDeployer callable");
+ require(msg.sender == getGasRelayPaymaster(), "Only Gas Relay Paymaster callable");
+ require(_who == IVault(getVaultProxy()).getOwner(), "Only fund owner callable");
+ require(!reentranceLocked, "Re-entrance");
+ require(!permissionedVaultActionAllowed, "Vault action re-entrance");
+ require(lastSharesBoughtTimestamp == 0 || block.timestamp.sub(lastSharesBoughtTimestamp) >= getSharesActionTimelock() || __hasPendingMigrationOrReconfiguration(_vaultProxy), "Shares action timelocked");
+ require(_extension == getFeeManager() || _extension == getIntegrationManager() || _extension == getExternalPositionManager(), "callOnExtension: _extension invalid");
+ require(IFundDeployer(getFundDeployer()).isAllowedVaultCall(_contract, _selector, keccak256(_encodedArgs)), "vaultCallOnContract: Not allowed");
+ require(IVault(vaultProxyCopy).canManageAssets(__msgSender()), "buyBackProtocolFeeShares: Unauthorized");
+ require(abi.decode(_actionData, (address)) != getDenominationAsset(), "permissionedVaultAction: Cannot untrack denomination asset");
+ require(validAction, "__assertPermissionedVaultAction: Action not allowed");
+ require(getDenominationAsset() == address(0), "init: Already initialized");
+ require(IValueInterpreter(getValueInterpreter()).isSupportedPrimitiveAsset(_denominationAsset), "init: Bad denomination asset");
+ require(!isLib, "__selfDestruct: Only delegate callable");
+ require(!hasSharesActionTimelock || IFundDeployer(getFundDeployer()).isAllowedBuySharesOnBehalfCaller(canonicalSender), "buySharesOnBehalf: Unauthorized");
+ require(_minSharesQuantity > 0, "__buyShares: _minSharesQuantity must be >0");
+ require(!_hasSharesActionTimelock || !__hasPendingMigrationOrReconfiguration(vaultProxyCopy), "__buyShares: Pending migration or reconfiguration");
+ require(sharesReceived_ >= _minSharesQuantity, "__buyShares: Shares received < _minSharesQuantity");
+ require(_payoutAssets.length == _payoutAssetPercentages.length, "redeemSharesForSpecificAssets: Unequal arrays");
+ require(_payoutAssets.isUniqueSet(), "redeemSharesForSpecificAssets: Duplicate payout asset");
+ require(_additionalAssets.isUniqueSet(), "redeemSharesInKind: _additionalAssets contains duplicates");
+ require(_assetsToSkip.isUniqueSet(), "redeemSharesInKind: _assetsToSkip contains duplicates");
+ require(payoutAmounts_[i] > 0, "__payoutSpecifiedAssetPercentages: Zero amount for asset");
+ require(percentagesTotal == ONE_HUNDRED_PERCENT, "__payoutSpecifiedAssetPercentages: Percents must total 100%");
+ require(sharesToRedeem_ > 0, "__redeemSharesSetup: No shares to redeem");
+ require(msg.sender == vaultProxyCopy, "preTransferSharesHook: Only VaultProxy callable");
+ require(getGasRelayPaymaster() == address(0), "deployGasRelayPaymaster: Paymaster already deployed");
+ 
+ExternalPositionProxy.sol:
+ require(msg.sender == getVaultProxy(), "receiveCallFromVault: Only the vault can make this call");
+ 
+ExternalPositionFactory.sol:
+ require(msg.sender == IDispatcher(getDispatcher()).getOwner(), "Only the Dispatcher owner can call this function");
+ require(isPositionDeployer(msg.sender), "deploy: Only a position deployer can call this function");
+ require(_typeIds.length == _labels.length, "updatePositionTypeLabels: Unequal arrays");
+ require(!isPositionDeployer(_accounts[i]), "addPositionDeployers: Account is already a position deployer");
+ require(isPositionDeployer(_accounts[i]), "removePositionDeployers: Account is not a position deployer");
+ 
+MapleV1ToV2PoolMapper.sol:
+ require(msg.sender == IDispatcher(DISPATCHER).getOwner(), "Only the Dispatcher owner can call this function");
+ 
+ManualValueOracleLib.sol:
+ require(getOwner() == address(0), "init: Already initialized");
+ require(_owner != address(0), "init: Empty _owner");
+ require(msg.sender == getUpdater(), "updateValue: Unauthorized");
+ 
+FundValueCalculatorUsdWrapper.sol:
+ require(usdPerEthRate > 0, "__convertEthToUsd: Bad ethUsd rate");
+ require(updatedAt >= block.timestamp.sub(getStaleRateThreshold()), "__convertEthToUsd: Stale rate detected");
+ 
+FundValueCalculatorRouter.sol:
+ require(fundDeployer != address(0), "getFundValueCalculatorForVault: Invalid _vaultProxy");
+ require(fundValueCalculator != address(0), "getFundValueCalculatorForVault: No FundValueCalculator set");
+ require(msg.sender == IDispatcher(getDispatcher()).getOwner(), "Only the Dispatcher owner can call this function");
+ require(_fundDeployers.length == _fundValueCalculators.length, "__setFundValueCalculators: Unequal array lengths");
+ 
+Dispatcher.sol:
+ require(msg.sender == currentFundDeployer, "Only the current FundDeployer can call this function");
+ require(msg.sender == owner, "Only the contract owner can call this function");
+ require(msg.sender == nextOwner, "claimOwnership: Only the nominatedOwner can call this function");
+ require(removedNominatedOwner != address(0), "removeNominatedOwner: There is no nominated owner");
+ require(_nextFundDeployer != address(0), "setCurrentFundDeployer: _nextFundDeployer cannot be empty");
+ require(__isContract(_nextFundDeployer), "setCurrentFundDeployer: Non-contract _nextFundDeployer");
+ require(_nextFundDeployer != prevFundDeployer, "setCurrentFundDeployer: _nextFundDeployer is already currentFundDeployer");
+ require(_nextNominatedOwner != address(0), "setNominatedOwner: _nextNominatedOwner cannot be empty");
+ require(_nextNominatedOwner != owner, "setNominatedOwner: _nextNominatedOwner is already the owner");
+ require(_nextNominatedOwner != nominatedOwner, "setNominatedOwner: _nextNominatedOwner is already nominated");
+ require(__isContract(_vaultAccessor), "deployVaultProxy: Non-contract _vaultAccessor");
+ require(nextFundDeployer != address(0), "cancelMigration: No migration request exists");
+ require(msg.sender == nextFundDeployer || IMigratableVault(_vaultProxy).canMigrate(msg.sender), "cancelMigration: Not an allowed caller");
+ require(nextFundDeployer != address(0), "executeMigration: No migration request exists for _vaultProxy");
+ require(msg.sender == nextFundDeployer, "executeMigration: Only the target FundDeployer can call this function");
+ require(nextFundDeployer == currentFundDeployer, "executeMigration: The target FundDeployer is no longer the current FundDeployer");
+ require(block.timestamp >= executableTimestamp, "executeMigration: The migration timelock has not elapsed");
+ require(_nextTimelock != prevTimelock, "setMigrationTimelock: _nextTimelock is the current timelock");
+ require(__isContract(_nextVaultAccessor), "signalMigration: Non-contract _nextVaultAccessor");
+ require(prevFundDeployer != address(0), "signalMigration: _vaultProxy does not exist");
+ require(nextFundDeployer != prevFundDeployer, "signalMigration: Can only migrate to a new FundDeployer");
+ require(_bypassFailure, string(abi.encodePacked("MigrationOutCancelHook: ", returnData)));
+ require(_bypassFailure, string(abi.encodePacked(__migrationOutHookFailureReasonPrefix(_hook), returnData)));
+ 
+AddressListRegistry.sol:
+ require(__isListOwner(msg.sender, _id), "Only callable by list owner");
+ require(updateType == UpdateType.AddOnly || updateType == UpdateType.AddAndRemove, "addToList: Cannot add to list");
+ require(_ids.length == _descriptions.length, "attestLists: Unequal arrays");
+ require(__isListOwner(msg.sender, _ids[i]), "attestLists: Only callable by list owner");
+ require(updateType == UpdateType.RemoveOnly || updateType == UpdateType.AddAndRemove, "removeFromList: Cannot remove from list");
+ require(_nextUpdateType == UpdateType.None || prevUpdateType == UpdateType.AddAndRemove, "setListUpdateType: _nextUpdateType not allowed");
+ 
+AaveV3ATokenListOwner.sol:
+ require(aToken == poolContract .getReserveData(IAaveAToken(aToken).UNDERLYING_ASSET_ADDRESS()) .aTokenAddress, "__validateItems: Invalid aToken");
+ 
+CompoundV3CTokenListOwner.sol:
+ require(CONFIGURATOR_CONTRACT.getConfiguration(_items[i]).baseToken != address(0), "__validateItems: Invalid cToken");
+ 
+AaveV2ATokenListOwner.sol:
+ require(aToken == lendingPoolContract.getReserveData(underlying).aTokenAddress, "__validateItems: Invalid aToken");
+ 
+VaultProxy.sol:
+ require(bytes32(0x027b9570e9fedc1a80b937ae9a06861e5faef3992491af30b684a64b3fbec7a5) == ProxiableVaultLib(_vaultLib).proxiableUUID(), "constructor: _vaultLib not compatible");
+ 
+VaultLibBaseCore.sol:
+ require(creator == address(0), "init: Proxy already initialized");
+ require(msg.sender == creator, "setAccessor: Only callable by the contract creator");
+ require(msg.sender == creator, "setVaultLib: Only callable by the contract creator");
+ require(_nextAccessor != address(0), "__setAccessor: _nextAccessor cannot be empty");
+ require(_nextOwner != address(0), "__setOwner: _nextOwner cannot be empty");
+ require(_nextOwner != prevOwner, "__setOwner: _nextOwner is the current owner");
+ 
+ProxiableVaultLib.sol:
+ require(bytes32(0x027b9570e9fedc1a80b937ae9a06861e5faef3992491af30b684a64b3fbec7a5) == ProxiableVaultLib(_nextVaultLib).proxiableUUID(), "__updateCodeAddress: _nextVaultLib not compatible");
+ 
+SharesTokenBase.sol:
+ require(_owner != address(0), "ERC20: approve from the zero address");
+ require(_spender != address(0), "ERC20: approve to the zero address");
+ require(_account != address(0), "ERC20: burn from the zero address");
+ require(_account != address(0), "ERC20: mint to the zero address");
+ require(_sender != address(0), "ERC20: transfer from the zero address");
+ require(_recipient != address(0), "ERC20: transfer to the zero address");
+ 
+UintListRegistry.sol:
+ require(__isListOwner(msg.sender, _id), "Only callable by list owner");
+ require(updateType == UpdateType.AddOnly || updateType == UpdateType.AddAndRemove, "addToList: Cannot add to list");
+ require(_ids.length == _descriptions.length, "attestLists: Unequal arrays");
+ require(__isListOwner(msg.sender, _ids[i]), "attestLists: Only callable by list owner");
+ require(updateType == UpdateType.RemoveOnly || updateType == UpdateType.AddAndRemove, "removeFromList: Cannot remove from list");
+ require(_nextUpdateType == UpdateType.None || prevUpdateType == UpdateType.AddAndRemove, "setListUpdateType: _nextUpdateType not allowed");
+ 
+GlobalConfigLibBaseCore.sol:
+ require(msg.sender == IDispatcher(getDispatcher()).getOwner(), "Only the Dispatcher owner can call this function");
+ require(getDispatcher() == address(0), "init: Proxy already initialized");
+ 
+GlobalConfigProxy.sol:
+ require(EIP_1822_PROXIABLE_UUID == bytes32(keccak256("mln.proxiable.globalConfigLib")), "constructor: Invalid EIP_1822_PROXIABLE_UUID");
+ require(EIP_1967_SLOT == bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1), "constructor: Invalid EIP_1967_SLOT");
+ require(ProxiableGlobalConfigLib(_globalConfigLib).proxiableUUID() == EIP_1822_PROXIABLE_UUID, "constructor: _globalConfigLib not compatible");
+ 
+ProxiableGlobalConfigLib.sol:
+ require(ProxiableGlobalConfigLib(_nextGlobalConfigLib).proxiableUUID() == bytes32(EIP_1822_PROXIABLE_UUID), "__updateCodeAddress: _nextGlobalConfigLib not compatible");
+ 
+GlobalConfigLib.sol:
+ require(_depositAsset == IGlobalConfigLibComptrollerV4(comptrollerProxy).getDenominationAsset(), "formatDepositCall: Unsupported _depositAsset");
+ require(_amountIsShares, "formatSingleAssetRedemptionCall: _amountIsShares must be true");
+ revert("formatDepositCall: Unsupported release");
+ revert("formatSingleAssetRedemptionCall: Unsupported release");
+ 
+SharesSplitterLib.sol:
+ require(msg.sender == INITIALIZER, "init: Unauthorized");
+ require(sharesRedeemed_ > 0, "redeemShares: No shares claimed");
+ require(GLOBAL_CONFIG_CONTRACT.isValidRedeemSharesCall(_vaultProxy, NO_VALIDATION_DUMMY_ADDRESS, sharesRedeemed_, _redeemContract, _redeemSelector, _redeemData), "redeemShares: Invalid redeem call");
+ 
+SharesSplitterFactory.sol:
+ require(_users.length == _splitPercentages.length, "deploy: Unequal arrays");
+ 
+TreasurySplitterMixin.sol:
+ require(_amount <= claimableBalForUser, "claimToken: _amount exceeds claimable");
+ require(_users[i] != address(0), "__setSplitRatio: Empty user");
+ require(_users[i] != _users[j], "__setSplitRatio: Duplicate user");
+ require(totalSplitPercentage == ONE_HUNDRED_PERCENT, "__setSplitRatio: Split not 100%");
+ 
+ProtocolFeeReserveLibBaseCore.sol:
+ require(msg.sender == IDispatcher(getDispatcher()).getOwner(), "Only the Dispatcher owner can call this function");
+ require(getDispatcher() == address(0), "init: Proxy already initialized");
+ 
+ProxiableProtocolFeeReserveLib.sol:
+ require(ProxiableProtocolFeeReserveLib(_nextProtocolFeeReserveLib).proxiableUUID() == bytes32(EIP_1822_PROXIABLE_UUID), "__updateCodeAddress: _nextProtocolFeeReserveLib not compatible");
+ 
+ProtocolFeeReserveProxy.sol:
+ require(EIP_1822_PROXIABLE_UUID == bytes32(keccak256("mln.proxiable.protocolFeeReserveLib")), "constructor: Invalid EIP_1822_PROXIABLE_UUID");
+ require(EIP_1967_SLOT == bytes32(uint256(keccak256("eip1967.proxy.implementation")) - 1), "constructor: Invalid EIP_1967_SLOT");
+ require(ProxiableProtocolFeeReserveLib(_protocolFeeReserveLib).proxiableUUID() == EIP_1822_PROXIABLE_UUID, "constructor: _protocolFeeReserveLib not compatible");
+ 
+GatedRedemptionQueueSharesWrapperLib.sol:
+ require(vaultProxy == address(0), "init: Initialized");
+ require(msg.sender == IVaultCore(getVaultProxy()).getOwner(), "Unauthorized");
+ require(_amount <= balanceOf(_sender).sub(redemptionQueue.userToRequest[_sender].sharesPending), "__preProcessTransfer: In redemption queue");
+ require(transferApproval == _amount, "__preProcessTransfer: Approval mismatch");
+ require(getDepositMode() == DepositMode.Direct, "deposit: Wrong mode");
+ require(sharesReceived_ >= _minSharesAmount, "deposit: Insufficient shares");
+ require(getDepositMode() == DepositMode.Request, "requestDeposit: Wrong mode");
+ require(_depositAssetAmount > 0, "requestDeposit: Missing amount");
+ require(_depositAssetAmount == msg.value, "__preDeposit: msg.value mismatch");
+ require(msg.value == 0, "__preDeposit: Non-zero msg.value");
+ require(depositApproval == _depositAssetAmount, "__preDeposit: Approval mismatch");
+ require(!__isInLatestRedemptionWindow(block.timestamp), "cancelRequestRedeem: Inside redemption window");
+ require(userSharesPending > 0, "cancelRequestRedeem: No request");
+ require(!__isInLatestRedemptionWindow(block.timestamp), "requestRedeem: Inside redemption window");
+ require(_sharesAmount <= redemptionApproval, "requestRedeem: Exceeds approval");
+ require(nextUserSharesPending <= balanceOf(msg.sender), "requestRedeem: Exceeds balance");
+ require(__isWithinRange({ _value: block.timestamp, _rangeStart: windowStart, _rangeEnd: windowEnd }), "redeemFromQueue: Outside redemption window");
+ require(_endIndex < queueLength, "redeemFromQueue: Out-of-range _endIndex");
+ require(_startIndex <= _endIndex, "redeemFromQueue: Misordered indexes");
+ require(!__isWithinRange({ _value: request.lastRedeemed, _rangeStart: windowStart, _rangeEnd: windowEnd }), "redeemFromQueue: Already redeemed in window");
+ require(_users.length == _assets.length && _users.length == _amounts.length, "setDepositApprovals: Unequal arrays");
+ require(_users.length == _amounts.length, "setRedemptionApprovals: Unequal arrays");
+ require(_users.length == _recipients.length && _users.length == _amounts.length, "setTransferApprovals: Unequal arrays");
+ require(_nextRedemptionAsset != address(0), "__setRedemptionAsset: No redemption asset");
+ require(_nextWindowConfig.firstWindowStart > block.timestamp, "__setRedemptionWindowConfig: Invalid firstWindowStart");
+ require(_nextWindowConfig.duration > 0, "__setRedemptionWindowConfig: No duration");
+ require(_nextWindowConfig.frequency > _nextWindowConfig.duration, "__setRedemptionWindowConfig: duration exceeds frequency");
+ require(_nextWindowConfig.relativeSharesCap <= ONE_HUNDRED_PERCENT, "__setRedemptionWindowConfig: relativeSharesCap exceeds 100%");
+ require(isManager(manager), "removeManagers: Not a manager");
+ require(!isManager(manager), "__addManagers: Already manager");
+ 
+GatedRedemptionQueueSharesWrapperFactory.sol:
+ require(DISPATCHER_CONTRACT.getFundDeployerForVaultProxy(_vaultProxy) != address(0), "_vaultProxy: Invalid vault");
+ require(msg.sender == DISPATCHER_CONTRACT.getOwner(), "setImplementation: Unauthorized");
+ 

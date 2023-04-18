@@ -5,7 +5,7 @@ import {
   calculateManagementFeeSharesDue,
   decodeManagementFeeSettings,
 } from "./managementFee.js";
-import { VITALIK } from "../../../tests/utils/constants.js";
+import { VITALIK } from "../../../tests/constants.js";
 import { toBps, toSeconds } from "../../utils/conversion.js";
 
 test("encodeManagementFeeSettings should work correctly", () => {
@@ -112,5 +112,5 @@ test("calculateManagementFeeSharesDue should work correctly", () => {
       sharesSupply: 1000000000000000000n,
       secondsSinceLastSettled: toSeconds({ years: 1 }),
     }),
-  ).toMatchInlineSnapshot('5028576134389896n');
+  ).toMatchInlineSnapshot("5028576134389896n");
 });

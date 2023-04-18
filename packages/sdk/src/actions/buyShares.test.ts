@@ -1,37 +1,94 @@
 import { expect, test } from "vitest";
-import { toBps, toWei } from "../utils/conversion.js";
-import { publicClient } from "../../tests/client.js";
-import { ALICE, WETH } from "../../tests/utils/constants.js";
-import { approveSpend, createTestVault, wrapEther } from "../../tests/utils/helpers.js";
-import { simulateBuyShares } from "./buyShares.js";
+import { applySlippage, toBps, toWei } from "../utils/conversion.js";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/client.js";
+import { ALICE, WETH } from "../../tests/constants.js";
+import { getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
+import { encodePolicySettings } from "../policies/settings.js";
+import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
+import { POLICY_VIOLATION_MIN_MAX_INVESTMENT } from "../errors/errorCodes.js";
+import { EnzymeError, catchError } from "../errors/catchError.js";
+import { getBalanceOf } from "../../tests/actions/getBalanceOf.js";
 
-test("should set up a vault with the given parameters", async () => {
-  const { comptrollerProxy } = await createTestVault();
-
-  await wrapEther({
-    account: ALICE,
-    amount: toWei(250),
+test("step by step happy path", async () => {
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner: ALICE,
+    denominationAsset: WETH,
   });
 
-  await approveSpend({
+  await testActions.wrapEther({
+    account: ALICE,
+    amount: toWei(150),
+  });
+
+  await testActions.approveSpend({
     token: WETH,
     account: ALICE,
     spender: comptrollerProxy,
-    amount: toWei(250),
+    amount: toWei(150),
   });
 
-  const { transactionRequest, expectedSharesQuantity, minSharesQuantity, appliedSlippageBps } = await simulateBuyShares(
-    {
-      depositorAddress: ALICE,
-      investmentAmount: toWei(150),
-      maxSlippageBps: toBps(0.1),
-      publicClient,
-      comptrollerProxy,
-    },
-  );
+  const expectedShareQuantity = await getExpectedShareQuantity({
+    publicClient,
+    sharesBuyer: ALICE,
+    comptrollerProxy,
+    investmentAmount: toWei(150),
+  });
 
-  expect(transactionRequest).toBeDefined();
-  expect(expectedSharesQuantity).toMatchInlineSnapshot("150000000000000000000n");
-  expect(minSharesQuantity).toMatchInlineSnapshot("135000000000000000000n");
-  expect(appliedSlippageBps).toMatchInlineSnapshot("1000n");
+  expect(expectedShareQuantity).toBe(toWei(150));
+
+  const { request, result } = await publicClient.simulateContract({
+    address: comptrollerProxy,
+    account: ALICE,
+    ...prepareBuySharesParams({
+      investmentAmount: toWei(150),
+      minSharesQuantity: applySlippage(expectedShareQuantity, toBps(0.05)),
+    }),
+  });
+
+  expect(request).toBeTruthy();
+  expect(result).toBe(expectedShareQuantity); // For good measure ...
+
+  const balanceOfBefore = await getBalanceOf({
+    token: vaultProxy,
+    account: ALICE,
+  });
+
+  expect(balanceOfBefore).toBe(0n);
+
+  await sendTestTransaction(request);
+
+  const balanceOfAfter = await getBalanceOf({
+    token: vaultProxy,
+    account: ALICE,
+  });
+
+  expect(balanceOfAfter).toBe(toWei(150));
+});
+
+test("should fail to buy shares if there's a policy violation", async () => {
+  const { comptrollerProxy } = await testActions.createTestVault({
+    vaultOwner: ALICE,
+    denominationAsset: WETH,
+    policySettings: encodePolicySettings([
+      {
+        address: "0xebdadfc929c357d12281118828aea556db5be30c",
+        settings: encodeMinMaxInvestmentPolicySettings({
+          minInvestmentAmount: toWei(10),
+          maxInvestmentAmount: toWei(100),
+        }),
+      },
+    ]),
+  });
+
+  await expect(async () => {
+    try {
+      await testActions.buyShares({
+        sharesBuyer: ALICE,
+        comptrollerProxy,
+        investmentAmount: toWei(150),
+      });
+    } catch (error) {
+      throw catchError(error);
+    }
+  }).rejects.toThrow(new EnzymeError(POLICY_VIOLATION_MIN_MAX_INVESTMENT));
 });

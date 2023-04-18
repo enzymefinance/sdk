@@ -44,7 +44,7 @@ export function VaultPerformance({ address }: { address: string }) {
             categories={["netShareValue"]}
             index="timestamp"
             colors={["fuchsia"]}
-            valueFormatter={(number) => format.format(number)}
+            valueFormatter={(number: number) => format.format(number)}
           />
         )}
       </Card>
@@ -61,7 +61,7 @@ export function VaultPerformance({ address }: { address: string }) {
             categories={["grossAssetValue"]}
             index="timestamp"
             colors={["indigo"]}
-            valueFormatter={(number) => format.format(number)}
+            valueFormatter={(number: number) => format.format(number)}
           />
         )}
       </Card>

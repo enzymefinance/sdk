@@ -1,6 +1,11 @@
 import { createPublicClient, createTestClient, http } from "viem";
 import { mainnet } from "viem/chains";
-import { createTestSender } from "./utils/transactions.js";
+import { createTestSender } from "./utils/createTestSender.js";
+import { approveSpend } from "./actions/approveSpend.js";
+import { buyShares } from "./actions/buyShares.js";
+import { createTestVault } from "./actions/createTestVault.js";
+import { wrapEther } from "./actions/wrapEther.js";
+import { getBalanceOf } from "./actions/getBalanceOf.js";
 
 export const testClient = createTestClient({
   chain: mainnet,
@@ -14,3 +19,11 @@ export const publicClient = createPublicClient({
 });
 
 export const sendTestTransaction = createTestSender(testClient, publicClient);
+
+export const testActions = {
+  createTestVault,
+  wrapEther,
+  approveSpend,
+  buyShares,
+  getBalanceOf,
+};
