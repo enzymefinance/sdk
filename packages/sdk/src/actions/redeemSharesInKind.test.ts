@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { toSeconds, toWei } from "../utils/conversion.js";
+import { toWei } from "../utils/conversion.js";
 import {
   decodeRedeemSharesParams,
   prepareRedeemSharesInKindParams,
@@ -18,11 +18,6 @@ test("redeem shares in kind should work correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const balanceBeforeDeposit = await testActions.getBalanceOf({
-    token: vaultProxy,
-    account: ALICE,
-  });
-
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
@@ -31,9 +26,10 @@ test("redeem shares in kind should work correctly", async () => {
     investmentAmount: depositAmount,
   });
 
-  await testActions.increaseTimeAndMine({
-    seconds: Number(toSeconds({ days: 1 })),
-    blocks: 1,
+  await testActions.assertBalanceOf({
+    token: vaultProxy,
+    account: ALICE,
+    expected: depositAmount,
   });
 
   const { transactionRequest: redeemSharesTransactionRequest } = await simulateRedeemSharesInKind({
@@ -45,16 +41,13 @@ test("redeem shares in kind should work correctly", async () => {
     assetsToSkip: [],
   });
 
-  expect(redeemSharesTransactionRequest).toBeDefined();
-
   await sendTestTransaction(redeemSharesTransactionRequest);
 
-  const balanceAfterWithdraw = await testActions.getBalanceOf({
+  await testActions.assertBalanceOf({
     token: vaultProxy,
     account: ALICE,
+    expected: 0n,
   });
-
-  expect(balanceAfterWithdraw).toBe(balanceBeforeDeposit);
 });
 
 test("decode redeem shares in kind should work correctly", () => {
@@ -64,6 +57,7 @@ test("decode redeem shares in kind should work correctly", () => {
     additionalAssets: [],
     assetsToSkip: [],
   };
+
   const prepared = prepareRedeemSharesInKindParams(params);
   const encoded = encodeFunctionData(prepared);
   const decoded = decodeRedeemSharesParams(encoded);

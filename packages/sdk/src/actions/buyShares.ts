@@ -5,6 +5,9 @@ import type { Hex } from "viem";
 
 export interface BuySharesParams {
   investmentAmount: bigint;
+  /**
+   * The minimum number of shares to buy. If the number of shares to buy is less than this value, the transaction will revert.
+   */
   minSharesQuantity: bigint;
 }
 
