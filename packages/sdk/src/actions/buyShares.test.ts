@@ -2,12 +2,13 @@ import { expect, test } from "vitest";
 import { applySlippage, toBps, toWei } from "../utils/conversion.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/client.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
+import { decodeBuySharesParams, getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
 import { encodePolicySettings } from "../policies/settings.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
 import { POLICY_VIOLATION_MIN_MAX_INVESTMENT } from "../errors/errorCodes.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
 import { getBalanceOf } from "../../tests/actions/getBalanceOf.js";
+import { encodeFunctionData } from "viem";
 
 test("step by step happy path", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -91,4 +92,16 @@ test("should fail to buy shares if there's a policy violation", async () => {
       throw catchError(error);
     }
   }).rejects.toThrow(new EnzymeError(POLICY_VIOLATION_MIN_MAX_INVESTMENT));
+});
+
+test("decode buy shares should work correctly", () => {
+  const params = {
+    investmentAmount: toWei(100),
+    minSharesQuantity: 1n,
+  };
+  const prepared = prepareBuySharesParams(params);
+  const encoded = encodeFunctionData(prepared);
+  const decoded = decodeBuySharesParams(encoded);
+
+  expect(decoded).toEqual(params);
 });

@@ -2,8 +2,13 @@ import { expect, test } from "vitest";
 import { toSeconds, toWei } from "../utils/conversion.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/client.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { simulateRedeemSharesInKind } from "./redeemSharesInKind.js";
+import {
+  decodeRedeemSharesParams,
+  prepareRedeemSharesInKindParams,
+  simulateRedeemSharesInKind,
+} from "./redeemSharesInKind.js";
 import { getBalanceOf } from "../../tests/actions/getBalanceOf.js";
+import { encodeFunctionData } from "viem";
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -48,4 +53,18 @@ test("redeem shares in kind should work correctly", async () => {
   });
 
   expect(balanceAfterWithdraw).toBe(balanceBeforeDeposit);
+});
+
+test("decode redeem shares in kind should work correctly", () => {
+  const params = {
+    withdrawalReceipient: ALICE,
+    sharesQuantity: toWei(120),
+    additionalAssets: [],
+    assetsToSkip: [],
+  };
+  const prepared = prepareRedeemSharesInKindParams(params);
+  const encoded = encodeFunctionData(prepared);
+  const decoded = decodeRedeemSharesParams(encoded);
+
+  expect(decoded).toEqual(params);
 });
