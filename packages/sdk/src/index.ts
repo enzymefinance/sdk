@@ -162,3 +162,11 @@ export {
   decodeBuySharesParams,
   prepareBuySharesParams,
 } from "./actions/buyShares.js";
+
+export {
+  type RedeemSharesInKindParams,
+  prepareRedeemSharesInKindParams,
+  decodeRedeemSharesParams,
+  type SimulateRedeemSharesInKindArgs,
+  simulateRedeemSharesInKind,
+} from "./actions/redeemSharesInKind.js";

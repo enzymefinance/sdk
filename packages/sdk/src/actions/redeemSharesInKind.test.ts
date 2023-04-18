@@ -1,8 +1,13 @@
 import { expect, test } from "vitest";
 import { toSeconds, toWei } from "../utils/conversion.js";
+import {
+  decodeRedeemSharesParams,
+  prepareRedeemSharesInKindParams,
+  simulateRedeemSharesInKind,
+} from "./redeemSharesInKind.js";
+import { encodeFunctionData } from "viem";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { simulateRedeemSharesInKind } from "./redeemSharesInKind.js";
 import { setupAnvil } from "../../tests/anvil.js";
 
 setupAnvil();
@@ -50,4 +55,18 @@ test("redeem shares in kind should work correctly", async () => {
   });
 
   expect(balanceAfterWithdraw).toBe(balanceBeforeDeposit);
+});
+
+test("decode redeem shares in kind should work correctly", () => {
+  const params = {
+    withdrawalReceipient: ALICE,
+    sharesQuantity: toWei(120),
+    additionalAssets: [],
+    assetsToSkip: [],
+  };
+  const prepared = prepareRedeemSharesInKindParams(params);
+  const encoded = encodeFunctionData(prepared);
+  const decoded = decodeRedeemSharesParams(encoded);
+
+  expect(decoded).toEqual(params);
 });
