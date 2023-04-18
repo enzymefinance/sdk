@@ -1,16 +1,14 @@
-import { testClient } from "../client.js";
+import { testClient } from "../globals.js";
 
-export async function increaseTimeAndMine({ seconds, blocks }: { seconds: number; blocks: number }) {
-  switch (true) {
-    case seconds === 0 && blocks === 0:
-      return;
-    case seconds === 0 && blocks > 0:
-      return await testClient.mine({ blocks });
-    case seconds > 0 && blocks === 0:
-      return await testClient.increaseTime({ seconds });
-    case seconds > 0 && blocks > 0:
-      return await testClient.increaseTime({ seconds }).then(async () => {
-        await testClient.mine({ blocks });
-      });
+export async function increaseTimeAndMine({ seconds, blocks = 1 }: { seconds: number; blocks?: number }) {
+  if (seconds <= 0) {
+    throw new Error("Seconds must be a positive integer");
   }
+
+  if (blocks <= 0) {
+    throw new Error("Number of blocks must be a positive integer");
+  }
+
+  await testClient.increaseTime({ seconds });
+  await testClient.mine({ blocks });
 }

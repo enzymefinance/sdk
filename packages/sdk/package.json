@@ -13,7 +13,7 @@
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
-    "test": "vitest --no-threads",
+    "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
@@ -46,6 +46,7 @@
   "devDependencies": {
     "@vitest/coverage-c8": "^0.29.2",
     "@vitest/ui": "^0.29.2",
+    "execa": "^7.1.1",
     "typescript": "^5.0.3",
     "vite": "^4.2.1",
     "vite-tsconfig-paths": "^4.0.8",

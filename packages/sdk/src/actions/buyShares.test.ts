@@ -1,16 +1,18 @@
 import { expect, test } from "vitest";
 import { applySlippage, toBps, toWei } from "../utils/conversion.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/client.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { decodeBuySharesParams, getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
 import { encodePolicySettings } from "../policies/settings.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
 import { POLICY_VIOLATION_MIN_MAX_INVESTMENT } from "../errors/errorCodes.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
-import { getBalanceOf } from "../../tests/actions/getBalanceOf.js";
 import { encodeFunctionData } from "viem";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { setupAnvil } from "../../tests/anvil.js";
 
-test("step by step happy path", async () => {
+setupAnvil();
+
+test("should be able to buy shares", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
@@ -49,7 +51,7 @@ test("step by step happy path", async () => {
   expect(request).toBeTruthy();
   expect(result).toBe(expectedShareQuantity); // For good measure ...
 
-  const balanceOfBefore = await getBalanceOf({
+  const balanceOfBefore = await testActions.getBalanceOf({
     token: vaultProxy,
     account: ALICE,
   });
@@ -58,7 +60,7 @@ test("step by step happy path", async () => {
 
   await sendTestTransaction(request);
 
-  const balanceOfAfter = await getBalanceOf({
+  const balanceOfAfter = await testActions.getBalanceOf({
     token: vaultProxy,
     account: ALICE,
   });
