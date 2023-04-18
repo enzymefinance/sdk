@@ -1,14 +1,15 @@
 import type { Abi } from "abitype";
-import { parseAccount } from "viem/utils";
 import { encodeFunctionData, createTestClient, createPublicClient, type Chain, http } from "viem";
+import { localhost, mainnet } from "viem/chains";
+import { parseAccount } from "viem/utils";
 import type { SimulateContractParameters, WriteContractParameters } from "viem/contract";
+import { anvilPort } from "./anvil.js";
 import { approveSpend } from "./actions/approveSpend.js";
 import { buyShares } from "./actions/buyShares.js";
 import { createTestVault } from "./actions/createTestVault.js";
 import { wrapEther } from "./actions/wrapEther.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
-import { localhost, mainnet } from "viem/chains";
-import { anvilPort } from "./anvil.js";
+import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
 
 export const testActions = {
   createTestVault,
@@ -16,6 +17,7 @@ export const testActions = {
   approveSpend,
   buyShares,
   getBalanceOf,
+  increaseTimeAndMine,
 };
 
 export const anvil = {
