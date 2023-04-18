@@ -5,8 +5,11 @@ import { toBps, toSeconds, toWei } from "../utils/conversion.js";
 import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
 import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { publicClient, sendTestTransaction } from "../../tests/client.js";
 import { DEPLOYER, VITALIK } from "../../tests/constants.js";
+import { publicClient, sendTestTransaction } from "../../tests/globals.js";
+import { setupAnvil } from "../../tests/anvil.js";
+
+setupAnvil();
 
 test("should set up a vault with the given parameters", async () => {
   const {

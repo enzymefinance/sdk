@@ -1,11 +1,11 @@
 import { type Address } from "viem";
-import { publicClient, sendTestTransaction } from "../client.js";
 import { WETH } from "../constants.js";
 import { prepareBuySharesParams, type BuySharesParams } from "../../src/actions/buyShares.js";
 import { IComptroller } from "../../../abis/src/abis/IComptroller.js";
 import { wrapEther } from "./wrapEther.js";
 import { approveSpend } from "./approveSpend.js";
 import type { PartialPick } from "../../src/utils/types.js";
+import { publicClient, sendTestTransaction } from "../globals.js";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {
   comptrollerProxy: Address;
