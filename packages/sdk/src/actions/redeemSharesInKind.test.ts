@@ -1,9 +1,8 @@
 import { expect, test } from "vitest";
 import { toSeconds, toWei } from "../utils/conversion.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/client.js";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { simulateRedeemSharesInKind } from "./redeemSharesInKind.js";
-import { getBalanceOf } from "../../tests/actions/getBalanceOf.js";
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -11,7 +10,7 @@ test("redeem shares in kind should work correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const balanceBeforeDeposit = await getBalanceOf({
+  const balanceBeforeDeposit = await testActions.getBalanceOf({
     token: vaultProxy,
     account: ALICE,
   });
@@ -42,7 +41,7 @@ test("redeem shares in kind should work correctly", async () => {
 
   await sendTestTransaction(redeemSharesTransactionRequest);
 
-  const balanceAfterWithdraw = await getBalanceOf({
+  const balanceAfterWithdraw = await testActions.getBalanceOf({
     token: vaultProxy,
     account: ALICE,
   });

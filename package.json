@@ -2,7 +2,6 @@
   "private": true,
   "packageManager": "pnpm@7.30.0",
   "scripts": {
-    "anvil": "dotenv -- sh -c 'anvil --fork-url $ANVIL_FORK_URL --fork-block-number $ANVIL_FORK_BLOCK_NUMBER'",
     "codegen": "pnpm run --recursive codegen",
     "build": "pnpm run --recursive --filter \"./packages/*\" build",
     "release": "pnpm changeset version && pnpm run --recursive --filter \"./packages/*\" release && pnpm changeset publish",
@@ -16,7 +15,6 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.1",
-    "dotenv-cli": "^7.2.1",
     "rome": "^12.0.0",
     "typescript": "^5.0.3"
   },

@@ -1,6 +1,6 @@
 import { type Address, parseAbiItem } from "viem";
-import { sendTestTransaction } from "../client.js";
 import { WETH } from "../constants.js";
+import { sendTestTransaction } from "../globals.js";
 
 export async function wrapEther({
   account,

@@ -1,7 +1,7 @@
-import { sendTestTransaction } from "../client.js";
 import { ALICE, DEPLOYER } from "../constants.js";
 import { prepareSetupVaultParams, type PrepareSetupVaultParamsArgs } from "../../src/actions/setupVault.js";
 import type { PartialPick } from "../../src/utils/types.js";
+import { sendTestTransaction } from "../globals.js";
 
 export type CreateTestVaultSettings = PartialPick<PrepareSetupVaultParamsArgs, "vaultName" | "vaultSymbol">;
 
