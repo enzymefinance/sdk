@@ -6,6 +6,7 @@ import { buyShares } from "./actions/buyShares.js";
 import { createTestVault } from "./actions/createTestVault.js";
 import { wrapEther } from "./actions/wrapEther.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
+import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
 
 export const testClient = createTestClient({
   chain: mainnet,
@@ -26,4 +27,5 @@ export const testActions = {
   approveSpend,
   buyShares,
   getBalanceOf,
+  increaseTimeAndMine,
 };
