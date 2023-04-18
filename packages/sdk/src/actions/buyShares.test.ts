@@ -18,32 +18,34 @@ test("should be able to buy shares", async () => {
     denominationAsset: WETH,
   });
 
+  const depositAmount = toWei(150);
+
   await testActions.wrapEther({
     account: ALICE,
-    amount: toWei(150),
+    amount: depositAmount,
   });
 
   await testActions.approveSpend({
     token: WETH,
     account: ALICE,
     spender: comptrollerProxy,
-    amount: toWei(150),
+    amount: depositAmount,
   });
 
   const expectedShareQuantity = await getExpectedShareQuantity({
     publicClient,
-    sharesBuyer: ALICE,
     comptrollerProxy,
-    investmentAmount: toWei(150),
+    sharesBuyer: ALICE,
+    investmentAmount: depositAmount,
   });
 
-  expect(expectedShareQuantity).toBe(toWei(150));
+  expect(expectedShareQuantity).toBe(depositAmount);
 
   const { request, result } = await publicClient.simulateContract({
     address: comptrollerProxy,
     account: ALICE,
     ...prepareBuySharesParams({
-      investmentAmount: toWei(150),
+      investmentAmount: depositAmount,
       minSharesQuantity: applySlippage(expectedShareQuantity, toBps(0.05)),
     }),
   });
@@ -51,21 +53,19 @@ test("should be able to buy shares", async () => {
   expect(request).toBeTruthy();
   expect(result).toBe(expectedShareQuantity); // For good measure ...
 
-  const balanceOfBefore = await testActions.getBalanceOf({
+  await testActions.assertBalanceOf({
     token: vaultProxy,
     account: ALICE,
+    expected: 0n,
   });
-
-  expect(balanceOfBefore).toBe(0n);
 
   await sendTestTransaction(request);
 
-  const balanceOfAfter = await testActions.getBalanceOf({
+  await testActions.assertBalanceOf({
     token: vaultProxy,
     account: ALICE,
+    expected: depositAmount,
   });
-
-  expect(balanceOfAfter).toBe(toWei(150));
 });
 
 test("should fail to buy shares if there's a policy violation", async () => {

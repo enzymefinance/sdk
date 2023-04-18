@@ -1,6 +1,6 @@
-import { createPublicClient, createTestClient, http } from "viem";
 import { execa, type ExecaChildProcess } from "execa";
 import { beforeAll, afterAll, beforeEach } from "vitest";
+import { publicClient, testClient } from "./globals.js";
 
 export const anvilPort = 8545 + Number(process.env.VITEST_POOL_ID ?? 1);
 
@@ -14,15 +14,6 @@ export function setupAnvil({
   let subprocess: ExecaChildProcess;
   const signal = new AbortController();
 
-  const testClient = createTestClient({
-    mode: "anvil",
-    transport: http(`http://127.0.0.1:${anvilPort}`),
-  });
-
-  const publicClient = createPublicClient({
-    transport: http(`http://127.0.0.1:${anvilPort}`),
-  });
-
   beforeAll(async () => {
     const options = {
       "--port": `${anvilPort}`,
@@ -32,6 +23,7 @@ export function setupAnvil({
 
     const args = Object.entries(options).flatMap(([key, value]) => [key, value]);
 
+    // TODO: This needs fixing (zombie processes, port collisions, etc.).
     subprocess = execa("anvil", args, {
       signal: signal.signal,
       cleanup: true,

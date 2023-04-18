@@ -10,6 +10,7 @@ import { createTestVault } from "./actions/createTestVault.js";
 import { wrapEther } from "./actions/wrapEther.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
 import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
+import { assertBalanceOf } from "./actions/assertBalanceOf.js";
 
 export const testActions = {
   createTestVault,
@@ -18,6 +19,7 @@ export const testActions = {
   buyShares,
   getBalanceOf,
   increaseTimeAndMine,
+  assertBalanceOf,
 };
 
 export const anvil = {
