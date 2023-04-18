@@ -50,15 +50,14 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
 
-        # TODO: Let's create an anvil service container for this instead.
-      - name: Launch anvil
-        run: anvil --fork-url ${{ secrets.ANVIL_FORK_URL }} --fork-block-number ${{ secrets.ANVIL_FORK_BLOCK_NUMBER }} &
-
       - name: Run build
         run: pnpm run build
 
       - name: Run tests
         run: pnpm run test
+        env:
+          VITEST_ANVIL_FORK_URL: ${{ secrets.VITEST_ANVIL_FORK_URL }}
+          VITEST_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITEST_ANVIL_FORK_BLOCK_NUMBER }}
 
   size:
     name: Size
