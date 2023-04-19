@@ -2,7 +2,10 @@ import { expect, test } from "vitest";
 import { toWei } from "../utils/conversion.js";
 import { encodeFunctionData } from "viem";
 import { setupAnvil } from "../../tests/anvil.js";
-import { decodeBuyBackProtocolFeeSharesParams, prepareBuyBackProtocolFeeSharesParams } from "./buyBackProtocolFeeShares.js";
+import {
+  decodeBuyBackProtocolFeeSharesParams,
+  prepareBuyBackProtocolFeeSharesParams,
+} from "./buyBackProtocolFeeShares.js";
 
 setupAnvil();
 test("decode buy back protocol fee shares should work correctly", () => {

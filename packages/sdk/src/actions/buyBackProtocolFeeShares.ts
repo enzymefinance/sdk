@@ -24,6 +24,6 @@ export function decodeBuyBackProtocolFeeSharesParams(params: Hex): BuyBackProtoc
   const [sharesAmount] = decoded.args;
 
   return {
-    sharesAmount
+    sharesAmount,
   };
 }

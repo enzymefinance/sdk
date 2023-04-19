@@ -3,7 +3,6 @@ import aliases from "vite-tsconfig-paths";
 
 export default defineConfig({
   envDir: "../../",
-  envPrefix: "VITEST_",
   // NOTE: We only use the path aliases for local development.
   plugins: [process.env.CI ? undefined : aliases()],
   test: {
