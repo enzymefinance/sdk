@@ -98,8 +98,8 @@ class Anvil {
 
   public static async start(options?: AnvilOptions) {
     const opts = {
+      startUpTimeout: 10000,
       ...options,
-      startUpTimeout: 1000,
     };
 
     let resolve: (value: Anvil) => void = () => {};
