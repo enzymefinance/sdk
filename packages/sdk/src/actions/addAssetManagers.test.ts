@@ -68,7 +68,9 @@ test("should not add asset manager if already registered", async () => {
     }
   }).rejects.toThrow(new EnzymeError(ASSET_MANAGER_ALREADY_REGISTERED));
 
-  expect(testActions.isAssetManager({ who: BOB, vaultProxy })).toBe(false);
+  const bobIsManager = await testActions.isAssetManager({ who: BOB, vaultProxy });
+
+  expect(bobIsManager).toBe(false);
 });
 
 test("should prepare params correctly", () => {
