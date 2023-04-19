@@ -494,7 +494,6 @@ VaultLib.sol:
  require(__msgSender() == owner, "Only the owner can call this function");
  require(!sharesAreFreelyTransferable(), "setFreelyTransferableShares: Already set");
  require(__msgSender() == owner || msg.sender == getFundDeployer(), "Unauthorized");
- require(!isAssetManager(_managers[i]), "addAssetManagers: Manager already registered");
  require(msg.sender == nextOwner, "claimOwnership: Only the nominatedOwner can call this function");
  require(isAssetManager(_managers[i]), "removeAssetManagers: Manager not registered");
  require(removedNominatedOwner != address(0), "removeNominatedOwner: There is no nominated owner");
