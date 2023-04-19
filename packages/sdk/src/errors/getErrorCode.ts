@@ -94,6 +94,8 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "Manager already registered":
           return ASSET_MANAGER_ALREADY_REGISTERED;
       }
+
+      return undefined;
     }
   }
 
