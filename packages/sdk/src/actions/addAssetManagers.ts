@@ -53,7 +53,3 @@ export async function simulateAddAssetManagers({
     request,
   };
 }
-
-export interface IsAssetManagerParams {
-  who: Address;
-}
