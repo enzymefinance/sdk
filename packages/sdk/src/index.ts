@@ -105,6 +105,21 @@ export {
 } from "./fees/settings.js";
 
 export {
+  type CallArgsForIntegration,
+  encodeCallArgsForIntegration,
+  decodeCallArgsForIntegration,
+} from "./integrations/callArgs.js";
+
+export {
+  type IntegrationDataForAaveV2Lend,
+  type CallArgsForAaveV2Lend,
+  encodeIntegrationDataForAaveV2Lend,
+  decodeIntegrationDataForAaveV2Lend,
+  encodeCallArgsForAaveV2Lend,
+  decodeCallArgsForAaveV2Lend,
+} from "./integrations/aaveV2.js";
+
+export {
   type CalculateEntranceRateFeeSharesDueArgs,
   calculateEntranceRateFeeSharesDue,
   type EntranceRateBurnFeeSettings,
