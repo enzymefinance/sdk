@@ -15,7 +15,21 @@ export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
     args: [who],
   });
 }
+interface ManagersResponse {
+  error?: Error | undefined;
+  result?: unknown;
+  status: "error" | "success";
+}
 
-export function isAssetManagers({ addresses, vaultProxy }: { addresses: Address[]; vaultProxy: Address }) {
-  return Promise.all(addresses.map((who: Address) => isAssetManager({ who, vaultProxy })));
+export async function isAssetManagers({ addresses, vaultProxy }: { addresses: Address[]; vaultProxy: Address }) {
+  const contracts = addresses.map((who: Address) => ({
+    address: vaultProxy,
+    abi: [getAbiItem({ abi: IVault, name: "isAssetManager" })],
+    functionName: "isAssetManager",
+    args: [who],
+  }));
+
+  const managers: ManagersResponse[] = await publicClient.multicall({ contracts });
+
+  return managers.map(({ result }) => result);
 }
