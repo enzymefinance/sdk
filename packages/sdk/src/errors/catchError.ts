@@ -27,7 +27,7 @@ export class EnzymeError extends Error {
   }
 }
 
-export function catchError<TError extends Error>(error: TError): TError | EnzymeError {
+export function catchError<TError extends Error | unknown>(error: TError): TError | EnzymeError {
   if (error instanceof ContractFunctionExecutionError) {
     if (error.cause instanceof ContractFunctionRevertedError) {
       const code = getErrorCode(error.cause);
