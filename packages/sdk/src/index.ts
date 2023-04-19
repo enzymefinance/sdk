@@ -170,3 +170,11 @@ export {
   type SimulateRedeemSharesInKindArgs,
   simulateRedeemSharesInKind,
 } from "./actions/redeemSharesInKind.js";
+
+export {
+  type AddAssetManagersParams,
+  prepareAddAssetManagersParams,
+  decodeAddAssetManagersParams,
+  type SimulateAddAssetManagersParams,
+  simulateAddAssetManagers,
+} from "./actions/addAssetManagers.js";

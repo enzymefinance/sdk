@@ -14,4 +14,4 @@ export const ACCOUNTS = [
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
 
-export const [ALICE, BOB] = ACCOUNTS;
+export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
