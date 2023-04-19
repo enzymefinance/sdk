@@ -56,8 +56,8 @@ jobs:
       - name: Run tests
         run: pnpm run test
         env:
-          VITEST_ANVIL_FORK_URL: ${{ secrets.VITEST_ANVIL_FORK_URL }}
-          VITEST_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITEST_ANVIL_FORK_BLOCK_NUMBER }}
+          VITE_ANVIL_FORK_URL: ${{ secrets.VITE_ANVIL_FORK_URL }}
+          VITE_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITE_ANVIL_FORK_BLOCK_NUMBER }}
 
   size:
     name: Size
