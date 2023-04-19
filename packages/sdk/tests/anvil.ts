@@ -18,10 +18,10 @@ export const anvilPort = await getPort({
 export function setupAnvil({
   forkUrl = process.env.VITE_ANVIL_FORK_URL,
   forkBlockNumber = Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER ?? 16994400),
-  startUpTimeout = 1000,
+  startUpTimeout = 10000,
   logDepth = 10,
 }: AnvilOptions = {}) {
-  let anvil: Anvil;
+  let anvil: Anvil | undefined;
 
   // Start a shared anvil instance for every test file that uses this function. This means that
   // state is shared between test functions within a file. If you want / need, you can use the
@@ -38,7 +38,7 @@ export function setupAnvil({
   afterEach((context) => {
     context.onTestFailed((result) => {
       // Remove the startup message from the logs and only return the last `logDepth` entries.
-      const logs = anvil.logs().slice(-logDepth, -1);
+      const logs = anvil?.logs().slice(-logDepth, -1) ?? [];
       if (logs.length === 0) {
         return;
       }
@@ -59,15 +59,12 @@ export function setupAnvil({
 
         console.groupEnd();
       }
-
-      if (logs.length !== 0) {
-      }
     });
   });
 
   // Stop the anvil instance after all tests have run.
   afterAll(async () => {
-    await anvil.exit();
+    await anvil?.exit();
   });
 }
 
