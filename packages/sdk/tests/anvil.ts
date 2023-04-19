@@ -111,7 +111,14 @@ class Anvil {
 
       // If anvil fails to start up in time, we reject the promise.
       setTimeout(() => {
-        reject(new Error("Anvil failed to start up in time"));
+        let message = "Anvil failed to start up in time";
+        const logs = recorder.flush();
+
+        if (logs.length > 0) {
+          message += `:\n\n${logs.join("\n")}}`;
+        }
+
+        reject(new Error(message));
       }, opts.startUpTimeout);
     });
 
