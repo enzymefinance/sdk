@@ -6,4 +6,5 @@ export type PartialPick<TObject extends object, TOptional extends keyof TObject>
 // Flatten all type properties into a human readable format.
 export type Prettify<T> = {
   [K in keyof T]: T[K];
+  // rome-ignore lint/nursery/noBannedTypes: permissable in this case
 } & {};

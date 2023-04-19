@@ -4,15 +4,26 @@ import { errorDictionary, type ErrorCode } from "./errorCodes.js";
 
 export class EnzymeError extends Error {
   public override readonly name = "EnzymeError";
+
+  public readonly code: ErrorCode;
   public readonly label: string;
   public readonly description: string;
 
-  constructor(public readonly code: ErrorCode) {
+  public static create(code: ErrorCode, cause: Error): EnzymeError {
+    const error = new this(code);
+    error.cause = cause;
+    return error;
+  }
+
+  constructor(code: ErrorCode) {
     const error = errorDictionary[code];
     super(`${error.label}: ${error.description}`);
 
+    this.code = code;
     this.label = error.label;
     this.description = error.description;
+
+    // TODO: Inherit the error formatting from the underlying viem error.
   }
 }
 
@@ -22,10 +33,7 @@ export function catchError<TError extends Error>(error: TError): TError | Enzyme
       const code = getErrorCode(error.cause);
 
       if (code !== undefined) {
-        const err = new EnzymeError(code);
-        error.cause = error;
-
-        return err;
+        return EnzymeError.create(code, error);
       }
     }
   }

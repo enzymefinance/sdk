@@ -11,11 +11,13 @@ importers:
     specifiers:
       '@changesets/changelog-github': ^0.4.8
       '@changesets/cli': ^2.26.1
+      get-port: ^6.1.2
       rome: ^12.0.0
       typescript: ^5.0.3
     devDependencies:
       '@changesets/changelog-github': 0.4.8
       '@changesets/cli': 2.26.1
+      get-port: 6.1.2
       rome: 12.0.0
       typescript: 5.0.3
 
@@ -2477,6 +2479,11 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.3
+    dev: true
+
+  /get-port/6.1.2:
+    resolution: {integrity: sha512-BrGGraKm2uPqurfGVj/z97/zv8dPleC6x9JBNRTrDNtCkkRF4rPwrQXFgL7+I+q8QSdU4ntLQX2D7KIxSy8nGw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
   /get-stream/6.0.1:
