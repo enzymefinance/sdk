@@ -13,7 +13,7 @@
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\"}'",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
-    "test": "vitest",
+    "test": "vitest -u",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },

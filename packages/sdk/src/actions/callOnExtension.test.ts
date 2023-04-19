@@ -1,12 +1,12 @@
 import { expect, test } from "vitest";
-import { encodeAbiParameters, encodeFunctionData, getAddress, parseAbiParameters, toHex } from "viem";
+import { encodeFunctionData, getAddress, toHex } from "viem";
 import { setupAnvil } from "../../tests/anvil.js";
 import { decodeCallOnExtensionParams, prepareCallOnExtensionParams } from "./callOnExtension.js";
 import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../tests/constants.js";
 import { testActions, sendTestTransaction } from "../../tests/globals.js";
 import { toWei } from "../utils/conversion.js";
 import { IntegrationManagerActionId } from "../enums.js";
-import { LEND_SELECTOR } from "../constants/selectors.js";
+import { encodeCallArgsForAaveV2Lend } from "../integrations/aaveV2.js";
 
 setupAnvil();
 
@@ -27,16 +27,11 @@ test("call on extension should work correctly", async () => {
     investmentAmount: depositAmount,
   });
 
-  const integrationData = encodeAbiParameters(parseAbiParameters("address aToken, uint depositAmount"), [
-    A_WETH,
+  const callArgs = encodeCallArgsForAaveV2Lend({
+    adapter: AAVE_V2_ADAPTER,
+    aToken: A_WETH,
     depositAmount,
-  ]);
-
-  const callArgs = encodeAbiParameters(parseAbiParameters("address adapter, bytes4 selector, bytes integrationData"), [
-    AAVE_V2_ADAPTER,
-    LEND_SELECTOR,
-    integrationData,
-  ]);
+  });
 
   await sendTestTransaction({
     ...prepareCallOnExtensionParams({
@@ -55,7 +50,7 @@ test("call on extension should work correctly", async () => {
   });
 });
 
-test("decode call on extension.testprotocol fee shares should work correctly", () => {
+test("decode call on extension should work correctly", () => {
   const params = {
     extension: getAddress("0x976EA74026E726554dB657fA54763abd0C3a0aa9"),
     actionId: 2n,
