@@ -11,17 +11,27 @@ export interface AnvilOptions {
 }
 
 // TODO: This is a workaround. Figure out if we can fix vitest so that it reliably reaps all child processes.
+const expectedPort = 8545 + Number(process.env.VITEST_POOL_ID ?? 1);
 export const anvilPort = await getPort({
-  port: 8545 + Number(process.env.VITEST_POOL_ID ?? 1),
+  port: expectedPort,
 });
 
 export function setupAnvil({
   forkUrl = process.env.VITE_ANVIL_FORK_URL,
   forkBlockNumber = Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER ?? 16994400),
   startUpTimeout = 10000,
-  logDepth = 10,
+  logDepth = 20,
 }: AnvilOptions = {}) {
   let anvil: Anvil | undefined;
+
+  if (expectedPort !== anvilPort) {
+    console.warn(
+      `Couldn't start anvil on port ${expectedPort} and chose ${anvilPort} as a fallback. ` +
+      `This likely means that there's a zombie anvil process lingering from a previous run. ` +
+      `Consider closing it manually to free up resources. ` +
+      `You can use \`lsof -i :${expectedPort}\` to find the process.`
+    );
+  }
 
   // Start a shared anvil instance for every test file that uses this function. This means that
   // state is shared between test functions within a file. If you want / need, you can use the
@@ -38,26 +48,28 @@ export function setupAnvil({
   afterEach((context) => {
     context.onTestFailed((result) => {
       // Remove the startup message from the logs and only return the last `logDepth` entries.
-      const logs = anvil?.logs().slice(-logDepth, -1) ?? [];
+      const logs = anvil?.logs().slice(-logDepth, -1).map(item => item.trim()) ?? [];
       if (logs.length === 0) {
         return;
       }
 
       // Try to append the log messages to the vitest error message. If that's not possible, print them to the console.
       const error = result.errors?.[0];
-      const label = "Anvil log output\n=======================================\n";
+      const seperator = "======================================================================"
 
       if (error !== undefined) {
-        error.message += `\n\n${label}`;
+        error.message += "\n\nAnvil logs";
+        error.message += `\n${seperator}`;
         error.message += `\n${logs.join("\n")}`;
+        error.message += `\n${seperator}`;
       } else {
-        console.group(label);
+        console.log(`Anvil logs (${context.meta.file ? `${context.meta.file.name} > ` : ''}${context.meta.name})\n${seperator}`);
 
         for (const log of logs) {
           console.log(log);
         }
 
-        console.groupEnd();
+        console.log(`${seperator}`);
       }
     });
   });
