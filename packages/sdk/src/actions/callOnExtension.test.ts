@@ -6,7 +6,7 @@ import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "
 import { testActions, sendTestTransaction } from "../../tests/globals.js";
 import { toWei } from "../utils/conversion.js";
 import { IntegrationManagerActionId } from "../enums.js";
-import { lendSelector } from "../../tests/selectors.js";
+import { LEND_SELECTOR } from "../constants/selectors.js";
 
 setupAnvil();
 
@@ -34,7 +34,7 @@ test("call on extension should work correctly", async () => {
 
   const callArgs = encodeAbiParameters(parseAbiParameters("address adapter, bytes4 selector, bytes integrationData"), [
     AAVE_V2_ADAPTER,
-    lendSelector,
+    LEND_SELECTOR,
     integrationData,
   ]);
 

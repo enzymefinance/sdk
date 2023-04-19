@@ -1,3 +1,5 @@
+import { getFunctionSelector } from "viem";
+
 export const AAVE_V2_CLAIM_REWARDS_TO_SELF_SELECTOR = "0x41485304"; //"claimRewardsToSelf(address[], uint256)
 export const REGISTRY_ADD_TO_LIST_SELECTOR = "0x8da3d736"; // addToList(uint256,address[])
 export const REGISTRY_ATTEST_LISTS_SELECTOR = "0xb426f946"; // attestLists(uint256[],string[])
@@ -12,3 +14,4 @@ export const PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR = "0x07
 export const SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR = "0x447fbc63"; // approveExchangeOnBehalf(address)
 export const SETTLE_CONTINUOUS_FEES_SELECTOR = "0xc071fe93"; // settleContinuousFees(address,bytes)
 export const VAULT_CALL_ANY_DATA_HASH = "0x5bf1898dd28c4d29f33c4c1bb9b8a7e2f6322847d70be63e8f89de024d08a669"; // mln.vaultCall.any
+export const LEND_SELECTOR = getFunctionSelector("lend(address,bytes,bytes)");
