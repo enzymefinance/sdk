@@ -40,3 +40,10 @@ export const MigrationOutHook = {
   PostMigrate: 3,
   PostCancel: 4,
 } as const;
+
+export type IntegrationManagerActionId = typeof IntegrationManagerActionId[keyof typeof IntegrationManagerActionId];
+export const IntegrationManagerActionId = {
+  CallOnIntegration: 0n,
+  AddTrackedAssetsToVault: 1n,
+  RemoveTrackedAssetsFromVault: 2n,
+};

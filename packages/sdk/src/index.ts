@@ -3,6 +3,7 @@ export {
   MigrationOutHook,
   RateAsset,
   VaultAction,
+  IntegrationManagerActionId,
 } from "./enums.js";
 
 // Constants
