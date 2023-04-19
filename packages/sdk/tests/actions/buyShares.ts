@@ -8,6 +8,7 @@ import type { PartialPick } from "../../src/utils/types.js";
 import { publicClient, sendTestTransaction } from "../globals.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { getSharesActionTimelock } from "../../src/actions/getSharesActionTimelock.js";
+import { toSeconds } from "../../src/utils/conversion.js";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {
   comptrollerProxy: Address;
@@ -58,7 +59,9 @@ export async function buyShares({
     });
 
     await increaseTimeAndMine({
-      seconds: sharesActionTimelock + 1n,
+      // NOTE: We add an extra hour to the timelock to be extra sure that the timelock has passed. This solves a weird issue
+      // with anvil where sometimes it doesn't seem to reliably increase the time exactly by the given value.
+      seconds: sharesActionTimelock + toSeconds({ hours: 1 }),
       blocks: 1,
     });
   }
