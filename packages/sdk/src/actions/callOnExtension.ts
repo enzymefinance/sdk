@@ -28,6 +28,6 @@ export function decodeCallOnExtensionParams(params: Hex): CallOnExtensionParams 
   return {
     extension,
     actionId,
-    callArgs
+    callArgs,
   };
 }

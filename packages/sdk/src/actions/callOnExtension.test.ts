@@ -11,7 +11,6 @@ import { lendSelector } from "../../tests/selectors.js";
 setupAnvil();
 
 test("call on extension should work correctly", async () => {
-
   const vaultOwner = ALICE;
   const sharesBuyer = BOB;
 
@@ -28,16 +27,16 @@ test("call on extension should work correctly", async () => {
     investmentAmount: depositAmount,
   });
 
+  const integrationData = encodeAbiParameters(parseAbiParameters("address aToken, uint depositAmount"), [
+    A_WETH,
+    depositAmount,
+  ]);
 
-  const integrationData = encodeAbiParameters(
-    parseAbiParameters('address aToken, uint depositAmount'),
-    [A_WETH, depositAmount]
-  );
-
-  const callArgs = encodeAbiParameters(
-    parseAbiParameters('address adapter, bytes4 selector, bytes integrationData'),
-    [AAVE_V2_ADAPTER, lendSelector, integrationData]
-  );
+  const callArgs = encodeAbiParameters(parseAbiParameters("address adapter, bytes4 selector, bytes integrationData"), [
+    AAVE_V2_ADAPTER,
+    lendSelector,
+    integrationData,
+  ]);
 
   await sendTestTransaction({
     ...prepareCallOnExtensionParams({
@@ -48,7 +47,6 @@ test("call on extension should work correctly", async () => {
     account: vaultOwner,
     address: comptrollerProxy,
   });
-
 
   await testActions.assertBalanceOf({
     token: A_WETH,
