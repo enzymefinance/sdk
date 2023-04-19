@@ -9,6 +9,7 @@ import { encodeFunctionData } from "viem";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { setupAnvil } from "../../tests/anvil.js";
+import { getSharesActionTimelock } from "./getSharesActionTimelock.js";
 
 setupAnvil();
 
@@ -42,6 +43,16 @@ test("redeem shares in kind should work correctly", async () => {
   });
 
   await sendTestTransaction(redeemSharesTransactionRequest);
+
+  const sharesActionTimelock = await getSharesActionTimelock({
+    comptrollerProxy,
+    publicClient,
+  });
+
+  await testActions.increaseTimeAndMine({
+    seconds: sharesActionTimelock + 1n,
+    blocks: 1,
+  });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,
