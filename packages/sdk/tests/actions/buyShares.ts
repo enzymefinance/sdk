@@ -58,7 +58,7 @@ export async function buyShares({
     });
 
     await increaseTimeAndMine({
-      seconds: sharesActionTimelock,
+      seconds: sharesActionTimelock + 1n,
       blocks: 1,
     });
   }
