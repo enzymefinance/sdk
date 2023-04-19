@@ -5,8 +5,6 @@ import { setupAnvil } from "../../tests/anvil.js";
 import { decodeBuyBackProtocolFeeSharesParams, prepareBuyBackProtocolFeeSharesParams } from "./buyBackProtocolFeeShares.js";
 
 setupAnvil();
-
-
 test("decode buy back protocol fee shares should work correctly", () => {
   const params = {
     sharesAmount: toWei(100),
