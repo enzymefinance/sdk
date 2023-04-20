@@ -33,7 +33,7 @@ export function createAnvilProxy({
         });
         const anvil = await getOrCreateAnvilInstance(id, { ...anvilOptions, port });
         proxy.web(req, res, {
-          target: `http://localhost:${anvil.port}`,
+          target: `http://127.0.0.1:${anvil.port}`,
         });
       }
     });
@@ -48,7 +48,7 @@ export function createAnvilProxy({
         });
         const anvil = await getOrCreateAnvilInstance(id, { ...anvilOptions, port });
         proxy.ws(req, socket, head, {
-          target: `ws://localhost:${anvil.port}`,
+          target: `ws://127.0.0.1:${anvil.port}`,
         });
       }
     });

@@ -7,7 +7,7 @@ export default async function () {
     proxyPort: 8545,
     proxyHostname: "::",
     anvilOptions: {
-      portRange: portNumbers(8546, 8645),
+      portRange: portNumbers(8546, 8546 + 100),
       forkBlockNumber: FORK_BLOCK_NUMBER,
       forkUrl: FORK_URL,
     },
