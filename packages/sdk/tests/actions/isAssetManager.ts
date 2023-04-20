@@ -1,4 +1,4 @@
-import { getAbiItem, type Address } from "viem";
+import { type Address } from "viem";
 import { publicClient } from "../globals.js";
 import { IVault } from "../../../abis/src/abis/IVault.js";
 
@@ -10,7 +10,7 @@ export interface IsAssetManagerParams {
 export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
   return publicClient.readContract({
     address: vaultProxy,
-    abi: [getAbiItem({ abi: IVault, name: "isAssetManager" })],
+    abi: IVault,
     functionName: "isAssetManager",
     args: [who],
   });
@@ -24,7 +24,7 @@ interface ManagersResponse {
 export async function isAssetManagers({ addresses, vaultProxy }: { addresses: Address[]; vaultProxy: Address }) {
   const contracts = addresses.map((who: Address) => ({
     address: vaultProxy,
-    abi: [getAbiItem({ abi: IVault, name: "isAssetManager" })],
+    abi: IVault,
     functionName: "isAssetManager",
     args: [who],
   }));

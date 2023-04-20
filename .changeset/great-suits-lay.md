@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-Added functions and tests for addAssetManagers
+Added functions and tests for `addAssetManagers`
