@@ -18,6 +18,7 @@ import {
   POLICY_VIOLATION_ONLY_REMOVE_DUST_EXTERNAL_POSITION,
   POLICY_VIOLATION_ONLY_UNTRACK_DUST_OR_PRICELESS_ASSETS,
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
+  ASSET_MANAGER_ALREADY_REGISTERED,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -83,6 +84,15 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
           return BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION;
         case "Shares received < _minSharesQuantity":
           return BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT;
+      }
+
+      return undefined;
+    }
+
+    case "addAssetManagers": {
+      switch (suffix) {
+        case "Manager already registered":
+          return ASSET_MANAGER_ALREADY_REGISTERED;
       }
 
       return undefined;

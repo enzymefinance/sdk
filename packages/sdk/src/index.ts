@@ -177,3 +177,11 @@ export {
   type SimulateSetAutoProtocolFeeSharesBuybackParams,
   simulateSetAutoProtocolFeeSharesBuyback,
 } from "./actions/setAutoProtocolFeeSharesBuyback.js";
+
+export {
+  type AddAssetManagersParams,
+  prepareAddAssetManagersParams,
+  decodeAddAssetManagersParams,
+  type SimulateAddAssetManagersParams,
+  simulateAddAssetManagers,
+} from "./actions/addAssetManagers.js";

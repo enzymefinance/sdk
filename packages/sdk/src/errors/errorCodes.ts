@@ -18,6 +18,8 @@ export const BUY_SHARES_MIN_SHARES_QUANTITY_TOO_LOW = "ENZF200001"; // __buyShar
 export const BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION = "ENZF200002"; // __buyShares: Pending migration or reconfiguration
 export const BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT = "ENZF200003"; // __buyShares: Shares received < _minSharesQuantity
 
+export const ASSET_MANAGER_ALREADY_REGISTERED = "ENZF200010"; // addAssetManagers: Manager already registered
+
 export const errorCodes = [
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   POLICY_VIOLATION_MIN_MAX_INVESTMENT,
@@ -36,6 +38,7 @@ export const errorCodes = [
   BUY_SHARES_MIN_SHARES_QUANTITY_TOO_LOW,
   BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION,
   BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT,
+  ASSET_MANAGER_ALREADY_REGISTERED,
 ] as const;
 
 export type ErrorCode = typeof errorCodes[number];
@@ -133,5 +136,10 @@ export const errorDictionary: {
     code: BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT,
     label: "Shares received insufficient",
     description: "The shares received is insufficient.",
+  },
+  [ASSET_MANAGER_ALREADY_REGISTERED]: {
+    code: ASSET_MANAGER_ALREADY_REGISTERED,
+    label: "Manager already registered",
+    description: "The asset manager is already registered",
   },
 };
