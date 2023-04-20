@@ -8,9 +8,6 @@ import { POLICY_VIOLATION_MIN_MAX_INVESTMENT } from "../errors/errorCodes.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
 import { encodeFunctionData } from "viem";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { setupAnvil } from "../../tests/anvil.js";
-
-setupAnvil();
 
 test("should be able to buy shares", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
