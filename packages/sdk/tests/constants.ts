@@ -14,7 +14,7 @@ export const ACCOUNTS = [
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
 
-export const [ALICE, BOB] = ACCOUNTS;
+export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
 
 if (process.env.VITE_ANVIL_FORK_URL === undefined) {
   throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL"');
