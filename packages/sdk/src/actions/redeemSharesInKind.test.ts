@@ -8,9 +8,6 @@ import {
 import { encodeFunctionData } from "viem";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { setupAnvil } from "../../tests/anvil.js";
-
-setupAnvil();
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
