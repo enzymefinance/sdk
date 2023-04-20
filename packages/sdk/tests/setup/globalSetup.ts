@@ -1,11 +1,11 @@
 import { Server, createServer } from "node:http";
-import { Writable } from 'node:stream';
+import { Writable } from "node:stream";
 import { Anvil } from "./anvil.js";
-import getPort from 'get-port';
+import getPort from "get-port";
 import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
 
-// NOTE: This is required to make typescript happy as long as @types/node doesn't include it. 
-declare var fetch: typeof import('undici').fetch;
+// NOTE: This is required to make typescript happy as long as @types/node doesn't include it.
+declare let fetch: typeof import("undici").fetch;
 
 const instances = new Map<number, Promise<Anvil>>();
 
@@ -13,14 +13,17 @@ async function getOrCreateAnvil(id: number) {
   let anvil = instances.get(id);
 
   if (anvil === undefined) {
+    // rome-ignore lint/suspicious/noAsyncPromiseExecutor: we are using try/catch here correctly
     anvil = new Promise(async (resolve, reject) => {
       try {
-        resolve(Anvil.start({
-          portNumber: await getPort(),
-          forkUrl: FORK_URL,
-          forkBlockNumber: FORK_BLOCK_NUMBER,
-          startUpTimeout: 10000,
-        }));
+        resolve(
+          Anvil.start({
+            portNumber: await getPort(),
+            forkUrl: FORK_URL,
+            forkBlockNumber: FORK_BLOCK_NUMBER,
+            startUpTimeout: 10000,
+          }),
+        );
       } catch (error) {
         reject(error);
       }
@@ -38,7 +41,7 @@ export default async function () {
   const server = await new Promise<Server>((resolve, reject) => {
     const server = createServer(async (req, res) => {
       try {
-        const path = req.url ? new RegExp('^[0-9]+$').exec(req.url.slice(1))?.[0] : undefined;
+        const path = req.url ? new RegExp("^[0-9]+$").exec(req.url.slice(1))?.[0] : undefined;
         const id = path ? Number(path) : undefined;
 
         if (id === undefined) {
@@ -48,12 +51,12 @@ export default async function () {
           const anvil = await getOrCreateAnvil(id);
           const response = await fetch(`http://127.0.0.1:${anvil.port}`, {
             method: "POST",
-            duplex: 'half',
+            duplex: "half",
             body: req,
             headers: (Object.entries(req.headers) as [string, string][]).filter(([key]) => {
               return !forbiddenHeaderNames.includes(key);
             }),
-          });   
+          });
 
           res.writeHead(response.status, response.statusText, Object.fromEntries(response.headers.entries()));
 
@@ -63,7 +66,7 @@ export default async function () {
             res.end();
           }
         }
-      } catch (error) {
+      } catch {
         res.writeHead(500);
         res.end();
       }
@@ -88,30 +91,30 @@ export default async function () {
       new Promise<void>((resolve, reject) => {
         server.close((error) => (error ? reject(error) : resolve()));
       }),
-    ])
+    ]);
   };
 }
 
 // Undici doesn't allow these headers: https://github.com/nodejs/undici/blob/9041e9fed85a69426242dc4ed7aaa7dea4b289d2/lib/core/request.js#L292
 const forbiddenHeaderNames = [
-  'accept-charset',
-  'accept-encoding',
-  'access-control-request-headers',
-  'access-control-request-method',
-  'connection',
-  'content-length',
-  'cookie',
-  'cookie2',
-  'date',
-  'dnt',
-  'expect',
-  'host',
-  'keep-alive',
-  'origin',
-  'referer',
-  'te',
-  'trailer',
-  'transfer-encoding',
-  'upgrade',
-  'via'
-]
+  "accept-charset",
+  "accept-encoding",
+  "access-control-request-headers",
+  "access-control-request-method",
+  "connection",
+  "content-length",
+  "cookie",
+  "cookie2",
+  "date",
+  "dnt",
+  "expect",
+  "host",
+  "keep-alive",
+  "origin",
+  "referer",
+  "te",
+  "trailer",
+  "transfer-encoding",
+  "upgrade",
+  "via",
+];
