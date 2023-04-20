@@ -1,15 +1,21 @@
 import { Server, createServer } from "node:http";
 import { createProxyServer } from "http-proxy";
-import { Anvil } from "./anvil.js";
+import { Anvil, type AnvilOptions } from "./anvil.js";
 import getPort from "get-port";
-import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
 
 export interface AnvilProxyOptions {
-  port?: number;
-  hostname?: string;
+  proxyPort?: number;
+  proxyHostname?: string;
+  anvilOptions: Omit<AnvilOptions, "port"> & {
+    portRange?: number[] | Iterable<number>;
+  };
 }
 
-export function createAnvilProxy({ port = 8545, hostname = "::" }: AnvilProxyOptions = {}) {
+export function createAnvilProxy({
+  proxyPort = 8545,
+  proxyHostname = "::",
+  anvilOptions: { portRange, ...anvilOptions },
+}: AnvilProxyOptions) {
   // rome-ignore lint/suspicious/noAsyncPromiseExecutor: this is fine ...
   return new Promise<Server>(async (resolve, reject) => {
     const proxy = createProxyServer({
@@ -22,7 +28,10 @@ export function createAnvilProxy({ port = 8545, hostname = "::" }: AnvilProxyOpt
       if (id === undefined) {
         res.writeHead(404).end("Missing worker id in request");
       } else {
-        const anvil = await getOrCreateAnvilInstance(id);
+        const port = await getPort({
+          ...(portRange !== undefined ? { port: portRange } : {}),
+        });
+        const anvil = await getOrCreateAnvilInstance(id, { ...anvilOptions, port });
         proxy.web(req, res, {
           target: `http://localhost:${anvil.port}`,
         });
@@ -34,7 +43,10 @@ export function createAnvilProxy({ port = 8545, hostname = "::" }: AnvilProxyOpt
       if (id === undefined) {
         socket.destroy(new Error("Missing worker id in request"));
       } else {
-        const anvil = await getOrCreateAnvilInstance(id);
+        const port = await getPort({
+          ...(portRange !== undefined ? { port: portRange } : {}),
+        });
+        const anvil = await getOrCreateAnvilInstance(id, { ...anvilOptions, port });
         proxy.ws(req, socket, head, {
           target: `ws://localhost:${anvil.port}`,
         });
@@ -44,7 +56,7 @@ export function createAnvilProxy({ port = 8545, hostname = "::" }: AnvilProxyOpt
     server.on("listening", () => resolve(server));
     server.on("error", (error) => reject(error));
 
-    server.listen(port, hostname);
+    server.listen(proxyPort, proxyHostname);
   });
 }
 
@@ -55,21 +67,14 @@ export async function stopAnvilInstances() {
   await Promise.allSettled(anvils.map(async (anvil) => (await anvil).exit()));
 }
 
-async function getOrCreateAnvilInstance(id: number) {
+async function getOrCreateAnvilInstance(id: number, options: AnvilOptions) {
   let anvil = instances.get(id);
 
   if (anvil === undefined) {
     // rome-ignore lint/suspicious/noAsyncPromiseExecutor: we need this to be synchronous
     anvil = new Promise(async (resolve, reject) => {
       try {
-        resolve(
-          Anvil.start({
-            portNumber: await getPort(),
-            forkUrl: FORK_URL,
-            forkBlockNumber: FORK_BLOCK_NUMBER,
-            startUpTimeout: 10000,
-          }),
-        );
+        resolve(Anvil.start(options));
       } catch (error) {
         reject(error);
       }
