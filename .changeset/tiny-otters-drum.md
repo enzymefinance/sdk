@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-Added setAutoProtocolFeeSharesBuyback function and tests
+Added `setAutoProtocolFeeSharesBuyback` function and tests
