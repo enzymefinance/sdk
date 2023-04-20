@@ -10,7 +10,7 @@ export interface IntegrationDataForAaveV2Lend {
   depositAmount: bigint;
 }
 
-export function encodeIntegrationDataForAaveV2Lend({ aToken, depositAmount }: IntegrationDataForAaveV2Lend) {
+export function encodeIntegrationDataForAaveV2Lend({ aToken, depositAmount }: IntegrationDataForAaveV2Lend): Hex {
   return encodeAbiParameters(integrationDataForAaveV2LendAbiParamaters, [aToken, depositAmount]);
 }
 

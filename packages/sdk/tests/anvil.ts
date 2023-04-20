@@ -26,10 +26,7 @@ export function setupAnvil({
 
   if (expectedPort !== anvilPort) {
     console.warn(
-      `Couldn't start anvil on port ${expectedPort} and chose ${anvilPort} as a fallback. ` +
-      `This likely means that there's a zombie anvil process lingering from a previous run. ` +
-      `Consider closing it manually to free up resources. ` +
-      `You can use \`lsof -i :${expectedPort}\` to find the process.`
+      `Couldn't start anvil on port ${expectedPort} and chose ${anvilPort} as a fallback. This likely means that there's a zombie anvil process lingering from a previous run. Consider closing it manually to free up resources. You can use \`lsof -i :${expectedPort}\` to find the process.`,
     );
   }
 
@@ -48,14 +45,18 @@ export function setupAnvil({
   afterEach((context) => {
     context.onTestFailed((result) => {
       // Remove the startup message from the logs and only return the last `logDepth` entries.
-      const logs = anvil?.logs().slice(-logDepth, -1).map(item => item.trim()) ?? [];
+      const logs =
+        anvil
+          ?.logs()
+          .slice(-logDepth, -1)
+          .map((item) => item.trim()) ?? [];
       if (logs.length === 0) {
         return;
       }
 
       // Try to append the log messages to the vitest error message. If that's not possible, print them to the console.
       const error = result.errors?.[0];
-      const seperator = "======================================================================"
+      const seperator = "======================================================================";
 
       if (error !== undefined) {
         error.message += "\n\nAnvil logs";
@@ -63,7 +64,9 @@ export function setupAnvil({
         error.message += `\n${logs.join("\n")}`;
         error.message += `\n${seperator}`;
       } else {
-        console.log(`Anvil logs (${context.meta.file ? `${context.meta.file.name} > ` : ''}${context.meta.name})\n${seperator}`);
+        console.log(
+          `Anvil logs (${context.meta.file ? `${context.meta.file.name} > ` : ""}${context.meta.name})\n${seperator}`,
+        );
 
         for (const log of logs) {
           console.log(log);
