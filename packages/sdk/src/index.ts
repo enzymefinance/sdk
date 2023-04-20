@@ -170,3 +170,10 @@ export {
   type SimulateRedeemSharesInKindArgs,
   simulateRedeemSharesInKind,
 } from "./actions/redeemSharesInKind.js";
+
+export {
+  type SetAutoProtocolFeeSharesBuybackParams,
+  decodeSetAutoProtocolFeeSharesBuybackParams,
+  type SimulateSetAutoProtocolFeeSharesBuybackParams,
+  simulateSetAutoProtocolFeeSharesBuyback,
+} from "./actions/setAutoProtocolFeeSharesBuyback.js";
