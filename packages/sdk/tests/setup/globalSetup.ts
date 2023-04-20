@@ -49,7 +49,7 @@ export default async function () {
           res.end();
         } else {
           const anvil = await getOrCreateAnvil(id);
-          const response = await fetch(`http://127.0.0.1:${anvil.port}`, {
+          const result = await fetch(`http://127.0.0.1:${anvil.port}`, {
             method: "POST",
             duplex: "half",
             body: req,
@@ -58,10 +58,10 @@ export default async function () {
             }),
           });
 
-          res.writeHead(response.status, response.statusText, Object.fromEntries(response.headers.entries()));
+          res.writeHead(result.status, result.statusText, Object.fromEntries(result.headers.entries()));
 
-          if (response.body !== null) {
-            response.body.pipeTo(Writable.toWeb(res));
+          if (result.body !== null) {
+            await result.body.pipeTo(Writable.toWeb(res));
           } else {
             res.end();
           }

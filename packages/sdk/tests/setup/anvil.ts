@@ -61,13 +61,12 @@ export class Anvil {
       all: true,
     });
 
-    subprocess.catch((error) => reject(error));
+    // Assign the anvil instance that is returned from the promise.
+    const instance = new this(subprocess, controller, recorder, opts);
 
     // rome-ignore lint/style/noNonNullAssertion: we know that this is not null because we are passing `all: true` to execa.
     subprocess.pipeAll!(recorder);
-
-    // Assign the anvil instance that is returned from the promise.
-    const instance = new this(subprocess, controller, recorder, opts);
+    subprocess.catch((error) => reject(error));
 
     return resolvable;
   }
