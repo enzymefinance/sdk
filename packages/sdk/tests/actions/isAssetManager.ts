@@ -1,6 +1,6 @@
 import { type Address } from "viem";
 import { publicClient } from "../globals.js";
-import { IVault } from "../../../abis/src/abis/IVault.js";
+import { IVault } from "@enzymefinance/abis/IVault";
 
 export interface IsAssetManagerParams {
   who: Address;
