@@ -19,6 +19,7 @@ import {
   POLICY_VIOLATION_ONLY_UNTRACK_DUST_OR_PRICELESS_ASSETS,
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   ASSET_MANAGER_ALREADY_REGISTERED,
+  ASSET_MANAGER_NOT_REGISTERED,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -93,6 +94,15 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Manager already registered":
           return ASSET_MANAGER_ALREADY_REGISTERED;
+      }
+
+      return undefined;
+    }
+
+    case "removeAssetManagers": {
+      switch (suffix) {
+        case "Manager not registered":
+          return ASSET_MANAGER_NOT_REGISTERED;
       }
 
       return undefined;
