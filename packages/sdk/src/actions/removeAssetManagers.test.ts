@@ -1,22 +1,38 @@
 import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
 import {
-  decodeAddAssetManagersParams,
-  prepareAddAssetManagersParams,
-  simulateAddAssetManagers,
-} from "./addAssetManagers.js";
+  decodeRemoveAssetManagersParams,
+  prepareRemoveAssetManagersParams,
+  simulateRemoveAssetManagers,
+} from "./removeAssetManagers.js";
+import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
-import { ASSET_MANAGER_ALREADY_REGISTERED } from "../errors/errorCodes.js";
+import { ASSET_MANAGER_NOT_REGISTERED } from "../errors/errorCodes.js";
 import { encodeFunctionData } from "viem";
 
-test("should add asset managers", async () => {
+test("should remove asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
   });
 
-  const { request } = await simulateAddAssetManagers({
+  await sendTestTransaction({
+    ...prepareAddAssetManagersParams({
+      managers: [BOB, CAROL, DAVE],
+    }),
+    address: vaultProxy,
+    account: ALICE,
+  });
+
+  const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
+    vaultProxy,
+    addresses: [BOB, CAROL, DAVE],
+  });
+
+  expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, true]);
+
+  const { request } = await simulateRemoveAssetManagers({
     publicClient,
     managers: [BOB, CAROL],
     vaultProxy,
@@ -27,34 +43,23 @@ test("should add asset managers", async () => {
 
   await sendTestTransaction(request);
 
-  const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
+  const [bobIsStillManager, carolIsStillManager, daveIsStillManager] = await testActions.isAssetManagers({
     vaultProxy,
     addresses: [BOB, CAROL, DAVE],
   });
 
-  expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, false]);
+  expect([bobIsStillManager, carolIsStillManager, daveIsStillManager]).toEqual([false, false, true]);
 });
 
-test("should not add asset manager if already registered", async () => {
+test("should not remove asset manager if not registered", async () => {
   const { vaultProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
   });
 
-  const { request } = await simulateAddAssetManagers({
-    publicClient,
-    managers: [BOB],
-    vaultProxy,
-    account: ALICE,
-  });
-
-  expect(request).toBeTruthy();
-
-  await sendTestTransaction(request);
-
   await expect(async () => {
     try {
-      await simulateAddAssetManagers({
+      await simulateRemoveAssetManagers({
         publicClient,
         managers: [BOB],
         vaultProxy,
@@ -63,12 +68,12 @@ test("should not add asset manager if already registered", async () => {
     } catch (error) {
       throw catchError(error);
     }
-  }).rejects.toThrow(new EnzymeError(ASSET_MANAGER_ALREADY_REGISTERED));
+  }).rejects.toThrow(new EnzymeError(ASSET_MANAGER_NOT_REGISTERED));
 });
 
 test("should prepare params correctly", () => {
   expect(
-    prepareAddAssetManagersParams({
+    prepareRemoveAssetManagersParams({
       managers: [BOB],
     }),
   ).toMatchInlineSnapshot(`
@@ -82,7 +87,7 @@ test("should prepare params correctly", () => {
               "type": "address[]",
             },
           ],
-          "name": "addAssetManagers",
+          "name": "removeAssetManagers",
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function",
@@ -93,18 +98,18 @@ test("should prepare params correctly", () => {
           "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
         ],
       ],
-      "functionName": "addAssetManagers",
+      "functionName": "removeAssetManagers",
     }
   `);
 });
 
 test("should decode params correctly", () => {
   const params = {
-    managers: [BOB, ALICE],
+    managers: [BOB, CAROL],
   };
-  const prepared = prepareAddAssetManagersParams(params);
+  const prepared = prepareRemoveAssetManagersParams(params);
   const encoded = encodeFunctionData(prepared);
-  const decoded = decodeAddAssetManagersParams(encoded);
+  const decoded = decodeRemoveAssetManagersParams(encoded);
 
   expect(decoded).toEqual(params);
 });

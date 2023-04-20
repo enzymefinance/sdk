@@ -178,3 +178,11 @@ export {
   type SimulateAddAssetManagersParams,
   simulateAddAssetManagers,
 } from "./actions/addAssetManagers.js";
+
+export {
+  type RemoveAssetManagersParams,
+  prepareRemoveAssetManagersParams,
+  decodeRemoveAssetManagersParams,
+  type SimulateRemoveAssetManagersParams,
+  simulateRemoveAssetManagers,
+} from "./actions/removeAssetManagers.js";
