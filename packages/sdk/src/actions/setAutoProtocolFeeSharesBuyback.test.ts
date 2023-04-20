@@ -6,10 +6,7 @@ import {
 } from "./setAutoProtocolFeeSharesBuyback.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { setupAnvil } from "../../tests/anvil.js";
 import { encodeFunctionData } from "viem";
-
-setupAnvil();
 
 test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
