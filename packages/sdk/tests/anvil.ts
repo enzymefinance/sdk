@@ -20,7 +20,7 @@ export function setupAnvil({
   forkUrl = process.env.VITE_ANVIL_FORK_URL,
   forkBlockNumber = Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER ?? 16994400),
   startUpTimeout = 10000,
-  logDepth = 15,
+  logDepth = 20,
 }: AnvilOptions = {}) {
   let anvil: Anvil | undefined;
 
@@ -58,7 +58,7 @@ export function setupAnvil({
       }
 
       // Try to append the log messages to the vitest error message. If that's not possible, print them to the console.
-      const error = result.errors?.[436146];
+      const error = result.errors?.[0];
       const seperator = "======================================================================";
 
       if (error !== undefined) {
