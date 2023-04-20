@@ -15,3 +15,6 @@ export const ACCOUNTS = [
 ] as const;
 
 export const [ALICE, BOB] = ACCOUNTS;
+
+export const FORK_URL = process.env.VITE_ANVIL_FORK_URL!;
+export const FORK_BLOCK_NUMBER = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER ?? 16994400));

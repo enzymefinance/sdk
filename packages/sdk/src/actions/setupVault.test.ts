@@ -8,9 +8,6 @@ import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMa
 import { DEPLOYER, VITALIK } from "../../tests/constants.js";
 import { encodeFunctionData, getAddress } from "viem";
 import { publicClient, sendTestTransaction } from "../../tests/globals.js";
-import { setupAnvil } from "../../tests/anvil.js";
-
-setupAnvil();
 
 test("should set up a vault with the given parameters", async () => {
   const {
