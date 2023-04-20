@@ -1,5 +1,15 @@
 # @enzymefinance/sdk
 
+## 0.0.10
+
+### Patch Changes
+
+- [`ea70829`](https://github.com/enzymefinance/sdk/commit/ea70829f7f331dc40470169aba69fc0eafc0d941) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `removeAssetManagers` functions and tests.
+
+- [#29](https://github.com/enzymefinance/sdk/pull/29) [`e4db600`](https://github.com/enzymefinance/sdk/commit/e4db600c8c863a04637223e469c15952fe57e937) Thanks [@rayphelan](https://github.com/rayphelan)! - Added functions and tests for `addAssetManagers`
+
+- [`e8838d3`](https://github.com/enzymefinance/sdk/commit/e8838d3dbe975aaf8a6cd7525414791a6ef37f52) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `setAutoProtocolFeeSharesBuyback` function and tests
+
 ## 0.0.9
 
 ### Patch Changes
