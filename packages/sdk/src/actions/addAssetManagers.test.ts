@@ -6,12 +6,9 @@ import {
   simulateAddAssetManagers,
 } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { setupAnvil } from "../../tests/anvil.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
 import { ASSET_MANAGER_ALREADY_REGISTERED } from "../errors/errorCodes.js";
 import { encodeFunctionData } from "viem";
-
-setupAnvil();
 
 test("should add asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({
