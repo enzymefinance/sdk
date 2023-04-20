@@ -10,7 +10,7 @@ import { wrapEther } from "./actions/wrapEther.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
 import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
 import { assertBalanceOf } from "./actions/assertBalanceOf.js";
-import { usesAutoProcolFeeSharesBuyBack } from "./actions/doesAutoProtocolFeeSharesBuyback.js";
+import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeSharesBuyBack.js";
 
 export const testActions = {
   createTestVault,

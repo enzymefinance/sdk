@@ -1,11 +1,11 @@
-import { type Address, getAbiItem } from "viem";
+import { type Address } from "viem";
 import { publicClient } from "../globals.js";
-import { IComptroller } from "../../../abis/src/abis/IComptroller.js";
+import { IComptroller } from "@enzymefinance/abis/IComptroller";
 
 export function usesAutoProcolFeeSharesBuyBack({ address }: { address: Address }) {
   return publicClient.readContract({
     address,
-    abi: [getAbiItem({ abi: IComptroller, name: "doesAutoProtocolFeeSharesBuyback" })],
+    abi: IComptroller,
     functionName: "doesAutoProtocolFeeSharesBuyback",
   });
 }
