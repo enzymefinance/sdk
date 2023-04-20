@@ -172,6 +172,13 @@ export {
 } from "./actions/redeemSharesInKind.js";
 
 export {
+  type SetAutoProtocolFeeSharesBuybackParams,
+  decodeSetAutoProtocolFeeSharesBuybackParams,
+  type SimulateSetAutoProtocolFeeSharesBuybackParams,
+  simulateSetAutoProtocolFeeSharesBuyback,
+} from "./actions/setAutoProtocolFeeSharesBuyback.js";
+
+export {
   type AddAssetManagersParams,
   prepareAddAssetManagersParams,
   decodeAddAssetManagersParams,
