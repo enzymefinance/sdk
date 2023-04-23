@@ -4,17 +4,17 @@ import {
   encodePerformanceFeeSettings,
   performanceFeeSettingsEncoding,
 } from "./performanceFee.js";
-import { VITALIK } from "../../../tests/constants.js";
+import { ALICE } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
 
 test("should encode performance fee settings correctly", () => {
   expect(
     encodePerformanceFeeSettings({
       feeRateInBps: toBps(0.123),
-      feeRecipient: VITALIK,
+      feeRecipient: ALICE,
     }),
   ).toMatchInlineSnapshot(
-    '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+    '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"',
   );
 
   expect(

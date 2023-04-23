@@ -44,17 +44,12 @@
     "viem": "^0.3.1"
   },
   "devDependencies": {
-    "@types/http-proxy": "^1.17.10",
-    "@types/node": "^18.15.11",
-    "@types/ws": "^8.5.4",
+    "@fubhy/anvil": "^0.0.3",
     "@vitest/coverage-c8": "^0.29.2",
     "@vitest/ui": "^0.29.2",
-    "execa": "^7.1.1",
-    "http-proxy": "^1.18.1",
     "typescript": "^5.0.3",
     "vite": "^4.2.1",
     "vite-tsconfig-paths": "^4.0.8",
-    "vitest": "^0.29.8",
-    "ws": "^8.13.0"
+    "vitest": "^0.29.8"
   }
 }
