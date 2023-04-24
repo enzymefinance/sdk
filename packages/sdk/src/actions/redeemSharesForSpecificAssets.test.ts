@@ -1,15 +1,8 @@
-import { expect, test } from "vitest";
+import { test } from "vitest";
 import { toWei } from "../utils/conversion.js";
-import {
-  decodeRedeemSharesForSpecificAssetsParams,
-  prepareRedeemSharesForSpecificAssetsParams,
-  simulateRedeemSharesForSpecificAssets,
-} from "./redeemSharesForSpecificAssets.js";
-import { encodeFunctionData, getAbiItem, type Address, parseAbiItem } from "viem";
-import { prepareFunctionParams } from "../utils/viem.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../tests/globals.js";
-import { ALICE, WETH, WMATIC, MATIC } from "../../tests/constants.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { simulateRedeemSharesForSpecificAssets } from "./redeemSharesForSpecificAssets.js";
+import { publicClient, testActions, testClient } from "../../tests/globals.js";
+import { ALICE, WETH, USDC_HOLDER, USDC } from "../../tests/constants.js";
 
 test("test", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -17,44 +10,30 @@ test("test", async () => {
     denominationAsset: WETH,
   });
 
-  // buy shares...
-  const depositAmount = toWei(250);
-
-  await testActions.buyShares({
+  const depositAmount = toWei(10); // Buy 10 WETH worth of shares.
+  const boughtShares = await testActions.buyShares({
     comptrollerProxy,
     sharesBuyer: ALICE,
     investmentAmount: depositAmount,
   });
 
-  // transfer USDC
-  const account = "0x7713974908Be4BEd47172370115e8b1219F4A5f0";
-  const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"; // usdc
-
   await testClient.impersonateAccount({
-    address: account,
+    address: USDC_HOLDER,
   });
 
-  const abi = parseAbiItem("function transfer(address _to, uint256 _value) public returns (bool success)");
-
-  const recipient = vaultProxy;
-  const amount = 1000000n;
-
-  const res = await sendTestTransaction({
-    address: USDC,
-    abi: [abi],
-    functionName: "transfer",
-    account: account,
-    args: [recipient, amount],
+  await testActions.transferToken({
+    token: USDC,
+    account: USDC_HOLDER,
+    recipient: vaultProxy,
+    amount: 100_000_000_000n, // USDC has 6 decimals, hence, this is 100,000 USDC.
   });
-
-  console.log("TRANSFER RESULT", res);
 
   const { request, result } = await simulateRedeemSharesForSpecificAssets({
     comptrollerProxy,
     publicClient,
     sharesOwner: ALICE,
-    sharesQuantity: depositAmount,
-    payoutAssets: [USDC],
+    sharesQuantity: boughtShares, // NOTE: Normally, in order to redeem all shares, you'd pass MAX_UINT_256 here.
+    payoutAssets: [USDC], // Withdraw all shares as 100% USDC.
     payoutAssetPercentages: [10000n],
   });
 

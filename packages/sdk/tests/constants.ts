@@ -1,7 +1,11 @@
-export const DEPLOYER = "0x4f1C53F096533C04d8157EFB6Bca3eb22ddC6360";
+// Mainnet contracts
+export const FUND_DEPLOYER = "0x4f1C53F096533C04d8157EFB6Bca3eb22ddC6360";
+export const VALUE_INTERPRETER = "0xD7B0610dB501b15Bfb9B7DDad8b3869de262a327";
+
+export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"; // usdc
 export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
-export const WMATIC = "0x7c9f4C87d911613Fe9ca58b579f737911AAD2D43";
-export const MATIC = "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0";
+
+// Test accounts
 export const ACCOUNTS = [
   "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
@@ -15,7 +19,11 @@ export const ACCOUNTS = [
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
 
+// Named accounts
 export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
+
+// Special accounts
+export const USDC_HOLDER = "0x7713974908Be4BEd47172370115e8b1219F4A5f0";
 
 if (process.env.VITE_ANVIL_FORK_URL === undefined) {
   throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL"');
