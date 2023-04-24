@@ -29,7 +29,7 @@ test("should add asset managers", async () => {
 
   const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
     vaultProxy,
-    addresses: [BOB, CAROL, DAVE],
+    addresses: [BOB, CAROL, DAVE] as const,
   });
 
   expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, false]);

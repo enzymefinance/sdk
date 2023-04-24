@@ -1,6 +1,7 @@
 import { type Address } from "viem";
 import { publicClient } from "../globals.js";
 import { IVault } from "@enzymefinance/abis/IVault";
+import type { Tuple } from "../../src/utils/types.js";
 
 export interface IsAssetManagerParams {
   who: Address;
@@ -15,21 +16,24 @@ export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
     args: [who],
   });
 }
-interface ManagersResponse {
-  error?: Error | undefined;
-  result?: unknown;
-  status: "error" | "success";
-}
 
-export async function isAssetManagers({ addresses, vaultProxy }: { addresses: Address[]; vaultProxy: Address }) {
-  const contracts = addresses.map((who: Address) => ({
-    address: vaultProxy,
-    abi: IVault,
-    functionName: "isAssetManager",
-    args: [who],
-  }));
+export async function isAssetManagers<TAddresses extends Readonly<Address[]>>({
+  addresses,
+  vaultProxy,
+}: { addresses: TAddresses; vaultProxy: Address }) {
+  const contracts = addresses.map((who: Address) => {
+    return {
+      address: vaultProxy,
+      abi: IVault,
+      functionName: "isAssetManager",
+      args: [who],
+    } as const;
+  });
 
-  const managers: ManagersResponse[] = await publicClient.multicall({ contracts });
+  const managers = await publicClient.multicall({
+    allowFailure: false,
+    contracts,
+  });
 
-  return managers.map(({ result }) => result);
+  return managers as Tuple<boolean, TAddresses["length"]>;
 }

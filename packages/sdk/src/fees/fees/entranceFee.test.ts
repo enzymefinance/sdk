@@ -8,7 +8,7 @@ import {
   entranceRateBurnFeeSettingsEncoding,
   entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
-import { VITALIK } from "../../../tests/constants.js";
+import { ALICE } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
 
 test("should encode entrance rate burn fee settings correctly", () => {
@@ -37,9 +37,9 @@ test("should encode entrance rate direct fee settings correctly", () => {
   );
 
   expect(
-    encodeEntranceRateDirectFeeSettings({ feeRateInBps: toBps(0.567), feeRecipient: VITALIK }),
+    encodeEntranceRateDirectFeeSettings({ feeRateInBps: toBps(0.567), feeRecipient: ALICE }),
   ).toMatchInlineSnapshot(
-    '"0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+    '"0x0000000000000000000000000000000000000000000000000000000000001626000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"',
   );
 });
 

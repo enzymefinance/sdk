@@ -8,7 +8,7 @@ import {
   exitRateDirectFeeSettingsEncoding,
   calculateExitRateFeeSharesDue,
 } from "./exitFee.js";
-import { VITALIK } from "../../../tests/constants.js";
+import { ALICE } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
@@ -88,10 +88,10 @@ test("encodeExitRateDirectFeeSettings should work correctly", () => {
     encodeExitRateDirectFeeSettings({
       inKindRateInBps: toBps(0.12345),
       specificAssetsRate: 572208134435n,
-      feeRecipient: VITALIK,
+      feeRecipient: ALICE,
     }),
   ).toMatchInlineSnapshot(
-    '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045"',
+    '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"',
   );
 });
 
