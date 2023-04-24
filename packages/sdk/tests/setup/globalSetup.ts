@@ -1,9 +1,9 @@
-import { createAnvilProxy } from "@fubhy/anvil";
+import { startProxy } from "@fubhy/anvil";
 import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
 
 export default async function () {
-  return await createAnvilProxy({
-    anvilOptions: {
+  return await startProxy({
+    options: {
       forkBlockNumber: FORK_BLOCK_NUMBER,
       forkUrl: FORK_URL,
     },
