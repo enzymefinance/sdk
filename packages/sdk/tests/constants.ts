@@ -4,7 +4,6 @@ export const VALUE_INTERPRETER = "0xD7B0610dB501b15Bfb9B7DDad8b3869de262a327";
 
 export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
 export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
-export const DAI = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
 
 // Test accounts
 export const ACCOUNTS = [
@@ -25,7 +24,6 @@ export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
 
 // Special accounts
 export const USDC_HOLDER = "0x7713974908Be4BEd47172370115e8b1219F4A5f0";
-export const DAI_HOLDER = "0x60FaAe176336dAb62e284Fe19B885B095d29fB7F";
 
 if (process.env.VITE_ANVIL_FORK_URL === undefined) {
   throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL"');

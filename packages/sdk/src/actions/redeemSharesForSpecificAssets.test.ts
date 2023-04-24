@@ -6,7 +6,7 @@ import {
   simulateRedeemSharesForSpecificAssets,
 } from "./redeemSharesForSpecificAssets.js";
 import { publicClient, testActions, testClient } from "../../tests/globals.js";
-import { ALICE, WETH, USDC_HOLDER, USDC, DAI } from "../../tests/constants.js";
+import { ALICE, WETH, USDC_HOLDER, USDC } from "../../tests/constants.js";
 import { encodeFunctionData, type Address } from "viem";
 import { MAX_UINT_256 } from "../constants/misc.js";
 import { EnzymeError, catchError } from "../errors/catchError.js";
