@@ -120,8 +120,8 @@ importers:
         specifier: ^2.2.0
         version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
       abitype:
-        specifier: ^0.8.0
-        version: 0.8.0(typescript@5.0.4)
+        specifier: ^0.7.1
+        version: 0.7.1(typescript@5.0.4)
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.23)
@@ -230,8 +230,8 @@ importers:
         specifier: workspace:*
         version: link:../abis
       abitype:
-        specifier: ^0.8.0
-        version: 0.8.0(typescript@5.0.4)
+        specifier: ^0.7.1
+        version: 0.7.1(typescript@5.0.4)
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
@@ -270,8 +270,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/sdk
       abitype:
-        specifier: ^0.8.0
-        version: 0.8.0(typescript@5.0.4)
+        specifier: ^0.7.1
+        version: 0.7.1(typescript@5.0.4)
       viem:
         specifier: ^0.3.11
         version: 0.3.11(typescript@5.0.4)
@@ -1654,18 +1654,6 @@ packages:
 
   /abitype@0.7.1(typescript@5.0.4):
     resolution: {integrity: sha512-VBkRHTDZf9Myaek/dO3yMmOzB/y2s3Zo6nVU7yaw1G+TvCHAjwaJzNGN9yo4K5D8bU/VZXKP1EJpRhFr862PlQ==}
-    peerDependencies:
-      typescript: '>=4.9.4'
-      zod: ^3 >=3.19.1
-    peerDependenciesMeta:
-      zod:
-        optional: true
-    dependencies:
-      typescript: 5.0.4
-    dev: false
-
-  /abitype@0.8.0(typescript@5.0.4):
-    resolution: {integrity: sha512-QqBuwc2trtaNd/kp4k0dSjVu3OQIYRAB4ww4LCPwfSECXcCGTD3imYovNYNjx0SyN3OHV0XUOzUVwnXP1kLsVQ==}
     peerDependencies:
       typescript: '>=4.9.4'
       zod: ^3 >=3.19.1

@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.8",
-    "abitype": "^0.8.0",
+    "abitype": "^0.7.1",
     "decimal.js": "^10.4.3",
     "viem": "^0.3.11"
   },

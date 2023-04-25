@@ -9,7 +9,7 @@
   "dependencies": {
     "@enzymefinance/abis": "*",
     "@enzymefinance/sdk": "*",
-    "abitype": "^0.8.0",
+    "abitype": "^0.7.1",
     "viem": "^0.3.11"
   },
   "devDependencies": {
