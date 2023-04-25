@@ -1,46 +1,84 @@
 import { expect, test } from "vitest";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, BOB, CAROL, WETH } from "../../tests/constants.js";
-import { IVault } from "../../../abis/src/abis/IVault.js";
-import { getAbiItem } from "viem";
-import { prepareFunctionParams } from "../utils/viem.js";
-import { simulateClaimOwnership } from "./claimOwnership.js";
+import { IVault } from "@enzymefinance/abis/IVault";
+import { prepareClaimOwnershipParams, simulateClaimOwnership } from "./claimOwnership.js";
+import { EnzymeError, catchError } from "../errors/catchError.js";
+import { CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER } from "../errors/errorCodes.js";
 
-test("test", async () => {
+test("should claim ownership correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
   });
 
-  await sendTestTransaction({
-    address: vaultProxy,
-    account: ALICE,
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IVault, name: "setNominatedOwner" }),
-      args: [BOB],
-    }),
-  });
-
-  // await sendTestTransaction({
-  //   address: vaultProxy,
-  //   account: BOB,
-  //   ...prepareFunctionParams({
-  //     abi: getAbiItem({ abi: IVault, name: "claimOwnership" }),
-  //   }),
-  // });
-
-  const { request, result } = await simulateClaimOwnership({
-    vaultProxy,
-    address: CAROL,
-  });
-
-  console.log("REQ", request, "RESULT", result);
-
-  const owner = await publicClient.readContract({
+  const originalOwner = await publicClient.readContract({
     abi: IVault,
     address: vaultProxy,
-    functionName: "getNominatedOwner",
+    functionName: "getOwner",
   });
 
-  console.log("OWNER", owner);
+  expect(originalOwner).toEqual(ALICE);
+
+  await testActions.setNominatedOwner({
+    nominatedOwner: BOB,
+    account: ALICE,
+    vaultProxy,
+  });
+
+  const { request } = await simulateClaimOwnership({
+    vaultProxy,
+    account: BOB,
+  });
+
+  await sendTestTransaction(request);
+
+  const newOwner = await publicClient.readContract({
+    abi: IVault,
+    address: vaultProxy,
+    functionName: "getOwner",
+  });
+
+  expect(newOwner).toEqual(BOB);
+});
+
+test("should throw error if not claimed by nominated owner", async () => {
+  const { vaultProxy } = await testActions.createTestVault({
+    vaultOwner: ALICE,
+    denominationAsset: WETH,
+  });
+
+  await testActions.setNominatedOwner({
+    nominatedOwner: BOB,
+    account: ALICE,
+    vaultProxy,
+  });
+
+  await expect(async () => {
+    try {
+      await simulateClaimOwnership({
+        vaultProxy,
+        account: CAROL,
+      });
+    } catch (error) {
+      throw catchError(error);
+    }
+  }).rejects.toThrow(new EnzymeError(CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER));
+});
+
+test("should prepare params correctly", () => {
+  expect(prepareClaimOwnershipParams()).toMatchInlineSnapshot(`
+    {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "claimOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+        },
+      ],
+      "functionName": "claimOwnership",
+    }
+  `);
 });

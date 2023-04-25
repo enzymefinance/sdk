@@ -20,6 +20,7 @@ import {
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -103,6 +104,15 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Manager not registered":
           return ASSET_MANAGER_NOT_REGISTERED;
+      }
+
+      return undefined;
+    }
+
+    case "claimOwnership": {
+      switch (suffix) {
+        case "Only the nominatedOwner can call this function":
+          return CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER;
       }
 
       return undefined;

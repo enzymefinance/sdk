@@ -1,7 +1,6 @@
 import { IVault } from "@enzymefinance/abis/IVault";
 import { prepareFunctionParams } from "../../src/utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
-import type { Hex } from "viem";
+import { getAbiItem, type Address } from "viem";
 import { publicClient } from "../../tests/globals.js";
 
 export function prepareClaimOwnershipParams() {
@@ -11,13 +10,13 @@ export function prepareClaimOwnershipParams() {
 }
 export interface SimulateClaimOwnershipParams {
   vaultProxy: Address;
-  address: Address;
+  account: Address;
 }
 
-export async function simulateClaimOwnership({ vaultProxy, address }: SimulateClaimOwnershipParams) {
+export async function simulateClaimOwnership({ vaultProxy, account }: SimulateClaimOwnershipParams) {
   const { request, result } = await publicClient.simulateContract({
-    account: vaultProxy,
-    address,
+    account,
+    address: vaultProxy,
     ...prepareClaimOwnershipParams(),
   });
 

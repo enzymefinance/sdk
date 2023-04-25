@@ -12,6 +12,7 @@ import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
 import { isAssetManagers, isAssetManager } from "./actions/isAssetManager.js";
 import { assertBalanceOf } from "./actions/assertBalanceOf.js";
 import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeSharesBuyBack.js";
+import { setNominatedOwner } from "./actions/setNominatedOwner.js";
 
 export const testActions = {
   createTestVault,
@@ -24,6 +25,7 @@ export const testActions = {
   isAssetManager,
   assertBalanceOf,
   usesAutoProcolFeeSharesBuyBack,
+  setNominatedOwner,
 };
 
 export const anvil = {

@@ -19,6 +19,7 @@ export const BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION = "ENZF200002"; // 
 export const BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT = "ENZF200003"; // __buyShares: Shares received < _minSharesQuantity
 export const ASSET_MANAGER_ALREADY_REGISTERED = "ENZF200010"; // addAssetManagers: Manager already registered
 export const ASSET_MANAGER_NOT_REGISTERED = "ENZF200011"; // removeAssetManagers: Manager not registered
+export const CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER = "ENZF200030"; // claimOwnership: Only the nominatedOwner can call this function
 
 export const errorCodes = [
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
@@ -40,6 +41,7 @@ export const errorCodes = [
   BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
 ] as const;
 
 export type ErrorCode = typeof errorCodes[number];
@@ -147,5 +149,10 @@ export const errorDictionary: {
     code: ASSET_MANAGER_NOT_REGISTERED,
     label: "Manager not registered",
     description: "The asset manager is not registered",
+  },
+  [CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER]: {
+    code: CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
+    label: "Only the nominatedOwner can call this function",
+    description: "Only the nominated owner can claim ownership of the vault",
   },
 };
