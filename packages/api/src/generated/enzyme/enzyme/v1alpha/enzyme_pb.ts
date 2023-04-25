@@ -7,313 +7,19 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-
-/**
- * Release describes a specific Enzyme Protocol release. 
- *
- * @generated from enum enzyme.enzyme.v1alpha.Release
- */
-export enum Release {
-  /**
-   * Unspecified release: this will use the latest release
-   *
-   * @generated from enum value: RELEASE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * Phoenix release (v2)
-   *
-   * @generated from enum value: RELEASE_PHOENIX = 1;
-   */
-  PHOENIX = 1,
-
-  /**
-   * Encore release (v3)
-   *
-   * @generated from enum value: RELEASE_ENCORE = 2;
-   */
-  ENCORE = 2,
-
-  /**
-   * Sulu release (v4)
-   *
-   * @generated from enum value: RELEASE_SULU = 3;
-   */
-  SULU = 3,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Release)
-proto3.util.setEnumType(Release, "enzyme.enzyme.v1alpha.Release", [
-  { no: 0, name: "RELEASE_UNSPECIFIED" },
-  { no: 1, name: "RELEASE_PHOENIX" },
-  { no: 2, name: "RELEASE_ENCORE" },
-  { no: 3, name: "RELEASE_SULU" },
-]);
-
-/**
- * Network describes a network on which the Enzyme Protocol has been deployed. 
- *
- * @generated from enum enzyme.enzyme.v1alpha.Network
- */
-export enum Network {
-  /**
-   * Unspecified network: this will use the Ethereum network
-   *
-   * @generated from enum value: NETWORK_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * Ethereum network
-   *
-   * @generated from enum value: NETWORK_ETHEREUM = 1;
-   */
-  ETHEREUM = 1,
-
-  /**
-   * Polygon network
-   *
-   * @generated from enum value: NETWORK_POLYGON = 2;
-   */
-  POLYGON = 2,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Network)
-proto3.util.setEnumType(Network, "enzyme.enzyme.v1alpha.Network", [
-  { no: 0, name: "NETWORK_UNSPECIFIED" },
-  { no: 1, name: "NETWORK_ETHEREUM" },
-  { no: 2, name: "NETWORK_POLYGON" },
-]);
-
-/**
- * Deployment describes a specific deployment of the Enzyme Protocol. 
- *
- * @generated from enum enzyme.enzyme.v1alpha.Deployment
- */
-export enum Deployment {
-  /**
-   * Unspecified deployment: this will use the Ethereum deployment
-   *
-   * @generated from enum value: DEPLOYMENT_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * Ethereum production deployment
-   *
-   * @generated from enum value: DEPLOYMENT_ETHEREUM = 1;
-   */
-  ETHEREUM = 1,
-
-  /**
-   * Polygon production deployment
-   *
-   * @generated from enum value: DEPLOYMENT_POLYGON = 2;
-   */
-  POLYGON = 2,
-
-  /**
-   * Testnet deployment on Polygon
-   *
-   * @generated from enum value: DEPLOYMENT_TESTNET = 3;
-   */
-  TESTNET = 3,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Deployment)
-proto3.util.setEnumType(Deployment, "enzyme.enzyme.v1alpha.Deployment", [
-  { no: 0, name: "DEPLOYMENT_UNSPECIFIED" },
-  { no: 1, name: "DEPLOYMENT_ETHEREUM" },
-  { no: 2, name: "DEPLOYMENT_POLYGON" },
-  { no: 3, name: "DEPLOYMENT_TESTNET" },
-]);
-
-/**
- * Resolution describes the time resolution for time series data. 
- *
- * @generated from enum enzyme.enzyme.v1alpha.Resolution
- */
-export enum Resolution {
-  /**
-   * Unspecified resolution: this will default to one day
-   *
-   * @generated from enum value: RESOLUTION_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * Five minutes resolution
-   *
-   * @generated from enum value: RESOLUTION_FIVE_MINUTES = 1;
-   */
-  FIVE_MINUTES = 1,
-
-  /**
-   * Ten minutes resolution
-   *
-   * @generated from enum value: RESOLUTION_TEN_MINUTES = 2;
-   */
-  TEN_MINUTES = 2,
-
-  /**
-   * Thirty minutes resolution
-   *
-   * @generated from enum value: RESOLUTION_THIRTY_MINUTES = 3;
-   */
-  THIRTY_MINUTES = 3,
-
-  /**
-   * One hour resolution
-   *
-   * @generated from enum value: RESOLUTION_ONE_HOUR = 4;
-   */
-  ONE_HOUR = 4,
-
-  /**
-   * One day resolution
-   *
-   * @generated from enum value: RESOLUTION_ONE_DAY = 5;
-   */
-  ONE_DAY = 5,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Resolution)
-proto3.util.setEnumType(Resolution, "enzyme.enzyme.v1alpha.Resolution", [
-  { no: 0, name: "RESOLUTION_UNSPECIFIED" },
-  { no: 1, name: "RESOLUTION_FIVE_MINUTES" },
-  { no: 2, name: "RESOLUTION_TEN_MINUTES" },
-  { no: 3, name: "RESOLUTION_THIRTY_MINUTES" },
-  { no: 4, name: "RESOLUTION_ONE_HOUR" },
-  { no: 5, name: "RESOLUTION_ONE_DAY" },
-]);
-
-/**
- * Currency describes the currency that is used for all amounts and prices. 
- *
- * @generated from enum enzyme.enzyme.v1alpha.Currency
- */
-export enum Currency {
-  /**
-   * Unspecified currency: this will default to USD
-   *
-   * @generated from enum value: CURRENCY_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * Australian Dollar
-   *
-   * @generated from enum value: CURRENCY_AUD = 1;
-   */
-  AUD = 1,
-
-  /**
-   * Bitcoin
-   *
-   * @generated from enum value: CURRENCY_BTC = 2;
-   */
-  BTC = 2,
-
-  /**
-   * Swiss Franc
-   *
-   * @generated from enum value: CURRENCY_CHF = 3;
-   */
-  CHF = 3,
-
-  /**
-   * Ether
-   *
-   * @generated from enum value: CURRENCY_ETH = 4;
-   */
-  ETH = 4,
-
-  /**
-   * Euro
-   *
-   * @generated from enum value: CURRENCY_EUR = 5;
-   */
-  EUR = 5,
-
-  /**
-   * British Pound
-   *
-   * @generated from enum value: CURRENCY_GBP = 6;
-   */
-  GBP = 6,
-
-  /**
-   * Japanese Yen
-   *
-   * @generated from enum value: CURRENCY_JPY = 7;
-   */
-  JPY = 7,
-
-  /**
-   * US Dollar
-   *
-   * @generated from enum value: CURRENCY_USD = 8;
-   */
-  USD = 8,
-}
-// Retrieve enum metadata with: proto3.getEnumType(Currency)
-proto3.util.setEnumType(Currency, "enzyme.enzyme.v1alpha.Currency", [
-  { no: 0, name: "CURRENCY_UNSPECIFIED" },
-  { no: 1, name: "CURRENCY_AUD" },
-  { no: 2, name: "CURRENCY_BTC" },
-  { no: 3, name: "CURRENCY_CHF" },
-  { no: 4, name: "CURRENCY_ETH" },
-  { no: 5, name: "CURRENCY_EUR" },
-  { no: 6, name: "CURRENCY_GBP" },
-  { no: 7, name: "CURRENCY_JPY" },
-  { no: 8, name: "CURRENCY_USD" },
-]);
-
-/**
- * TimeWindow describes a time window for time series data. 
- *
- * @generated from message enzyme.enzyme.v1alpha.TimeWindow
- */
-export class TimeWindow extends Message<TimeWindow> {
-  /**
-   * From timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp from = 1;
-   */
-  from?: Timestamp;
-
-  /**
-   * To timestamp
-   *
-   * @generated from field: google.protobuf.Timestamp to = 2;
-   */
-  to?: Timestamp;
-
-  constructor(data?: PartialMessage<TimeWindow>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.TimeWindow";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "from", kind: "message", T: Timestamp },
-    { no: 2, name: "to", kind: "message", T: Timestamp },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TimeWindow {
-    return new TimeWindow().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TimeWindow {
-    return new TimeWindow().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TimeWindow {
-    return new TimeWindow().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: TimeWindow | PlainMessage<TimeWindow> | undefined, b: TimeWindow | PlainMessage<TimeWindow> | undefined): boolean {
-    return proto3.util.equals(TimeWindow, a, b);
-  }
-}
+import { Currency, Deployment, Release, Resolution } from "./enums_pb.js";
+import { AssetItem } from "./asset_item_pb.js";
+import { TimeWindow } from "./time_window_pb.js";
+import { DepositorTimeSeriesItem } from "./depositor_time_series_item_pb.js";
+import { ManagerTimeSeriesItem } from "./manager_time_series_item_pb.js";
+import { NetworkTimeSeriesItem } from "./network_time_series_item_pb.js";
+import { FeeConfiguration } from "./fee_configuration_pb.js";
+import { PolicyConfiguration } from "./policy_configuration_pb.js";
+import { DepositorItem } from "./depositor_item_pb.js";
+import { VaultListItem } from "./vault_list_item_pb.js";
+import { PortfolioAssetItem } from "./portfolio_asset_item_pb.js";
+import { ExternalPositionItem } from "./external_position_item_pb.js";
+import { VaultTimeSeriesItem } from "./vault_time_series_item_pb.js";
 
 /**
  * GetAssetListRequest contains the input parameters for the GetAssetList endpoint 
@@ -414,83 +120,678 @@ export class GetAssetListResponse extends Message<GetAssetListResponse> {
 }
 
 /**
- * AssetItem contains details about an individual asset 
+ * GetDepositorTimeSeriesRequest contains the input parameters for the GetDepositorTimeSeries endpoint 
  *
- * @generated from message enzyme.enzyme.v1alpha.AssetItem
+ * @generated from message enzyme.enzyme.v1alpha.GetDepositorTimeSeriesRequest
  */
-export class AssetItem extends Message<AssetItem> {
+export class GetDepositorTimeSeriesRequest extends Message<GetDepositorTimeSeriesRequest> {
   /**
-   * Asset address
+   * The deployment of the vault
    *
-   * @generated from field: string address = 1;
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
    */
-  address = "";
+  deployment = Deployment.UNSPECIFIED;
 
   /**
-   * Asset symbol
+   * The addresses of the depositors
    *
-   * @generated from field: string symbol = 2;
+   * @generated from field: repeated string depositor_addresses = 2;
    */
-  symbol = "";
+  depositorAddresses: string[] = [];
 
   /**
-   * Asset name
+   * The currency in which all amounts and prices are displayed.
    *
-   * @generated from field: string name = 3;
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
    */
-  name = "";
+  currency = Currency.UNSPECIFIED;
 
   /**
-   * Current asset price
+   * The time range (from/to) of the time series
    *
-   * @generated from field: float price = 4;
+   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
    */
-  price = 0;
+  range?: TimeWindow;
 
   /**
-   * Is the current asset price valid?
+   * The time resolution of the time series
    *
-   * @generated from field: bool price_is_valid = 5;
+   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
    */
-  priceIsValid = false;
+  resolution = Resolution.UNSPECIFIED;
 
-  /**
-   * Enzyme Protocol releases for which the asset is registered
-   *
-   * @generated from field: repeated string releases = 6;
-   */
-  releases: string[] = [];
-
-  constructor(data?: PartialMessage<AssetItem>) {
+  constructor(data?: PartialMessage<GetDepositorTimeSeriesRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.AssetItem";
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetDepositorTimeSeriesRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "symbol", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "price", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 5, name: "price_is_valid", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "releases", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "depositor_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+    { no: 4, name: "range", kind: "message", T: TimeWindow },
+    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AssetItem {
-    return new AssetItem().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetDepositorTimeSeriesRequest {
+    return new GetDepositorTimeSeriesRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): AssetItem {
-    return new AssetItem().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesRequest {
+    return new GetDepositorTimeSeriesRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): AssetItem {
-    return new AssetItem().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesRequest {
+    return new GetDepositorTimeSeriesRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: AssetItem | PlainMessage<AssetItem> | undefined, b: AssetItem | PlainMessage<AssetItem> | undefined): boolean {
-    return proto3.util.equals(AssetItem, a, b);
+  static equals(a: GetDepositorTimeSeriesRequest | PlainMessage<GetDepositorTimeSeriesRequest> | undefined, b: GetDepositorTimeSeriesRequest | PlainMessage<GetDepositorTimeSeriesRequest> | undefined): boolean {
+    return proto3.util.equals(GetDepositorTimeSeriesRequest, a, b);
+  }
+}
+
+/**
+ * GetDepositorTimeSeriesResponse contains the output parameters for the GetDepositorTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetDepositorTimeSeriesResponse
+ */
+export class GetDepositorTimeSeriesResponse extends Message<GetDepositorTimeSeriesResponse> {
+  /**
+   * The time series data for the depositor
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.DepositorTimeSeriesItem items = 1;
+   */
+  items: DepositorTimeSeriesItem[] = [];
+
+  constructor(data?: PartialMessage<GetDepositorTimeSeriesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetDepositorTimeSeriesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: DepositorTimeSeriesItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetDepositorTimeSeriesResponse {
+    return new GetDepositorTimeSeriesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesResponse {
+    return new GetDepositorTimeSeriesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesResponse {
+    return new GetDepositorTimeSeriesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetDepositorTimeSeriesResponse | PlainMessage<GetDepositorTimeSeriesResponse> | undefined, b: GetDepositorTimeSeriesResponse | PlainMessage<GetDepositorTimeSeriesResponse> | undefined): boolean {
+    return proto3.util.equals(GetDepositorTimeSeriesResponse, a, b);
+  }
+}
+
+/**
+ * GetManagerTimeSeriesRequest contains the input parameters for the GetManagerTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetManagerTimeSeriesRequest
+ */
+export class GetManagerTimeSeriesRequest extends Message<GetManagerTimeSeriesRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The addresses of the vaults
+   *
+   * @generated from field: repeated string vault_addresses = 2;
+   */
+  vaultAddresses: string[] = [];
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  /**
+   * The time range (from/to) of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
+   */
+  range?: TimeWindow;
+
+  /**
+   * The time resolution of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
+   */
+  resolution = Resolution.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetManagerTimeSeriesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetManagerTimeSeriesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "vault_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+    { no: 4, name: "range", kind: "message", T: TimeWindow },
+    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetManagerTimeSeriesRequest {
+    return new GetManagerTimeSeriesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesRequest {
+    return new GetManagerTimeSeriesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesRequest {
+    return new GetManagerTimeSeriesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetManagerTimeSeriesRequest | PlainMessage<GetManagerTimeSeriesRequest> | undefined, b: GetManagerTimeSeriesRequest | PlainMessage<GetManagerTimeSeriesRequest> | undefined): boolean {
+    return proto3.util.equals(GetManagerTimeSeriesRequest, a, b);
+  }
+}
+
+/**
+ * GetManagerTimeSeriesResponse contains the output parameters for the GetManagerTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetManagerTimeSeriesResponse
+ */
+export class GetManagerTimeSeriesResponse extends Message<GetManagerTimeSeriesResponse> {
+  /**
+   * The time series data for the manager
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.ManagerTimeSeriesItem items = 1;
+   */
+  items: ManagerTimeSeriesItem[] = [];
+
+  constructor(data?: PartialMessage<GetManagerTimeSeriesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetManagerTimeSeriesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: ManagerTimeSeriesItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetManagerTimeSeriesResponse {
+    return new GetManagerTimeSeriesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesResponse {
+    return new GetManagerTimeSeriesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesResponse {
+    return new GetManagerTimeSeriesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetManagerTimeSeriesResponse | PlainMessage<GetManagerTimeSeriesResponse> | undefined, b: GetManagerTimeSeriesResponse | PlainMessage<GetManagerTimeSeriesResponse> | undefined): boolean {
+    return proto3.util.equals(GetManagerTimeSeriesResponse, a, b);
+  }
+}
+
+/**
+ * GetNetworkFeeStatisticsRequest contains the input parameters for the GetNetworkFeeStatistics endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsRequest
+ */
+export class GetNetworkFeeStatisticsRequest extends Message<GetNetworkFeeStatisticsRequest> {
+  constructor(data?: PartialMessage<GetNetworkFeeStatisticsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkFeeStatisticsRequest {
+    return new GetNetworkFeeStatisticsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsRequest {
+    return new GetNetworkFeeStatisticsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsRequest {
+    return new GetNetworkFeeStatisticsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetNetworkFeeStatisticsRequest | PlainMessage<GetNetworkFeeStatisticsRequest> | undefined, b: GetNetworkFeeStatisticsRequest | PlainMessage<GetNetworkFeeStatisticsRequest> | undefined): boolean {
+    return proto3.util.equals(GetNetworkFeeStatisticsRequest, a, b);
+  }
+}
+
+/**
+ * GetNetworkFeeStatisticsResponse contains the output parameters for the GetNetworkFeeStatistics endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsResponse
+ */
+export class GetNetworkFeeStatisticsResponse extends Message<GetNetworkFeeStatisticsResponse> {
+  /**
+   * Number of MLN burned to date
+   *
+   * @generated from field: float mln_burned_to_date = 1;
+   */
+  mlnBurnedToDate = 0;
+
+  /**
+   * Network fees collected to date
+   *
+   * @generated from field: float network_fee_to_date = 2;
+   */
+  networkFeeToDate = 0;
+
+  /**
+   * Network fees annualized
+   *
+   * @generated from field: float network_fee_annualized = 3;
+   */
+  networkFeeAnnualized = 0;
+
+  constructor(data?: PartialMessage<GetNetworkFeeStatisticsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "mln_burned_to_date", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 2, name: "network_fee_to_date", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 3, name: "network_fee_annualized", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkFeeStatisticsResponse {
+    return new GetNetworkFeeStatisticsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsResponse {
+    return new GetNetworkFeeStatisticsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsResponse {
+    return new GetNetworkFeeStatisticsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetNetworkFeeStatisticsResponse | PlainMessage<GetNetworkFeeStatisticsResponse> | undefined, b: GetNetworkFeeStatisticsResponse | PlainMessage<GetNetworkFeeStatisticsResponse> | undefined): boolean {
+    return proto3.util.equals(GetNetworkFeeStatisticsResponse, a, b);
+  }
+}
+
+/**
+ * GetNetworkTimeSeriesRequest contains the input parameters for the GetNetworkTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetNetworkTimeSeriesRequest
+ */
+export class GetNetworkTimeSeriesRequest extends Message<GetNetworkTimeSeriesRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 2;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  /**
+   * The time range (from/to) of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 3;
+   */
+  range?: TimeWindow;
+
+  /**
+   * The time resolution of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 4;
+   */
+  resolution = Resolution.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetNetworkTimeSeriesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkTimeSeriesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+    { no: 3, name: "range", kind: "message", T: TimeWindow },
+    { no: 4, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkTimeSeriesRequest {
+    return new GetNetworkTimeSeriesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesRequest {
+    return new GetNetworkTimeSeriesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesRequest {
+    return new GetNetworkTimeSeriesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetNetworkTimeSeriesRequest | PlainMessage<GetNetworkTimeSeriesRequest> | undefined, b: GetNetworkTimeSeriesRequest | PlainMessage<GetNetworkTimeSeriesRequest> | undefined): boolean {
+    return proto3.util.equals(GetNetworkTimeSeriesRequest, a, b);
+  }
+}
+
+/**
+ * GetNetworkTimeSeriesResponse contains the output parameters for the GetNetworkTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetNetworkTimeSeriesResponse
+ */
+export class GetNetworkTimeSeriesResponse extends Message<GetNetworkTimeSeriesResponse> {
+  /**
+   * The time series data for the network
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.NetworkTimeSeriesItem items = 1;
+   */
+  items: NetworkTimeSeriesItem[] = [];
+
+  constructor(data?: PartialMessage<GetNetworkTimeSeriesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkTimeSeriesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: NetworkTimeSeriesItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkTimeSeriesResponse {
+    return new GetNetworkTimeSeriesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesResponse {
+    return new GetNetworkTimeSeriesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesResponse {
+    return new GetNetworkTimeSeriesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetNetworkTimeSeriesResponse | PlainMessage<GetNetworkTimeSeriesResponse> | undefined, b: GetNetworkTimeSeriesResponse | PlainMessage<GetNetworkTimeSeriesResponse> | undefined): boolean {
+    return proto3.util.equals(GetNetworkTimeSeriesResponse, a, b);
+  }
+}
+
+/**
+ * GetVaultConfigurationRequest contains the input parameters for the GetVaultConfiguration endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultConfigurationRequest
+ */
+export class GetVaultConfigurationRequest extends Message<GetVaultConfigurationRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The address of the vault
+   *
+   * @generated from field: string address = 2;
+   */
+  address = "";
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetVaultConfigurationRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultConfigurationRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultConfigurationRequest {
+    return new GetVaultConfigurationRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultConfigurationRequest {
+    return new GetVaultConfigurationRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultConfigurationRequest {
+    return new GetVaultConfigurationRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultConfigurationRequest | PlainMessage<GetVaultConfigurationRequest> | undefined, b: GetVaultConfigurationRequest | PlainMessage<GetVaultConfigurationRequest> | undefined): boolean {
+    return proto3.util.equals(GetVaultConfigurationRequest, a, b);
+  }
+}
+
+/**
+ * GetVaultConfigurationResponse contains the output parameters for the GetVaultConfiguration endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultConfigurationResponse
+ */
+export class GetVaultConfigurationResponse extends Message<GetVaultConfigurationResponse> {
+  /**
+   * @generated from field: string comptroller = 1;
+   */
+  comptroller = "";
+
+  /**
+   * @generated from field: enzyme.enzyme.v1alpha.Release release = 2;
+   */
+  release = Release.UNSPECIFIED;
+
+  /**
+   * @generated from field: bool freely_transferable_shares = 3;
+   */
+  freelyTransferableShares = false;
+
+  /**
+   * @generated from field: bool auto_protocol_fee_shares_buyback = 4;
+   */
+  autoProtocolFeeSharesBuyback = false;
+
+  /**
+   * @generated from field: string gas_relayer = 5;
+   */
+  gasRelayer = "";
+
+  /**
+   * @generated from field: float shares_action_timelock = 6;
+   */
+  sharesActionTimelock = 0;
+
+  /**
+   * @generated from field: repeated enzyme.enzyme.v1alpha.FeeConfiguration fee_configurations = 7;
+   */
+  feeConfigurations: FeeConfiguration[] = [];
+
+  /**
+   * @generated from field: repeated enzyme.enzyme.v1alpha.PolicyConfiguration policy_configurations = 8;
+   */
+  policyConfigurations: PolicyConfiguration[] = [];
+
+  constructor(data?: PartialMessage<GetVaultConfigurationResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultConfigurationResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "comptroller", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "release", kind: "enum", T: proto3.getEnumType(Release) },
+    { no: 3, name: "freely_transferable_shares", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "auto_protocol_fee_shares_buyback", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 5, name: "gas_relayer", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "shares_action_timelock", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 7, name: "fee_configurations", kind: "message", T: FeeConfiguration, repeated: true },
+    { no: 8, name: "policy_configurations", kind: "message", T: PolicyConfiguration, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultConfigurationResponse {
+    return new GetVaultConfigurationResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultConfigurationResponse {
+    return new GetVaultConfigurationResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultConfigurationResponse {
+    return new GetVaultConfigurationResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultConfigurationResponse | PlainMessage<GetVaultConfigurationResponse> | undefined, b: GetVaultConfigurationResponse | PlainMessage<GetVaultConfigurationResponse> | undefined): boolean {
+    return proto3.util.equals(GetVaultConfigurationResponse, a, b);
+  }
+}
+
+/**
+ * GetVaultDepositorsRequest contains the input parameters for the GetVaultDepositors endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultDepositorsRequest
+ */
+export class GetVaultDepositorsRequest extends Message<GetVaultDepositorsRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The address of the vault
+   *
+   * @generated from field: string address = 2;
+   */
+  address = "";
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetVaultDepositorsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultDepositorsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultDepositorsRequest {
+    return new GetVaultDepositorsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultDepositorsRequest {
+    return new GetVaultDepositorsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultDepositorsRequest {
+    return new GetVaultDepositorsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultDepositorsRequest | PlainMessage<GetVaultDepositorsRequest> | undefined, b: GetVaultDepositorsRequest | PlainMessage<GetVaultDepositorsRequest> | undefined): boolean {
+    return proto3.util.equals(GetVaultDepositorsRequest, a, b);
+  }
+}
+
+/**
+ * GetVaultDepositorsResponse contains the output parameters for the GetVaultDepositors endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultDepositorsResponse
+ */
+export class GetVaultDepositorsResponse extends Message<GetVaultDepositorsResponse> {
+  /**
+   * The total number of depositors
+   *
+   * @generated from field: uint32 number_of_depositors = 1;
+   */
+  numberOfDepositors = 0;
+
+  /**
+   * The current number of shares
+   *
+   * @generated from field: float number_of_shares = 2;
+   */
+  numberOfShares = 0;
+
+  /**
+   * The list of depositors, which details on each depositor
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.DepositorItem depositors = 3;
+   */
+  depositors: DepositorItem[] = [];
+
+  constructor(data?: PartialMessage<GetVaultDepositorsResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultDepositorsResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "number_of_depositors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "number_of_shares", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 3, name: "depositors", kind: "message", T: DepositorItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultDepositorsResponse {
+    return new GetVaultDepositorsResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultDepositorsResponse {
+    return new GetVaultDepositorsResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultDepositorsResponse {
+    return new GetVaultDepositorsResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultDepositorsResponse | PlainMessage<GetVaultDepositorsResponse> | undefined, b: GetVaultDepositorsResponse | PlainMessage<GetVaultDepositorsResponse> | undefined): boolean {
+    return proto3.util.equals(GetVaultDepositorsResponse, a, b);
   }
 }
 
@@ -593,137 +894,222 @@ export class GetVaultListResponse extends Message<GetVaultListResponse> {
 }
 
 /**
- * @generated from message enzyme.enzyme.v1alpha.VaultListItem
+ * GetVaultPortfolioRequest contains the input parameters for the GetVaultPortfolio endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultPortfolioRequest
  */
-export class VaultListItem extends Message<VaultListItem> {
+export class GetVaultPortfolioRequest extends Message<GetVaultPortfolioRequest> {
   /**
-   * Vault address
+   * The deployment of the vault
    *
-   * @generated from field: string address = 1;
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The address of the vault
+   *
+   * @generated from field: string address = 2;
    */
   address = "";
 
   /**
-   * Inception timestamp of the vault
+   * The currency in which all amounts and prices are displayed.
    *
-   * @generated from field: google.protobuf.Timestamp inception = 2;
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
    */
-  inception?: Timestamp;
+  currency = Currency.UNSPECIFIED;
 
-  /**
-   * Current number of shares
-   *
-   * @generated from field: float number_of_shares = 3;
-   */
-  numberOfShares = 0;
-
-  /**
-   * Current gross asset value (i.e. total value of all assets held by the vault)
-   *
-   * @generated from field: float gross_asset_value = 4;
-   */
-  grossAssetValue = 0;
-
-  /**
-   * Current share price
-   *
-   * @generated from field: float share_price = 5;
-   */
-  sharePrice = 0;
-
-  /**
-   * Is the current share price valid
-   *
-   * @generated from field: bool share_price_valid = 6;
-   */
-  sharePriceValid = false;
-
-  /**
-   * The vault performance in the last 24 hours
-   *
-   * @generated from field: float performance_24h = 7;
-   */
-  performance24h = 0;
-
-  /**
-   * The vault performance since the beginning of this month
-   *
-   * @generated from field: float performance_this_month = 8;
-   */
-  performanceThisMonth = 0;
-
-  /**
-   * The vault performance since inception
-   *
-   * @generated from field: float performance_since_inception = 9;
-   */
-  performanceSinceInception = 0;
-
-  /**
-   * The number of assets held by the vault
-   *
-   * @generated from field: float number_of_assets = 10;
-   */
-  numberOfAssets = 0;
-
-  /**
-   * The addresses of the top 5 assets held by the vault
-   *
-   * @generated from field: repeated string assets = 11;
-   */
-  assets: string[] = [];
-
-  /**
-   * The percentages of the top assets held by the vault
-   *
-   * @generated from field: repeated float asset_percentages = 12;
-   */
-  assetPercentages: number[] = [];
-
-  /**
-   * The number of depositors of the vault
-   *
-   * @generated from field: float number_of_depositors = 13;
-   */
-  numberOfDepositors = 0;
-
-  constructor(data?: PartialMessage<VaultListItem>) {
+  constructor(data?: PartialMessage<GetVaultPortfolioRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.VaultListItem";
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultPortfolioRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "inception", kind: "message", T: Timestamp },
-    { no: 3, name: "number_of_shares", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 4, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 5, name: "share_price", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 6, name: "share_price_valid", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 7, name: "performance_24h", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 8, name: "performance_this_month", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 9, name: "performance_since_inception", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 10, name: "number_of_assets", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 11, name: "assets", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 12, name: "asset_percentages", kind: "scalar", T: 2 /* ScalarType.FLOAT */, repeated: true },
-    { no: 13, name: "number_of_depositors", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VaultListItem {
-    return new VaultListItem().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultPortfolioRequest {
+    return new GetVaultPortfolioRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VaultListItem {
-    return new VaultListItem().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultPortfolioRequest {
+    return new GetVaultPortfolioRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VaultListItem {
-    return new VaultListItem().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultPortfolioRequest {
+    return new GetVaultPortfolioRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: VaultListItem | PlainMessage<VaultListItem> | undefined, b: VaultListItem | PlainMessage<VaultListItem> | undefined): boolean {
-    return proto3.util.equals(VaultListItem, a, b);
+  static equals(a: GetVaultPortfolioRequest | PlainMessage<GetVaultPortfolioRequest> | undefined, b: GetVaultPortfolioRequest | PlainMessage<GetVaultPortfolioRequest> | undefined): boolean {
+    return proto3.util.equals(GetVaultPortfolioRequest, a, b);
+  }
+}
+
+/**
+ * GetVaultPortfolioResponse contains the output parameters for the GetVaultPortfolio endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultPortfolioResponse
+ */
+export class GetVaultPortfolioResponse extends Message<GetVaultPortfolioResponse> {
+  /**
+   * The list of indidvidual ERC20 assets currently held by the vault, with details
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.PortfolioAssetItem assets = 1;
+   */
+  assets: PortfolioAssetItem[] = [];
+
+  /**
+   * The list of individual external positioins currently held by the vault, with details
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.ExternalPositionItem external_positions = 2;
+   */
+  externalPositions: ExternalPositionItem[] = [];
+
+  constructor(data?: PartialMessage<GetVaultPortfolioResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultPortfolioResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "assets", kind: "message", T: PortfolioAssetItem, repeated: true },
+    { no: 2, name: "external_positions", kind: "message", T: ExternalPositionItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultPortfolioResponse {
+    return new GetVaultPortfolioResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultPortfolioResponse {
+    return new GetVaultPortfolioResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultPortfolioResponse {
+    return new GetVaultPortfolioResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultPortfolioResponse | PlainMessage<GetVaultPortfolioResponse> | undefined, b: GetVaultPortfolioResponse | PlainMessage<GetVaultPortfolioResponse> | undefined): boolean {
+    return proto3.util.equals(GetVaultPortfolioResponse, a, b);
+  }
+}
+
+/**
+ * GetVaultTimeSeriesRequest contains the input parameters for the GetVaultTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultTimeSeriesRequest
+ */
+export class GetVaultTimeSeriesRequest extends Message<GetVaultTimeSeriesRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The address of the vault
+   *
+   * @generated from field: string address = 2;
+   */
+  address = "";
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  /**
+   * The time range (from/to) of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
+   */
+  range?: TimeWindow;
+
+  /**
+   * The time resolution of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
+   */
+  resolution = Resolution.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetVaultTimeSeriesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultTimeSeriesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+    { no: 4, name: "range", kind: "message", T: TimeWindow },
+    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultTimeSeriesRequest {
+    return new GetVaultTimeSeriesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesRequest {
+    return new GetVaultTimeSeriesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesRequest {
+    return new GetVaultTimeSeriesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultTimeSeriesRequest | PlainMessage<GetVaultTimeSeriesRequest> | undefined, b: GetVaultTimeSeriesRequest | PlainMessage<GetVaultTimeSeriesRequest> | undefined): boolean {
+    return proto3.util.equals(GetVaultTimeSeriesRequest, a, b);
+  }
+}
+
+/**
+ * GetVaultTimeSeriesResponse contains the output parameters for the GetVaultTimeSeries endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1alpha.GetVaultTimeSeriesResponse
+ */
+export class GetVaultTimeSeriesResponse extends Message<GetVaultTimeSeriesResponse> {
+  /**
+   * The time series data of the vault
+   *
+   * @generated from field: repeated enzyme.enzyme.v1alpha.VaultTimeSeriesItem items = 1;
+   */
+  items: VaultTimeSeriesItem[] = [];
+
+  constructor(data?: PartialMessage<GetVaultTimeSeriesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultTimeSeriesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "items", kind: "message", T: VaultTimeSeriesItem, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultTimeSeriesResponse {
+    return new GetVaultTimeSeriesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesResponse {
+    return new GetVaultTimeSeriesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesResponse {
+    return new GetVaultTimeSeriesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultTimeSeriesResponse | PlainMessage<GetVaultTimeSeriesResponse> | undefined, b: GetVaultTimeSeriesResponse | PlainMessage<GetVaultTimeSeriesResponse> | undefined): boolean {
+    return proto3.util.equals(GetVaultTimeSeriesResponse, a, b);
   }
 }
 
@@ -926,1205 +1312,6 @@ export class GetVaultResponse extends Message<GetVaultResponse> {
 
   static equals(a: GetVaultResponse | PlainMessage<GetVaultResponse> | undefined, b: GetVaultResponse | PlainMessage<GetVaultResponse> | undefined): boolean {
     return proto3.util.equals(GetVaultResponse, a, b);
-  }
-}
-
-/**
- * GetVaultDepositorsRequest contains the input parameters for the GetVaultDepositors endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultDepositorsRequest
- */
-export class GetVaultDepositorsRequest extends Message<GetVaultDepositorsRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The address of the vault
-   *
-   * @generated from field: string address = 2;
-   */
-  address = "";
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetVaultDepositorsRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultDepositorsRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultDepositorsRequest {
-    return new GetVaultDepositorsRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultDepositorsRequest {
-    return new GetVaultDepositorsRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultDepositorsRequest {
-    return new GetVaultDepositorsRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultDepositorsRequest | PlainMessage<GetVaultDepositorsRequest> | undefined, b: GetVaultDepositorsRequest | PlainMessage<GetVaultDepositorsRequest> | undefined): boolean {
-    return proto3.util.equals(GetVaultDepositorsRequest, a, b);
-  }
-}
-
-/**
- * GetVaultDepositorsResponse contains the output parameters for the GetVaultDepositors endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultDepositorsResponse
- */
-export class GetVaultDepositorsResponse extends Message<GetVaultDepositorsResponse> {
-  /**
-   * The total number of depositors
-   *
-   * @generated from field: uint32 number_of_depositors = 1;
-   */
-  numberOfDepositors = 0;
-
-  /**
-   * The current number of shares
-   *
-   * @generated from field: float number_of_shares = 2;
-   */
-  numberOfShares = 0;
-
-  /**
-   * The list of depositors, which details on each depositor
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.DepositorItem depositors = 3;
-   */
-  depositors: DepositorItem[] = [];
-
-  constructor(data?: PartialMessage<GetVaultDepositorsResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultDepositorsResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "number_of_depositors", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 2, name: "number_of_shares", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "depositors", kind: "message", T: DepositorItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultDepositorsResponse {
-    return new GetVaultDepositorsResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultDepositorsResponse {
-    return new GetVaultDepositorsResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultDepositorsResponse {
-    return new GetVaultDepositorsResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultDepositorsResponse | PlainMessage<GetVaultDepositorsResponse> | undefined, b: GetVaultDepositorsResponse | PlainMessage<GetVaultDepositorsResponse> | undefined): boolean {
-    return proto3.util.equals(GetVaultDepositorsResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.DepositorItem
- */
-export class DepositorItem extends Message<DepositorItem> {
-  /**
-   * The wallet address of the depositor
-   *
-   * @generated from field: string address = 1;
-   */
-  address = "";
-
-  /**
-   * The number of shares currently held by the depositor
-   *
-   * @generated from field: float number_of_shares = 2;
-   */
-  numberOfShares = 0;
-
-  /**
-   * The current value of the depositor's shares
-   *
-   * @generated from field: float value = 3;
-   */
-  value = 0;
-
-  /**
-   * The current ownership percentage of the depositor
-   *
-   * @generated from field: float ownership_percentage = 4;
-   */
-  ownershipPercentage = 0;
-
-  /**
-   * The timestamp of the depositor's first deposit into the vault
-   *
-   * @generated from field: google.protobuf.Timestamp depositor_since = 5;
-   */
-  depositorSince?: Timestamp;
-
-  constructor(data?: PartialMessage<DepositorItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.DepositorItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "number_of_shares", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 4, name: "ownership_percentage", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 5, name: "depositor_since", kind: "message", T: Timestamp },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DepositorItem {
-    return new DepositorItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DepositorItem {
-    return new DepositorItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DepositorItem {
-    return new DepositorItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: DepositorItem | PlainMessage<DepositorItem> | undefined, b: DepositorItem | PlainMessage<DepositorItem> | undefined): boolean {
-    return proto3.util.equals(DepositorItem, a, b);
-  }
-}
-
-/**
- * GetVaultPortfolioRequest contains the input parameters for the GetVaultPortfolio endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultPortfolioRequest
- */
-export class GetVaultPortfolioRequest extends Message<GetVaultPortfolioRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The address of the vault
-   *
-   * @generated from field: string address = 2;
-   */
-  address = "";
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetVaultPortfolioRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultPortfolioRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultPortfolioRequest {
-    return new GetVaultPortfolioRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultPortfolioRequest {
-    return new GetVaultPortfolioRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultPortfolioRequest {
-    return new GetVaultPortfolioRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultPortfolioRequest | PlainMessage<GetVaultPortfolioRequest> | undefined, b: GetVaultPortfolioRequest | PlainMessage<GetVaultPortfolioRequest> | undefined): boolean {
-    return proto3.util.equals(GetVaultPortfolioRequest, a, b);
-  }
-}
-
-/**
- * GetVaultPortfolioResponse contains the output parameters for the GetVaultPortfolio endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultPortfolioResponse
- */
-export class GetVaultPortfolioResponse extends Message<GetVaultPortfolioResponse> {
-  /**
-   * The list of indidvidual ERC20 assets currently held by the vault, with details
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.PortfolioAssetItem assets = 1;
-   */
-  assets: PortfolioAssetItem[] = [];
-
-  /**
-   * The list of individual external positioins currently held by the vault, with details
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.ExternalPositionItem external_positions = 2;
-   */
-  externalPositions: ExternalPositionItem[] = [];
-
-  constructor(data?: PartialMessage<GetVaultPortfolioResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultPortfolioResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "assets", kind: "message", T: PortfolioAssetItem, repeated: true },
-    { no: 2, name: "external_positions", kind: "message", T: ExternalPositionItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultPortfolioResponse {
-    return new GetVaultPortfolioResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultPortfolioResponse {
-    return new GetVaultPortfolioResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultPortfolioResponse {
-    return new GetVaultPortfolioResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultPortfolioResponse | PlainMessage<GetVaultPortfolioResponse> | undefined, b: GetVaultPortfolioResponse | PlainMessage<GetVaultPortfolioResponse> | undefined): boolean {
-    return proto3.util.equals(GetVaultPortfolioResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.PortfolioAssetItem
- */
-export class PortfolioAssetItem extends Message<PortfolioAssetItem> {
-  /**
-   * The address of the asset
-   *
-   * @generated from field: string address = 1;
-   */
-  address = "";
-
-  /**
-   * The vault's current balance in the asset
-   *
-   * @generated from field: float balance = 2;
-   */
-  balance = 0;
-
-  /**
-   * The current price for one unit of the asset
-   *
-   * @generated from field: float price = 3;
-   */
-  price = 0;
-
-  /**
-   * The current value of the asset
-   *
-   * @generated from field: float value = 4;
-   */
-  value = 0;
-
-  /**
-   * Is the current price valid?
-   *
-   * @generated from field: bool price_is_valid = 5;
-   */
-  priceIsValid = false;
-
-  /**
-   * Is the asset tracked by the vault?
-   *
-   * @generated from field: bool asset_is_tracked = 6;
-   */
-  assetIsTracked = false;
-
-  constructor(data?: PartialMessage<PortfolioAssetItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.PortfolioAssetItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "balance", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "price", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 4, name: "value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 5, name: "price_is_valid", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "asset_is_tracked", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PortfolioAssetItem {
-    return new PortfolioAssetItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PortfolioAssetItem {
-    return new PortfolioAssetItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PortfolioAssetItem {
-    return new PortfolioAssetItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: PortfolioAssetItem | PlainMessage<PortfolioAssetItem> | undefined, b: PortfolioAssetItem | PlainMessage<PortfolioAssetItem> | undefined): boolean {
-    return proto3.util.equals(PortfolioAssetItem, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.ExternalPositionItem
- */
-export class ExternalPositionItem extends Message<ExternalPositionItem> {
-  /**
-   * The address of the external position
-   *
-   * @generated from field: string address = 1;
-   */
-  address = "";
-
-  /**
-   * The type of the external position
-   *
-   * @generated from field: string type = 2;
-   */
-  type = "";
-
-  /**
-   * The current value of the external position
-   *
-   * @generated from field: float value = 3;
-   */
-  value = 0;
-
-  constructor(data?: PartialMessage<ExternalPositionItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.ExternalPositionItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExternalPositionItem {
-    return new ExternalPositionItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ExternalPositionItem {
-    return new ExternalPositionItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ExternalPositionItem {
-    return new ExternalPositionItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ExternalPositionItem | PlainMessage<ExternalPositionItem> | undefined, b: ExternalPositionItem | PlainMessage<ExternalPositionItem> | undefined): boolean {
-    return proto3.util.equals(ExternalPositionItem, a, b);
-  }
-}
-
-/**
- * GetVaultTimeSeriesRequest contains the input parameters for the GetVaultTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultTimeSeriesRequest
- */
-export class GetVaultTimeSeriesRequest extends Message<GetVaultTimeSeriesRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The address of the vault
-   *
-   * @generated from field: string address = 2;
-   */
-  address = "";
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  /**
-   * The time range (from/to) of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
-   */
-  range?: TimeWindow;
-
-  /**
-   * The time resolution of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
-   */
-  resolution = Resolution.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetVaultTimeSeriesRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultTimeSeriesRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-    { no: 4, name: "range", kind: "message", T: TimeWindow },
-    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultTimeSeriesRequest {
-    return new GetVaultTimeSeriesRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesRequest {
-    return new GetVaultTimeSeriesRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesRequest {
-    return new GetVaultTimeSeriesRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultTimeSeriesRequest | PlainMessage<GetVaultTimeSeriesRequest> | undefined, b: GetVaultTimeSeriesRequest | PlainMessage<GetVaultTimeSeriesRequest> | undefined): boolean {
-    return proto3.util.equals(GetVaultTimeSeriesRequest, a, b);
-  }
-}
-
-/**
- * GetVaultTimeSeriesResponse contains the output parameters for the GetVaultTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetVaultTimeSeriesResponse
- */
-export class GetVaultTimeSeriesResponse extends Message<GetVaultTimeSeriesResponse> {
-  /**
-   * The time series data of the vault
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.VaultTimeSeriesItem items = 1;
-   */
-  items: VaultTimeSeriesItem[] = [];
-
-  constructor(data?: PartialMessage<GetVaultTimeSeriesResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetVaultTimeSeriesResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "items", kind: "message", T: VaultTimeSeriesItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultTimeSeriesResponse {
-    return new GetVaultTimeSeriesResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesResponse {
-    return new GetVaultTimeSeriesResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultTimeSeriesResponse {
-    return new GetVaultTimeSeriesResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetVaultTimeSeriesResponse | PlainMessage<GetVaultTimeSeriesResponse> | undefined, b: GetVaultTimeSeriesResponse | PlainMessage<GetVaultTimeSeriesResponse> | undefined): boolean {
-    return proto3.util.equals(GetVaultTimeSeriesResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.VaultTimeSeriesItem
- */
-export class VaultTimeSeriesItem extends Message<VaultTimeSeriesItem> {
-  /**
-   * The timestamp of the data point
-   *
-   * @generated from field: google.protobuf.Timestamp timestamp = 1;
-   */
-  timestamp?: Timestamp;
-
-  /**
-   * The gross asset value at the timestamp
-   *
-   * @generated from field: float gross_asset_value = 2;
-   */
-  grossAssetValue = 0;
-
-  /**
-   * The net share value at the timestamp
-   *
-   * @generated from field: float net_share_value = 3;
-   */
-  netShareValue = 0;
-
-  /**
-   * The number of shares at the timestamp
-   *
-   * @generated from field: float number_of_shares = 4;
-   */
-  numberOfShares = 0;
-
-  /**
-   * Is the price valid at the timestamp?
-   *
-   * @generated from field: bool price_is_valid = 5;
-   */
-  priceIsValid = false;
-
-  constructor(data?: PartialMessage<VaultTimeSeriesItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.VaultTimeSeriesItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 2, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "net_share_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 4, name: "number_of_shares", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 5, name: "price_is_valid", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VaultTimeSeriesItem {
-    return new VaultTimeSeriesItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): VaultTimeSeriesItem {
-    return new VaultTimeSeriesItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): VaultTimeSeriesItem {
-    return new VaultTimeSeriesItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: VaultTimeSeriesItem | PlainMessage<VaultTimeSeriesItem> | undefined, b: VaultTimeSeriesItem | PlainMessage<VaultTimeSeriesItem> | undefined): boolean {
-    return proto3.util.equals(VaultTimeSeriesItem, a, b);
-  }
-}
-
-/**
- * GetManagerTimeSeriesRequest contains the input parameters for the GetManagerTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetManagerTimeSeriesRequest
- */
-export class GetManagerTimeSeriesRequest extends Message<GetManagerTimeSeriesRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The addresses of the vaults
-   *
-   * @generated from field: repeated string vault_addresses = 2;
-   */
-  vaultAddresses: string[] = [];
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  /**
-   * The time range (from/to) of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
-   */
-  range?: TimeWindow;
-
-  /**
-   * The time resolution of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
-   */
-  resolution = Resolution.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetManagerTimeSeriesRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetManagerTimeSeriesRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "vault_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-    { no: 4, name: "range", kind: "message", T: TimeWindow },
-    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetManagerTimeSeriesRequest {
-    return new GetManagerTimeSeriesRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesRequest {
-    return new GetManagerTimeSeriesRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesRequest {
-    return new GetManagerTimeSeriesRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetManagerTimeSeriesRequest | PlainMessage<GetManagerTimeSeriesRequest> | undefined, b: GetManagerTimeSeriesRequest | PlainMessage<GetManagerTimeSeriesRequest> | undefined): boolean {
-    return proto3.util.equals(GetManagerTimeSeriesRequest, a, b);
-  }
-}
-
-/**
- * GetManagerTimeSeriesResponse contains the output parameters for the GetManagerTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetManagerTimeSeriesResponse
- */
-export class GetManagerTimeSeriesResponse extends Message<GetManagerTimeSeriesResponse> {
-  /**
-   * The time series data for the manager
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.ManagerTimeSeriesItem items = 1;
-   */
-  items: ManagerTimeSeriesItem[] = [];
-
-  constructor(data?: PartialMessage<GetManagerTimeSeriesResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetManagerTimeSeriesResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "items", kind: "message", T: ManagerTimeSeriesItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetManagerTimeSeriesResponse {
-    return new GetManagerTimeSeriesResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesResponse {
-    return new GetManagerTimeSeriesResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetManagerTimeSeriesResponse {
-    return new GetManagerTimeSeriesResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetManagerTimeSeriesResponse | PlainMessage<GetManagerTimeSeriesResponse> | undefined, b: GetManagerTimeSeriesResponse | PlainMessage<GetManagerTimeSeriesResponse> | undefined): boolean {
-    return proto3.util.equals(GetManagerTimeSeriesResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.ManagerTimeSeriesItem
- */
-export class ManagerTimeSeriesItem extends Message<ManagerTimeSeriesItem> {
-  /**
-   * The timestamp of the data point
-   *
-   * @generated from field: google.protobuf.Timestamp timestamp = 1;
-   */
-  timestamp?: Timestamp;
-
-  /**
-   * The gross asset value at the timestamp
-   *
-   * @generated from field: float gross_asset_value = 2;
-   */
-  grossAssetValue = 0;
-
-  /**
-   * The number of vaults managed at the timestamp
-   *
-   * @generated from field: float number_of_vaults = 3;
-   */
-  numberOfVaults = 0;
-
-  constructor(data?: PartialMessage<ManagerTimeSeriesItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.ManagerTimeSeriesItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 2, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "number_of_vaults", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ManagerTimeSeriesItem {
-    return new ManagerTimeSeriesItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ManagerTimeSeriesItem {
-    return new ManagerTimeSeriesItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ManagerTimeSeriesItem {
-    return new ManagerTimeSeriesItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ManagerTimeSeriesItem | PlainMessage<ManagerTimeSeriesItem> | undefined, b: ManagerTimeSeriesItem | PlainMessage<ManagerTimeSeriesItem> | undefined): boolean {
-    return proto3.util.equals(ManagerTimeSeriesItem, a, b);
-  }
-}
-
-/**
- * GetDepositorTimeSeriesRequest contains the input parameters for the GetDepositorTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetDepositorTimeSeriesRequest
- */
-export class GetDepositorTimeSeriesRequest extends Message<GetDepositorTimeSeriesRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The addresses of the depositors
-   *
-   * @generated from field: repeated string depositor_addresses = 2;
-   */
-  depositorAddresses: string[] = [];
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 3;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  /**
-   * The time range (from/to) of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 4;
-   */
-  range?: TimeWindow;
-
-  /**
-   * The time resolution of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 5;
-   */
-  resolution = Resolution.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetDepositorTimeSeriesRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetDepositorTimeSeriesRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "depositor_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
-    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-    { no: 4, name: "range", kind: "message", T: TimeWindow },
-    { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetDepositorTimeSeriesRequest {
-    return new GetDepositorTimeSeriesRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesRequest {
-    return new GetDepositorTimeSeriesRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesRequest {
-    return new GetDepositorTimeSeriesRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetDepositorTimeSeriesRequest | PlainMessage<GetDepositorTimeSeriesRequest> | undefined, b: GetDepositorTimeSeriesRequest | PlainMessage<GetDepositorTimeSeriesRequest> | undefined): boolean {
-    return proto3.util.equals(GetDepositorTimeSeriesRequest, a, b);
-  }
-}
-
-/**
- * GetDepositorTimeSeriesResponse contains the output parameters for the GetDepositorTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetDepositorTimeSeriesResponse
- */
-export class GetDepositorTimeSeriesResponse extends Message<GetDepositorTimeSeriesResponse> {
-  /**
-   * The time series data for the depositor
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.DepositorTimeSeriesItem items = 1;
-   */
-  items: DepositorTimeSeriesItem[] = [];
-
-  constructor(data?: PartialMessage<GetDepositorTimeSeriesResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetDepositorTimeSeriesResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "items", kind: "message", T: DepositorTimeSeriesItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetDepositorTimeSeriesResponse {
-    return new GetDepositorTimeSeriesResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesResponse {
-    return new GetDepositorTimeSeriesResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetDepositorTimeSeriesResponse {
-    return new GetDepositorTimeSeriesResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetDepositorTimeSeriesResponse | PlainMessage<GetDepositorTimeSeriesResponse> | undefined, b: GetDepositorTimeSeriesResponse | PlainMessage<GetDepositorTimeSeriesResponse> | undefined): boolean {
-    return proto3.util.equals(GetDepositorTimeSeriesResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.DepositorTimeSeriesItem
- */
-export class DepositorTimeSeriesItem extends Message<DepositorTimeSeriesItem> {
-  /**
-   * The timestamp of the data point
-   *
-   * @generated from field: google.protobuf.Timestamp timestamp = 1;
-   */
-  timestamp?: Timestamp;
-
-  /**
-   * The gross asset value at the timestamp
-   *
-   * @generated from field: float gross_asset_value = 2;
-   */
-  grossAssetValue = 0;
-
-  /**
-   * The number of vaults deposited into at the timestamp
-   *
-   * @generated from field: float number_of_vaults = 3;
-   */
-  numberOfVaults = 0;
-
-  constructor(data?: PartialMessage<DepositorTimeSeriesItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.DepositorTimeSeriesItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 2, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "number_of_vaults", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DepositorTimeSeriesItem {
-    return new DepositorTimeSeriesItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DepositorTimeSeriesItem {
-    return new DepositorTimeSeriesItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DepositorTimeSeriesItem {
-    return new DepositorTimeSeriesItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: DepositorTimeSeriesItem | PlainMessage<DepositorTimeSeriesItem> | undefined, b: DepositorTimeSeriesItem | PlainMessage<DepositorTimeSeriesItem> | undefined): boolean {
-    return proto3.util.equals(DepositorTimeSeriesItem, a, b);
-  }
-}
-
-/**
- * GetNetworkTimeSeriesRequest contains the input parameters for the GetNetworkTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetNetworkTimeSeriesRequest
- */
-export class GetNetworkTimeSeriesRequest extends Message<GetNetworkTimeSeriesRequest> {
-  /**
-   * The deployment of the vault
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Deployment deployment = 1;
-   */
-  deployment = Deployment.UNSPECIFIED;
-
-  /**
-   * The currency in which all amounts and prices are displayed.
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Currency currency = 2;
-   */
-  currency = Currency.UNSPECIFIED;
-
-  /**
-   * The time range (from/to) of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.TimeWindow range = 3;
-   */
-  range?: TimeWindow;
-
-  /**
-   * The time resolution of the time series
-   *
-   * @generated from field: enzyme.enzyme.v1alpha.Resolution resolution = 4;
-   */
-  resolution = Resolution.UNSPECIFIED;
-
-  constructor(data?: PartialMessage<GetNetworkTimeSeriesRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkTimeSeriesRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
-    { no: 2, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
-    { no: 3, name: "range", kind: "message", T: TimeWindow },
-    { no: 4, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkTimeSeriesRequest {
-    return new GetNetworkTimeSeriesRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesRequest {
-    return new GetNetworkTimeSeriesRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesRequest {
-    return new GetNetworkTimeSeriesRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetNetworkTimeSeriesRequest | PlainMessage<GetNetworkTimeSeriesRequest> | undefined, b: GetNetworkTimeSeriesRequest | PlainMessage<GetNetworkTimeSeriesRequest> | undefined): boolean {
-    return proto3.util.equals(GetNetworkTimeSeriesRequest, a, b);
-  }
-}
-
-/**
- * GetNetworkTimeSeriesResponse contains the output parameters for the GetNetworkTimeSeries endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetNetworkTimeSeriesResponse
- */
-export class GetNetworkTimeSeriesResponse extends Message<GetNetworkTimeSeriesResponse> {
-  /**
-   * The time series data for the network
-   *
-   * @generated from field: repeated enzyme.enzyme.v1alpha.NetworkTimeSeriesItem items = 1;
-   */
-  items: NetworkTimeSeriesItem[] = [];
-
-  constructor(data?: PartialMessage<GetNetworkTimeSeriesResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkTimeSeriesResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "items", kind: "message", T: NetworkTimeSeriesItem, repeated: true },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkTimeSeriesResponse {
-    return new GetNetworkTimeSeriesResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesResponse {
-    return new GetNetworkTimeSeriesResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkTimeSeriesResponse {
-    return new GetNetworkTimeSeriesResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetNetworkTimeSeriesResponse | PlainMessage<GetNetworkTimeSeriesResponse> | undefined, b: GetNetworkTimeSeriesResponse | PlainMessage<GetNetworkTimeSeriesResponse> | undefined): boolean {
-    return proto3.util.equals(GetNetworkTimeSeriesResponse, a, b);
-  }
-}
-
-/**
- * @generated from message enzyme.enzyme.v1alpha.NetworkTimeSeriesItem
- */
-export class NetworkTimeSeriesItem extends Message<NetworkTimeSeriesItem> {
-  /**
-   * The timestamp of the data point
-   *
-   * @generated from field: google.protobuf.Timestamp timestamp = 1;
-   */
-  timestamp?: Timestamp;
-
-  /**
-   * The gross asset value at the timestamp
-   *
-   * @generated from field: float gross_asset_value = 2;
-   */
-  grossAssetValue = 0;
-
-  /**
-   * The number of vaults in existance at the timestamp
-   *
-   * @generated from field: float number_of_vaults = 3;
-   */
-  numberOfVaults = 0;
-
-  constructor(data?: PartialMessage<NetworkTimeSeriesItem>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.NetworkTimeSeriesItem";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "timestamp", kind: "message", T: Timestamp },
-    { no: 2, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "number_of_vaults", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): NetworkTimeSeriesItem {
-    return new NetworkTimeSeriesItem().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): NetworkTimeSeriesItem {
-    return new NetworkTimeSeriesItem().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): NetworkTimeSeriesItem {
-    return new NetworkTimeSeriesItem().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: NetworkTimeSeriesItem | PlainMessage<NetworkTimeSeriesItem> | undefined, b: NetworkTimeSeriesItem | PlainMessage<NetworkTimeSeriesItem> | undefined): boolean {
-    return proto3.util.equals(NetworkTimeSeriesItem, a, b);
-  }
-}
-
-/**
- * GetNetworkFeeStatisticsRequest contains the input parameters for the GetNetworkFeeStatistics endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsRequest
- */
-export class GetNetworkFeeStatisticsRequest extends Message<GetNetworkFeeStatisticsRequest> {
-  constructor(data?: PartialMessage<GetNetworkFeeStatisticsRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkFeeStatisticsRequest {
-    return new GetNetworkFeeStatisticsRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsRequest {
-    return new GetNetworkFeeStatisticsRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsRequest {
-    return new GetNetworkFeeStatisticsRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetNetworkFeeStatisticsRequest | PlainMessage<GetNetworkFeeStatisticsRequest> | undefined, b: GetNetworkFeeStatisticsRequest | PlainMessage<GetNetworkFeeStatisticsRequest> | undefined): boolean {
-    return proto3.util.equals(GetNetworkFeeStatisticsRequest, a, b);
-  }
-}
-
-/**
- * GetNetworkFeeStatisticsResponse contains the output parameters for the GetNetworkFeeStatistics endpoint 
- *
- * @generated from message enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsResponse
- */
-export class GetNetworkFeeStatisticsResponse extends Message<GetNetworkFeeStatisticsResponse> {
-  /**
-   * Number of MLN burned to date
-   *
-   * @generated from field: float mln_burned_to_date = 1;
-   */
-  mlnBurnedToDate = 0;
-
-  /**
-   * Network fees collected to date
-   *
-   * @generated from field: float network_fee_to_date = 2;
-   */
-  networkFeeToDate = 0;
-
-  /**
-   * Network fees annualized
-   *
-   * @generated from field: float network_fee_annualized = 3;
-   */
-  networkFeeAnnualized = 0;
-
-  constructor(data?: PartialMessage<GetNetworkFeeStatisticsResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "enzyme.enzyme.v1alpha.GetNetworkFeeStatisticsResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "mln_burned_to_date", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 2, name: "network_fee_to_date", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-    { no: 3, name: "network_fee_annualized", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetNetworkFeeStatisticsResponse {
-    return new GetNetworkFeeStatisticsResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsResponse {
-    return new GetNetworkFeeStatisticsResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetNetworkFeeStatisticsResponse {
-    return new GetNetworkFeeStatisticsResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: GetNetworkFeeStatisticsResponse | PlainMessage<GetNetworkFeeStatisticsResponse> | undefined, b: GetNetworkFeeStatisticsResponse | PlainMessage<GetNetworkFeeStatisticsResponse> | undefined): boolean {
-    return proto3.util.equals(GetNetworkFeeStatisticsResponse, a, b);
   }
 }
 
