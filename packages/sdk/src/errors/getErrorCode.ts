@@ -20,6 +20,8 @@ import {
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
+  SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -103,6 +105,17 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Manager not registered":
           return ASSET_MANAGER_NOT_REGISTERED;
+      }
+
+      return undefined;
+    }
+
+    case "redeemSharesInKind": {
+      switch (suffix) {
+        case "_additionalAssets contains duplicates":
+          return SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS;
+        case "_assetsToSkip contains duplicates":
+          return SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP;
       }
 
       return undefined;
