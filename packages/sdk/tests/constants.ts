@@ -4,7 +4,6 @@ export const INTEGRATION_MANAGER = "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e";
 export const AAVE_V2_ADAPTER = "0xECe6B376af7C9273cebaf6528565c47Ea2Cb8a4C";
 export const A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e";
 export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
-export const VITALIK = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
 export const ACCOUNTS = [
   "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
   "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
@@ -18,4 +17,16 @@ export const ACCOUNTS = [
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
 
-export const [ALICE, BOB] = ACCOUNTS;
+export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
+
+if (process.env.VITE_ANVIL_FORK_URL === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL"');
+}
+
+export const FORK_URL = process.env.VITE_ANVIL_FORK_URL;
+
+if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_BLOCK_NUMBER"');
+}
+
+export const FORK_BLOCK_NUMBER = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER));

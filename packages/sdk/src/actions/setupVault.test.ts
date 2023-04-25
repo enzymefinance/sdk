@@ -5,21 +5,18 @@ import { toBps, toSeconds, toWei } from "../utils/conversion.js";
 import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
 import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { DEPLOYER, VITALIK } from "../../tests/constants.js";
+import { DEPLOYER, ALICE } from "../../tests/constants.js";
 import { encodeFunctionData, getAddress } from "viem";
 import { publicClient, sendTestTransaction } from "../../tests/globals.js";
-import { setupAnvil } from "../../tests/anvil.js";
-
-setupAnvil();
 
 test("should set up a vault with the given parameters", async () => {
   const {
     result: [_, vaultProxy],
   } = await sendTestTransaction({
-    account: VITALIK,
+    account: ALICE,
     address: DEPLOYER,
     ...prepareSetupVaultParams({
-      vaultOwner: VITALIK,
+      vaultOwner: ALICE,
       vaultName: "Test Vault",
       vaultSymbol: "TEST",
       denominationAsset: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
@@ -56,12 +53,12 @@ test("should set up a vault with the given parameters", async () => {
     functionName: "getOwner",
   });
 
-  expect(vaultOwner).toBe(VITALIK);
+  expect(vaultOwner).toBe(ALICE);
 });
 
 test("decode setup vault params should work correctly", () => {
   const params: PrepareSetupVaultParamsArgs = {
-    vaultOwner: VITALIK,
+    vaultOwner: ALICE,
     vaultName: "Test Vault",
     vaultSymbol: "TEST",
     denominationAsset: getAddress("0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"),

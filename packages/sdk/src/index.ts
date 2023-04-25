@@ -187,3 +187,26 @@ export {
   type SimulateRedeemSharesInKindArgs,
   simulateRedeemSharesInKind,
 } from "./actions/redeemSharesInKind.js";
+
+export {
+  type SetAutoProtocolFeeSharesBuybackParams,
+  decodeSetAutoProtocolFeeSharesBuybackParams,
+  type SimulateSetAutoProtocolFeeSharesBuybackParams,
+  simulateSetAutoProtocolFeeSharesBuyback,
+} from "./actions/setAutoProtocolFeeSharesBuyback.js";
+
+export {
+  type AddAssetManagersParams,
+  prepareAddAssetManagersParams,
+  decodeAddAssetManagersParams,
+  type SimulateAddAssetManagersParams,
+  simulateAddAssetManagers,
+} from "./actions/addAssetManagers.js";
+
+export {
+  type RemoveAssetManagersParams,
+  prepareRemoveAssetManagersParams,
+  decodeRemoveAssetManagersParams,
+  type SimulateRemoveAssetManagersParams,
+  simulateRemoveAssetManagers,
+} from "./actions/removeAssetManagers.js";

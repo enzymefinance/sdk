@@ -1,14 +1,11 @@
 import { expect, test } from "vitest";
 import { encodeFunctionData, getAddress, toHex } from "viem";
-import { setupAnvil } from "../../tests/anvil.js";
 import { decodeCallOnExtensionParams, prepareCallOnExtensionParams } from "./callOnExtension.js";
 import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../tests/constants.js";
 import { testActions, sendTestTransaction } from "../../tests/globals.js";
 import { toWei } from "../utils/conversion.js";
 import { IntegrationManagerActionId } from "../enums.js";
 import { encodeCallArgsForAaveV2Lend } from "../integrations/aaveV2.js";
-
-setupAnvil();
 
 test("call on extension should work correctly", async () => {
   const vaultOwner = ALICE;

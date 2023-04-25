@@ -9,8 +9,9 @@ import { createTestVault } from "./actions/createTestVault.js";
 import { wrapEther } from "./actions/wrapEther.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
 import { increaseTimeAndMine } from "./actions/increaseTimeAndMine.js";
+import { isAssetManagers, isAssetManager } from "./actions/isAssetManager.js";
 import { assertBalanceOf } from "./actions/assertBalanceOf.js";
-import { anvilPort } from "./anvil.js";
+import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeSharesBuyBack.js";
 
 export const testActions = {
   createTestVault,
@@ -19,7 +20,10 @@ export const testActions = {
   buyShares,
   getBalanceOf,
   increaseTimeAndMine,
+  isAssetManagers,
+  isAssetManager,
   assertBalanceOf,
+  usesAutoProcolFeeSharesBuyBack,
 };
 
 export const anvil = {
@@ -31,12 +35,12 @@ export const anvil = {
 export const testClient = createTestClient({
   chain: anvil,
   mode: "anvil",
-  transport: http(`http://127.0.0.1:${anvilPort}`),
+  transport: http(`http://127.0.0.1:8545/${process.env.VITEST_POOL_ID ?? 1}`),
 });
 
 export const publicClient = createPublicClient({
   chain: anvil,
-  transport: http(`http://127.0.0.1:${anvilPort}`),
+  transport: http(`http://127.0.0.1:8545/${process.env.VITEST_POOL_ID ?? 1}`),
 });
 
 export async function sendTestTransaction<TAbi extends Abi | readonly unknown[], TFunctionName extends string = string>(
@@ -51,8 +55,6 @@ export async function sendTestTransaction<TAbi extends Abi | readonly unknown[],
   };
 
   // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
-  await testClient.impersonateAccount(account);
-
   const hash = await testClient.sendUnsignedTransaction({
     from: account.address,
     to: params.address,
