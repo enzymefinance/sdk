@@ -1,4 +1,4 @@
-import { ALICE, DEPLOYER } from "../constants.js";
+import { ALICE, FUND_DEPLOYER } from "../constants.js";
 import { prepareSetupVaultParams, type PrepareSetupVaultParamsArgs } from "../../src/actions/setupVault.js";
 import type { PartialPick } from "../../src/utils/types.js";
 import { sendTestTransaction } from "../globals.js";
@@ -12,10 +12,11 @@ export async function createTestVault(settings: CreateTestVaultSettings) {
     ...prepareSetupVaultParams({
       vaultName: "Test Vault",
       vaultSymbol: "TEST",
+      sharesActionTimelock: 0n, // Set the timelock to 0 so we can test more easily. This should not be done in production.
       ...settings,
     }),
     account: settings.vaultOwner ?? ALICE,
-    address: DEPLOYER,
+    address: FUND_DEPLOYER,
   });
 
   return { vaultProxy, comptrollerProxy };

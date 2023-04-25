@@ -13,6 +13,8 @@ import { isAssetManagers, isAssetManager } from "./actions/isAssetManager.js";
 import { assertBalanceOf } from "./actions/assertBalanceOf.js";
 import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeSharesBuyBack.js";
 import { setNominatedOwner } from "./actions/setNominatedOwner.js";
+import { overrideValueInterpreter } from "./actions/setStatelRateThreshold.js";
+import { transferToken } from "./actions/transferToken.js";
 
 export const testActions = {
   createTestVault,
@@ -26,6 +28,8 @@ export const testActions = {
   assertBalanceOf,
   usesAutoProcolFeeSharesBuyBack,
   setNominatedOwner,
+  overrideValueInterpreter,
+  transferToken,
 };
 
 export const anvil = {

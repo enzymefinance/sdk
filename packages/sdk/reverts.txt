@@ -523,12 +523,6 @@ ComptrollerLib.sol:
  require(_minSharesQuantity > 0, "__buyShares: _minSharesQuantity must be >0");
  require(!_hasSharesActionTimelock || !__hasPendingMigrationOrReconfiguration(vaultProxyCopy), "__buyShares: Pending migration or reconfiguration");
  require(sharesReceived_ >= _minSharesQuantity, "__buyShares: Shares received < _minSharesQuantity");
- require(_payoutAssets.length == _payoutAssetPercentages.length, "redeemSharesForSpecificAssets: Unequal arrays");
- require(_payoutAssets.isUniqueSet(), "redeemSharesForSpecificAssets: Duplicate payout asset");
- require(_additionalAssets.isUniqueSet(), "redeemSharesInKind: _additionalAssets contains duplicates");
- require(_assetsToSkip.isUniqueSet(), "redeemSharesInKind: _assetsToSkip contains duplicates");
- require(payoutAmounts_[i] > 0, "__payoutSpecifiedAssetPercentages: Zero amount for asset");
- require(percentagesTotal == ONE_HUNDRED_PERCENT, "__payoutSpecifiedAssetPercentages: Percents must total 100%");
  require(sharesToRedeem_ > 0, "__redeemSharesSetup: No shares to redeem");
  require(msg.sender == vaultProxyCopy, "preTransferSharesHook: Only VaultProxy callable");
  require(getGasRelayPaymaster() == address(0), "deployGasRelayPaymaster: Paymaster already deployed");
