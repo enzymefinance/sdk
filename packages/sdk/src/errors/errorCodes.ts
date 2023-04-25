@@ -19,6 +19,8 @@ export const BUY_SHARES_PENDING_MIGRATION_OR_RECONFIGURATION = "ENZF200002"; // 
 export const BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT = "ENZF200003"; // __buyShares: Shares received < _minSharesQuantity
 export const ASSET_MANAGER_ALREADY_REGISTERED = "ENZF200010"; // addAssetManagers: Manager already registered
 export const ASSET_MANAGER_NOT_REGISTERED = "ENZF200011"; // removeAssetManagers: Manager not registered
+export const SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS = "ENZF200024"; // redeemSharesInKind: _additionalAssets contains duplicates
+export const SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP = "ENZF200025"; // redeemSharesInKind: _assetsToSkip contains duplicates
 export const SHARES_REDEMPTION_UNEQUAL_ARRAYS = "ENZF200020"; // redeemSharesForSpecificAssets: Unequal arrays
 export const SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT = "ENZF200021"; // __payoutSpecifiedAssetPercentages: Percents must total 100%
 export const SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET = "ENZF200022"; // redeemSharesForSpecificAssets: Duplicate payout asset
@@ -44,6 +46,8 @@ export const errorCodes = [
   BUY_SHARES_SHARES_RECEIVED_INSUFFICIENT,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
+  SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   SHARES_REDEMPTION_UNEQUAL_ARRAYS,
   SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
@@ -175,5 +179,15 @@ export const errorDictionary: {
     code: SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
     label: "Zero amount for asset",
     description: "Zero amount for asset.",
+  },
+  [SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS]: {
+    code: SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
+    label: "Additional assets contains duplicates",
+    description: "Additional assets contains duplicates",
+  },
+  [SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP]: {
+    code: SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
+    label: "Assets to skip contains duplicates",
+    description: "Assets to skip contains duplicates",
   },
 };

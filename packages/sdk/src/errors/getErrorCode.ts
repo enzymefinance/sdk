@@ -20,6 +20,8 @@ import {
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
+  SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
   SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
@@ -112,6 +114,17 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       return undefined;
     }
 
+    case "redeemSharesInKind": {
+      switch (suffix) {
+        case "_additionalAssets contains duplicates":
+          return SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS;
+        case "_assetsToSkip contains duplicates":
+          return SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP;
+      }
+      
+      return undefined;
+    }
+
     case "__payoutSpecifiedAssetPercentages": {
       switch (suffix) {
         case "Zero amount for asset":
@@ -119,6 +132,7 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "Percents must total 100%":
           return SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT;
       }
+      
       return undefined;
     }
 
@@ -129,6 +143,7 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "Unequal arrays":
           return SHARES_REDEMPTION_UNEQUAL_ARRAYS;
       }
+      
       return undefined;
     }
   }
