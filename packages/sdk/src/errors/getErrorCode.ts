@@ -22,6 +22,10 @@ import {
   ASSET_MANAGER_NOT_REGISTERED,
   SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
   SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
+  SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
+  SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
+  SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
+  SHARES_REDEMPTION_UNEQUAL_ARRAYS,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -117,7 +121,29 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "_assetsToSkip contains duplicates":
           return SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP;
       }
+      
+      return undefined;
+    }
 
+    case "__payoutSpecifiedAssetPercentages": {
+      switch (suffix) {
+        case "Zero amount for asset":
+          return SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET;
+        case "Percents must total 100%":
+          return SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT;
+      }
+      
+      return undefined;
+    }
+
+    case "redeemSharesForSpecificAssets": {
+      switch (suffix) {
+        case "Duplicate payout asset":
+          return SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET;
+        case "Unequal arrays":
+          return SHARES_REDEMPTION_UNEQUAL_ARRAYS;
+      }
+      
       return undefined;
     }
   }
