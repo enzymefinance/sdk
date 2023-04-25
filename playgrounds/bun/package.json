@@ -10,7 +10,7 @@
     "@enzymefinance/abis": "*",
     "@enzymefinance/sdk": "*",
     "abitype": "^0.8.0",
-    "viem": "^0.3.10"
+    "viem": "^0.3.11"
   },
   "devDependencies": {
     "bun": "^0.5.9",

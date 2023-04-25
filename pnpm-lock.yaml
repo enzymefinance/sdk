@@ -48,7 +48,7 @@ importers:
     dependencies:
       '@bufbuild/connect-query':
         specifier: ^0.2.0
-        version: 0.2.0(@tanstack/react-query@4.29.3)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.0(@tanstack/react-query@4.29.5)(react-dom@18.2.0)(react@18.2.0)
       '@bufbuild/connect-web':
         specifier: ^0.8.6
         version: 0.8.6(@bufbuild/protobuf@1.2.0)
@@ -59,8 +59,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/api
       '@tanstack/react-query':
-        specifier: ^4.29.3
-        version: 4.29.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.29.5
+        version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tremor/react':
         specifier: ^2.2.0
         version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
@@ -81,17 +81,17 @@ importers:
         version: 3.3.1(postcss@8.4.23)
     devDependencies:
       '@types/react':
-        specifier: ^18.0.38
-        version: 18.0.38
+        specifier: ^18.2.0
+        version: 18.2.0
       '@types/react-dom':
-        specifier: ^18.0.10
-        version: 18.0.11
+        specifier: ^18.2.0
+        version: 18.2.0
       '@types/web':
         specifier: ^0.0.99
         version: 0.0.99
       '@vitejs/plugin-react':
         specifier: ^4.0.0
-        version: 4.0.0(vite@4.3.1)
+        version: 4.0.0(vite@4.3.2)
       tsx:
         specifier: ^3.12.6
         version: 3.12.6
@@ -99,11 +99,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.16.0)
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@18.16.0)
       vite-tsconfig-paths:
         specifier: ^4.2.0
-        version: 4.2.0(typescript@5.0.4)(vite@4.3.1)
+        version: 4.2.0(typescript@5.0.4)(vite@4.3.2)
 
   examples/example-sdk-web:
     dependencies:
@@ -114,8 +114,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/sdk
       '@tanstack/react-query':
-        specifier: ^4.29.3
-        version: 4.29.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.29.5
+        version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tremor/react':
         specifier: ^2.2.0
         version: 2.2.0(react-dom@18.2.0)(react@18.2.0)
@@ -138,21 +138,21 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1(postcss@8.4.23)
       viem:
-        specifier: ^0.3.10
-        version: 0.3.10(typescript@5.0.4)
+        specifier: ^0.3.11
+        version: 0.3.11(typescript@5.0.4)
     devDependencies:
       '@types/react':
-        specifier: ^18.0.38
-        version: 18.0.38
+        specifier: ^18.2.0
+        version: 18.2.0
       '@types/react-dom':
-        specifier: ^18.0.10
-        version: 18.0.11
+        specifier: ^18.2.0
+        version: 18.2.0
       '@types/web':
         specifier: ^0.0.99
         version: 0.0.99
       '@vitejs/plugin-react':
         specifier: ^4.0.0
-        version: 4.0.0(vite@4.3.1)
+        version: 4.0.0(vite@4.3.2)
       tsx:
         specifier: ^3.12.6
         version: 3.12.6
@@ -160,11 +160,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.16.0)
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@18.16.0)
       vite-tsconfig-paths:
         specifier: ^4.2.0
-        version: 4.2.0(typescript@5.0.4)(vite@4.3.1)
+        version: 4.2.0(typescript@5.0.4)(vite@4.3.2)
 
   packages/abis:
     devDependencies:
@@ -178,8 +178,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.16.0)
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@18.16.0)
       vitest:
         specifier: ^0.30.1
         version: 0.30.1(@vitest/ui@0.30.1)
@@ -218,8 +218,8 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.16.0)
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@18.16.0)
       vitest:
         specifier: ^0.30.1
         version: 0.30.1(@vitest/ui@0.30.1)
@@ -236,12 +236,12 @@ importers:
         specifier: ^10.4.3
         version: 10.4.3
       viem:
-        specifier: ^0.3.10
-        version: 0.3.10(typescript@5.0.4)
+        specifier: ^0.3.11
+        version: 0.3.11(typescript@5.0.4)
     devDependencies:
       '@fubhy/anvil':
-        specifier: ^0.0.4
-        version: 0.0.4
+        specifier: ^0.0.6
+        version: 0.0.6
       '@vitest/coverage-c8':
         specifier: ^0.30.1
         version: 0.30.1(vitest@0.30.1)
@@ -252,11 +252,11 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
       vite:
-        specifier: ^4.3.1
-        version: 4.3.1(@types/node@18.16.0)
+        specifier: ^4.3.2
+        version: 4.3.2(@types/node@18.16.0)
       vite-tsconfig-paths:
         specifier: ^4.2.0
-        version: 4.2.0(typescript@5.0.4)(vite@4.3.1)
+        version: 4.2.0(typescript@5.0.4)(vite@4.3.2)
       vitest:
         specifier: ^0.30.1
         version: 0.30.1(@vitest/ui@0.30.1)
@@ -273,8 +273,8 @@ importers:
         specifier: ^0.8.0
         version: 0.8.0(typescript@5.0.4)
       viem:
-        specifier: ^0.3.10
-        version: 0.3.10(typescript@5.0.4)
+        specifier: ^0.3.11
+        version: 0.3.11(typescript@5.0.4)
     devDependencies:
       bun:
         specifier: ^0.5.9
@@ -616,7 +616,7 @@ packages:
       headers-polyfill: 3.1.2
     dev: false
 
-  /@bufbuild/connect-query@0.2.0(@tanstack/react-query@4.29.3)(react-dom@18.2.0)(react@18.2.0):
+  /@bufbuild/connect-query@0.2.0(@tanstack/react-query@4.29.5)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-suakGdDeAq8bMPr17OLVwlU4+V8rsHR+QL7j+rANQRWTVTY+cRRyKbeNr0d4TT37Pa+IohYAcobKJfLW6899aw==}
     peerDependencies:
       '@tanstack/react-query': ^4.20.4
@@ -627,7 +627,7 @@ packages:
       '@bufbuild/connect-web': 0.8.6(@bufbuild/protobuf@1.2.0)
       '@bufbuild/protobuf': 1.2.0
       '@bufbuild/protoc-gen-connect-web': 0.8.4(@bufbuild/connect@0.8.4)
-      '@tanstack/react-query': 4.29.3(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       stable-hash: 0.0.3
@@ -1185,8 +1185,8 @@ packages:
       tabbable: 6.1.1
     dev: false
 
-  /@fubhy/anvil@0.0.4:
-    resolution: {integrity: sha512-OELglyXmAV3pYVZ4NE9q4Xd9HlTGPW4rkZbQGB7F41GOYmrzY76lckPr5CLOdpVZ4c2zctyIYxQ7cKfbz1bKTw==}
+  /@fubhy/anvil@0.0.6:
+    resolution: {integrity: sha512-OG57g3y3kqOeKT4EvcW+17vsQ4msm5IC7ee+YNsiukIP+Tzr2rf7proDDy7rTsKTD7ntCqxnNC1MSX0m9shNKA==}
     dependencies:
       execa: 7.1.1
       get-port: 6.1.2
@@ -1410,12 +1410,12 @@ packages:
       '@scure/base': 1.1.1
     dev: false
 
-  /@tanstack/query-core@4.29.1:
-    resolution: {integrity: sha512-vkPewLEG8ua0efo3SsVT0BcBtkq5RZX8oPhDAyKL+k/rdOYSQTEocfGEXSaBwIwsXeOGBUpfKqI+UmHvNqdWXg==}
+  /@tanstack/query-core@4.29.5:
+    resolution: {integrity: sha512-xXIiyQ/4r9KfaJ3k6kejqcaqFXXBTzN2aOJ5H1J6aTJE9hl/nbgAdfF6oiIu0CD5xowejJEJ6bBg8TO7BN4NuQ==}
     dev: false
 
-  /@tanstack/react-query@4.29.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-FPQrMu7PbCgBcVzoRJm7WmQnAFv+LUgZM9KBZ7Vk/+yERH2BDLvQRuAgczQd5Tb1s3HbOktECRDaOkUxdyBAjw==}
+  /@tanstack/react-query@4.29.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-F87cibC3s3eG0Q90g2O+hqntpCrudKFnR8P24qkH9uccEhXErnJxBC/AAI4cJRV2bfMO8IeGZQYf3WyYgmSg0w==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -1426,7 +1426,7 @@ packages:
       react-native:
         optional: true
     dependencies:
-      '@tanstack/query-core': 4.29.1
+      '@tanstack/query-core': 4.29.5
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       use-sync-external-store: 1.2.0(react@18.2.0)
@@ -1531,14 +1531,14 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react-dom@18.0.11:
-    resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
+  /@types/react-dom@18.2.0:
+    resolution: {integrity: sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==}
     dependencies:
-      '@types/react': 18.0.38
+      '@types/react': 18.2.0
     dev: true
 
-  /@types/react@18.0.38:
-    resolution: {integrity: sha512-ExsidLLSzYj4cvaQjGnQCk4HFfVT9+EZ9XZsQ8Hsrcn8QNgXtpZ3m9vSIC2MWtx7jHictK6wYhQgGh6ic58oOw==}
+  /@types/react@18.2.0:
+    resolution: {integrity: sha512-0FLj93y5USLHdnhIhABk83rm8XEGA7kH3cr+YUlvxoUGp1xNt/DINUMvqPxLyOQMzLmZe8i4RTHbvb8MC7NmrA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -1564,7 +1564,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@vitejs/plugin-react@4.0.0(vite@4.3.1):
+  /@vitejs/plugin-react@4.0.0(vite@4.3.2):
     resolution: {integrity: sha512-HX0XzMjL3hhOYm+0s95pb0Z7F8O81G7joUHgfDd/9J/ZZf5k4xX6QAMFkKsHFxaHlf6X7GD7+XuaZ66ULiJuhQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -1574,7 +1574,7 @@ packages:
       '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.21.4)
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.4)
       react-refresh: 0.14.0
-      vite: 4.3.1(@types/node@18.16.0)
+      vite: 4.3.2(@types/node@18.16.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4421,8 +4421,8 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
-  /viem@0.3.10(typescript@5.0.4):
-    resolution: {integrity: sha512-2+yTevGjgLpxcaT4U0lQrhGY9wJYe4GKLrSjfFwsfeFPBGpEHZGHkE8HSAjBrIiYQ8f1b/dMdBQIY91O4S7zSA==}
+  /viem@0.3.11(typescript@5.0.4):
+    resolution: {integrity: sha512-Z7AXS31B/hukJyrDD9GhdE9j2OtsoTdNNJgLNC3sNPMgBcF90y8u+t+uiHSxLivXia+JLCer5M+LC+edPXV6tw==}
     dependencies:
       '@adraffy/ens-normalize': 1.9.0
       '@noble/curves': 0.9.0
@@ -4450,7 +4450,7 @@ packages:
       mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
-      vite: 4.3.1(@types/node@18.16.0)
+      vite: 4.3.2(@types/node@18.16.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4461,7 +4461,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.3.1):
+  /vite-tsconfig-paths@4.2.0(typescript@5.0.4)(vite@4.3.2):
     resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}
     peerDependencies:
       vite: '*'
@@ -4472,14 +4472,14 @@ packages:
       debug: 4.3.4
       globrex: 0.1.2
       tsconfck: 2.1.1(typescript@5.0.4)
-      vite: 4.3.1(@types/node@18.16.0)
+      vite: 4.3.2(@types/node@18.16.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@4.3.1(@types/node@18.16.0):
-    resolution: {integrity: sha512-EPmfPLAI79Z/RofuMvkIS0Yr091T2ReUoXQqc5ppBX/sjFRhHKiPPF/R46cTdoci/XgeQpB23diiJxq5w30vdg==}
+  /vite@4.3.2(@types/node@18.16.0):
+    resolution: {integrity: sha512-9R53Mf+TBoXCYejcL+qFbZde+eZveQLDYd9XgULILLC1a5ZwPaqgmdVpL8/uvw2BM/1TzetWjglwm+3RO+xTyw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -4566,7 +4566,7 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.4.0
       tinypool: 0.4.0
-      vite: 4.3.1(@types/node@18.16.0)
+      vite: 4.3.2(@types/node@18.16.0)
       vite-node: 0.30.1(@types/node@18.16.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
