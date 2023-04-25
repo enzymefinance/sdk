@@ -15,3 +15,4 @@ export const SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR = "0x447fbc63"; // appr
 export const SETTLE_CONTINUOUS_FEES_SELECTOR = "0xc071fe93"; // settleContinuousFees(address,bytes)
 export const VAULT_CALL_ANY_DATA_HASH = "0x5bf1898dd28c4d29f33c4c1bb9b8a7e2f6322847d70be63e8f89de024d08a669"; // mln.vaultCall.any
 export const LEND_SELECTOR = getFunctionSelector("lend(address,bytes,bytes)");
+export const REDEEM_SELECTOR = getFunctionSelector("redeem(address,bytes,bytes)");

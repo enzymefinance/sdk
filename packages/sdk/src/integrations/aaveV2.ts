@@ -1,8 +1,11 @@
 import { type Address, encodeAbiParameters, parseAbiParameters, decodeAbiParameters } from "viem";
 import type { Hex } from "viem";
 import { decodeCallArgsForIntegration, encodeCallArgsForIntegration } from "./callArgs.js";
-import { LEND_SELECTOR } from "../constants/selectors.js";
+import { LEND_SELECTOR, REDEEM_SELECTOR } from "../constants/selectors.js";
+import { Integration, IntegrationManagerActionId } from "../enums.js";
+import { prepareCallOnExtensionParams } from "../actions/callOnExtension.js";
 
+// lend
 const integrationDataForAaveV2LendAbiParamaters = parseAbiParameters("address aToken, uint depositAmount");
 
 export interface IntegrationDataForAaveV2Lend {
@@ -50,3 +53,85 @@ export function decodeCallArgsForAaveV2Lend(callArgs: Hex): CallArgsForAaveV2Len
     depositAmount,
   };
 }
+
+export function prepareCallOnAaveV2LendParams({
+  integrationManager,
+  callArgs,
+}: { integrationManager: Address; callArgs: CallArgsForAaveV2Lend }) {
+  return prepareCallOnExtensionParams({
+    extension: integrationManager,
+    actionId: IntegrationManagerActionId.CallOnIntegration,
+    callArgs: encodeCallArgsForAaveV2Lend(callArgs),
+  });
+}
+
+export type AaveV2LendTrade = {
+  type: typeof Integration.AaveV2Lend;
+  callArgs: CallArgsForAaveV2Lend;
+};
+
+// redeem
+
+const integrationDataForAaveV2RedeemAbiParamaters = parseAbiParameters("address aToken, uint redeemAmount");
+
+export interface IntegrationDataForAaveV2Redeem {
+  aToken: Address;
+  redeemAmount: bigint;
+}
+
+export function encodeIntegrationDataForAaveV2Redeem({ aToken, redeemAmount }: IntegrationDataForAaveV2Redeem): Hex {
+  return encodeAbiParameters(integrationDataForAaveV2RedeemAbiParamaters, [aToken, redeemAmount]);
+}
+
+export function decodeIntegrationDataForAaveV2Redeem(integrationData: Hex): IntegrationDataForAaveV2Redeem {
+  const decodedIntegrationData = decodeAbiParameters(integrationDataForAaveV2RedeemAbiParamaters, integrationData);
+
+  const [aToken, redeemAmount] = decodedIntegrationData;
+
+  return { aToken, redeemAmount };
+}
+
+export interface CallArgsForAaveV2Redeem {
+  aToken: Address;
+  redeemAmount: bigint;
+  adapter: Address;
+}
+
+export function encodeCallArgsForAaveV2Redeem({ aToken, adapter, redeemAmount }: CallArgsForAaveV2Redeem): Hex {
+  const integrationData = encodeIntegrationDataForAaveV2Redeem({
+    aToken,
+    redeemAmount,
+  });
+
+  return encodeCallArgsForIntegration({ adapter, selector: REDEEM_SELECTOR, integrationData });
+}
+
+export function decodeCallArgsForAaveV2Redeem(callArgs: Hex): CallArgsForAaveV2Redeem {
+  const decodedCallArgs = decodeCallArgsForIntegration(callArgs);
+
+  const { adapter, integrationData } = decodedCallArgs;
+
+  const { aToken, redeemAmount } = decodeIntegrationDataForAaveV2Redeem(integrationData);
+
+  return {
+    adapter,
+    aToken,
+    redeemAmount,
+  };
+}
+
+export function prepareCallOnAaveV2RedeemParams({
+  integrationManager,
+  callArgs,
+}: { integrationManager: Address; callArgs: CallArgsForAaveV2Redeem }) {
+  return prepareCallOnExtensionParams({
+    extension: integrationManager,
+    actionId: IntegrationManagerActionId.CallOnIntegration,
+    callArgs: encodeCallArgsForAaveV2Redeem(callArgs),
+  });
+}
+
+export type AaveV2RedeemTrade = {
+  type: typeof Integration.AaveV2Redeem;
+  callArgs: CallArgsForAaveV2Redeem;
+};

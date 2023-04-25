@@ -1,13 +1,15 @@
 import { test, expect } from "vitest";
 
 import { getAddress } from "viem";
-import { AAVE_V2_ADAPTER, A_WETH } from "../../tests/constants.js";
+import { AAVE_V2_ADAPTER, A_WETH, INTEGRATION_MANAGER } from "../../tests/constants.js";
 import { toWei } from "../utils/conversion.js";
 import {
   decodeCallArgsForAaveV2Lend,
   decodeIntegrationDataForAaveV2Lend,
   encodeCallArgsForAaveV2Lend,
   encodeIntegrationDataForAaveV2Lend,
+  prepareCallOnAaveV2LendParams,
+  prepareCallOnAaveV2RedeemParams,
 } from "./aaveV2.js";
 
 test("encodeIntegrationDataForAaveV2Lend should encode correctly", () => {
@@ -85,4 +87,96 @@ test("decodeCallArgsForAaveV2Lend should be equal to encoded data with encodeCal
   const decoded = decodeCallArgsForAaveV2Lend(encoded);
 
   expect(decoded).toEqual(params);
+});
+
+test("prepareCallOnAaveV2LendParams should properly prepare params", () => {
+  const callArgs = {
+    adapter: getAddress(AAVE_V2_ADAPTER),
+    aToken: getAddress(A_WETH),
+    depositAmount: toWei(100),
+  };
+
+  expect(prepareCallOnAaveV2LendParams({ integrationManager: INTEGRATION_MANAGER, callArgs })).toMatchInlineSnapshot(
+    `
+    {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_extension",
+              "type": "address",
+            },
+            {
+              "internalType": "uint256",
+              "name": "_actionId",
+              "type": "uint256",
+            },
+            {
+              "internalType": "bytes",
+              "name": "_callArgs",
+              "type": "bytes",
+            },
+          ],
+          "name": "callOnExtension",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+        },
+      ],
+      "args": [
+        "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
+        0n,
+        "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4c099f75150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000040000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
+      ],
+      "functionName": "callOnExtension",
+    }
+  `,
+  );
+});
+
+test("prepareCallOnAaveV2RedeemParams should properly prepare params", () => {
+  const callArgs = {
+    adapter: getAddress(AAVE_V2_ADAPTER),
+    aToken: getAddress(A_WETH),
+    redeemAmount: toWei(100),
+  };
+
+  expect(prepareCallOnAaveV2RedeemParams({ integrationManager: INTEGRATION_MANAGER, callArgs })).toMatchInlineSnapshot(
+    `
+    {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_extension",
+              "type": "address",
+            },
+            {
+              "internalType": "uint256",
+              "name": "_actionId",
+              "type": "uint256",
+            },
+            {
+              "internalType": "bytes",
+              "name": "_callArgs",
+              "type": "bytes",
+            },
+          ],
+          "name": "callOnExtension",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+        },
+      ],
+      "args": [
+        "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
+        0n,
+        "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4cc29fa9dd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000040000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
+      ],
+      "functionName": "callOnExtension",
+    }
+  `,
+  );
 });
