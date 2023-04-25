@@ -5,7 +5,7 @@ import { toBps, toSeconds, toWei } from "../utils/conversion.js";
 import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
 import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { DEPLOYER, ALICE } from "../../tests/constants.js";
+import { FUND_DEPLOYER, ALICE } from "../../tests/constants.js";
 import { encodeFunctionData, getAddress } from "viem";
 import { publicClient, sendTestTransaction } from "../../tests/globals.js";
 
@@ -14,7 +14,7 @@ test("should set up a vault with the given parameters", async () => {
     result: [_, vaultProxy],
   } = await sendTestTransaction({
     account: ALICE,
-    address: DEPLOYER,
+    address: FUND_DEPLOYER,
     ...prepareSetupVaultParams({
       vaultOwner: ALICE,
       vaultName: "Test Vault",
