@@ -55,6 +55,7 @@ export {
 
 export {
   type PrepareFunctionParamsArgs,
+  type PrepareFunctionParamsReturnType,
   prepareFunctionParams,
 } from "./utils/viem.js";
 
@@ -201,39 +202,30 @@ export {
   type RedeemSharesInKindParams,
   prepareRedeemSharesInKindParams,
   decodeRedeemSharesParams,
-  type SimulateRedeemSharesInKindArgs,
-  simulateRedeemSharesInKind,
 } from "./actions/redeemSharesInKind.js";
 
 export {
   type RedeemSharesForSpecificAssetsParams,
   prepareRedeemSharesForSpecificAssetsParams,
   decodeRedeemSharesForSpecificAssetsParams,
-  type SimulateRedeemSharesForSpecificAssets,
-  simulateRedeemSharesForSpecificAssets,
 } from "./actions/redeemSharesForSpecificAssets.js";
 
 export {
   type SetAutoProtocolFeeSharesBuybackParams,
+  prepareSetAutoProtocolFeeSharesBuybackParams,
   decodeSetAutoProtocolFeeSharesBuybackParams,
-  type SimulateSetAutoProtocolFeeSharesBuybackParams,
-  simulateSetAutoProtocolFeeSharesBuyback,
 } from "./actions/setAutoProtocolFeeSharesBuyback.js";
 
 export {
   type AddAssetManagersParams,
   prepareAddAssetManagersParams,
   decodeAddAssetManagersParams,
-  type SimulateAddAssetManagersParams,
-  simulateAddAssetManagers,
 } from "./actions/addAssetManagers.js";
 
 export {
   type RemoveAssetManagersParams,
   prepareRemoveAssetManagersParams,
   decodeRemoveAssetManagersParams,
-  type SimulateRemoveAssetManagersParams,
-  simulateRemoveAssetManagers,
 } from "./actions/removeAssetManagers.js";
 
 export {
@@ -242,14 +234,6 @@ export {
   decodeSetNominatedOwnerParams,
 } from "./actions/setNominatedOwner.js";
 
-export {
-  prepareClaimOwnershipParams,
-  type SimulateClaimOwnershipParams,
-  simulateClaimOwnership,
-} from "./actions/claimOwnership.js";
+export { prepareClaimOwnershipParams } from "./actions/claimOwnership.js";
 
-export {
-  prepareRemoveNominatedOwnerParams,
-  type SimulateRemoveNominatedOwnerParams,
-  simulateRemoveNominatedOwner,
-} from "./actions/removeNominatedOwner.js";
+export { prepareRemoveNominatedOwnerParams } from "./actions/removeNominatedOwner.js";
