@@ -1,6 +1,6 @@
 import { ContractFunctionExecutionError, ContractFunctionRevertedError } from "viem";
 
-export function createMockedError(message: string) {
+export function createTestRevert(message: string) {
   return new ContractFunctionExecutionError(
     new ContractFunctionRevertedError({
       abi: [],
