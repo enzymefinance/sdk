@@ -20,12 +20,14 @@ import {
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
   ASSET_MANAGER_ALREADY_REGISTERED,
   ASSET_MANAGER_NOT_REGISTERED,
+  CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
   SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
   SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
   SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
   SHARES_REDEMPTION_UNEQUAL_ARRAYS,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -114,6 +116,24 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       return undefined;
     }
 
+    case "claimOwnership": {
+      switch (suffix) {
+        case "Only the nominatedOwner can call this function":
+          return CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER;
+      }
+
+      return undefined;
+    }
+
+    case "removeNominatedOwner": {
+      switch (suffix) {
+        case "There is no nominated owner":
+          return REMOVE_NOMINATED_OWNER_NO_OWNER;
+      }
+
+      return undefined;
+    }
+
     case "redeemSharesInKind": {
       switch (suffix) {
         case "_additionalAssets contains duplicates":
@@ -121,7 +141,7 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "_assetsToSkip contains duplicates":
           return SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP;
       }
-      
+
       return undefined;
     }
 
@@ -132,7 +152,7 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "Percents must total 100%":
           return SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT;
       }
-      
+
       return undefined;
     }
 
@@ -143,7 +163,7 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
         case "Unequal arrays":
           return SHARES_REDEMPTION_UNEQUAL_ARRAYS;
       }
-      
+
       return undefined;
     }
   }
