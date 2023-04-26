@@ -32,6 +32,17 @@ import {
   UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST,
   UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS,
   type ErrorCode,
+  CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
+  ASSET_MANAGER_ALREADY_REGISTERED,
+  ASSET_MANAGER_NOT_REGISTERED,
+  POLICY_VIOLATION_MIN_MAX_INVESTMENT,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
+  SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
+  SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
+  SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
+  SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
+  SHARES_REDEMPTION_UNEQUAL_ARRAYS,
+  SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
 } from "./errorCodes.js";
 
 test.each<[string, ErrorCode]>([
@@ -73,6 +84,18 @@ test.each<[string, ErrorCode]>([
   ["setConfigForFund: policies and settingsData array lengths unequal", POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL],
   ["validatePolicies: Caller not allowed", POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL],
   ["__enablePolicyForFund: Policy is already enabled", POLICY_ALREADY_ENABLED],
+  ["addAssetManagers: Manager already registered", ASSET_MANAGER_ALREADY_REGISTERED],
+  ["Rule evaluated to false: MIN_MAX_INVESTMENT", POLICY_VIOLATION_MIN_MAX_INVESTMENT],
+  ["claimOwnership: Only the nominatedOwner can call this function", CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER],
+  ["redeemSharesForSpecificAssets: Unequal arrays", SHARES_REDEMPTION_UNEQUAL_ARRAYS],
+  ["__payoutSpecifiedAssetPercentages: Percents must total 100%", SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT],
+  ["redeemSharesForSpecificAssets: Duplicate payout asset", SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET],
+  ["__payoutSpecifiedAssetPercentages: Zero amount for asset", SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET],
+  ["redeemSharesInKind: _additionalAssets contains duplicates", SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS],
+  ["redeemSharesInKind: _assetsToSkip contains duplicates", SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP],
+  ["removeAssetManagers: Manager not registered", ASSET_MANAGER_NOT_REGISTERED],
+  ["removeNominatedOwner: There is no nominated owner", REMOVE_NOMINATED_OWNER_NO_OWNER],
+  ["__payoutSpecifiedAssetPercentages: Zero amount for asset", SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET],
 ])("should parse properly catched error: %s", (message, code) => {
   expect(catchError(createTestRevert(message))).toEqual(new EnzymeError(code));
 });
