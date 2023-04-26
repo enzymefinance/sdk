@@ -4,7 +4,7 @@ import {
   prepareCallOnAaveV2RedeemParams,
   type AaveV2LendTrade,
   type AaveV2RedeemTrade,
-} from "./aaveV2.js";
+} from "../integrations/aaveV2.js";
 import { Integration } from "../enums.js";
 
 export type PrepareTradeParams = AaveV2LendTrade | AaveV2RedeemTrade;

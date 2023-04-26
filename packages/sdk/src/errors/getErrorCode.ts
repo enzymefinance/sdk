@@ -28,6 +28,35 @@ import {
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
   SHARES_REDEMPTION_UNEQUAL_ARRAYS,
   REMOVE_NOMINATED_OWNER_NO_OWNER,
+  RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID,
+  RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED,
+  ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET,
+  RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE,
+  SPEND_ASSETS_ARRAYS_ARE_UNEQUAL,
+  INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL,
+  DUPLICATE_SPEND_ASSET,
+  DUPLICATE_INCOMING_ASSET,
+  NON_RECEIVABLE_INCOMING_ASSET,
+  RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED,
+  RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED,
+  ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION,
+  ADAPTER_SELECTOR_INVALID,
+  FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+  FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES,
+  FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE,
+  RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID,
+  SETTLE_FEE_INVALID_SETTLEMENT_TYPE,
+  CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID,
+  REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION,
+  REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION,
+  UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS,
+  UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST,
+  ONLY_FUND_OWNER_CAN_CALL,
+  POLICY_CANNOT_BE_DISABLED,
+  ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS,
+  POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+  POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL,
+  POLICY_ALREADY_ENABLED,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -39,6 +68,12 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
 
   // TODO: This case would be for errors that do not follow the "prefix: reason" format.
   if (suffix === undefined) {
+    switch (prefix) {
+      case "Only the IntegrationManager can call this function":
+        return ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION;
+      case "Only the fund owner can call this function":
+        return ONLY_FUND_OWNER_CAN_CALL;
+    }
     return undefined;
   }
 
@@ -162,6 +197,165 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
           return SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET;
         case "Unequal arrays":
           return SHARES_REDEMPTION_UNEQUAL_ARRAYS;
+      }
+
+      return undefined;
+    }
+
+    case "receiveCallFromComptroller": {
+      switch (suffix) {
+        case "Fund is not valid":
+          return RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID;
+        case "Unauthorized":
+          return RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED;
+        case "Fund is not active":
+          return RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE;
+        case "Invalid _actionId":
+          return RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID;
+      }
+
+      return undefined;
+    }
+
+    case "__addTrackedAssetsToVault": {
+      switch (suffix) {
+        case "Unsupported asset":
+          return ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET;
+      }
+
+      return undefined;
+    }
+
+    case "__preProcessCoI": {
+      switch (suffix) {
+        case "Spend assets arrays unequal":
+          return SPEND_ASSETS_ARRAYS_ARE_UNEQUAL;
+        case "Incoming assets arrays unequal":
+          return INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL;
+        case "Duplicate spend asset":
+          return DUPLICATE_SPEND_ASSET;
+        case "Duplicate incoming asset":
+          return DUPLICATE_INCOMING_ASSET;
+        case "Non-receivable incoming asset":
+          return NON_RECEIVABLE_INCOMING_ASSET;
+      }
+
+      return undefined;
+    }
+
+    case "__postProcessCoI": {
+      switch (suffix) {
+        case "Received incoming asset less than expected":
+          return RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED;
+        case "Spent amount greater than expected":
+          return RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED;
+      }
+
+      return undefined;
+    }
+
+    case "parseAssetsForAction": {
+      switch (suffix) {
+        case "_selector invalid":
+          return ADAPTER_SELECTOR_INVALID;
+      }
+
+      return undefined;
+    }
+
+    case "setConfigForFund": {
+      switch (suffix) {
+        case "fees and settingsData array lengths unequal":
+          return FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL;
+        case "fees cannot include duplicates":
+          return FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES;
+        case "policies and settingsData array lengths unequal":
+          return POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL;
+      }
+
+      return undefined;
+    }
+
+    case "__invokeHook": {
+      switch (suffix) {
+        case "Fund is not active":
+          return FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE;
+      }
+
+      return undefined;
+    }
+
+    case "__settleFee": {
+      switch (suffix) {
+        case "Invalid SettlementType":
+          return SETTLE_FEE_INVALID_SETTLEMENT_TYPE;
+      }
+
+      return undefined;
+    }
+
+    case "__createExternalPosition": {
+      switch (suffix) {
+        case "Invalid typeId":
+          return CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID;
+      }
+
+      return undefined;
+    }
+
+    case "__reactivateExternalPosition": {
+      switch (suffix) {
+        case "Account provided is not a valid external position":
+          return REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION;
+        case "External position belongs to a different vault":
+          return REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION;
+      }
+
+      return undefined;
+    }
+
+    case "updateExternalPositionTypesInfo": {
+      switch (suffix) {
+        case "Unequal arrays":
+          return UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS;
+        case "Type does not exist":
+          return UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST;
+      }
+
+      return undefined;
+    }
+
+    case "disablePolicyForFund": {
+      switch (suffix) {
+        case "_policy cannot be disabled":
+          return POLICY_CANNOT_BE_DISABLED;
+      }
+
+      return undefined;
+    }
+
+    case "enablePolicyForFund": {
+      switch (suffix) {
+        case "_policy restricts actions of current investors":
+          return ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS;
+      }
+
+      return undefined;
+    }
+
+    case "validatePolicies": {
+      switch (suffix) {
+        case "Caller not allowed":
+          return POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL;
+      }
+
+      return undefined;
+    }
+
+    case "__enablePolicyForFund": {
+      switch (suffix) {
+        case "Policy is already enabled":
+          return POLICY_ALREADY_ENABLED;
       }
 
       return undefined;

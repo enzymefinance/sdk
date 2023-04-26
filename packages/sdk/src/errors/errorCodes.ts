@@ -27,6 +27,35 @@ export const SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS = "ENZF200024"; // re
 export const SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP = "ENZF200025"; // redeemSharesInKind: _assetsToSkip contains duplicates
 export const CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER = "ENZF200030"; // claimOwnership: Only the nominatedOwner can call this function
 export const REMOVE_NOMINATED_OWNER_NO_OWNER = "ENZF20031"; // removeNominatedOwner: There is no nominated owner
+export const RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID = "ENZF20032"; // receiveCallFromComptroller: Fund is not valid
+export const RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED = "ENZF20033"; // receiveCallFromComptroller: Unauthorized
+export const ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET = "ENZF20034"; // __addTrackedAssetsToVault: Unsupported asset
+export const RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE = "ENZF20035"; // receiveCallFromComptroller: Fund is not active
+export const SPEND_ASSETS_ARRAYS_ARE_UNEQUAL = "ENZF20036"; // __preProcessCoI: Spend assets arrays unequal
+export const INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL = "ENZF20037"; // __preProcessCoI: Incoming assets arrays unequal
+export const DUPLICATE_SPEND_ASSET = "ENZF20038"; // __preProcessCoI: Duplicate spend asset
+export const DUPLICATE_INCOMING_ASSET = "ENZF20039"; // __preProcessCoI: Duplicate incoming asset
+export const NON_RECEIVABLE_INCOMING_ASSET = "ENZF20040"; // __preProcessCoI: Non-receivable incoming asset
+export const RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED = "ENZF20041"; // __postProcessCoI: Received incoming asset less than expected
+export const RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED = "ENZF20042"; // __postProcessCoI: Spent amount greater than expected
+export const ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION = "ENZF20043"; // Only the IntegrationManager can call this function
+export const ADAPTER_SELECTOR_INVALID = "ENZF20044"; // parseAssetsForAction: _selector invalid
+export const FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL = "ENZF20045"; // setConfigForFund: fees and settingsData array lengths unequal
+export const FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES = "ENZF20046"; // setConfigForFund: fees cannot include duplicates
+export const FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE = "ENZF20047"; // __invokeHook: Fund is not active
+export const RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID = "ENZF20048"; // receiveCallFromComptroller: Invalid _actionId
+export const SETTLE_FEE_INVALID_SETTLEMENT_TYPE = "ENZF20049"; // __settleFee: Invalid SettlementType
+export const CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID = "ENZF20050"; // __createExternalPosition: Invalid typeId
+export const REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION = "ENZF20051"; // __reactivateExternalPosition: Account provided is not a valid external position
+export const REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION = "ENZF20052"; // __reactivateExternalPosition: External position belongs to a different vault
+export const UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS = "ENZF20053"; // updateExternalPositionTypesInfo: Unequal arrays
+export const UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST = "ENZF20054"; // updateExternalPositionTypesInfo: Type does not exist
+export const ONLY_FUND_OWNER_CAN_CALL = "ENZF20055"; // Only the fund owner can call this function
+export const POLICY_CANNOT_BE_DISABLED = "ENZF20056"; // disablePolicyForFund: _policy cannot be disabled
+export const ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS = "ENZF20057"; // enablePolicyForFund: _policy restricts actions of current investors
+export const POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL = "ENZF20058"; // setConfigForFund: policies and settingsData array lengths unequal
+export const POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL = "ENZF20059"; // validatePolicies: Caller not allowed
+export const POLICY_ALREADY_ENABLED = "ENZF20060"; // __enablePolicyForFund: Policy is already enabled
 
 export const errorCodes = [
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
@@ -56,6 +85,35 @@ export const errorCodes = [
   SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
   REMOVE_NOMINATED_OWNER_NO_OWNER,
+  RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID,
+  RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED,
+  ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET,
+  RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE,
+  SPEND_ASSETS_ARRAYS_ARE_UNEQUAL,
+  INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL,
+  DUPLICATE_SPEND_ASSET,
+  DUPLICATE_INCOMING_ASSET,
+  NON_RECEIVABLE_INCOMING_ASSET,
+  RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED,
+  RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED,
+  ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION,
+  ADAPTER_SELECTOR_INVALID,
+  FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+  FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES,
+  FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE,
+  RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID,
+  SETTLE_FEE_INVALID_SETTLEMENT_TYPE,
+  CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID,
+  REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION,
+  REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION,
+  UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS,
+  UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST,
+  ONLY_FUND_OWNER_CAN_CALL,
+  POLICY_CANNOT_BE_DISABLED,
+  ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS,
+  POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+  POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL,
+  POLICY_ALREADY_ENABLED,
 ] as const;
 
 export type ErrorCode = typeof errorCodes[number];
@@ -203,5 +261,150 @@ export const errorDictionary: {
     code: REMOVE_NOMINATED_OWNER_NO_OWNER,
     label: "There is no nominated owner",
     description: "There is no nominated owner.",
+  },
+  [RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID]: {
+    code: RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID,
+    label: "Fund is not valid",
+    description: "Fund is not valid.",
+  },
+  [RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED]: {
+    code: RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED,
+    label: "Unauthorized",
+    description: "Unauthorized.",
+  },
+  [ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET]: {
+    code: ADD_TRACKED_ASSETS_TO_VAULT_UNSUPPORTED_ASSET,
+    label: "Unsupported asset",
+    description: "Cannot add unsupported asset to tracked assets.",
+  },
+  [RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE]: {
+    code: RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_ACTIVE,
+    label: "Fund is not active",
+    description: "Fund is not active",
+  },
+  [SPEND_ASSETS_ARRAYS_ARE_UNEQUAL]: {
+    code: SPEND_ASSETS_ARRAYS_ARE_UNEQUAL,
+    label: "Spend assets arrays unequal",
+    description: "Spend assets arrays unequal",
+  },
+  [INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL]: {
+    code: INCOMING_ASSETS_ARRAYS_ARE_UNEQUAL,
+    label: "Incoming assets arrays unequal",
+    description: "Incoming assets arrays unequal",
+  },
+  [DUPLICATE_SPEND_ASSET]: {
+    code: DUPLICATE_SPEND_ASSET,
+    label: "Duplicate spend asset",
+    description: "Duplicate spend asset",
+  },
+  [DUPLICATE_INCOMING_ASSET]: {
+    code: DUPLICATE_INCOMING_ASSET,
+    label: "Duplicate incoming asset",
+    description: "Duplicate incoming asset",
+  },
+  [NON_RECEIVABLE_INCOMING_ASSET]: {
+    code: NON_RECEIVABLE_INCOMING_ASSET,
+    label: "Non-receivable incoming asset",
+    description: "Non-receivable incoming asset",
+  },
+  [RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED]: {
+    code: RECEIVED_INCOMING_ASSET_IS_LESS_THAN_EXPECTED,
+    label: "Received incoming asset less than expected",
+    description: "Received incoming asset less than expected",
+  },
+  [RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED]: {
+    code: RECEIVED_INCOMING_ASSET_IS_GREATER_THAN_EXPECTED,
+    label: "Spent amount greater than expected",
+    description: "Spent amount greater than expected",
+  },
+  [ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION]: {
+    code: ONLY_THE_INTEGRATION_MANAGER_CAN_CALL_THIS_FUNCTION,
+    label: "Only the IntegrationManager can call this function",
+    description: "Only the IntegrationManager can call this function",
+  },
+  [ADAPTER_SELECTOR_INVALID]: {
+    code: ADAPTER_SELECTOR_INVALID,
+    label: "Adapter selector invalid",
+    description: "Adapter selector invalid",
+  },
+  [FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL]: {
+    code: FEES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+    label: "Fees and settingsData array lengths unequal",
+    description: "Fees and settingsData array lengths unequal",
+  },
+  [FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES]: {
+    code: FEES_AND_SETTINGS_DATA_ARRAY_INCLUDE_DUPLICATES,
+    label: "Fees cannot include duplicates",
+    description: "Fees cannot include duplicates",
+  },
+  [FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE]: {
+    code: FEE_INVOKE_HOOK_FUND_IS_NOT_ACTIVE,
+    label: "Fee invoke hook fund is not active",
+    description: "Fund is not active",
+  },
+  [RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID]: {
+    code: RECEIVE_CALL_FROM_COMPTROLLER_INVALID_ACTION_ID,
+    label: "Invalid actionId",
+    description: "Invalid actionId",
+  },
+  [SETTLE_FEE_INVALID_SETTLEMENT_TYPE]: {
+    code: SETTLE_FEE_INVALID_SETTLEMENT_TYPE,
+    label: "Invalid settlement type",
+    description: "Invalid settlement type",
+  },
+  [CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID]: {
+    code: CREATE_EXTERNAL_POSITION_INVALID_TYPE_ID,
+    label: "Invalid typeId",
+    description: "Invalid typeId",
+  },
+  [REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION]: {
+    code: REACTIVATE_EXTERNAL_POSITION_INVALID_EXTERNAL_POSITION,
+    label: "Account provided is not a valid external position",
+    description: "Account provided is not a valid external position",
+  },
+  [REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION]: {
+    code: REACTIVATE_EXTERNAL_POSITION_VAULT_NOT_OWNER_OF_EXTERNAL_POSITION,
+    label: "External position belongs to a different vault",
+    description: "External position belongs to a different vault",
+  },
+  [UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS]: {
+    code: UPDATE_EXTERNAL_POSITION_TYPES_INFO_UNEQUAL_ARRAYS,
+    label: "Unequal arrays",
+    description: "Unequal arrays",
+  },
+  [UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST]: {
+    code: UPDATE_EXTERNAL_POSITION_TYPES_INFO_TYPE_NOT_EXIST,
+    label: "Type does not exist",
+    description: "Type does not exist",
+  },
+  [ONLY_FUND_OWNER_CAN_CALL]: {
+    code: ONLY_FUND_OWNER_CAN_CALL,
+    label: "Only the fund owner can call this function",
+    description: "Only the fund owner can call this function",
+  },
+  [POLICY_CANNOT_BE_DISABLED]: {
+    code: POLICY_CANNOT_BE_DISABLED,
+    label: "Policy cannot be disabled",
+    description: "Policy cannot be disabled",
+  },
+  [ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS]: {
+    code: ENABLING_POLICY_RESTRICTS_ACTIONS_OF_CURRENT_INVESTORS,
+    label: "Policy restricts actions of current investors",
+    description: "Policy restricts actions of current investors",
+  },
+  [POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL]: {
+    code: POLICIES_AND_SETTINGS_DATA_ARRAY_ARE_UNEQUAL,
+    label: "Policies and settingsData array lengths unequal",
+    description: "Policies and settingsData array lengths unequal",
+  },
+  [POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL]: {
+    code: POLICY_RULE_INAVLID_CALLER_NOT_ALLOWED_TO_PERFORM_CALL,
+    label: "Caller not allowed",
+    description: "Caller not allowed",
+  },
+  [POLICY_ALREADY_ENABLED]: {
+    code: POLICY_ALREADY_ENABLED,
+    label: "Policy is already enabled",
+    description: "Policy is already enabled",
   },
 };

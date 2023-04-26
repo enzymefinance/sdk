@@ -134,7 +134,7 @@ export {
 export {
   type PrepareTradeParams,
   prepareAdapterTrade,
-} from "./integrations/prepareAdapterTrade.js";
+} from "./actions/prepareAdapterTrade.js";
 
 export {
   type CalculateEntranceRateFeeSharesDueArgs,

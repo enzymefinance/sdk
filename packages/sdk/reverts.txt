@@ -4,12 +4,6 @@ SwapperBase.sol:
  require(asset != address(0), "__swap: empty value in _assetsFromIntegratee");
  require(amount > 0, "__swap: empty value in _assetsFromIntegrateeAmounts");
  
-FeeManager.sol:
- require(fees.length == settingsData.length, "setConfigForFund: fees and settingsData array lengths unequal");
- require(fees.isUniqueSet(), "setConfigForFund: fees cannot include duplicates");
- require(vaultProxy != address(0), "__invokeHook: Fund is not active");
- revert("receiveCallFromComptroller: Invalid _actionId");
- revert("__settleFee: Invalid SettlementType");
  
 ManagementFee.sol:
  require(scaledPerSecondRate > 0, "addFundSettings: scaledPerSecondRate must be greater than 0");
@@ -34,27 +28,12 @@ PerformanceFee.sol:
  require(feeRate > 0, "addFundSettings: feeRate must be greater than 0");
  require(feeRate <= ONE_HUNDRED_PERCENT, "addFundSettings: feeRate max exceeded");
  
-IntegrationManager.sol:
- require(vaultProxy != address(0), "receiveCallFromComptroller: Fund is not valid");
- require(IVault(vaultProxy).canManageAssets(_caller), "receiveCallFromComptroller: Unauthorized");
- require(IValueInterpreter(getValueInterpreter()).isSupportedAsset(assets[i]), "__addTrackedAssetsToVault: Unsupported asset");
- require(_comptrollerProxy == IVault(_vaultProxy).getAccessor(), "receiveCallFromComptroller: Fund is not active");
- require(spendAssets_.length == maxSpendAssetAmounts_.length, "__preProcessCoI: Spend assets arrays unequal");
- require(incomingAssets_.length == minIncomingAssetAmounts_.length, "__preProcessCoI: Incoming assets arrays unequal");
- require(spendAssets_.isUniqueSet(), "__preProcessCoI: Duplicate spend asset");
- require(incomingAssets_.isUniqueSet(), "__preProcessCoI: Duplicate incoming asset");
- require(IValueInterpreter(getValueInterpreter()).isSupportedAsset(incomingAssets_[i]), "__preProcessCoI: Non-receivable incoming asset");
- require(incomingAssetAmounts_[i] >= _minIncomingAssetAmounts[i], "__postProcessCoI: Received incoming asset less than expected");
- require(spendAssetAmounts_[i] <= _maxSpendAssetAmounts[i], "__postProcessCoI: Spent amount greater than expected");
- revert("receiveCallFromComptroller: Invalid _actionId");
  
 CompoundAdapterBase.sol:
  require(token != address(0), "__parseAssetsForLend: Unsupported cToken");
  require(token != address(0), "__parseAssetsForRedeem: Unsupported cToken");
  revert("parseAssetsForAction: _selector invalid");
  
-AaveAdapterBase.sol:
- revert("parseAssetsForAction: _selector invalid");
  
 BalancerV2LiquidityAdapterBase.sol:
  require(assetDeltas[i] == 0, "takeOrder: leftover intermediary");
@@ -65,8 +44,6 @@ BalancerV2LiquidityAdapterBase.sol:
  require(!_useInternalBalances, "__validateNoInternalBalances: Invalid");
  revert("parseAssetsForAction: _selector invalid");
  
-AdapterBase.sol:
- require(msg.sender == INTEGRATION_MANAGER, "Only the IntegrationManager can call this function");
  
 UniswapV2LiquidityAdapter.sol:
  revert("parseAssetsForAction: _selector invalid");
@@ -249,15 +226,6 @@ CompoundDebtPositionLib.sol:
  require(ICERC20(_cToken).repayBorrow(_amount) == 0, "__repayBorrowedAsset: Error while repaying borrow");
  revert("receiveCallFromVault: Invalid actionId");
  
-ExternalPositionManager.sol:
- require(vaultProxy != address(0), "receiveCallFromComptroller: Fund is not valid");
- require(IVault(vaultProxy).canManageAssets(_caller), "receiveCallFromComptroller: Unauthorized");
- require(parser != address(0), "__createExternalPosition: Invalid typeId");
- require(ExternalPositionFactory(getExternalPositionFactory()).isExternalPositionProxy(externalPosition), "__reactivateExternalPosition: Account provided is not a valid external position");
- require(IExternalPositionProxy(externalPosition).getVaultProxy() == _vaultProxy, "__reactivateExternalPosition: External position belongs to a different vault");
- require(_typeIds.length == _parsers.length && _libs.length == _parsers.length, "updateExternalPositionTypesInfo: Unequal arrays");
- require(_typeIds[i] < ExternalPositionFactory(getExternalPositionFactory()).getPositionTypeCounter(), "updateExternalPositionTypesInfo: Type does not exist");
- revert("receiveCallFromComptroller: Invalid _actionId");
  
 AllowedExternalPositionTypesPolicy.sol:
  require(externalPositionTypeIsAllowedForFund(_comptrollerProxy, IExternalPositionProxy(activeExternalPositions[i]).getExternalPositionType()), "activateForFund: Disallowed ExternalPositionType");
@@ -289,14 +257,6 @@ PolicyBase.sol:
 AddressListRegistryPerUserPolicyBase.sol:
  require(users.length == listsData.length, "__updateListsForFund: unequal arrays");
  
-PolicyManager.sol:
- require(__msgSender() == IVault(getVaultProxyForFund(_comptrollerProxy)).getOwner(), "Only the fund owner can call this function");
- require(IPolicy(_policy).canDisable(), "disablePolicyForFund: _policy cannot be disabled");
- require(!__policyHookRestrictsCurrentInvestorActions(implementedHooks[i]), "enablePolicyForFund: _policy restricts actions of current investors");
- require(policies.length == settingsData.length, "setConfigForFund: policies and settingsData array lengths unequal");
- require(msg.sender == _comptrollerProxy || msg.sender == IComptroller(_comptrollerProxy).getIntegrationManager() || msg.sender == IComptroller(_comptrollerProxy).getExternalPositionManager(), "validatePolicies: Caller not allowed");
- require(IPolicy(policies[i]).validateRule(_comptrollerProxy, _hook, _validationData), string(abi.encodePacked("Rule evaluated to false: ", IPolicy(policies[i]).identifier())));
- require(!policyIsEnabledOnHookForFund(_comptrollerProxy, _hooks[i], _policy), "__enablePolicyForFund: Policy is already enabled");
  
 DepositWrapper.sol:
  require(exchangeSelector != BUY_SHARES_ON_BEHALF_SELECTOR, "exchangeEthAndBuyShares: Disallowed selector");

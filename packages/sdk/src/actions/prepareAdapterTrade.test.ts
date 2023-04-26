@@ -1,9 +1,50 @@
 import { test, expect } from "vitest";
 
-import { AAVE_V2_ADAPTER, A_WETH, INTEGRATION_MANAGER } from "../../tests/constants.js";
+import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../tests/constants.js";
 import { toWei } from "../utils/conversion.js";
 import { Integration } from "../enums.js";
 import { prepareAdapterTrade } from "./prepareAdapterTrade.js";
+import { testActions, sendTestTransaction } from "../../tests/globals.js";
+
+test("prepare adapter trade should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  await sendTestTransaction({
+    ...prepareAdapterTrade({
+      integrationManager: INTEGRATION_MANAGER,
+      trade: {
+        type: Integration.AaveV2Lend,
+        callArgs: {
+          adapter: AAVE_V2_ADAPTER,
+          aToken: A_WETH,
+          depositAmount,
+        },
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: A_WETH,
+    account: vaultProxy,
+    expected: depositAmount,
+  });
+});
 
 test("prepareAdapterTrade should be equal to encoded data with encodeCallArgsForAaveV2Lend", () => {
   expect(

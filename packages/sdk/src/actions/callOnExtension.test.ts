@@ -1,51 +1,6 @@
 import { expect, test } from "vitest";
 import { encodeFunctionData, getAddress, toHex } from "viem";
 import { decodeCallOnExtensionParams, prepareCallOnExtensionParams } from "./callOnExtension.js";
-import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../tests/constants.js";
-import { testActions, sendTestTransaction } from "../../tests/globals.js";
-import { toWei } from "../utils/conversion.js";
-import { prepareAdapterTrade } from "../integrations/prepareAdapterTrade.js";
-import { Integration } from "../enums.js";
-
-test("call on extension should work correctly", async () => {
-  const vaultOwner = ALICE;
-  const sharesBuyer = BOB;
-
-  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
-  });
-
-  const depositAmount = toWei(250);
-
-  await testActions.buyShares({
-    comptrollerProxy,
-    sharesBuyer,
-    investmentAmount: depositAmount,
-  });
-
-  await sendTestTransaction({
-    ...prepareAdapterTrade({
-      integrationManager: INTEGRATION_MANAGER,
-      trade: {
-        type: Integration.AaveV2Lend,
-        callArgs: {
-          adapter: AAVE_V2_ADAPTER,
-          aToken: A_WETH,
-          depositAmount,
-        },
-      },
-    }),
-    account: vaultOwner,
-    address: comptrollerProxy,
-  });
-
-  await testActions.assertBalanceOf({
-    token: A_WETH,
-    account: vaultProxy,
-    expected: depositAmount,
-  });
-});
 
 test("decode call on extension should work correctly", () => {
   const params = {
