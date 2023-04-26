@@ -1,10 +1,6 @@
 import { expect, test } from "vitest";
 import { toWei } from "../utils/conversion.js";
-import {
-  decodeRedeemSharesParams,
-  prepareRedeemSharesInKindParams,
-  simulateRedeemSharesInKind,
-} from "./redeemSharesInKind.js";
+import { decodeRedeemSharesParams, prepareRedeemSharesInKindParams } from "./redeemSharesInKind.js";
 import { encodeFunctionData } from "viem";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
@@ -29,16 +25,18 @@ test("redeem shares in kind should work correctly", async () => {
     expected: depositAmount,
   });
 
-  const { transactionRequest: redeemSharesTransactionRequest } = await simulateRedeemSharesInKind({
-    comptrollerProxy,
-    publicClient,
-    sharesOwner: ALICE,
-    sharesQuantity: depositAmount,
-    additionalAssets: [],
-    assetsToSkip: [],
+  const { request } = await publicClient.simulateContract({
+    ...prepareRedeemSharesInKindParams({
+      withdrawalReceipient: ALICE,
+      sharesQuantity: depositAmount,
+      additionalAssets: [],
+      assetsToSkip: [],
+    }),
+    address: comptrollerProxy,
+    account: ALICE,
   });
 
-  await sendTestTransaction(redeemSharesTransactionRequest);
+  await sendTestTransaction(request);
 
   await testActions.assertBalanceOf({
     token: vaultProxy,

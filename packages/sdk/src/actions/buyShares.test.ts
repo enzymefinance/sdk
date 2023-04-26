@@ -35,15 +35,14 @@ test("should be able to buy shares", async () => {
   expect(expectedShareQuantity).toBe(depositAmount);
 
   const { request, result } = await publicClient.simulateContract({
-    address: comptrollerProxy,
-    account: ALICE,
     ...prepareBuySharesParams({
       investmentAmount: depositAmount,
       minSharesQuantity: applySlippage(expectedShareQuantity, toBps(0.05)),
     }),
+    address: comptrollerProxy,
+    account: ALICE,
   });
 
-  expect(request).toBeTruthy();
   expect(result).toBe(expectedShareQuantity); // For good measure ...
 
   await testActions.assertBalanceOf({

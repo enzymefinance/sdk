@@ -1,6 +1,6 @@
 import { IVault } from "@enzymefinance/abis/IVault";
 import { prepareFunctionParams } from "../utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
+import { decodeFunctionData, getAbiItem, type Address } from "viem";
 import type { Hex } from "viem";
 
 export interface RemoveAssetManagersParams {
@@ -25,31 +25,5 @@ export function decodeRemoveAssetManagersParams(params: Hex): RemoveAssetManager
 
   return {
     managers,
-  };
-}
-
-export interface SimulateRemoveAssetManagersParams {
-  publicClient: PublicClient;
-  managers: Address[];
-  vaultProxy: Address;
-  account: Address;
-}
-
-export async function simulateRemoveAssetManagers({
-  publicClient,
-  managers,
-  vaultProxy,
-  account,
-}: SimulateRemoveAssetManagersParams) {
-  const { request } = await publicClient.simulateContract({
-    ...prepareRemoveAssetManagersParams({
-      managers,
-    }),
-    address: vaultProxy,
-    account,
-  });
-
-  return {
-    request,
   };
 }

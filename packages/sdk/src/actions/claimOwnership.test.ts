@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
 import { IVault } from "@enzymefinance/abis/IVault";
-import { prepareClaimOwnershipParams, simulateClaimOwnership } from "./claimOwnership.js";
+import { prepareClaimOwnershipParams } from "./claimOwnership.js";
 
 test("should claim ownership correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
@@ -24,9 +24,9 @@ test("should claim ownership correctly", async () => {
     vaultProxy,
   });
 
-  const { request } = await simulateClaimOwnership({
-    publicClient,
-    vaultProxy,
+  const { request } = await publicClient.simulateContract({
+    ...prepareClaimOwnershipParams(),
+    address: vaultProxy,
     account: BOB,
   });
 

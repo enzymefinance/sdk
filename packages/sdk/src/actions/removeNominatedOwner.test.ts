@@ -2,9 +2,9 @@ import { expect, test } from "vitest";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
 import { IVault } from "@enzymefinance/abis/IVault";
-import { simulateRemoveNominatedOwner } from "./removeNominatedOwner.js";
 import { ZERO_ADDRESS } from "../constants/misc.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
+import { prepareRemoveNominatedOwnerParams } from "./removeNominatedOwner.js";
 
 test("should remove nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
@@ -34,10 +34,10 @@ test("should remove nominated owner correctly", async () => {
 
   expect(newNominatedOwner).toEqual(BOB);
 
-  const { request } = await simulateRemoveNominatedOwner({
-    publicClient,
+  const { request } = await publicClient.simulateContract({
+    ...prepareRemoveNominatedOwnerParams(),
     account: ALICE,
-    vaultProxy,
+    address: vaultProxy,
   });
 
   await sendTestTransaction(request);

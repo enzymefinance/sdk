@@ -1,6 +1,6 @@
 import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import { prepareFunctionParams } from "../utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
+import { decodeFunctionData, getAbiItem, type Address } from "viem";
 import type { Hex } from "viem";
 
 export interface RedeemSharesInKindParams {
@@ -36,46 +36,5 @@ export function decodeRedeemSharesParams(params: Hex): RedeemSharesInKindParams 
     sharesQuantity,
     additionalAssets,
     assetsToSkip,
-  };
-}
-
-export interface SimulateRedeemSharesInKindArgs {
-  publicClient: PublicClient;
-  sharesOwner: Address;
-  withdrawalReceipient?: Address;
-  sharesQuantity: bigint;
-  additionalAssets: Address[];
-  assetsToSkip: Address[];
-  comptrollerProxy: Address;
-}
-
-export async function simulateRedeemSharesInKind({
-  publicClient,
-  sharesOwner,
-  withdrawalReceipient = sharesOwner,
-  sharesQuantity,
-  additionalAssets,
-  assetsToSkip,
-  comptrollerProxy,
-}: SimulateRedeemSharesInKindArgs) {
-  const { request, result } = await publicClient.simulateContract({
-    ...prepareRedeemSharesInKindParams({
-      withdrawalReceipient,
-      sharesQuantity,
-      additionalAssets,
-      assetsToSkip,
-    }),
-    account: sharesOwner,
-    address: comptrollerProxy,
-  });
-
-  const [assets, amounts] = result;
-
-  return {
-    result: assets.map((asset, i) => ({
-      asset,
-      amount: amounts[i],
-    })),
-    transactionRequest: request,
   };
 }

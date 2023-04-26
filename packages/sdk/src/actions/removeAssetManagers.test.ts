@@ -1,10 +1,6 @@
 import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import {
-  decodeRemoveAssetManagersParams,
-  prepareRemoveAssetManagersParams,
-  simulateRemoveAssetManagers,
-} from "./removeAssetManagers.js";
+import { decodeRemoveAssetManagersParams, prepareRemoveAssetManagersParams } from "./removeAssetManagers.js";
 import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { encodeFunctionData } from "viem";
@@ -30,14 +26,13 @@ test("should remove asset managers", async () => {
 
   expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, true]);
 
-  const { request } = await simulateRemoveAssetManagers({
-    publicClient,
-    managers: [BOB, CAROL],
-    vaultProxy,
+  const { request } = await publicClient.simulateContract({
+    ...prepareRemoveAssetManagersParams({
+      managers: [BOB, CAROL],
+    }),
+    address: vaultProxy,
     account: ALICE,
   });
-
-  expect(request).toBeTruthy();
 
   await sendTestTransaction(request);
 

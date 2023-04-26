@@ -3,13 +3,11 @@ import { toWei } from "../utils/conversion.js";
 import {
   decodeRedeemSharesForSpecificAssetsParams,
   prepareRedeemSharesForSpecificAssetsParams,
-  simulateRedeemSharesForSpecificAssets,
 } from "./redeemSharesForSpecificAssets.js";
-import { publicClient, testActions, testClient } from "../../tests/globals.js";
+import { publicClient, sendTestTransaction, testActions, testClient } from "../../tests/globals.js";
 import { ALICE, WETH, USDC_HOLDER, USDC } from "../../tests/constants.js";
 import { encodeFunctionData } from "viem";
 import { MAX_UINT_256 } from "../constants/misc.js";
-import { catchError } from "../errors/catchError.js";
 
 test("should redeem specific shares correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -36,20 +34,24 @@ test("should redeem specific shares correctly", async () => {
     amount: 100_000_000_000n,
   });
 
-  expect(async () => {
-    try {
-      await simulateRedeemSharesForSpecificAssets({
-        comptrollerProxy,
-        publicClient,
-        sharesOwner: ALICE,
-        sharesQuantity: MAX_UINT_256,
-        payoutAssets: [WETH, USDC],
-        payoutAssetPercentages: [5000n, 5000n],
-      });
-    } catch (error) {
-      throw catchError(error);
-    }
-  }).not.toThrow();
+  const { request } = await publicClient.simulateContract({
+    ...prepareRedeemSharesForSpecificAssetsParams({
+      withdrawalRecipient: ALICE,
+      sharesQuantity: MAX_UINT_256,
+      payoutAssets: [WETH, USDC],
+      payoutAssetPercentages: [5000n, 5000n],
+    }),
+    address: comptrollerProxy,
+    account: ALICE,
+  });
+
+  await sendTestTransaction(request);
+
+  await testActions.assertBalanceOf({
+    token: vaultProxy,
+    account: ALICE,
+    expected: 0n,
+  });
 });
 
 test("should prepare params correctly", () => {

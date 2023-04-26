@@ -1,12 +1,20 @@
 import { IVault } from "@enzymefinance/abis/IVault";
 import { prepareFunctionParams } from "../utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
+import { decodeFunctionData, getAbiItem, type Address } from "viem";
 import type { Hex } from "viem";
 
 export interface AddAssetManagersParams {
+  /**
+   * The addresses of the asset managers to add.
+   */
   managers: readonly Address[];
 }
 
+/**
+ * Prepares the parameters for the `addAssetManagers` function.
+ *
+ * @returns The prepared parameters to be encoded.
+ */
 export function prepareAddAssetManagersParams({ managers }: AddAssetManagersParams) {
   return prepareFunctionParams({
     abi: getAbiItem({ abi: IVault, name: "addAssetManagers" }),
@@ -14,6 +22,12 @@ export function prepareAddAssetManagersParams({ managers }: AddAssetManagersPara
   });
 }
 
+/**
+ * Decodes the parameters for the `addAssetManagers` function.
+ *
+ * @param params
+ * @returns
+ */
 export function decodeAddAssetManagersParams(params: Hex): AddAssetManagersParams {
   const abi = getAbiItem({ abi: IVault, name: "addAssetManagers" });
   const decoded = decodeFunctionData({
@@ -25,31 +39,5 @@ export function decodeAddAssetManagersParams(params: Hex): AddAssetManagersParam
 
   return {
     managers,
-  };
-}
-
-export interface SimulateAddAssetManagersParams {
-  publicClient: PublicClient;
-  managers: Address[];
-  vaultProxy: Address;
-  account: Address;
-}
-
-export async function simulateAddAssetManagers({
-  publicClient,
-  managers,
-  vaultProxy,
-  account,
-}: SimulateAddAssetManagersParams) {
-  const { request } = await publicClient.simulateContract({
-    ...prepareAddAssetManagersParams({
-      managers,
-    }),
-    address: vaultProxy,
-    account,
-  });
-
-  return {
-    request,
   };
 }

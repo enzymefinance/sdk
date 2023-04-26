@@ -1,10 +1,6 @@
 import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import {
-  decodeAddAssetManagersParams,
-  prepareAddAssetManagersParams,
-  simulateAddAssetManagers,
-} from "./addAssetManagers.js";
+import { decodeAddAssetManagersParams, prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { encodeFunctionData } from "viem";
 
@@ -14,14 +10,13 @@ test("should add asset managers", async () => {
     denominationAsset: WETH,
   });
 
-  const { request } = await simulateAddAssetManagers({
-    publicClient,
-    managers: [BOB, CAROL],
-    vaultProxy,
+  const { request } = await publicClient.simulateContract({
+    ...prepareAddAssetManagersParams({
+      managers: [BOB, CAROL],
+    }),
+    address: vaultProxy,
     account: ALICE,
   });
-
-  expect(request).toBeTruthy();
 
   await sendTestTransaction(request);
 
