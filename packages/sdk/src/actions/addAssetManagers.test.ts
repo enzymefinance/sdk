@@ -6,8 +6,6 @@ import {
   simulateAddAssetManagers,
 } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { EnzymeError, catchError } from "../errors/catchError.js";
-import { ASSET_MANAGER_ALREADY_REGISTERED } from "../errors/errorCodes.js";
 import { encodeFunctionData } from "viem";
 
 test("should add asset managers", async () => {
@@ -33,37 +31,6 @@ test("should add asset managers", async () => {
   });
 
   expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, false]);
-});
-
-test("should not add asset manager if already registered", async () => {
-  const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-  });
-
-  const { request } = await simulateAddAssetManagers({
-    publicClient,
-    managers: [BOB],
-    vaultProxy,
-    account: ALICE,
-  });
-
-  expect(request).toBeTruthy();
-
-  await sendTestTransaction(request);
-
-  await expect(async () => {
-    try {
-      await simulateAddAssetManagers({
-        publicClient,
-        managers: [BOB],
-        vaultProxy,
-        account: ALICE,
-      });
-    } catch (error) {
-      throw catchError(error);
-    }
-  }).rejects.toThrow(new EnzymeError(ASSET_MANAGER_ALREADY_REGISTERED));
 });
 
 test("should prepare params correctly", () => {

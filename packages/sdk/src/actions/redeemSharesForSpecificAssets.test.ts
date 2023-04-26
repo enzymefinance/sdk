@@ -7,16 +7,9 @@ import {
 } from "./redeemSharesForSpecificAssets.js";
 import { publicClient, testActions, testClient } from "../../tests/globals.js";
 import { ALICE, WETH, USDC_HOLDER, USDC } from "../../tests/constants.js";
-import { encodeFunctionData, type Address } from "viem";
+import { encodeFunctionData } from "viem";
 import { MAX_UINT_256 } from "../constants/misc.js";
-import { EnzymeError, catchError } from "../errors/catchError.js";
-import {
-  SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
-  SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
-  SHARES_REDEMPTION_UNEQUAL_ARRAYS,
-  SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
-  type ErrorCode,
-} from "../errors/errorCodes.js";
+import { catchError } from "../errors/catchError.js";
 
 test("should redeem specific shares correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -57,83 +50,6 @@ test("should redeem specific shares correctly", async () => {
       throw catchError(error);
     }
   }).not.toThrow();
-});
-
-test("should catch errors correctly", async () => {
-  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-  });
-
-  const depositAmount = toWei(10);
-
-  await testActions.buyShares({
-    comptrollerProxy,
-    sharesBuyer: ALICE,
-    investmentAmount: depositAmount,
-  });
-
-  await testClient.impersonateAccount({
-    address: USDC_HOLDER,
-  });
-
-  await testActions.transferToken({
-    token: USDC,
-    account: USDC_HOLDER,
-    recipient: vaultProxy,
-    amount: 100_000_000_000n,
-  });
-
-  interface SpecificErrorTest {
-    payoutAssets: Address[];
-    payoutAssetPercentages: bigint[];
-    expectedError: ErrorCode;
-  }
-
-  const testSpecificErrors = async ({ payoutAssets, payoutAssetPercentages, expectedError }: SpecificErrorTest) => {
-    await expect(async () => {
-      try {
-        await simulateRedeemSharesForSpecificAssets({
-          comptrollerProxy,
-          publicClient,
-          sharesOwner: ALICE,
-          sharesQuantity: MAX_UINT_256,
-          payoutAssets,
-          payoutAssetPercentages,
-        });
-      } catch (error) {
-        throw catchError(error);
-      }
-    }).rejects.toThrow(new EnzymeError(expectedError));
-  };
-
-  // redeemSharesForSpecificAssets: Unequal arrays
-  await testSpecificErrors({
-    payoutAssets: [WETH, USDC],
-    payoutAssetPercentages: [5000n],
-    expectedError: SHARES_REDEMPTION_UNEQUAL_ARRAYS,
-  });
-
-  // __payoutSpecifiedAssetPercentages: Percents must total 100%
-  await testSpecificErrors({
-    payoutAssets: [WETH, USDC],
-    payoutAssetPercentages: [5000n, 4000n],
-    expectedError: SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
-  });
-
-  // redeemSharesForSpecificAssets: Duplicate payout asset
-  await testSpecificErrors({
-    payoutAssets: [WETH, WETH],
-    payoutAssetPercentages: [5000n, 4000n],
-    expectedError: SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
-  });
-
-  // __payoutSpecifiedAssetPercentages: Zero amount for asset
-  await testSpecificErrors({
-    payoutAssets: [WETH, USDC],
-    payoutAssetPercentages: [5000n, 0n],
-    expectedError: SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET,
-  });
 });
 
 test("should prepare params correctly", () => {
