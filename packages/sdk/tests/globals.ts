@@ -38,15 +38,17 @@ export const anvil = {
   contracts: mainnet.contracts,
 } as const satisfies Chain;
 
+export const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
+
 export const testClient = createTestClient({
   chain: anvil,
   mode: "anvil",
-  transport: http(`http://127.0.0.1:8545/${process.env.VITEST_POOL_ID ?? 1}`),
+  transport: http(`http://127.0.0.1:8545/${poolId}`),
 });
 
 export const publicClient = createPublicClient({
   chain: anvil,
-  transport: http(`http://127.0.0.1:8545/${process.env.VITEST_POOL_ID ?? 1}`),
+  transport: http(`http://127.0.0.1:8545/${poolId}`),
 });
 
 export async function sendTestTransaction<TAbi extends Abi | readonly unknown[], TFunctionName extends string = string>(
