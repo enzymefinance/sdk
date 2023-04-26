@@ -27,6 +27,7 @@ test("should claim ownership correctly", async () => {
   });
 
   const { request } = await simulateClaimOwnership({
+    publicClient,
     vaultProxy,
     account: BOB,
   });
@@ -57,6 +58,7 @@ test("should throw error if not claimed by nominated owner", async () => {
   await expect(async () => {
     try {
       await simulateClaimOwnership({
+        publicClient,
         vaultProxy,
         account: CAROL,
       });
