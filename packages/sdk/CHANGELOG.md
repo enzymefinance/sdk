@@ -1,5 +1,17 @@
 # @enzymefinance/sdk
 
+## 0.0.11
+
+### Patch Changes
+
+- [#34](https://github.com/enzymefinance/sdk/pull/34) [`f63c956`](https://github.com/enzymefinance/sdk/commit/f63c956726521b39e22643b3b16d93d96f81aef2) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `redeemSharesForSpecificAssets` and tests
+
+- [#40](https://github.com/enzymefinance/sdk/pull/40) [`f8a7982`](https://github.com/enzymefinance/sdk/commit/f8a798239a39deae34d6f781271c06430b50eaae) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `setNominatedOwner` functions and tests.
+
+- [#35](https://github.com/enzymefinance/sdk/pull/35) [`1afc111`](https://github.com/enzymefinance/sdk/commit/1afc111aa8bd06aa92ac9b6c80657c259db493c0) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `claimOwnership` and tests.
+
+- [#39](https://github.com/enzymefinance/sdk/pull/39) [`2282343`](https://github.com/enzymefinance/sdk/commit/228234301036fe70a3f27187d83aa9152b0ef786) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `removeNominatedOwner` function and tests.
+
 ## 0.0.10
 
 ### Patch Changes
