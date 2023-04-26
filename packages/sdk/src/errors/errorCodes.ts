@@ -26,6 +26,7 @@ export const SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET = "ENZF200023"; // __payout
 export const SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS = "ENZF200024"; // redeemSharesInKind: _additionalAssets contains duplicates
 export const SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP = "ENZF200025"; // redeemSharesInKind: _assetsToSkip contains duplicates
 export const CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER = "ENZF200030"; // claimOwnership: Only the nominatedOwner can call this function
+export const REMOVE_NOMINATED_OWNER_NO_OWNER = "ENZF20031"; // removeNominatedOwner: There is no nominated owner
 
 export const errorCodes = [
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
@@ -54,6 +55,7 @@ export const errorCodes = [
   SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
   SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
 ] as const;
 
 export type ErrorCode = typeof errorCodes[number];
@@ -196,5 +198,10 @@ export const errorDictionary: {
     code: CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
     label: "Only the nominatedOwner can call this function",
     description: "Only the nominated owner can claim ownership of the vault",
+  },
+  [REMOVE_NOMINATED_OWNER_NO_OWNER]: {
+    code: REMOVE_NOMINATED_OWNER_NO_OWNER,
+    label: "There is no nominated owner",
+    description: "There is no nominated owner.",
   },
 };

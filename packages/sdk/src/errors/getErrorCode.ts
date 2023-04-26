@@ -27,6 +27,7 @@ import {
   SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
   SHARES_REDEMPTION_UNEQUAL_ARRAYS,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -119,6 +120,15 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Only the nominatedOwner can call this function":
           return CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER;
+      }
+
+      return undefined;
+    }
+
+    case "removeNominatedOwner": {
+      switch (suffix) {
+        case "There is no nominated owner":
+          return REMOVE_NOMINATED_OWNER_NO_OWNER;
       }
 
       return undefined;
