@@ -25,8 +25,7 @@ test("should be able to buy shares", async () => {
     amount: depositAmount,
   });
 
-  const expectedShareQuantity = await getExpectedShareQuantity({
-    publicClient,
+  const expectedShareQuantity = await getExpectedShareQuantity(publicClient, {
     comptrollerProxy,
     sharesBuyer: ALICE,
     investmentAmount: depositAmount,

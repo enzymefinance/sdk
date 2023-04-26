@@ -25,8 +25,8 @@ export function prepareAddAssetManagersParams({ managers }: AddAssetManagersPara
 /**
  * Decodes the parameters for the `addAssetManagers` function.
  *
- * @param params
- * @returns
+ * @param params The encoded parameters.
+ * @returns The decoded parameters.
  */
 export function decodeAddAssetManagersParams(params: Hex): AddAssetManagersParams {
   const abi = getAbiItem({ abi: IVault, name: "addAssetManagers" });
