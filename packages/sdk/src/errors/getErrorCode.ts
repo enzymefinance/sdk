@@ -30,6 +30,7 @@ import {
   SET_NOMINATED_OWNER_ALREADY_NOMINATED,
   SET_NOMINATED_OWNER_ALREADY_OWNER,
   SET_NOMINATED_OWNER_CANNOT_BE_EMPTY,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
 } from "./errorCodes.js";
 
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
@@ -135,6 +136,15 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Only the nominatedOwner can call this function":
           return CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER;
+      }
+
+      return undefined;
+    }
+
+    case "removeNominatedOwner": {
+      switch (suffix) {
+        case "There is no nominated owner":
+          return REMOVE_NOMINATED_OWNER_NO_OWNER;
       }
 
       return undefined;

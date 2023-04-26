@@ -213,3 +213,9 @@ export {
   type SimulateClaimOwnershipParams,
   simulateClaimOwnership,
 } from "./actions/claimOwnership.js";
+
+export {
+  prepareRemoveNominatedOwnerParams,
+  type SimulateRemoveNominatedOwnerParams,
+  simulateRemoveNominatedOwner,
+} from "./actions/removeNominatedOwner.js";

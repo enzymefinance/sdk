@@ -29,6 +29,7 @@ export const CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER = "ENZF200030"; // claimOwn
 export const SET_NOMINATED_OWNER_CANNOT_BE_EMPTY = "ENZF200032"; // setNominatedOwner: _nextNominatedOwner cannot be empty
 export const SET_NOMINATED_OWNER_ALREADY_NOMINATED = "ENZF200033"; // setNominatedOwner: _nextNominatedOwner is already nominated
 export const SET_NOMINATED_OWNER_ALREADY_OWNER = "ENZF200034"; // setNominatedOwner: _nextNominatedOwner is already the owner"
+export const REMOVE_NOMINATED_OWNER_NO_OWNER = "ENZF20031"; // removeNominatedOwner: There is no nominated owner
 
 export const errorCodes = [
   SAFE_ERC20_LOW_LEVEL_CALL_FAILED,
@@ -60,6 +61,7 @@ export const errorCodes = [
   SET_NOMINATED_OWNER_CANNOT_BE_EMPTY,
   SET_NOMINATED_OWNER_ALREADY_NOMINATED,
   SET_NOMINATED_OWNER_ALREADY_OWNER,
+  REMOVE_NOMINATED_OWNER_NO_OWNER,
 ] as const;
 
 export type ErrorCode = typeof errorCodes[number];
@@ -217,5 +219,10 @@ export const errorDictionary: {
     code: SET_NOMINATED_OWNER_ALREADY_NOMINATED,
     label: "Nominated Owner already nominated",
     description: "The nominated owner is alread nominated.",
+  },
+  [REMOVE_NOMINATED_OWNER_NO_OWNER]: {
+    code: REMOVE_NOMINATED_OWNER_NO_OWNER,
+    label: "There is no nominated owner",
+    description: "There is no nominated owner.",
   },
 };
