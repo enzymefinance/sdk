@@ -1,7 +1,6 @@
-import { getAbiItem, type Address } from "viem";
+import { type Address } from "viem";
 import { sendTestTransaction } from "../globals.js";
-import { prepareFunctionParams } from "../../src/utils/viem.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { prepareSetNominatedOwnerParams } from "../../src/actions/setNominatedOwner.js";
 
 export async function setNominatedOwner({
   nominatedOwner,
@@ -15,9 +14,8 @@ export async function setNominatedOwner({
   return await sendTestTransaction({
     address: vaultProxy,
     account,
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IVault, name: "setNominatedOwner" }),
-      args: [nominatedOwner],
+    ...prepareSetNominatedOwnerParams({
+      nextNominatedOwner: nominatedOwner,
     }),
   });
 }

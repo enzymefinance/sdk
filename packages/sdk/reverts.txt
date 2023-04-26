@@ -455,9 +455,6 @@ VaultLib.sol:
  require(!sharesAreFreelyTransferable(), "setFreelyTransferableShares: Already set");
  require(__msgSender() == owner || msg.sender == getFundDeployer(), "Unauthorized");
  require(_nextMigrator != prevMigrator, "setMigrator: Value already set");
- require(_nextNominatedOwner != address(0), "setNominatedOwner: _nextNominatedOwner cannot be empty");
- require(_nextNominatedOwner != owner, "setNominatedOwner: _nextNominatedOwner is already the owner");
- require(_nextNominatedOwner != nominatedOwner, "setNominatedOwner: _nextNominatedOwner is already nominated");
  require(msg.sender == getFundDeployer(), "Only the FundDeployer can make this call");
  require(isActiveExternalPosition(_externalPosition), "__callOnExternalPosition: Not an active external position");
  require(trackedAssets.length + activeExternalPositions.length < getPositionsLimit(), "__validatePositionsLimit: Limit exceeded");

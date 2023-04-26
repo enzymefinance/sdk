@@ -27,6 +27,9 @@ import {
   SHARES_REDEMPTION_MUST_TOTAL_100_PERCENT,
   SHARES_REDEMPTION_DUPLICATE_PAYOUT_ASSET,
   SHARES_REDEMPTION_UNEQUAL_ARRAYS,
+  SET_NOMINATED_OWNER_ALREADY_NOMINATED,
+  SET_NOMINATED_OWNER_ALREADY_OWNER,
+  SET_NOMINATED_OWNER_CANNOT_BE_EMPTY,
   REMOVE_NOMINATED_OWNER_NO_OWNER,
   RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID,
   RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED,
@@ -146,6 +149,19 @@ export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | 
       switch (suffix) {
         case "Manager not registered":
           return ASSET_MANAGER_NOT_REGISTERED;
+      }
+
+      return undefined;
+    }
+
+    case "setNominatedOwner": {
+      switch (suffix) {
+        case "_nextNominatedOwner cannot be empty":
+          return SET_NOMINATED_OWNER_CANNOT_BE_EMPTY;
+        case "_nextNominatedOwner is already the owner":
+          return SET_NOMINATED_OWNER_ALREADY_OWNER;
+        case "_nextNominatedOwner is already nominated":
+          return SET_NOMINATED_OWNER_ALREADY_NOMINATED;
       }
 
       return undefined;

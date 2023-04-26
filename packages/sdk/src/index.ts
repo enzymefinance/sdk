@@ -237,6 +237,12 @@ export {
 } from "./actions/removeAssetManagers.js";
 
 export {
+  type PrepareSetNominatedOwnerParams,
+  prepareSetNominatedOwnerParams,
+  decodeSetNominatedOwnerParams,
+} from "./actions/setNominatedOwner.js";
+
+export {
   prepareClaimOwnershipParams,
   type SimulateClaimOwnershipParams,
   simulateClaimOwnership,

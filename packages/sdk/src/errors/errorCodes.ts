@@ -26,6 +26,9 @@ export const SHARES_REDEMPTION_ZERO_AMOUNT_FOR_ASSET = "ENZF200023"; // __payout
 export const SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS = "ENZF200024"; // redeemSharesInKind: _additionalAssets contains duplicates
 export const SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP = "ENZF200025"; // redeemSharesInKind: _assetsToSkip contains duplicates
 export const CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER = "ENZF200030"; // claimOwnership: Only the nominatedOwner can call this function
+export const SET_NOMINATED_OWNER_CANNOT_BE_EMPTY = "ENZF200032"; // setNominatedOwner: _nextNominatedOwner cannot be empty
+export const SET_NOMINATED_OWNER_ALREADY_NOMINATED = "ENZF200033"; // setNominatedOwner: _nextNominatedOwner is already nominated
+export const SET_NOMINATED_OWNER_ALREADY_OWNER = "ENZF200034"; // setNominatedOwner: _nextNominatedOwner is already the owner"
 export const REMOVE_NOMINATED_OWNER_NO_OWNER = "ENZF20031"; // removeNominatedOwner: There is no nominated owner
 export const RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID = "ENZF20032"; // receiveCallFromComptroller: Fund is not valid
 export const RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED = "ENZF20033"; // receiveCallFromComptroller: Unauthorized
@@ -84,6 +87,9 @@ export const errorCodes = [
   SHARES_REDEMPTION_DUPLICATE_ADDITIONAL_ASSETS,
   SHARES_REDEMPTION_DUPLICATE_ASSETS_TO_SKIP,
   CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
+  SET_NOMINATED_OWNER_CANNOT_BE_EMPTY,
+  SET_NOMINATED_OWNER_ALREADY_NOMINATED,
+  SET_NOMINATED_OWNER_ALREADY_OWNER,
   REMOVE_NOMINATED_OWNER_NO_OWNER,
   RECEIVE_CALL_FROM_COMPTROLLER_FUND_IS_NOT_VALID,
   RECEIVE_CALL_FROM_COMPTROLLER_UNAUTHORIZED,
@@ -256,6 +262,21 @@ export const errorDictionary: {
     code: CLAIM_OWNERSHIP_ONLY_BY_NOMINATED_OWNER,
     label: "Only the nominatedOwner can call this function",
     description: "Only the nominated owner can claim ownership of the vault",
+  },
+  [SET_NOMINATED_OWNER_CANNOT_BE_EMPTY]: {
+    code: SET_NOMINATED_OWNER_CANNOT_BE_EMPTY,
+    label: "Nominated Owner cannot be empty",
+    description: "The nominated owner cannot be empty.",
+  },
+  [SET_NOMINATED_OWNER_ALREADY_OWNER]: {
+    code: SET_NOMINATED_OWNER_ALREADY_OWNER,
+    label: "Nominated Owner already owner",
+    description: "The nominated owner is already the owner.",
+  },
+  [SET_NOMINATED_OWNER_ALREADY_NOMINATED]: {
+    code: SET_NOMINATED_OWNER_ALREADY_NOMINATED,
+    label: "Nominated Owner already nominated",
+    description: "The nominated owner is alread nominated.",
   },
   [REMOVE_NOMINATED_OWNER_NO_OWNER]: {
     code: REMOVE_NOMINATED_OWNER_NO_OWNER,
