@@ -1,23 +1,32 @@
-import { test } from "vitest";
-import { sendTestTransaction, testActions } from "../../tests/globals.js";
-import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { parseAbi } from "viem";
+import { test, expect } from "vitest";
+import { testActions } from "../../tests/globals.js";
+import { ALICE, BOB, WETH, MANAGEMENT_FEE } from "../../tests/constants.js";
+import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
+import { toBps } from "../utils/conversion.js";
 
-test("test", async () => {
+test("should set recipient for fund correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
+    feeSettings: [
+      {
+        address: MANAGEMENT_FEE,
+        settings: encodeManagementFeeSettings({
+          perAnnumRateInBps: toBps(0.1),
+        }),
+      },
+    ],
   });
 
-  const abi = parseAbi(["function setRecipientForFund(address recipient)"]);
-
-  console.log(abi);
-
-  await sendTestTransaction({
-    abi: [abi],
-    functionName: "setRecipientForFund",
+  await testActions.setRecipientForFund({
     account: ALICE,
-    args: [BOB],
-    address: comptrollerProxy,
+    comptrollerProxy,
+    recipient: BOB,
   });
+
+  const newRecipient = await testActions.getRecipientForFund({
+    comptrollerProxy,
+  });
+
+  expect(newRecipient).toEqual(BOB);
 });
