@@ -19,6 +19,8 @@ import { setRecipientForFund } from "./actions/setRecipientForFund.js";
 import { getRecipientForFund } from "./actions/getRecipientForFund.js";
 import { setFreelyTransferableShares } from "./actions/setFreelyTransferableShares.js";
 import { sharesAreFreelyTransferable } from "./actions/sharesAreFreelyTransferable.js";
+import { deployGasRelayPaymaster } from "./actions/deployGasRelayPaymaster.js";
+import { getGasRelayPaymaster } from "./actions/getGasRelayPaymaster.js";
 
 export const testActions = {
   createTestVault,
@@ -38,6 +40,8 @@ export const testActions = {
   getRecipientForFund,
   setFreelyTransferableShares,
   sharesAreFreelyTransferable,
+  deployGasRelayPaymaster,
+  getGasRelayPaymaster,
 };
 
 export const anvil = {
