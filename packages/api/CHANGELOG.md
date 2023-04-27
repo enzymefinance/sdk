@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.0.9
+
+### Patch Changes
+
+- [#37](https://github.com/enzymefinance/sdk/pull/37) [`8719d81`](https://github.com/enzymefinance/sdk/commit/8719d818f68966d0f01442aebfd5e0750d76d308) Thanks [@fubhy](https://github.com/fubhy)! - Adding additional endpoints
+
 ## 0.0.8
 
 ### Patch Changes

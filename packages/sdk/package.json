@@ -1,6 +1,6 @@
 {
   "name": "@enzymefinance/sdk",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -39,16 +39,16 @@
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.8",
-    "abitype": "^0.7.1",
+    "abitype": "^0.8.0",
     "decimal.js": "^10.4.3",
-    "viem": "^0.3.11"
+    "viem": "^0.3.12"
   },
   "devDependencies": {
-    "@fubhy/anvil": "^0.0.6",
+    "@viem/anvil": "^0.0.3",
     "@vitest/coverage-c8": "^0.30.1",
     "@vitest/ui": "^0.30.1",
     "typescript": "^5.0.4",
-    "vite": "^4.3.2",
+    "vite": "^4.3.3",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.30.1"
   }

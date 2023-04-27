@@ -3,6 +3,8 @@ export {
   MigrationOutHook,
   RateAsset,
   VaultAction,
+  IntegrationManagerActionId,
+  Integration,
 } from "./enums.js";
 
 // Constants
@@ -32,6 +34,8 @@ export {
   SETTLE_CONTINUOUS_FEES_SELECTOR,
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   VAULT_CALL_ANY_DATA_HASH,
+  LEND_SELECTOR,
+  REDEEM_SELECTOR,
 } from "./constants/selectors.js";
 
 // Utils
@@ -51,6 +55,7 @@ export {
 
 export {
   type PrepareFunctionParamsArgs,
+  type PrepareFunctionParamsReturnType,
   prepareFunctionParams,
 } from "./utils/viem.js";
 
@@ -101,6 +106,36 @@ export {
   encodeFeeSettings,
   decodeFeeSettings,
 } from "./fees/settings.js";
+
+export {
+  type CallArgsForIntegration,
+  encodeCallArgsForIntegration,
+  decodeCallArgsForIntegration,
+} from "./integrations/callArgs.js";
+
+export {
+  type IntegrationDataForAaveV2Lend,
+  type CallArgsForAaveV2Lend,
+  type AaveV2LendTrade,
+  encodeIntegrationDataForAaveV2Lend,
+  decodeIntegrationDataForAaveV2Lend,
+  encodeCallArgsForAaveV2Lend,
+  decodeCallArgsForAaveV2Lend,
+  prepareCallOnAaveV2LendParams,
+  type IntegrationDataForAaveV2Redeem,
+  type CallArgsForAaveV2Redeem,
+  type AaveV2RedeemTrade,
+  encodeIntegrationDataForAaveV2Redeem,
+  decodeIntegrationDataForAaveV2Redeem,
+  encodeCallArgsForAaveV2Redeem,
+  decodeCallArgsForAaveV2Redeem,
+  prepareCallOnAaveV2RedeemParams,
+} from "./integrations/aaveV2.js";
+
+export {
+  type PrepareTradeParams,
+  prepareAdapterTrade,
+} from "./actions/prepareAdapterTrade.js";
 
 export {
   type CalculateEntranceRateFeeSharesDueArgs,
@@ -167,39 +202,30 @@ export {
   type RedeemSharesInKindParams,
   prepareRedeemSharesInKindParams,
   decodeRedeemSharesParams,
-  type SimulateRedeemSharesInKindArgs,
-  simulateRedeemSharesInKind,
 } from "./actions/redeemSharesInKind.js";
 
 export {
   type RedeemSharesForSpecificAssetsParams,
   prepareRedeemSharesForSpecificAssetsParams,
   decodeRedeemSharesForSpecificAssetsParams,
-  type SimulateRedeemSharesForSpecificAssets,
-  simulateRedeemSharesForSpecificAssets,
 } from "./actions/redeemSharesForSpecificAssets.js";
 
 export {
   type SetAutoProtocolFeeSharesBuybackParams,
+  prepareSetAutoProtocolFeeSharesBuybackParams,
   decodeSetAutoProtocolFeeSharesBuybackParams,
-  type SimulateSetAutoProtocolFeeSharesBuybackParams,
-  simulateSetAutoProtocolFeeSharesBuyback,
 } from "./actions/setAutoProtocolFeeSharesBuyback.js";
 
 export {
   type AddAssetManagersParams,
   prepareAddAssetManagersParams,
   decodeAddAssetManagersParams,
-  type SimulateAddAssetManagersParams,
-  simulateAddAssetManagers,
 } from "./actions/addAssetManagers.js";
 
 export {
   type RemoveAssetManagersParams,
   prepareRemoveAssetManagersParams,
   decodeRemoveAssetManagersParams,
-  type SimulateRemoveAssetManagersParams,
-  simulateRemoveAssetManagers,
 } from "./actions/removeAssetManagers.js";
 
 export {
@@ -208,14 +234,6 @@ export {
   decodeSetNominatedOwnerParams,
 } from "./actions/setNominatedOwner.js";
 
-export {
-  prepareClaimOwnershipParams,
-  type SimulateClaimOwnershipParams,
-  simulateClaimOwnership,
-} from "./actions/claimOwnership.js";
+export { prepareClaimOwnershipParams } from "./actions/claimOwnership.js";
 
-export {
-  prepareRemoveNominatedOwnerParams,
-  type SimulateRemoveNominatedOwnerParams,
-  simulateRemoveNominatedOwner,
-} from "./actions/removeNominatedOwner.js";
+export { prepareRemoveNominatedOwnerParams } from "./actions/removeNominatedOwner.js";

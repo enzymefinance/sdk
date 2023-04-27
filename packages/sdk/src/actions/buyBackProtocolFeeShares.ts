@@ -4,9 +4,17 @@ import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
 export interface BuyBackProtocolFeeSharesParams {
+  /**
+   * The amount of shares to buy back.
+   */
   sharesAmount: bigint;
 }
 
+/**
+ * Prepares the parameters for the `buyBackProtocolFeeShares` function call.
+ *
+ * @returns The prepared parameters to be encoded.
+ */
 export function prepareBuyBackProtocolFeeSharesParams({ sharesAmount }: BuyBackProtocolFeeSharesParams) {
   return prepareFunctionParams({
     abi: getAbiItem({ abi: IComptroller, name: "buyBackProtocolFeeShares" }),
@@ -14,6 +22,12 @@ export function prepareBuyBackProtocolFeeSharesParams({ sharesAmount }: BuyBackP
   });
 }
 
+/**
+ * Decodes the parameters for the `buyBackProtocolFeeShares` function call.
+ *
+ * @param params The encoded parameters.
+ * @returns The decoded parameters.
+ */
 export function decodeBuyBackProtocolFeeSharesParams(params: Hex): BuyBackProtocolFeeSharesParams {
   const abi = getAbiItem({ abi: IComptroller, name: "buyBackProtocolFeeShares" });
   const decoded = decodeFunctionData({

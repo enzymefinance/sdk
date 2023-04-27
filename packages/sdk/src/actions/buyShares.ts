@@ -2,15 +2,24 @@ import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
 import type { Hex } from "viem";
+import { simulateContract } from "viem/contract";
 
-export interface BuySharesParams {
+export type BuySharesParams = {
+  /**
+   * The amount of the investment. This is the amount of the denomination asset to invest.
+   */
   investmentAmount: bigint;
   /**
-   * The minimum number of shares to buy. If the number of shares to buy is less than this value, the transaction will revert.
+   * The minimum number of shares to buy. If the number of shares received is less than this value, the transaction will revert.
    */
   minSharesQuantity: bigint;
-}
+};
 
+/**
+ * Prepares the parameters for the `buyShares` function call.
+ *
+ * @returns The prepared parameters to be encoded.
+ */
 export function prepareBuySharesParams({ investmentAmount, minSharesQuantity }: BuySharesParams) {
   return prepareFunctionParams({
     abi: getAbiItem({ abi: IComptroller, name: "buyShares" }),
@@ -18,6 +27,12 @@ export function prepareBuySharesParams({ investmentAmount, minSharesQuantity }: 
   });
 }
 
+/**
+ * Decodes the parameters for the `buyShares` function call.
+ *
+ * @param params The encoded parameters.
+ * @returns The decoded parameters.
+ */
 export function decodeBuySharesParams(params: Hex): BuySharesParams {
   const abi = getAbiItem({ abi: IComptroller, name: "buyShares" });
   const decoded = decodeFunctionData({
@@ -33,24 +48,32 @@ export function decodeBuySharesParams(params: Hex): BuySharesParams {
   };
 }
 
-export async function getExpectedShareQuantity({
-  publicClient,
-  comptrollerProxy,
-  investmentAmount,
-  sharesBuyer,
-}: {
-  publicClient: PublicClient;
+export type GetExpectedShareQuantityParams = Omit<BuySharesParams, "minSharesQuantity"> & {
+  /**
+   * The address of the comptroller proxy of the vault to buy shares for.
+   */
   comptrollerProxy: Address;
-  investmentAmount: bigint;
+  /**
+   * The address of the account to buy shares with.
+   */
   sharesBuyer: Address;
-}) {
-  const { result } = await publicClient.simulateContract({
+};
+
+/**
+ * Gets the expected number of shares to receive for a given investment amount.
+ *
+ * @returns The expected number of shares to receive.
+ * @params client The public client to use to get the expected number of shares to receive.
+ * @param params The parameters to use to get the expected number of shares to receive.
+ */
+export async function getExpectedShareQuantity(client: PublicClient, params: GetExpectedShareQuantityParams) {
+  const { result } = await simulateContract(client, {
     ...prepareBuySharesParams({
-      investmentAmount,
+      investmentAmount: params.investmentAmount,
       minSharesQuantity: 1n,
     }),
-    account: sharesBuyer,
-    address: comptrollerProxy,
+    account: params.sharesBuyer,
+    address: params.comptrollerProxy,
   });
 
   return result;

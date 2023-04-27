@@ -1,14 +1,8 @@
 import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import {
-  decodeRemoveAssetManagersParams,
-  prepareRemoveAssetManagersParams,
-  simulateRemoveAssetManagers,
-} from "./removeAssetManagers.js";
+import { decodeRemoveAssetManagersParams, prepareRemoveAssetManagersParams } from "./removeAssetManagers.js";
 import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { EnzymeError, catchError } from "../errors/catchError.js";
-import { ASSET_MANAGER_NOT_REGISTERED } from "../errors/errorCodes.js";
 import { encodeFunctionData } from "viem";
 
 test("should remove asset managers", async () => {
@@ -32,14 +26,13 @@ test("should remove asset managers", async () => {
 
   expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, true]);
 
-  const { request } = await simulateRemoveAssetManagers({
-    publicClient,
-    managers: [BOB, CAROL],
-    vaultProxy,
+  const { request } = await publicClient.simulateContract({
+    ...prepareRemoveAssetManagersParams({
+      managers: [BOB, CAROL],
+    }),
+    address: vaultProxy,
     account: ALICE,
   });
-
-  expect(request).toBeTruthy();
 
   await sendTestTransaction(request);
 
@@ -49,26 +42,6 @@ test("should remove asset managers", async () => {
   });
 
   expect([bobIsStillManager, carolIsStillManager, daveIsStillManager]).toEqual([false, false, true]);
-});
-
-test("should not remove asset manager if not registered", async () => {
-  const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-  });
-
-  await expect(async () => {
-    try {
-      await simulateRemoveAssetManagers({
-        publicClient,
-        managers: [BOB],
-        vaultProxy,
-        account: ALICE,
-      });
-    } catch (error) {
-      throw catchError(error);
-    }
-  }).rejects.toThrow(new EnzymeError(ASSET_MANAGER_NOT_REGISTERED));
 });
 
 test("should prepare params correctly", () => {

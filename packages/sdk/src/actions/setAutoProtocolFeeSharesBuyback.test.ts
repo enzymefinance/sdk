@@ -1,12 +1,11 @@
 import { expect, test } from "vitest";
+import { encodeFunctionData } from "viem";
 import {
-  simulateSetAutoProtocolFeeSharesBuyback,
   prepareSetAutoProtocolFeeSharesBuybackParams,
   decodeSetAutoProtocolFeeSharesBuybackParams,
 } from "./setAutoProtocolFeeSharesBuyback.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { encodeFunctionData } from "viem";
 
 test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
@@ -14,11 +13,12 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const { request: setAutoProtocolFeeSharesBuybackTrue } = await simulateSetAutoProtocolFeeSharesBuyback({
-    publicClient,
-    nextAutoProtocolFeeSharesBuyback: true,
-    vaultOwner: ALICE,
-    comptrollerProxy,
+  const { request: setAutoProtocolFeeSharesBuybackTrue } = await publicClient.simulateContract({
+    ...prepareSetAutoProtocolFeeSharesBuybackParams({
+      nextAutoProtocolFeeSharesBuyback: true,
+    }),
+    account: ALICE,
+    address: comptrollerProxy,
   });
 
   expect(setAutoProtocolFeeSharesBuybackTrue).toBeTruthy();
@@ -37,11 +37,12 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(autoProtocolFeeSharesBuybackAfter).toBe(true);
 
-  const { request: setAutoProtocolFeeSharesBuybackFalse } = await simulateSetAutoProtocolFeeSharesBuyback({
-    publicClient,
-    nextAutoProtocolFeeSharesBuyback: false,
-    vaultOwner: ALICE,
-    comptrollerProxy,
+  const { request: setAutoProtocolFeeSharesBuybackFalse } = await publicClient.simulateContract({
+    ...prepareSetAutoProtocolFeeSharesBuybackParams({
+      nextAutoProtocolFeeSharesBuyback: false,
+    }),
+    account: ALICE,
+    address: comptrollerProxy,
   });
 
   expect(setAutoProtocolFeeSharesBuybackFalse).toBeTruthy();
