@@ -243,3 +243,5 @@ export {
   prepareSetRecipientForFundParams,
   decodeSetRecipientForFundParams,
 } from "./actions/setRecipientForFund.js";
+
+export { prepareFreelyTransferableSharesParams } from "./actions/setFreelyTransferableShares.js";
