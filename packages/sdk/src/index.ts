@@ -237,3 +237,9 @@ export {
 export { prepareClaimOwnershipParams } from "./actions/claimOwnership.js";
 
 export { prepareRemoveNominatedOwnerParams } from "./actions/removeNominatedOwner.js";
+
+export {
+  type SetRecipientForFundParams,
+  prepareSetRecipientForFundParams,
+  decodeSetRecipientForFundParams,
+} from "./actions/setRecipientForFund.js";

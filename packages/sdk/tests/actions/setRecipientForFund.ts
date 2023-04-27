@@ -1,5 +1,4 @@
-import { parseAbi, type Address } from "viem";
-import { MANAGEMENT_FEE } from "../constants.js";
+import { type Address } from "viem";
 import { sendTestTransaction } from "../globals.js";
 import { prepareSetRecipientForFundParams } from "../../src/actions/setRecipientForFund.js";
 
@@ -12,21 +11,13 @@ export async function setRecipientForFund({
   recipient: Address;
   account: Address;
 }) {
-  const a = prepareSetRecipientForFundParams({
-    comptrollerProxy,
-    recipient,
-  });
-
-  console.log("A", a);
-
-  const res = await sendTestTransaction({
-    abi: parseAbi(["function setRecipientForFund(address _comptrollerProxy, address _recipient)"]),
-    functionName: "setRecipientForFund",
-    args: [comptrollerProxy, recipient],
+  const params = {
+    ...prepareSetRecipientForFundParams({
+      comptrollerProxy,
+      recipient,
+    }),
     account,
-    address: MANAGEMENT_FEE,
-  });
+  } as const;
 
-  console.log("RES", res);
-  return res;
+  return await sendTestTransaction({ ...params });
 }
