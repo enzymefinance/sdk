@@ -12,10 +12,10 @@ export const minAssetBalancesPostRedemptionPolicySettingsEncoding = [
   },
 ] as const;
 
-export interface MinAssetBalancesPostRedemptionPolicySettings {
+export type MinAssetBalancesPostRedemptionPolicySettings = {
   asset: Address;
   minBalance: bigint;
-}
+};
 
 export function encodeMinAssetBalancesPostRedemptionPolicySettings(
   policies: MinAssetBalancesPostRedemptionPolicySettings[],

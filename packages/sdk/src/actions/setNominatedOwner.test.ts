@@ -107,7 +107,7 @@ test("should fail if nominated owner is already owner", async () => {
 test("should prepare params correctly", () => {
   expect(
     prepareSetNominatedOwnerParams({
-      nextNominatedOwner: BOB,
+      nominatedOwner: BOB,
     }),
   ).toMatchInlineSnapshot(`
     {
@@ -136,7 +136,7 @@ test("should prepare params correctly", () => {
 
 test("should decode params correctly", () => {
   const params = {
-    nextNominatedOwner: BOB,
+    nominatedOwner: BOB,
   };
 
   const prepared = prepareSetNominatedOwnerParams(params);

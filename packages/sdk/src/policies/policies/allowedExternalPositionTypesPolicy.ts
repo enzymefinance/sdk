@@ -7,9 +7,9 @@ export const allowedExternalPositionTypesPolicySettingsEncoding = [
   },
 ] as const;
 
-export interface AllowedExternalPositionTypesPolicySettings {
+export type AllowedExternalPositionTypesPolicySettings = {
   externalPositionTypeIds: readonly bigint[];
-}
+};
 
 export function encodeAllowedExternalPositionTypesPolicySettings({
   externalPositionTypeIds,

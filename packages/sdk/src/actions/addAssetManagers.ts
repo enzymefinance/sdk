@@ -3,12 +3,12 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem, type Address } from "viem";
 import type { Hex } from "viem";
 
-export interface AddAssetManagersParams {
+export type AddAssetManagersParams = {
   /**
    * The addresses of the asset managers to add.
    */
   managers: readonly Address[];
-}
+};
 
 /**
  * Prepares the parameters for the `addAssetManagers` function.

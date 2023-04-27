@@ -7,9 +7,9 @@ export const cumulativeSlippageTolerancePolicyEncoding = [
   },
 ] as const;
 
-export interface CumulativeSlippageTolerancePolicySettings {
+export type CumulativeSlippageTolerancePolicySettings = {
   tolerance: bigint;
-}
+};
 
 export function encodeCumulativeSlippageTolerancePolicySettings({
   tolerance,

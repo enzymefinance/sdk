@@ -12,10 +12,10 @@ export const policySettingsAbi = [
   },
 ] as const;
 
-export interface PolicySettings {
+export type PolicySettings = {
   address: Address;
   settings: Hex;
-}
+};
 
 export function encodePolicySettings(policies: PolicySettings[]): Hex {
   const addresses = policies.map(({ address }) => address);

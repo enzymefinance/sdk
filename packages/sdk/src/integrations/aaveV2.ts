@@ -8,10 +8,10 @@ import { prepareCallOnExtensionParams } from "../actions/callOnExtension.js";
 // lend
 const integrationDataForAaveV2LendAbiParamaters = parseAbiParameters("address aToken, uint depositAmount");
 
-export interface IntegrationDataForAaveV2Lend {
+export type IntegrationDataForAaveV2Lend = {
   aToken: Address;
   depositAmount: bigint;
-}
+};
 
 export function encodeIntegrationDataForAaveV2Lend({ aToken, depositAmount }: IntegrationDataForAaveV2Lend): Hex {
   return encodeAbiParameters(integrationDataForAaveV2LendAbiParamaters, [aToken, depositAmount]);
@@ -25,11 +25,11 @@ export function decodeIntegrationDataForAaveV2Lend(integrationData: Hex): Integr
   return { aToken, depositAmount };
 }
 
-export interface CallArgsForAaveV2Lend {
+export type CallArgsForAaveV2Lend = {
   aToken: Address;
   depositAmount: bigint;
   adapter: Address;
-}
+};
 
 export function encodeCallArgsForAaveV2Lend({ aToken, adapter, depositAmount }: CallArgsForAaveV2Lend): Hex {
   const integrationData = encodeIntegrationDataForAaveV2Lend({
@@ -74,10 +74,10 @@ export type AaveV2LendTrade = {
 
 const integrationDataForAaveV2RedeemAbiParamaters = parseAbiParameters("address aToken, uint redeemAmount");
 
-export interface IntegrationDataForAaveV2Redeem {
+export type IntegrationDataForAaveV2Redeem = {
   aToken: Address;
   redeemAmount: bigint;
-}
+};
 
 export function encodeIntegrationDataForAaveV2Redeem({ aToken, redeemAmount }: IntegrationDataForAaveV2Redeem): Hex {
   return encodeAbiParameters(integrationDataForAaveV2RedeemAbiParamaters, [aToken, redeemAmount]);
@@ -91,11 +91,11 @@ export function decodeIntegrationDataForAaveV2Redeem(integrationData: Hex): Inte
   return { aToken, redeemAmount };
 }
 
-export interface CallArgsForAaveV2Redeem {
+export type CallArgsForAaveV2Redeem = {
   aToken: Address;
   redeemAmount: bigint;
   adapter: Address;
-}
+};
 
 export function encodeCallArgsForAaveV2Redeem({ aToken, adapter, redeemAmount }: CallArgsForAaveV2Redeem): Hex {
   const integrationData = encodeIntegrationDataForAaveV2Redeem({

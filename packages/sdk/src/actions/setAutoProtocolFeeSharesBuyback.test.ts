@@ -15,7 +15,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   const { request: setAutoProtocolFeeSharesBuybackTrue } = await publicClient.simulateContract({
     ...prepareSetAutoProtocolFeeSharesBuybackParams({
-      nextAutoProtocolFeeSharesBuyback: true,
+      enabled: true,
     }),
     account: ALICE,
     address: comptrollerProxy,
@@ -39,7 +39,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   const { request: setAutoProtocolFeeSharesBuybackFalse } = await publicClient.simulateContract({
     ...prepareSetAutoProtocolFeeSharesBuybackParams({
-      nextAutoProtocolFeeSharesBuyback: false,
+      enabled: false,
     }),
     account: ALICE,
     address: comptrollerProxy,
@@ -59,7 +59,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 test("should prepare params correctly", () => {
   expect(
     prepareSetAutoProtocolFeeSharesBuybackParams({
-      nextAutoProtocolFeeSharesBuyback: true,
+      enabled: true,
     }),
   ).toMatchInlineSnapshot(`
     {
@@ -68,7 +68,7 @@ test("should prepare params correctly", () => {
           "inputs": [
             {
               "internalType": "bool",
-              "name": "_nextAutoProtocolFeeSharesBuyback",
+              "name": "_enabled",
               "type": "bool",
             },
           ],
@@ -88,7 +88,7 @@ test("should prepare params correctly", () => {
 
 test("should decode params correctly", () => {
   const params = {
-    nextAutoProtocolFeeSharesBuyback: true,
+    enabled: true,
   };
   const prepared = prepareSetAutoProtocolFeeSharesBuybackParams(params);
   const encoded = encodeFunctionData(prepared);

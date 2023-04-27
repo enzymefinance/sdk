@@ -1,11 +1,11 @@
 import { type Address, parseAbiParameters } from "abitype";
 import { type Hex, encodeAbiParameters, decodeAbiParameters } from "viem";
 
-export interface CallArgsForIntegration {
+export type CallArgsForIntegration = {
   selector: Hex;
   integrationData: Hex;
   adapter: Address;
-}
+};
 
 const callArgsForIntegrationAbiParamaters = parseAbiParameters(
   "address adapter, bytes4 selector, bytes integrationData",

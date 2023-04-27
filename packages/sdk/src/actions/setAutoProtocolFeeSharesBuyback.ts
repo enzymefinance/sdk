@@ -3,19 +3,30 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
-export interface SetAutoProtocolFeeSharesBuybackParams {
-  nextAutoProtocolFeeSharesBuyback: boolean;
-}
+export type SetAutoProtocolFeeSharesBuybackParams = {
+  /**
+   * Whether to enable or disable the auto buyback of protocol fee shares.
+   */
+  enabled: boolean;
+};
 
-export function prepareSetAutoProtocolFeeSharesBuybackParams({
-  nextAutoProtocolFeeSharesBuyback,
-}: SetAutoProtocolFeeSharesBuybackParams) {
+/**
+ * Prepares the parameters for the `setAutoProtocolFeeSharesBuyback` function call.
+ *
+ * @returns The prepared parameters to be encoded.
+ */
+export function prepareSetAutoProtocolFeeSharesBuybackParams({ enabled }: SetAutoProtocolFeeSharesBuybackParams) {
   return prepareFunctionParams({
     abi: getAbiItem({ abi: IComptroller, name: "setAutoProtocolFeeSharesBuyback" }),
-    args: [nextAutoProtocolFeeSharesBuyback],
+    args: [enabled],
   });
 }
 
+/**
+ * Decodes the parameters for the `setAutoProtocolFeeSharesBuyback` function call.
+ *
+ * @returns The decoded parameters.
+ */
 export function decodeSetAutoProtocolFeeSharesBuybackParams(params: Hex): SetAutoProtocolFeeSharesBuybackParams {
   const abi = getAbiItem({ abi: IComptroller, name: "setAutoProtocolFeeSharesBuyback" });
   const decoded = decodeFunctionData({
@@ -23,9 +34,9 @@ export function decodeSetAutoProtocolFeeSharesBuybackParams(params: Hex): SetAut
     data: params,
   });
 
-  const [nextAutoProtocolFeeSharesBuyback] = decoded.args;
+  const [enabled] = decoded.args;
 
   return {
-    nextAutoProtocolFeeSharesBuyback,
+    enabled,
   };
 }

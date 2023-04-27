@@ -11,10 +11,10 @@ export const minMaxInvestmentPolicySettingsEncoding = [
   },
 ] as const;
 
-export interface MinMaxInvestmentPolicySettings {
+export type MinMaxInvestmentPolicySettings = {
   minInvestmentAmount: bigint;
   maxInvestmentAmount: bigint;
-}
+};
 
 export function encodeMinMaxInvestmentPolicySettings({
   minInvestmentAmount,
