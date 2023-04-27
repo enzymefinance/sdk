@@ -2,7 +2,7 @@ import { type Address } from "viem";
 import { sendTestTransaction } from "../globals.js";
 import { prepareSetRecipientForFundParams } from "../../src/actions/setRecipientForFund.js";
 
-export async function setRecipientForFund({
+export function setRecipientForFund({
   comptrollerProxy,
   recipient,
   account,
@@ -19,5 +19,5 @@ export async function setRecipientForFund({
     account,
   } as const;
 
-  return await sendTestTransaction({ ...params });
+  return sendTestTransaction({ ...params });
 }
