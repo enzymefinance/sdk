@@ -55,6 +55,12 @@ export function prepareRedeemSharesInKindParams({
   });
 }
 
+/**
+ * Decode the parameters for the `redeemSharesInKind` function.
+ *
+ * @param params The encoded parameters.
+ * @returns The decoded parameters.
+ */
 export function decodeRedeemSharesParams(params: Hex): RedeemSharesInKindParams {
   const abi = getAbiItem({ abi: IComptroller, name: "redeemSharesInKind" });
   const decoded = decodeFunctionData({

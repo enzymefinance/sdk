@@ -41,6 +41,12 @@ export function prepareRedeemSharesForSpecificAssetsParams({
   });
 }
 
+/**
+ * Decode the parameters for the `redeemSharesForSpecificAssets` function.
+ *
+ * @param params The encoded parameters.
+ * @returns The decoded parameters.
+ */
 export function decodeRedeemSharesForSpecificAssetsParams(params: Hex): RedeemSharesForSpecificAssetsParams {
   const abi = getAbiItem({ abi: IComptroller, name: "redeemSharesForSpecificAssets" });
   const decoded = decodeFunctionData({

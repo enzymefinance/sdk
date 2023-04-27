@@ -110,6 +110,7 @@ export function prepareSetupVaultParams({
 /**
  * Decode the parameters for the `createNewFund` function.
  *
+ * @param params The encoded parameters.
  * @returns The decoded parameters.
  */
 export function decodeSetupVaultParams(params: Hex): SetupVaultParams<FeeSettings[], PolicySettings[]> {

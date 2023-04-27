@@ -25,6 +25,7 @@ export function prepareSetAutoProtocolFeeSharesBuybackParams({ enabled }: SetAut
 /**
  * Decodes the parameters for the `setAutoProtocolFeeSharesBuyback` function call.
  *
+ * @param params The encoded parameters.
  * @returns The decoded parameters.
  */
 export function decodeSetAutoProtocolFeeSharesBuybackParams(params: Hex): SetAutoProtocolFeeSharesBuybackParams {
