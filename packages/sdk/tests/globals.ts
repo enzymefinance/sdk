@@ -15,6 +15,8 @@ import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeShare
 import { setNominatedOwner } from "./actions/setNominatedOwner.js";
 import { overrideValueInterpreter } from "./actions/setStatelRateThreshold.js";
 import { transferToken } from "./actions/transferToken.js";
+import { setRecipientForFund } from "./actions/setRecipientForFund.js";
+import { getRecipientForFund } from "./actions/getRecipientForFund.js";
 
 export const testActions = {
   createTestVault,
@@ -30,6 +32,8 @@ export const testActions = {
   setNominatedOwner,
   overrideValueInterpreter,
   transferToken,
+  setRecipientForFund,
+  getRecipientForFund,
 };
 
 export const anvil = {
