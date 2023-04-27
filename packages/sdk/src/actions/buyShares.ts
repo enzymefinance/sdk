@@ -64,16 +64,18 @@ export type GetExpectedShareQuantityParams = Omit<BuySharesParams, "minSharesQua
  *
  * @returns The expected number of shares to receive.
  * @params client The public client to use to get the expected number of shares to receive.
- * @param params The parameters to use to get the expected number of shares to receive.
  */
-export async function getExpectedShareQuantity(client: PublicClient, params: GetExpectedShareQuantityParams) {
+export async function getExpectedShareQuantity(
+  client: PublicClient,
+  { comptrollerProxy, investmentAmount, sharesBuyer }: GetExpectedShareQuantityParams,
+) {
   const { result } = await simulateContract(client, {
     ...prepareBuySharesParams({
-      investmentAmount: params.investmentAmount,
+      investmentAmount: investmentAmount,
       minSharesQuantity: 1n,
     }),
-    account: params.sharesBuyer,
-    address: params.comptrollerProxy,
+    account: sharesBuyer,
+    address: comptrollerProxy,
   });
 
   return result;

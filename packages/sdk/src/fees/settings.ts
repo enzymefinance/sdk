@@ -12,11 +12,27 @@ export const feeSettingsAbi = [
   },
 ] as const;
 
-export interface FeeSettings {
+export type FeeSettings = {
+  /**
+   * The address of the fee contract.
+   *
+   * @remarks
+   *
+   * This is the address of the fee contract, e.g. `PerformanceFee`, `ManagementFee`, etc. that the
+   * provided settings belong to.
+   */
   address: Address;
+  /**
+   * The encoded fee settings.
+   */
   settings: Hex;
-}
+};
 
+/**
+ * Encode fee settings for a set of fees.
+ *
+ * @returns The encoded fee settings.
+ */
 export function encodeFeeSettings(fees: FeeSettings[]): Hex {
   const addresses = fees.map(({ address }) => address);
   const settings = fees.map(({ settings }) => settings);
@@ -24,6 +40,11 @@ export function encodeFeeSettings(fees: FeeSettings[]): Hex {
   return encodeAbiParameters(feeSettingsAbi, [addresses, settings]);
 }
 
+/**
+ * Decode fee settings from a hex string.
+ *
+ * @returns The decoded fee settings.
+ */
 export function decodeFeeSettings(encoded: Hex): FeeSettings[] {
   const [addresses, settings] = decodeAbiParameters(feeSettingsAbi, encoded);
   if (addresses.length !== settings.length) {

@@ -14,10 +14,10 @@ export const managementFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface ManagementFeeSettings {
+export type ManagementFeeSettings = {
   scaledPerSecondRate: bigint;
   feeRecipient: Address;
-}
+};
 
 export type EncodeManagementFeeSettingsArgs = {
   feeRecipient?: Address;
@@ -54,11 +54,11 @@ export function decodeManagementFeeSettings(settings: Hex): ManagementFeeSetting
   return { scaledPerSecondRate, feeRecipient };
 }
 
-export interface CalculateManagementFeeSharesDueArgs {
+export type CalculateManagementFeeSharesDueArgs = {
   scaledPerSecondRate: bigint;
   sharesSupply: bigint;
   secondsSinceLastSettled: bigint;
-}
+};
 
 export function calculateManagementFeeSharesDue({
   scaledPerSecondRate,

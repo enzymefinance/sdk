@@ -16,7 +16,7 @@
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.build.json"
   },
   "files": [
     "dist/**",
@@ -44,8 +44,6 @@
   },
   "devDependencies": {
     "@bufbuild/buf": "^1.15.0",
-    "@bufbuild/protoc-gen-connect-es": "^0.8.6",
-    "@bufbuild/protoc-gen-es": "^1.2.0",
     "@types/node": "^18.16.1",
     "@types/web": "^0.0.99",
     "@vitest/coverage-c8": "^0.30.1",

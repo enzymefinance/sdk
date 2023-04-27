@@ -62,6 +62,12 @@ import {
   POLICY_ALREADY_ENABLED,
 } from "./errorCodes.js";
 
+/**
+ * Returns the protocol specific revert code for a given error or undefined if no match was found.
+ *
+ * @param error The contract function revert error to get the code for.
+ * @returns The protocol specific code for the given error or undefined if no match was found.
+ */
 export function getErrorCode(error: ContractFunctionRevertedError): ErrorCode | undefined {
   if (error.reason === undefined) {
     return undefined;

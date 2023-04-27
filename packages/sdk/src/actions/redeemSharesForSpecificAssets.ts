@@ -3,13 +3,32 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem, type Address } from "viem";
 import type { Hex } from "viem";
 
-export interface RedeemSharesForSpecificAssetsParams {
-  withdrawalRecipient: Address;
-  sharesQuantity: bigint;
-  payoutAssets: readonly Address[];
-  payoutAssetPercentages: readonly bigint[];
-}
+// TODO: The payout assets & payout asset percentages should be a map instead of two arrays.
 
+export type RedeemSharesForSpecificAssetsParams = {
+  /**
+   * The address to send the redeemed assets to.
+   */
+  withdrawalRecipient: Address;
+  /**
+   * The quantity of shares to redeem.
+   */
+  sharesQuantity: bigint;
+  /**
+   * The list of specific assets to redeem.
+   */
+  payoutAssets: readonly Address[];
+  /**
+   * The list of percentages of the shares to redeem for each asset.
+   */
+  payoutAssetPercentages: readonly bigint[];
+};
+
+/**
+ * Prepare the parameters for the `redeemSharesForSpecificAssets` function.
+ *
+ * @returns The prepared parameters to be encoded.
+ */
 export function prepareRedeemSharesForSpecificAssetsParams({
   withdrawalRecipient,
   sharesQuantity,

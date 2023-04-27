@@ -53,9 +53,8 @@ export async function buyShares({
   });
 
   if (skipSharesActionTimelock) {
-    const sharesActionTimelock = await getSharesActionTimelock({
+    const sharesActionTimelock = await getSharesActionTimelock(publicClient, {
       comptrollerProxy,
-      publicClient,
     });
 
     await increaseTimeAndMine({

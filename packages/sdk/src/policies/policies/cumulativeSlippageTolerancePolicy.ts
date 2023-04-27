@@ -7,10 +7,24 @@ export const cumulativeSlippageTolerancePolicyEncoding = [
   },
 ] as const;
 
-export interface CumulativeSlippageTolerancePolicySettings {
+export type CumulativeSlippageTolerancePolicySettings = {
+  /**
+   * The allowed cumulative slippage tolerance.
+   *
+   * @remarks
+   *
+   * This is the maximum amount of slippage that the vault is allowed to accumulate over time.
+   * If the vault's cumulative slippage exceeds this amount, the trade will revert. The allowed
+   * slippage replenishes over time.
+   */
   tolerance: bigint;
-}
+};
 
+/**
+ * Encodes the given settings into a hex string.
+ *
+ * @returns The encoded settings.
+ */
 export function encodeCumulativeSlippageTolerancePolicySettings({
   tolerance,
 }: CumulativeSlippageTolerancePolicySettings): Hex {

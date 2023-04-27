@@ -3,12 +3,12 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
-export interface BuyBackProtocolFeeSharesParams {
+export type BuyBackProtocolFeeSharesParams = {
   /**
    * The amount of shares to buy back.
    */
   sharesAmount: bigint;
-}
+};
 
 /**
  * Prepares the parameters for the `buyBackProtocolFeeShares` function call.
