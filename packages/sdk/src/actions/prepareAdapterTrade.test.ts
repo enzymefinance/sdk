@@ -43,6 +43,7 @@ test("prepare adapter trade should work correctly", async () => {
     token: A_WETH,
     account: vaultProxy,
     expected: depositAmount,
+    fuzziness: 100n,
   });
 });
 
