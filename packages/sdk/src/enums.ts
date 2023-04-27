@@ -53,3 +53,17 @@ export const Integration = {
   AaveV2Lend: "AaveV2Lend",
   AaveV2Redeem: "AaveV2Redeem",
 } as const;
+
+export type ExternalPositionManagerActionId =
+  typeof ExternalPositionManagerActionId[keyof typeof ExternalPositionManagerActionId];
+export const ExternalPositionManagerActionId = {
+  CreateExternalPosition: 0n,
+  CallOnExternalPosition: 1n,
+  RemoveExternalPosition: 2n,
+  ReactivateExternalPosition: 3n,
+} as const;
+
+export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
+export const ExternalPosition = {
+  KilnStake: "KilnStake",
+} as const;
