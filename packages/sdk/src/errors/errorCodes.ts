@@ -124,11 +124,20 @@ export const errorCodes = [
 
 export type ErrorCode = typeof errorCodes[number];
 
-export interface ErrorDescription<TErrorCode extends ErrorCode = ErrorCode> {
+export type ErrorDescription<TErrorCode extends ErrorCode = ErrorCode> = {
+  /**
+   * The error code.
+   */
   code: TErrorCode;
+  /**
+   * A human-readable label for the error.
+   */
   label: string;
+  /**
+   * A human-readable description of the error.
+   */
   description: string;
-}
+};
 
 export const errorDictionary: {
   [TKey in ErrorCode]: ErrorDescription<TKey>;

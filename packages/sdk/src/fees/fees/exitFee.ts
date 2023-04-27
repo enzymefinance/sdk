@@ -13,10 +13,10 @@ export const exitRateBurnFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface ExitRateBurnFeeSettings {
+export type ExitRateBurnFeeSettings = {
   inKindRateInBps: bigint;
   specificAssetsRate: bigint;
-}
+};
 
 export type EncodeExitRateBurnFeeSettingsArgs = Partial<ExitRateBurnFeeSettings>;
 
@@ -48,11 +48,11 @@ export const exitRateDirectFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface ExitRateDirectFeeSettings {
+export type ExitRateDirectFeeSettings = {
   inKindRateInBps: bigint;
   specificAssetsRate: bigint;
   feeRecipient: Address;
-}
+};
 
 export type EncodeExitRateDirectFeeSettingsArgs = Partial<ExitRateDirectFeeSettings>;
 
@@ -73,10 +73,10 @@ export function decodeExitRateDirectFeeSettings(settings: Hex): ExitRateDirectFe
   return { inKindRateInBps, specificAssetsRate, feeRecipient };
 }
 
-export interface CalculateExitRateFeeSharesDueArgs {
+export type CalculateExitRateFeeSharesDueArgs = {
   feeRate: bigint;
   sharesRedeemed: bigint;
-}
+};
 
 export function calculateExitRateFeeSharesDue({ feeRate, sharesRedeemed }: CalculateExitRateFeeSharesDueArgs) {
   return (sharesRedeemed * feeRate) / 10000n;

@@ -6,17 +6,34 @@ export async function assertBalanceOf({
   token,
   account,
   expected,
-  message,
+  fuzziness,
 }: {
+  /**
+   * The token to check the balance of.
+   */
   token: Address;
+  /**
+   * The account to check the balance of.
+   */
   account: Address;
+  /**
+   * The expected balance of the account.
+   */
   expected: bigint;
-  message?: string;
+  /**
+   * Allows the actual balance to be within a certain range of the expected balance.
+   */
+  fuzziness?: bigint;
 }) {
   const actual = await testActions.getBalanceOf({
     token,
     account,
   });
 
-  expect(actual, message).toBe(expected);
+  if (fuzziness === undefined) {
+    expect(actual).toBe(expected);
+  } else {
+    expect(actual).toBeGreaterThanOrEqual(expected - BigInt(fuzziness));
+    expect(actual).toBeLessThanOrEqual(expected + BigInt(fuzziness));
+  }
 }

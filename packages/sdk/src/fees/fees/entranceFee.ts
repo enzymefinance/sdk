@@ -11,9 +11,9 @@ export const entranceRateBurnFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface EntranceRateBurnFeeSettings {
+export type EntranceRateBurnFeeSettings = {
   feeRateInBps: bigint;
-}
+};
 
 export function encodeEntranceRateBurnFeeSettings({ feeRateInBps }: EntranceRateBurnFeeSettings): Hex {
   return encodeAbiParameters(entranceRateBurnFeeSettingsEncoding, [feeRateInBps]);
@@ -38,10 +38,10 @@ export const entranceRateDirectFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface EntranceRateDirectFeeSettings {
+export type EntranceRateDirectFeeSettings = {
   feeRateInBps: bigint;
   feeRecipient: Address;
-}
+};
 
 export type EncodeEntranceRateDirectFeeSettingsArgs = PartialPick<EntranceRateDirectFeeSettings, "feeRecipient">;
 

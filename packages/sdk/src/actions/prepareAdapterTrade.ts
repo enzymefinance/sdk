@@ -9,10 +9,23 @@ import { Integration } from "../enums.js";
 
 export type PrepareTradeParams = AaveV2LendTrade | AaveV2RedeemTrade;
 
-export function prepareAdapterTrade({
-  trade,
-  integrationManager,
-}: { trade: PrepareTradeParams; integrationManager: Address }) {
+export type PrepareAdapterTradeParams = {
+  /**
+   * The address of the `IntegrationManager` contract.
+   */
+  integrationManager: Address;
+  /**
+   * The trade to prepare.
+   */
+  trade: PrepareTradeParams;
+};
+
+/**
+ * Prepare a trade to be executed via an integration adapter.
+ *
+ * @returns The prepared arguments to pass to the `callOnExtension` action.
+ */
+export function prepareAdapterTrade({ trade, integrationManager }: PrepareAdapterTradeParams) {
   switch (trade.type) {
     case Integration.AaveV2Lend:
       return prepareCallOnAaveV2LendParams({ integrationManager, callArgs: trade.callArgs });

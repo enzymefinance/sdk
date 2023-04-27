@@ -15,10 +15,10 @@ export const performanceFeeSettingsEncoding = [
   },
 ] as const;
 
-export interface PerformanceFeeSettings {
+export type PerformanceFeeSettings = {
   feeRateInBps: bigint;
   feeRecipient: Address;
-}
+};
 
 export type EncodePerformanceFeeSettingsArgs = PartialPick<PerformanceFeeSettings, "feeRecipient">;
 
