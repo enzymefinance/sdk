@@ -68,7 +68,7 @@ test("should prepare params correctly", () => {
           "inputs": [
             {
               "internalType": "bool",
-              "name": "_enabled",
+              "name": "_nextAutoProtocolFeeSharesBuyback",
               "type": "bool",
             },
           ],

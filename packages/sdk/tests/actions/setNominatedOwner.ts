@@ -15,7 +15,7 @@ export async function setNominatedOwner({
     address: vaultProxy,
     account,
     ...prepareSetNominatedOwnerParams({
-      nextNominatedOwner: nominatedOwner,
+      nominatedOwner: nominatedOwner,
     }),
   });
 }
