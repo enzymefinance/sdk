@@ -109,6 +109,8 @@ export function prepareSetupVaultParams({
 
 /**
  * Decode the parameters for the `createNewFund` function.
+ *
+ * @returns The decoded parameters.
  */
 export function decodeSetupVaultParams(params: Hex): SetupVaultParams<FeeSettings[], PolicySettings[]> {
   const abi = getAbiItem({ abi: IFundDeployer, name: "createNewFund" });

@@ -8,17 +8,17 @@ import { encodeAbiParameters } from "viem";
 
 test("minAssetBalancesPostRedemptionPolicySettingsEncoding should have the correct properties", () => {
   expect(minAssetBalancesPostRedemptionPolicySettingsEncoding).toMatchInlineSnapshot(`
-      [
-        {
-          "name": "assets",
-          "type": "address[]",
-        },
-        {
-          "name": "minBalances",
-          "type": "uint256[]",
-        },
-      ]
-    `);
+    [
+      {
+        "name": "assets",
+        "type": "address[]",
+      },
+      {
+        "name": "limits",
+        "type": "uint256[]",
+      },
+    ]
+  `);
 });
 
 test("encodeMinAssetBalancesPostRedemptionPolicySettings should encode correctly", () => {
@@ -26,11 +26,11 @@ test("encodeMinAssetBalancesPostRedemptionPolicySettings should encode correctly
     encodeMinAssetBalancesPostRedemptionPolicySettings([
       {
         asset: "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
-        minBalance: 1n,
+        limit: 1n,
       },
       {
         asset: "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
-        minBalance: 2n,
+        limit: 2n,
       },
     ]),
   ).toMatchInlineSnapshot(
@@ -38,13 +38,13 @@ test("encodeMinAssetBalancesPostRedemptionPolicySettings should encode correctly
   );
 });
 
-test("decodeMinAssetBalancesPostRedemptionPolicySettings should throw error if encoded assets and minBalances have different lengths", () => {
+test("decodeMinAssetBalancesPostRedemptionPolicySettings should throw error if encoded assets and limits have different lengths", () => {
   const assets = ["0xfedc73464dfd156d30f6524654a5d56e766da0c3", "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9"] as const;
-  const minBalances = [1n];
-  const encoded = encodeAbiParameters(minAssetBalancesPostRedemptionPolicySettingsEncoding, [assets, minBalances]);
+  const limits = [1n];
+  const encoded = encodeAbiParameters(minAssetBalancesPostRedemptionPolicySettingsEncoding, [assets, limits]);
 
   expect(() => decodeMinAssetBalancesPostRedemptionPolicySettings(encoded)).toThrowError(
-    "Expected minBalances and assets to have the same length",
+    "Expected limits and assets to have the same length",
   );
 });
 
@@ -57,11 +57,11 @@ test("decodeMinAssetBalancesPostRedemptionPolicySettings should decode correctly
     [
       {
         "asset": "0xfeDC73464Dfd156d30F6524654a5d56E766DA0c3",
-        "minBalance": 1n,
+        "limit": 1n,
       },
       {
         "asset": "0xFaF2c3DB614E9d38fE05EDc634848BE7Ff0542B9",
-        "minBalance": 2n,
+        "limit": 2n,
       },
     ]
   `);

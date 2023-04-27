@@ -32,14 +32,14 @@ export const FeeSettlementType = {
   Burn: 3,
   /**
    * The fee is paid by minting new vault shares and transferring them to the vault itself.
-   * @remarks Only used in v2 and v3. 
-   * @deprecated
+   *
+   * @deprecated This settlement type is only used in v2 and v3.
    */
   MintSharesOutstanding: 4,
   /**
    * The fee is paid by burning vault shares held by the vault itself.
-   * @remarks Only used in v2 and v3. 
-   * @deprecated
+   *
+   * @deprecated This settlement type is only used in v2 and v3.
    */
   BurnSharesOutstanding: 5,
 } as const;

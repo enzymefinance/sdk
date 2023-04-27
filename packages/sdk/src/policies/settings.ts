@@ -13,10 +13,26 @@ export const policySettingsAbi = [
 ] as const;
 
 export type PolicySettings = {
+  /**
+   * The address of the policy contract.
+   *
+   * @remarks
+   *
+   * This is the address of the policy contract, e.g. `MinMaxInvestmentPolicy`, `AllowedAdaptersPolicy`, etc. that the
+   * provided settings belong to.
+   */
   address: Address;
+  /**
+   * The encoded policy settings.
+   */
   settings: Hex;
 };
 
+/**
+ * Encode policy settings for a set of policies.
+ *
+ * @returns The encoded policy settings.
+ */
 export function encodePolicySettings(policies: PolicySettings[]): Hex {
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
@@ -24,6 +40,11 @@ export function encodePolicySettings(policies: PolicySettings[]): Hex {
   return encodeAbiParameters(policySettingsAbi, [addresses, settings]);
 }
 
+/**
+ * Decode policy settings from a hex string.
+ *
+ * @returns The decoded policy settings.
+ */
 export function decodePolicySettings(encoded: Hex): PolicySettings[] {
   const [addresses, settings] = decodeAbiParameters(policySettingsAbi, encoded);
   if (addresses.length !== settings.length) {

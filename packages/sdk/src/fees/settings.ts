@@ -19,7 +19,7 @@ export type FeeSettings = {
    * @remarks
    *
    * This is the address of the fee contract, e.g. `PerformanceFee`, `ManagementFee`, etc. that the
-   * settings belong to.
+   * provided settings belong to.
    */
   address: Address;
   /**
@@ -40,6 +40,11 @@ export function encodeFeeSettings(fees: FeeSettings[]): Hex {
   return encodeAbiParameters(feeSettingsAbi, [addresses, settings]);
 }
 
+/**
+ * Decode fee settings from a hex string.
+ *
+ * @returns The decoded fee settings.
+ */
 export function decodeFeeSettings(encoded: Hex): FeeSettings[] {
   const [addresses, settings] = decodeAbiParameters(feeSettingsAbi, encoded);
   if (addresses.length !== settings.length) {
