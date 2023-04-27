@@ -238,6 +238,8 @@ export { prepareClaimOwnershipParams } from "./actions/claimOwnership.js";
 
 export { prepareRemoveNominatedOwnerParams } from "./actions/removeNominatedOwner.js";
 
+export { prepareDeployGasRelayPaymasterParams } from "./actions/deployGasRelayPaymaster.js";
+
 export {
   type SetRecipientForFundParams,
   prepareSetRecipientForFundParams,
