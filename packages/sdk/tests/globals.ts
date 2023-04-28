@@ -17,6 +17,10 @@ import { overrideValueInterpreter } from "./actions/setStatelRateThreshold.js";
 import { transferToken } from "./actions/transferToken.js";
 import { setRecipientForFund } from "./actions/setRecipientForFund.js";
 import { getRecipientForFund } from "./actions/getRecipientForFund.js";
+import { setFreelyTransferableShares } from "./actions/setFreelyTransferableShares.js";
+import { sharesAreFreelyTransferable } from "./actions/sharesAreFreelyTransferable.js";
+import { deployGasRelayPaymaster } from "./actions/deployGasRelayPaymaster.js";
+import { getGasRelayPaymaster } from "./actions/getGasRelayPaymaster.js";
 
 export const testActions = {
   createTestVault,
@@ -34,6 +38,10 @@ export const testActions = {
   transferToken,
   setRecipientForFund,
   getRecipientForFund,
+  setFreelyTransferableShares,
+  sharesAreFreelyTransferable,
+  deployGasRelayPaymaster,
+  getGasRelayPaymaster,
 };
 
 export const anvil = {
