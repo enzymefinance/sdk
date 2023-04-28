@@ -3,12 +3,10 @@ import { test, expect } from "vitest";
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../tests/constants.js";
 import { toWei } from "../utils/conversion.js";
 import { ExternalPosition } from "../enums.js";
-import { testActions, sendTestTransaction } from "../../tests/globals.js";
+import { testActions, sendTestTransaction, publicClient } from "../../tests/globals.js";
 import { prepareCreateExternalPosition } from "./prepareCreateExternalPosition.js";
-import { decodeEventLog, getEventSelector, type Address } from "viem";
-import { IKilnStakingPositionLib } from "../../../abis/src/abis/IKilnStakingPositionLib.js";
+import { parseAbiItem } from "viem";
 import { prepareExternalPositionTrade } from "./prepareExternalPositionTrade.js";
-import { IExternalPositionManager } from "../../../abis/src/abis/IExternalPositionManager.js";
 
 test("prepare external position trade should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -31,7 +29,7 @@ test("prepare external position trade should work correctly", async () => {
 
   const validatorAmount = 1n;
 
-  const { receipt: createExternalPositionReceipt } = await sendTestTransaction({
+  await sendTestTransaction({
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,
@@ -40,21 +38,20 @@ test("prepare external position trade should work correctly", async () => {
     address: comptrollerProxy,
   });
 
-  const externalPositionDeployedForFundEventSelector = getEventSelector(
-    "ExternalPositionDeployedForFund(address indexed comptrollerProxy, address indexed vaultProxy, address externalPosition, uint256 indexed externalPositionTypeId, bytes data)",
-  );
-
-  const externalPositionDeployedForFundEvent = createExternalPositionReceipt.logs.find(
-    (log) => log.topics[0] === externalPositionDeployedForFundEventSelector,
-  );
-
-  const externalPositionDeployedForFundEventLog = decodeEventLog({
-    abi: IExternalPositionManager,
-    data: externalPositionDeployedForFundEvent?.data,
-    topics: externalPositionDeployedForFundEvent?.topics ?? [],
+  const [externalPositionDeployedForFundEventLog] = await publicClient.getLogs({
+    address: EXTERNAL_POSITION_MANAGER,
+    event: parseAbiItem(
+      "event ExternalPositionDeployedForFund(address indexed comptrollerProxy, address indexed vaultProxy, address externalPosition, uint256 indexed externalPositionTypeId, bytes data)",
+    ),
   });
 
-  const { receipt: externalPositionTradeReceipt } = await sendTestTransaction({
+  const externalPositionProxy = externalPositionDeployedForFundEventLog?.args.externalPosition;
+
+  if (!externalPositionProxy) {
+    throw new Error("External position not deployed");
+  }
+
+  await sendTestTransaction({
     ...prepareExternalPositionTrade({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       trade: {
@@ -62,8 +59,7 @@ test("prepare external position trade should work correctly", async () => {
         callArgs: {
           validatorAmount,
           stakingContract: KILN_STAKING_CONTRACT,
-          externalPositionProxy: (externalPositionDeployedForFundEventLog.args as { externalPosition: Address })
-            .externalPosition,
+          externalPositionProxy,
         },
       },
     }),
@@ -71,21 +67,11 @@ test("prepare external position trade should work correctly", async () => {
     address: comptrollerProxy,
   });
 
-  const validatorsAddedEventSelector = getEventSelector(
-    "ValidatorsAdded(address stakingContractAddress, uint256 validatorAmount)",
-  );
-
-  const validatorsAddedEvent = externalPositionTradeReceipt.logs.find(
-    (log) => log.topics[0] === validatorsAddedEventSelector,
-  );
-
-  const validatorsAddedEventLog = decodeEventLog({
-    abi: IKilnStakingPositionLib,
-    data: validatorsAddedEvent?.data,
-    topics: validatorsAddedEvent?.topics ?? [],
+  const [validatorsAddedEventLog] = await publicClient.getLogs({
+    event: parseAbiItem("event ValidatorsAdded(address stakingContractAddress, uint256 validatorAmount)"),
   });
 
-  expect(validatorsAddedEventLog.args).toEqual({ stakingContractAddress: KILN_STAKING_CONTRACT, validatorAmount });
+  expect(validatorsAddedEventLog?.args).toEqual({ stakingContractAddress: KILN_STAKING_CONTRACT, validatorAmount });
 });
 
 test("prepareExternalPositionTrade should be equal to encoded properly", () => {
