@@ -247,3 +247,5 @@ export {
 } from "./actions/setRecipientForFund.js";
 
 export { prepareFreelyTransferableSharesParams } from "./actions/setFreelyTransferableShares.js";
+
+export { prepareDepositToGasRelayPaymasterParams } from "./actions/depositToGasRelayPaymaster.js";
