@@ -1,9 +1,9 @@
-import { expect, test } from "vitest";
-import { applySlippage, toBps, toWei } from "../utils/conversion.js";
 import { ALICE, WETH } from "../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { applySlippage, toBps, toWei } from "../utils/conversion.js";
 import { decodeBuySharesParams, getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
 import { encodeFunctionData } from "viem";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { expect, test } from "vitest";
 
 test("should be able to buy shares", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({

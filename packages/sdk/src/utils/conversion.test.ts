@@ -1,6 +1,6 @@
-import { test, expect } from "vitest";
 import { applySlippage, toBps, toSeconds, toWei } from "./conversion.js";
 import { Decimal } from "decimal.js";
+import { expect, test } from "vitest";
 
 test.each([
   {

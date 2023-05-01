@@ -1,7 +1,7 @@
-import { type Address } from "viem";
+import type { Tuple } from "../../src/utils/types.js";
 import { publicClient } from "../globals.js";
 import { IVault } from "@enzymefinance/abis/IVault";
-import type { Tuple } from "../../src/utils/types.js";
+import { type Address } from "viem";
 
 export interface IsAssetManagerParams {
   who: Address;

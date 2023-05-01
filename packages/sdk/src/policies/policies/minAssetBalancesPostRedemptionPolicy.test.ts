@@ -1,10 +1,10 @@
-import { test, expect } from "vitest";
 import {
-  minAssetBalancesPostRedemptionPolicySettingsEncoding,
-  encodeMinAssetBalancesPostRedemptionPolicySettings,
   decodeMinAssetBalancesPostRedemptionPolicySettings,
+  encodeMinAssetBalancesPostRedemptionPolicySettings,
+  minAssetBalancesPostRedemptionPolicySettingsEncoding,
 } from "./minAssetBalancesPostRedemptionPolicy.js";
 import { encodeAbiParameters } from "viem";
+import { expect, test } from "vitest";
 
 test("minAssetBalancesPostRedemptionPolicySettingsEncoding should have the correct properties", () => {
   expect(minAssetBalancesPostRedemptionPolicySettingsEncoding).toMatchInlineSnapshot(`

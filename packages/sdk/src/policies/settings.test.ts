@@ -1,7 +1,7 @@
-import { test, expect } from "vitest";
-import { decodePolicySettings, encodePolicySettings, policySettingsAbi } from "./settings.js";
 import { encodeMinMaxInvestmentPolicySettings } from "./policies/minMaxInvestmentPolicy.js";
+import { decodePolicySettings, encodePolicySettings, policySettingsAbi } from "./settings.js";
 import { encodeAbiParameters } from "viem";
+import { expect, test } from "vitest";
 
 test("policySettingsAbi should contain the correct properties", () => {
   expect(policySettingsAbi).toMatchInlineSnapshot(`

@@ -1,7 +1,7 @@
-import { expect, test } from "vitest";
-import { testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
+import { testActions } from "../../tests/globals.js";
 import { prepareFreelyTransferableSharesParams } from "./setFreelyTransferableShares.js";
+import { expect, test } from "vitest";
 
 test("sets freely transferable shares correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({

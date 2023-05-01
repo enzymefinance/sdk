@@ -1,5 +1,5 @@
-import { type Address, parseAbiItem } from "viem";
 import { sendTestTransaction } from "../globals.js";
+import { type Address, parseAbiItem } from "viem";
 
 export async function approveSpend({
   token,

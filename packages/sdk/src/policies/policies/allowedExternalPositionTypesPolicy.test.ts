@@ -1,9 +1,9 @@
-import { test, expect } from "vitest";
 import {
   allowedExternalPositionTypesPolicySettingsEncoding,
-  encodeAllowedExternalPositionTypesPolicySettings,
   decodeAllowedExternalPositionTypesPolicySettings,
+  encodeAllowedExternalPositionTypesPolicySettings,
 } from "./allowedExternalPositionTypesPolicy.js";
+import { expect, test } from "vitest";
 
 test("allowedExternalPositionTypesPolicySettingsEncoding should have the correct properties", () => {
   expect(allowedExternalPositionTypesPolicySettingsEncoding).toMatchInlineSnapshot(`

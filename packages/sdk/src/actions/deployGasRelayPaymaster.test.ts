@@ -1,9 +1,9 @@
-import { expect, test } from "vitest";
-import { testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
-import { prepareDeployGasRelayPaymasterParams } from "./deployGasRelayPaymaster.js";
-import { toWei } from "../utils/conversion.js";
+import { testActions } from "../../tests/globals.js";
 import { ZERO_ADDRESS } from "../constants/misc.js";
+import { toWei } from "../utils/conversion.js";
+import { prepareDeployGasRelayPaymasterParams } from "./deployGasRelayPaymaster.js";
+import { expect, test } from "vitest";
 
 test("should deploy gas relay paymaster correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({

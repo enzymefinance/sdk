@@ -1,15 +1,15 @@
-import { test, expect } from "vitest";
-import {
-  encodeExitRateBurnFeeSettings,
-  decodeExitRateBurnFeeSettings,
-  encodeExitRateDirectFeeSettings,
-  decodeExitRateDirectFeeSettings,
-  exitRateBurnFeeSettingsEncoding,
-  exitRateDirectFeeSettingsEncoding,
-  calculateExitRateFeeSharesDue,
-} from "./exitFee.js";
 import { ALICE } from "../../../tests/constants.js";
 import { toBps } from "../../utils/conversion.js";
+import {
+  calculateExitRateFeeSharesDue,
+  decodeExitRateBurnFeeSettings,
+  decodeExitRateDirectFeeSettings,
+  encodeExitRateBurnFeeSettings,
+  encodeExitRateDirectFeeSettings,
+  exitRateBurnFeeSettingsEncoding,
+  exitRateDirectFeeSettingsEncoding,
+} from "./exitFee.js";
+import { expect, test } from "vitest";
 
 test("encodeExitRateBurnFeeSettings should work correctly", () => {
   expect(encodeExitRateBurnFeeSettings({})).toMatchInlineSnapshot(

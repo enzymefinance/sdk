@@ -1,10 +1,10 @@
-import { test, expect } from "vitest";
 import { toBps, toSeconds } from "./conversion.js";
 import {
   calculateAmountDueForScaledPerSecondRate,
-  convertScaledPerSecondRateToRate,
   convertRateToScaledPerSecondRate,
+  convertScaledPerSecondRateToRate,
 } from "./rates.js";
+import { expect, test } from "vitest";
 
 // TODO: Provide better test fixtures.
 test.each([

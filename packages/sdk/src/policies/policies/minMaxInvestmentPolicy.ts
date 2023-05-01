@@ -1,5 +1,5 @@
-import { decodeAbiParameters, encodeAbiParameters, type Hex } from "viem";
 import { MAX_UINT_256 } from "../../constants/misc.js";
+import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export const minMaxInvestmentPolicySettingsEncoding = [
   {

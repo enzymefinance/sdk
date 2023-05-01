@@ -1,10 +1,10 @@
-import { test, expect } from "vitest";
+import { ALICE, BOB, MANAGEMENT_FEE, WETH } from "../../tests/constants.js";
 import { testActions } from "../../tests/globals.js";
-import { ALICE, BOB, WETH, MANAGEMENT_FEE } from "../../tests/constants.js";
 import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
 import { toBps } from "../utils/conversion.js";
 import { decodeSetRecipientForFundParams, prepareSetRecipientForFundParams } from "./setRecipientForFund.js";
 import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("should set recipient for fund correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({

@@ -1,12 +1,12 @@
-import { test, expect } from "vitest";
-import {
-  encodeManagementFeeSettings,
-  managementFeeSettingsEncoding,
-  calculateManagementFeeSharesDue,
-  decodeManagementFeeSettings,
-} from "./managementFee.js";
 import { ALICE } from "../../../tests/constants.js";
 import { toBps, toSeconds } from "../../utils/conversion.js";
+import {
+  calculateManagementFeeSharesDue,
+  decodeManagementFeeSettings,
+  encodeManagementFeeSettings,
+  managementFeeSettingsEncoding,
+} from "./managementFee.js";
+import { expect, test } from "vitest";
 
 test("encodeManagementFeeSettings should work correctly", () => {
   expect(

@@ -1,5 +1,5 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { VaultPerformance } from "./VaultPerformance.js";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Text, Title } from "@tremor/react";
 
 const client = new QueryClient();

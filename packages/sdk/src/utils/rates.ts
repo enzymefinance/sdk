@@ -1,6 +1,6 @@
-import { parseEther } from "viem";
-import { Decimal } from "decimal.js";
 import { toSeconds } from "./conversion.js";
+import { Decimal } from "decimal.js";
+import { parseEther } from "viem";
 
 const LocalDecimal = Decimal.clone({ precision: 2 * 27 });
 

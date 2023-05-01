@@ -1,9 +1,9 @@
-import { test, expect } from "vitest";
-import { encodeFeeSettings, decodeFeeSettings, feeSettingsAbi } from "./settings.js";
 import { toBps } from "../utils/conversion.js";
 import { encodeManagementFeeSettings } from "./fees/managementFee.js";
 import { encodePerformanceFeeSettings } from "./fees/performanceFee.js";
+import { decodeFeeSettings, encodeFeeSettings, feeSettingsAbi } from "./settings.js";
 import { encodeAbiParameters } from "viem";
+import { expect, test } from "vitest";
 
 test("feeSettingsAbi should have the correct properties", () => {
   expect(feeSettingsAbi).toMatchInlineSnapshot(`
