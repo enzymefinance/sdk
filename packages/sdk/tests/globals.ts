@@ -21,7 +21,6 @@ import { setFreelyTransferableShares } from "./actions/setFreelyTransferableShar
 import { sharesAreFreelyTransferable } from "./actions/sharesAreFreelyTransferable.js";
 import { deployGasRelayPaymaster } from "./actions/deployGasRelayPaymaster.js";
 import { getGasRelayPaymaster } from "./actions/getGasRelayPaymaster.js";
-import { depositToGasRelayPaymaster } from "./actions/depositToGasRelayPaymaster.js";
 
 export const testActions = {
   createTestVault,
@@ -43,7 +42,6 @@ export const testActions = {
   sharesAreFreelyTransferable,
   deployGasRelayPaymaster,
   getGasRelayPaymaster,
-  depositToGasRelayPaymaster,
 };
 
 export const anvil = {
