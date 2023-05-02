@@ -1,7 +1,7 @@
-import { afterAll, afterEach } from "vitest";
-import { poolId, testClient } from "../globals.js";
 import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
+import { poolId, testClient } from "../globals.js";
 import { fetchLogs } from "@viem/anvil";
+import { afterAll, afterEach } from "vitest";
 
 afterAll(async () => {
   await testClient.reset({

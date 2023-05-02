@@ -1,15 +1,15 @@
-import { test, expect } from "vitest";
+import { ALICE } from "../../../tests/constants.js";
+import { toBps } from "../../utils/conversion.js";
 import {
-  decodeEntranceRateDirectFeeSettings,
+  calculateEntranceRateFeeSharesDue,
   decodeEntranceRateBurnFeeSettings,
+  decodeEntranceRateDirectFeeSettings,
   encodeEntranceRateBurnFeeSettings,
   encodeEntranceRateDirectFeeSettings,
-  calculateEntranceRateFeeSharesDue,
   entranceRateBurnFeeSettingsEncoding,
   entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
-import { ALICE } from "../../../tests/constants.js";
-import { toBps } from "../../utils/conversion.js";
+import { expect, test } from "vitest";
 
 test("should encode entrance rate burn fee settings correctly", () => {
   expect(encodeEntranceRateBurnFeeSettings({ feeRateInBps: toBps(0.123) })).toMatchInlineSnapshot(

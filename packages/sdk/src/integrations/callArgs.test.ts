@@ -1,9 +1,9 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 
-import { getAddress, toHex, type Hex } from "viem";
-import { decodeCallArgsForIntegration, encodeCallArgsForIntegration } from "./callArgs.js";
 import { AAVE_V2_ADAPTER } from "../../tests/constants.js";
 import { LEND_SELECTOR } from "../constants/selectors.js";
+import { decodeCallArgsForIntegration, encodeCallArgsForIntegration } from "./callArgs.js";
+import { type Hex, getAddress, toHex } from "viem";
 
 test("encodeCallArgsForIntegration should encode correctly", () => {
   expect(

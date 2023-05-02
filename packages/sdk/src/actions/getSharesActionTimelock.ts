@@ -1,5 +1,5 @@
-import type { Address, PublicClient } from "viem";
 import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
 export type GetSharesActionTimelockParams = {

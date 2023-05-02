@@ -1,8 +1,8 @@
-import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import { decodeAddAssetManagersParams, prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { decodeAddAssetManagersParams, prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("should add asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({

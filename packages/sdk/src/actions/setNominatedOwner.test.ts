@@ -1,9 +1,9 @@
-import { expect, test } from "vitest";
-import { publicClient, testActions } from "../../tests/globals.js";
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { publicClient, testActions } from "../../tests/globals.js";
 import { decodeSetNominatedOwnerParams, prepareSetNominatedOwnerParams } from "./setNominatedOwner.js";
+import { IVault } from "@enzymefinance/abis/IVault";
 import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("should set nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({

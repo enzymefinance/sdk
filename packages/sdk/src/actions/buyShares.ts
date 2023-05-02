@@ -1,6 +1,6 @@
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import { prepareFunctionParams } from "../utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address, type PublicClient } from "viem";
+import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { type Address, type PublicClient, decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 import { simulateContract } from "viem/contract";
 

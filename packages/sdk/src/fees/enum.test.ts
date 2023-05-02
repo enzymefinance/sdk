@@ -1,5 +1,5 @@
-import { test, expect } from "vitest";
 import { FeeHook, FeeManagerAction, FeeSettlementType } from "./enums.js";
+import { expect, test } from "vitest";
 
 test("FeeHook should be correct", () => {
   expect(FeeHook).toMatchInlineSnapshot(`

@@ -1,6 +1,6 @@
-import { decodeAbiParameters, encodeAbiParameters, type Hex } from "viem";
-import type { Address } from "viem";
 import { ZERO_ADDRESS } from "../../constants/misc.js";
+import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import type { Address } from "viem";
 
 export const exitRateBurnFeeSettingsEncoding = [
   {

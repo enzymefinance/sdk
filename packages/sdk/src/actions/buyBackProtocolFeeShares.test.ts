@@ -1,10 +1,10 @@
-import { expect, test } from "vitest";
 import { toWei } from "../utils/conversion.js";
-import { encodeFunctionData } from "viem";
 import {
   decodeBuyBackProtocolFeeSharesParams,
   prepareBuyBackProtocolFeeSharesParams,
 } from "./buyBackProtocolFeeShares.js";
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("decode buy back protocol fee shares should work correctly", () => {
   const params = {

@@ -1,4 +1,4 @@
-import { type Address, parseAbi, type Hex, decodeFunctionData } from "viem";
+import { type Address, type Hex, decodeFunctionData, parseAbi } from "viem";
 
 export interface SetRecipientForFundParams {
   comptrollerProxy: Address;

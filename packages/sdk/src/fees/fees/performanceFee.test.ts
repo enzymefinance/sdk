@@ -1,11 +1,11 @@
-import { test, expect } from "vitest";
+import { ALICE } from "../../../tests/constants.js";
+import { toBps } from "../../utils/conversion.js";
 import {
   decodePerformanceFeeSettings,
   encodePerformanceFeeSettings,
   performanceFeeSettingsEncoding,
 } from "./performanceFee.js";
-import { ALICE } from "../../../tests/constants.js";
-import { toBps } from "../../utils/conversion.js";
+import { expect, test } from "vitest";
 
 test("should encode performance fee settings correctly", () => {
   expect(

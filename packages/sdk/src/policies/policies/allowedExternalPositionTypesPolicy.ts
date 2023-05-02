@@ -1,4 +1,4 @@
-import { decodeAbiParameters, encodeAbiParameters, type Hex } from "viem";
+import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export const allowedExternalPositionTypesPolicySettingsEncoding = [
   {

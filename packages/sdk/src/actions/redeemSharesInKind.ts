@@ -1,6 +1,6 @@
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import { prepareFunctionParams } from "../utils/viem.js";
-import { decodeFunctionData, getAbiItem, type Address } from "viem";
+import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { type Address, decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
 export type RedeemSharesInKindParams = {

@@ -1,10 +1,10 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 
 import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../tests/constants.js";
-import { toWei } from "../utils/conversion.js";
+import { sendTestTransaction, testActions } from "../../tests/globals.js";
 import { Integration } from "../enums.js";
+import { toWei } from "../utils/conversion.js";
 import { prepareAdapterTrade } from "./prepareAdapterTrade.js";
-import { testActions, sendTestTransaction } from "../../tests/globals.js";
 
 test("prepare adapter trade should work correctly", async () => {
   const vaultOwner = ALICE;

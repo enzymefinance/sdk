@@ -1,6 +1,5 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 
-import { getAddress } from "viem";
 import { AAVE_V2_ADAPTER, A_WETH, INTEGRATION_MANAGER } from "../../tests/constants.js";
 import { toWei } from "../utils/conversion.js";
 import {
@@ -11,6 +10,7 @@ import {
   prepareCallOnAaveV2LendParams,
   prepareCallOnAaveV2RedeemParams,
 } from "./aaveV2.js";
+import { getAddress } from "viem";
 
 test("encodeIntegrationDataForAaveV2Lend should encode correctly", () => {
   expect(
