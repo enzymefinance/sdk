@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { testActions } from "../../tests/globals.js";
+import { sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { prepareShutdownGasRelayPaymasterParams } from "./shutdownGasRelayPaymaster.js";
 import { toWei } from "../utils/conversion.js";
@@ -34,9 +34,10 @@ test("should shutdown gas relay paymaster correctly", async () => {
   expect(withGasRelayPaymaster).not.toEqual(withoutGasRelayPaymaster);
 
   await expect(
-    testActions.shutdownGasRelayPaymaster({
+    sendTestTransaction({
       account: ALICE,
       address: comptrollerProxy,
+      ...prepareShutdownGasRelayPaymasterParams(),
     }),
   ).resolves.not.toThrow();
 

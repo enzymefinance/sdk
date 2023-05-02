@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { testActions } from "../../tests/globals.js";
+import { sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { prepareDeployGasRelayPaymasterParams } from "./deployGasRelayPaymaster.js";
 import { toWei } from "../utils/conversion.js";
@@ -25,10 +25,13 @@ test("should deploy gas relay paymaster correctly", async () => {
 
   expect(withoutGasRelayPaymaster).toEqual(ZERO_ADDRESS);
 
-  await testActions.deployGasRelayPaymaster({
-    account: ALICE,
-    address: comptrollerProxy,
-  });
+  await expect(
+    sendTestTransaction({
+      account: ALICE,
+      address: comptrollerProxy,
+      ...prepareDeployGasRelayPaymasterParams(),
+    }),
+  ).resolves.not.toThrow();
 
   const withGasRelayPaymaster = await testActions.getGasRelayPaymaster({
     comptrollerProxy,
