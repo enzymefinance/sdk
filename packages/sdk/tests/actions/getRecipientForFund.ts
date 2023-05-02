@@ -1,6 +1,6 @@
-import { parseAbi, type Address } from "viem";
 import { MANAGEMENT_FEE } from "../constants.js";
 import { publicClient } from "../globals.js";
+import { type Address, parseAbi } from "viem";
 
 export async function getRecipientForFund({
   comptrollerProxy,

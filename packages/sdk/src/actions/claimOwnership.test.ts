@@ -1,8 +1,8 @@
-import { expect, test } from "vitest";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
+import { IVault } from "@enzymefinance/abis/IVault";
+import { expect, test } from "vitest";
 
 test("should claim ownership correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({

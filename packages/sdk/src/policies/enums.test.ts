@@ -1,5 +1,5 @@
-import { test, expect } from "vitest";
 import { PolicyHook } from "./enums.js";
+import { expect, test } from "vitest";
 
 test("PolicyHook should have the correct properties", () => {
   expect(PolicyHook).toMatchInlineSnapshot(`

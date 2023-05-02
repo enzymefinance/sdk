@@ -1,6 +1,6 @@
-import { type Address } from "viem";
-import { sendTestTransaction } from "../globals.js";
 import { prepareSetNominatedOwnerParams } from "../../src/actions/setNominatedOwner.js";
+import { sendTestTransaction } from "../globals.js";
+import { type Address } from "viem";
 
 export async function setNominatedOwner({
   nominatedOwner,

@@ -1,13 +1,13 @@
-import { IVault } from "@enzymefinance/abis";
-import { expect, test } from "vitest";
-import { decodeSetupVaultParams, prepareSetupVaultParams, type PrepareSetupVaultParamsArgs } from "./setupVault.js";
-import { toBps, toSeconds, toWei } from "../utils/conversion.js";
-import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
-import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
-import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
-import { FUND_DEPLOYER, ALICE } from "../../tests/constants.js";
-import { encodeFunctionData, getAddress } from "viem";
+import { ALICE, FUND_DEPLOYER } from "../../tests/constants.js";
 import { publicClient, sendTestTransaction } from "../../tests/globals.js";
+import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
+import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
+import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
+import { toBps, toSeconds, toWei } from "../utils/conversion.js";
+import { type PrepareSetupVaultParamsArgs, decodeSetupVaultParams, prepareSetupVaultParams } from "./setupVault.js";
+import { IVault } from "@enzymefinance/abis";
+import { encodeFunctionData, getAddress } from "viem";
+import { expect, test } from "vitest";
 
 test("should set up a vault with the given parameters", async () => {
   const {

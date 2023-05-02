@@ -1,9 +1,9 @@
-import { test, expect } from "vitest";
 import {
   cumulativeSlippageTolerancePolicyEncoding,
-  encodeCumulativeSlippageTolerancePolicySettings,
   decodeCumulativeSlippageTolerancePolicySettings,
+  encodeCumulativeSlippageTolerancePolicySettings,
 } from "./cumulativeSlippageTolerancePolicy.js";
+import { expect, test } from "vitest";
 
 test("cumulativeSlippageTolerancePolicyEncoding should have the correct properties", () => {
   expect(cumulativeSlippageTolerancePolicyEncoding).toMatchInlineSnapshot(`

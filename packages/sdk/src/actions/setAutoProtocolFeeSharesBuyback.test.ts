@@ -1,11 +1,11 @@
-import { expect, test } from "vitest";
-import { encodeFunctionData } from "viem";
-import {
-  prepareSetAutoProtocolFeeSharesBuybackParams,
-  decodeSetAutoProtocolFeeSharesBuybackParams,
-} from "./setAutoProtocolFeeSharesBuyback.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ALICE, WETH } from "../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import {
+  decodeSetAutoProtocolFeeSharesBuybackParams,
+  prepareSetAutoProtocolFeeSharesBuybackParams,
+} from "./setAutoProtocolFeeSharesBuyback.js";
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({

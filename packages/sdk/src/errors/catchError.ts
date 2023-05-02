@@ -1,6 +1,6 @@
-import { ContractFunctionExecutionError, ContractFunctionRevertedError } from "viem";
+import { type ErrorCode, errorDictionary } from "./errorCodes.js";
 import { getErrorCode } from "./getErrorCode.js";
-import { errorDictionary, type ErrorCode } from "./errorCodes.js";
+import { ContractFunctionExecutionError, ContractFunctionRevertedError } from "viem";
 
 export class EnzymeError extends Error {
   public override readonly name = "EnzymeError";

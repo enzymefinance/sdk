@@ -1,11 +1,11 @@
-import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
-import { prepareFunctionParams } from "../utils/viem.js";
+import { type FeeSettings, decodeFeeSettings, encodeFeeSettings } from "../fees/settings.js";
+import { type PolicySettings, decodePolicySettings, encodePolicySettings } from "../policies/settings.js";
 import { toSeconds } from "../utils/conversion.js";
-import { decodeFeeSettings, encodeFeeSettings, type FeeSettings } from "../fees/settings.js";
-import { decodePolicySettings, encodePolicySettings, type PolicySettings } from "../policies/settings.js";
-import { decodeFunctionData, getAbiItem } from "viem";
-import type { Hex, Address } from "viem";
 import type { PartialPick } from "../utils/types.js";
+import { prepareFunctionParams } from "../utils/viem.js";
+import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
+import { decodeFunctionData, getAbiItem } from "viem";
+import type { Address, Hex } from "viem";
 
 export type SetupVaultParams<
   TFeeSettings extends Hex | FeeSettings[] = Hex | FeeSettings[],

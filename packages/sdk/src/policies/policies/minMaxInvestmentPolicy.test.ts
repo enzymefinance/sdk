@@ -1,9 +1,9 @@
-import { test, expect } from "vitest";
 import {
-  minMaxInvestmentPolicySettingsEncoding,
-  encodeMinMaxInvestmentPolicySettings,
   decodeMinMaxInvestmentPolicySettings,
+  encodeMinMaxInvestmentPolicySettings,
+  minMaxInvestmentPolicySettingsEncoding,
 } from "./minMaxInvestmentPolicy.js";
+import { expect, test } from "vitest";
 
 test("minMaxInvestmentPolicySettingsEncoding should have the correct properties", () => {
   expect(minMaxInvestmentPolicySettingsEncoding).toMatchInlineSnapshot(`

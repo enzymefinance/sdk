@@ -1,5 +1,5 @@
 import { type Address, parseAbiParameters } from "abitype";
-import { type Hex, encodeAbiParameters, decodeAbiParameters } from "viem";
+import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type CallArgsForIntegration = {
   selector: Hex;

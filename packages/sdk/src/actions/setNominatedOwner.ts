@@ -1,6 +1,6 @@
-import { IVault } from "@enzymefinance/abis/IVault";
 import { prepareFunctionParams } from "../../src/utils/viem.js";
-import { getAbiItem, type Address, type Hex, decodeFunctionData } from "viem";
+import { IVault } from "@enzymefinance/abis/IVault";
+import { type Address, type Hex, decodeFunctionData, getAbiItem } from "viem";
 
 export type PrepareSetNominatedOwnerParams = {
   /**

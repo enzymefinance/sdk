@@ -1,5 +1,5 @@
-import { IVault } from "@enzymefinance/abis/IVault";
 import { prepareFunctionParams } from "../../src/utils/viem.js";
+import { IVault } from "@enzymefinance/abis/IVault";
 import { getAbiItem } from "viem";
 
 /**

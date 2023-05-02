@@ -1,11 +1,11 @@
-import { type Address } from "viem";
+import { Integration } from "../enums.js";
 import {
-  prepareCallOnAaveV2LendParams,
-  prepareCallOnAaveV2RedeemParams,
   type AaveV2LendTrade,
   type AaveV2RedeemTrade,
+  prepareCallOnAaveV2LendParams,
+  prepareCallOnAaveV2RedeemParams,
 } from "../integrations/aaveV2.js";
-import { Integration } from "../enums.js";
+import { type Address } from "viem";
 
 export type PrepareTradeParams = AaveV2LendTrade | AaveV2RedeemTrade;
 

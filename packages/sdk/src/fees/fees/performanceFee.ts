@@ -1,8 +1,8 @@
+import { ZERO_ADDRESS } from "../../constants/misc.js";
+import type { PartialPick } from "../../utils/types.js";
 import type { Hex } from "viem";
 import { decodeAbiParameters, encodeAbiParameters } from "viem";
 import type { Address } from "viem";
-import { ZERO_ADDRESS } from "../../constants/misc.js";
-import type { PartialPick } from "../../utils/types.js";
 
 export const performanceFeeSettingsEncoding = [
   {

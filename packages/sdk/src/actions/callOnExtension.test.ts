@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
-import { encodeFunctionData, getAddress, toHex } from "viem";
 import { decodeCallOnExtensionParams, prepareCallOnExtensionParams } from "./callOnExtension.js";
+import { encodeFunctionData, getAddress, toHex } from "viem";
+import { expect, test } from "vitest";
 
 test("decode call on extension should work correctly", () => {
   const params = {
