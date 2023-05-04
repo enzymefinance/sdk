@@ -249,3 +249,5 @@ export {
 export { prepareShutdownGasRelayPaymasterParams } from "./actions/shutdownGasRelayPaymaster.js";
 
 export { prepareFreelyTransferableSharesParams } from "./actions/setFreelyTransferableShares.js";
+
+export { prepareDepositToGasRelayPaymasterParams } from "./actions/depositToGasRelayPaymaster.js";
