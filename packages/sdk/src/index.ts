@@ -246,4 +246,6 @@ export {
   decodeSetRecipientForFundParams,
 } from "./actions/setRecipientForFund.js";
 
+export { prepareShutdownGasRelayPaymasterParams } from "./actions/shutdownGasRelayPaymaster.js";
+
 export { prepareFreelyTransferableSharesParams } from "./actions/setFreelyTransferableShares.js";

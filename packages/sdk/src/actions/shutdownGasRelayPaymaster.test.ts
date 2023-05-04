@@ -1,11 +1,10 @@
 import { ALICE, WETH } from "../../tests/constants.js";
 import { sendTestTransaction, testActions } from "../../tests/globals.js";
-import { ZERO_ADDRESS } from "../constants/misc.js";
 import { toWei } from "../utils/conversion.js";
-import { prepareDeployGasRelayPaymasterParams } from "./deployGasRelayPaymaster.js";
+import { prepareShutdownGasRelayPaymasterParams } from "./shutdownGasRelayPaymaster.js";
 import { expect, test } from "vitest";
 
-test("should deploy gas relay paymaster correctly", async () => {
+test("should shutdown gas relay paymaster correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
     vaultOwner: ALICE,
     denominationAsset: WETH,
@@ -23,36 +22,45 @@ test("should deploy gas relay paymaster correctly", async () => {
     comptrollerProxy,
   });
 
-  expect(withoutGasRelayPaymaster).toEqual(ZERO_ADDRESS);
-
-  await expect(
-    sendTestTransaction({
-      account: ALICE,
-      address: comptrollerProxy,
-      ...prepareDeployGasRelayPaymasterParams(),
-    }),
-  ).resolves.not.toThrow();
+  await testActions.deployGasRelayPaymaster({
+    account: ALICE,
+    address: comptrollerProxy,
+  });
 
   const withGasRelayPaymaster = await testActions.getGasRelayPaymaster({
     comptrollerProxy,
   });
 
-  expect(withGasRelayPaymaster).not.toEqual(ZERO_ADDRESS);
+  expect(withGasRelayPaymaster).not.toEqual(withoutGasRelayPaymaster);
+
+  await expect(
+    sendTestTransaction({
+      account: ALICE,
+      address: comptrollerProxy,
+      ...prepareShutdownGasRelayPaymasterParams(),
+    }),
+  ).resolves.not.toThrow();
+
+  const shutdownGasRelayPaymaster = await testActions.getGasRelayPaymaster({
+    comptrollerProxy,
+  });
+
+  expect(withoutGasRelayPaymaster).toEqual(shutdownGasRelayPaymaster);
 });
 
 test("should prepare params correctly", () => {
-  expect(prepareDeployGasRelayPaymasterParams()).toMatchInlineSnapshot(`
+  expect(prepareShutdownGasRelayPaymasterParams()).toMatchInlineSnapshot(`
     {
       "abi": [
         {
           "inputs": [],
-          "name": "deployGasRelayPaymaster",
+          "name": "shutdownGasRelayPaymaster",
           "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function",
         },
       ],
-      "functionName": "deployGasRelayPaymaster",
+      "functionName": "shutdownGasRelayPaymaster",
     }
   `);
 });
