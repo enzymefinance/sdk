@@ -5,6 +5,8 @@ export {
   VaultAction,
   IntegrationManagerActionId,
   Integration,
+  ExternalPosition,
+  ExternalPositionManagerActionId,
 } from "./enums.js";
 
 // Constants
@@ -131,6 +133,26 @@ export {
   decodeCallArgsForAaveV2Redeem,
   prepareCallOnAaveV2RedeemParams,
 } from "./integrations/aaveV2.js";
+
+export {
+  type CallArgsForCallOnExternalPosition,
+  encodeCallArgsForCallOnExternalPosition,
+  decodeCallArgsForCallOnExternalPosition,
+} from "./externalPositions/callOnExternalPosition.js";
+
+export {
+  type CallArgsForCreateExternalPosition,
+  encodeCallArgsForCreateExternalPosition,
+  decodeCallArgsForCreateExternalPosition,
+} from "./externalPositions/createExternalPosition.js";
+
+export {
+  type KilnStakeTrade,
+  type CallArgsForKilnStake,
+  KilnAction,
+  encodeCallArgsForKilnStake,
+  decodeCallArgsForKilnStake,
+} from "./externalPositions/kiln.js";
 
 export {
   type PrepareTradeParams,
