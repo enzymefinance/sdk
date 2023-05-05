@@ -1,10 +1,10 @@
-import { type Address, encodeAbiParameters, parseAbiParameters, decodeAbiParameters } from "viem";
-import type { Hex } from "viem";
 import { ExternalPosition } from "../enums.js";
 import {
-  encodeCallArgsForCallOnExternalPosition,
   decodeCallArgsForCallOnExternalPosition,
+  encodeCallArgsForCallOnExternalPosition,
 } from "./callOnExternalPosition.js";
+import { type Address, decodeAbiParameters, encodeAbiParameters, parseAbiParameters } from "viem";
+import type { Hex } from "viem";
 
 // stake
 const actionsArgsForKilnStakeAbiParamaters = parseAbiParameters("address stakingContract, uint validatorAmount");

@@ -1,9 +1,9 @@
-import { type Address } from "viem";
 import { ExternalPosition, ExternalPositionManagerActionId } from "../enums.js";
+import { type KilnStakeTrade, encodeCallArgsForKilnStake } from "../externalPositions/kiln.js";
 import { prepareCallOnExtensionParams } from "./callOnExtension.js";
-import { encodeCallArgsForKilnStake, type KilnStakeTrade } from "../externalPositions/kiln.js";
+import { type Address } from "viem";
 
-export type PrepareTradeParams = KilnStakeTrade;
+export type PrepareExternalPositionPrepareTradeOptionParams = KilnStakeTrade;
 
 export type PrepareExternalPositionTradeParams = {
   /**
@@ -13,7 +13,7 @@ export type PrepareExternalPositionTradeParams = {
   /**
    * The trade to prepare.
    */
-  trade: PrepareTradeParams;
+  trade: PrepareExternalPositionPrepareTradeOptionParams;
 };
 
 export function prepareExternalPositionTrade({ trade, externalPositionManager }: PrepareExternalPositionTradeParams) {
@@ -24,7 +24,7 @@ export function prepareExternalPositionTrade({ trade, externalPositionManager }:
   });
 }
 
-export function encodeExternalPositionTrade(trade: PrepareTradeParams) {
+export function encodeExternalPositionTrade(trade: PrepareExternalPositionPrepareTradeOptionParams) {
   switch (trade.type) {
     case ExternalPosition.KilnStake:
       return encodeCallArgsForKilnStake(trade.callArgs);

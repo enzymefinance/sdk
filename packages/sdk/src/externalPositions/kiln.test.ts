@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
-import { getAddress } from "viem";
 import { decodeCallArgsForKilnStake, encodeCallArgsForKilnStake } from "./kiln.js";
+import { getAddress } from "viem";
+import { expect, test } from "vitest";
 
 test("decodeCallArgsForKilnStake should work correctly", () => {
   const decoded = decodeCallArgsForKilnStake(

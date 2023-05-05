@@ -1,9 +1,9 @@
-import { expect, test } from "vitest";
-import { getAddress, toHex } from "viem";
 import {
   decodeCallArgsForCallOnExternalPosition,
   encodeCallArgsForCallOnExternalPosition,
 } from "./callOnExternalPosition.js";
+import { getAddress, toHex } from "viem";
+import { expect, test } from "vitest";
 
 test("decode call on external position should work correctly", () => {
   const decoded = decodeCallArgsForCallOnExternalPosition(

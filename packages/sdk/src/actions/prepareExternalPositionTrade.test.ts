@@ -1,12 +1,12 @@
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
 
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../tests/constants.js";
-import { toWei } from "../utils/conversion.js";
+import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ExternalPosition } from "../enums.js";
-import { testActions, sendTestTransaction, publicClient } from "../../tests/globals.js";
+import { toWei } from "../utils/conversion.js";
 import { prepareCreateExternalPosition } from "./prepareCreateExternalPosition.js";
-import { parseAbiItem } from "viem";
 import { prepareExternalPositionTrade } from "./prepareExternalPositionTrade.js";
+import { parseAbiItem } from "viem";
 
 test("prepare external position trade should work correctly", async () => {
   const vaultOwner = ALICE;

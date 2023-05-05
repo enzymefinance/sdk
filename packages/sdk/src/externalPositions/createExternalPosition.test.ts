@@ -1,9 +1,9 @@
-import { expect, test } from "vitest";
-import { toHex } from "viem";
 import {
   decodeCallArgsForCreateExternalPosition,
   encodeCallArgsForCreateExternalPosition,
 } from "./createExternalPosition.js";
+import { toHex } from "viem";
+import { expect, test } from "vitest";
 
 test("decode create external position should work correctly", () => {
   const decoded = decodeCallArgsForCreateExternalPosition(

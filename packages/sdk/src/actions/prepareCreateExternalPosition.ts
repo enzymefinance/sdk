@@ -1,12 +1,15 @@
-import { type Address } from "viem";
-import { ExternalPositionManagerActionId } from "../enums.js";
-import { prepareCallOnExtensionParams } from "./callOnExtension.js";
-import { encodeCallArgsForCreateExternalPosition } from "../externalPositions/createExternalPosition.js";
-import { encodeExternalPositionTrade, type PrepareTradeParams } from "./prepareExternalPositionTrade.js";
 import { ZERO_ADDRESS } from "../constants/misc.js";
+import { ExternalPositionManagerActionId } from "../enums.js";
+import { encodeCallArgsForCreateExternalPosition } from "../externalPositions/createExternalPosition.js";
+import { prepareCallOnExtensionParams } from "./callOnExtension.js";
+import {
+  type PrepareExternalPositionPrepareTradeOptionParams,
+  encodeExternalPositionTrade,
+} from "./prepareExternalPositionTrade.js";
+import { type Address } from "viem";
 
-interface Trade extends Omit<PrepareTradeParams, "callArgs"> {
-  callArgs: Omit<PrepareTradeParams["callArgs"], "externalPositionProxy">;
+interface Trade extends Omit<PrepareExternalPositionPrepareTradeOptionParams, "callArgs"> {
+  callArgs: Omit<PrepareExternalPositionPrepareTradeOptionParams["callArgs"], "externalPositionProxy">;
 }
 
 export type PrepareCreateExternalPositionTradeParams = {
