@@ -1,5 +1,21 @@
 # @enzymefinance/sdk
 
+## 0.0.12
+
+### Patch Changes
+
+- [#44](https://github.com/enzymefinance/sdk/pull/44) [`9d065bf`](https://github.com/enzymefinance/sdk/commit/9d065bf150809165289dc3ace5296b179d358c51) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `setRecipientForFund` functions and tests.
+
+- [#50](https://github.com/enzymefinance/sdk/pull/50) [`9e49737`](https://github.com/enzymefinance/sdk/commit/9e4973708b651236a9c47ce50fa7b84880ce6087) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `depositToGasRelayPaymaster` functions and tests.
+
+- [#45](https://github.com/enzymefinance/sdk/pull/45) [`6525a09`](https://github.com/enzymefinance/sdk/commit/6525a09d503d31d5a2f4e9903f52fc184488cc6b) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `setFreelyTransferableShares` function and tests.
+
+- [#51](https://github.com/enzymefinance/sdk/pull/51) [`fe12d30`](https://github.com/enzymefinance/sdk/commit/fe12d30c295c160674aeb253829de4609e1d7aaa) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `shutdownGasRelayPaymaster` functions and tests.
+
+- [#46](https://github.com/enzymefinance/sdk/pull/46) [`9b09d00`](https://github.com/enzymefinance/sdk/commit/9b09d00e4a198c08e125651a628891c0479d057e) Thanks [@rayphelan](https://github.com/rayphelan)! - Added `deployGasRelayPaymaster` function and tests.
+
+- [`9b8a8fe`](https://github.com/enzymefinance/sdk/commit/9b8a8fecc11d050bb33ff72be1bc48a5a212cc97) Thanks [@fubhy](https://github.com/fubhy)! - Exported all available symbols using a script.
+
 ## 0.0.11
 
 ### Patch Changes
