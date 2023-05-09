@@ -42,6 +42,13 @@
     },
     "./package.json": "./package.json"
   },
+  "typesVersions": {
+    "*": {
+      "abis": [
+        "./dist/types/abis.d.ts"
+      ]
+    }
+  },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.8",
     "abitype": "^0.8.2",
