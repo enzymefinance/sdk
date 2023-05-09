@@ -15,7 +15,7 @@
     "@bufbuild/protobuf": "^1.2.0",
     "@enzymefinance/api": "*",
     "@tanstack/react-query": "^4.29.5",
-    "@tremor/react": "^2.2.0",
+    "@tremor/react": "^2.4.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "react": "^18.2.0",
@@ -23,13 +23,13 @@
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
     "@types/web": "^0.0.99",
     "@vitejs/plugin-react": "^4.0.0",
-    "tsx": "^3.12.6",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4",
-    "vite": "^4.3.3",
+    "vite": "^4.3.5",
     "vite-tsconfig-paths": "^4.2.0"
   }
 }

@@ -35,21 +35,26 @@
       "import": "./dist/esm/index.js",
       "default": "./dist/cjs/index.js"
     },
+    "./abis": {
+      "types": "./dist/types/abis.d.ts",
+      "import": "./dist/esm/abis.js",
+      "default": "./dist/cjs/abis.js"
+    },
     "./package.json": "./package.json"
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.8",
-    "abitype": "^0.8.0",
+    "abitype": "^0.8.2",
     "decimal.js": "^10.4.3",
-    "viem": "^0.3.12"
+    "viem": "^0.3.19"
   },
   "devDependencies": {
-    "@viem/anvil": "^0.0.3",
-    "@vitest/coverage-c8": "^0.30.1",
-    "@vitest/ui": "^0.30.1",
+    "@viem/anvil": "^0.0.5",
+    "@vitest/coverage-c8": "^0.31.0",
+    "@vitest/ui": "^0.31.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.3",
+    "vite": "^4.3.5",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.30.1"
+    "vitest": "^0.31.0"
   }
 }

@@ -68,11 +68,7 @@ export async function sendTestTransaction<TAbi extends Abi | readonly unknown[],
 ) {
   const { request, result } = await publicClient.simulateContract(args);
   const account = parseAccount(request.account);
-
-  // rome-ignore lint/suspicious/noExplicitAny: expand the generic type to include all the optional parameters.
-  const params = request as any as WriteContractParameters<TAbi, TFunctionName, typeof anvil> & {
-    value?: bigint;
-  };
+  const params = request as unknown as WriteContractParameters;
 
   // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
   const hash = await testClient.sendUnsignedTransaction({
