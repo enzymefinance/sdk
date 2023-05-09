@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.13
+
+### Patch Changes
+
+- [`54ed6d0`](https://github.com/enzymefinance/sdk/commit/54ed6d0eec9cc582b2da11e08eac5320505a2f68) Thanks [@fubhy](https://github.com/fubhy)! - Added abis entrypoint.
+
 ## 0.0.12
 
 ### Patch Changes
