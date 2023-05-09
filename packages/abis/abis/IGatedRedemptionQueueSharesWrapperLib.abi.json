@@ -5,6 +5,11 @@
         "internalType": "address",
         "name": "_globalConfigProxy",
         "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_wrappedNativeAsset",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
@@ -58,6 +63,63 @@
       }
     ],
     "name": "DepositApproval",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "name": "mode",
+        "type": "uint8"
+      }
+    ],
+    "name": "DepositModeSet",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "depositAsset",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "depositAssetAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "DepositRequestAdded",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "user",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "depositAsset",
+        "type": "address"
+      }
+    ],
+    "name": "DepositRequestRemoved",
     "type": "event"
   },
   {
@@ -317,6 +379,31 @@
     "anonymous": false,
     "inputs": [
       {
+        "indexed": true,
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "recipient",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "TransferForced",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
         "indexed": false,
         "internalType": "bool",
         "name": "useApprovals",
@@ -451,6 +538,19 @@
     "type": "function"
   },
   {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      }
+    ],
+    "name": "cancelRequestDeposit",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "inputs": [],
     "name": "cancelRequestRedeem",
     "outputs": [],
@@ -497,8 +597,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract ERC20",
-        "name": "_depositAssetContract",
+        "internalType": "address",
+        "name": "_depositAsset",
         "type": "address"
       },
       {
@@ -518,6 +618,30 @@
         "internalType": "uint256",
         "name": "sharesReceived_",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      }
+    ],
+    "name": "depositAllFromQueue",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "users_",
+        "type": "address[]"
+      },
+      {
+        "internalType": "uint256[]",
+        "name": "userSharesReceived_",
+        "type": "uint256[]"
       }
     ],
     "stateMutability": "nonpayable",
@@ -540,6 +664,54 @@
     "inputs": [
       {
         "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "address[]",
+        "name": "_users",
+        "type": "address[]"
+      }
+    ],
+    "name": "depositFromQueue",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "userSharesReceived_",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_sender",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_recipient",
+        "type": "address"
+      }
+    ],
+    "name": "forceTransfer",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "amount_",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
         "name": "_user",
         "type": "address"
       },
@@ -555,6 +727,74 @@
         "internalType": "uint256",
         "name": "amount_",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getDepositMode",
+    "outputs": [
+      {
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "name": "mode_",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "getDepositQueueUserRequest",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint64",
+            "name": "index",
+            "type": "uint64"
+          },
+          {
+            "internalType": "uint128",
+            "name": "assetAmount",
+            "type": "uint128"
+          }
+        ],
+        "internalType": "struct GatedRedemptionQueueSharesWrapperLibBase2.DepositRequest",
+        "name": "request_",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      }
+    ],
+    "name": "getDepositQueueUsers",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "users_",
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -966,6 +1206,24 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_depositAsset",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_depositAssetAmount",
+        "type": "uint256"
+      }
+    ],
+    "name": "requestDeposit",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_sharesAmount",
         "type": "uint256"
@@ -995,6 +1253,19 @@
       }
     ],
     "name": "setDepositApprovals",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "name": "_mode",
+        "type": "uint8"
+      }
+    ],
+    "name": "setDepositMode",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -1218,5 +1489,9 @@
     ],
     "stateMutability": "nonpayable",
     "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
 ]

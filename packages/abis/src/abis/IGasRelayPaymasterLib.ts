@@ -16,6 +16,26 @@ export const IGasRelayPaymasterLib = [
         name: "_trustedForwarder",
         type: "address",
       },
+      {
+        internalType: "uint256",
+        name: "_depositCooldown",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_depositMaxTotal",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_relayFeeMaxBase",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_relayFeeMaxPercent",
+        type: "uint256",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -121,6 +141,19 @@ export const IGasRelayPaymasterLib = [
         internalType: "address",
         name: "relayHub_",
         type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getLastDepositTimestamp",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "lastDepositTimestamp_",
+        type: "uint256",
       },
     ],
     stateMutability: "view",

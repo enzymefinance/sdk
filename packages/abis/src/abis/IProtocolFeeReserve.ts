@@ -1,4 +1,4 @@
-export const IProtocolFeeReserveLib = [
+export const IProtocolFeeReserve = [
   {
     anonymous: false,
     inputs: [
