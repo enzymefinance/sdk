@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.14
+
+### Patch Changes
+
+- [`ee28021`](https://github.com/enzymefinance/sdk/commit/ee2802107fa48c200d509910d0f34a39c81c3918) Thanks [@fubhy](https://github.com/fubhy)! - Added types versions for abis export.
+
 ## 0.0.13
 
 ### Patch Changes
