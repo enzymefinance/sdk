@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.17
+
+### Patch Changes
+
+- [#48](https://github.com/enzymefinance/sdk/pull/48) [`e2066c6`](https://github.com/enzymefinance/sdk/commit/e2066c6f5d8c914b46ccac8d8f647fb9f3fd33d3) Thanks [@fubhy](https://github.com/fubhy)! - Added initial tranche of read functions.
+
 ## 0.0.16
 
 ### Patch Changes
