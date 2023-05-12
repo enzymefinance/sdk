@@ -131,8 +131,6 @@ function getExport(symbol: MorphSymbol): [type: boolean, name: string] | undefin
     return [true, symbol.getName()];
   } else if (node.isKind(SyntaxKind.InterfaceDeclaration)) {
     return [true, symbol.getName()];
-  } else if (node.isKind(SyntaxKind.ExportDeclaration)) {
-    console.log(true);
   }
 
   return [false, symbol.getName()];

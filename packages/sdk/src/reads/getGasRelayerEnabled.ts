@@ -3,13 +3,13 @@ import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
 import { readContract } from "viem/contract";
 
-export type GetAutoProtocolFeeSharesBuyBackEnabledParams = {
-  comptrollerProxy: Address;
-};
-
-export async function getAutoProtocolFeeSharesBuyBackEnabled(
+export async function getGasRelayerEnabled(
   client: PublicClient,
-  { comptrollerProxy }: GetAutoProtocolFeeSharesBuyBackEnabledParams,
+  {
+    comptrollerProxy,
+  }: {
+    comptrollerProxy: Address;
+  },
 ) {
   const address = await readContract(client, {
     abi: IComptroller,

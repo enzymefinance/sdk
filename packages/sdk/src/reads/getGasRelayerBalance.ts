@@ -2,13 +2,13 @@ import { IGasRelayPaymasterLib } from "@enzymefinance/abis/IGasRelayPaymasterLib
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export type GetAutoProtocolFeeSharesBuyBackEnabledParams = {
-  comptrollerProxy: Address;
-};
-
-export function getAutoProtocolFeeSharesBuyBackEnabled(
+export function getGasRelayerBalance(
   client: PublicClient,
-  { comptrollerProxy }: GetAutoProtocolFeeSharesBuyBackEnabledParams,
+  {
+    comptrollerProxy,
+  }: {
+    comptrollerProxy: Address;
+  },
 ) {
   return readContract(client, {
     abi: IGasRelayPaymasterLib,

@@ -24,7 +24,6 @@ export async function getVaultGavInAsset(
 
     return result;
   } catch (error) {
-    console.log(error);
     // TODO: More selectively catch this error here.
     if (error instanceof ContractFunctionExecutionError) {
       return undefined;
