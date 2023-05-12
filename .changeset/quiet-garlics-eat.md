@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-Update imports `../utils/viem.js`.
+Fixed some incorrect imports.
