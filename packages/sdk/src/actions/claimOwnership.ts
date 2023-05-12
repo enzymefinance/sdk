@@ -1,4 +1,4 @@
-import { prepareFunctionParams } from "../../src/utils/viem.js";
+import { prepareFunctionParams } from "../utils/viem.js";
 import { IVault } from "@enzymefinance/abis/IVault";
 import { getAbiItem } from "viem";
 
