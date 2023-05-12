@@ -28,6 +28,7 @@ export function prepareRemoveAssetManagersParams({ managers }: RemoveAssetManage
 /**
  * Decodes the parameters for the `removeAssetManagers` function call.
  *
+ * @param params The encoded parameters.
  * @returns The decoded parameters.
  */
 export function decodeRemoveAssetManagersParams(params: Hex): RemoveAssetManagersParams {

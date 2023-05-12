@@ -31,6 +31,7 @@ export function prepareSetNominatedOwnerParams({ nominatedOwner }: PrepareSetNom
 /**
  * Decodes the parameters for the `setNominatedOwner` function.
  *
+ * @param params The encoded parameters.
  * @returns The decoded parameters.
  */
 export function decodeSetNominatedOwnerParams(params: Hex): PrepareSetNominatedOwnerParams {

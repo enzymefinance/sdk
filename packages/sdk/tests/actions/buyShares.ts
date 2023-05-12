@@ -1,6 +1,5 @@
-import { IComptroller } from "../../../abis/src/abis/IComptroller.js";
 import { type BuySharesParams, prepareBuySharesParams } from "../../src/actions/buyShares.js";
-import { getSharesActionTimelock } from "../../src/actions/getSharesActionTimelock.js";
+import { getSharesActionTimelock } from "../../src/reads/getSharesActionTimelock.js";
 import { toSeconds } from "../../src/utils/conversion.js";
 import type { PartialPick } from "../../src/utils/types.js";
 import { WETH } from "../constants.js";
@@ -8,7 +7,8 @@ import { publicClient, sendTestTransaction } from "../globals.js";
 import { approveSpend } from "./approveSpend.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { wrapEther } from "./wrapEther.js";
-import { type Address } from "viem";
+import { IComptroller } from "@enzymefinance/abis";
+import type { Address } from "viem";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {
   comptrollerProxy: Address;
