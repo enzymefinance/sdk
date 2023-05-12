@@ -1,7 +1,7 @@
 import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getAmount(
+export async function getAssetAmount(
   client: PublicClient,
   {
     account,
@@ -19,7 +19,7 @@ export async function getAmount(
   });
 }
 
-export function getAmountMultiple(
+export function getAssetAmountMultiple(
   client: PublicClient,
   {
     account,
@@ -29,5 +29,5 @@ export function getAmountMultiple(
     assets: readonly Address[];
   },
 ) {
-  return Promise.all(assets.map((asset) => getAmount(client, { account, asset })));
+  return Promise.all(assets.map((asset) => getAssetAmount(client, { account, asset })));
 }

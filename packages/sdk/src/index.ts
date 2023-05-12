@@ -313,8 +313,11 @@ export { getAllowedDepositRecipientsLists } from "./reads/getAllowedDepositRecip
 // ./reads/getAllowedSharesTransferRecipientsList.js
 export { getAllowedSharesTransferRecipientsList } from "./reads/getAllowedSharesTransferRecipientsList.js";
 
-// ./reads/getAmount.js
-export { getAmount, getAmountMultiple } from "./reads/getAmount.js";
+// ./reads/getAssetAllowance.js
+export { getAssetAllowance, type GetAssetAllowanceParams } from "./reads/getAssetAllowance.js";
+
+// ./reads/getAssetAmount.js
+export { getAssetAmount, getAssetAmountMultiple } from "./reads/getAssetAmount.js";
 
 // ./reads/getAssetDecimals.js
 export { getAssetDecimals } from "./reads/getAssetDecimals.js";
@@ -412,12 +415,6 @@ export { getPolicyManager } from "./reads/getPolicyManager.js";
 
 // ./reads/getSharesActionTimelock.js
 export { getSharesActionTimelock, type GetSharesActionTimelockParams } from "./reads/getSharesActionTimelock.js";
-
-// ./reads/getTokenAllowance.js
-export { getTokenAllowance, type GetTokenAllowanceParams } from "./reads/getTokenAllowance.js";
-
-// ./reads/getTokenBalance.js
-export { getTokenBalance, type GetTokenBalanceParams } from "./reads/getTokenBalance.js";
 
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";

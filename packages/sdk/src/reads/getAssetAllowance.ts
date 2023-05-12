@@ -1,17 +1,17 @@
 import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/contract";
 
-export type GetTokenAllowanceParams = {
-  token: Address;
+export type GetAssetAllowanceParams = {
+  asset: Address;
   owner: Address;
   spender: Address;
 };
 
-export function getTokenAllowance(client: PublicClient, { token, owner, spender }: GetTokenAllowanceParams) {
+export function getAssetAllowance(client: PublicClient, { asset, owner, spender }: GetAssetAllowanceParams) {
   return readContract(client, {
     abi: parseAbi(["function allowance(address, address) view returns (uint256)"]),
     functionName: "allowance",
-    address: token,
+    address: asset,
     args: [owner, spender],
   });
 }
