@@ -1,7 +1,7 @@
 import { ExternalPosition, ExternalPositionManagerActionId } from "../enums.js";
 import { type KilnStakeTrade, encodeCallArgsForKilnStake } from "../externalPositions/kiln.js";
 import { prepareCallOnExtensionParams } from "./callOnExtension.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 export type PrepareExternalPositionPrepareTradeOptionParams = KilnStakeTrade;
 

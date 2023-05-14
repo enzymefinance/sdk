@@ -5,7 +5,7 @@ import {
   prepareCallOnAaveV2LendParams,
   prepareCallOnAaveV2RedeemParams,
 } from "../integrations/aaveV2.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 export type PrepareTradeParams = AaveV2LendTrade | AaveV2RedeemTrade;
 

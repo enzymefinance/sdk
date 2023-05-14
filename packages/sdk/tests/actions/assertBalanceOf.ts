@@ -1,5 +1,5 @@
 import { testActions } from "../globals.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 import { expect } from "vitest";
 
 export async function assertBalanceOf({

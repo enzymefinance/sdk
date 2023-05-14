@@ -1,6 +1,6 @@
 import { prepareFreelyTransferableSharesParams } from "../../src/actions/setFreelyTransferableShares.js";
 import { sendTestTransaction } from "../globals.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 export function setFreelyTransferableShares({
   vaultProxy,

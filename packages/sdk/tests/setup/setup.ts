@@ -28,6 +28,7 @@ afterEach((context) => {
         error.message += "\n\nAnvil log output\n=======================================\n";
         error.message += `\n${logs.join("\n")}`;
       } else {
+        // rome-ignore lint/nursery/noConsoleLog: this is fine ...
         console.log(...logs);
       }
     } catch {}

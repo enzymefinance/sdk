@@ -51,9 +51,9 @@
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.9",
-    "abitype": "^0.8.2",
+    "abitype": "^0.8.3",
     "decimal.js": "^10.4.3",
-    "viem": "^0.3.19"
+    "viem": "^0.3.24"
   },
   "devDependencies": {
     "@viem/anvil": "^0.0.5",

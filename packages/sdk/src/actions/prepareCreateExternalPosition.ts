@@ -6,7 +6,7 @@ import {
   type PrepareExternalPositionPrepareTradeOptionParams,
   encodeExternalPositionTrade,
 } from "./prepareExternalPositionTrade.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 interface Trade extends Omit<PrepareExternalPositionPrepareTradeOptionParams, "callArgs"> {
   callArgs: Omit<PrepareExternalPositionPrepareTradeOptionParams["callArgs"], "externalPositionProxy">;

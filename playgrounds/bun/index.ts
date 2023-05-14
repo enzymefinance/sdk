@@ -41,6 +41,7 @@ const {
   }),
 });
 
+// rome-ignore lint/nursery/noConsoleLog: this is fine ...
 console.log({
   comptrollerProxy,
   vaultProxy,

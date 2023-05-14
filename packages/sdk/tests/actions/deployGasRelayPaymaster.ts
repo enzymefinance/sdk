@@ -1,6 +1,6 @@
 import { prepareDeployGasRelayPaymasterParams } from "../../src/actions/deployGasRelayPaymaster.js";
 import { sendTestTransaction } from "../globals.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 export function deployGasRelayPaymaster({
   account,

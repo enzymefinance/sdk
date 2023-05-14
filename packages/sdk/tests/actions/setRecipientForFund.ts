@@ -1,6 +1,6 @@
 import { prepareSetRecipientForFundParams } from "../../src/actions/setRecipientForFund.js";
 import { sendTestTransaction } from "../globals.js";
-import { type Address } from "viem";
+import type { Address } from "viem";
 
 export function setRecipientForFund({
   comptrollerProxy,
