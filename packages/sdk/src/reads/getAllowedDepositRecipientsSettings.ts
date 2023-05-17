@@ -1,8 +1,8 @@
-import { ICumulativeSlippageTolerancePolicy } from "@enzymefinance/abis/ICumulativeSlippageTolerancePolicy";
+import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis/IAllowedDepositRecipientsPolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getCumulativeSlippageTolerancePolicy(
+export function getAllowedDepositRecipientsSettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,8 +13,8 @@ export function getCumulativeSlippageTolerancePolicy(
   },
 ) {
   return readContract(client, {
-    abi: ICumulativeSlippageTolerancePolicy,
-    functionName: "getPolicyInfoForFund",
+    abi: IAllowedDepositRecipientsPolicy,
+    functionName: "getListIdsForFund",
     args: [comptrollerProxy],
     address,
   });

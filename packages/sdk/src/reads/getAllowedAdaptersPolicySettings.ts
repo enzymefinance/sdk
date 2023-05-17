@@ -1,8 +1,8 @@
-import { IAllowedSharesTransferRecipientsPolicy } from "@enzymefinance/abis/IAllowedSharesTransferRecipientsPolicy";
+import { IAllowedAdaptersPolicy } from "@enzymefinance/abis/IAllowedAdaptersPolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getAllowedSharesTransferRecipientsList(
+export async function getAllowedAdaptersPolicySettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,7 +13,7 @@ export function getAllowedSharesTransferRecipientsList(
   },
 ) {
   return readContract(client, {
-    abi: IAllowedSharesTransferRecipientsPolicy,
+    abi: IAllowedAdaptersPolicy,
     functionName: "getListIdsForFund",
     args: [comptrollerProxy],
     address,

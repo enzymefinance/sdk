@@ -1,8 +1,8 @@
-import { IAllowedAdapterIncomingAssetsPolicy } from "@enzymefinance/abis/IAllowedAdapterIncomingAssetsPolicy";
+import { ICumulativeSlippageTolerancePolicy } from "@enzymefinance/abis/ICumulativeSlippageTolerancePolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getAllowedAdapterIncomingAssetsPolicyListOfIds(
+export function getCumulativeSlippageTolerancePolicySettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,8 +13,8 @@ export function getAllowedAdapterIncomingAssetsPolicyListOfIds(
   },
 ) {
   return readContract(client, {
-    abi: IAllowedAdapterIncomingAssetsPolicy,
-    functionName: "getListIdsForFund",
+    abi: ICumulativeSlippageTolerancePolicy,
+    functionName: "getPolicyInfoForFund",
     args: [comptrollerProxy],
     address,
   });

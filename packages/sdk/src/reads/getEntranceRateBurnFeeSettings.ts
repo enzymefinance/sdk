@@ -1,8 +1,8 @@
-import { IEntranceRateDirectFee } from "@enzymefinance/abis/IEntranceRateDirectFee";
+import { IEntranceRateBurnFee } from "@enzymefinance/abis/IEntranceRateBurnFee";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getEntranceRateDirectFee(
+export async function getEntranceRateBurnFeeSettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,7 +13,7 @@ export async function getEntranceRateDirectFee(
   },
 ) {
   const getRateForFund = readContract(client, {
-    abi: IEntranceRateDirectFee,
+    abi: IEntranceRateBurnFee,
     functionName: "getRateForFund",
     args: [comptrollerProxy],
     address,

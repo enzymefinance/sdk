@@ -1,8 +1,8 @@
-import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis/IAllowedDepositRecipientsPolicy";
+import { IAllowedAdapterIncomingAssetsPolicy } from "@enzymefinance/abis/IAllowedAdapterIncomingAssetsPolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getAllowedDepositRecipientsLists(
+export function getAllowedAdapterIncomingAssetsPolicySettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,7 +13,7 @@ export function getAllowedDepositRecipientsLists(
   },
 ) {
   return readContract(client, {
-    abi: IAllowedDepositRecipientsPolicy,
+    abi: IAllowedAdapterIncomingAssetsPolicy,
     functionName: "getListIdsForFund",
     args: [comptrollerProxy],
     address,

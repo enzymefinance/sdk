@@ -307,11 +307,23 @@ export {
   type DoesAutoProtocolFeeSharesBuybackParams,
 } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
-// ./reads/getAllowedDepositRecipientsLists.js
-export { getAllowedDepositRecipientsLists } from "./reads/getAllowedDepositRecipientsLists.js";
+// ./reads/getAllowedAdapterIncomingAssetsPolicySettings.js
+export { getAllowedAdapterIncomingAssetsPolicySettings } from "./reads/getAllowedAdapterIncomingAssetsPolicySettings.js";
 
-// ./reads/getAllowedSharesTransferRecipientsList.js
-export { getAllowedSharesTransferRecipientsList } from "./reads/getAllowedSharesTransferRecipientsList.js";
+// ./reads/getAllowedAdaptersPolicySettings.js
+export { getAllowedAdaptersPolicySettings } from "./reads/getAllowedAdaptersPolicySettings.js";
+
+// ./reads/getAllowedAssetsForRedemptionPolicySettings.js
+export { getAllowedAssetsForRedemptionPolicySettings } from "./reads/getAllowedAssetsForRedemptionPolicySettings.js";
+
+// ./reads/getAllowedDepositRecipientsSettings.js
+export { getAllowedDepositRecipientsSettings } from "./reads/getAllowedDepositRecipientsSettings.js";
+
+// ./reads/getAllowedSharesTransferRecipientsSettings.js
+export { getAllowedSharesTransferRecipientsSettings } from "./reads/getAllowedSharesTransferRecipientsSettings.js";
+
+// ./reads/getCumulativeSlippageTolerancePolicySettings.js
+export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
 
 // ./reads/getAssetAllowance.js
 export { getAssetAllowance, type GetAssetAllowanceParams } from "./reads/getAssetAllowance.js";
@@ -359,17 +371,17 @@ export { getEnabledFeesForFund } from "./reads/getEnabledFeesForFund.js";
 // ./reads/getEnabledPoliciesForFund.js
 export { getEnabledPoliciesForFund } from "./reads/getEnabledPoliciesForFund.js";
 
-// ./reads/getEntranceRateBurnFee.js
-export { getEntranceRateBurnFee } from "./reads/getEntranceRateBurnFee.js";
+// ./reads/getEntranceRateBurnFeeSettings.js
+export { getEntranceRateBurnFeeSettings } from "./reads/getEntranceRateBurnFeeSettings.js";
 
-// ./reads/getEntranceRateDirectFee.js
-export { getEntranceRateDirectFee } from "./reads/getEntranceRateDirectFee.js";
+// ./reads/getEntranceRateDirectFeeSettings.js
+export { getEntranceRateDirectFeeSettings } from "./reads/getEntranceRateDirectFeeSettings.js";
 
-// ./reads/getExitRateBurnFee.js
-export { getExitRateBurnFee } from "./reads/getExitRateBurnFee.js";
+// ./reads/getExitRateBurnFeeSettings.js
+export { getExitRateBurnFeeSettings } from "./reads/getExitRateBurnFeeSettings.js";
 
-// ./reads/getExitRateDirectFee.js
-export { getExitRateDirectFee } from "./reads/getExitRateDirectFee.js";
+// ./reads/getExitRateDirectFeeSettings.js
+export { getExitRateDirectFeeSettings } from "./reads/getExitRateDirectFeeSettings.js";
 
 // ./reads/getExternalPositionsInfo.js
 export { getExternalPositionsInfo } from "./reads/getExternalPositionsInfo.js";
@@ -398,14 +410,14 @@ export { getManagedAssets } from "./reads/getManagedAssets.js";
 // ./reads/getManagementFee.js
 export { getManagementFee } from "./reads/getManagementFee.js";
 
-// ./reads/getMinMaxInvestmentPolicy.js
-export { getMinMaxInvestmentPolicy } from "./reads/getMinMaxInvestmentPolicy.js";
+// ./reads/getMinMaxInvestmentPolicySettings.js
+export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
 
-// ./reads/getMinSharesSupplyFee.js
-export { getMinSharesSupplyFee } from "./reads/getMinSharesSupplyFee.js";
+// ./reads/getMinSharesSupplyFeeSettings.js
+export { getMinSharesSupplyFeeSettings } from "./reads/getMinSharesSupplyFeeSettings.js";
 
-// ./reads/getPerformanceFee.js
-export { getPerformanceFee } from "./reads/getPerformanceFee.js";
+// ./reads/getPerformanceFeeSettings.js
+export { getPerformanceFeeSettings } from "./reads/getPerformanceFeeSettings.js";
 
 // ./reads/getPolicyIdentifier.js
 export { getPolicyIdentifier } from "./reads/getPolicyIdentifier.js";

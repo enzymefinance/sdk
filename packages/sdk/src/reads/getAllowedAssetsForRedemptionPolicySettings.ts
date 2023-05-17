@@ -2,7 +2,7 @@ import { IAllowedAssetsForRedemptionPolicy } from "@enzymefinance/abis/IAllowedA
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getAllowedAssetsForRedemptionPolicyListOfIds(
+export function getAllowedAssetsForRedemptionPolicySettings(
   client: PublicClient,
   {
     comptrollerProxy,
