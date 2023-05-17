@@ -2,7 +2,7 @@ import { IAllowedAdapterIncomingAssetsPolicy } from "@enzymefinance/abis/IAllowe
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getAllowedAdapterIncomingAssetsPolicy(
+export function getAllowedAdapterIncomingAssetsPolicyListOfIds(
   client: PublicClient,
   {
     comptrollerProxy,

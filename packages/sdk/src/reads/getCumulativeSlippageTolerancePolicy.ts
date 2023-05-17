@@ -2,7 +2,7 @@ import { ICumulativeSlippageTolerancePolicy } from "@enzymefinance/abis/ICumulat
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function getCumulativeSlippageTolerancePolicy(
+export function getCumulativeSlippageTolerancePolicyListOfIds(
   client: PublicClient,
   {
     comptrollerProxy,
