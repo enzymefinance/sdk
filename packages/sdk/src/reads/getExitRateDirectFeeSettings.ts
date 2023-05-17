@@ -1,8 +1,8 @@
-import { IExitRateBurnFee } from "@enzymefinance/abis/IExitRateBurnFee";
+import { IExitRateDirectFee } from "@enzymefinance/abis/IExitRateDirectFee";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getExitRateBurnFee(
+export async function getExitRateDirectFeeSettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -13,21 +13,21 @@ export async function getExitRateBurnFee(
   },
 ) {
   const getInKindRateForFund = readContract(client, {
-    abi: IExitRateBurnFee,
+    abi: IExitRateDirectFee,
     functionName: "getInKindRateForFund",
     args: [comptrollerProxy],
     address,
   });
 
   const getSpecificAssetsRateForFund = readContract(client, {
-    abi: IExitRateBurnFee,
+    abi: IExitRateDirectFee,
     functionName: "getSpecificAssetsRateForFund",
     args: [comptrollerProxy],
     address,
   });
 
   const getRecipientForFund = readContract(client, {
-    abi: IExitRateBurnFee,
+    abi: IExitRateDirectFee,
     functionName: "getRecipientForFund",
     args: [comptrollerProxy],
     address,

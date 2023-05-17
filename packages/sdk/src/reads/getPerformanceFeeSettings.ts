@@ -2,7 +2,7 @@ import { IPerformanceFee } from "@enzymefinance/abis/IPerformanceFee";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getPerformanceFee(
+export async function getPerformanceFeeSettings(
   client: PublicClient,
   {
     comptrollerProxy,
