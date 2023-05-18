@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.18
+
+### Patch Changes
+
+- [#58](https://github.com/enzymefinance/sdk/pull/58) [`887771f`](https://github.com/enzymefinance/sdk/commit/887771fc6e6ec464f6cc706466c4f7d0b00e8fce) Thanks [@rayphelan](https://github.com/rayphelan)! - Added new read functions `getAllowedAdapterIncomingAssetsPolicy` `getAllowedAdaptersPolicy` `getAllowedAssetsForRedemptionPolicy` `getCumulativeSlippageTolerancePolicy`.
+
 ## 0.0.17
 
 ### Patch Changes
