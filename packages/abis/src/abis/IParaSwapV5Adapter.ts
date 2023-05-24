@@ -41,9 +41,9 @@ export const IParaSwapV5Adapter = [
       },
       {
         indexed: false,
-        internalType: "string",
+        internalType: "bytes",
         name: "reason",
-        type: "string",
+        type: "bytes",
       },
     ],
     name: "MultipleOrdersItemFailed",

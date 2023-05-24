@@ -90,7 +90,6 @@ export { IMinMaxInvestmentPolicy } from "./abis/IMinMaxInvestmentPolicy.js";
 export { IMinSharesSupplyFee } from "./abis/IMinSharesSupplyFee.js";
 export { INotionalV2PositionLib } from "./abis/INotionalV2PositionLib.js";
 export { INotionalV2PositionParser } from "./abis/INotionalV2PositionParser.js";
-export { IOlympusV2Adapter } from "./abis/IOlympusV2Adapter.js";
 export { IOnlyRemoveDustExternalPositionPolicy } from "./abis/IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js";
 export { IParaSwapV5Adapter } from "./abis/IParaSwapV5Adapter.js";
@@ -108,10 +107,6 @@ export { ISolvV2BondBuyerPositionLib } from "./abis/ISolvV2BondBuyerPositionLib.
 export { ISolvV2BondBuyerPositionParser } from "./abis/ISolvV2BondBuyerPositionParser.js";
 export { ISolvV2BondIssuerPositionLib } from "./abis/ISolvV2BondIssuerPositionLib.js";
 export { ISolvV2BondIssuerPositionParser } from "./abis/ISolvV2BondIssuerPositionParser.js";
-export { ISolvV2ConvertibleBuyerPositionLib } from "./abis/ISolvV2ConvertibleBuyerPositionLib.js";
-export { ISolvV2ConvertibleBuyerPositionParser } from "./abis/ISolvV2ConvertibleBuyerPositionParser.js";
-export { ISolvV2ConvertibleIssuerPositionLib } from "./abis/ISolvV2ConvertibleIssuerPositionLib.js";
-export { ISolvV2ConvertibleIssuerPositionParser } from "./abis/ISolvV2ConvertibleIssuerPositionParser.js";
 export { ISynthetixAdapter } from "./abis/ISynthetixAdapter.js";
 export { ITheGraphDelegationPositionLib } from "./abis/ITheGraphDelegationPositionLib.js";
 export { ITheGraphDelegationPositionParser } from "./abis/ITheGraphDelegationPositionParser.js";

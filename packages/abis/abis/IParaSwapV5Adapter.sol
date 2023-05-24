@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 
 interface IParaSwapV5Adapter {
-    event MultipleOrdersItemFailed(uint256 index, string reason);
+    event MultipleOrdersItemFailed(uint256 index, bytes reason);
 
     function CLAIM_REWARDS_SELECTOR() external view returns (bytes4);
     function LEND_AND_STAKE_SELECTOR() external view returns (bytes4);

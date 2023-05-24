@@ -70,7 +70,7 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
         "name": "mode",
         "type": "uint8"
       }
@@ -737,7 +737,7 @@
     "name": "getDepositMode",
     "outputs": [
       {
-        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
         "name": "mode_",
         "type": "uint8"
       }
@@ -773,7 +773,7 @@
             "type": "uint128"
           }
         ],
-        "internalType": "struct GatedRedemptionQueueSharesWrapperLibBase2.DepositRequest",
+        "internalType": "struct GatedRedemptionQueueSharesWrapperLibBase1.DepositRequest",
         "name": "request_",
         "type": "tuple"
       }
@@ -1065,6 +1065,11 @@
         "type": "bool"
       },
       {
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+        "name": "_depositMode",
+        "type": "uint8"
+      },
+      {
         "components": [
           {
             "internalType": "uint64",
@@ -1260,7 +1265,7 @@
   {
     "inputs": [
       {
-        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase2.DepositMode",
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
         "name": "_mode",
         "type": "uint8"
       }

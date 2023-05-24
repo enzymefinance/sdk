@@ -29,6 +29,11 @@ interface IGatedRedemptionQueueSharesWrapperLib {
     event UseRedemptionApprovalsSet(bool useApprovals);
     event UseTransferApprovalsSet(bool useApprovals);
 
+    struct DepositRequest {
+        uint64 index;
+        uint128 assetAmount;
+    }
+
     struct RedemptionRequest {
         uint64 index;
         uint64 lastRedeemed;
@@ -40,11 +45,6 @@ interface IGatedRedemptionQueueSharesWrapperLib {
         uint32 frequency;
         uint32 duration;
         uint64 relativeSharesCap;
-    }
-
-    struct DepositRequest {
-        uint64 index;
-        uint128 assetAmount;
     }
 
     function addManagers(address[] memory _managers) external;
@@ -99,6 +99,7 @@ interface IGatedRedemptionQueueSharesWrapperLib {
         bool _useDepositApprovals,
         bool _useRedemptionApprovals,
         bool _useTransferApprovals,
+        uint8 _depositMode,
         RedemptionWindowConfig memory _windowConfig
     ) external;
     function isManager(address _user) external view returns (bool isManager_);

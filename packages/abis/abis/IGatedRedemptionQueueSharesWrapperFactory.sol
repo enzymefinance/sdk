@@ -19,6 +19,7 @@ interface IGatedRedemptionQueueSharesWrapperFactory {
         bool _useDepositApprovals,
         bool _useRedemptionApprovals,
         bool _useTransferApprovals,
+        uint8 _depositMode,
         RedemptionWindowConfig memory _windowConfig
     ) external returns (address wrapperProxy_);
     function implementation() external view returns (address);

@@ -497,11 +497,6 @@
       "import": "./dist/esm/abis/INotionalV2PositionParser.js",
       "default": "./dist/cjs/abis/INotionalV2PositionParser.js"
     },
-    "./IOlympusV2Adapter": {
-      "types": "./dist/types/abis/IOlympusV2Adapter.d.ts",
-      "import": "./dist/esm/abis/IOlympusV2Adapter.js",
-      "default": "./dist/cjs/abis/IOlympusV2Adapter.js"
-    },
     "./IOnlyRemoveDustExternalPositionPolicy": {
       "types": "./dist/types/abis/IOnlyRemoveDustExternalPositionPolicy.d.ts",
       "import": "./dist/esm/abis/IOnlyRemoveDustExternalPositionPolicy.js",
@@ -586,26 +581,6 @@
       "types": "./dist/types/abis/ISolvV2BondIssuerPositionParser.d.ts",
       "import": "./dist/esm/abis/ISolvV2BondIssuerPositionParser.js",
       "default": "./dist/cjs/abis/ISolvV2BondIssuerPositionParser.js"
-    },
-    "./ISolvV2ConvertibleBuyerPositionLib": {
-      "types": "./dist/types/abis/ISolvV2ConvertibleBuyerPositionLib.d.ts",
-      "import": "./dist/esm/abis/ISolvV2ConvertibleBuyerPositionLib.js",
-      "default": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionLib.js"
-    },
-    "./ISolvV2ConvertibleBuyerPositionParser": {
-      "types": "./dist/types/abis/ISolvV2ConvertibleBuyerPositionParser.d.ts",
-      "import": "./dist/esm/abis/ISolvV2ConvertibleBuyerPositionParser.js",
-      "default": "./dist/cjs/abis/ISolvV2ConvertibleBuyerPositionParser.js"
-    },
-    "./ISolvV2ConvertibleIssuerPositionLib": {
-      "types": "./dist/types/abis/ISolvV2ConvertibleIssuerPositionLib.d.ts",
-      "import": "./dist/esm/abis/ISolvV2ConvertibleIssuerPositionLib.js",
-      "default": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionLib.js"
-    },
-    "./ISolvV2ConvertibleIssuerPositionParser": {
-      "types": "./dist/types/abis/ISolvV2ConvertibleIssuerPositionParser.d.ts",
-      "import": "./dist/esm/abis/ISolvV2ConvertibleIssuerPositionParser.js",
-      "default": "./dist/cjs/abis/ISolvV2ConvertibleIssuerPositionParser.js"
     },
     "./ISynthetixAdapter": {
       "types": "./dist/types/abis/ISynthetixAdapter.d.ts",

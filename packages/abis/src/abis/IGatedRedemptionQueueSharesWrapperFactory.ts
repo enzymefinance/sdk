@@ -80,6 +80,11 @@ export const IGatedRedemptionQueueSharesWrapperFactory = [
         type: "bool",
       },
       {
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+        name: "_depositMode",
+        type: "uint8",
+      },
+      {
         components: [
           {
             internalType: "uint64",
