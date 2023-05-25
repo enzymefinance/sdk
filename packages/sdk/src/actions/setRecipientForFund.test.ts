@@ -1,6 +1,6 @@
 import { ALICE, BOB, MANAGEMENT_FEE, WETH } from "../../tests/constants.js";
 import { testActions } from "../../tests/globals.js";
-import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
+import { encodeManagementFeeSettings } from "../extensions/fees/instances/managementFee.js";
 import { toBps } from "../utils/conversion.js";
 import { decodeSetRecipientForFundParams, prepareSetRecipientForFundParams } from "./setRecipientForFund.js";
 import { encodeFunctionData } from "viem";

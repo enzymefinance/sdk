@@ -1,8 +1,8 @@
 import { ALICE, FUND_DEPLOYER } from "../../tests/constants.js";
 import { publicClient, sendTestTransaction } from "../../tests/globals.js";
-import { encodeManagementFeeSettings } from "../fees/fees/managementFee.js";
-import { encodePerformanceFeeSettings } from "../fees/fees/performanceFee.js";
-import { encodeMinMaxInvestmentPolicySettings } from "../policies/policies/minMaxInvestmentPolicy.js";
+import { encodeManagementFeeSettings } from "../extensions/fees/instances/managementFee.js";
+import { encodePerformanceFeeSettings } from "../extensions/fees/instances/performanceFee.js";
+import { encodeMinMaxInvestmentPolicySettings } from "../extensions/policies/instances/minMaxInvestmentPolicy.js";
 import { toBps, toSeconds, toWei } from "../utils/conversion.js";
 import { type PrepareSetupVaultParamsArgs, decodeSetupVaultParams, prepareSetupVaultParams } from "./setupVault.js";
 import { IVault } from "@enzymefinance/abis";
