@@ -6,5 +6,5 @@ export const ExternalPosition = {
 } as const;
 
 export type ExternalPositionArgs = {
-  KilnStake: KilnStakeArgs;
+  [ExternalPosition.KilnStake]: KilnStakeArgs;
 };

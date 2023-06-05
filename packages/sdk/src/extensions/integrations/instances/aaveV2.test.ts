@@ -4,7 +4,7 @@ import { decodeAaveV2LendArgs, encodeAaveV2LendArgs } from "./aaveV2.js";
 import { getAddress } from "viem";
 import { expect, test } from "vitest";
 
-test("decodeIntegrationDataForAaveV2Lend should be equal to encoded data with encodeIntegrationDataForAaveV2Lend", () => {
+test("decodeAaveV2LendArgs should be equal to encoded data with encodeAaveV2LendArgs", () => {
   const params = {
     aToken: getAddress(A_WETH),
     depositAmount: toWei(100),

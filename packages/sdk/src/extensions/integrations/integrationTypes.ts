@@ -7,6 +7,6 @@ export const Integration = {
 } as const;
 
 export type IntegrationArgs = {
-  AaveV2Lend: AaveV2LendArgs;
-  AaveV2Redeem: AaveV2RedeemArgs;
+  [Integration.AaveV2Lend]: AaveV2LendArgs;
+  [Integration.AaveV2Redeem]: AaveV2RedeemArgs;
 };

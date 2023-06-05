@@ -28,6 +28,7 @@ export function decodeAaveV2LendArgs(callArgs: Hex): AaveV2LendArgs {
     depositAmount,
   };
 }
+
 export const aaveV2RedeemEncoding = [
   {
     type: "address",
