@@ -2,4 +2,4 @@
 "@enzymefinance/api": patch
 ---
 
-API v1
+Bumped the api version to v1
