@@ -2,9 +2,7 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.autoImportFileExcludePatterns": [
-    "**/index.ts"
-  ],
+  "typescript.preferences.autoImportFileExcludePatterns": ["**/index.ts"],
   "[json]": {
     "editor.defaultFormatter": "rome.rome",
     "editor.formatOnSave": true,
