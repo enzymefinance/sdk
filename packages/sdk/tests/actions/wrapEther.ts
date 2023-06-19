@@ -1,19 +1,17 @@
 import { WETH } from "../constants.js";
 import { sendTestTransaction } from "../globals.js";
-import { type Address, parseAbiItem } from "viem";
+import { type Address, parseAbi } from "viem";
 
-export async function wrapEther({
+export function wrapEther({
   account,
   amount,
 }: {
   account: Address;
   amount: bigint;
 }) {
-  const abi = parseAbiItem("function deposit() payable");
-
-  await sendTestTransaction({
+  sendTestTransaction({
     address: WETH,
-    abi: [abi],
+    abi: parseAbi(["function deposit() payable"] as const),
     functionName: "deposit",
     value: amount,
     account,

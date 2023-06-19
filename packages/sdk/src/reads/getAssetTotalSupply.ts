@@ -1,7 +1,7 @@
 import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getAssetTotalSupply(
+export function getAssetTotalSupply(
   client: PublicClient,
   {
     asset,
@@ -9,11 +9,9 @@ export async function getAssetTotalSupply(
     asset: Address;
   },
 ) {
-  const totalSupply = await readContract(client, {
+  return readContract(client, {
     abi: parseAbi(["function totalSupply() view returns (uint)"] as const),
     functionName: "totalSupply",
     address: asset,
   });
-
-  return totalSupply;
 }

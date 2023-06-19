@@ -2,7 +2,7 @@ import { IVault } from "@enzymefinance/abis/IVault";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getVaultName(
+export function getVaultName(
   client: PublicClient,
   {
     vault,
@@ -10,11 +10,9 @@ export async function getVaultName(
     vault: Address;
   },
 ) {
-  const name = await readContract(client, {
+  return readContract(client, {
     abi: IVault,
     functionName: "name",
     address: vault,
   });
-
-  return name;
 }

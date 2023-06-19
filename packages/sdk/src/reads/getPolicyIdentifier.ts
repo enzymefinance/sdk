@@ -2,7 +2,7 @@ import { IPolicy } from "@enzymefinance/abis/IPolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getPolicyIdentifier(
+export function getPolicyIdentifier(
   client: PublicClient,
   {
     policy,
@@ -10,11 +10,9 @@ export async function getPolicyIdentifier(
     policy: Address;
   },
 ) {
-  const identifier = await readContract(client, {
+  return readContract(client, {
     abi: IPolicy,
     functionName: "identifier",
     address: policy,
   });
-
-  return identifier;
 }

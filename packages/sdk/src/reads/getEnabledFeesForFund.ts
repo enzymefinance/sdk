@@ -2,7 +2,7 @@ import { IFeeManager } from "@enzymefinance/abis/IFeeManager";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getEnabledFeesForFund(
+export function getEnabledFeesForFund(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -12,12 +12,10 @@ export async function getEnabledFeesForFund(
     feeManager: Address;
   },
 ) {
-  const result = await readContract(client, {
+  return readContract(client, {
     abi: IFeeManager,
     functionName: "getEnabledFeesForFund",
     args: [comptrollerProxy],
     address: feeManager,
   });
-
-  return result;
 }

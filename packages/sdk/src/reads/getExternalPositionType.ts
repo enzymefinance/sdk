@@ -2,7 +2,7 @@ import { IExternalPositionProxy } from "@enzymefinance/abis/IExternalPositionPro
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getExternalPositionType(
+export function getExternalPositionType(
   client: PublicClient,
   {
     address,
@@ -10,11 +10,9 @@ export async function getExternalPositionType(
     address: Address;
   },
 ) {
-  const externalPositionType = await readContract(client, {
+  return readContract(client, {
     abi: IExternalPositionProxy,
     functionName: "getExternalPositionType",
     address,
   });
-
-  return externalPositionType;
 }

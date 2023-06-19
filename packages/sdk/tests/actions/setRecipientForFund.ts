@@ -1,4 +1,5 @@
 import { prepareSetRecipientForFundParams } from "../../src/actions/setRecipientForFund.js";
+import { MANAGEMENT_FEE } from "../constants.js";
 import { sendTestTransaction } from "../globals.js";
 import type { Address } from "viem";
 
@@ -11,13 +12,12 @@ export function setRecipientForFund({
   recipient: Address;
   account: Address;
 }) {
-  const params = {
+  return sendTestTransaction({
     ...prepareSetRecipientForFundParams({
       comptrollerProxy,
       recipient,
     }),
     account,
-  } as const;
-
-  return sendTestTransaction({ ...params });
+    address: MANAGEMENT_FEE,
+  });
 }

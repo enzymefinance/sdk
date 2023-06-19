@@ -2,7 +2,7 @@ import { IMinMaxInvestmentPolicy } from "@enzymefinance/abis/IMinMaxInvestmentPo
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getMinMaxInvestmentPolicySettings(
+export function getMinMaxInvestmentPolicySettings(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -12,14 +12,10 @@ export async function getMinMaxInvestmentPolicySettings(
     address: Address;
   },
 ) {
-  const fundSettings = await readContract(client, {
+  return readContract(client, {
     abi: IMinMaxInvestmentPolicy,
     functionName: "getFundSettings",
     args: [comptrollerProxy],
     address,
   });
-
-  return {
-    fundSettings,
-  };
 }

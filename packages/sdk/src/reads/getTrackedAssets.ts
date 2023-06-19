@@ -2,7 +2,7 @@ import { IVault } from "@enzymefinance/abis/IVault";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getTrackedAssets(
+export function getTrackedAssets(
   client: PublicClient,
   {
     vault,
@@ -10,11 +10,9 @@ export async function getTrackedAssets(
     vault: Address;
   },
 ) {
-  const trackedAssets = await readContract(client, {
+  return readContract(client, {
     abi: IVault,
     functionName: "getTrackedAssets",
     address: vault,
   });
-
-  return trackedAssets;
 }

@@ -20,7 +20,7 @@ export async function getAssetInfo(
   return { name, symbol, decimals, address: asset };
 }
 
-export async function getAssetInfoMultiple(
+export function getAssetInfoMultiple(
   client: PublicClient,
   {
     assets,
@@ -28,7 +28,5 @@ export async function getAssetInfoMultiple(
     assets: readonly Address[];
   },
 ) {
-  const infos = await Promise.all(assets.map((asset) => getAssetInfo(client, { asset })));
-
-  return infos;
+  return Promise.all(assets.map((asset) => getAssetInfo(client, { asset })));
 }

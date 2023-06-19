@@ -2,7 +2,7 @@ import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getDenominationAsset(
+export function getDenominationAsset(
   client: PublicClient,
   {
     comptroller,
@@ -10,11 +10,9 @@ export async function getDenominationAsset(
     comptroller: Address;
   },
 ) {
-  const denominationAsset = await readContract(client, {
+  return readContract(client, {
     abi: IComptroller,
     functionName: "getDenominationAsset",
     address: comptroller,
   });
-
-  return denominationAsset;
 }

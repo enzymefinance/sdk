@@ -1,7 +1,7 @@
 import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getAssetAmount(
+export function getAssetAmount(
   client: PublicClient,
   {
     account,

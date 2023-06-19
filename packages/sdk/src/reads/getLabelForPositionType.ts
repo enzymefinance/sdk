@@ -2,7 +2,7 @@ import { IExternalPositionFactory } from "@enzymefinance/abis/IExternalPositionF
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getLabelForExternalPositionType(
+export function getLabelForExternalPositionType(
   client: PublicClient,
   {
     externalPositionFactory,
@@ -12,12 +12,10 @@ export async function getLabelForExternalPositionType(
     typeId: bigint;
   },
 ) {
-  const externalPositionManager = await readContract(client, {
+  return readContract(client, {
     abi: IExternalPositionFactory,
     functionName: "getLabelForPositionType",
     address: externalPositionFactory,
     args: [typeId],
   });
-
-  return externalPositionManager;
 }

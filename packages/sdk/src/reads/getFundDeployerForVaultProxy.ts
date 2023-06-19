@@ -2,7 +2,7 @@ import { IDispatcher } from "@enzymefinance/abis/IDispatcher";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getFundDeployerForVaultProxy(
+export function getFundDeployerForVaultProxy(
   client: PublicClient,
   {
     vault,
@@ -12,12 +12,10 @@ export async function getFundDeployerForVaultProxy(
     dispatcher: Address;
   },
 ) {
-  const fundDeployer = await readContract(client, {
+  return readContract(client, {
     abi: IDispatcher,
     functionName: "getFundDeployerForVaultProxy",
     address: dispatcher,
     args: [vault],
   });
-
-  return fundDeployer;
 }

@@ -2,7 +2,7 @@ import { prepareSetNominatedOwnerParams } from "../../src/actions/setNominatedOw
 import { sendTestTransaction } from "../globals.js";
 import type { Address } from "viem";
 
-export async function setNominatedOwner({
+export function setNominatedOwner({
   nominatedOwner,
   vaultProxy,
   account,
@@ -11,7 +11,7 @@ export async function setNominatedOwner({
   account: Address;
   vaultProxy: Address;
 }) {
-  return await sendTestTransaction({
+  return sendTestTransaction({
     address: vaultProxy,
     account,
     ...prepareSetNominatedOwnerParams({

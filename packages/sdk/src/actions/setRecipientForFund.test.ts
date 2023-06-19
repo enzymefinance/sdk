@@ -72,7 +72,6 @@ test("should prepare params correctly", async () => {
           "type": "function",
         },
       ],
-      "address": "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
       "args": [
         "0x9979536797DbD4e18e3880f4AF28863bc03390AF",
         "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",

@@ -7,11 +7,13 @@ export async function getRecipientForFund({
 }: {
   comptrollerProxy: Address;
 }) {
-  return await publicClient.readContract({
+  const abi = parseAbi([
+    "function getRecipientForFund(address _comptrollerProxy) external view returns (address recipient_)",
+  ] as const);
+
+  return publicClient.readContract({
     address: MANAGEMENT_FEE,
-    abi: parseAbi([
-      "function getRecipientForFund(address _comptrollerProxy) external view returns (address recipient_)",
-    ]),
+    abi,
     functionName: "getRecipientForFund",
     args: [comptrollerProxy],
   });

@@ -1,5 +1,5 @@
 import { sendTestTransaction } from "../globals.js";
-import { type Address, parseAbiItem } from "viem";
+import { type Address, parseAbi } from "viem";
 
 export async function approveSpend({
   token,
@@ -12,11 +12,9 @@ export async function approveSpend({
   spender: Address;
   amount: bigint;
 }) {
-  const abi = parseAbiItem("function approve(address spender, uint256 amount) returns (bool)");
-
   await sendTestTransaction({
     address: token,
-    abi: [abi],
+    abi: parseAbi(["function approve(address spender, uint256 amount) returns (bool)"] as const),
     functionName: "approve",
     account: account,
     args: [spender, amount],

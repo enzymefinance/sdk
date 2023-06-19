@@ -2,7 +2,7 @@ import { IComptroller } from "@enzymefinance/abis/IComptroller";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export async function getFeeManager(
+export function getFeeManager(
   client: PublicClient,
   {
     comptrollerProxy,
@@ -10,11 +10,9 @@ export async function getFeeManager(
     comptrollerProxy: Address;
   },
 ) {
-  const result = await readContract(client, {
+  return readContract(client, {
     abi: IComptroller,
     functionName: "getFeeManager",
     address: comptrollerProxy,
   });
-
-  return result;
 }
