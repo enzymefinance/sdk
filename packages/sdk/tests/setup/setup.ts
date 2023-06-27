@@ -1,16 +1,16 @@
 import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
 import { poolId, testClient } from "../globals.js";
 import { fetchLogs } from "@viem/anvil";
-import { afterAll, afterEach } from "vitest";
+import { beforeAll, beforeEach } from "vitest";
 
-afterAll(async () => {
+beforeAll(async () => {
   await testClient.reset({
     blockNumber: FORK_BLOCK_NUMBER,
     jsonRpcUrl: FORK_URL,
   });
 });
 
-afterEach((context) => {
+beforeEach((context) => {
   // Print the last log entries from anvil after each test.
   context.onTestFailed(async (result) => {
     try {
