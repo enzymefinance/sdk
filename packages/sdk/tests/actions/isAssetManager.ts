@@ -17,7 +17,7 @@ export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
   });
 }
 
-export async function isAssetManagers<TAddresses extends Readonly<Address[]>>({
+export async function isAssetManagers<const TAddresses extends Readonly<Address[]>>({
   addresses,
   vaultProxy,
 }: { addresses: TAddresses; vaultProxy: Address }) {
