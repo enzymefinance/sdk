@@ -5,7 +5,7 @@ import { ExternalPosition } from "./externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "./prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "./prepareUseExternalPosition.js";
 import { parseAbiItem } from "viem";
-import { expect, test } from "vitest";
+import { assert, expect, test } from "vitest";
 
 test("prepare external position trade should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -44,10 +44,7 @@ test("prepare external position trade should work correctly", async () => {
   });
 
   const externalPositionProxy = externalPositionDeployedForFundEventLog?.args.externalPosition;
-
-  if (!externalPositionProxy) {
-    throw new Error("External position not deployed");
-  }
+  assert(externalPositionProxy);
 
   await sendTestTransaction({
     ...prepareUseExternalPosition({

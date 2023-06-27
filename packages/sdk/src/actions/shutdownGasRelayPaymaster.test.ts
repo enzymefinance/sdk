@@ -48,7 +48,7 @@ test("should shutdown gas relay paymaster correctly", async () => {
   expect(withoutGasRelayPaymaster).toEqual(shutdownGasRelayPaymaster);
 });
 
-test("should prepare params correctly", () => {
+test("should prepare params correctly", async () => {
   expect(prepareShutdownGasRelayPaymasterParams()).toMatchInlineSnapshot(`
     {
       "abi": [
