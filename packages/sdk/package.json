@@ -15,14 +15,9 @@
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.build.json"
+    "typecheck": "tsc --noEmit"
   },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
+  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
   "sideEffects": false,
   "type": "module",
   "main": "./dist/cjs/index.js",
@@ -44,24 +39,22 @@
   },
   "typesVersions": {
     "*": {
-      "abis": [
-        "./dist/types/abis.d.ts"
-      ]
+      "abis": ["./dist/types/abis.d.ts"]
     }
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.9",
-    "abitype": "^0.8.10",
+    "abitype": "^0.9.0",
     "decimal.js": "^10.4.3",
-    "viem": "^1.0.7"
+    "viem": "^1.2.9"
   },
   "devDependencies": {
     "@viem/anvil": "^0.0.6",
-    "@vitest/coverage-c8": "^0.32.2",
-    "@vitest/ui": "^0.32.2",
-    "typescript": "^5.1.3",
-    "vite": "^4.3.9",
+    "@vitest/coverage-c8": "^0.32.4",
+    "@vitest/ui": "^0.32.4",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.0",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.32.2"
+    "vitest": "^0.32.4"
   }
 }
