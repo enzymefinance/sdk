@@ -9,12 +9,12 @@
   "dependencies": {
     "@enzymefinance/abis": "*",
     "@enzymefinance/sdk": "*",
-    "abitype": "^0.8.10",
+    "abitype": "^0.9.0",
     "viem": "^1.2.9"
   },
   "devDependencies": {
-    "bun": "^0.6.9",
-    "bun-types": "^0.6.9",
-    "typescript": "^5.1.3"
+    "bun": "^0.6.13",
+    "bun-types": "^0.6.13",
+    "typescript": "^5.1.6"
   }
 }
