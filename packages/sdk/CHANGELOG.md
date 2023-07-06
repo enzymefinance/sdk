@@ -1,5 +1,16 @@
 # @enzymefinance/sdk
 
+## 0.0.19
+
+### Patch Changes
+
+- [`be5e3d5`](https://github.com/enzymefinance/sdk/commit/be5e3d58a0c4e573c7de8635cf0a0996de32047c) Thanks [@fubhy](https://github.com/fubhy)! - Simplified encoding & usage of external positions & integrations.
+
+- [`3901cd5`](https://github.com/enzymefinance/sdk/commit/3901cd59505ca255f1332a7930ee34b9ed78da00) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies
+
+- Updated dependencies [[`3901cd5`](https://github.com/enzymefinance/sdk/commit/3901cd59505ca255f1332a7930ee34b9ed78da00)]:
+  - @enzymefinance/abis@0.0.10
+
 ## 0.0.18
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@enzymefinance/abis",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,13 @@
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
-  "files": ["abis/**", "dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "abis/**",
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "sideEffects": false,
   "type": "module",
   "main": "./dist/cjs/index.js",
@@ -669,7 +675,10 @@
   },
   "typesVersions": {
     "*": {
-      "*": ["./dist/types/abis/*.d.ts", "./dist/types/index.d.ts"]
+      "*": [
+        "./dist/types/abis/*.d.ts",
+        "./dist/types/index.d.ts"
+      ]
     }
   },
   "devDependencies": {
