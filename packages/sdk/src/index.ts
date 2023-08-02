@@ -455,7 +455,7 @@ export {
   decodeCallOnIntegrationArgs,
   callOnIntegrationArgsEncoding,
   type CallOnIntegrationArgs,
-} from "./extensions/integrations/callOnIntegration.js";
+} from "./extensions/integrations/callOnIntegration/callOnIntegration.js";
 
 // ./extensions/integrations/integrationTypes.js
 export type { Integration, IntegrationArgs } from "./extensions/integrations/integrationTypes.js";
@@ -466,7 +466,7 @@ export {
   encodeIntegrationCallArgs,
   type TypedIntegrationCallArgs,
   type PrepareUseIntegrationParams,
-} from "./extensions/integrations/prepareUseIntegration.js";
+} from "./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js";
 
 // ./extensions/policies/enums.js
 export type { PolicyHook } from "./extensions/policies/enums.js";
@@ -550,6 +550,18 @@ export {
   aaveV2RedeemEncoding,
   type AaveV2RedeemArgs,
 } from "./extensions/integrations/instances/aaveV2.js";
+
+// ./extensions/integrations/instances/aave3.js
+export {
+  encodeAaveV3LendArgs,
+  decodeAaveV3LendArgs,
+  encodeAaveV3RedeemArgs,
+  decodeAaveV3RedeemArgs,
+  aaveV3LendEncoding,
+  type AaveV3LendArgs,
+  aaveV3RedeemEncoding,
+  type AaveV3RedeemArgs,
+} from "./extensions/integrations/instances/aaveV3.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {
