@@ -1,9 +1,10 @@
-import { LEND_SELECTOR, REDEEM_SELECTOR } from "../../constants/selectors.js";
-import type { Prettify } from "../../utils/types.js";
-import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
-import { encodeCallOnIntegrationArgs } from "./callOnIntegration.js";
-import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "./instances/aaveV2.js";
-import { Integration, type IntegrationArgs } from "./integrationTypes.js";
+import { LEND_SELECTOR, REDEEM_SELECTOR } from "../../../constants/selectors.js";
+import type { Prettify } from "../../../utils/types.js";
+import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../../callOnExtension.js";
+import { encodeCallOnIntegrationArgs } from "../callOnIntegration/callOnIntegration.js";
+import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "../instances/aaveV2.js";
+import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "../instances/aaveV3.js";
+import { Integration, type IntegrationArgs } from "../integrationTypes.js";
 import type { Address, Hex } from "viem";
 
 export type TypedIntegrationCallArgs = {
@@ -55,5 +56,9 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeAaveV2LendArgs(callArgs)];
     case Integration.AaveV2Redeem:
       return [REDEEM_SELECTOR, encodeAaveV2RedeemArgs(callArgs)];
+    case Integration.AaveV3Lend:
+      return [LEND_SELECTOR, encodeAaveV3LendArgs(callArgs)];
+    case Integration.AaveV3Redeem:
+      return [REDEEM_SELECTOR, encodeAaveV3RedeemArgs(callArgs)];
   }
 }
