@@ -394,6 +394,9 @@ export {
   convertScaledPerSecondRateToRate,
 } from "./utils/rates.js";
 
+// ./utils/slippage.js
+export { multiplyBySlippage } from "./utils/slippage.js";
+
 // ./utils/types.js
 export type { PartialPick, Prettify, TupleOf, Tuple } from "./utils/types.js";
 
@@ -551,7 +554,7 @@ export {
   type AaveV2RedeemArgs,
 } from "./extensions/integrations/instances/aaveV2.js";
 
-// ./extensions/integrations/instances/aave3.js
+// ./extensions/integrations/instances/aaveV3.js
 export {
   encodeAaveV3LendArgs,
   decodeAaveV3LendArgs,
@@ -562,6 +565,18 @@ export {
   aaveV3RedeemEncoding,
   type AaveV3RedeemArgs,
 } from "./extensions/integrations/instances/aaveV3.js";
+
+// ./extensions/integrations/instances/compoundV2.js
+export {
+  encodeCompoundV2LendArgs,
+  decodeCompoundV2LendArgs,
+  encodeCompoundV2RedeemArgs,
+  decodeCompoundV2RedeemArgs,
+  compoundV2LendEncoding,
+  type CompoundV2LendArgs,
+  compoundV2RedeemEncoding,
+  type CompoundV2RedeemArgs,
+} from "./extensions/integrations/instances/compoundV2.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {
