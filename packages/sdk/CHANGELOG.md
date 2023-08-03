@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.20
+
+### Patch Changes
+
+- [#63](https://github.com/enzymefinance/sdk/pull/63) [`c1336cc`](https://github.com/enzymefinance/sdk/commit/c1336cc4fd560cc3e2ca99782cfedfb025cff9b7) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 trade actions
+
 ## 0.0.19
 
 ### Patch Changes
