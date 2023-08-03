@@ -11,7 +11,8 @@ export const MANAGEMENT_FEE = "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9";
 
 export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
 export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2";
-export const A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e";
+export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e";
+export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8";
 
 // Test accounts
 export const ACCOUNTS = [

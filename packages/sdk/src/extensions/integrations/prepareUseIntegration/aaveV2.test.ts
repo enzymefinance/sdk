@@ -1,4 +1,4 @@
-import { AAVE_V2_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
+import { AAVE_V2_ADAPTER, AAVE_V2_A_WETH, ALICE, BOB, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { Integration } from "../integrationTypes.js";
@@ -28,7 +28,7 @@ test("prepare adapter trade for Aave V2 lend should work correctly", async () =>
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.AaveV2Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V2_A_WETH,
         depositAmount,
       },
     }),
@@ -37,7 +37,7 @@ test("prepare adapter trade for Aave V2 lend should work correctly", async () =>
   });
 
   await testActions.assertBalanceOf({
-    token: A_WETH,
+    token: AAVE_V2_A_WETH,
     account: vaultProxy,
     expected: depositAmount,
     fuzziness: 100n,
@@ -51,7 +51,7 @@ test("prepareUseIntegration for Aave V2 lend should be equal to encoded data wit
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.AaveV2Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V2_A_WETH,
         depositAmount: toWei(100),
       },
     }),
@@ -117,7 +117,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.AaveV2Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V2_A_WETH,
         depositAmount: investmentAmount,
       },
     }),
@@ -126,7 +126,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
   });
 
   await testActions.assertBalanceOf({
-    token: A_WETH,
+    token: AAVE_V2_A_WETH,
     account: vaultProxy,
     expected: investmentAmount,
     fuzziness: 100n,
@@ -138,7 +138,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.AaveV2Redeem,
-        aToken: A_WETH,
+        aToken: AAVE_V2_A_WETH,
         redeemAmount: investmentAmount,
       },
     }),
@@ -161,7 +161,7 @@ test("prepareUseIntegration for Aave V2 redeem should be equal to encoded data w
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.AaveV2Redeem,
-        aToken: A_WETH,
+        aToken: AAVE_V2_A_WETH,
         redeemAmount: toWei(100),
       },
     }),

@@ -1,4 +1,4 @@
-import { AAVE_V3_ADAPTER, ALICE, A_WETH, BOB, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
+import { AAVE_V3_ADAPTER, AAVE_V3_A_WETH, ALICE, BOB, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { Integration } from "../integrationTypes.js";
@@ -28,7 +28,7 @@ test("prepare adapter trade for Aave V3 lend should work correctly", async () =>
       integrationAdapter: AAVE_V3_ADAPTER,
       callArgs: {
         type: Integration.AaveV3Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V3_A_WETH,
         depositAmount,
       },
     }),
@@ -37,7 +37,7 @@ test("prepare adapter trade for Aave V3 lend should work correctly", async () =>
   });
 
   await testActions.assertBalanceOf({
-    token: A_WETH,
+    token: AAVE_V3_A_WETH,
     account: vaultProxy,
     expected: depositAmount,
     fuzziness: 100n,
@@ -51,7 +51,7 @@ test("prepareUseIntegration for Aave V3 lend should be equal to encoded data wit
       integrationAdapter: AAVE_V3_ADAPTER,
       callArgs: {
         type: Integration.AaveV3Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V3_A_WETH,
         depositAmount: toWei(100),
       },
     }),
@@ -86,7 +86,7 @@ test("prepareUseIntegration for Aave V3 lend should be equal to encoded data wit
       "args": [
         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
         0n,
-        "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4c099f75150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000040000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
+        "0x0000000000000000000000009cfb64d91ce4eb821ff8edc1c2fda2e89e256707099f751500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000400000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d63100000",
       ],
       "functionName": "callOnExtension",
     }
@@ -117,7 +117,7 @@ test("prepare adapter trade for Aave V3 redeem should work correctly", async () 
       integrationAdapter: AAVE_V3_ADAPTER,
       callArgs: {
         type: Integration.AaveV3Lend,
-        aToken: A_WETH,
+        aToken: AAVE_V3_A_WETH,
         depositAmount: investmentAmount,
       },
     }),
@@ -126,7 +126,7 @@ test("prepare adapter trade for Aave V3 redeem should work correctly", async () 
   });
 
   await testActions.assertBalanceOf({
-    token: A_WETH,
+    token: AAVE_V3_A_WETH,
     account: vaultProxy,
     expected: investmentAmount,
     fuzziness: 100n,
@@ -138,7 +138,7 @@ test("prepare adapter trade for Aave V3 redeem should work correctly", async () 
       integrationAdapter: AAVE_V3_ADAPTER,
       callArgs: {
         type: Integration.AaveV3Redeem,
-        aToken: A_WETH,
+        aToken: AAVE_V3_A_WETH,
         redeemAmount: investmentAmount,
       },
     }),
@@ -161,7 +161,7 @@ test("prepareUseIntegration for Aave V3 redeem should be equal to encoded data w
       integrationAdapter: AAVE_V3_ADAPTER,
       callArgs: {
         type: Integration.AaveV3Redeem,
-        aToken: A_WETH,
+        aToken: AAVE_V3_A_WETH,
         redeemAmount: toWei(100),
       },
     }),
@@ -196,7 +196,7 @@ test("prepareUseIntegration for Aave V3 redeem should be equal to encoded data w
       "args": [
         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
         0n,
-        "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4cc29fa9dd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000040000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
+        "0x0000000000000000000000009cfb64d91ce4eb821ff8edc1c2fda2e89e256707c29fa9dd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000400000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d63100000",
       ],
       "functionName": "callOnExtension",
     }

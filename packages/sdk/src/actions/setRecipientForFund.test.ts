@@ -73,7 +73,7 @@ test("should prepare params correctly", async () => {
         },
       ],
       "args": [
-        "0x9979536797DbD4e18e3880f4AF28863bc03390AF",
+        "0x34d1a73CC6fF0C7b8C376afBf582AA079032f880",
         "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
       ],
       "functionName": "setRecipientForFund",
