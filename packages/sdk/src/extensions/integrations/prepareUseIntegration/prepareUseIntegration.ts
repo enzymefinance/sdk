@@ -4,6 +4,7 @@ import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../../
 import { encodeCallOnIntegrationArgs } from "../callOnIntegration/callOnIntegration.js";
 import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "../instances/aaveV2.js";
 import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "../instances/aaveV3.js";
+import { encodeCompoundV2LendArgs, encodeCompoundV2RedeemArgs } from "../instances/compoundV2.js";
 import { Integration, type IntegrationArgs } from "../integrationTypes.js";
 import type { Address, Hex } from "viem";
 
@@ -60,5 +61,9 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeAaveV3LendArgs(callArgs)];
     case Integration.AaveV3Redeem:
       return [REDEEM_SELECTOR, encodeAaveV3RedeemArgs(callArgs)];
+    case Integration.CompoundV2Lend:
+      return [LEND_SELECTOR, encodeCompoundV2LendArgs(callArgs)];
+    case Integration.CompoundV2Redeem:
+      return [REDEEM_SELECTOR, encodeCompoundV2RedeemArgs(callArgs)];
   }
 }
