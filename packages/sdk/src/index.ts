@@ -392,6 +392,7 @@ export {
   calculateAmountDueForScaledPerSecondRate,
   convertRateToScaledPerSecondRate,
   convertScaledPerSecondRateToRate,
+  multiplyByRate,
 } from "./utils/rates.js";
 
 // ./utils/slippage.js
@@ -577,6 +578,18 @@ export {
   compoundV2RedeemEncoding,
   type CompoundV2RedeemArgs,
 } from "./extensions/integrations/instances/compoundV2.js";
+
+// ./extensions/integrations/instances/yearnVaultV2.js
+export {
+  encodeYearnVaultV2LendArgs,
+  decodeYearnVaultV2LendArgs,
+  encodeYearnVaultV2RedeemArgs,
+  decodeYearnVaultV2RedeemArgs,
+  yearnVaultV2LendEncoding,
+  type YearnVaultV2LendArgs,
+  yearnVaultV2RedeemEncoding,
+  type YearnVaultV2RedeemArgs,
+} from "./extensions/integrations/instances/yearnVaultV2.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {

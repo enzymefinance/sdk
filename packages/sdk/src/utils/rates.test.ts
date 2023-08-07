@@ -1,8 +1,9 @@
-import { toBps, toSeconds } from "./conversion.js";
+import { toBps, toSeconds, toWei } from "./conversion.js";
 import {
   calculateAmountDueForScaledPerSecondRate,
   convertRateToScaledPerSecondRate,
   convertScaledPerSecondRateToRate,
+  multiplyByRate,
 } from "./rates.js";
 import { expect, test } from "vitest";
 
@@ -69,4 +70,24 @@ test("convertRateToScaledPerSecondRate should work correctly", () => {
       adjustInflation: false,
     }),
   ).toMatchInlineSnapshot("1000000003675934670872217630n");
+});
+
+test("multiplyByRate should work correctly", () => {
+  expect(
+    multiplyByRate({
+      inverse: true,
+      rate: toWei(200),
+      rateDecimals: 18,
+      value: toWei(250),
+    }),
+  ).toMatchInlineSnapshot('1250000000000000000n');
+
+  expect(
+    multiplyByRate({
+      inverse: false,
+      rate: toWei(150),
+      rateDecimals: 6,
+      value: toWei(200),
+    }),
+  ).toMatchInlineSnapshot('30000000000000000000000000000000000n');
 });
