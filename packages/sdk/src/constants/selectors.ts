@@ -12,5 +12,6 @@ export const PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR = "0x07
 export const SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR = "0x447fbc63"; // approveExchangeOnBehalf(address)
 export const SETTLE_CONTINUOUS_FEES_SELECTOR = "0xc071fe93"; // settleContinuousFees(address,bytes)
 export const VAULT_CALL_ANY_DATA_HASH = "0x5bf1898dd28c4d29f33c4c1bb9b8a7e2f6322847d70be63e8f89de024d08a669"; // mln.vaultCall.any
+export const CLAIM_REWARDS_SELECTOR = "0xb9dfbacc"; // claimRewards(address,bytes,bytes)
 export const LEND_SELECTOR = "0x099f7515"; // lend(address,bytes,bytes)
 export const REDEEM_SELECTOR = "0xc29fa9dd"; // redeem(address,bytes,bytes)
