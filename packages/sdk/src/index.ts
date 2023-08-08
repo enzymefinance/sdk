@@ -595,6 +595,18 @@ export {
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
+// ./extensions/integrations/instances/uniswapV2Liquidity.js
+export {
+  encodeUniswapV2LiquidityLendArgs,
+  decodeUniswapV2LiquidityLendArgs,
+  encodeUniswapV2LiquidityRedeemArgs,
+  decodeUniswapV2LiquidityRedeemArgs,
+  uniswapV2LiquidityLendEncoding,
+  type UniswapV2LiquidityLendArgs,
+  uniswapV2LiquidityRedeemEncoding,
+  type UniswapV2LiquidityRedeemArgs,
+} from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {
   encodeYearnVaultV2LendArgs,

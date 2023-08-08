@@ -10,6 +10,10 @@ import {
   encodeCompoundV3LendArgs,
   encodeCompoundV3RedeemArgs,
 } from "../instances/compoundV3.js";
+import {
+  encodeUniswapV2LiquidityLendArgs,
+  encodeUniswapV2LiquidityRedeemArgs,
+} from "../instances/uniswapV2Liquidity.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "../instances/yearnVaultV2.js";
 import { Integration, type IntegrationArgs } from "../integrationTypes.js";
 import type { Address, Hex } from "viem";
@@ -77,6 +81,10 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeCompoundV3RedeemArgs(callArgs)];
     case Integration.CompoundV3ClaimRewards:
       return [CLAIM_REWARDS_SELECTOR, encodeCompoundV3ClaimRewardsArgs(callArgs)];
+    case Integration.UniswapV2LiquidityLend:
+      return [LEND_SELECTOR, encodeUniswapV2LiquidityLendArgs(callArgs)];
+    case Integration.UniswapV2LiquidityRedeem:
+      return [REDEEM_SELECTOR, encodeUniswapV2LiquidityRedeemArgs(callArgs)];
     case Integration.YearnVaultV2Lend:
       return [LEND_SELECTOR, encodeYearnVaultV2LendArgs(callArgs)];
     case Integration.YearnVaultV2Redeem:
