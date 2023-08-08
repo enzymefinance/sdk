@@ -2,6 +2,7 @@ import type { AaveV2LendArgs, AaveV2RedeemArgs } from "./instances/aaveV2.js";
 import type { AaveV3LendArgs, AaveV3RedeemArgs } from "./instances/aaveV3.js";
 import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
+import type { YearnVaultV2LendArgs, YearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
 
 export type Integration = typeof Integration[keyof typeof Integration];
 export const Integration = {
@@ -14,6 +15,8 @@ export const Integration = {
   CompoundV3Lend: "CompoundV3Lend",
   CompoundV3Redeem: "CompoundV3Redeem",
   CompoundV3ClaimRewards: "CompoundV3ClaimRewards",
+  YearnVaultV2Lend: "YearnVaultV2Lend",
+  YearnVaultV2Redeem: "YearnVaultV2Redeem",
 } as const;
 
 export type IntegrationArgs = {
@@ -26,4 +29,6 @@ export type IntegrationArgs = {
   [Integration.CompoundV3Lend]: CompoundV3LendArgs;
   [Integration.CompoundV3Redeem]: CompoundV3RedeemArgs;
   [Integration.CompoundV3ClaimRewards]: CompoundV3ClaimRewardsArgs;
+  [Integration.YearnVaultV2Lend]: YearnVaultV2LendArgs;
+  [Integration.YearnVaultV2Redeem]: YearnVaultV2RedeemArgs;
 };

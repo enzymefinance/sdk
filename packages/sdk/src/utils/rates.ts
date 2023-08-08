@@ -63,3 +63,19 @@ function rpow(x: bigint, n: bigint, b: bigint) {
 
   return BigInt(xD.div(bD).pow(nD).mul(bD).toFixed(0));
 }
+
+export function multiplyByRate({
+  inverse = false,
+  rate,
+  rateDecimals = 18,
+  value,
+}: {
+  inverse?: boolean;
+  rate: bigint;
+  rateDecimals?: number;
+  value: bigint;
+}) {
+  const oneUnit = BigInt(10 ** rateDecimals);
+
+  return inverse ? (value * oneUnit) / rate : (value * rate) / oneUnit;
+}
