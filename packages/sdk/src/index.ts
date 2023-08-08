@@ -595,6 +595,22 @@ export {
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
+// ./extensions/integrations/instances/idleV4.js
+export {
+  encodeIdleV4LendArgs,
+  decodeIdleV4LendArgs,
+  encodeIdleV4RedeemArgs,
+  decodeIdleV4RedeemArgs,
+  encodeIdleV4ClaimRewardsArgs,
+  decodeIdleV4ClaimRewardsArgs,
+  idleV4LendEncoding,
+  type IdleV4LendArgs,
+  idleV4RedeemEncoding,
+  type IdleV4RedeemArgs,
+  idleV4ClaimRewardsEncoding,
+  type IdleV4ClaimRewardsArgs,
+} from "./extensions/integrations/instances/idleV4.js";
+
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {
   encodeYearnVaultV2LendArgs,
