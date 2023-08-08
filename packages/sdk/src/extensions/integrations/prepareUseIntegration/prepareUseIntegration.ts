@@ -1,10 +1,15 @@
-import { LEND_SELECTOR, REDEEM_SELECTOR } from "../../../constants/selectors.js";
+import { CLAIM_REWARDS_SELECTOR, LEND_SELECTOR, REDEEM_SELECTOR } from "../../../constants/selectors.js";
 import type { Prettify } from "../../../utils/types.js";
 import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../../callOnExtension.js";
 import { encodeCallOnIntegrationArgs } from "../callOnIntegration/callOnIntegration.js";
 import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "../instances/aaveV2.js";
 import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "../instances/aaveV3.js";
 import { encodeCompoundV2LendArgs, encodeCompoundV2RedeemArgs } from "../instances/compoundV2.js";
+import {
+  encodeCompoundV3ClaimRewardsArgs,
+  encodeCompoundV3LendArgs,
+  encodeCompoundV3RedeemArgs,
+} from "../instances/compoundV3.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "../instances/yearnVaultV2.js";
 import { Integration, type IntegrationArgs } from "../integrationTypes.js";
 import type { Address, Hex } from "viem";
@@ -66,6 +71,12 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeCompoundV2LendArgs(callArgs)];
     case Integration.CompoundV2Redeem:
       return [REDEEM_SELECTOR, encodeCompoundV2RedeemArgs(callArgs)];
+    case Integration.CompoundV3Lend:
+      return [LEND_SELECTOR, encodeCompoundV3LendArgs(callArgs)];
+    case Integration.CompoundV3Redeem:
+      return [REDEEM_SELECTOR, encodeCompoundV3RedeemArgs(callArgs)];
+    case Integration.CompoundV3ClaimRewards:
+      return [CLAIM_REWARDS_SELECTOR, encodeCompoundV3ClaimRewardsArgs(callArgs)];
     case Integration.YearnVaultV2Lend:
       return [LEND_SELECTOR, encodeYearnVaultV2LendArgs(callArgs)];
     case Integration.YearnVaultV2Redeem:

@@ -579,6 +579,22 @@ export {
   type CompoundV2RedeemArgs,
 } from "./extensions/integrations/instances/compoundV2.js";
 
+// ./extensions/integrations/instances/compoundV3.js
+export {
+  encodeCompoundV3LendArgs,
+  decodeCompoundV3LendArgs,
+  encodeCompoundV3RedeemArgs,
+  decodeCompoundV3RedeemArgs,
+  encodeCompoundV3ClaimRewardsArgs,
+  decodeCompoundV3ClaimRewardsArgs,
+  compoundV3LendEncoding,
+  type CompoundV3LendArgs,
+  compoundV3RedeemEncoding,
+  type CompoundV3RedeemArgs,
+  compoundV3ClaimRewardsEncoding,
+  type CompoundV3ClaimRewardsArgs,
+} from "./extensions/integrations/instances/compoundV3.js";
+
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {
   encodeYearnVaultV2LendArgs,

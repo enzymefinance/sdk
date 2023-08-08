@@ -230,7 +230,7 @@ test("prepare adapter trade for Compound V2 redeem should work correctly", async
   });
 });
 
-test("prepareUseIntegration for Compound V2 redeem should be equal to encoded data with encodeCallArgsForCompoundV2Lend", () => {
+test("prepareUseIntegration for Compound V2 redeem should be equal to encoded data with encodeCallArgsForCompoundV2Redeem", () => {
   expect(
     prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,

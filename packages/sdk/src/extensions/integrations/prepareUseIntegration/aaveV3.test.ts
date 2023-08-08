@@ -154,7 +154,7 @@ test("prepare adapter trade for Aave V3 redeem should work correctly", async () 
   });
 });
 
-test("prepareUseIntegration for Aave V3 redeem should be equal to encoded data with encodeCallArgsForAaveV3Lend", () => {
+test("prepareUseIntegration for Aave V3 redeem should be equal to encoded data with encodeCallArgsForAaveV3Redeem", () => {
   expect(
     prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
