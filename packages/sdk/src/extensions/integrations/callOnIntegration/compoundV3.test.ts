@@ -29,7 +29,7 @@ test("decodeCallOnIntegrationArgs for Compound V3 lend should decode correctly",
     },
     `
     {
-      "adapter": "0xECe6B376af7C9273cebaf6528565c47Ea2Cb8a4C",
+      "adapter": "0xFaA9B9Cc98503F51A54F6038DfdD0E43AA0Ac98e",
       "integrationData": "0x1230",
       "selector": "0x099f7515",
     }
