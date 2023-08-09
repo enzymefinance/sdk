@@ -10,6 +10,7 @@ import {
   encodeCompoundV3LendArgs,
   encodeCompoundV3RedeemArgs,
 } from "../instances/compoundV3.js";
+import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "../instances/idleV4.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
   encodeUniswapV2LiquidityRedeemArgs,
@@ -89,5 +90,11 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeYearnVaultV2LendArgs(callArgs)];
     case Integration.YearnVaultV2Redeem:
       return [REDEEM_SELECTOR, encodeYearnVaultV2RedeemArgs(callArgs)];
+    case Integration.IdleV4Lend:
+      return [LEND_SELECTOR, encodeIdleV4LendArgs(callArgs)];
+    case Integration.IdleV4Redeem:
+      return [REDEEM_SELECTOR, encodeIdleV4RedeemArgs(callArgs)];
+    case Integration.IdleV4ClaimRewards:
+      return [CLAIM_REWARDS_SELECTOR, encodeIdleV4ClaimRewardsArgs(callArgs)];
   }
 }
