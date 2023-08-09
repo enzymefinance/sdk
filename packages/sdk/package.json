@@ -13,7 +13,7 @@
     "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\", \"sideEffects\":false}'",
     "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
-    "test": "vitest -u",
+    "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
@@ -53,6 +53,7 @@
     "@enzymefinance/abis": "^0.0.10",
     "abitype": "^0.9.0",
     "decimal.js": "^10.4.3",
+    "js-sha3": "^0.8.0",
     "viem": "^1.2.9"
   },
   "devDependencies": {

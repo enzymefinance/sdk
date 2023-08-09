@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -239,6 +239,9 @@ importers:
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
+      js-sha3:
+        specifier: ^0.8.0
+        version: 0.8.0
       viem:
         specifier: ^1.2.9
         version: 1.2.9(typescript@5.1.6)
@@ -3213,6 +3216,10 @@ packages:
   /jiti@1.18.2:
     resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
     hasBin: true
+    dev: false
+
+  /js-sha3@0.8.0:
+    resolution: {integrity: sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==}
     dev: false
 
   /js-tokens@4.0.0:

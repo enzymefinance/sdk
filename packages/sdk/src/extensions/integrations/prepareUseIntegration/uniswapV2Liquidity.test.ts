@@ -1,13 +1,5 @@
 import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_DAI_ETH } from "../../../../tests/constants.js";
-import {
-  AAVE_V2_ADAPTER,
-  AAVE_V2_A_WETH,
-  ALICE,
-  BOB,
-  DAI,
-  INTEGRATION_MANAGER,
-  WETH,
-} from "../../../../tests/constants.js";
+import { ALICE, BOB, DAI, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
 import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { min } from "../../../utils/math.js";
@@ -21,6 +13,7 @@ const abiUniswapV2Pair = parseAbi([
   "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
   "function totalSupply() view returns (uint256)",
   "function token0() view returns (address)",
+  "function token1() view returns (address)",
 ] as const);
 
 async function getUniswapV2PoolLendRate({
@@ -28,7 +21,7 @@ async function getUniswapV2PoolLendRate({
   tokenA,
   amountADesired,
 }: { poolToken: Address; amountADesired: bigint; tokenA: Address }) {
-  const [[reserve0, reserve1], token0Address, poolTokensSupply] = await Promise.all([
+  const [[reserveA, reserveB], tokenAAddress, poolTokensSupply] = await Promise.all([
     publicClient.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
@@ -46,7 +39,7 @@ async function getUniswapV2PoolLendRate({
     }),
   ]);
 
-  const [tokenAReserve, tokenBReserve] = token0Address === tokenA ? [reserve0, reserve1] : [reserve1, reserve0];
+  const [tokenAReserve, tokenBReserve] = tokenAAddress === tokenA ? [reserveA, reserveB] : [reserveB, reserveA];
 
   if (tokenAReserve === 0n || tokenBReserve === 0n) {
     throw new Error("Invalid pool");
@@ -62,7 +55,42 @@ async function getUniswapV2PoolLendRate({
   return { amountBDesired, expectedPoolTokens };
 }
 
-test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly", async () => {
+async function getUniswapV2PoolRedeemRate({
+  poolToken,
+  poolTokenAmount,
+}: { poolToken: Address; poolTokenAmount: bigint }) {
+  const [[reserveA, reserveB], poolTokensSupply, tokenA, tokenB] = await Promise.all([
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "getReserves",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "totalSupply",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "token0",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "token1",
+    }),
+  ]);
+
+  return {
+    tokenAExpected: (poolTokenAmount * reserveA) / poolTokensSupply,
+    tokenA,
+    tokenB,
+    tokenBExpected: (poolTokenAmount * reserveB) / poolTokensSupply,
+  };
+}
+
+test("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly", async () => {
   const vaultOwner = ALICE;
   const sharesBuyer = BOB;
 
@@ -94,6 +122,8 @@ test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work corre
     slippage,
   });
 
+  await testActions.deal({ token: DAI, to: vaultProxy, amount: rates.amountBDesired, slotOfBalancesMapping: 2 });
+
   await sendTestTransaction({
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
@@ -102,7 +132,16 @@ test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work corre
         type: Integration.UniswapV2LiquidityLend,
         outgoingAssets: [WETH, DAI],
         maxOutgoingAssetAmounts: [depositAmount, rates.amountBDesired],
-        minOutgoingAssetAmounts: [0n, 0n],
+        minOutgoingAssetAmounts: [
+          multiplyBySlippage({
+            amount: depositAmount,
+            slippage,
+          }),
+          multiplyBySlippage({
+            amount: rates.amountBDesired,
+            slippage,
+          }),
+        ],
         minIncomingAssetAmount: minIncomingAssetAmountWithSlippage,
       },
     }),
@@ -111,18 +150,18 @@ test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work corre
   });
 
   await testActions.assertBalanceOf({
-    token: AAVE_V2_A_WETH,
+    token: UNISWAP_V2_POOL_DAI_ETH,
     account: vaultProxy,
     expected: minIncomingAssetAmount,
     fuzziness: minIncomingAssetAmount - minIncomingAssetAmountWithSlippage,
   });
 });
 
-test("prepareUseIntegration for Uniswap Liquidity V2 lend should be equal to encoded data with encodeCallArgsForAaveV2Lend", () => {
+test("prepareUseIntegration for Uniswap Liquidity V2 lend should be equal to encoded data with encodeCallArgsForUniswapV2LiquidityV2Lend", () => {
   expect(
     prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
-      integrationAdapter: AAVE_V2_ADAPTER,
+      integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
       callArgs: {
         type: Integration.UniswapV2LiquidityLend,
         outgoingAssets: [WETH, DAI],
@@ -162,7 +201,7 @@ test("prepareUseIntegration for Uniswap Liquidity V2 lend should be equal to enc
       "args": [
         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
         0n,
-        "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4c099f75150000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000c00000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000006b175474e89094c44da98b954eedeac495271d0f00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000",
+        "0x000000000000000000000000f78130afeda6d9df3394b34d36239aec7fae48d9099f751500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000006b175474e89094c44da98b954eedeac495271d0f0000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000000000000000000000000000000000000000000000000002b5e3af16b18800000000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000056bc75e2d63100000",
       ],
       "functionName": "callOnExtension",
     }
@@ -170,112 +209,96 @@ test("prepareUseIntegration for Uniswap Liquidity V2 lend should be equal to enc
   );
 });
 
-// test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctly", async () => {
-//   const vaultOwner = ALICE;
-//   const sharesBuyer = BOB;
+test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
 
-//   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-//     vaultOwner,
-//     denominationAsset: WETH,
-//   });
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-//   const investmentAmount = toWei(250);
+  const redeemAmount = toWei(250);
 
-//   await testActions.buyShares({
-//     comptrollerProxy,
-//     sharesBuyer,
-//     investmentAmount: investmentAmount,
-//   });
+  await testActions.deal({
+    token: UNISWAP_V2_POOL_DAI_ETH,
+    to: vaultProxy,
+    amount: redeemAmount,
+    slotOfBalancesMapping: 1,
+  });
 
-//   await sendTestTransaction({
-//     ...prepareUseIntegration({
-//       integrationManager: INTEGRATION_MANAGER,
-//       integrationAdapter: AAVE_V2_ADAPTER,
-//       callArgs: {
-//         type: Integration.AaveV2Lend,
-//         aToken: AAVE_V2_A_WETH,
-//         depositAmount: investmentAmount,
-//       },
-//     }),
-//     account: vaultOwner,
-//     address: comptrollerProxy,
-//   });
+  const redeemRate = await getUniswapV2PoolRedeemRate({
+    poolTokenAmount: redeemAmount,
+    poolToken: UNISWAP_V2_POOL_DAI_ETH,
+  });
 
-//   await testActions.assertBalanceOf({
-//     token: AAVE_V2_A_WETH,
-//     account: vaultProxy,
-//     expected: investmentAmount,
-//     fuzziness: 100n,
-//   });
+  const slippage = 1n;
 
-//   await sendTestTransaction({
-//     ...prepareUseIntegration({
-//       integrationManager: INTEGRATION_MANAGER,
-//       integrationAdapter: AAVE_V2_ADAPTER,
-//       callArgs: {
-//         type: Integration.AaveV2Redeem,
-//         aToken: AAVE_V2_A_WETH,
-//         redeemAmount: investmentAmount,
-//       },
-//     }),
-//     account: vaultOwner,
-//     address: comptrollerProxy,
-//   });
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.UniswapV2LiquidityRedeem,
+        outgoingAssetAmount: redeemAmount,
+        incomingAssets: [redeemRate.tokenA, redeemRate.tokenB],
+        minIncomingAssetAmounts: [
+          multiplyBySlippage({ amount: redeemRate.tokenAExpected, slippage }),
+          multiplyBySlippage({ amount: redeemRate.tokenBExpected, slippage }),
+        ],
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+});
 
-//   await testActions.assertBalanceOf({
-//     token: WETH,
-//     account: vaultProxy,
-//     expected: investmentAmount,
-//     fuzziness: 100n,
-//   });
-// });
-
-// test("prepareUseIntegration for Uniswap Liquidity V2 redeem should be equal to encoded data with encodeCallArgsForAaveV2Redeem", () => {
-//   expect(
-//     prepareUseIntegration({
-//       integrationManager: INTEGRATION_MANAGER,
-//       integrationAdapter: AAVE_V2_ADAPTER,
-//       callArgs: {
-//         type: Integration.AaveV2Redeem,
-//         aToken: AAVE_V2_A_WETH,
-//         redeemAmount: toWei(100),
-//       },
-//     }),
-//   ).toMatchInlineSnapshot(
-//     `
-//     {
-//       "abi": [
-//         {
-//           "inputs": [
-//             {
-//               "internalType": "address",
-//               "name": "_extension",
-//               "type": "address",
-//             },
-//             {
-//               "internalType": "uint256",
-//               "name": "_actionId",
-//               "type": "uint256",
-//             },
-//             {
-//               "internalType": "bytes",
-//               "name": "_callArgs",
-//               "type": "bytes",
-//             },
-//           ],
-//           "name": "callOnExtension",
-//           "outputs": [],
-//           "stateMutability": "nonpayable",
-//           "type": "function",
-//         },
-//       ],
-//       "args": [
-//         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
-//         0n,
-//         "0x000000000000000000000000ece6b376af7c9273cebaf6528565c47ea2cb8a4cc29fa9dd0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000040000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
-//       ],
-//       "functionName": "callOnExtension",
-//     }
-//   `,
-//   );
-// });
+test("prepareUseIntegration for Uniswap Liquidity V2 redeem should be equal to encoded data with encodeCallArgsForUniswapV2LiquidityV2Redeem", () => {
+  expect(
+    prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.UniswapV2LiquidityRedeem,
+        outgoingAssetAmount: toWei(100),
+        incomingAssets: [WETH, DAI],
+        minIncomingAssetAmounts: [toWei(100), toWei(150)],
+      },
+    }),
+  ).toMatchInlineSnapshot(
+    `
+    {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "_extension",
+              "type": "address",
+            },
+            {
+              "internalType": "uint256",
+              "name": "_actionId",
+              "type": "uint256",
+            },
+            {
+              "internalType": "bytes",
+              "name": "_callArgs",
+              "type": "bytes",
+            },
+          ],
+          "name": "callOnExtension",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function",
+        },
+      ],
+      "args": [
+        "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
+        0n,
+        "0x000000000000000000000000f78130afeda6d9df3394b34d36239aec7fae48d9c29fa9dd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000006b175474e89094c44da98b954eedeac495271d0f0000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000",
+      ],
+      "functionName": "callOnExtension",
+    }
+  `,
+  );
+});

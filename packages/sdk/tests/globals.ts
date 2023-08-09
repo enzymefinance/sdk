@@ -2,6 +2,7 @@ import { approveSpend } from "./actions/approveSpend.js";
 import { assertBalanceOf } from "./actions/assertBalanceOf.js";
 import { buyShares } from "./actions/buyShares.js";
 import { createTestVault } from "./actions/createTestVault.js";
+import { deal } from "./actions/deal.js";
 import { deployGasRelayPaymaster } from "./actions/deployGasRelayPaymaster.js";
 import { getBalanceOf } from "./actions/getBalanceOf.js";
 import { getGasRelayPaymaster } from "./actions/getGasRelayPaymaster.js";
@@ -24,6 +25,7 @@ import { parseAccount } from "viem/utils";
 
 export const testActions = {
   createTestVault,
+  deal,
   wrapEther,
   approveSpend,
   buyShares,

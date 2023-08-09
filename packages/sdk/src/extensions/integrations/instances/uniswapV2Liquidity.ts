@@ -59,18 +59,18 @@ export const uniswapV2LiquidityRedeemEncoding = [
   },
   {
     name: "incomingAssets",
-    type: "address[]",
+    type: "address[2]",
   },
   {
     name: "minIncomingAssetAmounts",
-    type: "uint256[]",
+    type: "uint256[2]",
   },
 ] as const;
 
 export type UniswapV2LiquidityRedeemArgs = {
   outgoingAssetAmount: bigint;
-  incomingAssets: Address[];
-  minIncomingAssetAmounts: bigint[];
+  incomingAssets: [Address, Address];
+  minIncomingAssetAmounts: [bigint, bigint];
 };
 
 export function encodeUniswapV2LiquidityRedeemArgs({
