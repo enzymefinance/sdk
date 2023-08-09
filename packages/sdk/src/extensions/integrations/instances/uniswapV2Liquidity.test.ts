@@ -58,9 +58,13 @@ test("decodeUniswapV2LiquidityRedeemArgs should be equal to encoded data with en
     outgoingAssetAmount: toWei(100),
     incomingAssets: [WETH, USDC],
     minIncomingAssetAmounts: [toWei(100), toWei(150)],
-  };
+  } as const;
 
-  const encoded = encodeUniswapV2LiquidityRedeemArgs(params);
+  const encoded = encodeUniswapV2LiquidityRedeemArgs({
+    ...params,
+    incomingAssets: [...params.incomingAssets],
+    minIncomingAssetAmounts: [...params.minIncomingAssetAmounts],
+  });
   const decoded = decodeUniswapV2LiquidityRedeemArgs(encoded);
 
   expect(decoded).toEqual(params);

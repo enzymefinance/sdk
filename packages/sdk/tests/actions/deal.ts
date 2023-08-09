@@ -24,6 +24,7 @@ export async function deal({
   amount: bigint;
   /**
    * Slot of the balances mapping.
+   * Usually it is 1.
    */
   slotOfBalancesMapping: number;
 }) {
