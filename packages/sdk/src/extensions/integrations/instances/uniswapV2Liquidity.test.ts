@@ -14,9 +14,14 @@ test("decodeUniswapV2LiquidityLendArgs should be equal to encoded data with enco
     maxOutgoingAssetAmounts: [toWei(100), toWei(150)],
     minOutgoingAssetAmounts: [toWei(50), toWei(100)],
     minIncomingAssetAmount: toWei(100),
-  };
+  } as const;
 
-  const encoded = encodeUniswapV2LiquidityLendArgs(params);
+  const encoded = encodeUniswapV2LiquidityLendArgs({
+    ...params,
+    outgoingAssets: [...params.outgoingAssets],
+    maxOutgoingAssetAmounts: [...params.maxOutgoingAssetAmounts],
+    minOutgoingAssetAmounts: [...params.minOutgoingAssetAmounts],
+  });
   const decoded = decodeUniswapV2LiquidityLendArgs(encoded);
 
   expect(decoded).toEqual(params);

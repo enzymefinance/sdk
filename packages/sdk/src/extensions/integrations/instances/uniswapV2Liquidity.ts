@@ -3,15 +3,15 @@ import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from
 export const uniswapV2LiquidityLendEncoding = [
   {
     name: "outgoingAssets",
-    type: "address[]",
+    type: "address[2]",
   },
   {
     name: "maxOutgoingAssetAmounts",
-    type: "uint256[]",
+    type: "uint256[2]",
   },
   {
     name: "minOutgoingAssetAmounts",
-    type: "uint256[]",
+    type: "uint256[2]",
   },
   {
     name: "minIncomingAssetAmount",
@@ -20,9 +20,9 @@ export const uniswapV2LiquidityLendEncoding = [
 ] as const;
 
 export type UniswapV2LiquidityLendArgs = {
-  outgoingAssets: Address[];
-  maxOutgoingAssetAmounts: bigint[];
-  minOutgoingAssetAmounts: bigint[];
+  outgoingAssets: [Address, Address];
+  maxOutgoingAssetAmounts: [bigint, bigint];
+  minOutgoingAssetAmounts: [bigint, bigint];
   minIncomingAssetAmount: bigint;
 };
 

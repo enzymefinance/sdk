@@ -1,15 +1,16 @@
-import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_LINK_ETH } from "../../../../tests/constants.js";
+import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_DAI_ETH } from "../../../../tests/constants.js";
 import {
   AAVE_V2_ADAPTER,
   AAVE_V2_A_WETH,
   ALICE,
   BOB,
+  DAI,
   INTEGRATION_MANAGER,
-  LINK,
   WETH,
 } from "../../../../tests/constants.js";
 import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
+import { min } from "../../../utils/math.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
@@ -51,16 +52,14 @@ async function getUniswapV2PoolLendRate({
     throw new Error("Invalid pool");
   }
 
-  return (amountADesired * poolTokensSupply) / tokenAReserve;
+  const amountBDesired = (amountADesired * tokenBReserve) / tokenAReserve;
 
-  // const amountBDesired = (amountADesired * tokenBReserve) / tokenAReserve;
+  const expectedPoolTokens = min(
+    (amountADesired * poolTokensSupply) / tokenAReserve,
+    (amountBDesired * poolTokensSupply) / tokenBReserve,
+  );
 
-  // const expectedPoolTokens = min(
-  //   (amountADesired * poolTokensSupply) / tokenAReserve,
-  //   (amountBDesired * poolTokensSupply) / tokenBReserve,
-  // );
-
-  // return { amountBDesired, expectedPoolTokens };
+  return { amountBDesired, expectedPoolTokens };
 }
 
 test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly", async () => {
@@ -80,11 +79,13 @@ test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work corre
     investmentAmount: depositAmount,
   });
 
-  const minIncomingAssetAmount = await getUniswapV2PoolLendRate({
-    poolToken: UNISWAP_V2_POOL_LINK_ETH,
+  const rates = await getUniswapV2PoolLendRate({
+    poolToken: UNISWAP_V2_POOL_DAI_ETH,
     tokenA: WETH,
     amountADesired: depositAmount,
   });
+
+  const minIncomingAssetAmount = rates.expectedPoolTokens;
 
   const slippage = 1n;
 
@@ -99,8 +100,8 @@ test.only("prepare adapter trade for Uniswap Liquidity V2 lend should work corre
       integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
       callArgs: {
         type: Integration.UniswapV2LiquidityLend,
-        outgoingAssets: [LINK, WETH],
-        maxOutgoingAssetAmounts: [0n, depositAmount],
+        outgoingAssets: [WETH, DAI],
+        maxOutgoingAssetAmounts: [depositAmount, rates.amountBDesired],
         minOutgoingAssetAmounts: [0n, 0n],
         minIncomingAssetAmount: minIncomingAssetAmountWithSlippage,
       },
@@ -124,7 +125,7 @@ test("prepareUseIntegration for Uniswap Liquidity V2 lend should be equal to enc
       integrationAdapter: AAVE_V2_ADAPTER,
       callArgs: {
         type: Integration.UniswapV2LiquidityLend,
-        outgoingAssets: [WETH, LINK],
+        outgoingAssets: [WETH, DAI],
         maxOutgoingAssetAmounts: [toWei(100), toWei(150)],
         minOutgoingAssetAmounts: [toWei(50), toWei(100)],
         minIncomingAssetAmount: toWei(100),
