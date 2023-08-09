@@ -10,7 +10,7 @@ export const uniswapV2LiquidityLendEncoding = [
     type: "uint256[]",
   },
   {
-    name: "minOutgoingAssetAmounts_",
+    name: "minOutgoingAssetAmounts",
     type: "uint256[]",
   },
   {
