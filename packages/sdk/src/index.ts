@@ -606,6 +606,14 @@ export {
   uniswapV2LiquidityRedeemEncoding,
   type UniswapV2LiquidityRedeemArgs,
 } from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+// ./extensions/integrations/instances/uniswapV2Liquidity.js
+
+export {
+  encodeUniswapV3TakeOrderArgs,
+  decodeUniswapV3TakeOrderArgs,
+  uniswapV3TakeOrderEncoding,
+  type UniswapV3TakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV3.js";
 
 // ./extensions/integrations/instances/idleV4.js
 export {
