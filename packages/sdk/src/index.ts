@@ -122,6 +122,11 @@ export {
   VAULT_CALL_ANY_DATA_HASH,
   LEND_SELECTOR,
   REDEEM_SELECTOR,
+  CLAIM_REWARDS_SELECTOR,
+  UNSTAKE_AND_REDEEM_SELECTOR,
+  UNSTAKE_SELECTOR,
+  STAKE_SELECTOR,
+  LEND_AND_STAKE_SELECTOR,
 } from "./constants/selectors.js";
 
 // ./errors/catchError.js
@@ -594,6 +599,40 @@ export {
   compoundV3ClaimRewardsEncoding,
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
+
+// ./extensions/integrations/instances/curveLiquidity.js
+export {
+  encodeCurveLiquidityLendArgs,
+  decodeCurveLiquidityLendArgs,
+  encodeCurveLiquidityRedeemArgs,
+  decodeCurveLiquidityRedeemArgs,
+  encodeCurveLiquidityClaimRewardsArgs,
+  decodeCurveLiquidityClaimRewardsArgs,
+  encodeCurveLiquidityLendAndStakeArgs,
+  decodeCurveLiquidityLendAndStakeArgs,
+  encodeCurveLiquidityUnstakeAndRedeemArgs,
+  decodeCurveLiquidityUnstakeAndRedeemArgs,
+  encodeCurveLiquidityStakeArgs,
+  decodeCurveLiquidityStakeArgs,
+  encodeCurveLiquidityUnstakeArgs,
+  decodeCurveLiquidityUnstakeArgs,
+  curveLiquidityLendEncoding,
+  type CurveLiquidityLendArgs,
+  curveLiquidityRedeemEncoding,
+  type CurveLiquidityRedeemArgs,
+  curveLiquidityClaimRewardsEncoding,
+  type CurveLiquidityClaimRewardsArgs,
+  curveLiquidityLendAndStakeEncoding,
+  type CurveLiquidityLendAndStakeArgs,
+  curveLiquidityUnstakeAndRedeemEncoding,
+  type CurveLiquidityUnstakeAndRedeemArgs,
+  curveLiquidityStakeEncoding,
+  type CurveLiquidityStakeArgs,
+  curveLiquidityUnstakeEncoding,
+  type CurveLiquidityUnstakeArgs,
+  type RedeemType,
+  type RedeemTypeValue,
+} from "./extensions/integrations/instances/curveLiquidity.js";
 
 // ./extensions/integrations/instances/uniswapV2Liquidity.js
 export {
