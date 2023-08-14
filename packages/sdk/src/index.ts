@@ -120,8 +120,10 @@ export {
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   SETTLE_CONTINUOUS_FEES_SELECTOR,
   VAULT_CALL_ANY_DATA_HASH,
+  CLAIM_REWARDS_SELECTOR,
   LEND_SELECTOR,
   REDEEM_SELECTOR,
+  TAKE_ORDER_SELECTOR,
 } from "./constants/selectors.js";
 
 // ./errors/catchError.js
@@ -387,6 +389,9 @@ export { isPolicyEnabled, type IsPolicyEnabledParams } from "./reads/isPolicyEna
 // ./utils/conversion.js
 export { toBps, toWei, fromWei, toSeconds, applySlippage } from "./utils/conversion.js";
 
+// ./utils/math.js
+export { min } from "./utils/math.js";
+
 // ./utils/rates.js
 export {
   calculateAmountDueForScaledPerSecondRate,
@@ -407,6 +412,9 @@ export {
   type PrepareFunctionParamsArgs,
   type PrepareFunctionParamsReturnType,
 } from "./utils/viem.js";
+
+// ./extensions/abis/IERC20.js
+export { IERC20 } from "./extensions/abis/IERC20.js";
 
 // ./extensions/external-positions/callOnExternalPosition.js
 export {
@@ -453,24 +461,8 @@ export {
   type FeeSettings,
 } from "./extensions/fees/settings.js";
 
-// ./extensions/integrations/callOnIntegration.js
-export {
-  encodeCallOnIntegrationArgs,
-  decodeCallOnIntegrationArgs,
-  callOnIntegrationArgsEncoding,
-  type CallOnIntegrationArgs,
-} from "./extensions/integrations/callOnIntegration/callOnIntegration.js";
-
 // ./extensions/integrations/integrationTypes.js
 export type { Integration, IntegrationArgs } from "./extensions/integrations/integrationTypes.js";
-
-// ./extensions/integrations/prepareUseIntegration.js
-export {
-  prepareUseIntegration,
-  encodeIntegrationCallArgs,
-  type TypedIntegrationCallArgs,
-  type PrepareUseIntegrationParams,
-} from "./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js";
 
 // ./extensions/policies/enums.js
 export type { PolicyHook } from "./extensions/policies/enums.js";
@@ -543,6 +535,14 @@ export {
   type EncodePerformanceFeeSettingsArgs,
 } from "./extensions/fees/instances/performanceFee.js";
 
+// ./extensions/integrations/callOnIntegration/callOnIntegration.js
+export {
+  encodeCallOnIntegrationArgs,
+  decodeCallOnIntegrationArgs,
+  callOnIntegrationArgsEncoding,
+  type CallOnIntegrationArgs,
+} from "./extensions/integrations/callOnIntegration/callOnIntegration.js";
+
 // ./extensions/integrations/instances/aaveV2.js
 export {
   encodeAaveV2LendArgs,
@@ -595,18 +595,6 @@ export {
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
-// ./extensions/integrations/instances/uniswapV2Liquidity.js
-export {
-  encodeUniswapV2LiquidityLendArgs,
-  decodeUniswapV2LiquidityLendArgs,
-  encodeUniswapV2LiquidityRedeemArgs,
-  decodeUniswapV2LiquidityRedeemArgs,
-  uniswapV2LiquidityLendEncoding,
-  type UniswapV2LiquidityLendArgs,
-  uniswapV2LiquidityRedeemEncoding,
-  type UniswapV2LiquidityRedeemArgs,
-} from "./extensions/integrations/instances/uniswapV2Liquidity.js";
-
 // ./extensions/integrations/instances/idleV4.js
 export {
   encodeIdleV4LendArgs,
@@ -623,6 +611,26 @@ export {
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
 
+// ./extensions/integrations/instances/uniswapV2Liquidity.js
+export {
+  encodeUniswapV2LiquidityLendArgs,
+  decodeUniswapV2LiquidityLendArgs,
+  encodeUniswapV2LiquidityRedeemArgs,
+  decodeUniswapV2LiquidityRedeemArgs,
+  uniswapV2LiquidityLendEncoding,
+  type UniswapV2LiquidityLendArgs,
+  uniswapV2LiquidityRedeemEncoding,
+  type UniswapV2LiquidityRedeemArgs,
+} from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+
+// ./extensions/integrations/instances/uniswapV3.js
+export {
+  encodeUniswapV3TakeOrderArgs,
+  decodeUniswapV3TakeOrderArgs,
+  uniswapV3TakeOrderEncoding,
+  type UniswapV3TakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV3.js";
+
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {
   encodeYearnVaultV2LendArgs,
@@ -634,6 +642,14 @@ export {
   yearnVaultV2RedeemEncoding,
   type YearnVaultV2RedeemArgs,
 } from "./extensions/integrations/instances/yearnVaultV2.js";
+
+// ./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js
+export {
+  prepareUseIntegration,
+  encodeIntegrationCallArgs,
+  type TypedIntegrationCallArgs,
+  type PrepareUseIntegrationParams,
+} from "./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {

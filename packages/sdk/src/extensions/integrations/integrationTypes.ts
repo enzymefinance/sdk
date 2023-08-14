@@ -4,6 +4,7 @@ import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compo
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
+import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
 import type { YearnVaultV2LendArgs, YearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
 
 export type Integration = typeof Integration[keyof typeof Integration];
@@ -19,6 +20,7 @@ export const Integration = {
   CompoundV3ClaimRewards: "CompoundV3ClaimRewards",
   UniswapV2LiquidityLend: "UniswapV2LiquidityLend",
   UniswapV2LiquidityRedeem: "UniswapV2LiquidityRedeem",
+  UniswapV3TakeOrder: "UniswapV3TakeOrder",
   YearnVaultV2Lend: "YearnVaultV2Lend",
   YearnVaultV2Redeem: "YearnVaultV2Redeem",
   IdleV4Lend: "IdleV4Lend",
@@ -38,6 +40,7 @@ export type IntegrationArgs = {
   [Integration.CompoundV3ClaimRewards]: CompoundV3ClaimRewardsArgs;
   [Integration.UniswapV2LiquidityLend]: UniswapV2LiquidityLendArgs;
   [Integration.UniswapV2LiquidityRedeem]: UniswapV2LiquidityRedeemArgs;
+  [Integration.UniswapV3TakeOrder]: UniswapV3TakeOrderArgs;
   [Integration.YearnVaultV2Lend]: YearnVaultV2LendArgs;
   [Integration.YearnVaultV2Redeem]: YearnVaultV2RedeemArgs;
   [Integration.IdleV4Lend]: IdleV4LendArgs;

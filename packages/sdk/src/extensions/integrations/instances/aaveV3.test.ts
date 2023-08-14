@@ -43,18 +43,6 @@ test("decodeAaveV3LendArgs should decode correctly", () => {
   });
 });
 
-test("decodeAaveV3LendArgs should be equal to encoded data with encodeAaveV3LendArgs", () => {
-  const params = {
-    aToken: getAddress(AAVE_V3_A_WETH),
-    depositAmount: toWei(100),
-  };
-
-  const encoded = encodeAaveV3LendArgs(params);
-  const decoded = decodeAaveV3LendArgs(encoded);
-
-  expect(decoded).toEqual(params);
-});
-
 test("decodeAaveV3RedeemArgs should be equal to encoded data with encodeAaveV3RedeemArgs", () => {
   const params = {
     aToken: getAddress(AAVE_V3_A_WETH),

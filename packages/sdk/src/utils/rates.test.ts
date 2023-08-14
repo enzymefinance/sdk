@@ -80,7 +80,7 @@ test("multiplyByRate should work correctly", () => {
       rateDecimals: 18,
       value: toWei(250),
     }),
-  ).toMatchInlineSnapshot('1250000000000000000n');
+  ).toMatchInlineSnapshot("1250000000000000000n");
 
   expect(
     multiplyByRate({
@@ -89,5 +89,5 @@ test("multiplyByRate should work correctly", () => {
       rateDecimals: 6,
       value: toWei(200),
     }),
-  ).toMatchInlineSnapshot('30000000000000000000000000000000000n');
+  ).toMatchInlineSnapshot("30000000000000000000000000000000000n");
 });
