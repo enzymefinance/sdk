@@ -11,13 +11,12 @@ import { publicClient, sendTestTransaction, testActions, testClient } from "../.
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
+import { IERC20 } from "../../abis/index.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
 import { type Address, type Hex, getAbiItem, parseAbi, parseEther } from "viem";
 import { encodePacked } from "viem/utils";
 import { expect, test } from "vitest";
-
-const abiERC20 = parseAbi(["function approve(address spender, uint256 amount) returns (bool)"] as const);
 
 const abiSwapRouter = parseAbi([
   "function exactInput(ExactInputParams exactInputParams) returns (uint256)",
@@ -69,11 +68,12 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   // approve uniswapV3SwapRouter to so we can simulate the trade
   await sendTestTransaction({
     ...prepareFunctionParams({
-      abi: getAbiItem({ abi: abiERC20, name: "approve" }),
+      abi: getAbiItem({ abi: IERC20, name: "approve" }),
       args: [UNISWAP_V3_SWAP_ROUTER, depositAmount],
     }),
     address: pathAddresses[0],
     account: vaultProxy,
+    value: 0n,
   });
 
   // simulate the trade
