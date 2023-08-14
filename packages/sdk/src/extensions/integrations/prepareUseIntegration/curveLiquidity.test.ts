@@ -1,0 +1,95 @@
+import { type Address, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
+import {
+  ALICE,
+  BOB,
+  CURVE_FRAX_USDC_LP,
+  CURVE_FRAX_USDC_POOL,
+  CURVE_LIQUIDITY_ADAPTER,
+  FRAX,
+  INTEGRATION_MANAGER,
+  USDC,
+  WETH,
+} from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { toWei } from "../../../utils/conversion.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "./prepareUseIntegration.js";
+
+const abiPool = parseAbi([
+  "function calc_token_amount(uint256[2] _amounts, bool _is_deposit) view returns (uint256)",
+] as const);
+
+test("prepare adapter trade for Curve Liquidity lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingLpTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingLpTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingLpTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLend,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        useUnderlyings: false,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmount,
+    fuzziness: minIncomingLpTokenAmountWithSlippage,
+  });
+});

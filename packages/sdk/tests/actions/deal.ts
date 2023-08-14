@@ -1,5 +1,5 @@
-import { testClient } from "../globals.js";
 import { keccak256 } from "viem/utils";
+import { testClient } from "../globals.js";
 
 import type { Address } from "viem";
 import { encodeAbiParameters } from "viem";
@@ -24,7 +24,6 @@ export async function deal({
   amount: bigint;
   /**
    * Slot of the balances mapping.
-   * Usually it is 1.
    */
   slotOfBalancesMapping: number;
 }) {

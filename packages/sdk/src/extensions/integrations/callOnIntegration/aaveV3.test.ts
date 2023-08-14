@@ -1,8 +1,8 @@
+import { type Hex, getAddress, toHex } from "viem";
+import { expect, test } from "vitest";
 import { AAVE_V3_ADAPTER } from "../../../../tests/constants.js";
 import { LEND_SELECTOR, REDEEM_SELECTOR } from "../../../constants/selectors.js";
 import { decodeCallOnIntegrationArgs, encodeCallOnIntegrationArgs } from "./callOnIntegration.js";
-import { type Hex, getAddress, toHex } from "viem";
-import { expect, test } from "vitest";
 
 test("encodeCallOnIntegrationArgs for Aave V3 lend should encode correctly", () => {
   expect(
