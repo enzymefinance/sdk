@@ -406,3 +406,192 @@ test("prepare adapter trade for Curve Liquidity redeem and unstake should work c
     fuzziness: minIncomingTokenAmount - minIncomingTokenAmountWithSlippage,
   });
 });
+
+test("prepare adapter trade for Curve Liquidity stake should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingLpTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingLpTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingLpTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLend,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        useUnderlyings: false,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmount,
+    fuzziness: minIncomingLpTokenAmount - minIncomingLpTokenAmountWithSlippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        amount: minIncomingLpTokenAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmountWithSlippage,
+  });
+});
+
+test("prepare adapter trade for Curve Liquidity unstake should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingStakingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingStakingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingStakingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLendAndStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        useUnderlyings: false,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmount,
+    fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityUnstake,
+        pool: CURVE_FRAX_USDC_POOL,
+        outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        amount: minIncomingStakingTokenAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmountWithSlippage,
+  });
+});
