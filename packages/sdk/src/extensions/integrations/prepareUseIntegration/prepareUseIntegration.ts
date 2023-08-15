@@ -1,3 +1,4 @@
+import type { Address, Hex } from "viem";
 import { CLAIM_REWARDS_SELECTOR, LEND_SELECTOR, REDEEM_SELECTOR } from "../../../constants/selectors.js";
 import type { Prettify } from "../../../utils/types.js";
 import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../../callOnExtension.js";
@@ -10,6 +11,7 @@ import {
   encodeCompoundV3LendArgs,
   encodeCompoundV3RedeemArgs,
 } from "../instances/compoundV3.js";
+import { encodeErc4626LendArgs, encodeErc4626RedeemArgs } from "../instances/erc4626.js";
 import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "../instances/idleV4.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
@@ -17,7 +19,6 @@ import {
 } from "../instances/uniswapV2Liquidity.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "../instances/yearnVaultV2.js";
 import { Integration, type IntegrationArgs } from "../integrationTypes.js";
-import type { Address, Hex } from "viem";
 
 export type TypedIntegrationCallArgs = {
   [TKey in keyof IntegrationArgs]: Prettify<{ type: TKey } & IntegrationArgs[TKey]>;
@@ -96,5 +97,9 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeIdleV4RedeemArgs(callArgs)];
     case Integration.IdleV4ClaimRewards:
       return [CLAIM_REWARDS_SELECTOR, encodeIdleV4ClaimRewardsArgs(callArgs)];
+    case Integration.Erc4626Lend:
+      return [LEND_SELECTOR, encodeErc4626LendArgs(callArgs)];
+    case Integration.Erc4626Redeem:
+      return [REDEEM_SELECTOR, encodeErc4626RedeemArgs(callArgs)];
   }
 }
