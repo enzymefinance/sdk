@@ -2,6 +2,7 @@ import type { AaveV2LendArgs, AaveV2RedeemArgs } from "./instances/aaveV2.js";
 import type { AaveV3LendArgs, AaveV3RedeemArgs } from "./instances/aaveV3.js";
 import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
+import type { Erc4626LendArgs, Erc4626RedeemArgs } from "./instances/erc4626.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
 import type { YearnVaultV2LendArgs, YearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
@@ -24,6 +25,8 @@ export const Integration = {
   IdleV4Lend: "IdleV4Lend",
   IdleV4Redeem: "IdleV4Redeem",
   IdleV4ClaimRewards: "IdleV4ClaimRewards",
+  Erc4626Lend: "Erc4626Lend",
+  Erc4626Redeem: "Erc4626Redeem",
 } as const;
 
 export type IntegrationArgs = {
@@ -43,4 +46,6 @@ export type IntegrationArgs = {
   [Integration.IdleV4Lend]: IdleV4LendArgs;
   [Integration.IdleV4Redeem]: IdleV4RedeemArgs;
   [Integration.IdleV4ClaimRewards]: IdleV4ClaimRewardsArgs;
+  [Integration.Erc4626Lend]: Erc4626LendArgs;
+  [Integration.Erc4626Redeem]: Erc4626RedeemArgs;
 };
