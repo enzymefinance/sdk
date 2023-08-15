@@ -16,6 +16,7 @@ import {
   encodeCompoundV3RedeemArgs,
 } from "../instances/compoundV3.js";
 import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "../instances/idleV4.js";
+import { encodeUniswapV2ExchangeTakeOrderArgs } from "../instances/uniswapV2Exchange.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
   encodeUniswapV2LiquidityRedeemArgs,
@@ -94,6 +95,8 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeUniswapV2LiquidityRedeemArgs(callArgs)];
     case Integration.UniswapV3TakeOrder:
       return [TAKE_ORDER_SELECTOR, encodeUniswapV3TakeOrderArgs(callArgs)];
+    case Integration.UniswapV2ExchangeTakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeUniswapV2ExchangeTakeOrderArgs(callArgs)];
     case Integration.YearnVaultV2Lend:
       return [LEND_SELECTOR, encodeYearnVaultV2LendArgs(callArgs)];
     case Integration.YearnVaultV2Redeem:
