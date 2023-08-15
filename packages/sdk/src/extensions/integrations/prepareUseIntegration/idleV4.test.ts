@@ -10,11 +10,11 @@ import {
   WETH,
 } from "../../../../tests/constants.js";
 import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
-import { IIdlePriceFeed } from "../../../abis.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
+import { IIdlePriceFeed } from "../../abis/index.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
 import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";

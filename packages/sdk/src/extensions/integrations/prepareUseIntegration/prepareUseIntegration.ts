@@ -4,6 +4,7 @@ import {
   LEND_SELECTOR,
   REDEEM_SELECTOR,
   STAKE_SELECTOR,
+  TAKE_ORDER_SELECTOR,
   UNSTAKE_AND_REDEEM_SELECTOR,
   UNSTAKE_SELECTOR,
 } from "../../../constants/selectors.js";
@@ -32,6 +33,7 @@ import {
   encodeUniswapV2LiquidityLendArgs,
   encodeUniswapV2LiquidityRedeemArgs,
 } from "../instances/uniswapV2Liquidity.js";
+import { encodeUniswapV3TakeOrderArgs } from "../instances/uniswapV3.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "../instances/yearnVaultV2.js";
 import { Integration, type IntegrationArgs } from "../integrationTypes.js";
 import type { Address, Hex } from "viem";
@@ -117,6 +119,8 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeUniswapV2LiquidityLendArgs(callArgs)];
     case Integration.UniswapV2LiquidityRedeem:
       return [REDEEM_SELECTOR, encodeUniswapV2LiquidityRedeemArgs(callArgs)];
+    case Integration.UniswapV3TakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeUniswapV3TakeOrderArgs(callArgs)];
     case Integration.YearnVaultV2Lend:
       return [LEND_SELECTOR, encodeYearnVaultV2LendArgs(callArgs)];
     case Integration.YearnVaultV2Redeem:

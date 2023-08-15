@@ -127,6 +127,7 @@ export {
   STAKE_SELECTOR,
   UNSTAKE_SELECTOR,
   UNSTAKE_AND_REDEEM_SELECTOR,
+  TAKE_ORDER_SELECTOR,
 } from "./constants/selectors.js";
 
 // ./errors/catchError.js
@@ -416,6 +417,9 @@ export {
   type PrepareFunctionParamsReturnType,
 } from "./utils/viem.js";
 
+// ./extensions/abis/IERC20.js
+export { IERC20 } from "./extensions/abis/IERC20.js";
+
 // ./extensions/external-positions/callOnExternalPosition.js
 export {
   encodeCallOnExternalPositionArgs,
@@ -656,6 +660,14 @@ export {
   uniswapV2LiquidityRedeemEncoding,
   type UniswapV2LiquidityRedeemArgs,
 } from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+
+// ./extensions/integrations/instances/uniswapV3.js
+export {
+  encodeUniswapV3TakeOrderArgs,
+  decodeUniswapV3TakeOrderArgs,
+  uniswapV3TakeOrderEncoding,
+  type UniswapV3TakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV3.js";
 
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {
