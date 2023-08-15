@@ -1,3 +1,5 @@
+import { type Address, getAbiItem, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -14,8 +16,6 @@ import { prepareFunctionParams } from "../../../utils/viem.js";
 import { IERC20 } from "../../abis/index.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
-import { type Address, getAbiItem, parseAbi, parseEther } from "viem";
-import { expect, test } from "vitest";
 
 const abiSwapRouter = parseAbi([
   "function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to, uint256 deadline) external returns (uint256[] memory amounts)",
@@ -90,7 +90,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   }
 
   const minIncomingAssetAmountWithSlippage = multiplyBySlippage({
-    amount: assetAmounts[1] as bigint,
+    amount: minIncomingAssetAmount,
     slippage: 1n,
   });
 
