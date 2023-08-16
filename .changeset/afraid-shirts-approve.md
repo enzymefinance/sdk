@@ -1,5 +1,0 @@
----
-"@enzymefinance/sdk": patch
----
-
-Add compound V2 trade helpers
