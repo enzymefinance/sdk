@@ -1,97 +1,180 @@
-import { COMPOUND_V2_C_ETH } from "../../../../tests/constants.js";
-import { toWei } from "../../../utils/conversion.js";
 import {
-  decodeCompoundV2LendArgs,
-  decodeCompoundV2RedeemArgs,
-  encodeCompoundV2LendArgs,
-  encodeCompoundV2RedeemArgs,
-} from "./compoundV2.js";
-import { getAddress } from "viem";
-import { expect, test } from "vitest";
+  ALICE,
+  BOB,
+  COMPOUND_V2_ADAPTER,
+  COMPOUND_V2_C_ETH,
+  INTEGRATION_MANAGER,
+  WETH,
+} from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { toWei } from "../../../utils/conversion.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi, parseUnits } from "viem";
+import { test } from "vitest";
 
-test("decodeCompoundV2LendArgs should be equal to encoded data with encodeCompoundV2LendArgs", () => {
-  const params = {
-    cToken: getAddress(COMPOUND_V2_C_ETH),
-    depositAmount: toWei(100),
-    minCTokenAmount: toWei(99),
-  };
+const abiCToken = parseAbi(["function exchangeRateStored() view returns (uint256)"] as const);
+const scaledExchangeRate = 10n ** 36n;
 
-  const encoded = encodeCompoundV2LendArgs(params);
-  const decoded = decodeCompoundV2LendArgs(encoded);
+function underlyingToCTokenAmount({
+  underlyingAmount,
+  exchangeRateStored,
+  decimals,
+}: { underlyingAmount: bigint; exchangeRateStored: bigint; decimals: number }) {
+  const cTokenAmount = (underlyingAmount * scaledExchangeRate) / (exchangeRateStored * parseUnits("1", decimals));
 
-  expect(decoded).toEqual(params);
-});
+  return cTokenAmount;
+}
 
-test("encodeCompoundV2LendArgs should encode correctly", () => {
-  expect(
-    encodeCompoundV2LendArgs({
-      cToken: COMPOUND_V2_C_ETH,
-      depositAmount: toWei(100),
-      minCTokenAmount: toWei(99),
+function cTokenToUnderlyingAmount({
+  cTokenAmount,
+  exchangeRateStored,
+  decimals,
+}: { cTokenAmount: bigint; exchangeRateStored: bigint; decimals: number }) {
+  const underlyingAmount = (cTokenAmount * exchangeRateStored * parseUnits("1", decimals)) / scaledExchangeRate;
+
+  return underlyingAmount;
+}
+
+test("prepare adapter trade for Compound V2 lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const exchangeRateStored = await publicClient.readContract({
+    abi: abiCToken,
+    address: COMPOUND_V2_C_ETH,
+    functionName: "exchangeRateStored",
+  });
+
+  const slippage = 1n;
+
+  const minCTokenAmount = underlyingToCTokenAmount({
+    underlyingAmount: depositAmount,
+    exchangeRateStored,
+    decimals: 18,
+  });
+
+  const minCTokenAmountWithSlippage = multiplyBySlippage({ amount: minCTokenAmount, slippage });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: COMPOUND_V2_ADAPTER,
+      callArgs: {
+        type: Integration.CompoundV2Lend,
+        cToken: COMPOUND_V2_C_ETH,
+        depositAmount: depositAmount,
+        minCTokenAmount: minCTokenAmountWithSlippage,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed50000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000055de6a779bbac0000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCompoundV2LendArgs should decode correctly", () => {
-  expect(
-    decodeCompoundV2LendArgs(
-      "0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed50000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000055de6a779bbac0000",
-    ),
-  ).toEqual({
-    cToken: COMPOUND_V2_C_ETH,
-    depositAmount: toWei(100),
-    minCTokenAmount: toWei(99),
+  await testActions.assertBalanceOf({
+    token: COMPOUND_V2_C_ETH,
+    account: vaultProxy,
+    expected: minCTokenAmount,
+    fuzziness: minCTokenAmount - minCTokenAmountWithSlippage,
   });
 });
 
-test("decodeCompoundV2LendArgs should be equal to encoded data with encodeCompoundV2LendArgs", () => {
-  const params = {
-    cToken: getAddress(COMPOUND_V2_C_ETH),
-    depositAmount: toWei(100),
-    minCTokenAmount: toWei(99),
-  };
+test("prepare adapter trade for Compound V2 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeCompoundV2LendArgs(params);
-  const decoded = decodeCompoundV2LendArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const investmentAmount = toWei(250);
 
-test("decodeCompoundV2RedeemArgs should be equal to encoded data with encodeCompoundV2RedeemArgs", () => {
-  const params = {
-    cToken: getAddress(COMPOUND_V2_C_ETH),
-    redeemAmount: toWei(100),
-    minUnderlyingAmount: toWei(99),
-  };
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: investmentAmount,
+  });
 
-  const encoded = encodeCompoundV2RedeemArgs(params);
-  const decoded = decodeCompoundV2RedeemArgs(encoded);
+  const exchangeRateStored = await publicClient.readContract({
+    abi: abiCToken,
+    address: COMPOUND_V2_C_ETH,
+    functionName: "exchangeRateStored",
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const slippage = 1n;
 
-test("encodeCompoundV2RedeemArgs should encode correctly", () => {
-  expect(
-    encodeCompoundV2RedeemArgs({
-      cToken: COMPOUND_V2_C_ETH,
-      redeemAmount: toWei(100),
-      minUnderlyingAmount: toWei(99),
+  const minCTokenAmount = underlyingToCTokenAmount({
+    underlyingAmount: investmentAmount,
+    exchangeRateStored,
+    decimals: 18,
+  });
+
+  const minCTokenAmountWithSlippage = multiplyBySlippage({ amount: minCTokenAmount, slippage });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: COMPOUND_V2_ADAPTER,
+      callArgs: {
+        type: Integration.CompoundV2Lend,
+        cToken: COMPOUND_V2_C_ETH,
+        depositAmount: investmentAmount,
+        minCTokenAmount: minCTokenAmountWithSlippage,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed50000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000055de6a779bbac0000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCompoundV2RedeemArgs should decode correctly", () => {
-  expect(
-    decodeCompoundV2RedeemArgs(
-      "0x0000000000000000000000004ddc2d193948926d02f9b1fe9e1daa0718270ed50000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000055de6a779bbac0000",
-    ),
-  ).toEqual({
-    cToken: COMPOUND_V2_C_ETH,
-    redeemAmount: toWei(100),
-    minUnderlyingAmount: toWei(99),
+  await testActions.assertBalanceOf({
+    token: COMPOUND_V2_C_ETH,
+    account: vaultProxy,
+    expected: minCTokenAmount,
+    fuzziness: minCTokenAmount - minCTokenAmountWithSlippage,
+  });
+
+  const minUnderlyingAmount = cTokenToUnderlyingAmount({
+    cTokenAmount: minCTokenAmountWithSlippage,
+    exchangeRateStored,
+    decimals: 18,
+  });
+
+  const minUnderlyingAmountWithSlippage = multiplyBySlippage({ amount: minUnderlyingAmount, slippage });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: COMPOUND_V2_ADAPTER,
+      callArgs: {
+        type: Integration.CompoundV2Redeem,
+        cToken: COMPOUND_V2_C_ETH,
+        redeemAmount: minCTokenAmountWithSlippage,
+        minUnderlyingAmount: minUnderlyingAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: WETH,
+    account: vaultProxy,
+    expected: minUnderlyingAmount,
+    fuzziness: minUnderlyingAmount - minUnderlyingAmountWithSlippage,
   });
 });

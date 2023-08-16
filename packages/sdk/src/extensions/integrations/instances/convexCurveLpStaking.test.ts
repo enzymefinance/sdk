@@ -18,16 +18,12 @@ import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
-import { prepareUseIntegration } from "./prepareUseIntegration.js";
-import { encodeAbiParameters, parseAbi } from "viem";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { abiCurvePool } from "./curveLiquidity.test.js";
+import { encodeAbiParameters } from "viem";
 import { expect, test } from "vitest";
 
-const abiPool = parseAbi([
-  "function calc_token_amount(uint256[2] _amounts, bool _is_deposit) view returns (uint256)",
-  "function calc_withdraw_one_coin(uint256 _amount, int128 _index) view returns (uint256)",
-] as const);
-
-test.only("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
+test("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
   const vaultOwner = ALICE;
   const sharesBuyer = BOB;
 
@@ -63,7 +59,7 @@ test.only("prepare adapter trade for Convex Curve Lp Staking lend and stake shou
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
   const minIncomingStakingTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
     args: [orderedOutgoingAssetAmounts, true],
@@ -137,7 +133,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
   const minIncomingStakingTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
     args: [orderedOutgoingAssetAmounts, true],
@@ -177,7 +173,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
   const incomingAssetPoolIndex = 0n;
 
   const minIncomingTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_withdraw_one_coin",
     args: [minIncomingStakingTokenAmountWithSlippage, incomingAssetPoolIndex],
@@ -256,7 +252,7 @@ test("prepare adapter trade for Convex Curve Lp Staking stake should work correc
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
   const minIncomingLpTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
     args: [orderedOutgoingAssetAmounts, true],
@@ -350,7 +346,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake should work corr
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
   const minIncomingStakingTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
     args: [orderedOutgoingAssetAmounts, true],
@@ -445,7 +441,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
   const minIncomingStakingTokenAmount = await publicClient.readContract({
-    abi: abiPool,
+    abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
     args: [orderedOutgoingAssetAmounts, true],

@@ -1,3 +1,4 @@
+import { type RedeemTypeValue, assertRedeemTypeValue } from "./curveLiquidity.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export const convexCurveLpStakingLendAndStakeEncoding = [
@@ -58,19 +59,6 @@ export function decodeConvexCurveLpStakingLendAndStakeArgs(callArgs: Hex): Conve
     minIncomingStakingTokenAmount,
     useUnderlyings,
   };
-}
-
-export const RedeemType = {
-  Standard: 0,
-  OneCoin: 1,
-} as const;
-
-export type RedeemTypeValue = typeof RedeemType[keyof typeof RedeemType];
-
-function assertRedeemTypeValue(value: number): asserts value is RedeemTypeValue {
-  if (!Object.values(RedeemType).includes(value as RedeemTypeValue)) {
-    throw new Error(`Invalid redeemType: ${value}`);
-  }
 }
 
 export const convexCurveLpStakingClaimRewardsEncoding = [

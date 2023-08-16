@@ -1,87 +1,179 @@
-import { YEARN_VAULT_V2_WETH } from "../../../../tests/constants.js";
-import { toWei } from "../../../utils/conversion.js";
 import {
-  decodeYearnVaultV2LendArgs,
-  decodeYearnVaultV2RedeemArgs,
-  encodeYearnVaultV2LendArgs,
-  encodeYearnVaultV2RedeemArgs,
-} from "./yearnVaultV2.js";
-import { getAddress } from "viem";
-import { expect, test } from "vitest";
+  ALICE,
+  BOB,
+  INTEGRATION_MANAGER,
+  WETH,
+  YEARN_VAULT_V2_ADAPTER,
+  YEARN_VAULT_V2_WETH,
+} from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { toWei } from "../../../utils/conversion.js";
+import { multiplyByRate } from "../../../utils/rates.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi } from "viem";
+import { test } from "vitest";
 
-test("decodeYearnVaultV2LendArgs should be equal to encoded data with encodeYearnVaultV2LendArgs", () => {
-  const params = {
-    yVault: getAddress(YEARN_VAULT_V2_WETH),
-    depositAmount: toWei(100),
-    minIncomingYVaultSharesAmount: toWei(1),
-  };
+const abiYVault = parseAbi(["function pricePerShare() view returns (uint256 price_)"] as const);
 
-  const encoded = encodeYearnVaultV2LendArgs(params);
-  const decoded = decodeYearnVaultV2LendArgs(encoded);
+test("prepare adapter trade for Yearn Vault V2 lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  expect(decoded).toEqual(params);
-});
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-test("encodeYearnVaultV2LendArgs should encode correctly", () => {
-  expect(
-    encodeYearnVaultV2LendArgs({
-      yVault: YEARN_VAULT_V2_WETH,
-      depositAmount: toWei(100),
-      minIncomingYVaultSharesAmount: toWei(1),
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const pricePerShare = await publicClient.readContract({
+    abi: abiYVault,
+    address: YEARN_VAULT_V2_WETH,
+    functionName: "pricePerShare",
+  });
+
+  const slippage = 1n;
+
+  const minIncomingYVaultSharesAmount = multiplyByRate({
+    inverse: true,
+    rate: pricePerShare,
+    rateDecimals: 18,
+    value: depositAmount,
+  });
+
+  const minIncomingYVaultSharesAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingYVaultSharesAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: YEARN_VAULT_V2_ADAPTER,
+      callArgs: {
+        type: Integration.YearnVaultV2Lend,
+        yVault: YEARN_VAULT_V2_WETH,
+        depositAmount,
+        minIncomingYVaultSharesAmount: minIncomingYVaultSharesAmountWithSlippage,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000a258c4606ca8206d8aa700ce2143d7db854d168c0000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000de0b6b3a7640000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeYearnVaultV2LendArgs should decode correctly", () => {
-  expect(
-    decodeYearnVaultV2LendArgs(
-      "0x000000000000000000000000a258c4606ca8206d8aa700ce2143d7db854d168c0000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000de0b6b3a7640000",
-    ),
-  ).toEqual({
-    yVault: YEARN_VAULT_V2_WETH,
-    depositAmount: toWei(100),
-    minIncomingYVaultSharesAmount: toWei(1),
+  await testActions.assertBalanceOf({
+    token: YEARN_VAULT_V2_WETH,
+    account: vaultProxy,
+    expected: minIncomingYVaultSharesAmount,
+    fuzziness: minIncomingYVaultSharesAmount - minIncomingYVaultSharesAmountWithSlippage,
   });
 });
 
-test("decodeYearnVaultV2RedeemArgs should be equal to encoded data with encodeYearnVaultV2RedeemArgs", () => {
-  const params = {
-    yVault: getAddress(YEARN_VAULT_V2_WETH),
-    maxOutgoingYVaultSharesAmount: toWei(100),
-    minIncomingUnderlyingAmount: toWei(50),
-    slippageToleranceBps: toWei(30),
-  };
+test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeYearnVaultV2RedeemArgs(params);
-  const decoded = decodeYearnVaultV2RedeemArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const investmentAmount = toWei(250);
 
-test("encodeYearnVaultV2RedeemArgs should encode correctly", () => {
-  expect(
-    encodeYearnVaultV2RedeemArgs({
-      yVault: YEARN_VAULT_V2_WETH,
-      maxOutgoingYVaultSharesAmount: toWei(100),
-      minIncomingUnderlyingAmount: toWei(50),
-      slippageToleranceBps: toWei(30),
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: investmentAmount,
+  });
+
+  const pricePerShareBeforeLend = await publicClient.readContract({
+    abi: abiYVault,
+    address: YEARN_VAULT_V2_WETH,
+    functionName: "pricePerShare",
+  });
+
+  const slippage = 1n;
+
+  const minIncomingYVaultSharesAmount = multiplyByRate({
+    inverse: true,
+    rate: pricePerShareBeforeLend,
+    rateDecimals: 18,
+    value: investmentAmount,
+  });
+
+  const minIncomingYVaultSharesAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingYVaultSharesAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: YEARN_VAULT_V2_ADAPTER,
+      callArgs: {
+        type: Integration.YearnVaultV2Lend,
+        yVault: YEARN_VAULT_V2_WETH,
+        depositAmount: investmentAmount,
+        minIncomingYVaultSharesAmount: minIncomingYVaultSharesAmountWithSlippage,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000a258c4606ca8206d8aa700ce2143d7db854d168c0000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000001a055690d9db80000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeYearnVaultV2RedeemArgs should decode correctly", () => {
-  expect(
-    decodeYearnVaultV2RedeemArgs(
-      "0x000000000000000000000000a258c4606ca8206d8aa700ce2143d7db854d168c0000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000001a055690d9db80000",
-    ),
-  ).toEqual({
-    yVault: YEARN_VAULT_V2_WETH,
-    maxOutgoingYVaultSharesAmount: toWei(100),
-    minIncomingUnderlyingAmount: toWei(50),
-    slippageToleranceBps: toWei(30),
+  await testActions.assertBalanceOf({
+    token: YEARN_VAULT_V2_WETH,
+    account: vaultProxy,
+    expected: minIncomingYVaultSharesAmount,
+    fuzziness: minIncomingYVaultSharesAmount - minIncomingYVaultSharesAmountWithSlippage,
+  });
+
+  const pricePerShareBeforeRedeem = await publicClient.readContract({
+    abi: abiYVault,
+    address: YEARN_VAULT_V2_WETH,
+    functionName: "pricePerShare",
+  });
+
+  const minIncomingUnderlyingAmount = multiplyByRate({
+    inverse: false,
+    rate: pricePerShareBeforeRedeem,
+    rateDecimals: 18,
+    value: minIncomingYVaultSharesAmountWithSlippage,
+  });
+
+  const minIncomingUnderlyingAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingUnderlyingAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: YEARN_VAULT_V2_ADAPTER,
+      callArgs: {
+        type: Integration.YearnVaultV2Redeem,
+        yVault: YEARN_VAULT_V2_WETH,
+        maxOutgoingYVaultSharesAmount: minIncomingYVaultSharesAmountWithSlippage,
+        minIncomingUnderlyingAmount,
+        slippageToleranceBps: slippage * 100n, // convert to bps
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: WETH,
+    account: vaultProxy,
+    expected: minIncomingUnderlyingAmount,
+    fuzziness: minIncomingUnderlyingAmount - minIncomingUnderlyingAmountWithSlippage,
   });
 });

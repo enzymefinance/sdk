@@ -1,44 +1,119 @@
-import { DAI, WETH } from "../../../../tests/constants.js";
+import { type Address, getAbiItem, parseAbi, parseEther } from "viem";
+import { test } from "vitest";
+
+import {
+  ALICE,
+  BOB,
+  DAI,
+  INTEGRATION_MANAGER,
+  UNISWAP_V2_EXCHANGE_ADAPTER,
+  UNISWAP_V2_SWAP_ROUTER,
+  WETH,
+} from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
-import { decodeUniswapV2ExchangeTakeOrderArgs, encodeUniswapV2ExchangeTakeOrderArgs } from "./uniswapV2Exchange.js";
-import { expect, test } from "vitest";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { prepareFunctionParams } from "../../../utils/viem.js";
+import { IERC20 } from "../../abis/index.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
 
-test("decodeUniswapV2ExchangeTakeOrderArgs should be equal to encoded data with encodeUniswapV2ExchangeTakeOrderArgs", () => {
-  const params = {
-    path: [WETH, DAI],
-    outgoingAssetAmount: toWei(100),
-    minIncomingAssetAmount: toWei(50),
-  } as const;
+const abiSwapRouter = parseAbi([
+  "function swapExactTokensForTokens(uint256 amountIn, uint256 amountOutMin, address[] calldata path, address to, uint256 deadline) external returns (uint256[] memory amounts)",
+] as const);
 
-  const encoded = encodeUniswapV2ExchangeTakeOrderArgs({
-    ...params,
-    path: [...params.path],
+function prepareSwapExactTokensForTokens({
+  path,
+  to,
+  deadline,
+  amountIn,
+  amountOutMinimum,
+}: { path: Address[]; to: Address; deadline: bigint; amountIn: bigint; amountOutMinimum: bigint }) {
+  return prepareFunctionParams({
+    abi: getAbiItem({ abi: abiSwapRouter, name: "swapExactTokensForTokens" }),
+    args: [amountIn, amountOutMinimum, path, to, deadline],
   });
-  const decoded = decodeUniswapV2ExchangeTakeOrderArgs(encoded);
+}
 
-  expect(decoded).toEqual(params);
-});
+test("prepare adapter trade for Uniswap V2 Exchange take order should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-test("encodeUniswapV2ExchangeTakeOrderArgs should encode correctly", () => {
-  expect(
-    encodeUniswapV2ExchangeTakeOrderArgs({
-      path: [WETH, DAI],
-      outgoingAssetAmount: toWei(100),
-      minIncomingAssetAmount: toWei(50),
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const pathAddresses = [WETH, DAI] as const;
+
+  // give vaultProxy some ether to pay for the gas
+  await testClient.setBalance({
+    address: vaultProxy,
+    value: parseEther("1"),
+  });
+
+  // approve uniswapV3SwapRouter to so we can simulate the trade
+  await sendTestTransaction({
+    ...prepareFunctionParams({
+      abi: getAbiItem({ abi: IERC20, name: "approve" }),
+      args: [UNISWAP_V2_SWAP_ROUTER, depositAmount],
     }),
-  ).toMatchInlineSnapshot(
-    '"0x00000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000000000000000000000000002b5e3af16b18800000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000006b175474e89094c44da98b954eedeac495271d0f"',
-  );
-});
+    address: pathAddresses[0],
+    account: vaultProxy,
+    value: 0n,
+  });
 
-test("decodeUniswapV2ExchangeTakeOrderArgs should decode correctly", () => {
-  expect(
-    decodeUniswapV2ExchangeTakeOrderArgs(
-      "0x00000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000000000000000000000000002b5e3af16b18800000000000000000000000000000000000000000000000000000000000000000002000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000006b175474e89094c44da98b954eedeac495271d0f",
-    ),
-  ).toEqual({
-    path: [WETH, DAI],
-    outgoingAssetAmount: toWei(100),
-    minIncomingAssetAmount: toWei(50),
+  // simulate the trade
+  const { result: assetAmounts } = await publicClient.simulateContract({
+    ...prepareSwapExactTokensForTokens({
+      deadline: BigInt(Math.ceil(new Date().getTime() / 1000 + 1)),
+      path: [...pathAddresses],
+      to: vaultProxy,
+      amountIn: depositAmount,
+      amountOutMinimum: 1n,
+    }),
+    address: UNISWAP_V2_SWAP_ROUTER,
+    account: vaultProxy,
+  });
+
+  const minIncomingAssetAmount = assetAmounts[1];
+
+  if (minIncomingAssetAmount === undefined) {
+    throw new Error("minIncomingAssetAmount is undefined");
+  }
+
+  const minIncomingAssetAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingAssetAmount,
+    slippage: 1n,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: UNISWAP_V2_EXCHANGE_ADAPTER,
+      callArgs: {
+        type: Integration.UniswapV2ExchangeTakeOrder,
+        path: [...pathAddresses],
+        outgoingAssetAmount: depositAmount,
+        minIncomingAssetAmount: minIncomingAssetAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: DAI,
+    account: vaultProxy,
+    expected: minIncomingAssetAmount,
+    fuzziness: minIncomingAssetAmount - minIncomingAssetAmountWithSlippage,
   });
 });
