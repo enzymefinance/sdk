@@ -1,95 +1,201 @@
-import { USDC, WETH } from "../../../../tests/constants.js";
+import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_DAI_ETH } from "../../../../tests/constants.js";
+import { ALICE, BOB, DAI, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
-import {
-  decodeUniswapV2LiquidityLendArgs,
-  decodeUniswapV2LiquidityRedeemArgs,
-  encodeUniswapV2LiquidityLendArgs,
-  encodeUniswapV2LiquidityRedeemArgs,
-} from "./uniswapV2Liquidity.js";
-import { expect, test } from "vitest";
+import { min } from "../../../utils/math.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { type Address, parseAbi } from "viem";
+import { test } from "vitest";
 
-test("decodeUniswapV2LiquidityLendArgs should be equal to encoded data with encodeUniswapV2LiquidityLendArgs", () => {
-  const params = {
-    outgoingAssets: [WETH, USDC],
-    maxOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    minOutgoingAssetAmounts: [toWei(50), toWei(100)],
-    minIncomingAssetAmount: toWei(100),
-  } as const;
+const abiUniswapV2Pair = parseAbi([
+  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+  "function totalSupply() view returns (uint256)",
+  "function token0() view returns (address)",
+  "function token1() view returns (address)",
+] as const);
 
-  const encoded = encodeUniswapV2LiquidityLendArgs({
-    ...params,
-    outgoingAssets: [...params.outgoingAssets],
-    maxOutgoingAssetAmounts: [...params.maxOutgoingAssetAmounts],
-    minOutgoingAssetAmounts: [...params.minOutgoingAssetAmounts],
-  });
-  const decoded = decodeUniswapV2LiquidityLendArgs(encoded);
-
-  expect(decoded).toEqual(params);
-});
-
-test("encodeUniswapV2LiquidityLendArgs should encode correctly", () => {
-  expect(
-    encodeUniswapV2LiquidityLendArgs({
-      outgoingAssets: [WETH, USDC],
-      maxOutgoingAssetAmounts: [toWei(100), toWei(150)],
-      minOutgoingAssetAmounts: [toWei(50), toWei(100)],
-      minIncomingAssetAmount: toWei(100),
+async function getUniswapV2PoolLendRate({
+  poolToken,
+  tokenA,
+  amountADesired,
+}: { poolToken: Address; amountADesired: bigint; tokenA: Address }) {
+  const [[reserveA, reserveB], tokenAAddress, poolTokensSupply] = await Promise.all([
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "getReserves",
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000000000000000000000000000000000000000000000000002b5e3af16b18800000000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000056bc75e2d63100000"',
-  );
-});
-
-test("decodeUniswapV2LiquidityLendArgs should decode correctly", () => {
-  expect(
-    decodeUniswapV2LiquidityLendArgs(
-      "0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000000000000000000000000000000000000000000000000002b5e3af16b18800000000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000056bc75e2d63100000",
-    ),
-  ).toEqual({
-    outgoingAssets: [WETH, USDC],
-    maxOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    minOutgoingAssetAmounts: [toWei(50), toWei(100)],
-    minIncomingAssetAmount: toWei(100),
-  });
-});
-
-test("decodeUniswapV2LiquidityRedeemArgs should be equal to encoded data with encodeUniswapV2LiquidityRedeemArgs", () => {
-  const params = {
-    outgoingAssetAmount: toWei(100),
-    incomingAssets: [WETH, USDC],
-    minIncomingAssetAmounts: [toWei(100), toWei(150)],
-  } as const;
-
-  const encoded = encodeUniswapV2LiquidityRedeemArgs({
-    ...params,
-    incomingAssets: [...params.incomingAssets],
-    minIncomingAssetAmounts: [...params.minIncomingAssetAmounts],
-  });
-  const decoded = decodeUniswapV2LiquidityRedeemArgs(encoded);
-
-  expect(decoded).toEqual(params);
-});
-
-test("encodeUniswapV2LiquidityRedeemArgs should encode correctly", () => {
-  expect(
-    encodeUniswapV2LiquidityRedeemArgs({
-      outgoingAssetAmount: toWei(100),
-      incomingAssets: [WETH, USDC],
-      minIncomingAssetAmounts: [toWei(100), toWei(150)],
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "token0",
     }),
-  ).toMatchInlineSnapshot(
-    '"0x0000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000"',
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "totalSupply",
+    }),
+  ]);
+
+  const [tokenAReserve, tokenBReserve] = tokenAAddress === tokenA ? [reserveA, reserveB] : [reserveB, reserveA];
+
+  if (tokenAReserve === 0n || tokenBReserve === 0n) {
+    throw new Error("Invalid pool");
+  }
+
+  const amountBDesired = (amountADesired * tokenBReserve) / tokenAReserve;
+
+  const expectedPoolTokens = min(
+    (amountADesired * poolTokensSupply) / tokenAReserve,
+    (amountBDesired * poolTokensSupply) / tokenBReserve,
   );
+
+  return { amountBDesired, expectedPoolTokens };
+}
+
+async function getUniswapV2PoolRedeemRate({
+  poolToken,
+  poolTokenAmount,
+}: { poolToken: Address; poolTokenAmount: bigint }) {
+  const [[reserveA, reserveB], poolTokensSupply, tokenA, tokenB] = await Promise.all([
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "getReserves",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "totalSupply",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "token0",
+    }),
+    publicClient.readContract({
+      abi: abiUniswapV2Pair,
+      address: poolToken,
+      functionName: "token1",
+    }),
+  ]);
+
+  return {
+    tokenAExpected: (poolTokenAmount * reserveA) / poolTokensSupply,
+    tokenA,
+    tokenB,
+    tokenBExpected: (poolTokenAmount * reserveB) / poolTokensSupply,
+  };
+}
+
+test("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const rates = await getUniswapV2PoolLendRate({
+    poolToken: UNISWAP_V2_POOL_DAI_ETH,
+    tokenA: WETH,
+    amountADesired: depositAmount,
+  });
+
+  const minIncomingAssetAmount = rates.expectedPoolTokens;
+
+  const slippage = 1n;
+
+  const minIncomingAssetAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingAssetAmount,
+    slippage,
+  });
+
+  await testActions.deal({ token: DAI, to: vaultProxy, amount: rates.amountBDesired, slotOfBalancesMapping: 2 });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.UniswapV2LiquidityLend,
+        outgoingAssets: [WETH, DAI],
+        maxOutgoingAssetAmounts: [depositAmount, rates.amountBDesired],
+        minOutgoingAssetAmounts: [
+          multiplyBySlippage({
+            amount: depositAmount,
+            slippage,
+          }),
+          multiplyBySlippage({
+            amount: rates.amountBDesired,
+            slippage,
+          }),
+        ],
+        minIncomingAssetAmount: minIncomingAssetAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: UNISWAP_V2_POOL_DAI_ETH,
+    account: vaultProxy,
+    expected: minIncomingAssetAmount,
+    fuzziness: minIncomingAssetAmount - minIncomingAssetAmountWithSlippage,
+  });
 });
 
-test("decodeUniswapV2LiquidityRedeemArgs should decode correctly", () => {
-  expect(
-    decodeUniswapV2LiquidityRedeemArgs(
-      "0x0000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc2000000000000000000000000a0b86991c6218b36c1d19d4a2e9eb0ce3606eb480000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000",
-    ),
-  ).toEqual({
-    outgoingAssetAmount: toWei(100),
-    incomingAssets: [WETH, USDC],
-    minIncomingAssetAmounts: [toWei(100), toWei(150)],
+test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const redeemAmount = toWei(250);
+
+  await testActions.deal({
+    token: UNISWAP_V2_POOL_DAI_ETH,
+    to: vaultProxy,
+    amount: redeemAmount,
+    slotOfBalancesMapping: 1,
+  });
+
+  const redeemRate = await getUniswapV2PoolRedeemRate({
+    poolTokenAmount: redeemAmount,
+    poolToken: UNISWAP_V2_POOL_DAI_ETH,
+  });
+
+  const slippage = 1n;
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.UniswapV2LiquidityRedeem,
+        outgoingAssetAmount: redeemAmount,
+        incomingAssets: [redeemRate.tokenA, redeemRate.tokenB],
+        minIncomingAssetAmounts: [
+          multiplyBySlippage({ amount: redeemRate.tokenAExpected, slippage }),
+          multiplyBySlippage({ amount: redeemRate.tokenBExpected, slippage }),
+        ],
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
   });
 });

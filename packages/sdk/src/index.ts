@@ -128,6 +128,7 @@ export {
   UNSTAKE_SELECTOR,
   UNSTAKE_AND_REDEEM_SELECTOR,
   TAKE_ORDER_SELECTOR,
+  TOGGLE_APPROVE_MINT_SELECTOR,
 } from "./constants/selectors.js";
 
 // ./errors/catchError.js
@@ -465,8 +466,24 @@ export {
   type FeeSettings,
 } from "./extensions/fees/settings.js";
 
+// ./extensions/integrations/callOnIntegration.js
+export {
+  encodeCallOnIntegrationArgs,
+  decodeCallOnIntegrationArgs,
+  callOnIntegrationArgsEncoding,
+  type CallOnIntegrationArgs,
+} from "./extensions/integrations/callOnIntegration.js";
+
 // ./extensions/integrations/integrationTypes.js
 export type { Integration, IntegrationArgs } from "./extensions/integrations/integrationTypes.js";
+
+// ./extensions/integrations/prepareUseIntegration.js
+export {
+  prepareUseIntegration,
+  encodeIntegrationCallArgs,
+  type TypedIntegrationCallArgs,
+  type PrepareUseIntegrationParams,
+} from "./extensions/integrations/prepareUseIntegration.js";
 
 // ./extensions/policies/enums.js
 export type { PolicyHook } from "./extensions/policies/enums.js";
@@ -538,14 +555,6 @@ export {
   type PerformanceFeeSettings,
   type EncodePerformanceFeeSettingsArgs,
 } from "./extensions/fees/instances/performanceFee.js";
-
-// ./extensions/integrations/callOnIntegration/callOnIntegration.js
-export {
-  encodeCallOnIntegrationArgs,
-  decodeCallOnIntegrationArgs,
-  callOnIntegrationArgsEncoding,
-  type CallOnIntegrationArgs,
-} from "./extensions/integrations/callOnIntegration/callOnIntegration.js";
 
 // ./extensions/integrations/instances/aaveV2.js
 export {
@@ -688,14 +697,6 @@ export {
   yearnVaultV2RedeemEncoding,
   type YearnVaultV2RedeemArgs,
 } from "./extensions/integrations/instances/yearnVaultV2.js";
-
-// ./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js
-export {
-  prepareUseIntegration,
-  encodeIntegrationCallArgs,
-  type TypedIntegrationCallArgs,
-  type PrepareUseIntegrationParams,
-} from "./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {
