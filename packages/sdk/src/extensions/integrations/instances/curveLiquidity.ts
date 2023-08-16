@@ -113,6 +113,7 @@ export function decodeCurveLiquidityLendAndStakeArgs(callArgs: Hex): CurveLiquid
     useUnderlyings,
   };
 }
+
 export const RedeemType = {
   Standard: 0,
   OneCoin: 1,
