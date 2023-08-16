@@ -120,8 +120,15 @@ export {
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   SETTLE_CONTINUOUS_FEES_SELECTOR,
   VAULT_CALL_ANY_DATA_HASH,
+  CLAIM_REWARDS_SELECTOR,
   LEND_SELECTOR,
+  LEND_AND_STAKE_SELECTOR,
   REDEEM_SELECTOR,
+  STAKE_SELECTOR,
+  UNSTAKE_SELECTOR,
+  UNSTAKE_AND_REDEEM_SELECTOR,
+  TAKE_ORDER_SELECTOR,
+  TOGGLE_APPROVE_MINT_SELECTOR,
 } from "./constants/selectors.js";
 
 // ./errors/catchError.js
@@ -387,6 +394,9 @@ export { isPolicyEnabled, type IsPolicyEnabledParams } from "./reads/isPolicyEna
 // ./utils/conversion.js
 export { toBps, toWei, fromWei, toSeconds, applySlippage } from "./utils/conversion.js";
 
+// ./utils/math.js
+export { min } from "./utils/math.js";
+
 // ./utils/rates.js
 export {
   calculateAmountDueForScaledPerSecondRate,
@@ -407,6 +417,9 @@ export {
   type PrepareFunctionParamsArgs,
   type PrepareFunctionParamsReturnType,
 } from "./utils/viem.js";
+
+// ./extensions/abis/IERC20.js
+export { IERC20 } from "./extensions/abis/IERC20.js";
 
 // ./extensions/external-positions/callOnExternalPosition.js
 export {
@@ -459,7 +472,7 @@ export {
   decodeCallOnIntegrationArgs,
   callOnIntegrationArgsEncoding,
   type CallOnIntegrationArgs,
-} from "./extensions/integrations/callOnIntegration/callOnIntegration.js";
+} from "./extensions/integrations/callOnIntegration.js";
 
 // ./extensions/integrations/integrationTypes.js
 export type { Integration, IntegrationArgs } from "./extensions/integrations/integrationTypes.js";
@@ -470,7 +483,7 @@ export {
   encodeIntegrationCallArgs,
   type TypedIntegrationCallArgs,
   type PrepareUseIntegrationParams,
-} from "./extensions/integrations/prepareUseIntegration/prepareUseIntegration.js";
+} from "./extensions/integrations/prepareUseIntegration.js";
 
 // ./extensions/policies/enums.js
 export type { PolicyHook } from "./extensions/policies/enums.js";
@@ -595,17 +608,39 @@ export {
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
-// ./extensions/integrations/instances/uniswapV2Liquidity.js
+// ./extensions/integrations/instances/curveLiquidity.js
 export {
-  encodeUniswapV2LiquidityLendArgs,
-  decodeUniswapV2LiquidityLendArgs,
-  encodeUniswapV2LiquidityRedeemArgs,
-  decodeUniswapV2LiquidityRedeemArgs,
-  uniswapV2LiquidityLendEncoding,
-  type UniswapV2LiquidityLendArgs,
-  uniswapV2LiquidityRedeemEncoding,
-  type UniswapV2LiquidityRedeemArgs,
-} from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+  encodeCurveLiquidityLendArgs,
+  decodeCurveLiquidityLendArgs,
+  encodeCurveLiquidityLendAndStakeArgs,
+  decodeCurveLiquidityLendAndStakeArgs,
+  encodeCurveLiquidityRedeemArgs,
+  decodeCurveLiquidityRedeemArgs,
+  encodeCurveLiquidityClaimRewardsArgs,
+  decodeCurveLiquidityClaimRewardsArgs,
+  encodeCurveLiquidityStakeArgs,
+  decodeCurveLiquidityStakeArgs,
+  encodeCurveLiquidityUnstakeArgs,
+  decodeCurveLiquidityUnstakeArgs,
+  encodeCurveLiquidityUnstakeAndRedeemArgs,
+  decodeCurveLiquidityUnstakeAndRedeemArgs,
+  curveLiquidityLendEncoding,
+  type CurveLiquidityLendArgs,
+  curveLiquidityLendAndStakeEncoding,
+  type CurveLiquidityLendAndStakeArgs,
+  RedeemType,
+  type RedeemTypeValue,
+  curveLiquidityRedeemEncoding,
+  type CurveLiquidityRedeemArgs,
+  curveLiquidityClaimRewardsEncoding,
+  type CurveLiquidityClaimRewardsArgs,
+  curveLiquidityStakeEncoding,
+  type CurveLiquidityStakeArgs,
+  curveLiquidityUnstakeEncoding,
+  type CurveLiquidityUnstakeArgs,
+  curveLiquidityUnstakeAndRedeemEncoding,
+  type CurveLiquidityUnstakeAndRedeemArgs,
+} from "./extensions/integrations/instances/curveLiquidity.js";
 
 // ./extensions/integrations/instances/idleV4.js
 export {
@@ -622,6 +657,34 @@ export {
   idleV4ClaimRewardsEncoding,
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
+
+// ./extensions/integrations/instances/uniswapV2Exchange.js
+export {
+  encodeUniswapV2ExchangeTakeOrderArgs,
+  decodeUniswapV2ExchangeTakeOrderArgs,
+  uniswapV2ExchangeTakeOrderEncoding,
+  type UniswapV2ExchangeTakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV2Exchange.js";
+
+// ./extensions/integrations/instances/uniswapV2Liquidity.js
+export {
+  encodeUniswapV2LiquidityLendArgs,
+  decodeUniswapV2LiquidityLendArgs,
+  encodeUniswapV2LiquidityRedeemArgs,
+  decodeUniswapV2LiquidityRedeemArgs,
+  uniswapV2LiquidityLendEncoding,
+  type UniswapV2LiquidityLendArgs,
+  uniswapV2LiquidityRedeemEncoding,
+  type UniswapV2LiquidityRedeemArgs,
+} from "./extensions/integrations/instances/uniswapV2Liquidity.js";
+
+// ./extensions/integrations/instances/uniswapV3.js
+export {
+  encodeUniswapV3TakeOrderArgs,
+  decodeUniswapV3TakeOrderArgs,
+  uniswapV3TakeOrderEncoding,
+  type UniswapV3TakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV3.js";
 
 // ./extensions/integrations/instances/yearnVaultV2.js
 export {

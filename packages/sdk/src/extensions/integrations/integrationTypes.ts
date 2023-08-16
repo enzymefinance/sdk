@@ -2,9 +2,20 @@ import type { AaveV2LendArgs, AaveV2RedeemArgs } from "./instances/aaveV2.js";
 import type { AaveV3LendArgs, AaveV3RedeemArgs } from "./instances/aaveV3.js";
 import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
+import type {
+  CurveLiquidityClaimRewardsArgs,
+  CurveLiquidityLendAndStakeArgs,
+  CurveLiquidityLendArgs,
+  CurveLiquidityRedeemArgs,
+  CurveLiquidityStakeArgs,
+  CurveLiquidityUnstakeAndRedeemArgs,
+  CurveLiquidityUnstakeArgs,
+} from "./instances/curveLiquidity.js";
 import type { Erc4626LendArgs, Erc4626RedeemArgs } from "./instances/erc4626.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
+import type { UniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
+import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
 import type { YearnVaultV2LendArgs, YearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
 
 export type Integration = typeof Integration[keyof typeof Integration];
@@ -18,8 +29,17 @@ export const Integration = {
   CompoundV3Lend: "CompoundV3Lend",
   CompoundV3Redeem: "CompoundV3Redeem",
   CompoundV3ClaimRewards: "CompoundV3ClaimRewards",
+  CurveLiquidityLend: "CurveLiquidityLend",
+  CurveLiquidityRedeem: "CurveLiquidityRedeem",
+  CurveLiquidityLendAndStake: "CurveLiquidityLendAndStake",
+  CurveLiquidityUnstakeAndRedeem: "CurveLiquidityUnstakeAndRedeem",
+  CurveLiquidityClaimRewards: "CurveLiquidityClaimRewards",
+  CurveLiquidityUnstake: "CurveLiquidityUnstake",
+  CurveLiquidityStake: "CurveLiquidityStake",
   UniswapV2LiquidityLend: "UniswapV2LiquidityLend",
   UniswapV2LiquidityRedeem: "UniswapV2LiquidityRedeem",
+  UniswapV3TakeOrder: "UniswapV3TakeOrder",
+  UniswapV2ExchangeTakeOrder: "UniswapV2ExchangeTakeOrder",
   YearnVaultV2Lend: "YearnVaultV2Lend",
   YearnVaultV2Redeem: "YearnVaultV2Redeem",
   IdleV4Lend: "IdleV4Lend",
@@ -39,8 +59,17 @@ export type IntegrationArgs = {
   [Integration.CompoundV3Lend]: CompoundV3LendArgs;
   [Integration.CompoundV3Redeem]: CompoundV3RedeemArgs;
   [Integration.CompoundV3ClaimRewards]: CompoundV3ClaimRewardsArgs;
+  [Integration.CurveLiquidityLend]: CurveLiquidityLendArgs;
+  [Integration.CurveLiquidityRedeem]: CurveLiquidityRedeemArgs;
+  [Integration.CurveLiquidityClaimRewards]: CurveLiquidityClaimRewardsArgs;
+  [Integration.CurveLiquidityLendAndStake]: CurveLiquidityLendAndStakeArgs;
+  [Integration.CurveLiquidityUnstakeAndRedeem]: CurveLiquidityUnstakeAndRedeemArgs;
+  [Integration.CurveLiquidityUnstake]: CurveLiquidityUnstakeArgs;
+  [Integration.CurveLiquidityStake]: CurveLiquidityStakeArgs;
   [Integration.UniswapV2LiquidityLend]: UniswapV2LiquidityLendArgs;
   [Integration.UniswapV2LiquidityRedeem]: UniswapV2LiquidityRedeemArgs;
+  [Integration.UniswapV3TakeOrder]: UniswapV3TakeOrderArgs;
+  [Integration.UniswapV2ExchangeTakeOrder]: UniswapV2ExchangeTakeOrderArgs;
   [Integration.YearnVaultV2Lend]: YearnVaultV2LendArgs;
   [Integration.YearnVaultV2Redeem]: YearnVaultV2RedeemArgs;
   [Integration.IdleV4Lend]: IdleV4LendArgs;

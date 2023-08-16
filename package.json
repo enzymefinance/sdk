@@ -11,6 +11,7 @@
     "clean": "pnpm run --recursive --parallel clean",
     "typecheck": "pnpm run --recursive --parallel typecheck",
     "format": "rome format --write . && rome check --apply .",
+    "format:unsafe": "rome format --write . && rome check --apply-unsafe .",
     "lint": "rome check ."
   },
   "devDependencies": {
@@ -28,9 +29,7 @@
       "@enzymefinance/sdk": "workspace:*"
     },
     "peerDependencyRules": {
-      "ignoreMissing": [
-        "prop-types"
-      ]
+      "ignoreMissing": ["prop-types"]
     }
   }
 }
