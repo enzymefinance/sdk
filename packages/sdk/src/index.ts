@@ -649,6 +649,14 @@ export {
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
 
+// ./extensions/integrations/instances/uniswapV2Exchange.js
+export {
+  encodeUniswapV2ExchangeTakeOrderArgs,
+  decodeUniswapV2ExchangeTakeOrderArgs,
+  uniswapV2ExchangeTakeOrderEncoding,
+  type UniswapV2ExchangeTakeOrderArgs,
+} from "./extensions/integrations/instances/uniswapV2Exchange.js";
+
 // ./extensions/integrations/instances/uniswapV2Liquidity.js
 export {
   encodeUniswapV2LiquidityLendArgs,
