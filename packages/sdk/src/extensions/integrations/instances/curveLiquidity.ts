@@ -242,6 +242,7 @@ export function decodeCurveLiquidityStakeArgs(integrationData: Hex): CurveLiquid
 
   return { pool, incomingStakingToken, amount };
 }
+
 export const curveLiquidityUnstakeEncoding = [
   {
     name: "pool",
