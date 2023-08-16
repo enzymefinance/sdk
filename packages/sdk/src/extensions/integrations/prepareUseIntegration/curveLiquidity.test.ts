@@ -1,5 +1,3 @@
-import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
-import { expect, test } from "vitest";
 import { IComptroller } from "../../../../../abis/src/abis/IComptroller.js";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
@@ -24,6 +22,8 @@ import { prepareFunctionParams } from "../../../utils/viem.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
+import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
+import { expect, test } from "vitest";
 
 const abiPool = parseAbi([
   "function calc_token_amount(uint256[2] _amounts, bool _is_deposit) view returns (uint256)",
