@@ -7,18 +7,18 @@ import {
   TAKE_ORDER_SELECTOR,
   UNSTAKE_AND_REDEEM_SELECTOR,
   UNSTAKE_SELECTOR,
-} from "../../../constants/selectors.js";
-import type { Prettify } from "../../../utils/types.js";
-import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../../callOnExtension.js";
-import { encodeCallOnIntegrationArgs } from "../callOnIntegration/callOnIntegration.js";
-import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "../instances/aaveV2.js";
-import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "../instances/aaveV3.js";
-import { encodeCompoundV2LendArgs, encodeCompoundV2RedeemArgs } from "../instances/compoundV2.js";
+} from "../../constants/selectors.js";
+import type { Prettify } from "../../utils/types.js";
+import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
+import { encodeCallOnIntegrationArgs } from "./callOnIntegration.js";
+import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "./instances/aaveV2.js";
+import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "./instances/aaveV3.js";
+import { encodeCompoundV2LendArgs, encodeCompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import {
   encodeCompoundV3ClaimRewardsArgs,
   encodeCompoundV3LendArgs,
   encodeCompoundV3RedeemArgs,
-} from "../instances/compoundV3.js";
+} from "./instances/compoundV3.js";
 import {
   encodeCurveLiquidityClaimRewardsArgs,
   encodeCurveLiquidityLendAndStakeArgs,
@@ -27,16 +27,16 @@ import {
   encodeCurveLiquidityStakeArgs,
   encodeCurveLiquidityUnstakeAndRedeemArgs,
   encodeCurveLiquidityUnstakeArgs,
-} from "../instances/curveLiquidity.js";
-import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "../instances/idleV4.js";
-import { encodeUniswapV2ExchangeTakeOrderArgs } from "../instances/uniswapV2Exchange.js";
+} from "./instances/curveLiquidity.js";
+import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "./instances/idleV4.js";
+import { encodeUniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
   encodeUniswapV2LiquidityRedeemArgs,
-} from "../instances/uniswapV2Liquidity.js";
-import { encodeUniswapV3TakeOrderArgs } from "../instances/uniswapV3.js";
-import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "../instances/yearnVaultV2.js";
-import { Integration, type IntegrationArgs } from "../integrationTypes.js";
+} from "./instances/uniswapV2Liquidity.js";
+import { encodeUniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
+import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
+import { Integration, type IntegrationArgs } from "./integrationTypes.js";
 import type { Address, Hex } from "viem";
 
 export type TypedIntegrationCallArgs = {

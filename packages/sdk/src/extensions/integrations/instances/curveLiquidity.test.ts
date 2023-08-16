@@ -1,299 +1,715 @@
-import { CURVE_3CRV_POOL, CURVE_FRAX_USDC_GAUGE, CURVE_FRAX_USDC_POOL } from "../../../../tests/constants.js";
-import { toWei } from "../../../utils/conversion.js";
+import { IComptroller } from "../../../../../abis/src/abis/IComptroller.js";
+import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
-  RedeemType,
-  decodeCurveLiquidityClaimRewardsArgs,
-  decodeCurveLiquidityLendAndStakeArgs,
-  decodeCurveLiquidityLendArgs,
-  decodeCurveLiquidityRedeemArgs,
-  decodeCurveLiquidityStakeArgs,
-  decodeCurveLiquidityUnstakeAndRedeemArgs,
-  decodeCurveLiquidityUnstakeArgs,
-  encodeCurveLiquidityClaimRewardsArgs,
-  encodeCurveLiquidityLendAndStakeArgs,
-  encodeCurveLiquidityLendArgs,
-  encodeCurveLiquidityRedeemArgs,
-  encodeCurveLiquidityStakeArgs,
-  encodeCurveLiquidityUnstakeAndRedeemArgs,
-  encodeCurveLiquidityUnstakeArgs,
-} from "./curveLiquidity.js";
+  ALICE,
+  BOB,
+  CRV,
+  CURVE_FRAX_USDC_GAUGE,
+  CURVE_FRAX_USDC_LP,
+  CURVE_FRAX_USDC_POOL,
+  CURVE_LIQUIDITY_ADAPTER,
+  CURVE_MINTER,
+  FRAX,
+  INTEGRATION_MANAGER,
+  USDC,
+  WETH,
+} from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
+import { toSeconds, toWei } from "../../../utils/conversion.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { prepareFunctionParams } from "../../../utils/viem.js";
+import { RedeemType } from "../instances/curveLiquidity.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
 import { expect, test } from "vitest";
 
-test("decodeCurveLiquidityLendArgs should be equal to encoded data with encodeCurveLiquidityLendArgs", () => {
-  const params = {
-    pool: CURVE_3CRV_POOL,
-    orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    minIncomingLpTokenAmount: toWei(50),
-    useUnderlyings: true,
-  } as const;
+const abiPool = parseAbi([
+  "function calc_token_amount(uint256[2] _amounts, bool _is_deposit) view returns (uint256)",
+  "function calc_withdraw_one_coin(uint256 _amount, int128 _index) view returns (uint256)",
+] as const);
 
-  const encoded = encodeCurveLiquidityLendArgs({
-    ...params,
-    orderedOutgoingAssetAmounts: [...params.orderedOutgoingAssetAmounts],
+test("prepare adapter trade for Curve Liquidity lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
   });
-  const decoded = decodeCurveLiquidityLendArgs(encoded);
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeCurveLiquidityLendArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityLendArgs({
-      pool: CURVE_3CRV_POOL,
-      orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-      minIncomingLpTokenAmount: toWei(50),
-      useUnderlyings: true,
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingLpTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingLpTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingLpTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLend,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        useUnderlyings: false,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000bebc44782c7db0a1a60cb6fe97d0b483032ff1c70000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCurveLiquidityLendArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityLendArgs(
-      "0x000000000000000000000000bebc44782c7db0a1a60cb6fe97d0b483032ff1c70000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000",
-    ),
-  ).toEqual({
-    pool: CURVE_3CRV_POOL,
-    orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    minIncomingLpTokenAmount: toWei(50),
-    useUnderlyings: true,
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmount,
+    fuzziness: minIncomingLpTokenAmount - minIncomingLpTokenAmountWithSlippage,
   });
 });
 
-test("decodeCurveLiquidityRedeemArgs should be equal to encoded data with encodeCurveLiquidityRedeemArgs", () => {
-  const params = {
-    pool: CURVE_3CRV_POOL,
-    outgoingLpTokenAmount: toWei(100),
-    useUnderlyings: false,
-    redeemType: RedeemType.Standard,
-    incomingAssetsData: "0x1234",
-  } as const;
+test("prepare adapter trade for Curve Liquidity lend and stake should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeCurveLiquidityRedeemArgs(params);
-  const decoded = decodeCurveLiquidityRedeemArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeCurveLiquidityRedeemArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityRedeemArgs({
-      pool: CURVE_3CRV_POOL,
-      outgoingLpTokenAmount: toWei(100),
-      useUnderlyings: false,
-      redeemType: RedeemType.Standard,
-      incomingAssetsData: "0x1234",
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingStakingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingStakingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingStakingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLendAndStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        useUnderlyings: false,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000bebc44782c7db0a1a60cb6fe97d0b483032ff1c70000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCurveLiquidityRedeemArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityRedeemArgs(
-      "0x000000000000000000000000bebc44782c7db0a1a60cb6fe97d0b483032ff1c70000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000",
-    ),
-  ).toEqual({
-    pool: CURVE_3CRV_POOL,
-    outgoingLpTokenAmount: toWei(100),
-    useUnderlyings: false,
-    redeemType: RedeemType.Standard,
-    incomingAssetsData: "0x1234",
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmount,
+    fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
   });
 });
 
-test("decodeCurveLiquidityLendAndStakeArgs should be equal to encoded data with encodeCurveLiquidityLendAndStakeArgs", () => {
-  const params = {
-    pool: CURVE_FRAX_USDC_POOL,
-    orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    minIncomingStakingTokenAmount: toWei(50),
-    useUnderlyings: true,
-  } as const;
+test("prepare adapter trade for Curve Liquidity redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeCurveLiquidityLendAndStakeArgs({
-    ...params,
-    orderedOutgoingAssetAmounts: [...params.orderedOutgoingAssetAmounts],
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
   });
-  const decoded = decodeCurveLiquidityLendAndStakeArgs(encoded);
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeCurveLiquidityLendAndStakeArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityLendAndStakeArgs({
-      pool: CURVE_FRAX_USDC_POOL,
-      orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-      incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-      minIncomingStakingTokenAmount: toWei(50),
-      useUnderlyings: true,
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingLpTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingLpTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingLpTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLend,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        useUnderlyings: false,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a200000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa59503000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000"',
-  );
-});
-
-test("decodeCurveLiquidityLendAndStakeArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityLendAndStakeArgs(
-      "0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a200000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa59503000000000000000000000000000000000000000000000002b5e3af16b1880000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000056bc75e2d6310000000000000000000000000000000000000000000000000000821ab0d4414980000",
-    ),
-  ).toEqual({
-    pool: CURVE_FRAX_USDC_POOL,
-    orderedOutgoingAssetAmounts: [toWei(100), toWei(150)],
-    incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    minIncomingStakingTokenAmount: toWei(50),
-    useUnderlyings: true,
+    account: vaultOwner,
+    address: comptrollerProxy,
   });
-});
 
-test("decodeCurveLiquidityUnstakeAndRedeemArgs should be equal to encoded data with encodeCurveLiquidityUnstakeAndRedeemArgs", () => {
-  const params = {
-    pool: CURVE_FRAX_USDC_POOL,
-    outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    outgoingStakingTokenAmount: toWei(100),
-    useUnderlyings: false,
-    redeemType: RedeemType.Standard,
-    incomingAssetsData: "0x1234",
-  } as const;
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmount,
+    fuzziness: minIncomingLpTokenAmount - minIncomingLpTokenAmountWithSlippage,
+  });
 
-  const encoded = encodeCurveLiquidityUnstakeAndRedeemArgs(params);
-  const decoded = decodeCurveLiquidityUnstakeAndRedeemArgs(encoded);
+  const incomingAssetPoolIndex = 0n;
 
-  expect(decoded).toEqual(params);
-});
+  const minIncomingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_withdraw_one_coin",
+    args: [minIncomingLpTokenAmountWithSlippage, incomingAssetPoolIndex],
+  });
 
-test("encodeCurveLiquidityUnstakeAndRedeemArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityUnstakeAndRedeemArgs({
-      pool: CURVE_FRAX_USDC_POOL,
-      outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-      outgoingStakingTokenAmount: toWei(100),
-      useUnderlyings: false,
-      redeemType: RedeemType.Standard,
-      incomingAssetsData: "0x1234",
+  const minIncomingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityRedeem,
+        pool: CURVE_FRAX_USDC_POOL,
+        outgoingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        redeemType: RedeemType.OneCoin,
+        useUnderlyings: false,
+        incomingAssetsData: encodeAbiParameters(
+          [
+            { name: "incomingAssetPoolIndex", type: "uint256" },
+            { name: "minIncomingAssetAmount", type: "uint256" },
+          ],
+          [incomingAssetPoolIndex, minIncomingTokenAmountWithSlippage],
+        ),
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCurveLiquidityUnstakeAndRedeemArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityUnstakeAndRedeemArgs(
-      "0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000021234000000000000000000000000000000000000000000000000000000000000",
-    ),
-  ).toEqual({
-    pool: CURVE_FRAX_USDC_POOL,
-    outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    outgoingStakingTokenAmount: toWei(100),
-    useUnderlyings: false,
-    redeemType: RedeemType.Standard,
-    incomingAssetsData: "0x1234",
+  await testActions.assertBalanceOf({
+    token: FRAX,
+    account: vaultProxy,
+    expected: minIncomingTokenAmount,
+    fuzziness: minIncomingTokenAmount - minIncomingTokenAmountWithSlippage,
   });
 });
 
-test("decodeCurveLiquidityUnstakeArgs should be equal to encoded data with encodeCurveLiquidityUnstakeArgs", () => {
-  const params = {
-    pool: CURVE_FRAX_USDC_POOL,
-    outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    amount: toWei(100),
-  } as const;
+test("prepare adapter trade for Curve Liquidity unstake and redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeCurveLiquidityUnstakeArgs(params);
-  const decoded = decodeCurveLiquidityUnstakeArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeCurveLiquidityUnstakeArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityUnstakeArgs({
-      pool: CURVE_FRAX_USDC_POOL,
-      outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-      amount: toWei(100),
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingStakingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingStakingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingStakingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLendAndStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        useUnderlyings: false,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d63100000"',
-  );
-});
-
-test("decodeCurveLiquidityUnstakeArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityUnstakeArgs(
-      "0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d63100000",
-    ),
-  ).toEqual({
-    pool: CURVE_FRAX_USDC_POOL,
-    outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    amount: toWei(100),
+    account: vaultOwner,
+    address: comptrollerProxy,
   });
-});
 
-test("decodeCurveLiquidityStakeArgs should be equal to encoded data with encodeCurveLiquidityStakeArgs", () => {
-  const params = {
-    pool: CURVE_FRAX_USDC_POOL,
-    incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    amount: toWei(100),
-  } as const;
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmount,
+    fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
+  });
 
-  const encoded = encodeCurveLiquidityStakeArgs(params);
-  const decoded = decodeCurveLiquidityStakeArgs(encoded);
+  const incomingAssetPoolIndex = 0n;
 
-  expect(decoded).toEqual(params);
-});
+  const minIncomingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_withdraw_one_coin",
+    args: [minIncomingStakingTokenAmountWithSlippage, incomingAssetPoolIndex],
+  });
 
-test("encodeCurveLiquidityStakeArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityStakeArgs({
-      pool: CURVE_FRAX_USDC_POOL,
-      incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-      amount: toWei(100),
+  const minIncomingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityUnstakeAndRedeem,
+        pool: CURVE_FRAX_USDC_POOL,
+        outgoingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        redeemType: RedeemType.OneCoin,
+        useUnderlyings: false,
+        incomingAssetsData: encodeAbiParameters(
+          [
+            { name: "incomingAssetPoolIndex", type: "uint256" },
+            { name: "minIncomingAssetAmount", type: "uint256" },
+          ],
+          [incomingAssetPoolIndex, minIncomingTokenAmountWithSlippage],
+        ),
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d63100000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeCurveLiquidityStakeArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityStakeArgs(
-      "0x000000000000000000000000dcef968d416a41cdac0ed8702fac8128a64241a2000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa595030000000000000000000000000000000000000000000000056bc75e2d63100000",
-    ),
-  ).toEqual({
-    pool: CURVE_FRAX_USDC_POOL,
-    incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
-    amount: toWei(100),
+  await testActions.assertBalanceOf({
+    token: FRAX,
+    account: vaultProxy,
+    expected: minIncomingTokenAmount,
+    fuzziness: minIncomingTokenAmount - minIncomingTokenAmountWithSlippage,
   });
 });
 
-test("decodeCurveLiquidityClaimRewardsArgs should be equal to encoded data with encodeCurveLiquidityClaimRewardsArgs", () => {
-  const params = {
-    stakingToken: CURVE_FRAX_USDC_GAUGE,
-  } as const;
+test("prepare adapter trade for Curve Liquidity stake should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeCurveLiquidityClaimRewardsArgs(params);
-  const decoded = decodeCurveLiquidityClaimRewardsArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeCurveLiquidityClaimRewardsArgs should encode correctly", () => {
-  expect(
-    encodeCurveLiquidityClaimRewardsArgs({
-      stakingToken: CURVE_FRAX_USDC_GAUGE,
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingLpTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingLpTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingLpTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLend,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingLpTokenAmount: minIncomingLpTokenAmountWithSlippage,
+        useUnderlyings: false,
+      },
     }),
-  ).toMatchInlineSnapshot('"0x000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa59503"');
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmount,
+    fuzziness: minIncomingLpTokenAmount - minIncomingLpTokenAmountWithSlippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        amount: minIncomingLpTokenAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingLpTokenAmountWithSlippage,
+  });
 });
 
-test("decodeCurveLiquidityClaimRewardsArgs should decode correctly", () => {
-  expect(
-    decodeCurveLiquidityClaimRewardsArgs("0x000000000000000000000000cfc25170633581bf896cb6cdee170e3e3aa59503"),
-  ).toEqual({
-    stakingToken: CURVE_FRAX_USDC_GAUGE,
+test("prepare adapter trade for Curve Liquidity unstake should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
   });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingStakingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingStakingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingStakingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLendAndStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        useUnderlyings: false,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmount,
+    fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityUnstake,
+        pool: CURVE_FRAX_USDC_POOL,
+        outgoingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        amount: minIncomingStakingTokenAmountWithSlippage,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_LP,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmountWithSlippage,
+  });
+});
+
+test("prepare adapter trade for Curve Liquidity claim rewards should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
+
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const depositAmount = toWei(250);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  const lendAmountUsdc = toWei(100, 6);
+  const lendAmountFrax = toWei(100);
+
+  await testActions.deal({
+    token: USDC,
+    to: vaultProxy,
+    amount: lendAmountUsdc,
+    slotOfBalancesMapping: 9,
+  });
+  await testActions.deal({
+    token: FRAX,
+    to: vaultProxy,
+    amount: lendAmountFrax,
+    slotOfBalancesMapping: 0,
+  });
+
+  const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
+
+  const minIncomingStakingTokenAmount = await publicClient.readContract({
+    abi: abiPool,
+    address: CURVE_FRAX_USDC_POOL,
+    functionName: "calc_token_amount",
+    args: [orderedOutgoingAssetAmounts, true],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingStakingTokenAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingStakingTokenAmount,
+    slippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityLendAndStake,
+        pool: CURVE_FRAX_USDC_POOL,
+        orderedOutgoingAssetAmounts: [...orderedOutgoingAssetAmounts],
+        minIncomingStakingTokenAmount: minIncomingStakingTokenAmountWithSlippage,
+        incomingStakingToken: CURVE_FRAX_USDC_GAUGE,
+        useUnderlyings: false,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: CURVE_FRAX_USDC_GAUGE,
+    account: vaultProxy,
+    expected: minIncomingStakingTokenAmount,
+    fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
+  });
+
+  await sendTestTransaction({
+    ...prepareFunctionParams({
+      abi: getAbiItem({ abi: IComptroller, name: "vaultCallOnContract" }),
+      args: [
+        CURVE_MINTER,
+        TOGGLE_APPROVE_MINT_SELECTOR,
+        encodeAbiParameters([{ name: "adapter", type: "address" }], [CURVE_LIQUIDITY_ADAPTER]),
+      ],
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await increaseTimeAndMine({
+    seconds: toSeconds({ hours: 100 }),
+    blocks: 100,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
+      callArgs: {
+        type: Integration.CurveLiquidityClaimRewards,
+        stakingToken: CURVE_FRAX_USDC_GAUGE,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  const crvBalance = await testActions.getBalanceOf({
+    token: CRV,
+    account: vaultProxy,
+  });
+
+  expect(crvBalance).toBeGreaterThan(0n);
 });

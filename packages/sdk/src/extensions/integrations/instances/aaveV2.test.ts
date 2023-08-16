@@ -1,78 +1,105 @@
-import { AAVE_V2_A_WETH } from "../../../../tests/constants.js";
+import { AAVE_V2_ADAPTER, AAVE_V2_A_WETH, ALICE, BOB, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
+import { sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
-import {
-  decodeAaveV2LendArgs,
-  decodeAaveV2RedeemArgs,
-  encodeAaveV2LendArgs,
-  encodeAaveV2RedeemArgs,
-} from "./aaveV2.js";
-import { getAddress } from "viem";
-import { expect, test } from "vitest";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { test } from "vitest";
 
-test("decodeAaveV2LendArgs should be equal to encoded data with encodeAaveV2LendArgs", () => {
-  const params = {
-    aToken: getAddress(AAVE_V2_A_WETH),
-    depositAmount: toWei(100),
-  };
+test("prepare adapter trade for Aave V2 lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeAaveV2LendArgs(params);
-  const decoded = decodeAaveV2LendArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const depositAmount = toWei(250);
 
-test("encodeAaveV2LendArgs should encode correctly", () => {
-  expect(
-    encodeAaveV2LendArgs({
-      aToken: AAVE_V2_A_WETH,
-      depositAmount: toWei(100),
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: depositAmount,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: AAVE_V2_ADAPTER,
+      callArgs: {
+        type: Integration.AaveV2Lend,
+        aToken: AAVE_V2_A_WETH,
+        depositAmount,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeAaveV2LendArgs should decode correctly", () => {
-  expect(
-    decodeAaveV2LendArgs(
-      "0x000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
-    ),
-  ).toEqual({
-    aToken: AAVE_V2_A_WETH,
-    depositAmount: toWei(100),
+  await testActions.assertBalanceOf({
+    token: AAVE_V2_A_WETH,
+    account: vaultProxy,
+    expected: depositAmount,
+    fuzziness: 100n,
   });
 });
 
-test("decodeAaveV2RedeemArgs should be equal to encoded data with encodeAaveV2RedeemArgs", () => {
-  const params = {
-    aToken: getAddress(AAVE_V2_A_WETH),
-    redeemAmount: toWei(100),
-  };
+test("prepare adapter trade for Aave V2 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const sharesBuyer = BOB;
 
-  const encoded = encodeAaveV2RedeemArgs(params);
-  const decoded = decodeAaveV2RedeemArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const investmentAmount = toWei(250);
 
-test("encodeAaveV2RedeemArgs should encode correctly", () => {
-  expect(
-    encodeAaveV2RedeemArgs({
-      aToken: AAVE_V2_A_WETH,
-      redeemAmount: toWei(100),
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: investmentAmount,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: AAVE_V2_ADAPTER,
+      callArgs: {
+        type: Integration.AaveV2Lend,
+        aToken: AAVE_V2_A_WETH,
+        depositAmount: investmentAmount,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeAaveV2RedeemArgs should decode correctly", () => {
-  expect(
-    decodeAaveV2RedeemArgs(
-      "0x000000000000000000000000030ba81f1c18d280636f32af80b9aad02cf0854e0000000000000000000000000000000000000000000000056bc75e2d63100000",
-    ),
-  ).toEqual({
-    aToken: AAVE_V2_A_WETH,
-    redeemAmount: toWei(100),
+  await testActions.assertBalanceOf({
+    token: AAVE_V2_A_WETH,
+    account: vaultProxy,
+    expected: investmentAmount,
+    fuzziness: 100n,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: AAVE_V2_ADAPTER,
+      callArgs: {
+        type: Integration.AaveV2Redeem,
+        aToken: AAVE_V2_A_WETH,
+        redeemAmount: investmentAmount,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: WETH,
+    account: vaultProxy,
+    expected: investmentAmount,
+    fuzziness: 100n,
   });
 });
