@@ -4,23 +4,25 @@ import {
   BOB,
   CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER,
   CONVEX_CURVE_LP_STAKING_ADAPTER,
+  CRV,
   CURVE_FRAX_USDC_LP,
   CURVE_FRAX_USDC_POOL,
   CURVE_LIQUIDITY_ADAPTER,
-  CVX,
+  CURVE_MINTER,
   FRAX,
   INTEGRATION_MANAGER,
   USDC,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { prepareFunctionParams } from "../../../utils/viem.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { abiCurvePool } from "./curveLiquidity.test.js";
-import { encodeAbiParameters } from "viem";
+import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
 import { expect, test } from "vitest";
 
 test("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
@@ -478,6 +480,27 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
     fuzziness: minIncomingStakingTokenAmount - minIncomingStakingTokenAmountWithSlippage,
   });
 
+  // seed staking token wrapper with crv so there is something to claim
+  const crvRewardsAmount = toWei(100);
+  const abiCRVoken = parseAbi(["function mint(address to, uint256 amount)"] as const);
+  await testClient.setBalance({
+    address: CURVE_MINTER,
+    value: parseEther("1"),
+  });
+  await sendTestTransaction({
+    ...prepareFunctionParams({
+      abi: getAbiItem({ abi: abiCRVoken, name: "mint" }),
+      args: [CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER, crvRewardsAmount],
+    }),
+    address: CRV,
+    account: CURVE_MINTER,
+  });
+  await testActions.assertBalanceOf({
+    token: CRV,
+    account: CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER,
+    expected: crvRewardsAmount,
+  });
+
   await increaseTimeAndMine({
     seconds: toSeconds({ hours: 100 }),
     blocks: 100,
@@ -496,10 +519,10 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
     address: comptrollerProxy,
   });
 
-  const cvxBalance = await testActions.getBalanceOf({
-    token: CVX,
+  const crvBalance = await testActions.getBalanceOf({
+    token: CRV,
     account: vaultProxy,
   });
 
-  expect(cvxBalance).toBeGreaterThan(0n);
+  expect(crvBalance).toBeGreaterThan(0n);
 });
