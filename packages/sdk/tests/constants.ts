@@ -28,6 +28,7 @@ export const COMPOUND_V3_C_WETH = "0xA17581A9E3356d9A858b789D68B4d866e593aE94" a
 export const IDLE_V4_WETH = "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80" as const;
 export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
 export const YEARN_VAULT_V2_WETH = "0xa258C4606Ca8206D8aA700cE2143D7db854D168c" as const;
+export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
 
 // Test accounts
 export const ACCOUNTS = [

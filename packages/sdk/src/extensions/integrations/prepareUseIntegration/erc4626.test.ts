@@ -1,13 +1,23 @@
+import { parseAbi } from "viem";
 import { expect, test } from "vitest";
-import { AAVE_V3_A_WETH, ALICE, BOB, ERC4626_ADAPTER, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { ALICE, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "./prepareUseIntegration.js";
 
+const abiMaShares = parseAbi([
+  "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",
+] as const);
+
+const abiMaAssets = parseAbi([
+  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)",
+] as const);
+
 test("prepare adapter trade for ERC4626 lend should work correctly", async () => {
   const vaultOwner = ALICE;
-  const sharesBuyer = BOB;
+  const slippage = 1n;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
     vaultOwner,
@@ -15,12 +25,16 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   });
 
   const outgoingAmount = toWei(250);
-  const minIncomingAmount = toWei(250);
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: outgoingAmount,
+    slippage,
+  });
 
-  await testActions.buyShares({
-    comptrollerProxy,
-    sharesBuyer,
-    investmentAmount: outgoingAmount,
+  const minIncomingAmount = await publicClient.readContract({
+    abi: abiMaShares,
+    address: MA_WETH,
+    functionName: "convertToShares",
+    args: [minIncomingAmountWithSlippage],
   });
 
   await sendTestTransaction({
@@ -29,7 +43,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
         type: Integration.Erc4626Lend,
-        tokenAddress: AAVE_V3_A_WETH,
+        tokenAddress: MA_WETH,
         outgoingAmount,
         minIncomingAmount,
       },
@@ -39,23 +53,37 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   });
 
   await testActions.assertBalanceOf({
-    token: AAVE_V3_A_WETH,
+    token: MA_WETH,
     account: vaultProxy,
     expected: outgoingAmount,
     fuzziness: 100n,
   });
 });
 
-test("prepareUseIntegration for ERC4626 lend should be equal to encoded data with encodeCallArgsForErc4626Lend", () => {
+test("prepareUseIntegration for ERC4626 lend should be equal to encoded data with encodeCallArgsForErc4626Lend", async () => {
+  const slippage = 1n;
+  const outgoingAmount = toWei(250);
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: outgoingAmount,
+    slippage,
+  });
+
+  const minIncomingAmount = await publicClient.readContract({
+    abi: abiMaShares,
+    address: MA_WETH,
+    functionName: "convertToShares",
+    args: [minIncomingAmountWithSlippage],
+  });
+
   expect(
     prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
         type: Integration.Erc4626Lend,
-        tokenAddress: AAVE_V3_A_WETH,
-        outgoingAmount: toWei(100),
-        minIncomingAmount: toWei(100),
+        tokenAddress: MA_WETH,
+        outgoingAmount: outgoingAmount,
+        minIncomingAmount: minIncomingAmount,
       },
     }),
   ).toMatchInlineSnapshot(
@@ -89,7 +117,7 @@ test("prepareUseIntegration for ERC4626 lend should be equal to encoded data wit
       "args": [
         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
         0n,
-        "0x00000000000000000000000064Fa106DD89F21d6e687EEbE9384637F7d54f707099f751500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000400000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d63100000",
+        "0x00000000000000000000000064fa106dd89f21d6e687eebe9384637f7d54f707099f751500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000600000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000056bc75e2d63100000",
       ],
       "functionName": "callOnExtension",
     }
@@ -99,19 +127,24 @@ test("prepareUseIntegration for ERC4626 lend should be equal to encoded data wit
 
 test("prepare adapter trade for ERC4626 redeem should work correctly", async () => {
   const vaultOwner = ALICE;
-  const sharesBuyer = BOB;
+  const slippage = 1n;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
     vaultOwner,
     denominationAsset: WETH,
   });
 
-  const investmentAmount = toWei(250);
+  const outgoingAmount = toWei(250);
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: outgoingAmount,
+    slippage,
+  });
 
-  await testActions.buyShares({
-    comptrollerProxy,
-    sharesBuyer,
-    investmentAmount: investmentAmount,
+  const minIncomingAmount = await publicClient.readContract({
+    abi: abiMaAssets,
+    address: MA_WETH,
+    functionName: "convertToAssets",
+    args: [minIncomingAmountWithSlippage],
   });
 
   await sendTestTransaction({
@@ -120,9 +153,9 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
         type: Integration.Erc4626Lend,
-        tokenAddress: AAVE_V3_A_WETH,
-        outgoingAmount: investmentAmount,
-        minIncomingAmount: investmentAmount,
+        tokenAddress: MA_WETH,
+        outgoingAmount,
+        minIncomingAmount,
       },
     }),
     account: vaultOwner,
@@ -130,9 +163,9 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   await testActions.assertBalanceOf({
-    token: AAVE_V3_A_WETH,
+    token: MA_WETH,
     account: vaultProxy,
-    expected: investmentAmount,
+    expected: outgoingAmount,
     fuzziness: 100n,
   });
 
@@ -142,9 +175,9 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
         type: Integration.Erc4626Redeem,
-        tokenAddress: AAVE_V3_A_WETH,
-        outgoingAmount: investmentAmount,
-        minIncomingAmount: investmentAmount,
+        tokenAddress: WETH,
+        outgoingAmount,
+        minIncomingAmount,
       },
     }),
     account: vaultOwner,
@@ -154,7 +187,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   await testActions.assertBalanceOf({
     token: WETH,
     account: vaultProxy,
-    expected: investmentAmount,
+    expected: outgoingAmount,
     fuzziness: 100n,
   });
 });
@@ -166,7 +199,7 @@ test("prepareUseIntegration for ERC4626 redeem should be equal to encoded data w
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
         type: Integration.Erc4626Redeem,
-        tokenAddress: AAVE_V3_A_WETH,
+        tokenAddress: MA_WETH,
         outgoingAmount: toWei(100),
         minIncomingAmount: toWei(100),
       },
@@ -202,7 +235,7 @@ test("prepareUseIntegration for ERC4626 redeem should be equal to encoded data w
       "args": [
         "0x31329024f1a3E4a4B3336E0b1DfA74CC3FEc633e",
         0n,
-        "0x00000000000000000000000064Fa106DD89F21d6e687EEbE9384637F7d54f707c29fa9dd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000400000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d63100000",
+        "0x00000000000000000000000064fa106dd89f21d6e687eebe9384637f7d54f707c29fa9dd00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000600000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000056bc75e2d63100000",
       ],
       "functionName": "callOnExtension",
     }
