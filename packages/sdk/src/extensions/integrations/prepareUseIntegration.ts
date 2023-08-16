@@ -20,6 +20,13 @@ import {
   encodeCompoundV3RedeemArgs,
 } from "./instances/compoundV3.js";
 import {
+  encodeConvexCurveLpStakingClaimRewardsArgs,
+  encodeConvexCurveLpStakingLendAndStakeArgs,
+  encodeConvexCurveLpStakingStakeArgs,
+  encodeConvexCurveLpStakingUnstakeAndRedeemArgs,
+  encodeConvexCurveLpStakingUnstakeArgs,
+} from "./instances/convexCurveLpStaking.js";
+import {
   encodeCurveLiquidityClaimRewardsArgs,
   encodeCurveLiquidityLendAndStakeArgs,
   encodeCurveLiquidityLendArgs,
@@ -116,6 +123,16 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [STAKE_SELECTOR, encodeCurveLiquidityStakeArgs(callArgs)];
     case Integration.CurveLiquidityUnstake:
       return [UNSTAKE_SELECTOR, encodeCurveLiquidityUnstakeArgs(callArgs)];
+    case Integration.ConvexCurveLpStakingClaimRewards:
+      return [CLAIM_REWARDS_SELECTOR, encodeConvexCurveLpStakingClaimRewardsArgs(callArgs)];
+    case Integration.ConvexCurveLpStakingLendAndStake:
+      return [LEND_AND_STAKE_SELECTOR, encodeConvexCurveLpStakingLendAndStakeArgs(callArgs)];
+    case Integration.ConvexCurveLpStakingUnstakeAndRedeem:
+      return [UNSTAKE_AND_REDEEM_SELECTOR, encodeConvexCurveLpStakingUnstakeAndRedeemArgs(callArgs)];
+    case Integration.ConvexCurveLpStakingStake:
+      return [STAKE_SELECTOR, encodeConvexCurveLpStakingStakeArgs(callArgs)];
+    case Integration.ConvexCurveLpStakingUnstake:
+      return [UNSTAKE_SELECTOR, encodeConvexCurveLpStakingUnstakeArgs(callArgs)];
     case Integration.UniswapV2LiquidityLend:
       return [LEND_SELECTOR, encodeUniswapV2LiquidityLendArgs(callArgs)];
     case Integration.UniswapV2LiquidityRedeem:

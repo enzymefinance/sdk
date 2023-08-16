@@ -608,12 +608,37 @@ export {
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
+// ./extensions/integrations/instances/convexCurveLpStaking.js
+export {
+  encodeConvexCurveLpStakingLendAndStakeArgs,
+  decodeConvexCurveLpStakingLendAndStakeArgs,
+  encodeConvexCurveLpStakingClaimRewardsArgs,
+  decodeConvexCurveLpStakingClaimRewardsArgs,
+  encodeConvexCurveLpStakingStakeArgs,
+  decodeConvexCurveLpStakingStakeArgs,
+  encodeConvexCurveLpStakingUnstakeArgs,
+  decodeConvexCurveLpStakingUnstakeArgs,
+  encodeConvexCurveLpStakingUnstakeAndRedeemArgs,
+  decodeConvexCurveLpStakingUnstakeAndRedeemArgs,
+  convexCurveLpStakingLendAndStakeEncoding,
+  type ConvexCurveLpStakingLendAndStakeArgs,
+  convexCurveLpStakingClaimRewardsEncoding,
+  type ConvexCurveLpStakingClaimRewardsArgs,
+  convexCurveLpStakingStakeEncoding,
+  type ConvexCurveLpStakingStakeArgs,
+  convexCurveLpStakingUnstakeEncoding,
+  type ConvexCurveLpStakingUnstakeArgs,
+  convexCurveLpStakingUnstakeAndRedeemEncoding,
+  type ConvexCurveLpStakingUnstakeAndRedeemArgs,
+} from "./extensions/integrations/instances/convexCurveLpStaking.js";
+
 // ./extensions/integrations/instances/curveLiquidity.js
 export {
   encodeCurveLiquidityLendArgs,
   decodeCurveLiquidityLendArgs,
   encodeCurveLiquidityLendAndStakeArgs,
   decodeCurveLiquidityLendAndStakeArgs,
+  assertRedeemTypeValue,
   encodeCurveLiquidityRedeemArgs,
   decodeCurveLiquidityRedeemArgs,
   encodeCurveLiquidityClaimRewardsArgs,

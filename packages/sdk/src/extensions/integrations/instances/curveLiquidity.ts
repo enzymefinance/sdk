@@ -144,7 +144,7 @@ export const curveLiquidityRedeemEncoding = [
   },
 ] as const;
 
-function assertRedeemTypeValue(value: number): asserts value is RedeemTypeValue {
+export function assertRedeemTypeValue(value: number): asserts value is RedeemTypeValue {
   if (!Object.values(RedeemType).includes(value as RedeemTypeValue)) {
     throw new Error(`Invalid redeemType: ${value}`);
   }
