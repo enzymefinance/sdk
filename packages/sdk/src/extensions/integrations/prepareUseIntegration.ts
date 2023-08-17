@@ -35,6 +35,7 @@ import {
   encodeCurveLiquidityUnstakeAndRedeemArgs,
   encodeCurveLiquidityUnstakeArgs,
 } from "./instances/curveLiquidity.js";
+import { encodeERC4626LendArgs, encodeERC4626RedeemArgs } from "./instances/erc4626.js";
 import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "./instances/idleV4.js";
 import { encodeUniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import {
@@ -151,5 +152,9 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeIdleV4RedeemArgs(callArgs)];
     case Integration.IdleV4ClaimRewards:
       return [CLAIM_REWARDS_SELECTOR, encodeIdleV4ClaimRewardsArgs(callArgs)];
+    case Integration.ERC4626Lend:
+      return [LEND_SELECTOR, encodeERC4626LendArgs(callArgs)];
+    case Integration.ERC4626Redeem:
+      return [REDEEM_SELECTOR, encodeERC4626RedeemArgs(callArgs)];
   }
 }
