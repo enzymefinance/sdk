@@ -7,12 +7,9 @@ import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { parseAbi } from "viem";
 import { test } from "vitest";
 
-const abiMaShares = parseAbi([
+const abiMaConversion = parseAbi([
   "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",
-] as const);
-
-const abiMaAssets = parseAbi([
-  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)",
+  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)"
 ] as const);
 
 test("prepare adapter trade for ERC4626 lend should work correctly", async () => {
@@ -33,7 +30,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   });
 
   const minIncomingAmount = await publicClient.readContract({
-    abi: abiMaShares,
+    abi: abiMaConversion,
     address: MA_WETH,
     account: vaultProxy,
     functionName: "convertToShares",
@@ -88,7 +85,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   const minIncomingLendAmount = await publicClient.readContract({
-    abi: abiMaShares,
+    abi: abiMaConversion,
     address: MA_WETH,
     account: vaultProxy,
     functionName: "convertToShares",
@@ -125,7 +122,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   const minIncomingRedeemAmount = await publicClient.readContract({
-    abi: abiMaAssets,
+    abi: abiMaConversion,
     address: MA_WETH,
     account: vaultProxy,
     functionName: "convertToAssets",
