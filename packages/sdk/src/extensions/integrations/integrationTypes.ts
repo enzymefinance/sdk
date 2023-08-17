@@ -3,6 +3,13 @@ import type { AaveV3LendArgs, AaveV3RedeemArgs } from "./instances/aaveV3.js";
 import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
 import type {
+  ConvexCurveLpStakingClaimRewardsArgs,
+  ConvexCurveLpStakingLendAndStakeArgs,
+  ConvexCurveLpStakingStakeArgs,
+  ConvexCurveLpStakingUnstakeAndRedeemArgs,
+  ConvexCurveLpStakingUnstakeArgs,
+} from "./instances/convexCurveLpStaking.js";
+import type {
   CurveLiquidityClaimRewardsArgs,
   CurveLiquidityLendAndStakeArgs,
   CurveLiquidityLendArgs,
@@ -36,6 +43,11 @@ export const Integration = {
   CurveLiquidityClaimRewards: "CurveLiquidityClaimRewards",
   CurveLiquidityUnstake: "CurveLiquidityUnstake",
   CurveLiquidityStake: "CurveLiquidityStake",
+  ConvexCurveLpStakingLendAndStake: "ConvexCurveLpStakingLendAndStake",
+  ConvexCurveLpStakingUnstakeAndRedeem: "ConvexCurveLpStakingUnstakeAndRedeem",
+  ConvexCurveLpStakingClaimRewards: "ConvexCurveLpStakingClaimRewards",
+  ConvexCurveLpStakingUnstake: "ConvexCurveLpStakingUnstake",
+  ConvexCurveLpStakingStake: "ConvexCurveLpStakingStake",
   UniswapV2LiquidityLend: "UniswapV2LiquidityLend",
   UniswapV2LiquidityRedeem: "UniswapV2LiquidityRedeem",
   UniswapV3TakeOrder: "UniswapV3TakeOrder",
@@ -66,6 +78,11 @@ export type IntegrationArgs = {
   [Integration.CurveLiquidityUnstakeAndRedeem]: CurveLiquidityUnstakeAndRedeemArgs;
   [Integration.CurveLiquidityUnstake]: CurveLiquidityUnstakeArgs;
   [Integration.CurveLiquidityStake]: CurveLiquidityStakeArgs;
+  [Integration.ConvexCurveLpStakingClaimRewards]: ConvexCurveLpStakingClaimRewardsArgs;
+  [Integration.ConvexCurveLpStakingLendAndStake]: ConvexCurveLpStakingLendAndStakeArgs;
+  [Integration.ConvexCurveLpStakingUnstakeAndRedeem]: ConvexCurveLpStakingUnstakeAndRedeemArgs;
+  [Integration.ConvexCurveLpStakingUnstake]: ConvexCurveLpStakingUnstakeArgs;
+  [Integration.ConvexCurveLpStakingStake]: ConvexCurveLpStakingStakeArgs;
   [Integration.UniswapV2LiquidityLend]: UniswapV2LiquidityLendArgs;
   [Integration.UniswapV2LiquidityRedeem]: UniswapV2LiquidityRedeemArgs;
   [Integration.UniswapV3TakeOrder]: UniswapV3TakeOrderArgs;

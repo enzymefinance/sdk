@@ -1,5 +1,27 @@
 # @enzymefinance/sdk
 
+## 0.0.21
+
+### Patch Changes
+
+- [#65](https://github.com/enzymefinance/sdk/pull/65) [`3788e8e`](https://github.com/enzymefinance/sdk/commit/3788e8e221c60ec79226de59f5711197febd6612) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add compound V2 trade helpers
+
+- [#76](https://github.com/enzymefinance/sdk/pull/76) [`e401fa4`](https://github.com/enzymefinance/sdk/commit/e401fa4e8f636af123450ced814137e37b38fbed) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add convex curve staking trade helpers
+
+- [#70](https://github.com/enzymefinance/sdk/pull/70) [`2ce5985`](https://github.com/enzymefinance/sdk/commit/2ce5985aea1e9867020f70406f3b743dd9c2a9b2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add uniswap v2 liquidity trade helpers
+
+- [#68](https://github.com/enzymefinance/sdk/pull/68) [`febdc97`](https://github.com/enzymefinance/sdk/commit/febdc97e5f2db9419e3377106d3a0572a14addcd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add yearn v2 trade helpers
+
+- [#71](https://github.com/enzymefinance/sdk/pull/71) [`7877813`](https://github.com/enzymefinance/sdk/commit/787781304c5e39a07550df2f5e21774010830361) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add uniswap v3 trade helpers
+
+- [#72](https://github.com/enzymefinance/sdk/pull/72) [`dcbf8de`](https://github.com/enzymefinance/sdk/commit/dcbf8de22342d083958b8281820b6def23396fe3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add curve liquidity trade helpers
+
+- [#73](https://github.com/enzymefinance/sdk/pull/73) [`e4d4c94`](https://github.com/enzymefinance/sdk/commit/e4d4c948b87059d6219f47999dd043e812df1450) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add uniswap v2 exchange helpers
+
+- [#69](https://github.com/enzymefinance/sdk/pull/69) [`402b664`](https://github.com/enzymefinance/sdk/commit/402b6648f109a372fb8d5d1987f70f85f781abbd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Idle V4 trade helpers
+
+- [#67](https://github.com/enzymefinance/sdk/pull/67) [`a8b5383`](https://github.com/enzymefinance/sdk/commit/a8b5383e6a357979b33339cb6f88b896924da1f0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add compound V3 trade helpers
+
 ## 0.0.20
 
 ### Patch Changes
