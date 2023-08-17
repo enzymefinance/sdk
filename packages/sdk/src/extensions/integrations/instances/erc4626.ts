@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const erc4626LendEncoding = [
+export const ERC4626LendEncoding = [
   {
     name: "tokenAddress",
     type: "address",
@@ -15,18 +15,18 @@ export const erc4626LendEncoding = [
   },
 ] as const;
 
-export type Erc4626LendArgs = {
+export type ERC4626LendArgs = {
   tokenAddress: Address;
   outgoingAssetAmount: bigint;
   minIncomingAmount: bigint;
 };
 
-export function encodeErc4626LendArgs({ tokenAddress, outgoingAssetAmount, minIncomingAmount }: Erc4626LendArgs): Hex {
-  return encodeAbiParameters(erc4626LendEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
+export function encodeERC4626LendArgs({ tokenAddress, outgoingAssetAmount, minIncomingAmount }: ERC4626LendArgs): Hex {
+  return encodeAbiParameters(ERC4626LendEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
 }
 
-export function decodeErc4626LendArgs(callArgs: Hex): Erc4626LendArgs {
-  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(erc4626LendEncoding, callArgs);
+export function decodeERC4626LendArgs(callArgs: Hex): ERC4626LendArgs {
+  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(ERC4626LendEncoding, callArgs);
 
   return {
     tokenAddress,
@@ -35,7 +35,7 @@ export function decodeErc4626LendArgs(callArgs: Hex): Erc4626LendArgs {
   };
 }
 
-export const erc4626RedeemEncoding = [
+export const ERC4626RedeemEncoding = [
   {
     name: "tokenAddress",
     type: "address",
@@ -50,23 +50,23 @@ export const erc4626RedeemEncoding = [
   },
 ] as const;
 
-export type Erc4626RedeemArgs = {
+export type ERC4626RedeemArgs = {
   tokenAddress: Address;
   outgoingAssetAmount: bigint;
   minIncomingAmount: bigint;
 };
 
-export function encodeErc4626RedeemArgs({
+export function encodeERC4626RedeemArgs({
   tokenAddress,
   outgoingAssetAmount,
   minIncomingAmount,
-}: Erc4626RedeemArgs): Hex {
-  return encodeAbiParameters(erc4626RedeemEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
+}: ERC4626RedeemArgs): Hex {
+  return encodeAbiParameters(ERC4626RedeemEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
 }
 
-export function decodeErc4626RedeemArgs(integrationData: Hex): Erc4626RedeemArgs {
+export function decodeERC4626RedeemArgs(integrationData: Hex): ERC4626RedeemArgs {
   const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(
-    erc4626RedeemEncoding,
+    ERC4626RedeemEncoding,
     integrationData,
   );
 

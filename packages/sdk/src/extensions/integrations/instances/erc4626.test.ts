@@ -52,7 +52,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
-        type: Integration.Erc4626Lend,
+        type: Integration.ERC4626Lend,
         tokenAddress: MA_WETH,
         outgoingAssetAmount,
         minIncomingAmount: minIncomingAmountWithSlippage,
@@ -107,7 +107,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
-        type: Integration.Erc4626Lend,
+        type: Integration.ERC4626Lend,
         tokenAddress: MA_WETH,
         outgoingAssetAmount,
         minIncomingAmount: minIncomingLendAmountWithSlippage,
@@ -142,7 +142,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
       callArgs: {
-        type: Integration.Erc4626Redeem,
+        type: Integration.ERC4626Redeem,
         tokenAddress: MA_WETH,
         outgoingAssetAmount: minIncomingLendAmountWithSlippage,
         minIncomingAmount: minIncomingRedeemAmountWithSlippage,
