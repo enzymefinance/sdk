@@ -1,11 +1,11 @@
-import { parseAbi } from "viem";
-import { test } from "vitest";
-import { ALICE, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
+import { ALICE, BOB, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
 import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi } from "viem";
+import { test } from "vitest";
 
 const abiMaShares = parseAbi([
   "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",
@@ -17,24 +17,34 @@ const abiMaAssets = parseAbi([
 
 test("prepare adapter trade for ERC4626 lend should work correctly", async () => {
   const vaultOwner = ALICE;
-  const slippage = 100n;
+  const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
     vaultOwner,
     denominationAsset: WETH,
   });
 
-  const outgoingAssetAmount = toWei(1000000);
-  const minIncomingAmountWithSlippage = multiplyBySlippage({
-    amount: outgoingAssetAmount,
-    slippage,
+  const outgoingAssetAmount = toWei(100);
+
+  await testActions.buyShares({
+    comptrollerProxy,
+    sharesBuyer,
+    investmentAmount: outgoingAssetAmount,
   });
 
   const minIncomingAmount = await publicClient.readContract({
     abi: abiMaShares,
     address: MA_WETH,
+    account: vaultProxy,
     functionName: "convertToShares",
-    args: [minIncomingAmountWithSlippage],
+    args: [outgoingAssetAmount],
+  });
+
+  const slippage = 1n;
+
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: minIncomingAmount,
+    slippage,
   });
 
   await sendTestTransaction({
@@ -45,7 +55,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
         type: Integration.Erc4626Lend,
         tokenAddress: MA_WETH,
         outgoingAssetAmount,
-        minIncomingAmount,
+        minIncomingAmount: minIncomingAmountWithSlippage,
       },
     }),
     account: vaultOwner,
@@ -56,7 +66,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
     token: MA_WETH,
     account: vaultProxy,
     expected: minIncomingAmount,
-    fuzziness: 100n,
+    fuzziness: minIncomingAmount - minIncomingAmountWithSlippage,
   });
 });
 
