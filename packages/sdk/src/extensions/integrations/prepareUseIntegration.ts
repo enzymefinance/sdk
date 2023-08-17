@@ -1,4 +1,3 @@
-import type { Address, Hex } from "viem";
 import {
   CLAIM_REWARDS_SELECTOR,
   LEND_AND_STAKE_SELECTOR,
@@ -46,6 +45,7 @@ import {
 import { encodeUniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
 import { Integration, type IntegrationArgs } from "./integrationTypes.js";
+import type { Address, Hex } from "viem";
 
 export type TypedIntegrationCallArgs = {
   [TKey in keyof IntegrationArgs]: Prettify<{ type: TKey } & IntegrationArgs[TKey]>;
