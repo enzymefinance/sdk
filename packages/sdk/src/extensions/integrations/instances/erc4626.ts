@@ -2,11 +2,11 @@ import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from
 
 export const erc4626LendEncoding = [
   {
-    type: "address",
     name: "tokenAddress",
+    type: "address",
   },
   {
-    name: "outgoingAmount",
+    name: "outgoingAssetAmount",
     type: "uint256",
   },
   {
@@ -17,31 +17,31 @@ export const erc4626LendEncoding = [
 
 export type Erc4626LendArgs = {
   tokenAddress: Address;
-  outgoingAmount: bigint;
+  outgoingAssetAmount: bigint;
   minIncomingAmount: bigint;
 };
 
-export function encodeErc4626LendArgs({ tokenAddress, outgoingAmount, minIncomingAmount }: Erc4626LendArgs): Hex {
-  return encodeAbiParameters(erc4626LendEncoding, [tokenAddress, outgoingAmount, minIncomingAmount]);
+export function encodeErc4626LendArgs({ tokenAddress, outgoingAssetAmount, minIncomingAmount }: Erc4626LendArgs): Hex {
+  return encodeAbiParameters(erc4626LendEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
 }
 
 export function decodeErc4626LendArgs(callArgs: Hex): Erc4626LendArgs {
-  const [tokenAddress, outgoingAmount, minIncomingAmount] = decodeAbiParameters(erc4626LendEncoding, callArgs);
+  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(erc4626LendEncoding, callArgs);
 
   return {
     tokenAddress,
-    outgoingAmount,
+    outgoingAssetAmount,
     minIncomingAmount,
   };
 }
 
 export const erc4626RedeemEncoding = [
   {
-    type: "address",
     name: "tokenAddress",
+    type: "address",
   },
   {
-    name: "outgoingAmount",
+    name: "outgoingAssetAmount",
     type: "uint256",
   },
   {
@@ -52,16 +52,23 @@ export const erc4626RedeemEncoding = [
 
 export type Erc4626RedeemArgs = {
   tokenAddress: Address;
-  outgoingAmount: bigint;
+  outgoingAssetAmount: bigint;
   minIncomingAmount: bigint;
 };
 
-export function encodeErc4626RedeemArgs({ tokenAddress, outgoingAmount, minIncomingAmount }: Erc4626RedeemArgs): Hex {
-  return encodeAbiParameters(erc4626RedeemEncoding, [tokenAddress, outgoingAmount, minIncomingAmount]);
+export function encodeErc4626RedeemArgs({
+  tokenAddress,
+  outgoingAssetAmount,
+  minIncomingAmount,
+}: Erc4626RedeemArgs): Hex {
+  return encodeAbiParameters(erc4626RedeemEncoding, [tokenAddress, outgoingAssetAmount, minIncomingAmount]);
 }
 
 export function decodeErc4626RedeemArgs(integrationData: Hex): Erc4626RedeemArgs {
-  const [tokenAddress, outgoingAmount, minIncomingAmount] = decodeAbiParameters(erc4626RedeemEncoding, integrationData);
+  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(
+    erc4626RedeemEncoding,
+    integrationData,
+  );
 
-  return { tokenAddress, outgoingAmount, minIncomingAmount };
+  return { tokenAddress, outgoingAssetAmount, minIncomingAmount };
 }

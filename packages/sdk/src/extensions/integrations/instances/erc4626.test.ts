@@ -1,97 +1,128 @@
-import { getAddress } from "viem";
-import { expect, test } from "vitest";
-import { WETH } from "../../../../tests/constants.js";
+import { parseAbi } from "viem";
+import { test } from "vitest";
+import { ALICE, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
-import {
-  decodeErc4626LendArgs,
-  decodeErc4626RedeemArgs,
-  encodeErc4626LendArgs,
-  encodeErc4626RedeemArgs,
-} from "./erc4626.js";
+import { multiplyBySlippage } from "../../../utils/slippage.js";
+import { Integration } from "../integrationTypes.js";
+import { prepareUseIntegration } from "../prepareUseIntegration.js";
 
-test("decodeErc4626LendArgs should be equal to encoded data with encodeErc4626LendArgs", () => {
-  const params = {
-    tokenAddress: getAddress(WETH),
-    outgoingAmount: toWei(100),
-    minIncomingAmount: toWei(95),
-  };
+const abiMaShares = parseAbi([
+  "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",
+] as const);
 
-  const encoded = encodeErc4626LendArgs(params);
-  const decoded = decodeErc4626LendArgs(encoded);
+const abiMaAssets = parseAbi([
+  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)",
+] as const);
 
-  expect(decoded).toEqual(params);
-});
+test("prepare adapter trade for ERC4626 lend should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const slippage = 100n;
 
-test("encodeErc4626LendArgs should encode correctly", () => {
-  expect(
-    encodeErc4626LendArgs({
-      tokenAddress: WETH,
-      outgoingAmount: toWei(100),
-      minIncomingAmount: toWei(95),
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
+
+  const outgoingAssetAmount = toWei(1000000);
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: outgoingAssetAmount,
+    slippage,
+  });
+
+  const minIncomingAmount = await publicClient.readContract({
+    abi: abiMaShares,
+    address: MA_WETH,
+    functionName: "convertToShares",
+    args: [minIncomingAmountWithSlippage],
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: ERC4626_ADAPTER,
+      callArgs: {
+        type: Integration.Erc4626Lend,
+        tokenAddress: MA_WETH,
+        outgoingAssetAmount,
+        minIncomingAmount,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000052663ccab1e1c0000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeErc4626LendArgs should decode correctly", () => {
-  expect(
-    decodeErc4626LendArgs(
-      "0x0000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000052663ccab1e1c0000",
-    ),
-  ).toEqual({
-    tokenAddress: WETH,
-    outgoingAmount: toWei(100),
-    minIncomingAmount: toWei(95),
+  await testActions.assertBalanceOf({
+    token: MA_WETH,
+    account: vaultProxy,
+    expected: minIncomingAmount,
+    fuzziness: 100n,
   });
 });
 
-test("decodeErc4626LendArgs should be equal to encoded data with encodeErc4626LendArgs", () => {
-  const params = {
-    tokenAddress: getAddress(WETH),
-    outgoingAmount: toWei(100),
-    minIncomingAmount: toWei(95),
-  };
+test("prepare adapter trade for ERC4626 redeem should work correctly", async () => {
+  const vaultOwner = ALICE;
+  const slippage = 1n;
 
-  const encoded = encodeErc4626LendArgs(params);
-  const decoded = decodeErc4626LendArgs(encoded);
+  const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
+    vaultOwner,
+    denominationAsset: WETH,
+  });
 
-  expect(decoded).toEqual(params);
-});
+  const outgoingAssetAmount = toWei(1000000);
+  const minIncomingAmountWithSlippage = multiplyBySlippage({
+    amount: outgoingAssetAmount,
+    slippage,
+  });
 
-test("decodeErc4626RedeemArgs should be equal to encoded data with encodeErc4626RedeemArgs", () => {
-  const params = {
-    tokenAddress: getAddress(WETH),
-    outgoingAmount: toWei(100),
-    minIncomingAmount: toWei(95),
-  };
+  const minIncomingAmount = await publicClient.readContract({
+    abi: abiMaAssets,
+    address: MA_WETH,
+    functionName: "convertToAssets",
+    args: [minIncomingAmountWithSlippage],
+  });
 
-  const encoded = encodeErc4626RedeemArgs(params);
-  const decoded = decodeErc4626RedeemArgs(encoded);
-
-  expect(decoded).toEqual(params);
-});
-
-test("encodeErc4626RedeemArgs should encode correctly", () => {
-  expect(
-    encodeErc4626RedeemArgs({
-      tokenAddress: WETH,
-      outgoingAmount: toWei(100),
-      minIncomingAmount: toWei(95),
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: ERC4626_ADAPTER,
+      callArgs: {
+        type: Integration.Erc4626Lend,
+        tokenAddress: MA_WETH,
+        outgoingAssetAmount,
+        minIncomingAmount,
+      },
     }),
-  ).toMatchInlineSnapshot(
-    '"0x000000000000000000000000c02aaa39b223fe8d0a0e5c4f27ead9083c756cc20000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000052663ccab1e1c0000"',
-  );
-});
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
 
-test("decodeErc4626RedeemArgs should decode correctly", () => {
-  expect(
-    decodeErc4626RedeemArgs(
-      "0x0000000000000000000000004d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e80000000000000000000000000000000000000000000000056bc75e2d631000000000000000000000000000000000000000000000000000052663ccab1e1c0000",
-    ),
-  ).toEqual({
-    tokenAddress: WETH,
-    outgoingAmount: toWei(100),
-    minIncomingAmount: toWei(95),
+  await testActions.assertBalanceOf({
+    token: MA_WETH,
+    account: vaultProxy,
+    expected: minIncomingAmount,
+    fuzziness: 100n,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: ERC4626_ADAPTER,
+      callArgs: {
+        type: Integration.Erc4626Redeem,
+        tokenAddress: WETH,
+        outgoingAssetAmount,
+        minIncomingAmount,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: WETH,
+    account: vaultProxy,
+    expected: outgoingAssetAmount,
+    fuzziness: 100n,
   });
 });
