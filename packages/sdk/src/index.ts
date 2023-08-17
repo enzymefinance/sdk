@@ -580,6 +580,33 @@ export {
   type AaveV3RedeemArgs,
 } from "./extensions/integrations/instances/aaveV3.js";
 
+// ./extensions/integrations/instances/balancerV2Liquidity.js
+export {
+  encodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  decodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  encodeBalancerV2LiquidityClaimRewardsArgs,
+  decodeBalancerV2LiquidityClaimRewardsArgs,
+  encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  decodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  assertSwapKindValue,
+  encodeBalancerV2LiquidityTakeOrderArgs,
+  decodeBalancerV2LiquidityTakeOrderArgs,
+  balancerV2LiquidityLendEncodingAndRedeemEncoding,
+  type BalancerV2LiquidityLendArgsAndRedeemArgs,
+  balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding,
+  type BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  balancerV2LiquidityClaimRewardsEncoding,
+  type BalancerV2LiquidityClaimRewardsArgs,
+  balancerV2LiquidityStakeEncodingAndUnstakeEncoding,
+  type BalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  SwapKind,
+  type SwapKindValue,
+  balancerV2LiquidityTakeOrderEncoding,
+  type BalancerV2LiquidityTakeOrderArgs,
+} from "./extensions/integrations/instances/balancerV2Liquidity.js";
+
 // ./extensions/integrations/instances/compoundV2.js
 export {
   encodeCompoundV2LendArgs,
@@ -666,6 +693,18 @@ export {
   curveLiquidityUnstakeAndRedeemEncoding,
   type CurveLiquidityUnstakeAndRedeemArgs,
 } from "./extensions/integrations/instances/curveLiquidity.js";
+
+// ./extensions/integrations/instances/erc4626.js
+export {
+  encodeERC4626LendArgs,
+  decodeERC4626LendArgs,
+  encodeERC4626RedeemArgs,
+  decodeERC4626RedeemArgs,
+  ERC4626LendEncoding,
+  type ERC4626LendArgs,
+  ERC4626RedeemEncoding,
+  type ERC4626RedeemArgs,
+} from "./extensions/integrations/instances/erc4626.js";
 
 // ./extensions/integrations/instances/idleV4.js
 export {
