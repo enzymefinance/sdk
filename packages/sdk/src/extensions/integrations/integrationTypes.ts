@@ -20,6 +20,7 @@ import type {
 } from "./instances/curveLiquidity.js";
 import type { ERC4626LendArgs, ERC4626RedeemArgs } from "./instances/erc4626.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
+import type { ParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
 import type { UniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
 import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
@@ -59,6 +60,7 @@ export const Integration = {
   IdleV4ClaimRewards: "IdleV4ClaimRewards",
   ERC4626Lend: "ERC4626Lend",
   ERC4626Redeem: "ERC4626Redeem",
+  ParaswapV5TakeOrder: "ParaswapV5TakeOrder",
 } as const;
 
 export type IntegrationArgs = {
@@ -94,4 +96,5 @@ export type IntegrationArgs = {
   [Integration.IdleV4ClaimRewards]: IdleV4ClaimRewardsArgs;
   [Integration.ERC4626Lend]: ERC4626LendArgs;
   [Integration.ERC4626Redeem]: ERC4626RedeemArgs;
+  [Integration.ParaswapV5TakeOrder]: ParaswapV5TakeOrderArgs;
 };
