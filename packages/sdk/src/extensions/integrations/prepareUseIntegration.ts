@@ -26,6 +26,7 @@ import {
   encodeConvexCurveLpStakingUnstakeAndRedeemArgs,
   encodeConvexCurveLpStakingUnstakeArgs,
 } from "./instances/convexCurveLpStaking.js";
+import { encodeCurveExchangeTakeOrderArgs } from "./instances/curveExchange.js";
 import {
   encodeCurveLiquidityClaimRewardsArgs,
   encodeCurveLiquidityLendAndStakeArgs,
@@ -111,6 +112,8 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeCompoundV3RedeemArgs(callArgs)];
     case Integration.CompoundV3ClaimRewards:
       return [CLAIM_REWARDS_SELECTOR, encodeCompoundV3ClaimRewardsArgs(callArgs)];
+    case Integration.CurveExchangeTakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeCurveExchangeTakeOrderArgs(callArgs)];
     case Integration.CurveLiquidityLend:
       return [LEND_SELECTOR, encodeCurveLiquidityLendArgs(callArgs)];
     case Integration.CurveLiquidityRedeem:
