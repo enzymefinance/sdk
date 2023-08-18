@@ -38,6 +38,7 @@ import {
 } from "./instances/curveLiquidity.js";
 import { encodeERC4626LendArgs, encodeERC4626RedeemArgs } from "./instances/erc4626.js";
 import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "./instances/idleV4.js";
+import { encodeParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
 import { encodeUniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
@@ -159,5 +160,7 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeERC4626LendArgs(callArgs)];
     case Integration.ERC4626Redeem:
       return [REDEEM_SELECTOR, encodeERC4626RedeemArgs(callArgs)];
+    case Integration.ParaswapV5TakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeParaswapV5TakeOrderArgs(callArgs)];
   }
 }

@@ -9,7 +9,7 @@ import { test } from "vitest";
 
 const abiERC4626 = parseAbi([
   "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",
-  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)"
+  "function convertToAssets(uint256 _sharesAmount) view returns (uint256 assetAmount_)",
 ] as const);
 
 test("prepare adapter trade for ERC4626 lend should work correctly", async () => {
