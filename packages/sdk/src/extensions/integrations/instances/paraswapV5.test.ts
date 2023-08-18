@@ -1,4 +1,4 @@
-import { ALICE, BOB, FORK_URL, PARASWAP_V5_ADAPTER, INTEGRATION_MANAGER, USDC, WETH } from "../../../../tests/constants.js";
+import { ALICE, BOB, FORK_URL, INTEGRATION_MANAGER, PARASWAP_V5_ADAPTER, USDC, WETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
