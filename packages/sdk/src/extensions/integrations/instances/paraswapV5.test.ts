@@ -1,4 +1,4 @@
-import { ALICE, BOB, FORK_URL, INTEGRATION_MANAGER, PARASWAP_V5_ADAPTER, USDC, WETH } from "../../../../tests/constants.js";
+import { ALICE, BOB, INTEGRATION_MANAGER, PARASWAP_V5_ADAPTER, USDC, WETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
@@ -10,7 +10,6 @@ import { beforeAll, test } from "vitest";
 beforeAll(async () => {
   await testClient.reset({
     blockNumber: 17832981n,
-    jsonRpcUrl: FORK_URL,
   });
 });
 
