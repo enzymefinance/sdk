@@ -9,6 +9,7 @@ import type {
   ConvexCurveLpStakingUnstakeAndRedeemArgs,
   ConvexCurveLpStakingUnstakeArgs,
 } from "./instances/convexCurveLpStaking.js";
+import type { CurveExchangeTakeOrderArgs } from "./instances/curveExchange.js";
 import type {
   CurveLiquidityClaimRewardsArgs,
   CurveLiquidityLendAndStakeArgs,
@@ -36,6 +37,7 @@ export const Integration = {
   CompoundV3Lend: "CompoundV3Lend",
   CompoundV3Redeem: "CompoundV3Redeem",
   CompoundV3ClaimRewards: "CompoundV3ClaimRewards",
+  CurveExchangeTakeOrder: "CurveExchangeTakeOrder",
   CurveLiquidityLend: "CurveLiquidityLend",
   CurveLiquidityRedeem: "CurveLiquidityRedeem",
   CurveLiquidityLendAndStake: "CurveLiquidityLendAndStake",
@@ -71,6 +73,7 @@ export type IntegrationArgs = {
   [Integration.CompoundV3Lend]: CompoundV3LendArgs;
   [Integration.CompoundV3Redeem]: CompoundV3RedeemArgs;
   [Integration.CompoundV3ClaimRewards]: CompoundV3ClaimRewardsArgs;
+  [Integration.CurveExchangeTakeOrder]: CurveExchangeTakeOrderArgs;
   [Integration.CurveLiquidityLend]: CurveLiquidityLendArgs;
   [Integration.CurveLiquidityRedeem]: CurveLiquidityRedeemArgs;
   [Integration.CurveLiquidityClaimRewards]: CurveLiquidityClaimRewardsArgs;
