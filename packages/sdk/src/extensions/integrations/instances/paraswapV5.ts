@@ -17,7 +17,7 @@ export const paraswapV5TakeOrderEncoding = [
     name: "outgoingAssetAmount",
     type: "uint256",
   },
-    {
+  {
     name: "uuid",
     type: "bytes16",
   },
@@ -25,7 +25,7 @@ export const paraswapV5TakeOrderEncoding = [
     name: "swapType",
     type: "uint256",
   },
-    {
+  {
     name: "swapData",
     type: "bytes",
   },
@@ -70,10 +70,7 @@ export function decodeParaswapV5TakeOrderArgs(callArgs: Hex): ParaswapV5TakeOrde
     uuid,
     swapType,
     swapData,
-  ] = decodeAbiParameters(
-    paraswapV5TakeOrderEncoding,
-    callArgs,
-  );
+  ] = decodeAbiParameters(paraswapV5TakeOrderEncoding, callArgs);
 
   return {
     minIncomingAssetAmount,
