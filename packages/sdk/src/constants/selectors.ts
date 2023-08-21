@@ -7,7 +7,6 @@ export const REGISTRY_SET_LIST_OWNER_SELECTOR = "0x956e8faa"; // setListOwner(ui
 export const REGISTRY_SET_LIST_UPDATE_TYPE_SELECTOR = "0xee4483dc"; // setListUpdateType(uint256,uint8)
 export const CURVE_MINTER_MINT_SELECTOR = "0x6a627842"; // mint(address)
 export const CURVE_MINTER_MINT_MANY_SELECTOR = "0xa51e1904"; // mint_many(address[8])
-export const CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR = "0xdd289d60"; // toggle_approve_mint(address)
 export const PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR = "0x07d2890e"; // startAssetBypassTimelock(address)
 export const SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR = "0x447fbc63"; // approveExchangeOnBehalf(address)
 export const SETTLE_CONTINUOUS_FEES_SELECTOR = "0xc071fe93"; // settleContinuousFees(address,bytes)

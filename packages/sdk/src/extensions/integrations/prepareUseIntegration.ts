@@ -13,6 +13,13 @@ import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../cal
 import { encodeCallOnIntegrationArgs } from "./callOnIntegration.js";
 import { encodeAaveV2LendArgs, encodeAaveV2RedeemArgs } from "./instances/aaveV2.js";
 import { encodeAaveV3LendArgs, encodeAaveV3RedeemArgs } from "./instances/aaveV3.js";
+import {
+  encodeBalancerV2LiquidityClaimRewardsArgs,
+  encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  encodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  encodeBalancerV2LiquidityTakeOrderArgs,
+} from "./instances/balancerV2Liquidity.js";
 import { encodeCompoundV2LendArgs, encodeCompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import {
   encodeCompoundV3ClaimRewardsArgs,
@@ -103,6 +110,22 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeAaveV3LendArgs(callArgs)];
     case Integration.AaveV3Redeem:
       return [REDEEM_SELECTOR, encodeAaveV3RedeemArgs(callArgs)];
+    case Integration.BalancerV2LiquidityLend:
+      return [LEND_SELECTOR, encodeBalancerV2LiquidityLendArgsAndRedeemArgs(callArgs)];
+    case Integration.BalancerV2LiquidityRedeem:
+      return [REDEEM_SELECTOR, encodeBalancerV2LiquidityLendArgsAndRedeemArgs(callArgs)];
+    case Integration.BalancerV2LiquidityClaimRewards:
+      return [CLAIM_REWARDS_SELECTOR, encodeBalancerV2LiquidityClaimRewardsArgs(callArgs)];
+    case Integration.BalancerV2LiquidityLendAndStake:
+      return [LEND_AND_STAKE_SELECTOR, encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(callArgs)];
+    case Integration.BalancerV2LiquidityUnstakeAndRedeem:
+      return [UNSTAKE_AND_REDEEM_SELECTOR, encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(callArgs)];
+    case Integration.BalancerV2LiquidityStake:
+      return [STAKE_SELECTOR, encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs(callArgs)];
+    case Integration.BalancerV2LiquidityUnstake:
+      return [UNSTAKE_SELECTOR, encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs(callArgs)];
+    case Integration.BalancerV2LiquidityTakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeBalancerV2LiquidityTakeOrderArgs(callArgs)];
     case Integration.CompoundV2Lend:
       return [LEND_SELECTOR, encodeCompoundV2LendArgs(callArgs)];
     case Integration.CompoundV2Redeem:

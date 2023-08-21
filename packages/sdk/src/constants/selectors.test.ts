@@ -5,7 +5,6 @@ import {
   AAVE_V2_CLAIM_REWARDS_TO_SELF_SELECTOR,
   CURVE_MINTER_MINT_MANY_SELECTOR,
   CURVE_MINTER_MINT_SELECTOR,
-  CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR,
   PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR,
   REGISTRY_ADD_TO_LIST_SELECTOR,
   REGISTRY_ATTEST_LISTS_SELECTOR,
@@ -61,11 +60,6 @@ test("CURVE_MINTER_MINT_SELECTOR is correct", () => {
 test("CURVE_MINTER_MINT_MANY_SELECTOR is correct", () => {
   const expected = getFunctionSelector("mint_many(address[8])");
   expect(CURVE_MINTER_MINT_MANY_SELECTOR).toBe(expected);
-});
-
-test("CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR is correct", () => {
-  const expected = getFunctionSelector("toggle_approve_mint(address)");
-  expect(CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR).toBe(expected);
 });
 
 test("PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR is correct", () => {

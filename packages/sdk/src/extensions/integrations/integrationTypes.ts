@@ -1,5 +1,12 @@
 import type { AaveV2LendArgs, AaveV2RedeemArgs } from "./instances/aaveV2.js";
 import type { AaveV3LendArgs, AaveV3RedeemArgs } from "./instances/aaveV3.js";
+import type {
+  BalancerV2LiquidityClaimRewardsArgs,
+  BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  BalancerV2LiquidityLendArgsAndRedeemArgs,
+  BalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  BalancerV2LiquidityTakeOrderArgs,
+} from "./instances/balancerV2Liquidity.js";
 import type { CompoundV2LendArgs, CompoundV2RedeemArgs } from "./instances/compoundV2.js";
 import type { CompoundV3ClaimRewardsArgs, CompoundV3LendArgs, CompoundV3RedeemArgs } from "./instances/compoundV3.js";
 import type {
@@ -34,6 +41,14 @@ export const Integration = {
   AaveV2Redeem: "AaveV2Redeem",
   AaveV3Lend: "AaveV3Lend",
   AaveV3Redeem: "AaveV3Redeem",
+  BalancerV2LiquidityLend: "BalancerV2LiquidityLend",
+  BalancerV2LiquidityRedeem: "BalancerV2LiquidityRedeem",
+  BalancerV2LiquidityLendAndStake: "BalancerV2LiquidityLendAndStake",
+  BalancerV2LiquidityUnstakeAndRedeem: "BalancerV2LiquidityUnstakeAndRedeem",
+  BalancerV2LiquidityClaimRewards: "BalancerV2LiquidityClaimRewards",
+  BalancerV2LiquidityUnstake: "BalancerV2LiquidityUnstake",
+  BalancerV2LiquidityStake: "BalancerV2LiquidityStake",
+  BalancerV2LiquidityTakeOrder: "BalancerV2LiquidityTakeOrder",
   CompoundV2Lend: "CompoundV2Lend",
   CompoundV2Redeem: "CompoundV2Redeem",
   CompoundV3Lend: "CompoundV3Lend",
@@ -72,6 +87,14 @@ export type IntegrationArgs = {
   [Integration.AaveV2Redeem]: AaveV2RedeemArgs;
   [Integration.AaveV3Lend]: AaveV3LendArgs;
   [Integration.AaveV3Redeem]: AaveV3RedeemArgs;
+  [Integration.BalancerV2LiquidityLend]: BalancerV2LiquidityLendArgsAndRedeemArgs;
+  [Integration.BalancerV2LiquidityRedeem]: BalancerV2LiquidityLendArgsAndRedeemArgs;
+  [Integration.BalancerV2LiquidityClaimRewards]: BalancerV2LiquidityClaimRewardsArgs;
+  [Integration.BalancerV2LiquidityLendAndStake]: BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs;
+  [Integration.BalancerV2LiquidityUnstakeAndRedeem]: BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs;
+  [Integration.BalancerV2LiquidityUnstake]: BalancerV2LiquidityStakeArgsAndUnstakeArgs;
+  [Integration.BalancerV2LiquidityStake]: BalancerV2LiquidityStakeArgsAndUnstakeArgs;
+  [Integration.BalancerV2LiquidityTakeOrder]: BalancerV2LiquidityTakeOrderArgs;
   [Integration.CompoundV2Lend]: CompoundV2LendArgs;
   [Integration.CompoundV2Redeem]: CompoundV2RedeemArgs;
   [Integration.CompoundV3Lend]: CompoundV3LendArgs;

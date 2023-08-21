@@ -115,7 +115,6 @@ export {
   REGISTRY_SET_LIST_UPDATE_TYPE_SELECTOR,
   CURVE_MINTER_MINT_SELECTOR,
   CURVE_MINTER_MINT_MANY_SELECTOR,
-  CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR,
   PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR,
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   SETTLE_CONTINUOUS_FEES_SELECTOR,
@@ -579,6 +578,32 @@ export {
   aaveV3RedeemEncoding,
   type AaveV3RedeemArgs,
 } from "./extensions/integrations/instances/aaveV3.js";
+
+// ./extensions/integrations/instances/balancerV2Liquidity.js
+export {
+  encodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  decodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  encodeBalancerV2LiquidityClaimRewardsArgs,
+  decodeBalancerV2LiquidityClaimRewardsArgs,
+  encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  decodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  encodeBalancerV2LiquidityTakeOrderArgs,
+  decodeBalancerV2LiquidityTakeOrderArgs,
+  balancerV2LiquidityLendEncodingAndRedeemEncoding,
+  type BalancerV2LiquidityLendArgsAndRedeemArgs,
+  balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding,
+  type BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  balancerV2LiquidityClaimRewardsEncoding,
+  type BalancerV2LiquidityClaimRewardsArgs,
+  balancerV2LiquidityStakeEncodingAndUnstakeEncoding,
+  type BalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  SwapKind,
+  type SwapKindValue,
+  balancerV2LiquidityTakeOrderEncoding,
+  type BalancerV2LiquidityTakeOrderArgs,
+} from "./extensions/integrations/instances/balancerV2Liquidity.js";
 
 // ./extensions/integrations/instances/compoundV2.js
 export {
