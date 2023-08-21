@@ -6,8 +6,86 @@ export const oneInchV5TakeOrderEncoding = [
     type: "address",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "srcToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "dstToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "srcReceiver",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "dstReceiver",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "minReturnAmount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "flags",
+        type: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "srcToken",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "dstToken",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "srcReceiver",
+            type: "address",
+          },
+          {
+            internalType: "address",
+            name: "dstReceiver",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "amount",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "minReturnAmount",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "flags",
+            type: "uint256",
+          },
+        ],
+      },
+    ],
     name: "orderDescription",
-    type: "tuple(address srcToken, address dstToken, address srcReceiver, address dstReceiver, uint256 amount, uint256 minReturnAmount, uint256 flags)",
+    type: "tuple",
   },
   {
     name: "data",
@@ -23,7 +101,7 @@ type OrderDescription = {
   amount: bigint;
   minReturnAmount: bigint;
   flags: bigint;
-}
+};
 
 export type OneInchV5TakeOrderArgs = {
   executor: Address;
@@ -31,29 +109,18 @@ export type OneInchV5TakeOrderArgs = {
   data: Hex;
 };
 
-export function encodeOneInchV5TakeOrderArgs({
-  executor,
-  orderDescription,
-  data,
-}: OneInchV5TakeOrderArgs): Hex {
-  const { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags } = orderDescription;
-  return encodeAbiParameters(oneInchV5TakeOrderEncoding, [
-    executor,
-    [srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags],
-    data,
-  ]);
+export function encodeOneInchV5TakeOrderArgs({ executor, orderDescription, data }: OneInchV5TakeOrderArgs): Hex {
+  return encodeAbiParameters(oneInchV5TakeOrderEncoding, [executor, orderDescription, data]);
 }
 
 export function decodeOneInchV5TakeOrderArgs(callArgs: Hex): OneInchV5TakeOrderArgs {
-  const [
-    executor,
-    orderDescription,
-    data,
-  ] = decodeAbiParameters(oneInchV5TakeOrderEncoding, callArgs);
+  const [executor, orderDescription, data] = decodeAbiParameters(oneInchV5TakeOrderEncoding, callArgs);
+  const { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags } = orderDescription;
 
   return {
     executor,
-    orderDescription,
+    orderDescription: { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags },
+    // orderDescription,
     data,
   };
 }
