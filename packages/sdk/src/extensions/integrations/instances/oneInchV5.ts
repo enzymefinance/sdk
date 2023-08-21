@@ -6,7 +6,7 @@ export const oneInchV5TakeOrderEncoding = [
     type: "address",
   },
   {
-    inputs: [
+    components: [
       {
         internalType: "address",
         name: "srcToken",
@@ -41,47 +41,6 @@ export const oneInchV5TakeOrderEncoding = [
         internalType: "uint256",
         name: "flags",
         type: "uint256",
-      },
-    ],
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "address",
-            name: "srcToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "dstToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "srcReceiver",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "dstReceiver",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "minReturnAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "flags",
-            type: "uint256",
-          },
-        ],
       },
     ],
     name: "orderDescription",
@@ -120,7 +79,6 @@ export function decodeOneInchV5TakeOrderArgs(callArgs: Hex): OneInchV5TakeOrderA
   return {
     executor,
     orderDescription: { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags },
-    // orderDescription,
     data,
   };
 }
