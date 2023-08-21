@@ -20,12 +20,11 @@ import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } 
 import { keccak256 } from "viem/utils";
 import { expect, test } from "vitest";
 
+const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
+const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
+const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
+
 test("prepare adapter trade for Balancer V2 Liquidity lend should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8";
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962244n,
   });
@@ -63,11 +62,6 @@ test("prepare adapter trade for Balancer V2 Liquidity lend should work correctly
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity lend and stake should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8";
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962244n,
   });
@@ -108,11 +102,6 @@ test("prepare adapter trade for Balancer V2 Liquidity lend and stake should work
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity unstake and redeem should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8";
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962403n,
   });
@@ -153,11 +142,6 @@ test("prepare adapter trade for Balancer V2 Liquidity unstake and redeem should 
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity redeem should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8";
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962403n,
   });
@@ -195,11 +179,6 @@ test("prepare adapter trade for Balancer V2 Liquidity redeem should work correct
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8";
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962403n,
   });
@@ -256,11 +235,6 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity take order should work correctly", async () => {
-  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
-  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
-
-  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
-
   await testClient.reset({
     blockNumber: 17962403n,
   });
