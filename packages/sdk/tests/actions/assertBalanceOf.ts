@@ -31,6 +31,7 @@ export async function assertBalanceOf({
   });
 
   if (fuzziness === undefined) {
+    console.log({ actual });
     expect(actual).toBe(expected);
   } else {
     expect(actual).toBeGreaterThanOrEqual(expected - BigInt(fuzziness));
