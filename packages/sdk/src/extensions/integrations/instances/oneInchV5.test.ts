@@ -3,17 +3,24 @@ import { sendTestTransaction, testActions, testClient } from "../../../../tests/
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { decodeOneInchV5TakeOrderArgs } from "./oneInchV5.js";
+import { parseEther } from "viem";
 
-import { beforeAll, test } from "vitest";
+import { test } from "vitest";
 
-// blockNumber must be aligned with the test arguments data
-beforeAll(async () => {
+test("prepare adapter trade for 1inchV5 take order should work correctly", async () => {
   await testClient.reset({
     blockNumber: 17883205n,
   });
-});
 
-test("prepare adapter trade for 1inchV5 take order should work correctly", async () => {
+  const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510";
+
+  const comptrollerProxy = "0xad2cf50ad663639c6d22f72f8f4d686f51fc89f8";
+  const vaultProxy = "0xcc721874a2ee84198ef3a6a4c7ef7c642347d78a";
+
+  await testClient.setBalance({
+    value: parseEther("1"),
+    address: vaultOwner,
+  });
 
   // Args hash was taken from tx 0xd1bbddc9dc11a84634f85e901757c687d1fe366e6eef60869253db0c48fd90e6
   const { executor, orderDescription, data } = await decodeOneInchV5TakeOrderArgs(
@@ -31,13 +38,13 @@ test("prepare adapter trade for 1inchV5 take order should work correctly", async
         data,
       },
     }),
-    account: "0x01bfb6b1051f0a6072ef0c079ea81274095e1510",
-    address: "0xad2cf50ad663639c6d22f72f8f4d686f51fc89f8",
+    account: vaultOwner,
+    address: comptrollerProxy,
   });
 
   await testActions.assertBalanceOf({
     token: RETH,
-    account: "0xcc721874a2ee84198ef3a6a4c7ef7c642347d78a",
-    expected: 2703050404931320911n,
+    account: vaultProxy,
+    expected: 9535577575547405799n,
   });
 });
