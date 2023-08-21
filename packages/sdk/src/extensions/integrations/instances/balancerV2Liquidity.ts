@@ -197,7 +197,7 @@ export const SwapKind = {
 
 export type SwapKindValue = typeof SwapKind[keyof typeof SwapKind];
 
-export function assertSwapKindValue(value: number): asserts value is SwapKindValue {
+function assertSwapKindValue(value: number): asserts value is SwapKindValue {
   if (!Object.values(SwapKind).includes(value as SwapKindValue)) {
     throw new Error(`Invalid SwapKind: ${value}`);
   }

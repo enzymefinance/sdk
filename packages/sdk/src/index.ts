@@ -589,7 +589,6 @@ export {
   decodeBalancerV2LiquidityClaimRewardsArgs,
   encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
   decodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
-  assertSwapKindValue,
   encodeBalancerV2LiquidityTakeOrderArgs,
   decodeBalancerV2LiquidityTakeOrderArgs,
   balancerV2LiquidityLendEncodingAndRedeemEncoding,
