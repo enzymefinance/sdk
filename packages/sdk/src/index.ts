@@ -659,6 +659,14 @@ export {
   type ConvexCurveLpStakingUnstakeAndRedeemArgs,
 } from "./extensions/integrations/instances/convexCurveLpStaking.js";
 
+// ./extensions/integrations/instances/curveExchange.js
+export {
+  encodeCurveExchangeTakeOrderArgs,
+  decodeCurveExchangeTakeOrderArgs,
+  curveExchangeTakeOrderEncoding,
+  type CurveExchangeTakeOrderArgs,
+} from "./extensions/integrations/instances/curveExchange.js";
+
 // ./extensions/integrations/instances/curveLiquidity.js
 export {
   encodeCurveLiquidityLendArgs,
@@ -721,6 +729,14 @@ export {
   idleV4ClaimRewardsEncoding,
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
+
+// ./extensions/integrations/instances/paraswapV5.js
+export {
+  encodeParaswapV5TakeOrderArgs,
+  decodeParaswapV5TakeOrderArgs,
+  paraswapV5TakeOrderEncoding,
+  type ParaswapV5TakeOrderArgs,
+} from "./extensions/integrations/instances/paraswapV5.js";
 
 // ./extensions/integrations/instances/uniswapV2Exchange.js
 export {

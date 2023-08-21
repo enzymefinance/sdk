@@ -16,6 +16,7 @@ import type {
   ConvexCurveLpStakingUnstakeAndRedeemArgs,
   ConvexCurveLpStakingUnstakeArgs,
 } from "./instances/convexCurveLpStaking.js";
+import type { CurveExchangeTakeOrderArgs } from "./instances/curveExchange.js";
 import type {
   CurveLiquidityClaimRewardsArgs,
   CurveLiquidityLendAndStakeArgs,
@@ -27,6 +28,7 @@ import type {
 } from "./instances/curveLiquidity.js";
 import type { ERC4626LendArgs, ERC4626RedeemArgs } from "./instances/erc4626.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
+import type { ParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
 import type { UniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
 import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
@@ -51,6 +53,7 @@ export const Integration = {
   CompoundV3Lend: "CompoundV3Lend",
   CompoundV3Redeem: "CompoundV3Redeem",
   CompoundV3ClaimRewards: "CompoundV3ClaimRewards",
+  CurveExchangeTakeOrder: "CurveExchangeTakeOrder",
   CurveLiquidityLend: "CurveLiquidityLend",
   CurveLiquidityRedeem: "CurveLiquidityRedeem",
   CurveLiquidityLendAndStake: "CurveLiquidityLendAndStake",
@@ -74,6 +77,7 @@ export const Integration = {
   IdleV4ClaimRewards: "IdleV4ClaimRewards",
   ERC4626Lend: "ERC4626Lend",
   ERC4626Redeem: "ERC4626Redeem",
+  ParaswapV5TakeOrder: "ParaswapV5TakeOrder",
 } as const;
 
 export type IntegrationArgs = {
@@ -94,6 +98,7 @@ export type IntegrationArgs = {
   [Integration.CompoundV3Lend]: CompoundV3LendArgs;
   [Integration.CompoundV3Redeem]: CompoundV3RedeemArgs;
   [Integration.CompoundV3ClaimRewards]: CompoundV3ClaimRewardsArgs;
+  [Integration.CurveExchangeTakeOrder]: CurveExchangeTakeOrderArgs;
   [Integration.CurveLiquidityLend]: CurveLiquidityLendArgs;
   [Integration.CurveLiquidityRedeem]: CurveLiquidityRedeemArgs;
   [Integration.CurveLiquidityClaimRewards]: CurveLiquidityClaimRewardsArgs;
@@ -117,4 +122,5 @@ export type IntegrationArgs = {
   [Integration.IdleV4ClaimRewards]: IdleV4ClaimRewardsArgs;
   [Integration.ERC4626Lend]: ERC4626LendArgs;
   [Integration.ERC4626Redeem]: ERC4626RedeemArgs;
+  [Integration.ParaswapV5TakeOrder]: ParaswapV5TakeOrderArgs;
 };

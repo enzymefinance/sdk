@@ -33,6 +33,7 @@ import {
   encodeConvexCurveLpStakingUnstakeAndRedeemArgs,
   encodeConvexCurveLpStakingUnstakeArgs,
 } from "./instances/convexCurveLpStaking.js";
+import { encodeCurveExchangeTakeOrderArgs } from "./instances/curveExchange.js";
 import {
   encodeCurveLiquidityClaimRewardsArgs,
   encodeCurveLiquidityLendAndStakeArgs,
@@ -44,6 +45,7 @@ import {
 } from "./instances/curveLiquidity.js";
 import { encodeERC4626LendArgs, encodeERC4626RedeemArgs } from "./instances/erc4626.js";
 import { encodeIdleV4ClaimRewardsArgs, encodeIdleV4LendArgs, encodeIdleV4RedeemArgs } from "./instances/idleV4.js";
+import { encodeParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
 import { encodeUniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import {
   encodeUniswapV2LiquidityLendArgs,
@@ -133,6 +135,8 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [REDEEM_SELECTOR, encodeCompoundV3RedeemArgs(callArgs)];
     case Integration.CompoundV3ClaimRewards:
       return [CLAIM_REWARDS_SELECTOR, encodeCompoundV3ClaimRewardsArgs(callArgs)];
+    case Integration.CurveExchangeTakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeCurveExchangeTakeOrderArgs(callArgs)];
     case Integration.CurveLiquidityLend:
       return [LEND_SELECTOR, encodeCurveLiquidityLendArgs(callArgs)];
     case Integration.CurveLiquidityRedeem:
@@ -179,5 +183,7 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeERC4626LendArgs(callArgs)];
     case Integration.ERC4626Redeem:
       return [REDEEM_SELECTOR, encodeERC4626RedeemArgs(callArgs)];
+    case Integration.ParaswapV5TakeOrder:
+      return [TAKE_ORDER_SELECTOR, encodeParaswapV5TakeOrderArgs(callArgs)];
   }
 }
