@@ -7,6 +7,7 @@ import {
   ENZYME_COUNCIL,
   FUND_DEPLOYER,
   INTEGRATION_MANAGER,
+  WBTC,
   WETH,
 } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
@@ -14,7 +15,8 @@ import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
-import { encodeAbiParameters, getAbiItem, parseEther } from "viem";
+import { SwapKind } from "./balancerV2Liquidity.js";
+import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
 import { keccak256 } from "viem/utils";
 import { expect, test } from "vitest";
 
@@ -251,4 +253,57 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
   });
 
   expect(balBalance).toBeGreaterThan(0n);
+});
+
+test("prepare adapter trade for Balancer V2 Liquidity take order should work correctly", async () => {
+  const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
+  const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6";
+
+  const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496";
+
+  await testClient.reset({
+    blockNumber: 17962403n,
+  });
+
+  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+
+  const outgoingAssetAmount = parseUnits("1", 8);
+
+  await testActions.deal({ token: WBTC, to: vaultProxy, amount: outgoingAssetAmount, slotOfBalancesMapping: 0 });
+  await testActions.assertBalanceOf({
+    token: WBTC,
+    account: vaultProxy,
+    expected: outgoingAssetAmount,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseIntegration({
+      integrationManager: INTEGRATION_MANAGER,
+      integrationAdapter: BALANCER_V2_ADAPTER,
+      callArgs: {
+        type: Integration.BalancerV2LiquidityTakeOrder,
+        swaps: [
+          {
+            poolId: "0xa6f548df93de924d73be7d25dc02554c6bd66db500020000000000000000000e",
+            assetInIndex: 0n,
+            assetOutIndex: 1n,
+            amount: outgoingAssetAmount,
+            userData: "0x",
+          },
+        ],
+        assets: [WBTC, WETH],
+        limits: [outgoingAssetAmount, -1n],
+        kind: SwapKind.GivenIn,
+        stakingTokens: [zeroAddress, zeroAddress],
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: WETH,
+    account: vaultProxy,
+    expected: 16598251621164189006n,
+  });
 });
