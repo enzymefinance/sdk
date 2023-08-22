@@ -1,5 +1,17 @@
 # @enzymefinance/sdk
 
+## 0.0.22
+
+### Patch Changes
+
+- [#82](https://github.com/enzymefinance/sdk/pull/82) [`6c9cbc5`](https://github.com/enzymefinance/sdk/commit/6c9cbc57305cc0d8ce987a9a6c5d08862c0ede05) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add balancer v2 lp staking trade helpers
+
+- [#77](https://github.com/enzymefinance/sdk/pull/77) [`8f13ecc`](https://github.com/enzymefinance/sdk/commit/8f13eccb4b43fa2aa77e945a860888a41b1ac999) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add curve exchange trade helpers
+
+- [#80](https://github.com/enzymefinance/sdk/pull/80) [`1c514fa`](https://github.com/enzymefinance/sdk/commit/1c514faff363fd285cfe8c7349eafaf5a0457b95) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add balancer V2 liquidity trade helpers
+
+- [#84](https://github.com/enzymefinance/sdk/pull/84) [`c0dbc96`](https://github.com/enzymefinance/sdk/commit/c0dbc96ead65df22e6b4a749a0386deef6d3d062) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v2 debt trade helpers
+
 ## 0.0.21
 
 ### Patch Changes
