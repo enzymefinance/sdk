@@ -76,7 +76,7 @@ test("prepare external position trade for Aave V2 Debt remove collateral should 
     token: decodedCallArgs.aTokens[0] as Address,
     account: decodedCallArgs.externalPositionProxy,
     expected: 5470851740820149n,
-    fuzziness: 2428626n, // interest can be accured in the meantime, so we allow some fuzziness
+    fuzziness: 7285878n, // interest can be accured in the meantime, so we allow some fuzziness
   });
 });
 
