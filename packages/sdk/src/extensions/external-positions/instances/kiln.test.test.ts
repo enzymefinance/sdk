@@ -1,12 +1,13 @@
-import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../tests/globals.js";
-import { toWei } from "../../utils/conversion.js";
-import { ExternalPosition } from "./externalPositionTypes.js";
-import { prepareCreateExternalPosition } from "./prepareCreateExternalPosition.js";
+import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
+import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { toWei } from "../../../utils/conversion.js";
+import { ExternalPosition } from "../externalPositionTypes.js";
+import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
+import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import { parseAbiItem } from "viem";
-import { expect, test } from "vitest";
+import { assert, expect, test } from "vitest";
 
-test("prepare create external position should work correctly", async () => {
+test("prepare external position trade for Kiln stake should work correctly", async () => {
   const vaultOwner = ALICE;
   const sharesBuyer = BOB;
 
@@ -30,11 +31,6 @@ test("prepare create external position should work correctly", async () => {
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,
-      callArgs: {
-        type: ExternalPosition.KilnStake,
-        validatorAmount,
-        stakingContract: KILN_STAKING_CONTRACT,
-      },
     }),
     account: vaultOwner,
     address: comptrollerProxy,
@@ -47,10 +43,26 @@ test("prepare create external position should work correctly", async () => {
     ),
   });
 
+  const externalPositionProxy = externalPositionDeployedForFundEventLog?.args.externalPosition;
+  assert(externalPositionProxy);
+
+  await sendTestTransaction({
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.KilnStake,
+        validatorAmount,
+        stakingContract: KILN_STAKING_CONTRACT,
+        externalPositionProxy,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
   const [validatorsAddedEventLog] = await publicClient.getLogs({
     event: parseAbiItem("event ValidatorsAdded(address stakingContractAddress, uint256 validatorAmount)"),
   });
 
   expect(validatorsAddedEventLog?.args).toEqual({ stakingContractAddress: KILN_STAKING_CONTRACT, validatorAmount });
-  expect(externalPositionDeployedForFundEventLog).toBeTruthy();
 });
