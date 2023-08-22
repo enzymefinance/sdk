@@ -1,6 +1,12 @@
 import type { Prettify } from "../../utils/types.js";
 import { ExternalPositionManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
 import { ExternalPosition, type ExternalPositionArgs } from "./externalPositionTypes.js";
+import {
+  encodeAaveV2DebtAddCollateralArgs,
+  encodeAaveV2DebtBorrowArgs,
+  encodeAaveV2DebtRemoveCollateralArgs,
+  encodeAaveV2DebtRepayBorrowArgs,
+} from "./instances/aaveV2Debt.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
 import type { Address } from "viem";
 
@@ -31,5 +37,13 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
   switch (callArgs.type) {
     case ExternalPosition.KilnStake:
       return encodeKilnStakeArgs(callArgs);
+    case ExternalPosition.AaveV2DebtAddCollateral:
+      return encodeAaveV2DebtAddCollateralArgs(callArgs);
+    case ExternalPosition.AaveV2DebtRemoveCollateral:
+      return encodeAaveV2DebtRemoveCollateralArgs(callArgs);
+    case ExternalPosition.AaveV2DebtBorrow:
+      return encodeAaveV2DebtBorrowArgs(callArgs);
+    case ExternalPosition.AaveV2DebtRepayBorrow:
+      return encodeAaveV2DebtRepayBorrowArgs(callArgs);
   }
 }

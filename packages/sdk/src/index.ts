@@ -499,7 +499,7 @@ export {
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
-  kilStakeArgsEncoding,
+  kilnStakeArgsEncoding as kilStakeArgsEncoding,
   type KilnStakeArgs,
   type KilnAction,
 } from "./extensions/external-positions/instances/kiln.js";
