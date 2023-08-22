@@ -41,6 +41,12 @@ export const Integration = {
   AaveV2Redeem: "AaveV2Redeem",
   AaveV3Lend: "AaveV3Lend",
   AaveV3Redeem: "AaveV3Redeem",
+  AuraBalancerV2LpStakingLendAndStake: "AuraBalancerV2LpStakingLendAndStake",
+  AuraBalancerV2LpStakingUnstakeAndRedeem: "AuraBalancerV2LpStakingUnstakeAndRedeem",
+  AuraBalancerV2LpStakingClaimRewards: "AuraBalancerV2LpStakingClaimRewards",
+  AuraBalancerV2LpStakingUnstake: "AuraBalancerV2LpStakingUnstake",
+  AuraBalancerV2LpStakingStake: "AuraBalancerV2LpStakingStake",
+  // AuraBalancerV2LpStakingTakeOrder: "AuraBalancerV2LpStakingTakeOrder", TODO: Add TakeOrder once we will have aura assets registered again, and some real tx data to test with
   BalancerV2LiquidityLend: "BalancerV2LiquidityLend",
   BalancerV2LiquidityRedeem: "BalancerV2LiquidityRedeem",
   BalancerV2LiquidityLendAndStake: "BalancerV2LiquidityLendAndStake",
@@ -87,6 +93,11 @@ export type IntegrationArgs = {
   [Integration.AaveV2Redeem]: AaveV2RedeemArgs;
   [Integration.AaveV3Lend]: AaveV3LendArgs;
   [Integration.AaveV3Redeem]: AaveV3RedeemArgs;
+  [Integration.AuraBalancerV2LpStakingClaimRewards]: BalancerV2LiquidityClaimRewardsArgs;
+  [Integration.AuraBalancerV2LpStakingLendAndStake]: BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs;
+  [Integration.AuraBalancerV2LpStakingUnstakeAndRedeem]: BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs;
+  [Integration.AuraBalancerV2LpStakingUnstake]: BalancerV2LiquidityStakeArgsAndUnstakeArgs;
+  [Integration.AuraBalancerV2LpStakingStake]: BalancerV2LiquidityStakeArgsAndUnstakeArgs;
   [Integration.BalancerV2LiquidityLend]: BalancerV2LiquidityLendArgsAndRedeemArgs;
   [Integration.BalancerV2LiquidityRedeem]: BalancerV2LiquidityLendArgsAndRedeemArgs;
   [Integration.BalancerV2LiquidityClaimRewards]: BalancerV2LiquidityClaimRewardsArgs;
