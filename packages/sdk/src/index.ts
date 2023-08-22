@@ -728,6 +728,14 @@ export {
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
 
+// ./extensions/integrations/instances/oneInchV5.js
+export {
+  encodeOneInchV5TakeOrderArgs,
+  decodeOneInchV5TakeOrderArgs,
+  oneInchV5TakeOrderEncoding,
+  type OneInchV5TakeOrderArgs,
+} from "./extensions/integrations/instances/oneInchV5.js";
+
 // ./extensions/integrations/instances/paraswapV5.js
 export {
   encodeParaswapV5TakeOrderArgs,
