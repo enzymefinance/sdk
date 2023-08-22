@@ -110,6 +110,16 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [LEND_SELECTOR, encodeAaveV3LendArgs(callArgs)];
     case Integration.AaveV3Redeem:
       return [REDEEM_SELECTOR, encodeAaveV3RedeemArgs(callArgs)];
+    case Integration.AuraBalancerV2LpStakingClaimRewards:
+      return [CLAIM_REWARDS_SELECTOR, encodeBalancerV2LiquidityClaimRewardsArgs(callArgs)];
+    case Integration.AuraBalancerV2LpStakingLendAndStake:
+      return [LEND_AND_STAKE_SELECTOR, encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(callArgs)];
+    case Integration.AuraBalancerV2LpStakingUnstakeAndRedeem:
+      return [UNSTAKE_AND_REDEEM_SELECTOR, encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(callArgs)];
+    case Integration.AuraBalancerV2LpStakingStake:
+      return [STAKE_SELECTOR, encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs(callArgs)];
+    case Integration.AuraBalancerV2LpStakingUnstake:
+      return [UNSTAKE_SELECTOR, encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs(callArgs)];
     case Integration.BalancerV2LiquidityLend:
       return [LEND_SELECTOR, encodeBalancerV2LiquidityLendArgsAndRedeemArgs(callArgs)];
     case Integration.BalancerV2LiquidityRedeem:
