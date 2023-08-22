@@ -495,13 +495,34 @@ export {
   type PolicySettings,
 } from "./extensions/policies/settings.js";
 
+// ./extensions/external-positions/instances/aaveV2Debt.js
+export {
+  encodeAaveV2DebtAddCollateralArgs,
+  decodeAaveV2DebtAddCollateralArgs,
+  encodeAaveV2DebtRemoveCollateralArgs,
+  decodeAaveV2DebtRemoveCollateralArgs,
+  encodeAaveV2DebtBorrowArgs,
+  decodeAaveV2DebtBorrowArgs,
+  encodeAaveV2DebtRepayBorrowArgs,
+  decodeAaveV2DebtRepayBorrowArgs,
+  type AaveV2DebtAction,
+  aaveV2DebtAddCollateralArgsEncoding,
+  type AaveV2DebtAddCollateralArgs,
+  aaveV2DebtRemoveCollateralArgsEncoding,
+  type AaveV2DebtRemoveCollateralArgs,
+  aaveV2DebtBorrowArgsEncoding,
+  type AaveV2DebtBorrowArgs,
+  aaveV2DebtRepayBorrowArgsEncoding,
+  type AaveV2DebtRepayBorrowArgs,
+} from "./extensions/external-positions/instances/aaveV2Debt.js";
+
 // ./extensions/external-positions/instances/kiln.js
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
-  kilStakeArgsEncoding,
-  type KilnStakeArgs,
   type KilnAction,
+  kilnStakeArgsEncoding,
+  type KilnStakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/fees/instances/entranceFee.js

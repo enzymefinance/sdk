@@ -1,7 +1,14 @@
 import { decodeCallOnExternalPositionArgs, encodeCallOnExternalPositionArgs } from "../callOnExternalPosition.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const kilStakeArgsEncoding = [
+export type KilnAction = typeof KilnAction[keyof typeof KilnAction];
+export const KilnAction = {
+  Stake: 0n,
+  ClaimFees: 1n,
+  WithdrawEth: 2n,
+} as const;
+
+export const kilnStakeArgsEncoding = [
   {
     type: "address",
     name: "stakingContract",
@@ -19,7 +26,7 @@ export type KilnStakeArgs = {
 };
 
 export function encodeKilnStakeArgs({ externalPositionProxy, stakingContract, validatorAmount }: KilnStakeArgs): Hex {
-  const actionArgs = encodeAbiParameters(kilStakeArgsEncoding, [stakingContract, validatorAmount]);
+  const actionArgs = encodeAbiParameters(kilnStakeArgsEncoding, [stakingContract, validatorAmount]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -30,7 +37,7 @@ export function encodeKilnStakeArgs({ externalPositionProxy, stakingContract, va
 
 export function decodeKilnStakeArgs(callArgs: Hex): KilnStakeArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [stakingContract, validatorAmount] = decodeAbiParameters(kilStakeArgsEncoding, actionArgs);
+  const [stakingContract, validatorAmount] = decodeAbiParameters(kilnStakeArgsEncoding, actionArgs);
 
   return {
     validatorAmount,
@@ -38,10 +45,3 @@ export function decodeKilnStakeArgs(callArgs: Hex): KilnStakeArgs {
     stakingContract,
   };
 }
-
-export type KilnAction = typeof KilnAction[keyof typeof KilnAction];
-export const KilnAction = {
-  Stake: 0n,
-  ClaimFees: 1n,
-  WithdrawEth: 2n,
-} as const;
