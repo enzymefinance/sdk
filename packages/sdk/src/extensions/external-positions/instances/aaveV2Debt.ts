@@ -33,13 +33,11 @@ export function encodeAaveV2DebtAddCollateralArgs({
 }: AaveV2DebtAddCollateralArgs): Hex {
   const actionArgs = encodeAbiParameters(aaveV2DebtAddCollateralArgsEncoding, [aTokens, amounts]);
 
-  const encoded = encodeCallOnExternalPositionArgs({
+  return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
     actionId: AaveV2DebtAction.AddCollateral,
     actionArgs,
   });
-
-  return encoded;
 }
 
 export function decodeAaveV2DebtAddCollateralArgs(callArgs: Hex): AaveV2DebtAddCollateralArgs {
