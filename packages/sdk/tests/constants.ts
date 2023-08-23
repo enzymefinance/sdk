@@ -23,7 +23,7 @@ export const ERC4626_ADAPTER = "0x64Fa106DD89F21d6e687EEbE9384637F7d54f707" as c
 export const PARASWAP_V5_ADAPTER = "0x871a7f0ef4917a1534e651d1fde3763a52a23ece" as const;
 export const ONE_INCH_V5_ADAPTER = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
 export const ZERO_EX_V2_ADAPTER = "0xace8e944cda48439e8eeda4027115cfb6d942854" as const;
-export const ZERO_EX_V4_ADAPTER = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
+export const ZERO_EX_V4_ADAPTER = "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5" as const;
 
 export const CURVE_3CRV_POOL = "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7" as const;
 export const CURVE_FRAX_USDC_POOL = "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2" as const;
@@ -33,27 +33,28 @@ export const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 export const UNISWAP_V2_SWAP_ROUTER = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" as const;
 export const UNISWAP_V3_SWAP_ROUTER = "0xE592427A0AEce92De3Edee1F18E0157C05861564" as const;
 
-export const DAI = "0x6B175474E89094C44Da98b954EedeAC495271d0F" as const;
-export const IDLE = "0x875773784Af8135eA0ef43b5a374AaD105c5D39e" as const;
+export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e" as const;
+export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8" as const;
 export const COMP = "0xc00e94Cb662C3520282E6f5717214004A7f26888" as const;
+export const COMPOUND_V2_C_ETH = "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5" as const;
+export const COMPOUND_V3_C_WETH = "0xA17581A9E3356d9A858b789D68B4d866e593aE94" as const;
 export const CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER = "0xFa325D1Aa0ad84b1513893F393D4c0CBE3435a20" as const;
 export const CRV = "0xD533a949740bb3306d119CC777fa900bA034cd52" as const;
 export const CURVE_FRAX_USDC_LP = "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC" as const;
 export const CURVE_FRAX_USDC_GAUGE = "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503" as const;
 export const CVX = "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B" as const;
+export const DAI = "0x6B175474E89094C44Da98b954EedeAC495271d0F" as const;
+export const DPI = "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b" as const;
 export const FRAX = "0x853d955aCEf822Db058eb8505911ED77F175b99e" as const;
-export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as const;
-export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" as const;
-export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e" as const;
-export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8" as const;
-export const COMPOUND_V2_C_ETH = "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5" as const;
-export const COMPOUND_V3_C_WETH = "0xA17581A9E3356d9A858b789D68B4d866e593aE94" as const;
+export const IDLE = "0x875773784Af8135eA0ef43b5a374AaD105c5D39e" as const;
 export const IDLE_V4_WETH = "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80" as const;
-export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
+export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
 export const RETH = "0xae78736Cd615f374D3085123A210448E74Fc6393" as const;
 export const STETH = "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84" as const;
+export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
+export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as const;
+export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" as const;
 export const YEARN_VAULT_V2_WETH = "0xa258C4606Ca8206D8aA700cE2143D7db854D168c" as const;
-export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
 
 // Test accounts
 export const ACCOUNTS = [
