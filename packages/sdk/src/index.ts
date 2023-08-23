@@ -516,6 +516,29 @@ export {
   type AaveV2DebtRepayBorrowArgs,
 } from "./extensions/external-positions/instances/aaveV2Debt.js";
 
+// ./extensions/external-positions/instances/convexVoting.js
+export {
+  encodeConvexVotingLockArgs,
+  decodeConvexVotingLockArgs,
+  encodeConvexVotingRelockArgs,
+  decodeConvexVotingRelockArgs,
+  encodeConvexVotingWithdrawArgs,
+  decodeConvexVotingWithdrawArgs,
+  encodeConvexVotingClaimRewardsArgs,
+  decodeConvexVotingClaimRewardsArgs,
+  encodeConvexVotingDelegateArgs,
+  decodeConvexVotingDelegateArgs,
+  type ConvexVotingAction,
+  convexVotingLockArgsEncoding,
+  type ConvexVotingLockArgs,
+  type ConvexVotingRelockArgs,
+  type ConvexVotingWithdrawArgs,
+  convexClaimRewardsArgsEncoding,
+  type ConvexVotingClaimRewardsArgs,
+  convexVotingDelegateArgsEncoding,
+  type ConvexVotingDelegateArgs,
+} from "./extensions/external-positions/instances/convexVoting.js";
+
 // ./extensions/external-positions/instances/kiln.js
 export {
   encodeKilnStakeArgs,
