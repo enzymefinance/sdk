@@ -10,26 +10,26 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@enzymefinance/abis": "*",
-    "@enzymefinance/sdk": "*",
-    "@tanstack/react-query": "^4.29.19",
-    "@tremor/react": "^2.6.1",
-    "abitype": "^0.9.0",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.25",
+    "@enzymefinance/abis": "^0.0.10",
+    "@enzymefinance/sdk": "^0.0.22",
+    "@tanstack/react-query": "^4.33.0",
+    "@tremor/react": "^2.11.0",
+    "abitype": "^0.9.8",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.28",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.3.2",
-    "viem": "^1.2.9"
+    "tailwindcss": "^3.3.3",
+    "viem": "^1.6.7"
   },
   "devDependencies": {
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
     "@types/web": "^0.0.103",
-    "@vitejs/plugin-react": "^4.0.2",
+    "@vitejs/plugin-react": "^4.0.4",
     "tsx": "^3.12.7",
     "typescript": "^5.1.6",
-    "vite": "^4.4.0",
+    "vite": "^4.4.9",
     "vite-tsconfig-paths": "^4.2.0"
   }
 }
