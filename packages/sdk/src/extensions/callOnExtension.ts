@@ -10,7 +10,7 @@ export type CallOnExtensionParams = {
   /**
    * The action ID of the extension to call.
    */
-  actionId: bigint;
+  actionId: ExternalPositionManagerActionId;
   /**
    * The encoded arguments to pass to the extension.
    */
@@ -29,6 +29,17 @@ export function prepareCallOnExtensionParams({ extension, actionId, callArgs }: 
   });
 }
 
+type ExternalPositionManagerActionIdValue =
+  typeof ExternalPositionManagerActionId[keyof typeof ExternalPositionManagerActionId];
+
+function assertExternalPositionManagerActionIdValue(
+  value: bigint,
+): asserts value is ExternalPositionManagerActionIdValue {
+  if (!Object.values(ExternalPositionManagerActionId).includes(value as ExternalPositionManagerActionIdValue)) {
+    throw new Error(`Invalid ExternalPositionManagerActionId: ${value}`);
+  }
+}
+
 /**
  * Decodes the parameters for the `callOnExtension` function.
  *
@@ -43,6 +54,8 @@ export function decodeCallOnExtensionParams(params: Hex): CallOnExtensionParams 
     abi: [abi],
     data: params,
   });
+
+  assertExternalPositionManagerActionIdValue(actionId);
 
   return {
     extension,

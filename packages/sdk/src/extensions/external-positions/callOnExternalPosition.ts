@@ -1,4 +1,3 @@
-import type { ExternalPositionManagerActionId } from "../callOnExtension.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export const callOnExternalPositionArgsEncoding = [
@@ -18,7 +17,7 @@ export const callOnExternalPositionArgsEncoding = [
 
 export type CallOnExternalPositionArgs = {
   externalPositionProxy: Address;
-  actionId: ExternalPositionManagerActionId;
+  actionId: bigint;
   actionArgs: Hex;
 };
 
@@ -35,7 +34,7 @@ export function decodeCallOnExternalPositionArgs(params: Hex): CallOnExternalPos
 
   return {
     externalPositionProxy,
-    actionId: actionId as ExternalPositionManagerActionId,
+    actionId,
     actionArgs,
   };
 }

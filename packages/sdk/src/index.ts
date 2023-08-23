@@ -115,7 +115,6 @@ export {
   REGISTRY_SET_LIST_UPDATE_TYPE_SELECTOR,
   CURVE_MINTER_MINT_SELECTOR,
   CURVE_MINTER_MINT_MANY_SELECTOR,
-  CURVE_MINTER_TOGGLE_APPROVE_MINT_SELECTOR,
   PRICELESS_ASSET_BYPASS_START_ASSET_BYPASS_TIMELOCK_SELECTOR,
   SYNTHETIX_ASSIGN_EXCHANGE_DELEGATE_SELECTOR,
   SETTLE_CONTINUOUS_FEES_SELECTOR,
@@ -496,13 +495,34 @@ export {
   type PolicySettings,
 } from "./extensions/policies/settings.js";
 
+// ./extensions/external-positions/instances/aaveV2Debt.js
+export {
+  encodeAaveV2DebtAddCollateralArgs,
+  decodeAaveV2DebtAddCollateralArgs,
+  encodeAaveV2DebtRemoveCollateralArgs,
+  decodeAaveV2DebtRemoveCollateralArgs,
+  encodeAaveV2DebtBorrowArgs,
+  decodeAaveV2DebtBorrowArgs,
+  encodeAaveV2DebtRepayBorrowArgs,
+  decodeAaveV2DebtRepayBorrowArgs,
+  type AaveV2DebtAction,
+  aaveV2DebtAddCollateralArgsEncoding,
+  type AaveV2DebtAddCollateralArgs,
+  aaveV2DebtRemoveCollateralArgsEncoding,
+  type AaveV2DebtRemoveCollateralArgs,
+  aaveV2DebtBorrowArgsEncoding,
+  type AaveV2DebtBorrowArgs,
+  aaveV2DebtRepayBorrowArgsEncoding,
+  type AaveV2DebtRepayBorrowArgs,
+} from "./extensions/external-positions/instances/aaveV2Debt.js";
+
 // ./extensions/external-positions/instances/kiln.js
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
-  kilStakeArgsEncoding,
-  type KilnStakeArgs,
   type KilnAction,
+  kilnStakeArgsEncoding,
+  type KilnStakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/fees/instances/entranceFee.js
@@ -579,6 +599,32 @@ export {
   aaveV3RedeemEncoding,
   type AaveV3RedeemArgs,
 } from "./extensions/integrations/instances/aaveV3.js";
+
+// ./extensions/integrations/instances/balancerV2Liquidity.js
+export {
+  encodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  decodeBalancerV2LiquidityLendArgsAndRedeemArgs,
+  encodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  encodeBalancerV2LiquidityClaimRewardsArgs,
+  decodeBalancerV2LiquidityClaimRewardsArgs,
+  encodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  decodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  encodeBalancerV2LiquidityTakeOrderArgs,
+  decodeBalancerV2LiquidityTakeOrderArgs,
+  balancerV2LiquidityLendEncodingAndRedeemEncoding,
+  type BalancerV2LiquidityLendArgsAndRedeemArgs,
+  balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding,
+  type BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
+  balancerV2LiquidityClaimRewardsEncoding,
+  type BalancerV2LiquidityClaimRewardsArgs,
+  balancerV2LiquidityStakeEncodingAndUnstakeEncoding,
+  type BalancerV2LiquidityStakeArgsAndUnstakeArgs,
+  SwapKind,
+  type SwapKindValue,
+  balancerV2LiquidityTakeOrderEncoding,
+  type BalancerV2LiquidityTakeOrderArgs,
+} from "./extensions/integrations/instances/balancerV2Liquidity.js";
 
 // ./extensions/integrations/instances/compoundV2.js
 export {
@@ -702,6 +748,14 @@ export {
   idleV4ClaimRewardsEncoding,
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
+
+// ./extensions/integrations/instances/oneInchV5.js
+export {
+  encodeOneInchV5TakeOrderArgs,
+  decodeOneInchV5TakeOrderArgs,
+  oneInchV5TakeOrderEncoding,
+  type OneInchV5TakeOrderArgs,
+} from "./extensions/integrations/instances/oneInchV5.js";
 
 // ./extensions/integrations/instances/paraswapV5.js
 export {
