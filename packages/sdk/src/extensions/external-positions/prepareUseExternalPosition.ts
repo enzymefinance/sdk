@@ -7,6 +7,13 @@ import {
   encodeAaveV2DebtRemoveCollateralArgs,
   encodeAaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
+import {
+  encodeCompoundV2DebtAddCollateralArgs,
+  encodeCompoundV2DebtBorrowArgs,
+  encodeCompoundV2DebtClaimCompArgs,
+  encodeCompoundV2DebtRemoveCollateralArgs,
+  encodeCompoundV2DebtRepayBorrowArgs,
+} from "./instances/compoundV2Debt.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
 import type { Address } from "viem";
 
@@ -45,5 +52,15 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeAaveV2DebtBorrowArgs(callArgs);
     case ExternalPosition.AaveV2DebtRepayBorrow:
       return encodeAaveV2DebtRepayBorrowArgs(callArgs);
+    case ExternalPosition.CompoundV2DebtAddCollateral:
+      return encodeCompoundV2DebtAddCollateralArgs(callArgs);
+    case ExternalPosition.CompoundV2DebtClaimComp:
+      return encodeCompoundV2DebtClaimCompArgs(callArgs);
+    case ExternalPosition.CompoundV2DebtRemoveCollateral:
+      return encodeCompoundV2DebtRemoveCollateralArgs(callArgs);
+    case ExternalPosition.CompoundV2DebtBorrow:
+      return encodeCompoundV2DebtBorrowArgs(callArgs);
+    case ExternalPosition.CompoundV2DebtRepayBorrow:
+      return encodeCompoundV2DebtRepayBorrowArgs(callArgs);
   }
 }
