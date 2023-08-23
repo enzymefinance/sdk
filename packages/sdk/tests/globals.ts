@@ -58,14 +58,14 @@ export const testClient = createTestClient({
   chain: anvil,
   mode: "anvil",
   transport: http(`http://127.0.0.1:8545/${poolId}`, {
-    timeout: 100_000,
+    timeout: 150_000,
   }),
 });
 
 export const publicClient = createPublicClient({
   chain: anvil,
   transport: http(`http://127.0.0.1:8545/${poolId}`, {
-    timeout: 100_000,
+    timeout: 150_000,
   }),
 });
 
