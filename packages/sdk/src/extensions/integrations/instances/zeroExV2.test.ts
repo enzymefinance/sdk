@@ -9,7 +9,7 @@ import { test } from "vitest";
 
 test("prepare adapter trade for zeroExV2 take order should work correctly", async () => {
   await testClient.reset({
-    blockNumber: 15775258n,
+    blockNumber: 15775257n,
   });
 
   const vaultOwner = "0x0d947d68f583e8b23ff816df9ff3f23a8cfd7496";
