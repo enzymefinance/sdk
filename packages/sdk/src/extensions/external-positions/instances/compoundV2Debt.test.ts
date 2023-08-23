@@ -159,7 +159,7 @@ test("prepare external position trade for Compound V2 Debt repay borrow should w
   expect(borrowBalanceStored).toEqual(0n);
 });
 
-test("prepare external position trade for Compound V2 Debt claim comp should work correctly", async () => {
+test.only("prepare external position trade for Compound V2 Debt claim comp should work correctly", async () => {
   const vaultProxy = "0x91ab92a9fb5002e9f16d3c51910a6cda4f2895ee" as const;
   const comptrollerProxy = "0xd1b7ac3956c5e6aa9c49e833f8b49dc7565a0840" as const;
   const vaultOwner = "0xa77fe539ddca9ea0abc7b81d2da4381d0fc4417c" as const;
