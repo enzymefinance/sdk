@@ -180,6 +180,8 @@ test.only("prepare external position trade for Compound V2 Debt claim comp shoul
     account: vaultProxy,
   });
 
+  console.log({ decodedCallArgs });
+
   await sendTestTransaction({
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
