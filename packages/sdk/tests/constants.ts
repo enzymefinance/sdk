@@ -22,6 +22,8 @@ export const IDLE_V4_PRICE_FEED = "0x8Ddf1f3f0c13E099378B2B6F73cdB8F61526ed6F" a
 export const ERC4626_ADAPTER = "0x64Fa106DD89F21d6e687EEbE9384637F7d54f707" as const;
 export const PARASWAP_V5_ADAPTER = "0x871a7f0ef4917a1534e651d1fde3763a52a23ece" as const;
 export const ONE_INCH_V5_ADAPTER = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
+export const ZERO_EX_V2_ADAPTER = "0xace8e944cda48439e8eeda4027115cfb6d942854" as const;
+export const ZERO_EX_V4_ADAPTER = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
 
 export const CURVE_3CRV_POOL = "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7" as const;
 export const CURVE_FRAX_USDC_POOL = "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2" as const;
