@@ -4,6 +4,13 @@ import type {
   AaveV2DebtRemoveCollateralArgs,
   AaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
+import type {
+  ConvexVotingClaimRewardsArgs,
+  ConvexVotingDelegateArgs,
+  ConvexVotingLockArgs,
+  ConvexVotingRelockArgs,
+  ConvexVotingWithdrawArgs,
+} from "./instances/convexVoting.js";
 import type { KilnStakeArgs } from "./instances/kiln.js";
 
 export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
@@ -13,6 +20,11 @@ export const ExternalPosition = {
   AaveV2DebtRemoveCollateral: "AaveV2DebtRemoveCollateral",
   AaveV2DebtBorrow: "AaveV2DebtBorrow",
   AaveV2DebtRepayBorrow: "AaveV2DebtRepayBorrow",
+  ConvexVotingLock: "ConvexVotingLock",
+  ConvexVotingRelock: "ConvexVotingRelock",
+  ConvexVotingWithdraw: "ConvexVotingWithdraw",
+  ConvexVotingClaimRewards: "ConvexVotingClaimRewards",
+  ConvexVotingDelegate: "ConvexVotingDelegate",
 } as const;
 
 export type ExternalPositionArgs = {
@@ -21,4 +33,9 @@ export type ExternalPositionArgs = {
   [ExternalPosition.AaveV2DebtRemoveCollateral]: AaveV2DebtRemoveCollateralArgs;
   [ExternalPosition.AaveV2DebtBorrow]: AaveV2DebtBorrowArgs;
   [ExternalPosition.AaveV2DebtRepayBorrow]: AaveV2DebtRepayBorrowArgs;
+  [ExternalPosition.ConvexVotingLock]: ConvexVotingLockArgs;
+  [ExternalPosition.ConvexVotingRelock]: ConvexVotingRelockArgs;
+  [ExternalPosition.ConvexVotingWithdraw]: ConvexVotingWithdrawArgs;
+  [ExternalPosition.ConvexVotingClaimRewards]: ConvexVotingClaimRewardsArgs;
+  [ExternalPosition.ConvexVotingDelegate]: ConvexVotingDelegateArgs;
 };
