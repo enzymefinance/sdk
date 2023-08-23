@@ -14,6 +14,13 @@ import {
   encodeCompoundV2DebtRemoveCollateralArgs,
   encodeCompoundV2DebtRepayBorrowArgs,
 } from "./instances/compoundV2Debt.js";
+import {
+  encodeConvexVotingClaimRewardsArgs,
+  encodeConvexVotingDelegateArgs,
+  encodeConvexVotingLockArgs,
+  encodeConvexVotingRelockArgs,
+  encodeConvexVotingWithdrawArgs,
+} from "./instances/convexVoting.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
 import type { Address } from "viem";
 
@@ -62,5 +69,15 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeCompoundV2DebtBorrowArgs(callArgs);
     case ExternalPosition.CompoundV2DebtRepayBorrow:
       return encodeCompoundV2DebtRepayBorrowArgs(callArgs);
+    case ExternalPosition.ConvexVotingLock:
+      return encodeConvexVotingLockArgs(callArgs);
+    case ExternalPosition.ConvexVotingRelock:
+      return encodeConvexVotingRelockArgs(callArgs);
+    case ExternalPosition.ConvexVotingWithdraw:
+      return encodeConvexVotingWithdrawArgs(callArgs);
+    case ExternalPosition.ConvexVotingClaimRewards:
+      return encodeConvexVotingClaimRewardsArgs(callArgs);
+    case ExternalPosition.ConvexVotingDelegate:
+      return encodeConvexVotingDelegateArgs(callArgs);
   }
 }
