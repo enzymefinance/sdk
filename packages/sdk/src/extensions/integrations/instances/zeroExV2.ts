@@ -2,7 +2,7 @@ import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export const zeroExV2TakeOrderEncoding = [
   {
-    name: "SignedZeroExV2Order",
+    name: "signedOrder",
     type: "bytes",
   },
   {
