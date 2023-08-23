@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.0.23
+
+### Patch Changes
+
+- [#86](https://github.com/enzymefinance/sdk/pull/86) [`8830633`](https://github.com/enzymefinance/sdk/commit/8830633b2ec5dff1e05b64bdd529f292ad659f75) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add compound v2 debt trade helpers
+
+- [#87](https://github.com/enzymefinance/sdk/pull/87) [`d5bce7a`](https://github.com/enzymefinance/sdk/commit/d5bce7a24ac56a373d02d632fafc2fa0ee011c66) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add convex voting trade helpers
+
 ## 0.0.22
 
 ### Patch Changes
