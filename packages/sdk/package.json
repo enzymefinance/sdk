@@ -51,16 +51,16 @@
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.10",
-    "abitype": "^0.9.0",
+    "abitype": "^0.9.8",
     "decimal.js": "^10.4.3",
-    "viem": "^1.2.9"
+    "viem": "^1.6.7"
   },
   "devDependencies": {
     "@viem/anvil": "^0.0.6",
     "@vitest/coverage-c8": "^0.32.4",
     "@vitest/ui": "^0.32.4",
     "typescript": "^5.1.6",
-    "vite": "^4.4.0",
+    "vite": "^4.4.9",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.32.4"
   }
