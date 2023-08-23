@@ -19,7 +19,7 @@ export type ZeroExV4TakeOrderArgs = {
   signedOrder: Hex;
   takerAssetFillAmount: bigint;
   orderType: bigint;
-}
+};
 
 export function encodeZeroExV4TakeOrderArgs({
   signedOrder,

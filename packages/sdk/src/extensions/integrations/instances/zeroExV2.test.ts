@@ -33,7 +33,8 @@ test("prepare adapter trade for zeroExV2 take order should work correctly", asyn
       integrationAdapter: ZERO_EX_V2_ADAPTER,
       callArgs: {
         type: Integration.ZeroExV2TakeOrder,
-        signedOrder, takerAssetFillAmount
+        signedOrder,
+        takerAssetFillAmount,
       },
     }),
     account: vaultOwner,

@@ -1,6 +1,6 @@
 import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const zeroExV2TakeOrderEncoding = [  
+export const zeroExV2TakeOrderEncoding = [
   {
     name: "SignedZeroExV2Order",
     type: "bytes",
@@ -14,12 +14,9 @@ export const zeroExV2TakeOrderEncoding = [
 export type ZeroExV2TakeOrderArgs = {
   signedOrder: Hex;
   takerAssetFillAmount: bigint;
-}
+};
 
-export function encodeZeroExV2TakeOrderArgs({
-  signedOrder,
-  takerAssetFillAmount,
-}: ZeroExV2TakeOrderArgs): Hex {
+export function encodeZeroExV2TakeOrderArgs({ signedOrder, takerAssetFillAmount }: ZeroExV2TakeOrderArgs): Hex {
   return encodeAbiParameters(zeroExV2TakeOrderEncoding, [signedOrder, takerAssetFillAmount]);
 }
 
