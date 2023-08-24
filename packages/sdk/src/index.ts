@@ -569,6 +569,23 @@ export {
   type KilnStakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
+// ./extensions/external-positions/instances/theGraphDelegation.js
+export {
+  encodeTheGraphDelegationDelegateArgs,
+  decodeTheGraphDelegationDelegateArgs,
+  encodeTheGraphDelegationUndelegateArgs,
+  decodeTheGraphDelegationUndelegateArgs,
+  encodeTheGraphDelegationWithdrawArgs,
+  decodeTheGraphDelegationWithdrawArgs,
+  type TheGraphDelegationAction,
+  theGraphDelegationDelegateArgsEncoding,
+  type TheGraphDelegationDelegateArgs,
+  theGraphDelegationUndelegateArgsEncoding,
+  type TheGraphDelegationUndelegateArgs,
+  theGraphDelegationWithdrawArgsEncoding,
+  type TheGraphDelegationWithdrawArgs,
+} from "./extensions/external-positions/instances/theGraphDelegation.js";
+
 // ./extensions/fees/instances/entranceFee.js
 export {
   encodeEntranceRateBurnFeeSettings,
