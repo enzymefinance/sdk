@@ -20,6 +20,13 @@ import type {
 } from "./instances/convexVoting.js";
 import type { KilnStakeArgs } from "./instances/kiln.js";
 import type {
+  LiquityDebtPositionOpenTroveArgs,
+  LiquityDebtPositionAddCollateralArgs,
+  LiquityDebtPositionBorrowArgs,
+  LiquityDebtPositionRemoveCollateralArgs,
+  LiquityDebtPositionRepayBorrowArgs,
+} from "./instances/liquity.js";
+import type {
   MapleLiquidityCancelRedeemV2Args,
   MapleLiquidityClaimRewardsV1Args,
   MapleLiquidityLendV2Args,
@@ -44,6 +51,11 @@ export const ExternalPosition = {
   ConvexVotingWithdraw: "ConvexVotingWithdraw",
   ConvexVotingClaimRewards: "ConvexVotingClaimRewards",
   ConvexVotingDelegate: "ConvexVotingDelegate",
+  LiquityDebtPositionAddCollateral: "LiquityDebtAddCollateral",
+  LiquityDebtPositionBorrow: "LiquityDebtBorrow",
+  LiquityDebtPositionOpenTrove: "LiquityDebtOpenTrove",
+  LiquityDebtPositionRemoveCollateral: "LiquityDebtRemoveCollateral",
+  LiquityDebtPositionRepayBorrow: "LiquityDebtRepayBorrow",
   MapleLiquidityLendV2: "MapleLiquidityLendV2",
   MapleLiquidityRedeemV2: "MapleLiquidityRedeemV2",
   MapleLiquidityRequestRedeemV2: "MapleLiquidityRequestRedeemV2",
@@ -67,6 +79,11 @@ export type ExternalPositionArgs = {
   [ExternalPosition.ConvexVotingWithdraw]: ConvexVotingWithdrawArgs;
   [ExternalPosition.ConvexVotingClaimRewards]: ConvexVotingClaimRewardsArgs;
   [ExternalPosition.ConvexVotingDelegate]: ConvexVotingDelegateArgs;
+  [ExternalPosition.LiquityDebtPositionOpenTrove]: LiquityDebtPositionOpenTroveArgs;
+  [ExternalPosition.LiquityDebtPositionAddCollateral]: LiquityDebtPositionAddCollateralArgs;
+  [ExternalPosition.LiquityDebtPositionBorrow]: LiquityDebtPositionBorrowArgs;
+  [ExternalPosition.LiquityDebtPositionRemoveCollateral]: LiquityDebtPositionRemoveCollateralArgs;
+  [ExternalPosition.LiquityDebtPositionRepayBorrow]: LiquityDebtPositionRepayBorrowArgs;
   [ExternalPosition.MapleLiquidityLendV2]: MapleLiquidityLendV2Args;
   [ExternalPosition.MapleLiquidityRedeemV2]: MapleLiquidityRedeemV2Args;
   [ExternalPosition.MapleLiquidityRequestRedeemV2]: MapleLiquidityRequestRedeemV2Args;
