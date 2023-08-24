@@ -19,6 +19,13 @@ import type {
   ConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
 import type { KilnStakeArgs } from "./instances/kiln.js";
+import type {
+  MapleLiquidityCancelRedeemV2Args,
+  MapleLiquidityClaimRewardsV1Args,
+  MapleLiquidityLendV2Args,
+  MapleLiquidityRedeemV2Args,
+  MapleLiquidityRequestRedeemV2Args,
+} from "./instances/mapleLiquidity.js";
 
 export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
 export const ExternalPosition = {
@@ -37,6 +44,11 @@ export const ExternalPosition = {
   ConvexVotingWithdraw: "ConvexVotingWithdraw",
   ConvexVotingClaimRewards: "ConvexVotingClaimRewards",
   ConvexVotingDelegate: "ConvexVotingDelegate",
+  MapleLiquidityLendV2: "MapleLiquidityLendV2",
+  MapleLiquidityRedeemV2: "MapleLiquidityRedeemV2",
+  MapleLiquidityRequestRedeemV2: "MapleLiquidityRequestRedeemV2",
+  MapleLiquidityCancelRedeemV2: "MapleLiquidityCancelRedeemV2",
+  MapleLiquidityClaimRewardsV1: "MapleLiquidityClaimRewardsV1",
 } as const;
 
 export type ExternalPositionArgs = {
@@ -55,4 +67,9 @@ export type ExternalPositionArgs = {
   [ExternalPosition.ConvexVotingWithdraw]: ConvexVotingWithdrawArgs;
   [ExternalPosition.ConvexVotingClaimRewards]: ConvexVotingClaimRewardsArgs;
   [ExternalPosition.ConvexVotingDelegate]: ConvexVotingDelegateArgs;
+  [ExternalPosition.MapleLiquidityLendV2]: MapleLiquidityLendV2Args;
+  [ExternalPosition.MapleLiquidityRedeemV2]: MapleLiquidityRedeemV2Args;
+  [ExternalPosition.MapleLiquidityRequestRedeemV2]: MapleLiquidityRequestRedeemV2Args;
+  [ExternalPosition.MapleLiquidityCancelRedeemV2]: MapleLiquidityCancelRedeemV2Args;
+  [ExternalPosition.MapleLiquidityClaimRewardsV1]: MapleLiquidityClaimRewardsV1Args;
 };

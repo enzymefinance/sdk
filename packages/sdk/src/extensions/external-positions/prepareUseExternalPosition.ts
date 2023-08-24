@@ -22,6 +22,13 @@ import {
   encodeConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
+import {
+  encodeMapleLiquidityCancelRedeemV2Args,
+  encodeMapleLiquidityClaimRewardsV1Args,
+  encodeMapleLiquidityLendV2Args,
+  encodeMapleLiquidityRedeemV2Args,
+  encodeMapleLiquidityRequestRedeemV2Args,
+} from "./instances/mapleLiquidity.js";
 import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
@@ -79,5 +86,15 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeConvexVotingClaimRewardsArgs(callArgs);
     case ExternalPosition.ConvexVotingDelegate:
       return encodeConvexVotingDelegateArgs(callArgs);
+    case ExternalPosition.MapleLiquidityClaimRewardsV1:
+      return encodeMapleLiquidityClaimRewardsV1Args(callArgs);
+    case ExternalPosition.MapleLiquidityLendV2:
+      return encodeMapleLiquidityLendV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityRequestRedeemV2:
+      return encodeMapleLiquidityRequestRedeemV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityRedeemV2:
+      return encodeMapleLiquidityRedeemV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityCancelRedeemV2:
+      return encodeMapleLiquidityCancelRedeemV2Args(callArgs);
   }
 }
