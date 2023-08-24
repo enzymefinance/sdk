@@ -29,6 +29,11 @@ import {
   encodeMapleLiquidityRedeemV2Args,
   encodeMapleLiquidityRequestRedeemV2Args,
 } from "./instances/mapleLiquidity.js";
+import {
+  encodeTheGraphDelegationDelegateArgs,
+  encodeTheGraphDelegationUndelegateArgs,
+  encodeTheGraphDelegationWithdrawArgs,
+} from "./instances/theGraphDelegation.js";
 import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
@@ -86,6 +91,12 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeConvexVotingClaimRewardsArgs(callArgs);
     case ExternalPosition.ConvexVotingDelegate:
       return encodeConvexVotingDelegateArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationDelegate:
+      return encodeTheGraphDelegationDelegateArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationUndelegate:
+      return encodeTheGraphDelegationUndelegateArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationWithdraw:
+      return encodeTheGraphDelegationWithdrawArgs(callArgs);
     case ExternalPosition.MapleLiquidityClaimRewardsV1:
       return encodeMapleLiquidityClaimRewardsV1Args(callArgs);
     case ExternalPosition.MapleLiquidityLendV2:
