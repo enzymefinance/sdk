@@ -11,14 +11,19 @@ export const zeroExV4TakeOrderEncoding = [
   },
   {
     name: "orderType",
-    type: "uint256",
+    type: "uint8",
   },
 ] as const;
+
+export enum ZeroExV4OrderType {
+  Limit,
+  Rfq,
+}
 
 export type ZeroExV4TakeOrderArgs = {
   signedOrder: Hex;
   takerAssetFillAmount: bigint;
-  orderType: bigint;
+  orderType: ZeroExV4OrderType;
 };
 
 export function encodeZeroExV4TakeOrderArgs({
