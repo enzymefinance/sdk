@@ -19,9 +19,37 @@ export const kilnStakeArgsEncoding = [
   },
 ] as const;
 
+export const kilnRedeemArgsEncoding = [
+  {
+    type: "address",
+    name: "stakingContract",
+  },
+  {
+    name: "publicKeys",
+    type: "bytes",
+  },
+  {
+    name: "claimType",
+    type: " ",
+  },
+] as const;
+
 export type KilnStakeArgs = {
   stakingContract: Address;
   validatorAmount: bigint;
+  externalPositionProxy: Address;
+};
+
+export enum KilnStakingPositionActionClaimType {
+  ExecutionLayer = '0',
+  ConsensusLayer = '1',
+  All = '2',
+}
+
+export type KilnRedeemArgs = {
+  stakingContract: Address;
+  publicKeys: Hex;
+  claimType: KilnStakingPositionActionClaimType;
   externalPositionProxy: Address;
 };
 
@@ -43,5 +71,27 @@ export function decodeKilnStakeArgs(callArgs: Hex): KilnStakeArgs {
     validatorAmount,
     externalPositionProxy,
     stakingContract,
+  };
+}
+
+export function encodeKilnRedeemArgs({ externalPositionProxy, stakingContract, publicKeys, claimType }: KilnRedeemArgs): Hex {
+  const actionArgs = encodeAbiParameters(kilnRedeemArgsEncoding, [stakingContract, publicKeys, claimType]);
+
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.ClaimFees,
+    actionArgs,
+  });
+}
+
+export function decodeKilnRedeemArgs(callArgs: Hex): KilnRedeemArgs {
+  const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
+  const [stakingContract, publicKeys, claimType] = decodeAbiParameters(kilnRedeemArgsEncoding, actionArgs);
+
+  return {
+    externalPositionProxy,
+    stakingContract,
+    publicKeys,
+    claimType,
   };
 }
