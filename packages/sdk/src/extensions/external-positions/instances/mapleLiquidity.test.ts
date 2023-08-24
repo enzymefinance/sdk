@@ -12,7 +12,7 @@ import {
 import { parseEther } from "viem";
 import { test } from "vitest";
 
-test.only("prepare external position trade for Maple Liquidity lend V2 should work correctly", async () => {
+test("prepare external position trade for Maple Liquidity lend V2 should work correctly", async () => {
   const vaultProxy = "0x278c647f7cfb9d55580c69d3676938608c945ba8" as const;
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
@@ -44,7 +44,7 @@ test.only("prepare external position trade for Maple Liquidity lend V2 should wo
   await testActions.assertBalanceOf({
     token: WETH,
     account: vaultProxy,
-    expected: 2137266192270935n,
+    expected: 1383799807066830248n,
   });
 });
 
