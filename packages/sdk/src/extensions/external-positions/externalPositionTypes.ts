@@ -20,6 +20,13 @@ import type {
 } from "./instances/convexVoting.js";
 import type { KilnStakeArgs } from "./instances/kiln.js";
 import type {
+  LiquityDebtPositionAddCollateralArgs,
+  LiquityDebtPositionBorrowArgs,
+  LiquityDebtPositionOpenTroveArgs,
+  LiquityDebtPositionRemoveCollateralArgs,
+  LiquityDebtPositionRepayBorrowArgs,
+} from "./instances/liquity.js";
+import type {
   MapleLiquidityCancelRedeemV2Args,
   MapleLiquidityClaimRewardsV1Args,
   MapleLiquidityLendV2Args,
@@ -49,6 +56,11 @@ export const ExternalPosition = {
   ConvexVotingWithdraw: "ConvexVotingWithdraw",
   ConvexVotingClaimRewards: "ConvexVotingClaimRewards",
   ConvexVotingDelegate: "ConvexVotingDelegate",
+  LiquityDebtPositionAddCollateral: "LiquityDebtAddCollateral",
+  LiquityDebtPositionBorrow: "LiquityDebtBorrow",
+  LiquityDebtPositionOpenTrove: "LiquityDebtOpenTrove",
+  LiquityDebtPositionRemoveCollateral: "LiquityDebtRemoveCollateral",
+  LiquityDebtPositionRepayBorrow: "LiquityDebtRepayBorrow",
   TheGraphDelegationDelegate: "TheGraphDelegationDelegate",
   TheGraphDelegationUndelegate: "TheGraphDelegationUndelegate",
   TheGraphDelegationWithdraw: "TheGraphDelegationWithdraw",
@@ -75,6 +87,11 @@ export type ExternalPositionArgs = {
   [ExternalPosition.ConvexVotingWithdraw]: ConvexVotingWithdrawArgs;
   [ExternalPosition.ConvexVotingClaimRewards]: ConvexVotingClaimRewardsArgs;
   [ExternalPosition.ConvexVotingDelegate]: ConvexVotingDelegateArgs;
+  [ExternalPosition.LiquityDebtPositionOpenTrove]: LiquityDebtPositionOpenTroveArgs;
+  [ExternalPosition.LiquityDebtPositionAddCollateral]: LiquityDebtPositionAddCollateralArgs;
+  [ExternalPosition.LiquityDebtPositionBorrow]: LiquityDebtPositionBorrowArgs;
+  [ExternalPosition.LiquityDebtPositionRemoveCollateral]: LiquityDebtPositionRemoveCollateralArgs;
+  [ExternalPosition.LiquityDebtPositionRepayBorrow]: LiquityDebtPositionRepayBorrowArgs;
   [ExternalPosition.TheGraphDelegationDelegate]: TheGraphDelegationDelegateArgs;
   [ExternalPosition.TheGraphDelegationUndelegate]: TheGraphDelegationUndelegateArgs;
   [ExternalPosition.TheGraphDelegationWithdraw]: TheGraphDelegationWithdrawArgs;

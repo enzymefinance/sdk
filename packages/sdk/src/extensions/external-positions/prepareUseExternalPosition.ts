@@ -23,6 +23,13 @@ import {
 } from "./instances/convexVoting.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
 import {
+  encodeLiquityDebtPositionAddCollateralArgs,
+  encodeLiquityDebtPositionBorrowArgs,
+  encodeLiquityDebtPositionOpenTroveArgs,
+  encodeLiquityDebtPositionRemoveCollateralArgs,
+  encodeLiquityDebtPositionRepayBorrowArgs,
+} from "./instances/liquity.js";
+import {
   encodeMapleLiquidityCancelRedeemV2Args,
   encodeMapleLiquidityClaimRewardsV1Args,
   encodeMapleLiquidityLendV2Args,
@@ -91,6 +98,16 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeConvexVotingClaimRewardsArgs(callArgs);
     case ExternalPosition.ConvexVotingDelegate:
       return encodeConvexVotingDelegateArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionAddCollateral:
+      return encodeLiquityDebtPositionAddCollateralArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionBorrow:
+      return encodeLiquityDebtPositionBorrowArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionOpenTrove:
+      return encodeLiquityDebtPositionOpenTroveArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionRemoveCollateral:
+      return encodeLiquityDebtPositionRemoveCollateralArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionRepayBorrow:
+      return encodeLiquityDebtPositionRepayBorrowArgs(callArgs);
     case ExternalPosition.TheGraphDelegationDelegate:
       return encodeTheGraphDelegationDelegateArgs(callArgs);
     case ExternalPosition.TheGraphDelegationUndelegate:
