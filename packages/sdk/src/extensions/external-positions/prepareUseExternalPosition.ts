@@ -22,7 +22,13 @@ import {
   encodeConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
 import { encodeKilnStakeArgs } from "./instances/kiln.js";
-import { encodeLiquityDebtPositionAddCollateralArgs, encodeLiquityDebtPositionBorrowArgs, encodeLiquityDebtPositionOpenTroveArgs, encodeLiquityDebtPositionRemoveCollateralArgs, encodeLiquityDebtPositionRepayBorrowArgs } from "./instances/liquity.js";
+import {
+  encodeLiquityDebtPositionAddCollateralArgs,
+  encodeLiquityDebtPositionBorrowArgs,
+  encodeLiquityDebtPositionOpenTroveArgs,
+  encodeLiquityDebtPositionRemoveCollateralArgs,
+  encodeLiquityDebtPositionRepayBorrowArgs,
+} from "./instances/liquity.js";
 import {
   encodeMapleLiquidityCancelRedeemV2Args,
   encodeMapleLiquidityClaimRewardsV1Args,

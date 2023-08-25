@@ -20,9 +20,9 @@ import type {
 } from "./instances/convexVoting.js";
 import type { KilnStakeArgs } from "./instances/kiln.js";
 import type {
-  LiquityDebtPositionOpenTroveArgs,
   LiquityDebtPositionAddCollateralArgs,
   LiquityDebtPositionBorrowArgs,
+  LiquityDebtPositionOpenTroveArgs,
   LiquityDebtPositionRemoveCollateralArgs,
   LiquityDebtPositionRepayBorrowArgs,
 } from "./instances/liquity.js";
