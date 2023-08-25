@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
@@ -17,7 +17,7 @@ export type SetAutoProtocolFeeSharesBuybackParams = {
  */
 export function prepareSetAutoProtocolFeeSharesBuybackParams({ enabled }: SetAutoProtocolFeeSharesBuybackParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IComptroller, name: "setAutoProtocolFeeSharesBuyback" }),
+    abi: getAbiItem({ abi: IComptrollerLib, name: "setAutoProtocolFeeSharesBuyback" }),
     args: [enabled],
   });
 }
@@ -29,7 +29,7 @@ export function prepareSetAutoProtocolFeeSharesBuybackParams({ enabled }: SetAut
  * @returns The decoded parameters.
  */
 export function decodeSetAutoProtocolFeeSharesBuybackParams(params: Hex): SetAutoProtocolFeeSharesBuybackParams {
-  const abi = getAbiItem({ abi: IComptroller, name: "setAutoProtocolFeeSharesBuyback" });
+  const abi = getAbiItem({ abi: IComptrollerLib, name: "setAutoProtocolFeeSharesBuyback" });
   const decoded = decodeFunctionData({
     abi: [abi],
     data: params,

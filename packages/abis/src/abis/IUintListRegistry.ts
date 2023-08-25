@@ -90,7 +90,7 @@ export const IUintListRegistry = [
       },
       {
         indexed: false,
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "updateType",
         type: "uint8",
       },
@@ -128,13 +128,13 @@ export const IUintListRegistry = [
       },
       {
         indexed: false,
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "prevUpdateType",
         type: "uint8",
       },
       {
         indexed: true,
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "nextUpdateType",
         type: "uint8",
       },
@@ -306,7 +306,7 @@ export const IUintListRegistry = [
         type: "address",
       },
       {
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "_updateType",
         type: "uint8",
       },
@@ -383,7 +383,7 @@ export const IUintListRegistry = [
     name: "getListUpdateType",
     outputs: [
       {
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "updateType_",
         type: "uint8",
       },
@@ -507,7 +507,7 @@ export const IUintListRegistry = [
         type: "uint256",
       },
       {
-        internalType: "enum UintListRegistry.UpdateType",
+        internalType: "enum IUintListRegistry.UpdateType",
         name: "_nextUpdateType",
         type: "uint8",
       },

@@ -1,4 +1,4 @@
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
 import { simulateContract } from "viem/contract";
 
@@ -15,7 +15,7 @@ export async function getBuySharesAmount(
   },
 ) {
   const { result } = await simulateContract(client, {
-    abi: IComptroller,
+    abi: IComptrollerLib,
     functionName: "buyShares",
     address: comptroller,
     args: [amount, 1n],

@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, type PublicClient, decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 import { simulateContract } from "viem/contract";
@@ -22,7 +22,7 @@ export type BuySharesParams = {
  */
 export function prepareBuySharesParams({ investmentAmount, minSharesQuantity }: BuySharesParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IComptroller, name: "buyShares" }),
+    abi: getAbiItem({ abi: IComptrollerLib, name: "buyShares" }),
     args: [investmentAmount, minSharesQuantity],
   });
 }
@@ -34,7 +34,7 @@ export function prepareBuySharesParams({ investmentAmount, minSharesQuantity }: 
  * @returns The decoded parameters.
  */
 export function decodeBuySharesParams(params: Hex): BuySharesParams {
-  const abi = getAbiItem({ abi: IComptroller, name: "buyShares" });
+  const abi = getAbiItem({ abi: IComptrollerLib, name: "buyShares" });
   const decoded = decodeFunctionData({
     abi: [abi],
     data: params,

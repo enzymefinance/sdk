@@ -1,3 +1,4 @@
+// entrypoint:ignore
 export const IERC20 = [
   {
     inputs: [

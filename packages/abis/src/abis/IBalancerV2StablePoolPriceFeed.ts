@@ -8,11 +8,6 @@ export const IBalancerV2StablePoolPriceFeed = [
       },
       {
         internalType: "address",
-        name: "_wrappedNativeAsset",
-        type: "address",
-      },
-      {
-        internalType: "address",
         name: "_balancerVault",
         type: "address",
       },
@@ -203,11 +198,6 @@ export const IBalancerV2StablePoolPriceFeed = [
             internalType: "uint8",
             name: "invariantProxyAssetDecimals",
             type: "uint8",
-          },
-          {
-            internalType: "bool",
-            name: "containsNativeAsset",
-            type: "bool",
           },
         ],
         internalType: "struct BalancerV2StablePoolPriceFeed.PoolInfo",

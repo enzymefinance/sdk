@@ -417,9 +417,6 @@ export {
   type PrepareFunctionParamsReturnType,
 } from "./utils/viem.js";
 
-// ./extensions/abis/IERC20.js
-export { IERC20 } from "./extensions/abis/IERC20.js";
-
 // ./extensions/external-positions/callOnExternalPosition.js
 export {
   encodeCallOnExternalPositionArgs,

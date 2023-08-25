@@ -1,5 +1,5 @@
 import { isPolicyEnabled } from "./isPolicyEnabled.js";
-import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis";
+import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis/IAllowedDepositRecipientsPolicy";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 

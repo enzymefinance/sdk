@@ -7,7 +7,7 @@ import { publicClient, sendTestTransaction } from "../globals.js";
 import { approveSpend } from "./approveSpend.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { wrapEther } from "./wrapEther.js";
-import { IComptroller } from "@enzymefinance/abis";
+import { IComptrollerLib } from "@enzymefinance/abis";
 import type { Address } from "viem";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {
@@ -24,7 +24,7 @@ export async function buyShares({
   skipSharesActionTimelock = true,
 }: BuySharesSettings) {
   const denominationAsset = await publicClient.readContract({
-    abi: IComptroller,
+    abi: IComptrollerLib,
     address: comptrollerProxy,
     functionName: "getDenominationAsset",
   });

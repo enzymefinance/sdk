@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { getAbiItem } from "viem";
 
 /**
@@ -9,6 +9,6 @@ import { getAbiItem } from "viem";
  */
 export function prepareFreelyTransferableSharesParams() {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IVault, name: "setFreelyTransferableShares" }),
+    abi: getAbiItem({ abi: IVaultLib, name: "setFreelyTransferableShares" }),
   });
 }

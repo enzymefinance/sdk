@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { getAbiItem } from "viem";
 
 /**
@@ -9,6 +9,6 @@ import { getAbiItem } from "viem";
  */
 export function prepareDeployGasRelayPaymasterParams() {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IComptroller, name: "deployGasRelayPaymaster" }),
+    abi: getAbiItem({ abi: IComptrollerLib, name: "deployGasRelayPaymaster" }),
   });
 }

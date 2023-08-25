@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IPolicyManager {
     event PolicyDisabledOnHookForFund(address indexed comptrollerProxy, address indexed policy, uint8 indexed hook);
