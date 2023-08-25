@@ -33,6 +33,11 @@ import type {
   MapleLiquidityRedeemV2Args,
   MapleLiquidityRequestRedeemV2Args,
 } from "./instances/mapleLiquidity.js";
+import type {
+  TheGraphDelegationDelegateArgs,
+  TheGraphDelegationUndelegateArgs,
+  TheGraphDelegationWithdrawArgs,
+} from "./instances/theGraphDelegation.js";
 
 export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
 export const ExternalPosition = {
@@ -56,6 +61,9 @@ export const ExternalPosition = {
   LiquityDebtPositionOpenTrove: "LiquityDebtOpenTrove",
   LiquityDebtPositionRemoveCollateral: "LiquityDebtRemoveCollateral",
   LiquityDebtPositionRepayBorrow: "LiquityDebtRepayBorrow",
+  TheGraphDelegationDelegate: "TheGraphDelegationDelegate",
+  TheGraphDelegationUndelegate: "TheGraphDelegationUndelegate",
+  TheGraphDelegationWithdraw: "TheGraphDelegationWithdraw",
   MapleLiquidityLendV2: "MapleLiquidityLendV2",
   MapleLiquidityRedeemV2: "MapleLiquidityRedeemV2",
   MapleLiquidityRequestRedeemV2: "MapleLiquidityRequestRedeemV2",
@@ -84,6 +92,9 @@ export type ExternalPositionArgs = {
   [ExternalPosition.LiquityDebtPositionBorrow]: LiquityDebtPositionBorrowArgs;
   [ExternalPosition.LiquityDebtPositionRemoveCollateral]: LiquityDebtPositionRemoveCollateralArgs;
   [ExternalPosition.LiquityDebtPositionRepayBorrow]: LiquityDebtPositionRepayBorrowArgs;
+  [ExternalPosition.TheGraphDelegationDelegate]: TheGraphDelegationDelegateArgs;
+  [ExternalPosition.TheGraphDelegationUndelegate]: TheGraphDelegationUndelegateArgs;
+  [ExternalPosition.TheGraphDelegationWithdraw]: TheGraphDelegationWithdrawArgs;
   [ExternalPosition.MapleLiquidityLendV2]: MapleLiquidityLendV2Args;
   [ExternalPosition.MapleLiquidityRedeemV2]: MapleLiquidityRedeemV2Args;
   [ExternalPosition.MapleLiquidityRequestRedeemV2]: MapleLiquidityRequestRedeemV2Args;
