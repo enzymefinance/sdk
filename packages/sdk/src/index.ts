@@ -569,6 +569,31 @@ export {
   type KilnStakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
+// ./extensions/external-positions/instances/liquity.js
+export {
+  encodeLiquityDebtPositionOpenTroveArgs,
+  decodeLiquityDebtPositionOpenTroveArgs,
+  encodeLiquityDebtPositionAddCollateralArgs,
+  decodeLiquityDebtPositionAddCollateralArgs,
+  encodeLiquityDebtPositionRemoveCollateralArgs,
+  decodeLiquityDebtPositionRemoveCollateralArgs,
+  encodeLiquityDebtPositionBorrowArgs,
+  decodeLiquityDebtPositionBorrowArgs,
+  encodeLiquityDebtPositionRepayBorrowArgs,
+  decodeLiquityDebtPositionRepayBorrowArgs,
+  type LiquityDebtPositionAction,
+  liquityDebtPositionOpenTroveArgsEncoding,
+  liquityDebtPositionAddCollateralArgsEncoding,
+  liquityDebtPositionRemoveCollateralArgsEncoding,
+  liquityDebtPositionBorrowArgsEncoding,
+  liquityDebtPositionRepayBorrowArgsEncoding,
+  type LiquityDebtPositionOpenTroveArgs,
+  type LiquityDebtPositionAddCollateralArgs,
+  type LiquityDebtPositionRemoveCollateralArgs,
+  type LiquityDebtPositionBorrowArgs,
+  type LiquityDebtPositionRepayBorrowArgs,
+} from "./extensions/external-positions/instances/liquity.js";
+
 // ./extensions/external-positions/instances/mapleLiquidity.js
 export {
   encodeMapleLiquidityLendV2Args,
