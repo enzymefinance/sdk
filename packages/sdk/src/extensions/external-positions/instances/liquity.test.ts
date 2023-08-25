@@ -4,8 +4,11 @@ import { publicClient, sendTestTransaction, testActions, testClient } from "../.
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
+  decodeLiquityDebtPositionAddCollateralArgs,
   decodeLiquityDebtPositionBorrowArgs,
   decodeLiquityDebtPositionOpenTroveArgs,
+  decodeLiquityDebtPositionRemoveCollateralArgs,
+  decodeLiquityDebtPositionRepayBorrowArgs,
 } from "./liquity.js";
 import { parseEther } from "viem";
 import { expect, test } from "vitest";
@@ -48,7 +51,7 @@ test("prepare external position trade for Liquity debt position Open Trove shoul
   expect(lusdValue).toBe(2000000000000000000000n);
 });
 
-test("prepare external position trade for Liquity debt position borrow should work correctly", async () => {
+test("prepare external position trade for Liquity debt position add collateral should work correctly", async () => {
   await testClient.reset({
     blockNumber: 15496904n,
   });
@@ -59,15 +62,109 @@ test("prepare external position trade for Liquity debt position borrow should wo
   const callArgs =
     "0x000000000000000000000000000000000000000000000000016345785d8a0000000000000000000000000000028b2b9adca1bd1263086b0b221713a684968817000000000000000000000000c39e11ca02e107f649fa312eea48b62eb3c0db64";
 
-  const decodedCallArgs = decodeLiquityDebtPositionBorrowArgs(callArgs);
+  const decodedCallArgs = decodeLiquityDebtPositionAddCollateralArgs(callArgs);
 
-  console.log({ decodedCallArgs });
+  await sendTestTransaction({
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.LiquityDebtPositionAddCollateral,
+        ...decodedCallArgs,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+    account: "0x278c647f7cfb9d55580c69d3676938608c945ba8",
+    expected: 100000000000000000n,
+  });
+});
+
+test("prepare external position trade for Liquity debt position remove collateral should work correctly", async () => {
+  await testClient.reset({
+    blockNumber: 15525758n,
+  });
+
+  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+
+  // Taken from tx 0xc1967b462514afa17f1e827b66f4d96b53611851016dbc64c29a5708f9ce8a57
+  const callArgs =
+    "0x00000000000000000000000000000000000000000000000002c68af0bb140000000000000000000000000000a3e41e807779488f0f90de248c429c451c392ce0000000000000000000000000615181ed9d52a0a5718aa85f92ef5366ab167884";
+
+  const decodedCallArgs = decodeLiquityDebtPositionRemoveCollateralArgs(callArgs);
+
+  await sendTestTransaction({
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.LiquityDebtPositionRemoveCollateral,
+        ...decodedCallArgs,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+    account: "0x278c647f7cfb9d55580c69d3676938608c945ba8",
+    expected: 100000000000000000n,
+  });
+});
+
+test("prepare external position trade for Liquity debt position borrow should work correctly", async () => {
+  await testClient.reset({
+    blockNumber: 15525836n,
+  });
+
+  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+
+  // Taken from tx 0x4d9706718486c7d77cbc081b3eabaab972194da71c859de94f385ad72b5374fa
+  const callArgs =
+    "0x000000000000000000000000000000000000000000000000001aa535d3d0c0000000000000000000000000000000000000000000000000056bc75e2d63100000000000000000000000000000c39e11ca02e107f649fa312eea48b62eb3c0db64000000000000000000000000d6587a974c7d3ece23fa53d5606da6b291311f6f";
+
+  const decodedCallArgs = decodeLiquityDebtPositionBorrowArgs(callArgs);
 
   await sendTestTransaction({
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
         type: ExternalPosition.LiquityDebtPositionBorrow,
+        ...decodedCallArgs,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  await testActions.assertBalanceOf({
+    token: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+    account: "0x278c647f7cfb9d55580c69d3676938608c945ba8",
+    expected: 100000000000000000n,
+  });
+});
+
+test("prepare external position trade for Liquity debt position repay borrow should work correctly", async () => {
+  await testClient.reset({
+    blockNumber: 15525807n,
+  });
+
+  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+
+  // Taken from tx 0xe0654c73a891031e469d7d54ecd8c5711a61e3598475c0e2b0ebaea5ffeccac1
+  const callArgs =
+    "0x00000000000000000000000000000000000000000000000ad78ebc5ac6200000000000000000000000000000aab92ac996a0317cb83650cd6098142b70ae56b2000000000000000000000000a3e41e807779488f0f90de248c429c451c392ce0";
+
+  const decodedCallArgs = decodeLiquityDebtPositionRepayBorrowArgs(callArgs);
+
+  await sendTestTransaction({
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.LiquityDebtPositionRepayBorrow,
         ...decodedCallArgs,
       },
     }),
