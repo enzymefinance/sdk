@@ -27,6 +27,12 @@ export const IConvexCurveLpStakingWrapperLib = [
   },
   {
     anonymous: false,
+    inputs: [],
+    name: "AddExtraRewardsBypassed",
+    type: "event",
+  },
+  {
+    anonymous: false,
     inputs: [
       {
         indexed: true,
@@ -79,6 +85,19 @@ export const IConvexCurveLpStakingWrapperLib = [
     anonymous: false,
     inputs: [
       {
+        indexed: true,
+        internalType: "address",
+        name: "rewardToken",
+        type: "address",
+      },
+    ],
+    name: "HarvestUpdateBypassed",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: false,
         internalType: "bool",
         name: "isPaused",
@@ -99,6 +118,19 @@ export const IConvexCurveLpStakingWrapperLib = [
       },
     ],
     name: "RewardTokenAdded",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "address",
+        name: "token",
+        type: "address",
+      },
+    ],
+    name: "RewardTokenRemoved",
     type: "event",
   },
   {
@@ -664,6 +696,19 @@ export const IConvexCurveLpStakingWrapperLib = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_token",
+        type: "address",
+      },
+    ],
+    name: "removeExtraRewardToken",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "setApprovals",
     outputs: [],
@@ -757,6 +802,58 @@ export const IConvexCurveLpStakingWrapperLib = [
         internalType: "bool",
         name: "",
         type: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_rewardToken",
+        type: "address",
+      },
+      {
+        internalType: "address[2]",
+        name: "_accounts",
+        type: "address[2]",
+      },
+      {
+        internalType: "uint256",
+        name: "_supply",
+        type: "uint256",
+      },
+    ],
+    name: "updateHarvest",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_rewardToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_account",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_supply",
+        type: "uint256",
+      },
+    ],
+    name: "updateHarvestAndClaim",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "claimedAmount_",
+        type: "uint256",
       },
     ],
     stateMutability: "nonpayable",

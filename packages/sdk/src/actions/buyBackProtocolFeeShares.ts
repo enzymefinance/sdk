@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
@@ -17,7 +17,7 @@ export type BuyBackProtocolFeeSharesParams = {
  */
 export function prepareBuyBackProtocolFeeSharesParams({ sharesAmount }: BuyBackProtocolFeeSharesParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IComptroller, name: "buyBackProtocolFeeShares" }),
+    abi: getAbiItem({ abi: IComptrollerLib, name: "buyBackProtocolFeeShares" }),
     args: [sharesAmount],
   });
 }
@@ -29,7 +29,7 @@ export function prepareBuyBackProtocolFeeSharesParams({ sharesAmount }: BuyBackP
  * @returns The decoded parameters.
  */
 export function decodeBuyBackProtocolFeeSharesParams(params: Hex): BuyBackProtocolFeeSharesParams {
-  const abi = getAbiItem({ abi: IComptroller, name: "buyBackProtocolFeeShares" });
+  const abi = getAbiItem({ abi: IComptrollerLib, name: "buyBackProtocolFeeShares" });
   const decoded = decodeFunctionData({
     abi: [abi],
     data: params,

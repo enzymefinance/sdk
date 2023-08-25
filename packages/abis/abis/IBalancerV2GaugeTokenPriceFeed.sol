@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IBalancerV2GaugeTokenPriceFeed {
     function calcUnderlyingValues(address _derivative, uint256 _derivativeAmount)

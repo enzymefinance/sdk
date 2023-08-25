@@ -1,5 +1,5 @@
 import { ZERO_ADDRESS } from "../constants/misc.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
 import { readContract } from "viem/contract";
 
@@ -12,7 +12,7 @@ export async function getGasRelayerEnabled(
   },
 ) {
   const address = await readContract(client, {
-    abi: IComptroller,
+    abi: IComptrollerLib,
     address: comptrollerProxy,
     functionName: "getGasRelayPaymaster",
   });

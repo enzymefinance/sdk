@@ -5,7 +5,7 @@ import { encodePerformanceFeeSettings } from "../extensions/fees/instances/perfo
 import { encodeMinMaxInvestmentPolicySettings } from "../extensions/policies/instances/minMaxInvestmentPolicy.js";
 import { toBps, toSeconds, toWei } from "../utils/conversion.js";
 import { type PrepareSetupVaultParamsArgs, decodeSetupVaultParams, prepareSetupVaultParams } from "./setupVault.js";
-import { IVault } from "@enzymefinance/abis";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { encodeFunctionData, getAddress } from "viem";
 import { expect, test } from "vitest";
 
@@ -48,7 +48,7 @@ test("should set up a vault with the given parameters", async () => {
   });
 
   const vaultOwner = await publicClient.readContract({
-    abi: IVault,
+    abi: IVaultLib,
     address: vaultProxy,
     functionName: "getOwner",
   });

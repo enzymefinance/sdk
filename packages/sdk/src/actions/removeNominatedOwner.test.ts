@@ -3,7 +3,7 @@ import { publicClient, sendTestTransaction, testActions } from "../../tests/glob
 import { ZERO_ADDRESS } from "../constants/misc.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
 import { prepareRemoveNominatedOwnerParams } from "./removeNominatedOwner.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { expect, test } from "vitest";
 
 test("should remove nominated owner correctly", async () => {
@@ -13,7 +13,7 @@ test("should remove nominated owner correctly", async () => {
   });
 
   const firstNominatedOwner = await publicClient.readContract({
-    abi: IVault,
+    abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",
   });
@@ -27,7 +27,7 @@ test("should remove nominated owner correctly", async () => {
   });
 
   const newNominatedOwner = await publicClient.readContract({
-    abi: IVault,
+    abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",
   });
@@ -43,7 +43,7 @@ test("should remove nominated owner correctly", async () => {
   await sendTestTransaction(request);
 
   const lastNominatedOwner = await publicClient.readContract({
-    abi: IVault,
+    abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",
   });

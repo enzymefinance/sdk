@@ -1,6 +1,6 @@
 import type { Tuple } from "../../src/utils/types.js";
 import { publicClient } from "../globals.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import type { Address } from "viem";
 
 export interface IsAssetManagerParams {
@@ -11,7 +11,7 @@ export interface IsAssetManagerParams {
 export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
   return publicClient.readContract({
     address: vaultProxy,
-    abi: IVault,
+    abi: IVaultLib,
     functionName: "isAssetManager",
     args: [who],
   });
@@ -24,7 +24,7 @@ export async function isAssetManagers<const TAddresses extends Readonly<Address[
   const contracts = addresses.map((who: Address) => {
     return {
       address: vaultProxy,
-      abi: IVault,
+      abi: IVaultLib,
       functionName: "isAssetManager",
       args: [who],
     } as const;

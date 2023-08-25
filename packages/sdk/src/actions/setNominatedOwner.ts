@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { type Address, type Hex, decodeFunctionData, getAbiItem } from "viem";
 
 export type PrepareSetNominatedOwnerParams = {
@@ -23,7 +23,7 @@ export type PrepareSetNominatedOwnerParams = {
  */
 export function prepareSetNominatedOwnerParams({ nominatedOwner }: PrepareSetNominatedOwnerParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IVault, name: "setNominatedOwner" }),
+    abi: getAbiItem({ abi: IVaultLib, name: "setNominatedOwner" }),
     args: [nominatedOwner],
   });
 }
@@ -36,7 +36,7 @@ export function prepareSetNominatedOwnerParams({ nominatedOwner }: PrepareSetNom
  */
 export function decodeSetNominatedOwnerParams(params: Hex): PrepareSetNominatedOwnerParams {
   const abi = getAbiItem({
-    abi: IVault,
+    abi: IVaultLib,
     name: "setNominatedOwner",
   });
 

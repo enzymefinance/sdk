@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IPerformanceFee {
     event ActivatedForFund(address indexed comptrollerProxy, uint256 highWaterMark);
