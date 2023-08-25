@@ -7,11 +7,15 @@ export const LiquityDebtPositionAction = {
   AddCollateral: 1n,
   RemoveCollateral: 2n,
   Borrow: 3n,
-  Repay: 4n,
+  RepayBorrow: 4n,
   CloseTrove: 5n,
 } as const;
 
 export const liquityDebtPositionOpenTroveArgsEncoding = [
+  {
+    name: "maxFeePercentage",
+    type: "uint256",
+  },
   {
     name: "collateralAmount",
     type: "uint256",
@@ -21,15 +25,11 @@ export const liquityDebtPositionOpenTroveArgsEncoding = [
     type: "uint256",
   },
   {
-    name: "maxFeePercentage",
-    type: "uint256",
-  },
-  {
-    name: "lowerHint",
+    name: "upperHint",
     type: "address",
   },
   {
-    name: "upperHint",
+    name: "lowerHint",
     type: "address",
   },
 ] as const;
@@ -40,11 +40,11 @@ export const liquityDebtPositionAddCollateralArgsEncoding = [
     type: "uint256",
   },
   {
-    name: "lowerHint",
+    name: "upperHint",
     type: "address",
   },
   {
-    name: "upperHint",
+    name: "lowerHint",
     type: "address",
   },
 ] as const;
@@ -55,11 +55,11 @@ export const liquityDebtPositionRemoveCollateralArgsEncoding = [
     type: "uint256",
   },
   {
-    name: "lowerHint",
+    name: "upperHint",
     type: "address",
   },
   {
-    name: "upperHint",
+    name: "lowerHint",
     type: "address",
   },
 ] as const;
@@ -74,11 +74,11 @@ export const liquityDebtPositionBorrowArgsEncoding = [
     type: "uint256",
   },
   {
-    name: "lowerHint",
+    name: "upperHint",
     type: "address",
   },
   {
-    name: "upperHint",
+    name: "lowerHint",
     type: "address",
   },
 ] as const;
@@ -89,11 +89,11 @@ export const liquityDebtPositionRepayBorrowArgsEncoding = [
     type: "uint256",
   },
   {
-    name: "lowerHint",
+    name: "upperHint",
     type: "address",
   },
   {
-    name: "upperHint",
+    name: "lowerHint",
     type: "address",
   },
 ] as const;
@@ -144,7 +144,13 @@ export function encodeLiquityDebtPositionOpenTroveArgs({
   lowerHint,
   upperHint,
 }: LiquityDebtPositionOpenTroveArgs): Hex {
-  const actionArgs = encodeAbiParameters(liquityDebtPositionOpenTroveArgsEncoding, [maxFeePercentage, collateralAmount, lusdAmount, upperHint, lowerHint]);
+  const actionArgs = encodeAbiParameters(liquityDebtPositionOpenTroveArgsEncoding, [
+    maxFeePercentage,
+    collateralAmount,
+    lusdAmount,
+    upperHint,
+    lowerHint,
+  ]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -155,7 +161,10 @@ export function encodeLiquityDebtPositionOpenTroveArgs({
 
 export function decodeLiquityDebtPositionOpenTroveArgs(callArgs: Hex): LiquityDebtPositionOpenTroveArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [maxFeePercentage, collateralAmount, lusdAmount, upperHint, lowerHint] = decodeAbiParameters(liquityDebtPositionOpenTroveArgsEncoding, actionArgs);
+  const [maxFeePercentage, collateralAmount, lusdAmount, upperHint, lowerHint] = decodeAbiParameters(
+    liquityDebtPositionOpenTroveArgsEncoding,
+    actionArgs,
+  );
 
   return {
     maxFeePercentage,
@@ -170,10 +179,14 @@ export function decodeLiquityDebtPositionOpenTroveArgs(callArgs: Hex): LiquityDe
 export function encodeLiquityDebtPositionAddCollateralArgs({
   externalPositionProxy,
   collateralAmount,
-  lowerHint,
   upperHint,
+  lowerHint,
 }: LiquityDebtPositionAddCollateralArgs): Hex {
-  const actionArgs = encodeAbiParameters(liquityDebtPositionAddCollateralArgsEncoding, [collateralAmount, upperHint, lowerHint]);
+  const actionArgs = encodeAbiParameters(liquityDebtPositionAddCollateralArgsEncoding, [
+    collateralAmount,
+    upperHint,
+    lowerHint,
+  ]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -184,12 +197,15 @@ export function encodeLiquityDebtPositionAddCollateralArgs({
 
 export function decodeLiquityDebtPositionAddCollateralArgs(callArgs: Hex): LiquityDebtPositionAddCollateralArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [collateralAmount, upperHint, lowerHint] = decodeAbiParameters(liquityDebtPositionAddCollateralArgsEncoding, actionArgs);
+  const [collateralAmount, upperHint, lowerHint] = decodeAbiParameters(
+    liquityDebtPositionAddCollateralArgsEncoding,
+    actionArgs,
+  );
 
   return {
     collateralAmount,
-    lowerHint,
     upperHint,
+    lowerHint,
     externalPositionProxy,
   };
 }
@@ -197,10 +213,14 @@ export function decodeLiquityDebtPositionAddCollateralArgs(callArgs: Hex): Liqui
 export function encodeLiquityDebtPositionRemoveCollateralArgs({
   externalPositionProxy,
   collateralAmount,
-  lowerHint,
   upperHint,
+  lowerHint,
 }: LiquityDebtPositionRemoveCollateralArgs): Hex {
-  const actionArgs = encodeAbiParameters(liquityDebtPositionRemoveCollateralArgsEncoding, [collateralAmount, upperHint, lowerHint]);
+  const actionArgs = encodeAbiParameters(liquityDebtPositionRemoveCollateralArgsEncoding, [
+    collateralAmount,
+    upperHint,
+    lowerHint,
+  ]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -211,12 +231,15 @@ export function encodeLiquityDebtPositionRemoveCollateralArgs({
 
 export function decodeLiquityDebtPositionRemoveCollateralArgs(callArgs: Hex): LiquityDebtPositionRemoveCollateralArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [collateralAmount, upperHint, lowerHint] = decodeAbiParameters(liquityDebtPositionRemoveCollateralArgsEncoding, actionArgs);
+  const [collateralAmount, upperHint, lowerHint] = decodeAbiParameters(
+    liquityDebtPositionRemoveCollateralArgsEncoding,
+    actionArgs,
+  );
 
   return {
     collateralAmount,
-    lowerHint,
     upperHint,
+    lowerHint,
     externalPositionProxy,
   };
 }
@@ -225,10 +248,15 @@ export function encodeLiquityDebtPositionBorrowArgs({
   externalPositionProxy,
   maxFeePercentage,
   lusdAmount,
-  lowerHint,
   upperHint,
+  lowerHint,
 }: LiquityDebtPositionBorrowArgs): Hex {
-  const actionArgs = encodeAbiParameters(liquityDebtPositionBorrowArgsEncoding, [maxFeePercentage, lusdAmount, upperHint, lowerHint]);
+  const actionArgs = encodeAbiParameters(liquityDebtPositionBorrowArgsEncoding, [
+    maxFeePercentage,
+    lusdAmount,
+    upperHint,
+    lowerHint,
+  ]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -239,7 +267,10 @@ export function encodeLiquityDebtPositionBorrowArgs({
 
 export function decodeLiquityDebtPositionBorrowArgs(callArgs: Hex): LiquityDebtPositionBorrowArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [maxFeePercentage, lusdAmount, upperHint, lowerHint] = decodeAbiParameters(liquityDebtPositionBorrowArgsEncoding, actionArgs);
+  const [maxFeePercentage, lusdAmount, upperHint, lowerHint] = decodeAbiParameters(
+    liquityDebtPositionBorrowArgsEncoding,
+    actionArgs,
+  );
 
   return {
     maxFeePercentage,
@@ -253,26 +284,33 @@ export function decodeLiquityDebtPositionBorrowArgs(callArgs: Hex): LiquityDebtP
 export function encodeLiquityDebtPositionRepayBorrowArgs({
   externalPositionProxy,
   lusdAmount,
-  lowerHint,
   upperHint,
+  lowerHint,
 }: LiquityDebtPositionRepayBorrowArgs): Hex {
-  const actionArgs = encodeAbiParameters(liquityDebtPositionRepayBorrowArgsEncoding, [lusdAmount, upperHint, lowerHint]);
+  const actionArgs = encodeAbiParameters(liquityDebtPositionRepayBorrowArgsEncoding, [
+    lusdAmount,
+    upperHint,
+    lowerHint,
+  ]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
-    actionId: LiquityDebtPositionAction.Repay,
+    actionId: LiquityDebtPositionAction.RepayBorrow,
     actionArgs,
   });
 }
 
 export function decodeLiquityDebtPositionRepayBorrowArgs(callArgs: Hex): LiquityDebtPositionRepayBorrowArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [lusdAmount, upperHint, lowerHint] = decodeAbiParameters(liquityDebtPositionRepayBorrowArgsEncoding, actionArgs);
+  const [lusdAmount, upperHint, lowerHint] = decodeAbiParameters(
+    liquityDebtPositionRepayBorrowArgsEncoding,
+    actionArgs,
+  );
 
   return {
     lusdAmount,
-    lowerHint,
     upperHint,
+    lowerHint,
     externalPositionProxy,
   };
 }
