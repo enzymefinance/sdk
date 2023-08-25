@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IConvexCurveLpStakingWrapperLib {
+    event AddExtraRewardsBypassed();
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Deposited(address indexed from, address indexed to, uint256 amount);
+    event HarvestUpdateBypassed(address indexed rewardToken);
     event PauseToggled(bool isPaused);
     event RewardTokenAdded(address token);
+    event RewardTokenRemoved(address token);
     event RewardsClaimed(address caller, address indexed user, address[] rewardTokens, uint256[] claimedAmounts);
     event TokenNameSet(string name);
     event TokenSymbolSet(string symbol);
@@ -56,12 +59,17 @@ interface IConvexCurveLpStakingWrapperLib {
     function init(uint256 _pid) external;
     function isPaused() external view returns (bool isPaused_);
     function name() external view returns (string memory name_);
+    function removeExtraRewardToken(address _token) external;
     function setApprovals() external;
     function symbol() external view returns (string memory symbol_);
     function togglePause(bool _isPaused) external;
     function totalSupply() external view returns (uint256);
     function transfer(address recipient, uint256 amount) external returns (bool);
     function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+    function updateHarvest(address _rewardToken, address[2] memory _accounts, uint256 _supply) external;
+    function updateHarvestAndClaim(address _rewardToken, address _account, uint256 _supply)
+        external
+        returns (uint256 claimedAmount_);
     function withdraw(uint256 _amount, bool _claimRewards)
         external
         returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);

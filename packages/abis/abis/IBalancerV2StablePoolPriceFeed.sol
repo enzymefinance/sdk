@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IBalancerV2StablePoolPriceFeed {
     event PoolAdded(address indexed pool, address indexed invariantProxyAsset);
@@ -10,7 +10,6 @@ interface IBalancerV2StablePoolPriceFeed {
     struct PoolInfo {
         address invariantProxyAsset;
         uint8 invariantProxyAssetDecimals;
-        bool containsNativeAsset;
     }
 
     function addPoolFactories(address[] memory _poolFactories) external;

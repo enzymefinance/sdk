@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, type Hex, decodeFunctionData, getAbiItem } from "viem";
 
 export type CallOnExtensionParams = {
@@ -24,7 +24,7 @@ export type CallOnExtensionParams = {
  */
 export function prepareCallOnExtensionParams({ extension, actionId, callArgs }: CallOnExtensionParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IComptroller, name: "callOnExtension" }),
+    abi: getAbiItem({ abi: IComptrollerLib, name: "callOnExtension" }),
     args: [extension, actionId, callArgs],
   });
 }
@@ -47,7 +47,7 @@ function assertExternalPositionManagerActionIdValue(
  * @returns The decoded parameters.
  */
 export function decodeCallOnExtensionParams(params: Hex): CallOnExtensionParams {
-  const abi = getAbiItem({ abi: IComptroller, name: "callOnExtension" });
+  const abi = getAbiItem({ abi: IComptrollerLib, name: "callOnExtension" });
   const {
     args: [extension, actionId, callArgs],
   } = decodeFunctionData({

@@ -1,4 +1,4 @@
-import { IComptroller } from "../../../../../abis/src/abis/IComptroller.js";
+import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { IFundDeployer } from "../../../../../abis/src/abis/IFundDeployer.js";
 import {
   BAL,
@@ -202,7 +202,7 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
   // approve minter
   await sendTestTransaction({
     ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IComptroller, name: "vaultCallOnContract" }),
+      abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
       args: [
         BALANCER_MINTER,
         TOGGLE_APPROVE_MINT_SELECTOR,
