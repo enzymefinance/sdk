@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.0.24
+
+### Patch Changes
+
+- [#90](https://github.com/enzymefinance/sdk/pull/90) [`7e0c56c`](https://github.com/enzymefinance/sdk/commit/7e0c56c7f3c1840344e6b16739a5d361b8b6c56b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add maple liquidity trade helpers
+
+- [#92](https://github.com/enzymefinance/sdk/pull/92) [`3a68713`](https://github.com/enzymefinance/sdk/commit/3a68713bd0c85a836a8e8e2f0385a5bc3ec57f70) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add the graph delegation trade helpers
+
 ## 0.0.23
 
 ### Patch Changes
