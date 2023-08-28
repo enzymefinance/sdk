@@ -21,7 +21,7 @@ import {
   encodeConvexVotingRelockArgs,
   encodeConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
-import { encodeKilnRedeemArgs, encodeKilnStakeArgs } from "./instances/kiln.js";
+import { encodeKilnClaimFeesArgs, encodeKilnStakeArgs } from "./instances/kiln.js";
 import {
   encodeLiquityDebtPositionAddCollateralArgs,
   encodeLiquityDebtPositionBorrowArgs,
@@ -68,8 +68,8 @@ export function prepareUseExternalPosition({ callArgs, externalPositionManager }
 
 export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCallArgs) {
   switch (callArgs.type) {
-    case ExternalPosition.KilnRedeem:
-      return encodeKilnRedeemArgs(callArgs);
+    case ExternalPosition.KilnClaimFees:
+      return encodeKilnClaimFeesArgs(callArgs);
     case ExternalPosition.KilnStake:
       return encodeKilnStakeArgs(callArgs);
     case ExternalPosition.AaveV2DebtAddCollateral:

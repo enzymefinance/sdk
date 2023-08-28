@@ -10,9 +10,9 @@ export const KilnAction = {
 
 export type KilnClaimType = typeof KilnClaimType[keyof typeof KilnClaimType];
 export const KilnClaimType = {
-  ExecutionLayer: '0',
-  ConsensusLayer: '1',
-  All: '2',
+  ExecutionLayer: "0",
+  ConsensusLayer: "1",
+  All: "2",
 } as const;
 
 export const kilnStakeArgsEncoding = [
@@ -26,7 +26,7 @@ export const kilnStakeArgsEncoding = [
   },
 ] as const;
 
-export const kilnRedeemArgsEncoding = [
+export const kilnClaimFeesArgsEncoding = [
   {
     type: "address",
     name: "stakingContract",
@@ -47,9 +47,9 @@ export type KilnStakeArgs = {
   externalPositionProxy: Address;
 };
 
-export type KilnRedeemArgs = {
+export type KilnClaimFeesArgs = {
   stakingContract: Address;
-  publicKeys: Hex[];
+  publicKeys: any;
   claimType: string;
   externalPositionProxy: Address;
 };
@@ -70,13 +70,18 @@ export function decodeKilnStakeArgs(callArgs: Hex): KilnStakeArgs {
 
   return {
     validatorAmount,
-    externalPositionProxy,
     stakingContract,
+    externalPositionProxy,
   };
 }
 
-export function encodeKilnRedeemArgs({ externalPositionProxy, stakingContract, publicKeys, claimType }: KilnRedeemArgs): Hex {
-  const actionArgs = encodeAbiParameters(kilnRedeemArgsEncoding, [stakingContract, publicKeys, claimType]);
+export function encodeKilnClaimFeesArgs({
+  externalPositionProxy,
+  stakingContract,
+  publicKeys,
+  claimType,
+}: KilnClaimFeesArgs): Hex {
+  const actionArgs = encodeAbiParameters(kilnClaimFeesArgsEncoding, [stakingContract, publicKeys, claimType]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -85,9 +90,9 @@ export function encodeKilnRedeemArgs({ externalPositionProxy, stakingContract, p
   });
 }
 
-export function decodeKilnRedeemArgs(callArgs: Hex): KilnRedeemArgs {
+export function decodeKilnClaimFeesArgs(callArgs: Hex): KilnClaimFeesArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [stakingContract, publicKeys, claimType] = decodeAbiParameters(kilnRedeemArgsEncoding, actionArgs);
+  const [stakingContract, publicKeys, claimType] = decodeAbiParameters(kilnClaimFeesArgsEncoding, actionArgs);
 
   return {
     externalPositionProxy,

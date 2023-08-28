@@ -18,7 +18,7 @@ import type {
   ConvexVotingRelockArgs,
   ConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
-import type { KilnRedeemArgs, KilnStakeArgs } from "./instances/kiln.js";
+import type { KilnClaimFeesArgs, KilnStakeArgs } from "./instances/kiln.js";
 import type {
   LiquityDebtPositionAddCollateralArgs,
   LiquityDebtPositionBorrowArgs,
@@ -41,7 +41,7 @@ import type {
 
 export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
 export const ExternalPosition = {
-  KilnRedeem: "KilnRedeem",
+  KilnClaimFees: "KilnClaimFees",
   KilnStake: "KilnStake",
   AaveV2DebtAddCollateral: "AaveV2DebtAddCollateral",
   AaveV2DebtRemoveCollateral: "AaveV2DebtRemoveCollateral",
@@ -73,7 +73,7 @@ export const ExternalPosition = {
 } as const;
 
 export type ExternalPositionArgs = {
-  [ExternalPosition.KilnRedeem]: KilnRedeemArgs;
+  [ExternalPosition.KilnClaimFees]: KilnClaimFeesArgs;
   [ExternalPosition.KilnStake]: KilnStakeArgs;
   [ExternalPosition.AaveV2DebtAddCollateral]: AaveV2DebtAddCollateralArgs;
   [ExternalPosition.AaveV2DebtRemoveCollateral]: AaveV2DebtRemoveCollateralArgs;
