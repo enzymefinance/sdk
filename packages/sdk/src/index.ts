@@ -417,9 +417,6 @@ export {
   type PrepareFunctionParamsReturnType,
 } from "./utils/viem.js";
 
-// ./extensions/abis/IERC20.js
-export { IERC20 } from "./extensions/abis/IERC20.js";
-
 // ./extensions/external-positions/callOnExternalPosition.js
 export {
   encodeCallOnExternalPositionArgs,
@@ -516,6 +513,50 @@ export {
   type AaveV2DebtRepayBorrowArgs,
 } from "./extensions/external-positions/instances/aaveV2Debt.js";
 
+// ./extensions/external-positions/instances/compoundV2Debt.js
+export {
+  encodeCompoundV2DebtAddCollateralArgs,
+  decodeCompoundV2DebtAddCollateralArgs,
+  encodeCompoundV2DebtRemoveCollateralArgs,
+  decodeCompoundV2DebtRemoveCollateralArgs,
+  encodeCompoundV2DebtBorrowArgs,
+  decodeCompoundV2DebtBorrowArgs,
+  encodeCompoundV2DebtRepayBorrowArgs,
+  decodeCompoundV2DebtRepayBorrowArgs,
+  encodeCompoundV2DebtClaimCompArgs,
+  decodeCompoundV2DebtClaimCompArgs,
+  type CompoundV2DebtAction,
+  compoundV2DebtArgsEncoding,
+  type CompoundV2DebtAddCollateralArgs,
+  type CompoundV2DebtRemoveCollateralArgs,
+  type CompoundV2DebtBorrowArgs,
+  type CompoundV2DebtRepayBorrowArgs,
+  type CompoundV2DebtClaimCompArgs,
+} from "./extensions/external-positions/instances/compoundV2Debt.js";
+
+// ./extensions/external-positions/instances/convexVoting.js
+export {
+  encodeConvexVotingLockArgs,
+  decodeConvexVotingLockArgs,
+  encodeConvexVotingRelockArgs,
+  decodeConvexVotingRelockArgs,
+  encodeConvexVotingWithdrawArgs,
+  decodeConvexVotingWithdrawArgs,
+  encodeConvexVotingClaimRewardsArgs,
+  decodeConvexVotingClaimRewardsArgs,
+  encodeConvexVotingDelegateArgs,
+  decodeConvexVotingDelegateArgs,
+  type ConvexVotingAction,
+  convexVotingLockArgsEncoding,
+  type ConvexVotingLockArgs,
+  type ConvexVotingRelockArgs,
+  type ConvexVotingWithdrawArgs,
+  convexClaimRewardsArgsEncoding,
+  type ConvexVotingClaimRewardsArgs,
+  convexVotingDelegateArgsEncoding,
+  type ConvexVotingDelegateArgs,
+} from "./extensions/external-positions/instances/convexVoting.js";
+
 // ./extensions/external-positions/instances/kiln.js
 export {
   encodeKilnStakeArgs,
@@ -524,6 +565,73 @@ export {
   kilnStakeArgsEncoding,
   type KilnStakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
+
+// ./extensions/external-positions/instances/liquity.js
+export {
+  encodeLiquityDebtPositionOpenTroveArgs,
+  decodeLiquityDebtPositionOpenTroveArgs,
+  encodeLiquityDebtPositionAddCollateralArgs,
+  decodeLiquityDebtPositionAddCollateralArgs,
+  encodeLiquityDebtPositionRemoveCollateralArgs,
+  decodeLiquityDebtPositionRemoveCollateralArgs,
+  encodeLiquityDebtPositionBorrowArgs,
+  decodeLiquityDebtPositionBorrowArgs,
+  encodeLiquityDebtPositionRepayBorrowArgs,
+  decodeLiquityDebtPositionRepayBorrowArgs,
+  type LiquityDebtPositionAction,
+  liquityDebtPositionOpenTroveArgsEncoding,
+  liquityDebtPositionAddCollateralArgsEncoding,
+  liquityDebtPositionRemoveCollateralArgsEncoding,
+  liquityDebtPositionBorrowArgsEncoding,
+  liquityDebtPositionRepayBorrowArgsEncoding,
+  type LiquityDebtPositionOpenTroveArgs,
+  type LiquityDebtPositionAddCollateralArgs,
+  type LiquityDebtPositionRemoveCollateralArgs,
+  type LiquityDebtPositionBorrowArgs,
+  type LiquityDebtPositionRepayBorrowArgs,
+} from "./extensions/external-positions/instances/liquity.js";
+
+// ./extensions/external-positions/instances/mapleLiquidity.js
+export {
+  encodeMapleLiquidityLendV2Args,
+  decodeMapleLiquidityLendV2Args,
+  encodeMapleLiquidityRequestRedeemV2Args,
+  decodeMapleLiquidityRequestRedeemV2Args,
+  encodeMapleLiquidityRedeemV2Args,
+  decodeMapleLiquidityRedeemV2Args,
+  encodeMapleLiquidityCancelRedeemV2Args,
+  decodeMapleLiquidityCancelRedeemV2Args,
+  encodeMapleLiquidityClaimRewardsV1Args,
+  decodeMapleLiquidityClaimRewardsV1Args,
+  type MapleLiquidityAction,
+  mapleLiquidityLendV2ArgsEncoding,
+  type MapleLiquidityLendV2Args,
+  mapleLiquidityRequestRedeemV2ArgsEncoding,
+  type MapleLiquidityRequestRedeemV2Args,
+  mapleLiquidityRedeemV2ArgsEncoding,
+  type MapleLiquidityRedeemV2Args,
+  mapleLiquidityCancelRedeemV2ArgsEncoding,
+  type MapleLiquidityCancelRedeemV2Args,
+  mapleLiquidityClaimRewardsV1ArgsEncoding,
+  type MapleLiquidityClaimRewardsV1Args,
+} from "./extensions/external-positions/instances/mapleLiquidity.js";
+
+// ./extensions/external-positions/instances/theGraphDelegation.js
+export {
+  encodeTheGraphDelegationDelegateArgs,
+  decodeTheGraphDelegationDelegateArgs,
+  encodeTheGraphDelegationUndelegateArgs,
+  decodeTheGraphDelegationUndelegateArgs,
+  encodeTheGraphDelegationWithdrawArgs,
+  decodeTheGraphDelegationWithdrawArgs,
+  type TheGraphDelegationAction,
+  theGraphDelegationDelegateArgsEncoding,
+  type TheGraphDelegationDelegateArgs,
+  theGraphDelegationUndelegateArgsEncoding,
+  type TheGraphDelegationUndelegateArgs,
+  theGraphDelegationWithdrawArgsEncoding,
+  type TheGraphDelegationWithdrawArgs,
+} from "./extensions/external-positions/instances/theGraphDelegation.js";
 
 // ./extensions/fees/instances/entranceFee.js
 export {

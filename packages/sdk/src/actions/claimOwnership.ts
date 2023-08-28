@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { getAbiItem } from "viem";
 
 /**
@@ -9,6 +9,6 @@ import { getAbiItem } from "viem";
  */
 export function prepareClaimOwnershipParams() {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IVault, name: "claimOwnership" }),
+    abi: getAbiItem({ abi: IVaultLib, name: "claimOwnership" }),
   });
 }

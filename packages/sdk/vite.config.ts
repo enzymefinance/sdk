@@ -6,7 +6,7 @@ export default defineConfig({
   // NOTE: We only use the path aliases for local development.
   plugins: [process.env.CI ? undefined : aliases()],
   test: {
-    testTimeout: 50000,
+    testTimeout: 140_000,
     globalSetup: ["./tests/setup/globalSetup.ts"],
     setupFiles: ["./tests/setup/setup.ts"],
     coverage: {

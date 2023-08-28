@@ -1,5 +1,5 @@
 import { prepareFunctionParams } from "../utils/viem.js";
-import { IVault } from "@enzymefinance/abis/IVault";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { type Address, decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
 
@@ -20,7 +20,7 @@ export type RemoveAssetManagersParams = {
  */
 export function prepareRemoveAssetManagersParams({ managers }: RemoveAssetManagersParams) {
   return prepareFunctionParams({
-    abi: getAbiItem({ abi: IVault, name: "removeAssetManagers" }),
+    abi: getAbiItem({ abi: IVaultLib, name: "removeAssetManagers" }),
     args: [managers],
   });
 }
@@ -32,7 +32,7 @@ export function prepareRemoveAssetManagersParams({ managers }: RemoveAssetManage
  * @returns The decoded parameters.
  */
 export function decodeRemoveAssetManagersParams(params: Hex): RemoveAssetManagersParams {
-  const abi = getAbiItem({ abi: IVault, name: "removeAssetManagers" });
+  const abi = getAbiItem({ abi: IVaultLib, name: "removeAssetManagers" });
   const decoded = decodeFunctionData({
     abi: [abi],
     data: params,

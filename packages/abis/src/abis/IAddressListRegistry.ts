@@ -90,7 +90,7 @@ export const IAddressListRegistry = [
       },
       {
         indexed: false,
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "updateType",
         type: "uint8",
       },
@@ -128,13 +128,13 @@ export const IAddressListRegistry = [
       },
       {
         indexed: false,
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "prevUpdateType",
         type: "uint8",
       },
       {
         indexed: true,
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "nextUpdateType",
         type: "uint8",
       },
@@ -306,7 +306,7 @@ export const IAddressListRegistry = [
         type: "address",
       },
       {
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "_updateType",
         type: "uint8",
       },
@@ -383,7 +383,7 @@ export const IAddressListRegistry = [
     name: "getListUpdateType",
     outputs: [
       {
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "updateType_",
         type: "uint8",
       },
@@ -507,7 +507,7 @@ export const IAddressListRegistry = [
         type: "uint256",
       },
       {
-        internalType: "enum AddressListRegistry.UpdateType",
+        internalType: "enum IAddressListRegistry.UpdateType",
         name: "_nextUpdateType",
         type: "uint8",
       },

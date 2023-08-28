@@ -1,4 +1,4 @@
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
@@ -17,7 +17,7 @@ export type GetSharesActionTimelockParams = {
  */
 export function getSharesActionTimelock(client: PublicClient, { comptrollerProxy }: GetSharesActionTimelockParams) {
   return readContract(client, {
-    abi: IComptroller,
+    abi: IComptrollerLib,
     address: comptrollerProxy,
     functionName: "getSharesActionTimelock",
   });

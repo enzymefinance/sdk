@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IUniswapV3LiquidityPositionParser {
     function getUniswapV3NonfungiblePositionManager() external view returns (address nonfungiblePositionManager_);

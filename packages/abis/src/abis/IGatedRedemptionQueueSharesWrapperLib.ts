@@ -226,6 +226,18 @@ export const IGatedRedemptionQueueSharesWrapperLib = [
         name: "sharesAmount",
         type: "uint256",
       },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "redemptionAsset",
+        type: "address",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "redemptionAssetAmount",
+        type: "uint256",
+      },
     ],
     name: "Redeemed",
     type: "event",
