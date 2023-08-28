@@ -49,7 +49,7 @@ export type KilnStakeArgs = {
 
 export type KilnClaimFeesArgs = {
   stakingContract: Address;
-  publicKeys: any;
+  publicKeys: Hex[];
   claimType: string;
   externalPositionProxy: Address;
 };
