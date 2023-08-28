@@ -5,6 +5,13 @@ import type {
   AaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
 import type {
+  ArbitraryLoanCallOnAccountingModuleArgs,
+  ArbitraryLoanCloseLoanArgs,
+  ArbitraryLoanConfigureLoanArgs,
+  ArbitraryLoanReconcileArgs,
+  ArbitraryLoanUpdateBorrowableAmountArgs,
+} from "./instances/arbitraryLoan.js";
+import type {
   CompoundV2DebtAddCollateralArgs,
   CompoundV2DebtBorrowArgs,
   CompoundV2DebtClaimCompArgs,
@@ -46,6 +53,11 @@ export const ExternalPosition = {
   AaveV2DebtRemoveCollateral: "AaveV2DebtRemoveCollateral",
   AaveV2DebtBorrow: "AaveV2DebtBorrow",
   AaveV2DebtRepayBorrow: "AaveV2DebtRepayBorrow",
+  ArbitraryLoanConfigureLoan: "ArbitraryLoanConfigureLoan",
+  ArbitraryLoanUpdateBorrowableAmount: "ArbitraryLoanUpdateBorrowableAmount",
+  ArbitraryLoanCallOnAccountingModule: "ArbitraryLoanCallOnAccountingModule",
+  ArbitraryLoanReconcile: "ArbitraryLoanReconcile",
+  ArbitraryLoanCloseLoan: "ArbitraryLoanCloseLoan",
   CompoundV2DebtAddCollateral: "CompoundV2DebtAddCollateral",
   CompoundV2DebtClaimComp: "CompoundV2DebtClaimComp",
   CompoundV2DebtRemoveCollateral: "CompoundV2DebtRemoveCollateral",
@@ -77,6 +89,11 @@ export type ExternalPositionArgs = {
   [ExternalPosition.AaveV2DebtRemoveCollateral]: AaveV2DebtRemoveCollateralArgs;
   [ExternalPosition.AaveV2DebtBorrow]: AaveV2DebtBorrowArgs;
   [ExternalPosition.AaveV2DebtRepayBorrow]: AaveV2DebtRepayBorrowArgs;
+  [ExternalPosition.ArbitraryLoanConfigureLoan]: ArbitraryLoanConfigureLoanArgs;
+  [ExternalPosition.ArbitraryLoanUpdateBorrowableAmount]: ArbitraryLoanUpdateBorrowableAmountArgs;
+  [ExternalPosition.ArbitraryLoanCallOnAccountingModule]: ArbitraryLoanCallOnAccountingModuleArgs;
+  [ExternalPosition.ArbitraryLoanReconcile]: ArbitraryLoanReconcileArgs;
+  [ExternalPosition.ArbitraryLoanCloseLoan]: ArbitraryLoanCloseLoanArgs;
   [ExternalPosition.CompoundV2DebtAddCollateral]: CompoundV2DebtAddCollateralArgs;
   [ExternalPosition.CompoundV2DebtClaimComp]: CompoundV2DebtClaimCompArgs;
   [ExternalPosition.CompoundV2DebtRemoveCollateral]: CompoundV2DebtRemoveCollateralArgs;
