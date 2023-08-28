@@ -8,6 +8,13 @@ export const KilnAction = {
   WithdrawEth: 2n,
 } as const;
 
+export type KilnClaimType = typeof KilnClaimType[keyof typeof KilnClaimType];
+export const KilnClaimType = {
+  ExecutionLayer: '0',
+  ConsensusLayer: '1',
+  All: '2',
+} as const;
+
 export const kilnStakeArgsEncoding = [
   {
     type: "address",
@@ -30,7 +37,7 @@ export const kilnRedeemArgsEncoding = [
   },
   {
     name: "claimType",
-    type: " ",
+    type: "string",
   },
 ] as const;
 
@@ -40,16 +47,10 @@ export type KilnStakeArgs = {
   externalPositionProxy: Address;
 };
 
-export enum KilnStakingPositionActionClaimType {
-  ExecutionLayer = '0',
-  ConsensusLayer = '1',
-  All = '2',
-}
-
 export type KilnRedeemArgs = {
   stakingContract: Address;
   publicKeys: Hex;
-  claimType: KilnStakingPositionActionClaimType;
+  claimType: string;
   externalPositionProxy: Address;
 };
 

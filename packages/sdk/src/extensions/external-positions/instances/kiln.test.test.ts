@@ -6,7 +6,7 @@ import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import { parseAbiItem } from "viem";
 import { assert, expect, test } from "vitest";
-import { KilnStakingPositionActionClaimType } from "./kiln.js";
+import { KilnClaimType } from "./kiln.js";
 
 test("prepare external position trade for Kiln stake should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -132,7 +132,7 @@ test("prepare external position trade for Kiln redeem should work correctly", as
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
         type: ExternalPosition.KilnRedeem,
-        claimType: KilnStakingPositionActionClaimType.ConsensusLayer,
+        claimType: KilnClaimType.ConsensusLayer,
         publicKeys: '0x0000000',
         stakingContract: KILN_STAKING_CONTRACT,
         externalPositionProxy,
