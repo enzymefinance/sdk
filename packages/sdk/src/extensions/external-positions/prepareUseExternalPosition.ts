@@ -41,6 +41,13 @@ import {
   encodeTheGraphDelegationUndelegateArgs,
   encodeTheGraphDelegationWithdrawArgs,
 } from "./instances/theGraphDelegation.js";
+import {
+  encodeUniswapV3LiquidityAddLiquidityArgs,
+  encodeUniswapV3LiquidityCollectArgs,
+  encodeUniswapV3LiquidityMintArgs,
+  encodeUniswapV3LiquidityPurgeArgs,
+  encodeUniswapV3LiquidityRemoveLiquidityArgs,
+} from "./instances/uniswapV3Liquidity.js";
 import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
@@ -124,5 +131,15 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeMapleLiquidityRedeemV2Args(callArgs);
     case ExternalPosition.MapleLiquidityCancelRedeemV2:
       return encodeMapleLiquidityCancelRedeemV2Args(callArgs);
+    case ExternalPosition.UniswapV3LiquidityMint:
+      return encodeUniswapV3LiquidityMintArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityAddLiquidity:
+      return encodeUniswapV3LiquidityAddLiquidityArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityRemoveLiquidity:
+      return encodeUniswapV3LiquidityRemoveLiquidityArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityCollect:
+      return encodeUniswapV3LiquidityCollectArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityPurge:
+      return encodeUniswapV3LiquidityPurgeArgs(callArgs);
   }
 }
