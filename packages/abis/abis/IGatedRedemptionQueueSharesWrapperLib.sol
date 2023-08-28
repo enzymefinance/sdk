@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.10;
+pragma solidity >=0.6.0 <0.9.0;
 
 interface IGatedRedemptionQueueSharesWrapperLib {
     event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -14,7 +14,9 @@ interface IGatedRedemptionQueueSharesWrapperLib {
     event Kicked(address indexed user, uint256 sharesAmount);
     event ManagerAdded(address indexed user);
     event ManagerRemoved(address indexed user);
-    event Redeemed(address indexed user, uint256 sharesAmount);
+    event Redeemed(
+        address indexed user, uint256 sharesAmount, address indexed redemptionAsset, uint256 redemptionAssetAmount
+    );
     event RedemptionApproval(address indexed user, uint256 amount);
     event RedemptionAssetSet(address indexed asset);
     event RedemptionRequestAdded(address indexed user, uint256 sharesAmount);

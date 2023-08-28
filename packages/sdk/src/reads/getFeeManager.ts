@@ -1,4 +1,4 @@
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
@@ -11,7 +11,7 @@ export function getFeeManager(
   },
 ) {
   return readContract(client, {
-    abi: IComptroller,
+    abi: IComptrollerLib,
     functionName: "getFeeManager",
     address: comptrollerProxy,
   });

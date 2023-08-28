@@ -1,4 +1,4 @@
-import { IComptroller } from "../../../../../abis/src/abis/IComptroller.js";
+import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
   ALICE,
@@ -677,7 +677,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
 
   await sendTestTransaction({
     ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IComptroller, name: "vaultCallOnContract" }),
+      abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
       args: [
         CURVE_MINTER,
         TOGGLE_APPROVE_MINT_SELECTOR,

@@ -6,9 +6,26 @@ export const IKilnStakingPositionLib = [
         name: "_wethToken",
         type: "address",
       },
+      {
+        internalType: "uint256",
+        name: "_exitedValidatorEthThreshold",
+        type: "uint256",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "PositionValuePaused",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [],
+    name: "PositionValueUnpaused",
+    type: "event",
   },
   {
     anonymous: false,
@@ -30,30 +47,23 @@ export const IKilnStakingPositionLib = [
     type: "event",
   },
   {
-    inputs: [],
-    name: "ETH_AMOUNT_PER_NODE",
-    outputs: [
+    anonymous: false,
+    inputs: [
       {
+        indexed: false,
+        internalType: "address",
+        name: "stakingContractAddress",
+        type: "address",
+      },
+      {
+        indexed: false,
         internalType: "uint256",
-        name: "",
+        name: "validatorAmount",
         type: "uint256",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "WETH_TOKEN",
-    outputs: [
-      {
-        internalType: "contract IWETH",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
+    name: "ValidatorsRemoved",
+    type: "event",
   },
   {
     inputs: [],
@@ -70,7 +80,7 @@ export const IKilnStakingPositionLib = [
         type: "uint256[]",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "pure",
     type: "function",
   },
   {
@@ -88,7 +98,7 @@ export const IKilnStakingPositionLib = [
         type: "uint256[]",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -115,6 +125,19 @@ export const IKilnStakingPositionLib = [
     name: "init",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "positionValueIsPaused",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "paused_",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

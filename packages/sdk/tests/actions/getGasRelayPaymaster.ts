@@ -1,5 +1,5 @@
 import { publicClient } from "../globals.js";
-import { IComptroller } from "@enzymefinance/abis/IComptroller";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address } from "viem";
 
 export function getGasRelayPaymaster({
@@ -9,7 +9,7 @@ export function getGasRelayPaymaster({
 }) {
   return publicClient.readContract({
     address: comptrollerProxy,
-    abi: IComptroller,
+    abi: IComptrollerLib,
     functionName: "getGasRelayPaymaster",
   });
 }

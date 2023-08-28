@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.10",
-    "@enzymefinance/sdk": "^0.0.23",
+    "@enzymefinance/sdk": "^0.0.24",
     "@tanstack/react-query": "^4.33.0",
     "@tremor/react": "^2.11.0",
     "abitype": "^0.9.8",

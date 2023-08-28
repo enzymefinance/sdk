@@ -14,7 +14,7 @@ import { publicClient, sendTestTransaction, testActions, testClient } from "../.
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
-import { IERC20 } from "../../abis/index.js";
+import { IERC20 } from "../../abis/IERC20.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 

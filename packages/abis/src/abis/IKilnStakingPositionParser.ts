@@ -25,7 +25,7 @@ export const IKilnStakingPositionParser = [
     name: "ADDRESS_LIST_REGISTRY_CONTRACT",
     outputs: [
       {
-        internalType: "contract AddressListRegistry",
+        internalType: "contract IAddressListRegistry",
         name: "",
         type: "address",
       },
@@ -76,7 +76,7 @@ export const IKilnStakingPositionParser = [
     inputs: [
       {
         internalType: "address",
-        name: "_externalPosition",
+        name: "",
         type: "address",
       },
       {
@@ -108,7 +108,7 @@ export const IKilnStakingPositionParser = [
         type: "address[]",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -132,7 +132,7 @@ export const IKilnStakingPositionParser = [
         type: "bytes",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "pure",
     type: "function",
   },
 ] as const;

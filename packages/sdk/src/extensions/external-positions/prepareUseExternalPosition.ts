@@ -22,6 +22,25 @@ import {
   encodeConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
 import { encodeKilnRedeemArgs, encodeKilnStakeArgs } from "./instances/kiln.js";
+import {
+  encodeLiquityDebtPositionAddCollateralArgs,
+  encodeLiquityDebtPositionBorrowArgs,
+  encodeLiquityDebtPositionOpenTroveArgs,
+  encodeLiquityDebtPositionRemoveCollateralArgs,
+  encodeLiquityDebtPositionRepayBorrowArgs,
+} from "./instances/liquity.js";
+import {
+  encodeMapleLiquidityCancelRedeemV2Args,
+  encodeMapleLiquidityClaimRewardsV1Args,
+  encodeMapleLiquidityLendV2Args,
+  encodeMapleLiquidityRedeemV2Args,
+  encodeMapleLiquidityRequestRedeemV2Args,
+} from "./instances/mapleLiquidity.js";
+import {
+  encodeTheGraphDelegationDelegateArgs,
+  encodeTheGraphDelegationUndelegateArgs,
+  encodeTheGraphDelegationWithdrawArgs,
+} from "./instances/theGraphDelegation.js";
 import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
@@ -81,5 +100,31 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeConvexVotingClaimRewardsArgs(callArgs);
     case ExternalPosition.ConvexVotingDelegate:
       return encodeConvexVotingDelegateArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionAddCollateral:
+      return encodeLiquityDebtPositionAddCollateralArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionBorrow:
+      return encodeLiquityDebtPositionBorrowArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionOpenTrove:
+      return encodeLiquityDebtPositionOpenTroveArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionRemoveCollateral:
+      return encodeLiquityDebtPositionRemoveCollateralArgs(callArgs);
+    case ExternalPosition.LiquityDebtPositionRepayBorrow:
+      return encodeLiquityDebtPositionRepayBorrowArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationDelegate:
+      return encodeTheGraphDelegationDelegateArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationUndelegate:
+      return encodeTheGraphDelegationUndelegateArgs(callArgs);
+    case ExternalPosition.TheGraphDelegationWithdraw:
+      return encodeTheGraphDelegationWithdrawArgs(callArgs);
+    case ExternalPosition.MapleLiquidityClaimRewardsV1:
+      return encodeMapleLiquidityClaimRewardsV1Args(callArgs);
+    case ExternalPosition.MapleLiquidityLendV2:
+      return encodeMapleLiquidityLendV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityRequestRedeemV2:
+      return encodeMapleLiquidityRequestRedeemV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityRedeemV2:
+      return encodeMapleLiquidityRedeemV2Args(callArgs);
+    case ExternalPosition.MapleLiquidityCancelRedeemV2:
+      return encodeMapleLiquidityCancelRedeemV2Args(callArgs);
   }
 }

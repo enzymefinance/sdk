@@ -14,9 +14,9 @@ import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
-import { IIdlePriceFeed } from "../../abis/index.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { IIdlePriceFeed } from "@enzymefinance/abis/IIdlePriceFeed";
 import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";
 import { expect, test } from "vitest";
 
