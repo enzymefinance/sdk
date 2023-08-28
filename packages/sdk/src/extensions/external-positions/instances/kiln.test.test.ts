@@ -132,8 +132,8 @@ test("prepare external position trade for Kiln redeem should work correctly", as
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
         type: ExternalPosition.KilnRedeem,
-        claimType: KilnClaimType.ConsensusLayer,
-        publicKeys: '0x0000000',
+        claimType: KilnClaimType.ExecutionLayer,
+        publicKeys: ['0x0000000', '0x0000000'],
         stakingContract: KILN_STAKING_CONTRACT,
         externalPositionProxy,
       },

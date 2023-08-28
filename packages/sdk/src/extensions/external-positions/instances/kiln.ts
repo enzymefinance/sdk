@@ -33,7 +33,7 @@ export const kilnRedeemArgsEncoding = [
   },
   {
     name: "publicKeys",
-    type: "bytes",
+    type: "bytes[]",
   },
   {
     name: "claimType",
@@ -49,7 +49,7 @@ export type KilnStakeArgs = {
 
 export type KilnRedeemArgs = {
   stakingContract: Address;
-  publicKeys: Hex;
+  publicKeys: Hex[];
   claimType: string;
   externalPositionProxy: Address;
 };
