@@ -1,5 +1,5 @@
 import { INTEGRATION_MANAGER, WETH, ZERO_EX_V4_ADAPTER } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { decodeZeroExV4TakeOrderArgs } from "./zeroExV4.js";
@@ -8,7 +8,7 @@ import { parseEther } from "viem";
 import { test } from "vitest";
 
 test("prepare adapter trade for zeroExV4 take order should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17681935n,
   });
 
@@ -16,7 +16,7 @@ test("prepare adapter trade for zeroExV4 take order should work correctly", asyn
   const vaultOwner = "0x9376121C35Ef972b7Fc708eAbE9C8A080adcBcd8";
   const vaultProxy = "0x3a6ba289eefb1c038c088c50575d3ef30e33555d";
 
-  await testClient.setBalance({
+  await testClientMainnet.setBalance({
     value: parseEther("1"),
     address: vaultOwner,
   });
