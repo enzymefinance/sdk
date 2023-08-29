@@ -913,6 +913,15 @@ export {
   type YearnVaultV2RedeemArgs,
 } from "./extensions/integrations/instances/yearnVaultV2.js";
 
+// ./extensions/integrations/instances/zeroExV4.js
+export {
+  encodeZeroExV4TakeOrderArgs,
+  decodeZeroExV4TakeOrderArgs,
+  type ZeroExV4OrderType,
+  zeroExV4TakeOrderEncoding,
+  type ZeroExV4TakeOrderArgs,
+} from "./extensions/integrations/instances/zeroExV4.js";
+
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {
   encodeAllowedExternalPositionTypesPolicySettings,

@@ -8,7 +8,7 @@ export const ZeroExV4OrderType = {
 
 export const zeroExV4TakeOrderEncoding = [
   {
-    name: "signedOrder",
+    name: "encodedZeroExOrderArgs",
     type: "bytes",
   },
   {
@@ -22,24 +22,35 @@ export const zeroExV4TakeOrderEncoding = [
 ] as const;
 
 export type ZeroExV4TakeOrderArgs = {
-  signedOrder: Hex;
+  encodedZeroExOrderArgs: Hex;
   takerAssetFillAmount: bigint;
-  orderType: number;
+  orderType: ZeroExV4OrderType;
 };
 
 export function encodeZeroExV4TakeOrderArgs({
-  signedOrder,
+  encodedZeroExOrderArgs,
   takerAssetFillAmount,
   orderType,
 }: ZeroExV4TakeOrderArgs): Hex {
-  return encodeAbiParameters(zeroExV4TakeOrderEncoding, [signedOrder, takerAssetFillAmount, orderType]);
+  return encodeAbiParameters(zeroExV4TakeOrderEncoding, [encodedZeroExOrderArgs, takerAssetFillAmount, orderType]);
+}
+
+function assertZeroExV4OrderType(value: number): asserts value is ZeroExV4OrderType {
+  if (!Object.values(ZeroExV4OrderType).includes(value as ZeroExV4OrderType)) {
+    throw new Error(`Invalid ZeroExV4OrderType: ${value}`);
+  }
 }
 
 export function decodeZeroExV4TakeOrderArgs(callArgs: Hex): ZeroExV4TakeOrderArgs {
-  const [signedOrder, takerAssetFillAmount, orderType] = decodeAbiParameters(zeroExV4TakeOrderEncoding, callArgs);
+  const [encodedZeroExOrderArgs, takerAssetFillAmount, orderType] = decodeAbiParameters(
+    zeroExV4TakeOrderEncoding,
+    callArgs,
+  );
+
+  assertZeroExV4OrderType(orderType);
 
   return {
-    signedOrder,
+    encodedZeroExOrderArgs,
     takerAssetFillAmount,
     orderType,
   };

@@ -54,7 +54,6 @@ import {
 } from "./instances/uniswapV2Liquidity.js";
 import { encodeUniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
 import { encodeYearnVaultV2LendArgs, encodeYearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
-import { encodeZeroExV2TakeOrderArgs } from "./instances/zeroExV2.js";
 import { encodeZeroExV4TakeOrderArgs } from "./instances/zeroExV4.js";
 import { Integration, type IntegrationArgs } from "./integrationTypes.js";
 import type { Address, Hex } from "viem";
@@ -200,8 +199,6 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [TAKE_ORDER_SELECTOR, encodeParaswapV5TakeOrderArgs(callArgs)];
     case Integration.OneInchV5TakeOrder:
       return [TAKE_ORDER_SELECTOR, encodeOneInchV5TakeOrderArgs(callArgs)];
-    case Integration.ZeroExV2TakeOrder:
-      return [TAKE_ORDER_SELECTOR, encodeZeroExV2TakeOrderArgs(callArgs)];
     case Integration.ZeroExV4TakeOrder:
       return [TAKE_ORDER_SELECTOR, encodeZeroExV4TakeOrderArgs(callArgs)];
   }
