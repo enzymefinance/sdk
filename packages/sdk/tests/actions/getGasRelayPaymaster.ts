@@ -1,6 +1,6 @@
+import { publicClientMainnet } from "../globals.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address } from "viem";
-import { publicClientMainnet } from "../globals.js";
 
 export function getGasRelayPaymaster({
   comptrollerProxy,

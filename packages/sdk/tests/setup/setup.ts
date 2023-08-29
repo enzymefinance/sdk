@@ -1,7 +1,7 @@
-import { fetchLogs } from "@viem/anvil";
-import { beforeAll, beforeEach } from "vitest";
 import { FORK_BLOCK_NUMBER, FORK_BLOCK_NUMBER_POLYGON, FORK_URL, FORK_URL_POLYGON } from "../constants.js";
 import { poolId, testClientMainnet, testClientPolygon } from "../globals.js";
+import { fetchLogs } from "@viem/anvil";
+import { beforeAll, beforeEach } from "vitest";
 
 beforeAll(async () => {
   await Promise.all([

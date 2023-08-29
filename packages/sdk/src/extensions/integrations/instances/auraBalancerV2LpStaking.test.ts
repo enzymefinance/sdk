@@ -1,14 +1,14 @@
 import { AURA, AURA_BALANCER_V2_LP_STAKING_ADAPTER, INTEGRATION_MANAGER } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 
-import { type Address, parseEther } from "viem";
-import { expect, test } from "vitest";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import {
   decodeBalancerV2LiquidityClaimRewardsArgs,
   decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
 } from "./balancerV2Liquidity.js";
+import { type Address, parseEther } from "viem";
+import { expect, test } from "vitest";
 
 const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;

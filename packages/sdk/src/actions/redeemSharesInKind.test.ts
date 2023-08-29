@@ -1,9 +1,9 @@
-import { encodeFunctionData } from "viem";
-import { expect, test } from "vitest";
 import { ALICE, WETH } from "../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { toWei } from "../utils/conversion.js";
 import { decodeRedeemSharesParams, prepareRedeemSharesInKindParams } from "./redeemSharesInKind.js";
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({

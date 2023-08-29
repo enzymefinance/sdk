@@ -1,5 +1,3 @@
-import { parseEther } from "viem";
-import { test } from "vitest";
 import { EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
@@ -11,6 +9,8 @@ import {
   decodeLiquityDebtPositionRemoveCollateralArgs,
   decodeLiquityDebtPositionRepayBorrowArgs,
 } from "./liquity.js";
+import { parseEther } from "viem";
+import { test } from "vitest";
 
 const LUSD = "0x5f98805a4e8be255a32880fdec7f6728c6568ba0" as const;
 

@@ -1,5 +1,3 @@
-import { encodeFunctionData } from "viem";
-import { expect, test } from "vitest";
 import { ALICE, USDC, USDC_HOLDER, WETH } from "../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../tests/globals.js";
 import { MAX_UINT_256 } from "../constants/misc.js";
@@ -8,6 +6,8 @@ import {
   decodeRedeemSharesForSpecificAssetsParams,
   prepareRedeemSharesForSpecificAssetsParams,
 } from "./redeemSharesForSpecificAssets.js";
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("should redeem specific shares correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({

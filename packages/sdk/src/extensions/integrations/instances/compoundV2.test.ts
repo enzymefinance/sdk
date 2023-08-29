@@ -1,5 +1,3 @@
-import { parseAbi, parseUnits } from "viem";
-import { test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -13,6 +11,8 @@ import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi, parseUnits } from "viem";
+import { test } from "vitest";
 
 const abiCToken = parseAbi(["function exchangeRateStored() view returns (uint256)"] as const);
 const scaledExchangeRate = 10n ** 36n;

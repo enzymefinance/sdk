@@ -1,11 +1,11 @@
-import { parseAbiItem } from "viem";
-import { assert, expect, test } from "vitest";
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
+import { parseAbiItem } from "viem";
+import { assert, expect, test } from "vitest";
 
 test("prepare external position trade for Kiln stake should work correctly", async () => {
   const vaultOwner = ALICE;

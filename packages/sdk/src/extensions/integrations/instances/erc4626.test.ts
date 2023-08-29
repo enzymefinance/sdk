@@ -1,11 +1,11 @@
-import { parseAbi } from "viem";
-import { test } from "vitest";
 import { ALICE, BOB, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi } from "viem";
+import { test } from "vitest";
 
 const abiERC4626 = parseAbi([
   "function convertToShares(uint256 _assetAmount) view returns (uint256 sharesAmount_)",

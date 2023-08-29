@@ -1,5 +1,3 @@
-import { type Address, parseAbi, parseEther } from "viem";
-import { expect, test } from "vitest";
 import { COMP, EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
@@ -11,6 +9,8 @@ import {
   decodeCompoundV2DebtRemoveCollateralArgs,
   decodeCompoundV2DebtRepayBorrowArgs,
 } from "./compoundV2Debt.js";
+import { type Address, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
 
 const abiCToken = parseAbi(["function borrowBalanceStored(address user) view returns (uint256)"] as const);
 

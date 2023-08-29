@@ -1,9 +1,9 @@
-import { parseEther } from "viem";
 import { INTEGRATION_MANAGER, ONE_INCH_V5_ADAPTER, RETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { decodeOneInchV5TakeOrderArgs } from "./oneInchV5.js";
+import { parseEther } from "viem";
 
 import { test } from "vitest";
 

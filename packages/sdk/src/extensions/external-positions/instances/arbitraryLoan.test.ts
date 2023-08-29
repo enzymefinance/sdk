@@ -1,5 +1,3 @@
-import { parseEther } from "viem";
-import { expect, test } from "vitest";
 import { IArbitraryLoanPositionLib } from "../../../../../abis/src/abis/IArbitraryLoanPositionLib.js";
 import { TESTNET_EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
 import { publicClientPolygon, sendTestTransaction, testClientPolygon } from "../../../../tests/globals.js";
@@ -11,6 +9,8 @@ import {
   decodeArbitraryLoanReconcileArgs,
   decodeArbitraryLoanUpdateBorrowableAmountArgs,
 } from "./arbitraryLoan.js";
+import { parseEther } from "viem";
+import { expect, test } from "vitest";
 
 const comptrollerProxy = "0x98de9294485f99aea12ca4af411f61ee6db3d604" as const;
 const vaultOwner = "0x32efef8899b23899ff179b446ef7564e0de84cba" as const;

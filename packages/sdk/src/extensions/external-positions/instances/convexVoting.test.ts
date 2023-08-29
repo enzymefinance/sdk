@@ -1,5 +1,3 @@
-import { parseAbi, parseEther, stringToHex } from "viem";
-import { expect, test } from "vitest";
 import { CVX, EXTERNAL_POSITION_MANAGER, VOTE_LOCKED_CVX } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
@@ -11,6 +9,8 @@ import {
   decodeConvexVotingRelockArgs,
   decodeConvexVotingWithdrawArgs,
 } from "./convexVoting.js";
+import { parseAbi, parseEther, stringToHex } from "viem";
+import { expect, test } from "vitest";
 
 const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;

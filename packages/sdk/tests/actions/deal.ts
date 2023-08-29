@@ -1,5 +1,5 @@
-import { keccak256 } from "viem/utils";
 import { testClientMainnet } from "../globals.js";
+import { keccak256 } from "viem/utils";
 
 import type { Address } from "viem";
 import { encodeAbiParameters } from "viem";

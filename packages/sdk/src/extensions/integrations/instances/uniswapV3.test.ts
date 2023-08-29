@@ -1,6 +1,3 @@
-import { type Address, type Hex, getAbiItem, parseAbi, parseEther } from "viem";
-import { encodePacked } from "viem/utils";
-import { test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -17,6 +14,9 @@ import { prepareFunctionParams } from "../../../utils/viem.js";
 import { IERC20 } from "../../abis/IERC20.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { type Address, type Hex, getAbiItem, parseAbi, parseEther } from "viem";
+import { encodePacked } from "viem/utils";
+import { test } from "vitest";
 
 const abiSwapRouter = parseAbi([
   "function exactInput(ExactInputParams exactInputParams) returns (uint256)",

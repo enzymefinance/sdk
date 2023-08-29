@@ -1,6 +1,3 @@
-import { IIdlePriceFeed } from "@enzymefinance/abis/IIdlePriceFeed";
-import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";
-import { expect, test } from "vitest";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
   ALICE,
@@ -19,6 +16,9 @@ import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { IIdlePriceFeed } from "@enzymefinance/abis/IIdlePriceFeed";
+import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";
+import { expect, test } from "vitest";
 
 async function getIdlePoolTokenRate(idlePoolToken: Address) {
   const { result } = await publicClientMainnet.simulateContract({

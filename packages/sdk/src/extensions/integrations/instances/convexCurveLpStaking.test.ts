@@ -1,5 +1,3 @@
-import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
-import { expect, test } from "vitest";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
   ALICE,
@@ -24,6 +22,8 @@ import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { abiCurvePool } from "./curveLiquidity.test.js";
+import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
 
 test("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
   const vaultOwner = ALICE;

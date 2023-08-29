@@ -1,10 +1,10 @@
-import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
-import { expect, test } from "vitest";
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ZERO_ADDRESS } from "../constants/misc.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
 import { prepareRemoveNominatedOwnerParams } from "./removeNominatedOwner.js";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
+import { expect, test } from "vitest";
 
 test("should remove nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({

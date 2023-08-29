@@ -1,5 +1,3 @@
-import { type Address, parseAbi } from "viem";
-import { test } from "vitest";
 import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_DAI_ETH } from "../../../../tests/constants.js";
 import { ALICE, BOB, DAI, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
@@ -8,6 +6,8 @@ import { min } from "../../../utils/math.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { type Address, parseAbi } from "viem";
+import { test } from "vitest";
 
 const abiUniswapV2Pair = parseAbi([
   "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",

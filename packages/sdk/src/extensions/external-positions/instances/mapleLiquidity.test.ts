@@ -1,5 +1,3 @@
-import { parseEther } from "viem";
-import { test } from "vitest";
 import { EXTERNAL_POSITION_MANAGER, WETH } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
@@ -11,6 +9,8 @@ import {
   decodeMapleLiquidityRedeemV2Args,
   decodeMapleLiquidityRequestRedeemV2Args,
 } from "./mapleLiquidity.js";
+import { parseEther } from "viem";
+import { test } from "vitest";
 
 test("prepare external position trade for Maple Liquidity lend V2 should work correctly", async () => {
   const vaultProxy = "0x278c647f7cfb9d55580c69d3676938608c945ba8" as const;

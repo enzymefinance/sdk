@@ -1,5 +1,5 @@
-import { type Address, parseAbi } from "viem";
 import { publicClientMainnet } from "../globals.js";
+import { type Address, parseAbi } from "viem";
 
 export function getBalanceOf({
   token,

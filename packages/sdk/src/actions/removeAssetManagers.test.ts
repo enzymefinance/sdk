@@ -1,9 +1,9 @@
-import { encodeFunctionData } from "viem";
-import { expect, test } from "vitest";
 import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { decodeRemoveAssetManagersParams, prepareRemoveAssetManagersParams } from "./removeAssetManagers.js";
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 
 test("should remove asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({

@@ -1,5 +1,3 @@
-import { parseAbi } from "viem";
-import { test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -14,6 +12,8 @@ import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
+import { parseAbi } from "viem";
+import { test } from "vitest";
 
 const abiYVault = parseAbi(["function pricePerShare() view returns (uint256 price_)"] as const);
 

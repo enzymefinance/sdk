@@ -1,6 +1,3 @@
-import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
-import { keccak256 } from "viem/utils";
-import { expect, test } from "vitest";
 import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { IFundDeployer } from "../../../../../abis/src/abis/IFundDeployer.js";
 import {
@@ -19,6 +16,9 @@ import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { SwapKind } from "./balancerV2Liquidity.js";
+import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
+import { keccak256 } from "viem/utils";
+import { expect, test } from "vitest";
 
 const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;

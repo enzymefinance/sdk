@@ -1,7 +1,7 @@
-import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
-import type { Address } from "viem";
 import type { Tuple } from "../../src/utils/types.js";
 import { publicClientMainnet } from "../globals.js";
+import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
+import type { Address } from "viem";
 
 export interface IsAssetManagerParams {
   who: Address;

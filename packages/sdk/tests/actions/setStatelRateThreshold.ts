@@ -1,8 +1,8 @@
-import { IValueInterpreter } from "@enzymefinance/abis/IValueInterpreter";
-import { encodeDeployData } from "viem";
 import { toSeconds } from "../../src/utils/conversion.js";
 import { FUND_DEPLOYER, VALUE_INTERPRETER, WETH } from "../constants.js";
 import { testClientMainnet } from "../globals.js";
+import { IValueInterpreter } from "@enzymefinance/abis/IValueInterpreter";
+import { encodeDeployData } from "viem";
 
 // TODO: This doesn't work currently. Need to investigate why.
 export async function overrideValueInterpreter({

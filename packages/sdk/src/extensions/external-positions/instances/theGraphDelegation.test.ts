@@ -1,5 +1,3 @@
-import { parseEther } from "viem";
-import { expect, test } from "vitest";
 import { ITheGraphDelegationPositionLib } from "../../../../../abis/src/abis/ITheGraphDelegationPositionLib.js";
 import { EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testClientMainnet } from "../../../../tests/globals.js";
@@ -10,6 +8,8 @@ import {
   decodeTheGraphDelegationUndelegateArgs,
   decodeTheGraphDelegationWithdrawArgs,
 } from "./theGraphDelegation.js";
+import { parseEther } from "viem";
+import { expect, test } from "vitest";
 
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
 const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
