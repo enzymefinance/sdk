@@ -34,6 +34,7 @@ import type { UniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchan
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
 import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
 import type { YearnVaultV2LendArgs, YearnVaultV2RedeemArgs } from "./instances/yearnVaultV2.js";
+import type { ZeroExV4TakeOrderArgs } from "./instances/zeroExV4.js";
 
 export type Integration = typeof Integration[keyof typeof Integration];
 export const Integration = {
@@ -86,6 +87,7 @@ export const Integration = {
   ERC4626Redeem: "ERC4626Redeem",
   ParaswapV5TakeOrder: "ParaswapV5TakeOrder",
   OneInchV5TakeOrder: "OneInchV5TakeOrder",
+  ZeroExV4TakeOrder: "ZeroExV4TakeOrder",
 } as const;
 
 export type IntegrationArgs = {
@@ -137,4 +139,5 @@ export type IntegrationArgs = {
   [Integration.ERC4626Redeem]: ERC4626RedeemArgs;
   [Integration.ParaswapV5TakeOrder]: ParaswapV5TakeOrderArgs;
   [Integration.OneInchV5TakeOrder]: OneInchV5TakeOrderArgs;
+  [Integration.ZeroExV4TakeOrder]: ZeroExV4TakeOrderArgs;
 };
