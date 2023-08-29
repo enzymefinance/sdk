@@ -1,5 +1,11 @@
 import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
+export type ZeroExV4OrderType = typeof ZeroExV4OrderType[keyof typeof ZeroExV4OrderType];
+export const ZeroExV4OrderType = {
+  Limit: 0,
+  Rfq: 1,
+} as const;
+
 export const zeroExV4TakeOrderEncoding = [
   {
     name: "signedOrder",
@@ -15,15 +21,10 @@ export const zeroExV4TakeOrderEncoding = [
   },
 ] as const;
 
-export enum ZeroExV4OrderType {
-  Limit,
-  Rfq,
-}
-
 export type ZeroExV4TakeOrderArgs = {
   signedOrder: Hex;
   takerAssetFillAmount: bigint;
-  orderType: ZeroExV4OrderType;
+  orderType: number;
 };
 
 export function encodeZeroExV4TakeOrderArgs({
