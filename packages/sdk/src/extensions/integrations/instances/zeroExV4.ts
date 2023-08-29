@@ -190,13 +190,14 @@ type ZeroExV4Signature = {
   s: Hex;
 };
 
-export type ZeroExV4TakeOrderArgs<TZeroExV4OrderType extends ZeroExV4OrderType = ZeroExV4OrderType,> = {
+export type ZeroExV4TakeOrderArgs = {
   encodedZeroExOrderArgs: Hex;
   takerAssetFillAmount: bigint;
-  order: TZeroExV4OrderType extends typeof ZeroExV4OrderType.Limit ? ZeroExV4LimitOrder : ZeroExV4RfqOrder;
-  orderType: TZeroExV4OrderType;
   signature: ZeroExV4Signature;
-};
+} & (
+  | { orderType: typeof ZeroExV4OrderType.Limit; order: ZeroExV4LimitOrder }
+  | { orderType: typeof ZeroExV4OrderType.Rfq; order: ZeroExV4RfqOrder }
+);
 
 export function encodeZeroExV4TakeOrderArgs({
   takerAssetFillAmount,
@@ -209,12 +210,12 @@ export function encodeZeroExV4TakeOrderArgs({
   if (orderType === ZeroExV4OrderType.Limit) {
     encodedZeroExOrderArgs = encodeAbiParameters(
       [zeroExV4LimitOrderEncoding, zeroExV4SignatureEncoding],
-      [order as ZeroExV4LimitOrder, signature],
+      [order, signature],
     );
   } else if (orderType === ZeroExV4OrderType.Rfq) {
     encodedZeroExOrderArgs = encodeAbiParameters(
       [zeroExV4RfqOrderEncoding, zeroExV4SignatureEncoding],
-      [order as ZeroExV4RfqOrder, signature],
+      [order, signature],
     );
   } else {
     const _exhaustiveCheck: never = orderType;
