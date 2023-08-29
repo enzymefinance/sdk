@@ -1,6 +1,8 @@
+import { parseEther } from "viem";
+import { expect, test } from "vitest";
 import { IArbitraryLoanPositionLib } from "../../../../../abis/src/abis/IArbitraryLoanPositionLib.js";
-import { POLYGON_FORK_URL, TESTNET_EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testClient } from "../../../../tests/globals.js";
+import { TESTNET_EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
+import { publicClientPolygon, sendTestTransaction, testClientPolygon } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
@@ -9,8 +11,6 @@ import {
   decodeArbitraryLoanReconcileArgs,
   decodeArbitraryLoanUpdateBorrowableAmountArgs,
 } from "./arbitraryLoan.js";
-import { parseEther } from "viem";
-import { expect, test } from "vitest";
 
 const comptrollerProxy = "0x98de9294485f99aea12ca4af411f61ee6db3d604" as const;
 const vaultOwner = "0x32efef8899b23899ff179b446ef7564e0de84cba" as const;
@@ -18,9 +18,8 @@ const vaultOwner = "0x32efef8899b23899ff179b446ef7564e0de84cba" as const;
 const abitraryLoanTypeId = 3n;
 
 test("prepare external position trade for Arbitrary Loan configure loan should work correctly", async () => {
-  await testClient.reset({
+  await testClientPolygon.reset({
     blockNumber: 32509888n,
-    jsonRpcUrl: POLYGON_FORK_URL,
   });
 
   // await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
@@ -51,17 +50,17 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
   const externalPositionProxy = "0xcc139b59b4c5997d523df222e8313bfb938264c9" as const;
 
   const [borrower, borrowableAmoumt, loanAsset] = await Promise.all([
-    publicClient.readContract({
+    publicClientPolygon.readContract({
       abi: IArbitraryLoanPositionLib,
       address: externalPositionProxy,
       functionName: "getBorrower",
     }),
-    publicClient.readContract({
+    publicClientPolygon.readContract({
       abi: IArbitraryLoanPositionLib,
       address: externalPositionProxy,
       functionName: "getBorrowableAmount",
     }),
-    publicClient.readContract({
+    publicClientPolygon.readContract({
       abi: IArbitraryLoanPositionLib,
       address: externalPositionProxy,
       functionName: "getLoanAsset",
@@ -73,13 +72,12 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
   expect(loanAsset).toEqual(actionArgs.asset);
 });
 
-test("prepare external position trade for Arbitrary Loan update borrowable amount should work correctly", async () => {
-  await testClient.reset({
+test.only("prepare external position trade for Arbitrary Loan update borrowable amount should work correctly", async () => {
+  await testClientPolygon.reset({
     blockNumber: 30972230n,
-    jsonRpcUrl: POLYGON_FORK_URL,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientPolygon.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xa26f1bf69ca292f85257c5350cdd1edf809d1dc545a8edd23b33b80a0b9aeaf6
   const callArgs =
@@ -95,11 +93,12 @@ test("prepare external position trade for Arbitrary Loan update borrowable amoun
         ...decodedCallArgs,
       },
     }),
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
 
-  const borrowableAmoumt = await publicClient.readContract({
+  const borrowableAmoumt = await publicClientPolygon.readContract({
     abi: IArbitraryLoanPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getBorrowableAmount",
@@ -109,12 +108,11 @@ test("prepare external position trade for Arbitrary Loan update borrowable amoun
 });
 
 test("prepare external position trade for Arbitrary Loan reconcile should work correctly", async () => {
-  await testClient.reset({
+  await testClientPolygon.reset({
     blockNumber: 30973505n,
-    jsonRpcUrl: POLYGON_FORK_URL,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientPolygon.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x31bfc3dfe41ddfdad46ac294957bb14bd58210139ce54bae5dacbd645e270f28
   const callArgs =
@@ -130,11 +128,12 @@ test("prepare external position trade for Arbitrary Loan reconcile should work c
         ...decodedCallArgs,
       },
     }),
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
 
-  const totalRepaid = await publicClient.readContract({
+  const totalRepaid = await publicClientPolygon.readContract({
     abi: IArbitraryLoanPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getTotalRepaid",
@@ -144,12 +143,11 @@ test("prepare external position trade for Arbitrary Loan reconcile should work c
 });
 
 test("prepare external position trade for Arbitrary Loan close loan should work correctly", async () => {
-  await testClient.reset({
+  await testClientPolygon.reset({
     blockNumber: 30854017n,
-    jsonRpcUrl: POLYGON_FORK_URL,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientPolygon.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x879192366ae3012293719cfc1a3d0273d32f02415d519a27d334abd6e4b4d5c7
   const callArgs =
@@ -165,11 +163,12 @@ test("prepare external position trade for Arbitrary Loan close loan should work 
         ...decodedCallArgs,
       },
     }),
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
 
-  const loanIsClosed = await publicClient.readContract({
+  const loanIsClosed = await publicClientPolygon.readContract({
     abi: IArbitraryLoanPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "loanIsClosed",

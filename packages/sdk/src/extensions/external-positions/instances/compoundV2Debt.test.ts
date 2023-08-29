@@ -1,5 +1,7 @@
+import { type Address, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
 import { COMP, EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -9,8 +11,6 @@ import {
   decodeCompoundV2DebtRemoveCollateralArgs,
   decodeCompoundV2DebtRepayBorrowArgs,
 } from "./compoundV2Debt.js";
-import { type Address, parseAbi, parseEther } from "viem";
-import { expect, test } from "vitest";
 
 const abiCToken = parseAbi(["function borrowBalanceStored(address user) view returns (uint256)"] as const);
 
@@ -18,11 +18,11 @@ test("prepare external position trade for Compound V2 Debt add collateral should
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14186197n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xaae1a73d74e7cc2de7644b4a1a865d3658227b2d7386ed9a256ebc80cfeb5eed
   const callArgs =
@@ -53,11 +53,11 @@ test("prepare external position trade for Compound V2 Debt remove collateral sho
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14185691n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x9decb49bf4ca9cd43dc6a3341df84923fe4d5ce97f62011263f8dccd8cde96d1
   const callArgs =
@@ -89,11 +89,11 @@ test("prepare external position trade for Compound V2 Debt borrow should work co
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14186211n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xabca9acde7398fa18f17c895356da6f64cf5bef6e0d4f4d55dcdd18f65b45256
   const callArgs =
@@ -124,11 +124,11 @@ test("prepare external position trade for Compound V2 Debt repay borrow should w
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14186219n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x9bb8affe019e5fec8a3e46eddfc3287d1938797d1a84f456ff04623c4604168f
   const callArgs =
@@ -149,7 +149,7 @@ test("prepare external position trade for Compound V2 Debt repay borrow should w
 
   const cUni = "0x35a18000230da775cac24873d00ff85bccded550" as const;
 
-  const borrowBalanceStored = await publicClient.readContract({
+  const borrowBalanceStored = await publicClientMainnet.readContract({
     abi: abiCToken,
     address: cUni,
     functionName: "borrowBalanceStored",
@@ -164,11 +164,11 @@ test("prepare external position trade for Compound V2 Debt claim comp should wor
   const comptrollerProxy = "0xd1b7ac3956c5e6aa9c49e833f8b49dc7565a0840" as const;
   const vaultOwner = "0xa77fe539ddca9ea0abc7b81d2da4381d0fc4417c" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15383723n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xe88e922525047e62664f365b22573a5a16bf5ec3eaded6cd0aaa6b27f1d38dcf
   const callArgs =

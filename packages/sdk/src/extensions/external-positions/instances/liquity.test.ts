@@ -1,5 +1,7 @@
+import { parseEther } from "viem";
+import { test } from "vitest";
 import { EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -9,8 +11,6 @@ import {
   decodeLiquityDebtPositionRemoveCollateralArgs,
   decodeLiquityDebtPositionRepayBorrowArgs,
 } from "./liquity.js";
-import { parseEther } from "viem";
-import { test } from "vitest";
 
 const LUSD = "0x5f98805a4e8be255a32880fdec7f6728c6568ba0" as const;
 
@@ -19,11 +19,11 @@ const vaultOwner = "0x8d1d8a440e9a3bb04260e0532ad81037f63bfa16" as const;
 const vaultProxy = "0x278c647f7cfb9d55580c69d3676938608c945ba8" as const;
 
 test("prepare external position trade for Liquity debt position Open Trove should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15496448n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x17a5931f4d11516f4238983af1970f10cf171ae87b7dbedfb7766cdd6372caf7
   const callArgs =
@@ -51,11 +51,11 @@ test("prepare external position trade for Liquity debt position Open Trove shoul
 });
 
 test("prepare external position trade for Liquity debt position add collateral should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15496904n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x88f5546eccc9320624c2ad79da015db80f26974df94185314c666c93c9c7fdba
   const callArgs =
@@ -83,11 +83,11 @@ test("prepare external position trade for Liquity debt position add collateral s
 });
 
 test("prepare external position trade for Liquity debt position remove collateral should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15525758n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xc1967b462514afa17f1e827b66f4d96b53611851016dbc64c29a5708f9ce8a57
   const callArgs =
@@ -115,11 +115,11 @@ test("prepare external position trade for Liquity debt position remove collatera
 });
 
 test("prepare external position trade for Liquity debt position borrow should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15525836n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x4d9706718486c7d77cbc081b3eabaab972194da71c859de94f385ad72b5374fa
   const callArgs =
@@ -147,11 +147,11 @@ test("prepare external position trade for Liquity debt position borrow should wo
 });
 
 test("prepare external position trade for Liquity debt position repay borrow should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15525807n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xe0654c73a891031e469d7d54ecd8c5711a61e3598475c0e2b0ebaea5ffeccac1
   const callArgs =

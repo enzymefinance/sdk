@@ -1,13 +1,13 @@
+import { encodeFunctionData } from "viem";
+import { expect, test } from "vitest";
 import { ALICE, USDC, USDC_HOLDER, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../tests/globals.js";
 import { MAX_UINT_256 } from "../constants/misc.js";
 import { toWei } from "../utils/conversion.js";
 import {
   decodeRedeemSharesForSpecificAssetsParams,
   prepareRedeemSharesForSpecificAssetsParams,
 } from "./redeemSharesForSpecificAssets.js";
-import { encodeFunctionData } from "viem";
-import { expect, test } from "vitest";
 
 test("should redeem specific shares correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -23,7 +23,7 @@ test("should redeem specific shares correctly", async () => {
     investmentAmount: depositAmount,
   });
 
-  await testClient.impersonateAccount({
+  await testClientMainnet.impersonateAccount({
     address: USDC_HOLDER,
   });
 
@@ -34,7 +34,7 @@ test("should redeem specific shares correctly", async () => {
     amount: 100_000_000_000n,
   });
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareRedeemSharesForSpecificAssetsParams({
       withdrawalRecipient: ALICE,
       sharesQuantity: MAX_UINT_256,

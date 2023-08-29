@@ -1,6 +1,8 @@
+import { parseEther } from "viem";
+import { expect, test } from "vitest";
 import { ITheGraphDelegationPositionLib } from "../../../../../abis/src/abis/ITheGraphDelegationPositionLib.js";
 import { EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -8,18 +10,16 @@ import {
   decodeTheGraphDelegationUndelegateArgs,
   decodeTheGraphDelegationWithdrawArgs,
 } from "./theGraphDelegation.js";
-import { parseEther } from "viem";
-import { expect, test } from "vitest";
 
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
 const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
 test("prepare external position trade for The Graph Delegation delegate should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15680558n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x90d6d22bbd36f6138c7f6ae1e84ac0afe1c77d8a54cdf873bb70c5c101f7fd51
   const callArgs =
@@ -39,7 +39,7 @@ test("prepare external position trade for The Graph Delegation delegate should w
     address: comptrollerProxy,
   });
 
-  const grtValue = await publicClient.readContract({
+  const grtValue = await publicClientMainnet.readContract({
     abi: ITheGraphDelegationPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getDelegationGrtValue",
@@ -50,11 +50,11 @@ test("prepare external position trade for The Graph Delegation delegate should w
 });
 
 test("prepare external position trade for The Graph Delegation undelegate should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16125126n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x3880f2eacccefe49c1f4fb893b630416c2fe576dfc4a6e401ea7bf633eded593
   const callArgs =
@@ -74,7 +74,7 @@ test("prepare external position trade for The Graph Delegation undelegate should
     address: comptrollerProxy,
   });
 
-  const grtValue = await publicClient.readContract({
+  const grtValue = await publicClientMainnet.readContract({
     abi: ITheGraphDelegationPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getDelegationGrtValue",
@@ -85,11 +85,11 @@ test("prepare external position trade for The Graph Delegation undelegate should
 });
 
 test("prepare external position trade for The Graph Delegation withdraw should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16125134n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x2f4f6c1f5a522d3770a6594503f0ee936792ac7732d79f8db544b1464f9e1dd1
   const callArgs =
@@ -109,7 +109,7 @@ test("prepare external position trade for The Graph Delegation withdraw should w
     address: comptrollerProxy,
   });
 
-  const grtValue = await publicClient.readContract({
+  const grtValue = await publicClientMainnet.readContract({
     abi: ITheGraphDelegationPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getDelegationGrtValue",

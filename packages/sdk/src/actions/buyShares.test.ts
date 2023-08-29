@@ -1,9 +1,9 @@
-import { ALICE, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { applySlippage, toBps, toWei } from "../utils/conversion.js";
-import { decodeBuySharesParams, getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
 import { encodeFunctionData } from "viem";
 import { expect, test } from "vitest";
+import { ALICE, WETH } from "../../tests/constants.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { applySlippage, toBps, toWei } from "../utils/conversion.js";
+import { decodeBuySharesParams, getExpectedShareQuantity, prepareBuySharesParams } from "./buyShares.js";
 
 test("should be able to buy shares", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
@@ -25,7 +25,7 @@ test("should be able to buy shares", async () => {
     amount: depositAmount,
   });
 
-  const expectedShareQuantity = await getExpectedShareQuantity(publicClient, {
+  const expectedShareQuantity = await getExpectedShareQuantity(publicClientMainnet, {
     comptrollerProxy,
     sharesBuyer: ALICE,
     investmentAmount: depositAmount,
@@ -33,7 +33,7 @@ test("should be able to buy shares", async () => {
 
   expect(expectedShareQuantity).toBe(depositAmount);
 
-  const { request, result } = await publicClient.simulateContract({
+  const { request, result } = await publicClientMainnet.simulateContract({
     ...prepareBuySharesParams({
       investmentAmount: depositAmount,
       minSharesQuantity: applySlippage(expectedShareQuantity, toBps(0.05)),

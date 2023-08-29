@@ -1,5 +1,5 @@
 import { ALICE, BOB, INTEGRATION_MANAGER, PARASWAP_V5_ADAPTER, USDC, WETH } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 
@@ -8,7 +8,7 @@ import { beforeAll, test } from "vitest";
 
 // blockNumber must be aligned with the test arguments data as it is used to compute the swapData hash.
 beforeAll(async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17832981n,
   });
 });

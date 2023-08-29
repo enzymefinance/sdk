@@ -1,5 +1,7 @@
+import { parseAbi, parseEther, stringToHex } from "viem";
+import { expect, test } from "vitest";
 import { CVX, EXTERNAL_POSITION_MANAGER, VOTE_LOCKED_CVX } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -9,8 +11,6 @@ import {
   decodeConvexVotingRelockArgs,
   decodeConvexVotingWithdrawArgs,
 } from "./convexVoting.js";
-import { parseAbi, parseEther, stringToHex } from "viem";
-import { expect, test } from "vitest";
 
 const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
@@ -24,11 +24,11 @@ const abiVoteLockedCvx = parseAbi([
 const abiSnapshotRegistry = parseAbi(["function delegation(address user, bytes32 id) view returns (address)"] as const);
 
 test("prepare external position trade for Convex Voting lock should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14913398n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xaede0fb1423e70b0d7863881757dd7327b59b8526f7a133d7746f3907bffc1ff
   const callArgs =
@@ -48,7 +48,7 @@ test("prepare external position trade for Convex Voting lock should work correct
     address: comptrollerProxy,
   });
 
-  const lockedCvx = await publicClient.readContract({
+  const lockedCvx = await publicClientMainnet.readContract({
     abi: abiVoteLockedCvx,
     address: VOTE_LOCKED_CVX,
     functionName: "lockedBalanceOf",
@@ -59,11 +59,11 @@ test("prepare external position trade for Convex Voting lock should work correct
 });
 
 test("prepare external position trade for Convex Voting relock should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15581112n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x42baaab2485d48915ef01bf1e65952c96c9884892b83a882ee5a5638d7b1bc3a
   const callArgs =
@@ -84,7 +84,7 @@ test("prepare external position trade for Convex Voting relock should work corre
   });
 
   // would revert if lock wouldn't exist
-  const lockedNumber3 = await publicClient.readContract({
+  const lockedNumber3 = await publicClientMainnet.readContract({
     abi: abiVoteLockedCvx,
     address: VOTE_LOCKED_CVX,
     functionName: "userLocks",
@@ -95,11 +95,11 @@ test("prepare external position trade for Convex Voting relock should work corre
 });
 
 test("prepare external position trade for Convex Voting withdraw should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 15639281n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x8049d7d7a922f6cc74c69017d893d2993e874c324dd96808641573e855776938
   const callArgs =
@@ -119,7 +119,7 @@ test("prepare external position trade for Convex Voting withdraw should work cor
     address: comptrollerProxy,
   });
 
-  const lockedCvx = await publicClient.readContract({
+  const lockedCvx = await publicClientMainnet.readContract({
     abi: abiVoteLockedCvx,
     address: VOTE_LOCKED_CVX,
     functionName: "lockedBalanceOf",
@@ -130,11 +130,11 @@ test("prepare external position trade for Convex Voting withdraw should work cor
 });
 
 test("prepare external position trade for Convex Voting claim rewards should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14897331n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xc28ce3df19009531f9a769a9b0bc12dc6ada8e43f91af8789bed626a3459392d
   const callArgs =
@@ -168,11 +168,11 @@ test("prepare external position trade for Convex Voting claim rewards should wor
 });
 
 test("prepare external position trade for Convex Voting delegate should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14840493n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x7d259fc02d6708522061c707254deecbfd08c9268aefeb9a7cf83b9ebbc8f5af
   const callArgs =
@@ -194,7 +194,7 @@ test("prepare external position trade for Convex Voting delegate should work cor
 
   const snapshotDelegateRegistry = "0x469788fE6E9E9681C6ebF3bF78e7Fd26Fc015446";
 
-  const delegate = await publicClient.readContract({
+  const delegate = await publicClientMainnet.readContract({
     abi: abiSnapshotRegistry,
     address: snapshotDelegateRegistry,
     functionName: "delegation",

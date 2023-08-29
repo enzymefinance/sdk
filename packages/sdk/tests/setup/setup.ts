@@ -1,13 +1,19 @@
-import { FORK_BLOCK_NUMBER, FORK_URL } from "../constants.js";
-import { poolId, testClient } from "../globals.js";
 import { fetchLogs } from "@viem/anvil";
 import { beforeAll, beforeEach } from "vitest";
+import { FORK_BLOCK_NUMBER, FORK_BLOCK_NUMBER_POLYGON, FORK_URL, FORK_URL_POLYGON } from "../constants.js";
+import { poolId, testClientMainnet, testClientPolygon } from "../globals.js";
 
 beforeAll(async () => {
-  await testClient.reset({
-    blockNumber: FORK_BLOCK_NUMBER,
-    jsonRpcUrl: FORK_URL,
-  });
+  await Promise.all([
+    testClientMainnet.reset({
+      blockNumber: FORK_BLOCK_NUMBER,
+      jsonRpcUrl: FORK_URL,
+    }),
+    testClientPolygon.reset({
+      blockNumber: FORK_BLOCK_NUMBER_POLYGON,
+      jsonRpcUrl: FORK_URL_POLYGON,
+    }),
+  ]);
 });
 
 beforeEach((context) => {
@@ -28,7 +34,6 @@ beforeEach((context) => {
         error.message += "\n\nAnvil log output\n=======================================\n";
         error.message += `\n${logs.join("\n")}`;
       } else {
-        // rome-ignore lint/nursery/noConsoleLog: this is fine ...
         console.log(...logs);
       }
     } catch {}

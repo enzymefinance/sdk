@@ -1,3 +1,5 @@
+import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
+import { expect, test } from "vitest";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
   ALICE,
@@ -14,7 +16,7 @@ import {
   USDC,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
@@ -22,8 +24,6 @@ import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { abiCurvePool } from "./curveLiquidity.test.js";
-import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
-import { expect, test } from "vitest";
 
 test("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -60,7 +60,7 @@ test("prepare adapter trade for Convex Curve Lp Staking lend and stake should wo
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -134,7 +134,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -174,7 +174,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
 
   const incomingAssetPoolIndex = 0n;
 
-  const minIncomingTokenAmount = await publicClient.readContract({
+  const minIncomingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_withdraw_one_coin",
@@ -253,7 +253,7 @@ test("prepare adapter trade for Convex Curve Lp Staking stake should work correc
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingLpTokenAmount = await publicClient.readContract({
+  const minIncomingLpTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -347,7 +347,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake should work corr
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -442,7 +442,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -483,7 +483,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   // seed staking token wrapper with crv so there is something to claim
   const crvRewardsAmount = toWei(100);
   const abiCRVoken = parseAbi(["function mint(address to, uint256 amount)"] as const);
-  await testClient.setBalance({
+  await testClientMainnet.setBalance({
     address: CURVE_MINTER,
     value: parseEther("1"),
   });

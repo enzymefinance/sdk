@@ -90,14 +90,20 @@ if (process.env.VITE_ANVIL_FORK_URL === undefined) {
 
 export const FORK_URL = process.env.VITE_ANVIL_FORK_URL;
 
-if (process.env.VITE_POLYGON_FORK_URL === undefined) {
-  throw new Error('Missing environment variable "VITE_POLYGON_FORK_URL"');
-}
-
-export const POLYGON_FORK_URL = process.env.VITE_POLYGON_FORK_URL;
-
 if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER === undefined) {
   throw new Error('Missing environment variable "VITE_ANVIL_FORK_BLOCK_NUMBER"');
 }
 
 export const FORK_BLOCK_NUMBER = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER));
+
+if (process.env.VITE_ANVIL_FORK_URL_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL_POLYGON"');
+}
+
+export const FORK_URL_POLYGON = process.env.VITE_ANVIL_FORK_URL_POLYGON;
+
+if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON"');
+}
+
+export const FORK_BLOCK_NUMBER_POLYGON = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON));

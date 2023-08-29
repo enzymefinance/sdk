@@ -1,3 +1,5 @@
+import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
+import { expect, test } from "vitest";
 import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
@@ -14,7 +16,7 @@ import {
   USDC,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
@@ -22,8 +24,6 @@ import { prepareFunctionParams } from "../../../utils/viem.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
-import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
-import { expect, test } from "vitest";
 
 export const abiCurvePool = parseAbi([
   "function calc_token_amount(uint256[2] _amounts, bool _is_deposit) view returns (uint256)",
@@ -65,7 +65,7 @@ test("prepare adapter trade for Curve Liquidity lend should work correctly", asy
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingLpTokenAmount = await publicClient.readContract({
+  const minIncomingLpTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -138,7 +138,7 @@ test("prepare adapter trade for Curve Liquidity lend and stake should work corre
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -212,7 +212,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingLpTokenAmount = await publicClient.readContract({
+  const minIncomingLpTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -251,7 +251,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
 
   const incomingAssetPoolIndex = 0n;
 
-  const minIncomingTokenAmount = await publicClient.readContract({
+  const minIncomingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_withdraw_one_coin",
@@ -329,7 +329,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -369,7 +369,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
 
   const incomingAssetPoolIndex = 0n;
 
-  const minIncomingTokenAmount = await publicClient.readContract({
+  const minIncomingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_withdraw_one_coin",
@@ -448,7 +448,7 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingLpTokenAmount = await publicClient.readContract({
+  const minIncomingLpTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -542,7 +542,7 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",
@@ -637,7 +637,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
 
   const orderedOutgoingAssetAmounts = [lendAmountFrax, lendAmountUsdc] as const;
 
-  const minIncomingStakingTokenAmount = await publicClient.readContract({
+  const minIncomingStakingTokenAmount = await publicClientMainnet.readContract({
     abi: abiCurvePool,
     address: CURVE_FRAX_USDC_POOL,
     functionName: "calc_token_amount",

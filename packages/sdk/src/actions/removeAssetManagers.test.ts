@@ -1,9 +1,9 @@
-import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
-import { decodeRemoveAssetManagersParams, prepareRemoveAssetManagersParams } from "./removeAssetManagers.js";
 import { encodeFunctionData } from "viem";
 import { expect, test } from "vitest";
+import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { prepareAddAssetManagersParams } from "./addAssetManagers.js";
+import { decodeRemoveAssetManagersParams, prepareRemoveAssetManagersParams } from "./removeAssetManagers.js";
 
 test("should remove asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({
@@ -26,7 +26,7 @@ test("should remove asset managers", async () => {
 
   expect([bobIsManager, carolIsManager, daveIsManager]).toEqual([true, true, true]);
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareRemoveAssetManagersParams({
       managers: [BOB, CAROL],
     }),

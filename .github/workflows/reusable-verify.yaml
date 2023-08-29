@@ -60,8 +60,9 @@ jobs:
         run: pnpm run test
         env:
           VITE_ANVIL_FORK_URL: ${{ secrets.VITE_ANVIL_FORK_URL }}
-          VITE_POLYGON_FORK_URL: ${{ secrets.VITE_POLYGON_FORK_URL }}
           VITE_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITE_ANVIL_FORK_BLOCK_NUMBER }}
+          VITE_ANVIL_FORK_URL_POLYGON: ${{ secrets.VITE_ANVIL_FORK_URL_POLYGON }}
+          VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON: ${{ secrets.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON }}
 
   size:
     name: Size

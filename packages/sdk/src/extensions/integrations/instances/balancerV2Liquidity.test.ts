@@ -1,3 +1,6 @@
+import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
+import { keccak256 } from "viem/utils";
+import { expect, test } from "vitest";
 import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { IFundDeployer } from "../../../../../abis/src/abis/IFundDeployer.js";
 import {
@@ -10,26 +13,23 @@ import {
   WBTC,
   WETH,
 } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { SwapKind } from "./balancerV2Liquidity.js";
-import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
-import { keccak256 } from "viem/utils";
-import { expect, test } from "vitest";
 
 const vaultProxy = "0x278C647F7cfb9D55580c69d3676938608C945ba8" as const;
 const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
 const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
 test("prepare adapter trade for Balancer V2 Liquidity lend should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962244n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   await sendTestTransaction({
     ...prepareUseIntegration({
@@ -62,11 +62,11 @@ test("prepare adapter trade for Balancer V2 Liquidity lend should work correctly
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity lend and stake should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962244n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   const stakingToken = "0x79eF6103A513951a3b25743DB509E267685726B7";
 
@@ -102,11 +102,11 @@ test("prepare adapter trade for Balancer V2 Liquidity lend and stake should work
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity unstake and redeem should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962403n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   const stakingToken = "0x79eF6103A513951a3b25743DB509E267685726B7";
 
@@ -142,11 +142,11 @@ test("prepare adapter trade for Balancer V2 Liquidity unstake and redeem should 
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity redeem should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962403n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   await sendTestTransaction({
     ...prepareUseIntegration({
@@ -179,11 +179,11 @@ test("prepare adapter trade for Balancer V2 Liquidity redeem should work correct
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962403n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // register vault call to allow approving minter by vault owner
   await sendTestTransaction({
@@ -235,11 +235,11 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
 });
 
 test("prepare adapter trade for Balancer V2 Liquidity take order should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17962403n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   const outgoingAssetAmount = parseUnits("1", 8);
 

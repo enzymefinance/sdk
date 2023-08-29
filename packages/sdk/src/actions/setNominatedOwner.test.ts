@@ -1,9 +1,9 @@
-import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { publicClient, testActions } from "../../tests/globals.js";
-import { decodeSetNominatedOwnerParams, prepareSetNominatedOwnerParams } from "./setNominatedOwner.js";
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { encodeFunctionData } from "viem";
 import { expect, test } from "vitest";
+import { ALICE, BOB, WETH } from "../../tests/constants.js";
+import { publicClientMainnet, testActions } from "../../tests/globals.js";
+import { decodeSetNominatedOwnerParams, prepareSetNominatedOwnerParams } from "./setNominatedOwner.js";
 
 test("should set nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
@@ -11,7 +11,7 @@ test("should set nominated owner correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const originalOwner = await publicClient.readContract({
+  const originalOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getOwner",
@@ -25,7 +25,7 @@ test("should set nominated owner correctly", async () => {
     vaultProxy,
   });
 
-  const newNominatedOwner = await publicClient.readContract({
+  const newNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",

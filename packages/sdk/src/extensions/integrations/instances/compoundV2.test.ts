@@ -1,3 +1,5 @@
+import { parseAbi, parseUnits } from "viem";
+import { test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -6,13 +8,11 @@ import {
   INTEGRATION_MANAGER,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
-import { parseAbi, parseUnits } from "viem";
-import { test } from "vitest";
 
 const abiCToken = parseAbi(["function exchangeRateStored() view returns (uint256)"] as const);
 const scaledExchangeRate = 10n ** 36n;
@@ -54,7 +54,7 @@ test("prepare adapter trade for Compound V2 lend should work correctly", async (
     investmentAmount: depositAmount,
   });
 
-  const exchangeRateStored = await publicClient.readContract({
+  const exchangeRateStored = await publicClientMainnet.readContract({
     abi: abiCToken,
     address: COMPOUND_V2_C_ETH,
     functionName: "exchangeRateStored",
@@ -110,7 +110,7 @@ test("prepare adapter trade for Compound V2 redeem should work correctly", async
     investmentAmount: investmentAmount,
   });
 
-  const exchangeRateStored = await publicClient.readContract({
+  const exchangeRateStored = await publicClientMainnet.readContract({
     abi: abiCToken,
     address: COMPOUND_V2_C_ETH,
     functionName: "exchangeRateStored",

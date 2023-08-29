@@ -1,8 +1,8 @@
-import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
-import { decodeAddAssetManagersParams, prepareAddAssetManagersParams } from "./addAssetManagers.js";
 import { encodeFunctionData } from "viem";
 import { expect, test } from "vitest";
+import { ALICE, BOB, CAROL, DAVE, WETH } from "../../tests/constants.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { decodeAddAssetManagersParams, prepareAddAssetManagersParams } from "./addAssetManagers.js";
 
 test("should add asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({
@@ -10,7 +10,7 @@ test("should add asset managers", async () => {
     denominationAsset: WETH,
   });
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareAddAssetManagersParams({
       managers: [BOB, CAROL],
     }),

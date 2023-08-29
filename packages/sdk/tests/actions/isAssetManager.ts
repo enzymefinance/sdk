@@ -1,7 +1,7 @@
-import type { Tuple } from "../../src/utils/types.js";
-import { publicClient } from "../globals.js";
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import type { Address } from "viem";
+import type { Tuple } from "../../src/utils/types.js";
+import { publicClientMainnet } from "../globals.js";
 
 export interface IsAssetManagerParams {
   who: Address;
@@ -9,7 +9,7 @@ export interface IsAssetManagerParams {
 }
 
 export function isAssetManager({ who, vaultProxy }: IsAssetManagerParams) {
-  return publicClient.readContract({
+  return publicClientMainnet.readContract({
     address: vaultProxy,
     abi: IVaultLib,
     functionName: "isAssetManager",
@@ -30,7 +30,7 @@ export async function isAssetManagers<const TAddresses extends Readonly<Address[
     } as const;
   });
 
-  const managers = await publicClient.multicall({
+  const managers = await publicClientMainnet.multicall({
     allowFailure: false,
     contracts,
   });

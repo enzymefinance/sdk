@@ -1,14 +1,14 @@
+import { IComptrollerLib } from "@enzymefinance/abis";
+import type { Address } from "viem";
 import { type BuySharesParams, prepareBuySharesParams } from "../../src/actions/buyShares.js";
 import { getSharesActionTimelock } from "../../src/reads/getSharesActionTimelock.js";
 import { toSeconds } from "../../src/utils/conversion.js";
 import type { PartialPick } from "../../src/utils/types.js";
 import { WETH } from "../constants.js";
-import { publicClient, sendTestTransaction } from "../globals.js";
+import { publicClientMainnet, sendTestTransaction } from "../globals.js";
 import { approveSpend } from "./approveSpend.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { wrapEther } from "./wrapEther.js";
-import { IComptrollerLib } from "@enzymefinance/abis";
-import type { Address } from "viem";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {
   comptrollerProxy: Address;
@@ -23,7 +23,7 @@ export async function buyShares({
   minSharesQuantity,
   skipSharesActionTimelock = true,
 }: BuySharesSettings) {
-  const denominationAsset = await publicClient.readContract({
+  const denominationAsset = await publicClientMainnet.readContract({
     abi: IComptrollerLib,
     address: comptrollerProxy,
     functionName: "getDenominationAsset",
@@ -53,7 +53,7 @@ export async function buyShares({
   });
 
   if (skipSharesActionTimelock) {
-    const sharesActionTimelock = await getSharesActionTimelock(publicClient, {
+    const sharesActionTimelock = await getSharesActionTimelock(publicClientMainnet, {
       comptrollerProxy,
     });
 

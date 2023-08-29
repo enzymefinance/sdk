@@ -1,3 +1,5 @@
+import { parseAbi } from "viem";
+import { test } from "vitest";
 import {
   ALICE,
   BOB,
@@ -6,14 +8,12 @@ import {
   YEARN_VAULT_V2_ADAPTER,
   YEARN_VAULT_V2_WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
-import { parseAbi } from "viem";
-import { test } from "vitest";
 
 const abiYVault = parseAbi(["function pricePerShare() view returns (uint256 price_)"] as const);
 
@@ -34,7 +34,7 @@ test("prepare adapter trade for Yearn Vault V2 lend should work correctly", asyn
     investmentAmount: depositAmount,
   });
 
-  const pricePerShare = await publicClient.readContract({
+  const pricePerShare = await publicClientMainnet.readContract({
     abi: abiYVault,
     address: YEARN_VAULT_V2_WETH,
     functionName: "pricePerShare",
@@ -94,7 +94,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
     investmentAmount: investmentAmount,
   });
 
-  const pricePerShareBeforeLend = await publicClient.readContract({
+  const pricePerShareBeforeLend = await publicClientMainnet.readContract({
     abi: abiYVault,
     address: YEARN_VAULT_V2_WETH,
     functionName: "pricePerShare",
@@ -136,7 +136,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
     fuzziness: minIncomingYVaultSharesAmount - minIncomingYVaultSharesAmountWithSlippage,
   });
 
-  const pricePerShareBeforeRedeem = await publicClient.readContract({
+  const pricePerShareBeforeRedeem = await publicClientMainnet.readContract({
     abi: abiYVault,
     address: YEARN_VAULT_V2_WETH,
     functionName: "pricePerShare",
