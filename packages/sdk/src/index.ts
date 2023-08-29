@@ -918,7 +918,13 @@ export {
   encodeZeroExV4TakeOrderArgs,
   decodeZeroExV4TakeOrderArgs,
   type ZeroExV4OrderType,
+  zeroExV4LimitOrderEncoding,
+  zeroExV4RfqOrderEncoding,
+  zeroExV4SignatureEncoding,
   zeroExV4TakeOrderEncoding,
+  type ZeroExV4LimitOrder,
+  type ZeroExV4RfqOrder,
+  type ZeroExV4SignatureType,
   type ZeroExV4TakeOrderArgs,
 } from "./extensions/integrations/instances/zeroExV4.js";
 

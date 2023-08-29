@@ -6,7 +6,7 @@ export const ZeroExV4OrderType = {
   Rfq: 1,
 } as const;
 
-export const limitOrderEncoding = {
+export const zeroExV4LimitOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -61,7 +61,7 @@ export const limitOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const rfqOrderEncoding = {
+export const zeroExV4RfqOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -108,7 +108,7 @@ export const rfqOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const signatureEncoding = {
+export const zeroExV4SignatureEncoding = {
   components: [
     {
       name: "signatureType",
@@ -146,7 +146,7 @@ export const zeroExV4TakeOrderEncoding = [
   },
 ] as const;
 
-type ZeroExV4LimitOrder = {
+export type ZeroExV4LimitOrder = {
   makerToken: Address;
   takerToken: Address;
   makerAmount: bigint;
@@ -161,7 +161,7 @@ type ZeroExV4LimitOrder = {
   salt: bigint;
 };
 
-type ZeroExV4RfqOrder = {
+export type ZeroExV4RfqOrder = {
   makerToken: Address;
   takerToken: Address;
   makerAmount: bigint;
@@ -185,12 +185,12 @@ export const ZeroExV4SignatureType = {
 
 type ZeroExV4Signature = {
   signatureType: ZeroExV4SignatureType;
-  v: bigint;
+  v: number;
   r: Hex;
   s: Hex;
 };
 
-export type ZeroExV4TakeOrderArgs<TZeroExV4OrderType extends ZeroExV4OrderType = ZeroExV4OrderType> = {
+export type ZeroExV4TakeOrderArgs<TZeroExV4OrderType extends ZeroExV4OrderType = ZeroExV4OrderType,> = {
   encodedZeroExOrderArgs: Hex;
   takerAssetFillAmount: bigint;
   order: TZeroExV4OrderType extends typeof ZeroExV4OrderType.Limit ? ZeroExV4LimitOrder : ZeroExV4RfqOrder;
@@ -207,13 +207,18 @@ export function encodeZeroExV4TakeOrderArgs({
   let encodedZeroExOrderArgs: Hex;
 
   if (orderType === ZeroExV4OrderType.Limit) {
-    console.log({ order });
     encodedZeroExOrderArgs = encodeAbiParameters(
-      [limitOrderEncoding, signatureEncoding],
-      [{ makerToken: order.makerToken }, signature],
+      [zeroExV4LimitOrderEncoding, zeroExV4SignatureEncoding],
+      [order as ZeroExV4LimitOrder, signature],
+    );
+  } else if (orderType === ZeroExV4OrderType.Rfq) {
+    encodedZeroExOrderArgs = encodeAbiParameters(
+      [zeroExV4RfqOrderEncoding, zeroExV4SignatureEncoding],
+      [order as ZeroExV4RfqOrder, signature],
     );
   } else {
-    encodedZeroExOrderArgs = encodeAbiParameters([rfqOrderEncoding, signatureEncoding], [order.makerToken, signature]);
+    const _exhaustiveCheck: never = orderType;
+    return _exhaustiveCheck;
   }
 
   return encodeAbiParameters(zeroExV4TakeOrderEncoding, [encodedZeroExOrderArgs, takerAssetFillAmount, orderType]);
@@ -225,6 +230,12 @@ function assertZeroExV4OrderType(value: number): asserts value is ZeroExV4OrderT
   }
 }
 
+function assertZeroExV4SignatureType(value: number): asserts value is ZeroExV4SignatureType {
+  if (!Object.values(ZeroExV4SignatureType).includes(value as ZeroExV4SignatureType)) {
+    throw new Error(`Invalid ZeroExV4SignatureType: ${value}`);
+  }
+}
+
 export function decodeZeroExV4TakeOrderArgs(callArgs: Hex): ZeroExV4TakeOrderArgs {
   const [encodedZeroExOrderArgs, takerAssetFillAmount, orderType] = decodeAbiParameters(
     zeroExV4TakeOrderEncoding,
@@ -233,9 +244,48 @@ export function decodeZeroExV4TakeOrderArgs(callArgs: Hex): ZeroExV4TakeOrderArg
 
   assertZeroExV4OrderType(orderType);
 
-  return {
-    encodedZeroExOrderArgs,
-    takerAssetFillAmount,
-    orderType,
-  };
+  if (orderType === ZeroExV4OrderType.Limit) {
+    const [order, signature] = decodeAbiParameters(
+      [zeroExV4LimitOrderEncoding, zeroExV4SignatureEncoding],
+      encodedZeroExOrderArgs,
+    );
+
+    const signatureType = signature.signatureType;
+    assertZeroExV4SignatureType(signatureType);
+
+    return {
+      encodedZeroExOrderArgs,
+      takerAssetFillAmount,
+      orderType,
+      order,
+      signature: {
+        ...signature,
+        signatureType,
+      },
+    };
+  }
+
+  if (orderType === ZeroExV4OrderType.Rfq) {
+    const [order, signature] = decodeAbiParameters(
+      [zeroExV4RfqOrderEncoding, zeroExV4SignatureEncoding],
+      encodedZeroExOrderArgs,
+    );
+
+    const signatureType = signature.signatureType;
+    assertZeroExV4SignatureType(signatureType);
+
+    return {
+      encodedZeroExOrderArgs,
+      takerAssetFillAmount,
+      orderType,
+      order,
+      signature: {
+        ...signature,
+        signatureType,
+      },
+    };
+  }
+
+  const _exhaustiveCheck: never = orderType;
+  return _exhaustiveCheck;
 }
