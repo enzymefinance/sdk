@@ -633,6 +633,31 @@ export {
   type TheGraphDelegationWithdrawArgs,
 } from "./extensions/external-positions/instances/theGraphDelegation.js";
 
+// ./extensions/external-positions/instances/uniswapV3Liquidity.js
+export {
+  encodeUniswapV3LiquidityMintArgs,
+  decodeUniswapV3LiquidityMintArgs,
+  encodeUniswapV3LiquidityAddLiquidityArgs,
+  decodeUniswapV3LiquidityAddLiquidityArgs,
+  encodeUniswapV3LiquidityRemoveLiquidityArgs,
+  decodeUniswapV3LiquidityRemoveLiquidityArgs,
+  encodeUniswapV3LiquidityCollectArgs,
+  decodeUniswapV3LiquidityCollectArgs,
+  encodeUniswapV3LiquidityPurgeArgs,
+  decodeUniswapV3LiquidityPurgeArgs,
+  type UniswapV3LiquidityAction,
+  uniswapV3LiquidityMintArgsEncoding,
+  type UniswapV3LiquidityMintArgs,
+  uniswapV3LiquidityAddLiquidityArgsEncoding,
+  type UniswapV3LiquidityAddLiquidityArgs,
+  uniswapV3LiquidityRemoveLiquidityArgsEncoding,
+  type UniswapV3LiquidityRemoveLiquidityArgs,
+  uniswapV3LiquidityCollectArgsEncoding,
+  type UniswapV3LiquidityCollectArgs,
+  uniswapV3LiquidityPurgeArgsEncoding,
+  type UniswapV3LiquidityPurgeArgs,
+} from "./extensions/external-positions/instances/uniswapV3Liquidity.js";
+
 // ./extensions/fees/instances/entranceFee.js
 export {
   encodeEntranceRateBurnFeeSettings,

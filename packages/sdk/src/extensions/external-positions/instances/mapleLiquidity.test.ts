@@ -1,5 +1,5 @@
 import { EXTERNAL_POSITION_MANAGER, WETH } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -17,11 +17,11 @@ test("prepare external position trade for Maple Liquidity lend V2 should work co
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17270518n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xec93a05a52d999b353508818510e157d0632aeceaae60d06638857a423dc63ba
   const callArgs =
@@ -52,11 +52,11 @@ test("prepare external position trade for Maple Liquidity redeem V2 should work 
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16238961n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x5a54cb31c0b059ee7a280ea4da3bcf03c53760e8aebe3fe71e181bcfee4422de
   const callArgs =
@@ -87,11 +87,11 @@ test("prepare external position trade for Maple Liquidity request redeem V2 shou
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16238972n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x80c91825d037c2e85e39a9ab5d13348f079dfd6817c039cfe91a4d7ca9545aed
   const callArgs =
@@ -122,11 +122,11 @@ test("prepare external position trade for Maple Liquidity cancel redeem V2 shoul
   const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
   const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16274942n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xf4b5cd5fc4e801907041f2de96bc5cad98223f0c5c410b1f785f5d2e94ebd192
   const callArgs =
@@ -158,11 +158,11 @@ test("prepare external position trade for Maple Liquidity claim rewards V1 shoul
   const comptrollerProxy = "0x69E38c085A2f87BC27c5fCE9B126a50Df960Ab63" as const;
   const vaultOwner = "0xbf687e4f225e86faf1bbdd5b7b14eccec2f71fdb" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16770470n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x368f571ad93ac9e9a1f3dfef05f0721c22daafaf5a5000955a76c722ca6776ec
   const callArgs =

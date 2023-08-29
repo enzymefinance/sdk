@@ -8,6 +8,13 @@ import {
   encodeAaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
 import {
+  encodeArbitraryLoanCallOnAccountingModuleArgs,
+  encodeArbitraryLoanCloseLoanArgs,
+  encodeArbitraryLoanConfigureLoanArgs,
+  encodeArbitraryLoanReconcileArgs,
+  encodeArbitraryLoanUpdateBorrowableAmountArgs,
+} from "./instances/arbitraryLoan.js";
+import {
   encodeCompoundV2DebtAddCollateralArgs,
   encodeCompoundV2DebtBorrowArgs,
   encodeCompoundV2DebtClaimCompArgs,
@@ -41,6 +48,13 @@ import {
   encodeTheGraphDelegationUndelegateArgs,
   encodeTheGraphDelegationWithdrawArgs,
 } from "./instances/theGraphDelegation.js";
+import {
+  encodeUniswapV3LiquidityAddLiquidityArgs,
+  encodeUniswapV3LiquidityCollectArgs,
+  encodeUniswapV3LiquidityMintArgs,
+  encodeUniswapV3LiquidityPurgeArgs,
+  encodeUniswapV3LiquidityRemoveLiquidityArgs,
+} from "./instances/uniswapV3Liquidity.js";
 import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
@@ -78,6 +92,16 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeAaveV2DebtBorrowArgs(callArgs);
     case ExternalPosition.AaveV2DebtRepayBorrow:
       return encodeAaveV2DebtRepayBorrowArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanConfigureLoan:
+      return encodeArbitraryLoanConfigureLoanArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanUpdateBorrowableAmount:
+      return encodeArbitraryLoanUpdateBorrowableAmountArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanCallOnAccountingModule:
+      return encodeArbitraryLoanCallOnAccountingModuleArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanReconcile:
+      return encodeArbitraryLoanReconcileArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanCloseLoan:
+      return encodeArbitraryLoanCloseLoanArgs(callArgs);
     case ExternalPosition.CompoundV2DebtAddCollateral:
       return encodeCompoundV2DebtAddCollateralArgs(callArgs);
     case ExternalPosition.CompoundV2DebtClaimComp:
@@ -124,5 +148,15 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeMapleLiquidityRedeemV2Args(callArgs);
     case ExternalPosition.MapleLiquidityCancelRedeemV2:
       return encodeMapleLiquidityCancelRedeemV2Args(callArgs);
+    case ExternalPosition.UniswapV3LiquidityMint:
+      return encodeUniswapV3LiquidityMintArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityAddLiquidity:
+      return encodeUniswapV3LiquidityAddLiquidityArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityRemoveLiquidity:
+      return encodeUniswapV3LiquidityRemoveLiquidityArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityCollect:
+      return encodeUniswapV3LiquidityCollectArgs(callArgs);
+    case ExternalPosition.UniswapV3LiquidityPurge:
+      return encodeUniswapV3LiquidityPurgeArgs(callArgs);
   }
 }

@@ -11,7 +11,7 @@ import {
   STETH,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
@@ -43,14 +43,14 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   // id won't change, for swaps it will be always the same id in the registry
   const swapId = 2n;
 
-  const swapsContcrat = await publicClient.readContract({
+  const swapsContcrat = await publicClientMainnet.readContract({
     abi: abiCurveRegistry,
     address: CURVE_REGISTRY,
     functionName: "get_address",
     args: [swapId],
   });
 
-  const [bestPool, minIncomingAssetAmount] = await publicClient.readContract({
+  const [bestPool, minIncomingAssetAmount] = await publicClientMainnet.readContract({
     abi: abiCurveSwaps,
     address: swapsContcrat,
     functionName: "get_best_rate",

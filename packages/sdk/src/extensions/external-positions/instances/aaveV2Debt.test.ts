@@ -1,5 +1,5 @@
 import { EXTERNAL_POSITION_MANAGER } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import {
@@ -16,11 +16,11 @@ const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
 const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
 test("prepare external position trade for Aave V2 Debt add collateral should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14428856n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x11148ae9452c8f68fb75f05bc4beec0224868f7fe17d9848feffd263d5cf07cd
   const callArgs =
@@ -48,11 +48,11 @@ test("prepare external position trade for Aave V2 Debt add collateral should wor
 });
 
 test("prepare external position trade for Aave V2 Debt remove collateral should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14430254n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x8a9ce501066d7122a728e741fef541cfc8180f005874883a01c3f88b6b6f4b5b
   const callArgs =
@@ -81,11 +81,11 @@ test("prepare external position trade for Aave V2 Debt remove collateral should 
 });
 
 test("prepare external position trade for Aave V2 Debt borrow should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14428866n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xd8cdbb2b5db096f7b690b3f4bf05feb1ddc6f806a7afd91bdbc63defd61403fb
   const callArgs =
@@ -113,11 +113,11 @@ test("prepare external position trade for Aave V2 Debt borrow should work correc
 });
 
 test("prepare external position trade for Aave V2 Debt repay borrow should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 14430247n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x5cebab468a8aa8140dc00ab23f4f5f0fe5b75128515cc79e3c2e1088da3440e2
   const callArgs =

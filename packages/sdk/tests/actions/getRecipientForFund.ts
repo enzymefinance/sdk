@@ -1,5 +1,5 @@
 import { MANAGEMENT_FEE } from "../constants.js";
-import { publicClient } from "../globals.js";
+import { publicClientMainnet } from "../globals.js";
 import { type Address, parseAbi } from "viem";
 
 export async function getRecipientForFund({
@@ -11,7 +11,7 @@ export async function getRecipientForFund({
     "function getRecipientForFund(address _comptrollerProxy) external view returns (address recipient_)",
   ] as const);
 
-  return publicClient.readContract({
+  return publicClientMainnet.readContract({
     address: MANAGEMENT_FEE,
     abi,
     functionName: "getRecipientForFund",

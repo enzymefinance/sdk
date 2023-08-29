@@ -1,5 +1,5 @@
 import { ALICE, FUND_DEPLOYER } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction } from "../../tests/globals.js";
 import { encodeManagementFeeSettings } from "../extensions/fees/instances/managementFee.js";
 import { encodePerformanceFeeSettings } from "../extensions/fees/instances/performanceFee.js";
 import { encodeMinMaxInvestmentPolicySettings } from "../extensions/policies/instances/minMaxInvestmentPolicy.js";
@@ -47,7 +47,7 @@ test("should set up a vault with the given parameters", async () => {
     }),
   });
 
-  const vaultOwner = await publicClient.readContract({
+  const vaultOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getOwner",
