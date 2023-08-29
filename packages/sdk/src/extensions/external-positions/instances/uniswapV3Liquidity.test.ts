@@ -1,6 +1,6 @@
 import { IUniswapV3LiquidityPositionLib } from "../../../../../abis/src/abis/IUniswapV3LiquidityPositionLib.js";
 import { EXTERNAL_POSITION_MANAGER, WETH } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 
@@ -18,11 +18,11 @@ test("prepare external position trade for Uniswap V3 Liquidity mint should work 
   const comptrollerProxy = "0x05d6c4df0aa92aae4b240b1da64fffefe6a07e48" as const;
   const vaultOwner = "0x55be2a08954778744ae0b92e7344e126c6104eb2" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16815320n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x0141f350e7bcd8eb24d77482f895f8ee105b93a122a3a414bee30459ad641d3f
   const callArgs =
@@ -42,7 +42,7 @@ test("prepare external position trade for Uniswap V3 Liquidity mint should work 
     address: comptrollerProxy,
   });
 
-  const nfts = await publicClient.readContract({
+  const nfts = await publicClientMainnet.readContract({
     abi: IUniswapV3LiquidityPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getNftIds",
@@ -54,7 +54,7 @@ test("prepare external position trade for Uniswap V3 Liquidity mint should work 
     throw new Error("No NFTs minted");
   }
 
-  const pair = await publicClient.readContract({
+  const pair = await publicClientMainnet.readContract({
     abi: IUniswapV3LiquidityPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getPairForNft",
@@ -68,11 +68,11 @@ test("prepare external position trade for Uniswap V3 Liquidity add liquidity sho
   const comptrollerProxy = "0x62eeaaeb23a2e5da6e255bf5384b3acfa57a07b4" as const;
   const vaultOwner = "0x7402803f9a4a9afd316fbd40791ec6f53d9c5fed" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16077487n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x98722818c453495b4496d1bf800f484b039031deffbf52247357b6b964b93378
   const callArgs =
@@ -92,7 +92,7 @@ test("prepare external position trade for Uniswap V3 Liquidity add liquidity sho
     address: comptrollerProxy,
   });
 
-  const { result: managedAssets } = await publicClient.simulateContract({
+  const { result: managedAssets } = await publicClientMainnet.simulateContract({
     abi: IUniswapV3LiquidityPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getManagedAssets",
@@ -113,11 +113,11 @@ test("prepare external position trade for Uniswap V3 Liquidity remove liquidity 
   const comptrollerProxy = "0xc65de17ec97eec0e184c94767517b6acf47b27aa" as const;
   const vaultOwner = "0x73c35a5b2b57cb21562de72ab5dd60443463f49b" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17994384n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xfab34f9496888ce3b49e60ed8e6565da9449b6542ebdf5b61cf6d353b05fcf52
   const callArgs =
@@ -137,7 +137,7 @@ test("prepare external position trade for Uniswap V3 Liquidity remove liquidity 
     address: comptrollerProxy,
   });
 
-  const { result: managedAssets } = await publicClient.simulateContract({
+  const { result: managedAssets } = await publicClientMainnet.simulateContract({
     abi: IUniswapV3LiquidityPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getManagedAssets",
@@ -182,11 +182,11 @@ test("prepare external position trade for Uniswap V3 Liquidity collect should wo
   const vaultOwner = "0x7402803f9a4a9afd316fbd40791ec6f53d9c5fed" as const;
   const vaultProxy = "0xac41aef84679f53c65aa7f39e0ea10c6f33459c0" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16019847n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x90a7fad8f916a1a301259cde94d3d2065d3ef4469e3d8ba64e7b2ff142291a2a
   const callArgs =
@@ -223,11 +223,11 @@ test("prepare external position trade for Uniswap V3 Liquidity purge should work
   const comptrollerProxy = "0x62eeaaeb23a2e5da6e255bf5384b3acfa57a07b4" as const;
   const vaultOwner = "0x7402803f9a4a9afd316fbd40791ec6f53d9c5fed" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16077381n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x84304e395faf7de3e86b003faeea0ddd00b6955dba751110a7913b200890b901
   const callArgs =
@@ -247,7 +247,7 @@ test("prepare external position trade for Uniswap V3 Liquidity purge should work
     address: comptrollerProxy,
   });
 
-  const { result: managedAssets } = await publicClient.simulateContract({
+  const { result: managedAssets } = await publicClientMainnet.simulateContract({
     abi: IUniswapV3LiquidityPositionLib,
     address: decodedCallArgs.externalPositionProxy,
     functionName: "getManagedAssets",
