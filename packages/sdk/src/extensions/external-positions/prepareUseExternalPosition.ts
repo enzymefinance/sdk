@@ -8,6 +8,13 @@ import {
   encodeAaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
 import {
+  encodeArbitraryLoanCallOnAccountingModuleArgs,
+  encodeArbitraryLoanCloseLoanArgs,
+  encodeArbitraryLoanConfigureLoanArgs,
+  encodeArbitraryLoanReconcileArgs,
+  encodeArbitraryLoanUpdateBorrowableAmountArgs,
+} from "./instances/arbitraryLoan.js";
+import {
   encodeCompoundV2DebtAddCollateralArgs,
   encodeCompoundV2DebtBorrowArgs,
   encodeCompoundV2DebtClaimCompArgs,
@@ -85,6 +92,16 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeAaveV2DebtBorrowArgs(callArgs);
     case ExternalPosition.AaveV2DebtRepayBorrow:
       return encodeAaveV2DebtRepayBorrowArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanConfigureLoan:
+      return encodeArbitraryLoanConfigureLoanArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanUpdateBorrowableAmount:
+      return encodeArbitraryLoanUpdateBorrowableAmountArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanCallOnAccountingModule:
+      return encodeArbitraryLoanCallOnAccountingModuleArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanReconcile:
+      return encodeArbitraryLoanReconcileArgs(callArgs);
+    case ExternalPosition.ArbitraryLoanCloseLoan:
+      return encodeArbitraryLoanCloseLoanArgs(callArgs);
     case ExternalPosition.CompoundV2DebtAddCollateral:
       return encodeCompoundV2DebtAddCollateralArgs(callArgs);
     case ExternalPosition.CompoundV2DebtClaimComp:

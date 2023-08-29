@@ -1,5 +1,5 @@
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { ZERO_ADDRESS } from "../constants/misc.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
 import { prepareRemoveNominatedOwnerParams } from "./removeNominatedOwner.js";
@@ -12,7 +12,7 @@ test("should remove nominated owner correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const firstNominatedOwner = await publicClient.readContract({
+  const firstNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",
@@ -26,7 +26,7 @@ test("should remove nominated owner correctly", async () => {
     vaultProxy,
   });
 
-  const newNominatedOwner = await publicClient.readContract({
+  const newNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",
@@ -34,7 +34,7 @@ test("should remove nominated owner correctly", async () => {
 
   expect(newNominatedOwner).toEqual(BOB);
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareRemoveNominatedOwnerParams(),
     account: ALICE,
     address: vaultProxy,
@@ -42,7 +42,7 @@ test("should remove nominated owner correctly", async () => {
 
   await sendTestTransaction(request);
 
-  const lastNominatedOwner = await publicClient.readContract({
+  const lastNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getNominatedOwner",

@@ -75,6 +75,9 @@ export const ACCOUNTS = [
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
 
+// Testnet contracts
+export const TESTNET_EXTERNAL_POSITION_MANAGER = "0x370826fa91762609964723962187efba705c1f17" as const;
+
 // Named accounts
 export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
 
@@ -92,3 +95,15 @@ if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER === undefined) {
 }
 
 export const FORK_BLOCK_NUMBER = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER));
+
+if (process.env.VITE_ANVIL_FORK_URL_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL_POLYGON"');
+}
+
+export const FORK_URL_POLYGON = process.env.VITE_ANVIL_FORK_URL_POLYGON;
+
+if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON"');
+}
+
+export const FORK_BLOCK_NUMBER_POLYGON = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON));

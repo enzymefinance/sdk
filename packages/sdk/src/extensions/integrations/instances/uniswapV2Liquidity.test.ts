@@ -1,6 +1,6 @@
 import { UNISWAP_V2_LIQUIDITY_ADAPTER, UNISWAP_V2_POOL_DAI_ETH } from "../../../../tests/constants.js";
 import { ALICE, BOB, DAI, INTEGRATION_MANAGER, WETH } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { min } from "../../../utils/math.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
@@ -22,17 +22,17 @@ async function getUniswapV2PoolLendRate({
   amountADesired,
 }: { poolToken: Address; amountADesired: bigint; tokenA: Address }) {
   const [[reserveA, reserveB], tokenAAddress, poolTokensSupply] = await Promise.all([
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "getReserves",
     }),
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "token0",
     }),
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "totalSupply",
@@ -60,22 +60,22 @@ async function getUniswapV2PoolRedeemRate({
   poolTokenAmount,
 }: { poolToken: Address; poolTokenAmount: bigint }) {
   const [[reserveA, reserveB], poolTokensSupply, tokenA, tokenB] = await Promise.all([
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "getReserves",
     }),
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "totalSupply",
     }),
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "token0",
     }),
-    publicClient.readContract({
+    publicClientMainnet.readContract({
       abi: abiUniswapV2Pair,
       address: poolToken,
       functionName: "token1",

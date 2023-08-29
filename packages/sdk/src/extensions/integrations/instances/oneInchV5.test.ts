@@ -1,5 +1,5 @@
 import { INTEGRATION_MANAGER, ONE_INCH_V5_ADAPTER, RETH } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { decodeOneInchV5TakeOrderArgs } from "./oneInchV5.js";
@@ -8,7 +8,7 @@ import { parseEther } from "viem";
 import { test } from "vitest";
 
 test("prepare adapter trade for 1inchV5 take order should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17883205n,
   });
 
@@ -17,7 +17,7 @@ test("prepare adapter trade for 1inchV5 take order should work correctly", async
   const comptrollerProxy = "0xad2cf50ad663639c6d22f72f8f4d686f51fc89f8";
   const vaultProxy = "0xcc721874a2ee84198ef3a6a4c7ef7c642347d78a";
 
-  await testClient.setBalance({
+  await testClientMainnet.setBalance({
     value: parseEther("1"),
     address: vaultOwner,
   });

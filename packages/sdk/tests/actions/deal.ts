@@ -1,4 +1,4 @@
-import { testClient } from "../globals.js";
+import { testClientMainnet } from "../globals.js";
 import { keccak256 } from "viem/utils";
 
 import type { Address } from "viem";
@@ -39,7 +39,7 @@ export async function deal({
 
   const value = encodeAbiParameters([{ type: "uint256", name: "amount" }], [amount]);
 
-  await testClient.setStorageAt({
+  await testClientMainnet.setStorageAt({
     address: token,
     index: hashedSlotKey,
     value,

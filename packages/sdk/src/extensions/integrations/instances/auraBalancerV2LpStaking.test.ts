@@ -1,5 +1,5 @@
 import { AURA, AURA_BALANCER_V2_LP_STAKING_ADAPTER, INTEGRATION_MANAGER } from "../../../../tests/constants.js";
-import { sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
@@ -15,11 +15,11 @@ const comptrollerProxy = "0x746de9838BB3D14f1aC1b78Bd855E48201F221a6" as const;
 const vaultOwner = "0x0D947D68f583e8B23ff816df9ff3f23a8Cfd7496" as const;
 
 test("prepare adapter trade for Aura Balancer V2 Lp Staking lend and stake should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16875310n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x9e566d1b57693cba3ae93a41e85860698b6bc90a7ede9a3c246912afb24f6229
   const integrationData =
@@ -48,11 +48,11 @@ test("prepare adapter trade for Aura Balancer V2 Lp Staking lend and stake shoul
 });
 
 test("prepare adapter trade for Aura Balancer V2 Lp Staking unstake and redeem should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16882441n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x6ddf3d5f7862e18ae42b09403f6fcd6ca22d2a2f5674a97db5ca572551538c7a
   const integrationData =
@@ -81,11 +81,11 @@ test("prepare adapter trade for Aura Balancer V2 Lp Staking unstake and redeem s
 });
 
 test("prepare adapter trade for Aura Balancer V2 Lp Staking claim rewards should work correctly", async () => {
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 16875832n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0x6ed869d7b67de0806eb14ab7621d5e58c519fd709813b28179304b3b283ea47b
   const integrationData = "0x000000000000000000000000095d3f1bb143a626867e0dfc97968ed561311cb2";

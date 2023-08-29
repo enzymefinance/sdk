@@ -1,5 +1,5 @@
 import { ALICE, BOB, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { prepareClaimOwnershipParams } from "./claimOwnership.js";
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import { expect, test } from "vitest";
@@ -10,7 +10,7 @@ test("should claim ownership correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const originalOwner = await publicClient.readContract({
+  const originalOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getOwner",
@@ -24,7 +24,7 @@ test("should claim ownership correctly", async () => {
     vaultProxy,
   });
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareClaimOwnershipParams(),
     address: vaultProxy,
     account: BOB,
@@ -32,7 +32,7 @@ test("should claim ownership correctly", async () => {
 
   await sendTestTransaction(request);
 
-  const newOwner = await publicClient.readContract({
+  const newOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
     address: vaultProxy,
     functionName: "getOwner",

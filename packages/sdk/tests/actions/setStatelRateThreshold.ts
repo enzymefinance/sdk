@@ -1,6 +1,6 @@
 import { toSeconds } from "../../src/utils/conversion.js";
 import { FUND_DEPLOYER, VALUE_INTERPRETER, WETH } from "../constants.js";
-import { testClient } from "../globals.js";
+import { testClientMainnet } from "../globals.js";
 import { IValueInterpreter } from "@enzymefinance/abis/IValueInterpreter";
 import { encodeDeployData } from "viem";
 
@@ -16,7 +16,7 @@ export async function overrideValueInterpreter({
     args: [FUND_DEPLOYER, WETH, statelRateThreshold],
   });
 
-  await testClient.setCode({
+  await testClientMainnet.setCode({
     address: VALUE_INTERPRETER,
     bytecode: data,
   });
