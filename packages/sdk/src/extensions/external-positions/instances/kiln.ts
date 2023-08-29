@@ -10,9 +10,9 @@ export const KilnAction = {
 
 export type KilnClaimType = typeof KilnClaimType[keyof typeof KilnClaimType];
 export const KilnClaimType = {
-  ExecutionLayer: "0",
-  ConsensusLayer: "1",
-  All: "2",
+  ExecutionLayer: 0,
+  ConsensusLayer: 1,
+  All: 2,
 } as const;
 
 export const kilnStakeArgsEncoding = [
@@ -34,10 +34,11 @@ export const kilnClaimFeesArgsEncoding = [
   {
     name: "publicKeys",
     type: "bytes[]",
+    
   },
   {
-    name: "claimType",
-    type: "string",
+    name: "claimFeeType",
+    type: "uint8",
   },
 ] as const;
 
@@ -50,7 +51,7 @@ export type KilnStakeArgs = {
 export type KilnClaimFeesArgs = {
   stakingContract: Address;
   publicKeys: Hex[];
-  claimType: string;
+  claimFeeType: number;
   externalPositionProxy: Address;
 };
 
@@ -79,9 +80,9 @@ export function encodeKilnClaimFeesArgs({
   externalPositionProxy,
   stakingContract,
   publicKeys,
-  claimType,
+  claimFeeType,
 }: KilnClaimFeesArgs): Hex {
-  const actionArgs = encodeAbiParameters(kilnClaimFeesArgsEncoding, [stakingContract, publicKeys, claimType]);
+  const actionArgs = encodeAbiParameters(kilnClaimFeesArgsEncoding, [stakingContract, publicKeys, claimFeeType]);
 
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
@@ -92,12 +93,12 @@ export function encodeKilnClaimFeesArgs({
 
 export function decodeKilnClaimFeesArgs(callArgs: Hex): KilnClaimFeesArgs {
   const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
-  const [stakingContract, publicKeys, claimType] = decodeAbiParameters(kilnClaimFeesArgsEncoding, actionArgs);
+  const [stakingContract, publicKeys, claimFeeType] = decodeAbiParameters(kilnClaimFeesArgsEncoding, actionArgs);
 
   return {
     externalPositionProxy,
     stakingContract,
     publicKeys,
-    claimType,
+    claimFeeType,
   };
 }

@@ -109,7 +109,7 @@ test("prepare external position trade for Kiln claim fees should work correctly"
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
         type: ExternalPosition.KilnClaimFees,
-        claimType: KilnClaimType.ConsensusLayer,
+        claimFeeType: KilnClaimType.ConsensusLayer,
         publicKeys: [defaultPublicKey, defaultPublicKey],
         stakingContract: KILN_STAKING_CONTRACT,
         externalPositionProxy: decodedCallArgs.externalPositionProxy,
