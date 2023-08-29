@@ -90,14 +90,19 @@ export const publicClientPolygon = createPublicClient({
   }),
 });
 
-export async function sendTestTransaction<TAbi extends Abi | readonly unknown[], TFunctionName extends string = string>(
-  args: SimulateContractParameters<TAbi, TFunctionName> & { network?: "mainnet" | "polygon" },
-) {
-  const publicClient = args.network === "polygon" ? publicClientPolygon : publicClientMainnet;
-  const testClient = args.network === "polygon" ? testClientPolygon : testClientMainnet;
+export async function sendTestTransaction<
+  TAbi extends Abi | readonly unknown[],
+  TFunctionName extends string = string,
+>({
+  network = "mainnet",
+  ...args
+}: SimulateContractParameters<TAbi, TFunctionName> & { network?: "mainnet" | "polygon" }) {
+  const publicClient = network === "polygon" ? publicClientPolygon : publicClientMainnet;
+  const testClient = network === "polygon" ? testClientPolygon : testClientMainnet;
 
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const { request, result } = await publicClient.simulateContract(args as any);
+  const { request, result } = await publicClientMainnet.simulateContract(
+    args as SimulateContractParameters<TAbi, TFunctionName>,
+  );
   const account = parseAccount(request.account);
   const params = request as unknown as WriteContractParameters;
 
