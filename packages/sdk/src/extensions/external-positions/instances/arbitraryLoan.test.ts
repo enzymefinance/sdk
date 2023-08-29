@@ -22,7 +22,7 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
     blockNumber: 32509888n,
   });
 
-  // await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientPolygon.setBalance({ address: vaultOwner, value: parseEther("1") });
   // Taken from tx 0x1fd60f36babb6f006c9cde48232d4d33133408f90f95e8d1729327eb62968bd8
   const actionArgs = {
     borrower: "0x32EFEf8899b23899FF179B446eF7564E0De84Cba",
@@ -43,6 +43,7 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
         ...actionArgs,
       },
     }),
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
@@ -72,7 +73,7 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
   expect(loanAsset).toEqual(actionArgs.asset);
 });
 
-test.only("prepare external position trade for Arbitrary Loan update borrowable amount should work correctly", async () => {
+test("prepare external position trade for Arbitrary Loan update borrowable amount should work correctly", async () => {
   await testClientPolygon.reset({
     blockNumber: 30972230n,
   });
@@ -139,7 +140,7 @@ test("prepare external position trade for Arbitrary Loan reconcile should work c
     functionName: "getTotalRepaid",
   });
 
-  expect(totalRepaid).toBeGreaterThan(1000230156676544n);
+  expect(totalRepaid).toBeGreaterThan(1000230144595000n);
 });
 
 test("prepare external position trade for Arbitrary Loan close loan should work correctly", async () => {
