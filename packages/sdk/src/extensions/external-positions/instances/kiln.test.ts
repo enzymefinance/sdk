@@ -1,5 +1,5 @@
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
@@ -38,7 +38,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
     address: comptrollerProxy,
   });
 
-  const [externalPositionDeployedForFundEventLog] = await publicClient.getLogs({
+  const [externalPositionDeployedForFundEventLog] = await publicClientMainnet.getLogs({
     address: EXTERNAL_POSITION_MANAGER,
     event: parseAbiItem(
       "event ExternalPositionDeployedForFund(address indexed comptrollerProxy, address indexed vaultProxy, address externalPosition, uint256 indexed externalPositionTypeId, bytes data)",
@@ -62,7 +62,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
     address: comptrollerProxy,
   });
 
-  const [validatorsAddedEventLog] = await publicClient.getLogs({
+  const [validatorsAddedEventLog] = await publicClientMainnet.getLogs({
     event: parseAbiItem("event ValidatorsAdded(address stakingContractAddress, uint256 validatorAmount)"),
   });
 
@@ -76,11 +76,11 @@ test("prepare external position trade for Kiln claim fees should work correctly"
   const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510" as const;
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264820n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xfca076b64faf411134c2a6c2424a4b0c81aa761ec06556dbf6b7e902e9d24e88
   const callArgs =
@@ -100,7 +100,7 @@ test("prepare external position trade for Kiln claim fees should work correctly"
     address: comptrollerProxy,
   });
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264821n,
   });
 
@@ -119,7 +119,7 @@ test("prepare external position trade for Kiln claim fees should work correctly"
     address: comptrollerProxy,
   });
 
-  const managedAssets = await publicClient.readContract({
+  const managedAssets = await publicClientMainnet.readContract({
     abi: IKilnStakingPositionLib,
     address: externalPositionAddress,
     functionName: "getManagedAssets",
@@ -134,11 +134,11 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
   const vaultProxy = "0x48143538590587df4de00a77c2dd52f689088335" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264820n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xfca076b64faf411134c2a6c2424a4b0c81aa761ec06556dbf6b7e902e9d24e88
   const callArgs =
@@ -158,7 +158,7 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
     address: comptrollerProxy,
   });
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264829n,
   });
 
@@ -186,11 +186,11 @@ test("prepare external position trade for Kiln pause position value should work 
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
   const vaultProxy = "0x48143538590587df4de00a77c2dd52f689088335" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264820n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xfca076b64faf411134c2a6c2424a4b0c81aa761ec06556dbf6b7e902e9d24e88
   const callArgs =
@@ -210,7 +210,7 @@ test("prepare external position trade for Kiln pause position value should work 
     address: comptrollerProxy,
   });
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264829n,
   });
 
@@ -238,11 +238,11 @@ test("prepare external position trade for Kiln unpause position value should wor
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
   const vaultProxy = "0x48143538590587df4de00a77c2dd52f689088335" as const;
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264820n,
   });
 
-  await testClient.setBalance({ address: vaultOwner, value: parseEther("1") });
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   // Taken from tx 0xfca076b64faf411134c2a6c2424a4b0c81aa761ec06556dbf6b7e902e9d24e88
   const callArgs =
@@ -262,7 +262,7 @@ test("prepare external position trade for Kiln unpause position value should wor
     address: comptrollerProxy,
   });
 
-  await testClient.reset({
+  await testClientMainnet.reset({
     blockNumber: 17264829n,
   });
 
