@@ -31,7 +31,7 @@ test("prepare external position trade for Compound V2 Debt add collateral should
   const decodedCallArgs = decodeCompoundV2DebtAddCollateralArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -67,7 +67,7 @@ test("prepare external position trade for Compound V2 Debt remove collateral sho
   const decodedCallArgs = decodeCompoundV2DebtRemoveCollateralArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -104,7 +104,7 @@ test("prepare external position trade for Compound V2 Debt borrow should work co
   const decodedCallArgs = decodeCompoundV2DebtBorrowArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -139,7 +139,7 @@ test("prepare external position trade for Compound V2 Debt repay borrow should w
   const decodedCallArgs = decodeCompoundV2DebtRepayBorrowArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -185,7 +185,7 @@ test("prepare external position trade for Compound V2 Debt claim comp should wor
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

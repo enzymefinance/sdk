@@ -30,14 +30,18 @@ test("prepare adapter trade for Convex Curve Lp Staking lend and stake should wo
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -75,7 +79,7 @@ test("prepare adapter trade for Convex Curve Lp Staking lend and stake should wo
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -105,14 +109,18 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -150,7 +158,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -189,7 +197,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake and redeem shoul
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -226,14 +234,18 @@ test("prepare adapter trade for Convex Curve Lp Staking stake should work correc
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -271,7 +283,7 @@ test("prepare adapter trade for Convex Curve Lp Staking stake should work correc
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -295,7 +307,7 @@ test("prepare adapter trade for Convex Curve Lp Staking stake should work correc
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -322,14 +334,18 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake should work corr
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -367,7 +383,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake should work corr
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -392,7 +408,7 @@ test("prepare adapter trade for Convex Curve Lp Staking unstake should work corr
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -419,14 +435,18 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -464,7 +484,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,
@@ -496,7 +516,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
     value: parseEther("1"),
   });
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: abiCRVoken, name: "mint" }),
       args: [CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER, crvRewardsAmount],
@@ -516,7 +536,7 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CONVEX_CURVE_LP_STAKING_ADAPTER,

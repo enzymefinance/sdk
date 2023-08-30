@@ -1,22 +1,22 @@
 import { prepareSetNominatedOwnerParams } from "../../src/actions/setNominatedOwner.js";
-import { type ClientNetwork, sendTestTransaction } from "../globals.js";
+import { type Network, sendTestTransaction } from "../globals.js";
 import type { Address } from "viem";
 
 export function setNominatedOwner({
   nominatedOwner,
   vaultProxy,
   account,
-  clientNetwork,
+  network,
 }: {
   nominatedOwner: Address;
   account: Address;
   vaultProxy: Address;
-  clientNetwork: ClientNetwork;
+  network: Network;
 }) {
   return sendTestTransaction({
     address: vaultProxy,
     account,
-    clientNetwork,
+    network,
     ...prepareSetNominatedOwnerParams({
       nominatedOwner: nominatedOwner,
     }),

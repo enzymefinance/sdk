@@ -3,7 +3,7 @@ import { getSharesActionTimelock } from "../../src/reads/getSharesActionTimelock
 import { toSeconds } from "../../src/utils/conversion.js";
 import type { PartialPick } from "../../src/utils/types.js";
 import { WETH } from "../constants.js";
-import { publicClientMainnet, sendTestTransaction } from "../globals.js";
+import { type Network, publicClientMainnet, sendTestTransaction } from "../globals.js";
 import { approveSpend } from "./approveSpend.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { wrapEther } from "./wrapEther.js";
@@ -14,6 +14,7 @@ export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"
   comptrollerProxy: Address;
   sharesBuyer: Address;
   skipSharesActionTimelock?: boolean;
+  network: Network;
 };
 
 export async function buyShares({
@@ -22,6 +23,7 @@ export async function buyShares({
   sharesBuyer,
   minSharesQuantity,
   skipSharesActionTimelock = true,
+  network,
 }: BuySharesSettings) {
   const denominationAsset = await publicClientMainnet.readContract({
     abi: IComptrollerLib,
@@ -31,14 +33,14 @@ export async function buyShares({
 
   if (denominationAsset === WETH) {
     await wrapEther({
-      clientNetwork: "mainnet",
+      network,
       account: sharesBuyer,
       amount: investmentAmount,
     });
   }
 
   await approveSpend({
-    clientNetwork: "mainnet",
+    network,
     token: denominationAsset,
     amount: investmentAmount,
     spender: comptrollerProxy,
@@ -46,7 +48,7 @@ export async function buyShares({
   });
 
   const { result: sharesReceived } = await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network,
     ...prepareBuySharesParams({
       investmentAmount: investmentAmount,
       minSharesQuantity: minSharesQuantity ?? 1n, // NOTE: You should never use `1n` in production. This is only for testing.

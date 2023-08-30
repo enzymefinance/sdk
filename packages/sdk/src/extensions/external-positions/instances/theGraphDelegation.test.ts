@@ -28,7 +28,7 @@ test("prepare external position trade for The Graph Delegation delegate should w
   const decodedCallArgs = decodeTheGraphDelegationDelegateArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -64,7 +64,7 @@ test("prepare external position trade for The Graph Delegation undelegate should
   const decodedCallArgs = decodeTheGraphDelegationUndelegateArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -100,7 +100,7 @@ test("prepare external position trade for The Graph Delegation withdraw should w
   const decodedCallArgs = decodeTheGraphDelegationWithdrawArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

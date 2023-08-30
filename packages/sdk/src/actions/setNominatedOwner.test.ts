@@ -7,8 +7,11 @@ import { expect, test } from "vitest";
 
 test("should set nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const originalOwner = await publicClientMainnet.readContract({
@@ -20,7 +23,7 @@ test("should set nominated owner correctly", async () => {
   expect(originalOwner).toEqual(ALICE);
 
   await testActions.setNominatedOwner({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,

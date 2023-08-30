@@ -6,13 +6,17 @@ import { expect, test } from "vitest";
 
 test("should shutdown gas relay paymaster correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(500);
 
   await testActions.buyShares({
+    network: "mainnet",
     comptrollerProxy,
     sharesBuyer: ALICE,
     investmentAmount: depositAmount,
@@ -25,7 +29,7 @@ test("should shutdown gas relay paymaster correctly", async () => {
   await testActions.deployGasRelayPaymaster({
     account: ALICE,
     address: comptrollerProxy,
-    clientNetwork: "mainnet",
+    network: "mainnet",
   });
 
   const withGasRelayPaymaster = await testActions.getGasRelayPaymaster({
@@ -38,7 +42,7 @@ test("should shutdown gas relay paymaster correctly", async () => {
     sendTestTransaction({
       account: ALICE,
       address: comptrollerProxy,
-      clientNetwork: "mainnet",
+      network: "mainnet",
       ...prepareShutdownGasRelayPaymasterParams(),
     }),
   ).resolves.not.toThrow();

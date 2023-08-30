@@ -31,7 +31,7 @@ test("prepare external position trade for Uniswap V3 Liquidity mint should work 
   const decodedCallArgs = decodeUniswapV3LiquidityMintArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -82,7 +82,7 @@ test("prepare external position trade for Uniswap V3 Liquidity add liquidity sho
   const decodedCallArgs = decodeUniswapV3LiquidityAddLiquidityArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -128,7 +128,7 @@ test("prepare external position trade for Uniswap V3 Liquidity remove liquidity 
   const decodedCallArgs = decodeUniswapV3LiquidityRemoveLiquidityArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -203,7 +203,7 @@ test("prepare external position trade for Uniswap V3 Liquidity collect should wo
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -240,7 +240,7 @@ test("prepare external position trade for Uniswap V3 Liquidity purge should work
   const decodedCallArgs = decodeUniswapV3LiquidityPurgeArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

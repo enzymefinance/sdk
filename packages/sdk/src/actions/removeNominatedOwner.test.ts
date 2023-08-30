@@ -8,8 +8,11 @@ import { expect, test } from "vitest";
 
 test("should remove nominated owner correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const firstNominatedOwner = await publicClientMainnet.readContract({
@@ -21,7 +24,7 @@ test("should remove nominated owner correctly", async () => {
   expect(firstNominatedOwner).toEqual(ZERO_ADDRESS);
 
   await testActions.setNominatedOwner({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,
@@ -41,7 +44,7 @@ test("should remove nominated owner correctly", async () => {
     address: vaultProxy,
   });
 
-  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
+  await sendTestTransaction({ ...request, network: "mainnet" });
 
   const lastNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,

@@ -42,14 +42,18 @@ test("prepare adapter trade for Compound V2 lend should work correctly", async (
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -71,7 +75,7 @@ test("prepare adapter trade for Compound V2 lend should work correctly", async (
   const minCTokenAmountWithSlippage = multiplyBySlippage({ amount: minCTokenAmount, slippage });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V2_ADAPTER,
@@ -99,14 +103,18 @@ test("prepare adapter trade for Compound V2 redeem should work correctly", async
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const investmentAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: investmentAmount,
   });
@@ -128,7 +136,7 @@ test("prepare adapter trade for Compound V2 redeem should work correctly", async
   const minCTokenAmountWithSlippage = multiplyBySlippage({ amount: minCTokenAmount, slippage });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V2_ADAPTER,
@@ -159,7 +167,7 @@ test("prepare adapter trade for Compound V2 redeem should work correctly", async
   const minUnderlyingAmountWithSlippage = multiplyBySlippage({ amount: minUnderlyingAmount, slippage });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V2_ADAPTER,

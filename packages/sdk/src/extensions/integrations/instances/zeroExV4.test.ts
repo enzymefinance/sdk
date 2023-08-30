@@ -36,7 +36,7 @@ test("prepare adapter trade for zeroExV4 take order should work correctly", asyn
         ...decodedIntegrationData,
       },
     }),
-    clientNetwork: "mainnet",
+    network: "mainnet",
     account: vaultOwner,
     address: comptrollerProxy,
   });

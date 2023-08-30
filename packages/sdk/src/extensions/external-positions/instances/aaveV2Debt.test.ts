@@ -29,7 +29,7 @@ test("prepare external position trade for Aave V2 Debt add collateral should wor
   const decodedCallArgs = decodeAaveV2DebtAddCollateralArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -62,7 +62,7 @@ test("prepare external position trade for Aave V2 Debt remove collateral should 
   const decodedCallArgs = decodeAaveV2DebtRemoveCollateralArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -96,7 +96,7 @@ test("prepare external position trade for Aave V2 Debt borrow should work correc
   const decodedCallArgs = decodeAaveV2DebtBorrowArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -129,7 +129,7 @@ test("prepare external position trade for Aave V2 Debt repay borrow should work 
   const decodedCallArgs = decodeAaveV2DebtRepayBorrowArgs(callArgs);
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

@@ -43,7 +43,7 @@ test("prepare external position trade for Arbitrary Loan configure loan should w
         ...actionArgs,
       },
     }),
-    clientNetwork: "polygon",
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
@@ -94,7 +94,7 @@ test("prepare external position trade for Arbitrary Loan update borrowable amoun
         ...decodedCallArgs,
       },
     }),
-    clientNetwork: "polygon",
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
@@ -129,7 +129,7 @@ test("prepare external position trade for Arbitrary Loan reconcile should work c
         ...decodedCallArgs,
       },
     }),
-    clientNetwork: "polygon",
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });
@@ -164,7 +164,7 @@ test("prepare external position trade for Arbitrary Loan close loan should work 
         ...decodedCallArgs,
       },
     }),
-    clientNetwork: "polygon",
+    network: "polygon",
     account: vaultOwner,
     address: comptrollerProxy,
   });

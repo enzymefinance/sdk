@@ -46,14 +46,18 @@ test("prepare adapter trade for Idle V4 lend should work correctly", async () =>
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -75,7 +79,7 @@ test("prepare adapter trade for Idle V4 lend should work correctly", async () =>
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -103,14 +107,18 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const investmentAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: investmentAmount,
   });
@@ -132,7 +140,7 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -172,7 +180,7 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   await testClientMainnet.mine({ blocks: 1 });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -200,14 +208,18 @@ test("prepare adapter trade for Idle V4 claim rewards should work correctly", as
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const investmentAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: investmentAmount,
   });
@@ -229,7 +241,7 @@ test("prepare adapter trade for Idle V4 claim rewards should work correctly", as
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -257,7 +269,7 @@ test("prepare adapter trade for Idle V4 claim rewards should work correctly", as
   });
 
   await sendTestTransaction({
-    clientNetwork: "mainnet",
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
