@@ -5,7 +5,10 @@ export type KilnAction = typeof KilnAction[keyof typeof KilnAction];
 export const KilnAction = {
   Stake: 0n,
   ClaimFees: 1n,
-  WithdrawEth: 2n,
+  SweepEth: 2n,
+  Unstake: 3n,
+  PausePositionValue: 4n,
+  UnpausePositionValue: 5n,
 } as const;
 
 export type KilnClaimType = typeof KilnClaimType[keyof typeof KilnClaimType];
@@ -34,7 +37,6 @@ export const kilnClaimFeesArgsEncoding = [
   {
     name: "publicKeys",
     type: "bytes[]",
-    
   },
   {
     name: "claimFeeType",
@@ -98,7 +100,67 @@ export function decodeKilnClaimFeesArgs(callArgs: Hex): KilnClaimFeesArgs {
   return {
     externalPositionProxy,
     stakingContract,
-    publicKeys,
+    publicKeys: [...publicKeys],
     claimFeeType,
+  };
+}
+
+export type KilnSweepEthArgs = {
+  externalPositionProxy: Address;
+};
+
+export function encodeKilnSweepEthArgs({ externalPositionProxy }: KilnSweepEthArgs): Hex {
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.SweepEth,
+    actionArgs: "0x",
+  });
+}
+
+export function decodeKilnSweepEthArgs(callArgs: Hex): KilnSweepEthArgs {
+  const { externalPositionProxy } = decodeCallOnExternalPositionArgs(callArgs);
+
+  return {
+    externalPositionProxy,
+  };
+}
+
+export type KilnPausePositionValueArgs = {
+  externalPositionProxy: Address;
+};
+
+export function encodeKilnPausePositionValueArgs({ externalPositionProxy }: KilnPausePositionValueArgs): Hex {
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.SweepEth,
+    actionArgs: "0x",
+  });
+}
+
+export function decodeKilnPausePositionValueArgs(callArgs: Hex): KilnPausePositionValueArgs {
+  const { externalPositionProxy } = decodeCallOnExternalPositionArgs(callArgs);
+
+  return {
+    externalPositionProxy,
+  };
+}
+
+export type KilnUnpausePositionValueArgs = {
+  externalPositionProxy: Address;
+};
+
+export function encodeKilnUnpausePositionValueArgs({ externalPositionProxy }: KilnUnpausePositionValueArgs): Hex {
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.SweepEth,
+    actionArgs: "0x",
+  });
+}
+
+export function decodeKilnUnpausePositionValueArgs(callArgs: Hex): KilnUnpausePositionValueArgs {
+  const { externalPositionProxy } = decodeCallOnExternalPositionArgs(callArgs);
+
+  return {
+    externalPositionProxy,
   };
 }
