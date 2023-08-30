@@ -23,6 +23,7 @@ test("prepare adapter trade for Aave V2 lend should work correctly", async () =>
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,
@@ -62,6 +63,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,
@@ -83,6 +85,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,

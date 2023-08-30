@@ -21,6 +21,7 @@ test("should set recipient for fund correctly", async () => {
   });
 
   await testActions.setRecipientForFund({
+    clientNetwork: "mainnet",
     account: ALICE,
     comptrollerProxy,
     recipient: BOB,

@@ -32,6 +32,7 @@ test("prepare adapter trade for Compound V3 lend should work correctly", async (
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V3_ADAPTER,
@@ -71,6 +72,7 @@ test("prepare adapter trade for Compound V3 redeem should work correctly", async
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V3_ADAPTER,
@@ -94,6 +96,7 @@ test("prepare adapter trade for Compound V3 redeem should work correctly", async
   const redeemAmount = toWei(50);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V3_ADAPTER,
@@ -133,6 +136,7 @@ test("prepare adapter trade for Compound V3 claim rewards should work correctly"
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V3_ADAPTER,
@@ -159,6 +163,7 @@ test("prepare adapter trade for Compound V3 claim rewards should work correctly"
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: COMPOUND_V3_ADAPTER,

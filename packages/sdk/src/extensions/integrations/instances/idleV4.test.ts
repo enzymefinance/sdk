@@ -75,6 +75,7 @@ test("prepare adapter trade for Idle V4 lend should work correctly", async () =>
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -131,6 +132,7 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -170,6 +172,7 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   await testClientMainnet.mine({ blocks: 1 });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -226,6 +229,7 @@ test("prepare adapter trade for Idle V4 claim rewards should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,
@@ -253,6 +257,7 @@ test("prepare adapter trade for Idle V4 claim rewards should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: IDLE_V4_ADAPTER,

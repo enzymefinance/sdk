@@ -14,11 +14,14 @@ test("should be able to buy shares", async () => {
   const depositAmount = toWei(150);
 
   await testActions.wrapEther({
+    clientNetwork: "mainnet",
     account: ALICE,
     amount: depositAmount,
   });
 
   await testActions.approveSpend({
+    clientNetwork: "mainnet",
+
     token: WETH,
     account: ALICE,
     spender: comptrollerProxy,
@@ -50,7 +53,7 @@ test("should be able to buy shares", async () => {
     expected: 0n,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,

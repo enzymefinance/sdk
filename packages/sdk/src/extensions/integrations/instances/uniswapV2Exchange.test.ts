@@ -62,6 +62,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
 
   // approve uniswapV3SwapRouter to so we can simulate the trade
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IERC20, name: "approve" }),
       args: [UNISWAP_V2_SWAP_ROUTER, depositAmount],
@@ -96,6 +97,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V2_EXCHANGE_ADAPTER,

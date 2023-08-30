@@ -32,6 +32,7 @@ test("prepare adapter trade for Balancer V2 Liquidity lend should work correctly
   await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,
@@ -71,6 +72,7 @@ test("prepare adapter trade for Balancer V2 Liquidity lend and stake should work
   const stakingToken = "0x79eF6103A513951a3b25743DB509E267685726B7";
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,
@@ -111,6 +113,7 @@ test("prepare adapter trade for Balancer V2 Liquidity unstake and redeem should 
   const stakingToken = "0x79eF6103A513951a3b25743DB509E267685726B7";
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,
@@ -149,6 +152,7 @@ test("prepare adapter trade for Balancer V2 Liquidity redeem should work correct
   await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,
@@ -187,6 +191,7 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
 
   // register vault call to allow approving minter by vault owner
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IFundDeployer, name: "registerVaultCalls" }),
       args: [
@@ -201,6 +206,7 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
 
   // approve minter
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
       args: [
@@ -214,6 +220,7 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,
@@ -251,6 +258,7 @@ test("prepare adapter trade for Balancer V2 Liquidity take order should work cor
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: BALANCER_V2_ADAPTER,

@@ -55,6 +55,7 @@ test("prepare adapter trade for Yearn Vault V2 lend should work correctly", asyn
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,
@@ -115,6 +116,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,
@@ -155,6 +157,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,

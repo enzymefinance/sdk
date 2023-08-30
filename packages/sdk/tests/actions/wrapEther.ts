@@ -1,13 +1,15 @@
 import { WETH } from "../constants.js";
-import { sendTestTransaction } from "../globals.js";
+import { type ClientNetwork, sendTestTransaction } from "../globals.js";
 import { type Address, parseAbi } from "viem";
 
 export function wrapEther({
   account,
   amount,
+  clientNetwork,
 }: {
   account: Address;
   amount: bigint;
+  clientNetwork: ClientNetwork;
 }) {
   sendTestTransaction({
     address: WETH,
@@ -15,5 +17,6 @@ export function wrapEther({
     functionName: "deposit",
     value: amount,
     account,
+    clientNetwork,
   });
 }

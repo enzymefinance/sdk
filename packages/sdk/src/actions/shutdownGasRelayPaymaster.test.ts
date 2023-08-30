@@ -25,6 +25,7 @@ test("should shutdown gas relay paymaster correctly", async () => {
   await testActions.deployGasRelayPaymaster({
     account: ALICE,
     address: comptrollerProxy,
+    clientNetwork: "mainnet",
   });
 
   const withGasRelayPaymaster = await testActions.getGasRelayPaymaster({
@@ -37,6 +38,7 @@ test("should shutdown gas relay paymaster correctly", async () => {
     sendTestTransaction({
       account: ALICE,
       address: comptrollerProxy,
+      clientNetwork: "mainnet",
       ...prepareShutdownGasRelayPaymasterParams(),
     }),
   ).resolves.not.toThrow();

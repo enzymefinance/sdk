@@ -29,7 +29,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(autoProtocolFeeSharesBuybackBefore).toBe(false);
 
-  await sendTestTransaction(setAutoProtocolFeeSharesBuybackTrue);
+  await sendTestTransaction({ ...setAutoProtocolFeeSharesBuybackTrue, clientNetwork: "mainnet" });
 
   const autoProtocolFeeSharesBuybackAfter = await testActions.usesAutoProcolFeeSharesBuyBack({
     address: comptrollerProxy,
@@ -47,7 +47,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(setAutoProtocolFeeSharesBuybackFalse).toBeTruthy();
 
-  await sendTestTransaction(setAutoProtocolFeeSharesBuybackFalse);
+  await sendTestTransaction({ ...setAutoProtocolFeeSharesBuybackFalse, clientNetwork: "mainnet" });
 
   const autoProtocolFeeSharesBuybackAfterAgain = await testActions.usesAutoProcolFeeSharesBuyBack({
     address: comptrollerProxy,

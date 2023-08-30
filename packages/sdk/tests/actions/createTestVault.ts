@@ -9,6 +9,7 @@ export async function createTestVault(settings: CreateTestVaultSettings) {
   const {
     result: [comptrollerProxy, vaultProxy],
   } = await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareSetupVaultParams({
       vaultName: "Test Vault",
       vaultSymbol: "TEST",

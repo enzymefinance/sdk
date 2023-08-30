@@ -30,6 +30,7 @@ test("prepare external position trade for Maple Liquidity lend V2 should work co
   const decodedCallArgs = decodeMapleLiquidityLendV2Args(callArgs);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -65,6 +66,7 @@ test("prepare external position trade for Maple Liquidity redeem V2 should work 
   const decodedCallArgs = decodeMapleLiquidityRedeemV2Args(callArgs);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -100,6 +102,7 @@ test("prepare external position trade for Maple Liquidity request redeem V2 shou
   const decodedCallArgs = decodeMapleLiquidityRequestRedeemV2Args(callArgs);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -135,6 +138,7 @@ test("prepare external position trade for Maple Liquidity cancel redeem V2 shoul
   const decodedCallArgs = decodeMapleLiquidityCancelRedeemV2Args(callArgs);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -171,6 +175,7 @@ test("prepare external position trade for Maple Liquidity claim rewards V1 shoul
   const decodedCallArgs = decodeMapleLiquidityClaimRewardsV1Args(callArgs);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

@@ -21,6 +21,7 @@ test("should remove nominated owner correctly", async () => {
   expect(firstNominatedOwner).toEqual(ZERO_ADDRESS);
 
   await testActions.setNominatedOwner({
+    clientNetwork: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,
@@ -40,7 +41,7 @@ test("should remove nominated owner correctly", async () => {
     address: vaultProxy,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   const lastNominatedOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,

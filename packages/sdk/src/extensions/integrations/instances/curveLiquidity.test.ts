@@ -80,6 +80,7 @@ test("prepare adapter trade for Curve Liquidity lend should work correctly", asy
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -153,6 +154,7 @@ test("prepare adapter trade for Curve Liquidity lend and stake should work corre
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -227,6 +229,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -264,6 +267,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -344,6 +348,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -382,6 +387,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -463,6 +469,7 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -486,6 +493,7 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -557,6 +565,7 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -581,6 +590,7 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -652,6 +662,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -676,6 +687,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
       args: [
@@ -694,6 +706,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,

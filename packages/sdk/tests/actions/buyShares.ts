@@ -31,12 +31,14 @@ export async function buyShares({
 
   if (denominationAsset === WETH) {
     await wrapEther({
+      clientNetwork: "mainnet",
       account: sharesBuyer,
       amount: investmentAmount,
     });
   }
 
   await approveSpend({
+    clientNetwork: "mainnet",
     token: denominationAsset,
     amount: investmentAmount,
     spender: comptrollerProxy,
@@ -44,6 +46,7 @@ export async function buyShares({
   });
 
   const { result: sharesReceived } = await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareBuySharesParams({
       investmentAmount: investmentAmount,
       minSharesQuantity: minSharesQuantity ?? 1n, // NOTE: You should never use `1n` in production. This is only for testing.

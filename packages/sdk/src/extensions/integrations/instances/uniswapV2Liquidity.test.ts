@@ -125,6 +125,7 @@ test("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly"
   await testActions.deal({ token: DAI, to: vaultProxy, amount: rates.amountBDesired, slotOfBalancesMapping: 2 });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
@@ -182,6 +183,7 @@ test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctl
   const slippage = 1n;
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,

@@ -63,6 +63,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_EXCHANGE_ADAPTER,

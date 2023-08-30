@@ -27,6 +27,7 @@ test("prepare create external position should work correctly", async () => {
   const validatorAmount = 1n;
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,

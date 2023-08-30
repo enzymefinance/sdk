@@ -30,6 +30,7 @@ test("should deploy gas relay paymaster correctly", async () => {
       account: ALICE,
       address: comptrollerProxy,
       ...prepareDeployGasRelayPaymasterParams(),
+      clientNetwork: "mainnet",
     }),
   ).resolves.not.toThrow();
 

@@ -15,6 +15,7 @@ test("should set up a vault with the given parameters", async () => {
   } = await sendTestTransaction({
     account: ALICE,
     address: FUND_DEPLOYER,
+    clientNetwork: "mainnet",
     ...prepareSetupVaultParams({
       vaultOwner: ALICE,
       vaultName: "Test Vault",

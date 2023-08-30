@@ -21,6 +21,7 @@ test("should deposit to gas relay paymaster correctly", async () => {
   await testActions.deployGasRelayPaymaster({
     account: ALICE,
     address: comptrollerProxy,
+    clientNetwork: "mainnet",
   });
 
   await expect(
@@ -28,6 +29,7 @@ test("should deposit to gas relay paymaster correctly", async () => {
       account: ALICE,
       address: comptrollerProxy,
       ...prepareDepositToGasRelayPaymasterParams(),
+      clientNetwork: "mainnet",
     }),
   ).resolves.not.toThrow();
 });

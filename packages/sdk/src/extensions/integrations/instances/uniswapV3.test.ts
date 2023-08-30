@@ -67,6 +67,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
 
   // approve uniswapV3SwapRouter to so we can simulate the trade
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IERC20, name: "approve" }),
       args: [UNISWAP_V3_SWAP_ROUTER, depositAmount],
@@ -92,6 +93,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   const minIncomingAssetAmountWithSlippage = multiplyBySlippage({ amount: minIncomingAssetAmount, slippage: 1n });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V3_ADAPTER,

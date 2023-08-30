@@ -17,6 +17,7 @@ test("should remove asset managers", async () => {
     }),
     address: vaultProxy,
     account: ALICE,
+    clientNetwork: "mainnet",
   });
 
   const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
@@ -34,7 +35,7 @@ test("should remove asset managers", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   const [bobIsStillManager, carolIsStillManager, daveIsStillManager] = await testActions.isAssetManagers({
     vaultProxy,

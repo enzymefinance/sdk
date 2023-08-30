@@ -20,6 +20,7 @@ test("should set nominated owner correctly", async () => {
   expect(originalOwner).toEqual(ALICE);
 
   await testActions.setNominatedOwner({
+    clientNetwork: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,

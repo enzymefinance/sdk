@@ -32,6 +32,7 @@ test("prepare adapter trade for ParaswapV5 take order should work correctly", as
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: PARASWAP_V5_ADAPTER,

@@ -36,7 +36,7 @@ test("redeem shares in kind should work correctly", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,

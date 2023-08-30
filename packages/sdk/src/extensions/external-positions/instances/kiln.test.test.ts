@@ -28,6 +28,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   const validatorAmount = 1n;
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,
@@ -47,6 +48,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   assert(externalPositionProxy);
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

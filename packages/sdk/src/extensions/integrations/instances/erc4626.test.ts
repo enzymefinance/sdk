@@ -45,6 +45,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
@@ -100,6 +101,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
@@ -135,6 +137,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    clientNetwork: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,

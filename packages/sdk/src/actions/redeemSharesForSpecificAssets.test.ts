@@ -28,6 +28,7 @@ test("should redeem specific shares correctly", async () => {
   });
 
   await testActions.transferToken({
+    clientNetwork: "mainnet",
     token: USDC,
     account: USDC_HOLDER,
     recipient: vaultProxy,
@@ -45,7 +46,7 @@ test("should redeem specific shares correctly", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,

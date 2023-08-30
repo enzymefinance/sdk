@@ -16,6 +16,7 @@ test("sets freely transferable shares correctly", async () => {
   expect(firstFreelyTransferableShares).toBe(false);
 
   await testActions.setFreelyTransferableShares({
+    clientNetwork: "mainnet",
     vaultProxy,
     account: ALICE,
   });

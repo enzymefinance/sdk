@@ -18,7 +18,7 @@ test("should add asset managers", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
     vaultProxy,

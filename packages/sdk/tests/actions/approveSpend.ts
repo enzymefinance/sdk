@@ -1,4 +1,4 @@
-import { sendTestTransaction } from "../globals.js";
+import { type ClientNetwork, sendTestTransaction } from "../globals.js";
 import { type Address, parseAbi } from "viem";
 
 export async function approveSpend({
@@ -6,13 +6,16 @@ export async function approveSpend({
   account,
   spender,
   amount,
+  clientNetwork,
 }: {
   token: Address;
   account: Address;
   spender: Address;
   amount: bigint;
+  clientNetwork: ClientNetwork;
 }) {
   await sendTestTransaction({
+    clientNetwork,
     address: token,
     abi: parseAbi(["function approve(address spender, uint256 amount) returns (bool)"] as const),
     functionName: "approve",

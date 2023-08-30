@@ -19,6 +19,7 @@ test("should claim ownership correctly", async () => {
   expect(originalOwner).toEqual(ALICE);
 
   await testActions.setNominatedOwner({
+    clientNetwork: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,
@@ -30,7 +31,7 @@ test("should claim ownership correctly", async () => {
     account: BOB,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, clientNetwork: "mainnet" });
 
   const newOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
