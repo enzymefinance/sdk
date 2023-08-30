@@ -72,9 +72,9 @@ export function decodeKilnStakeArgs(callArgs: Hex): KilnStakeArgs {
   const [stakingContract, validatorAmount] = decodeAbiParameters(kilnStakeArgsEncoding, actionArgs);
 
   return {
-    validatorAmount,
-    stakingContract,
     externalPositionProxy,
+    stakingContract,
+    validatorAmount,
   };
 }
 
