@@ -5,6 +5,13 @@ import type {
   AaveV2DebtRepayBorrowArgs,
 } from "./instances/aaveV2Debt.js";
 import type {
+  ArbitraryLoanCallOnAccountingModuleArgs,
+  ArbitraryLoanCloseLoanArgs,
+  ArbitraryLoanConfigureLoanArgs,
+  ArbitraryLoanReconcileArgs,
+  ArbitraryLoanUpdateBorrowableAmountArgs,
+} from "./instances/arbitraryLoan.js";
+import type {
   CompoundV2DebtAddCollateralArgs,
   CompoundV2DebtBorrowArgs,
   CompoundV2DebtClaimCompArgs,
@@ -44,6 +51,13 @@ import type {
   TheGraphDelegationUndelegateArgs,
   TheGraphDelegationWithdrawArgs,
 } from "./instances/theGraphDelegation.js";
+import type {
+  UniswapV3LiquidityAddLiquidityArgs,
+  UniswapV3LiquidityCollectArgs,
+  UniswapV3LiquidityMintArgs,
+  UniswapV3LiquidityPurgeArgs,
+  UniswapV3LiquidityRemoveLiquidityArgs,
+} from "./instances/uniswapV3Liquidity.js";
 
 export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosition];
 export const ExternalPosition = {
@@ -56,6 +70,11 @@ export const ExternalPosition = {
   AaveV2DebtRemoveCollateral: "AaveV2DebtRemoveCollateral",
   AaveV2DebtBorrow: "AaveV2DebtBorrow",
   AaveV2DebtRepayBorrow: "AaveV2DebtRepayBorrow",
+  ArbitraryLoanConfigureLoan: "ArbitraryLoanConfigureLoan",
+  ArbitraryLoanUpdateBorrowableAmount: "ArbitraryLoanUpdateBorrowableAmount",
+  ArbitraryLoanCallOnAccountingModule: "ArbitraryLoanCallOnAccountingModule",
+  ArbitraryLoanReconcile: "ArbitraryLoanReconcile",
+  ArbitraryLoanCloseLoan: "ArbitraryLoanCloseLoan",
   CompoundV2DebtAddCollateral: "CompoundV2DebtAddCollateral",
   CompoundV2DebtClaimComp: "CompoundV2DebtClaimComp",
   CompoundV2DebtRemoveCollateral: "CompoundV2DebtRemoveCollateral",
@@ -79,6 +98,11 @@ export const ExternalPosition = {
   MapleLiquidityRequestRedeemV2: "MapleLiquidityRequestRedeemV2",
   MapleLiquidityCancelRedeemV2: "MapleLiquidityCancelRedeemV2",
   MapleLiquidityClaimRewardsV1: "MapleLiquidityClaimRewardsV1",
+  UniswapV3LiquidityMint: "UniswapV3LiquidityMint",
+  UniswapV3LiquidityAddLiquidity: "UniswapV3LiquidityAddLiquidity",
+  UniswapV3LiquidityRemoveLiquidity: "UniswapV3LiquidityRemoveLiquidity",
+  UniswapV3LiquidityCollect: "UniswapV3LiquidityCollect",
+  UniswapV3LiquidityPurge: "UniswapV3LiquidityPurge",
 } as const;
 
 export type ExternalPositionArgs = {
@@ -91,6 +115,11 @@ export type ExternalPositionArgs = {
   [ExternalPosition.AaveV2DebtRemoveCollateral]: AaveV2DebtRemoveCollateralArgs;
   [ExternalPosition.AaveV2DebtBorrow]: AaveV2DebtBorrowArgs;
   [ExternalPosition.AaveV2DebtRepayBorrow]: AaveV2DebtRepayBorrowArgs;
+  [ExternalPosition.ArbitraryLoanConfigureLoan]: ArbitraryLoanConfigureLoanArgs;
+  [ExternalPosition.ArbitraryLoanUpdateBorrowableAmount]: ArbitraryLoanUpdateBorrowableAmountArgs;
+  [ExternalPosition.ArbitraryLoanCallOnAccountingModule]: ArbitraryLoanCallOnAccountingModuleArgs;
+  [ExternalPosition.ArbitraryLoanReconcile]: ArbitraryLoanReconcileArgs;
+  [ExternalPosition.ArbitraryLoanCloseLoan]: ArbitraryLoanCloseLoanArgs;
   [ExternalPosition.CompoundV2DebtAddCollateral]: CompoundV2DebtAddCollateralArgs;
   [ExternalPosition.CompoundV2DebtClaimComp]: CompoundV2DebtClaimCompArgs;
   [ExternalPosition.CompoundV2DebtRemoveCollateral]: CompoundV2DebtRemoveCollateralArgs;
@@ -114,4 +143,9 @@ export type ExternalPositionArgs = {
   [ExternalPosition.MapleLiquidityRequestRedeemV2]: MapleLiquidityRequestRedeemV2Args;
   [ExternalPosition.MapleLiquidityCancelRedeemV2]: MapleLiquidityCancelRedeemV2Args;
   [ExternalPosition.MapleLiquidityClaimRewardsV1]: MapleLiquidityClaimRewardsV1Args;
+  [ExternalPosition.UniswapV3LiquidityMint]: UniswapV3LiquidityMintArgs;
+  [ExternalPosition.UniswapV3LiquidityAddLiquidity]: UniswapV3LiquidityAddLiquidityArgs;
+  [ExternalPosition.UniswapV3LiquidityRemoveLiquidity]: UniswapV3LiquidityRemoveLiquidityArgs;
+  [ExternalPosition.UniswapV3LiquidityCollect]: UniswapV3LiquidityCollectArgs;
+  [ExternalPosition.UniswapV3LiquidityPurge]: UniswapV3LiquidityPurgeArgs;
 };

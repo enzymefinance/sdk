@@ -633,6 +633,31 @@ export {
   type TheGraphDelegationWithdrawArgs,
 } from "./extensions/external-positions/instances/theGraphDelegation.js";
 
+// ./extensions/external-positions/instances/uniswapV3Liquidity.js
+export {
+  encodeUniswapV3LiquidityMintArgs,
+  decodeUniswapV3LiquidityMintArgs,
+  encodeUniswapV3LiquidityAddLiquidityArgs,
+  decodeUniswapV3LiquidityAddLiquidityArgs,
+  encodeUniswapV3LiquidityRemoveLiquidityArgs,
+  decodeUniswapV3LiquidityRemoveLiquidityArgs,
+  encodeUniswapV3LiquidityCollectArgs,
+  decodeUniswapV3LiquidityCollectArgs,
+  encodeUniswapV3LiquidityPurgeArgs,
+  decodeUniswapV3LiquidityPurgeArgs,
+  type UniswapV3LiquidityAction,
+  uniswapV3LiquidityMintArgsEncoding,
+  type UniswapV3LiquidityMintArgs,
+  uniswapV3LiquidityAddLiquidityArgsEncoding,
+  type UniswapV3LiquidityAddLiquidityArgs,
+  uniswapV3LiquidityRemoveLiquidityArgsEncoding,
+  type UniswapV3LiquidityRemoveLiquidityArgs,
+  uniswapV3LiquidityCollectArgsEncoding,
+  type UniswapV3LiquidityCollectArgs,
+  uniswapV3LiquidityPurgeArgsEncoding,
+  type UniswapV3LiquidityPurgeArgs,
+} from "./extensions/external-positions/instances/uniswapV3Liquidity.js";
+
 // ./extensions/fees/instances/entranceFee.js
 export {
   encodeEntranceRateBurnFeeSettings,
@@ -912,6 +937,21 @@ export {
   yearnVaultV2RedeemEncoding,
   type YearnVaultV2RedeemArgs,
 } from "./extensions/integrations/instances/yearnVaultV2.js";
+
+// ./extensions/integrations/instances/zeroExV4.js
+export {
+  encodeZeroExV4TakeOrderArgs,
+  decodeZeroExV4TakeOrderArgs,
+  type ZeroExV4OrderType,
+  zeroExV4LimitOrderEncoding,
+  zeroExV4RfqOrderEncoding,
+  zeroExV4SignatureEncoding,
+  zeroExV4TakeOrderEncoding,
+  type ZeroExV4LimitOrder,
+  type ZeroExV4RfqOrder,
+  type ZeroExV4SignatureType,
+  type ZeroExV4TakeOrderArgs,
+} from "./extensions/integrations/instances/zeroExV4.js";
 
 // ./extensions/policies/instances/allowedExternalPositionTypesPolicy.js
 export {

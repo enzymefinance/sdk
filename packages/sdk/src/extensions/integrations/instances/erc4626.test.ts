@@ -1,5 +1,5 @@
 import { ALICE, BOB, ERC4626_ADAPTER, INTEGRATION_MANAGER, MA_WETH, WETH } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { Integration } from "../integrationTypes.js";
@@ -29,7 +29,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
     investmentAmount: outgoingAssetAmount,
   });
 
-  const minIncomingAmount = await publicClient.readContract({
+  const minIncomingAmount = await publicClientMainnet.readContract({
     abi: abiERC4626,
     address: MA_WETH,
     account: vaultProxy,
@@ -84,7 +84,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
     investmentAmount: outgoingAssetAmount,
   });
 
-  const minIncomingLendAmount = await publicClient.readContract({
+  const minIncomingLendAmount = await publicClientMainnet.readContract({
     abi: abiERC4626,
     address: MA_WETH,
     account: vaultProxy,
@@ -121,7 +121,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
     fuzziness: minIncomingLendAmount - minIncomingLendAmountWithSlippage,
   });
 
-  const minIncomingRedeemAmount = await publicClient.readContract({
+  const minIncomingRedeemAmount = await publicClientMainnet.readContract({
     abi: abiERC4626,
     address: MA_WETH,
     account: vaultProxy,

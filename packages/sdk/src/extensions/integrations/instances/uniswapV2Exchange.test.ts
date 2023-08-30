@@ -10,7 +10,7 @@ import {
   UNISWAP_V2_SWAP_ROUTER,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
@@ -55,7 +55,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   const pathAddresses = [WETH, DAI] as const;
 
   // give vaultProxy some ether to pay for the gas
-  await testClient.setBalance({
+  await testClientMainnet.setBalance({
     address: vaultProxy,
     value: parseEther("1"),
   });
@@ -72,7 +72,7 @@ test("prepare adapter trade for Uniswap V2 Exchange take order should work corre
   });
 
   // simulate the trade
-  const { result: assetAmounts } = await publicClient.simulateContract({
+  const { result: assetAmounts } = await publicClientMainnet.simulateContract({
     ...prepareSwapExactTokensForTokens({
       deadline: BigInt(Math.ceil(new Date().getTime() / 1000 + 1)),
       path: [...pathAddresses],

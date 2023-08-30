@@ -1,5 +1,5 @@
 import { ALICE, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import { toWei } from "../utils/conversion.js";
 import { decodeRedeemSharesParams, prepareRedeemSharesInKindParams } from "./redeemSharesInKind.js";
 import { encodeFunctionData } from "viem";
@@ -25,7 +25,7 @@ test("redeem shares in kind should work correctly", async () => {
     expected: depositAmount,
   });
 
-  const { request } = await publicClient.simulateContract({
+  const { request } = await publicClientMainnet.simulateContract({
     ...prepareRedeemSharesInKindParams({
       withdrawalReceipient: ALICE,
       sharesQuantity: depositAmount,

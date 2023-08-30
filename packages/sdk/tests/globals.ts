@@ -19,7 +19,7 @@ import { usesAutoProcolFeeSharesBuyBack } from "./actions/usesAutoProcolFeeShare
 import { wrapEther } from "./actions/wrapEther.js";
 import type { Abi } from "abitype";
 import { type Chain, createPublicClient, createTestClient, encodeFunctionData, http } from "viem";
-import { localhost, mainnet } from "viem/chains";
+import { localhost, mainnet, polygon } from "viem/chains";
 import type { SimulateContractParameters, WriteContractParameters } from "viem/contract";
 import { parseAccount } from "viem/utils";
 
@@ -46,33 +46,63 @@ export const testActions = {
   getGasRelayPaymaster,
 };
 
-export const anvil = {
+export const anvilMainnet = {
   ...localhost,
-  id: 1,
+  id: mainnet.id,
   contracts: mainnet.contracts,
 } as const satisfies Chain;
 
 export const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
 
-export const testClient = createTestClient({
-  chain: anvil,
+export const testClientMainnet = createTestClient({
+  chain: anvilMainnet,
   mode: "anvil",
-  transport: http(`http://127.0.0.1:8545/${poolId}`, {
+  transport: http(`http://127.0.0.1:8545/${1000 + poolId}`, {
     timeout: 150_000,
   }),
 });
 
-export const publicClient = createPublicClient({
-  chain: anvil,
-  transport: http(`http://127.0.0.1:8545/${poolId}`, {
+export const publicClientMainnet = createPublicClient({
+  chain: anvilMainnet,
+  transport: http(`http://127.0.0.1:8545/${1000 + poolId}`, {
     timeout: 150_000,
   }),
 });
 
-export async function sendTestTransaction<TAbi extends Abi | readonly unknown[], TFunctionName extends string = string>(
-  args: SimulateContractParameters<TAbi, TFunctionName, typeof anvil>,
-) {
-  const { request, result } = await publicClient.simulateContract(args);
+export const anvilPolygon = {
+  ...localhost,
+  id: polygon.id,
+  contracts: polygon.contracts,
+} as const satisfies Chain;
+
+export const testClientPolygon = createTestClient({
+  chain: anvilPolygon,
+  mode: "anvil",
+  transport: http(`http://127.0.0.1:8545/${2000 + poolId}`, {
+    timeout: 150_000,
+  }),
+});
+
+export const publicClientPolygon = createPublicClient({
+  chain: anvilPolygon,
+  transport: http(`http://127.0.0.1:8545/${2000 + poolId}`, {
+    timeout: 150_000,
+  }),
+});
+
+export async function sendTestTransaction<
+  TAbi extends Abi | readonly unknown[],
+  TFunctionName extends string = string,
+>({
+  network = "mainnet",
+  ...args
+}: SimulateContractParameters<TAbi, TFunctionName> & { network?: "mainnet" | "polygon" }) {
+  const publicClient = network === "polygon" ? publicClientPolygon : publicClientMainnet;
+  const testClient = network === "polygon" ? testClientPolygon : testClientMainnet;
+
+  const { request, result } = await publicClientMainnet.simulateContract(
+    args as SimulateContractParameters<TAbi, TFunctionName>,
+  );
   const account = parseAccount(request.account);
   const params = request as unknown as WriteContractParameters;
 

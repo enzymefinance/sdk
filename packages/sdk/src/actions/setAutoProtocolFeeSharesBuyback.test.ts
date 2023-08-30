@@ -1,5 +1,5 @@
 import { ALICE, WETH } from "../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions } from "../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions } from "../../tests/globals.js";
 import {
   decodeSetAutoProtocolFeeSharesBuybackParams,
   prepareSetAutoProtocolFeeSharesBuybackParams,
@@ -13,7 +13,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
     denominationAsset: WETH,
   });
 
-  const { request: setAutoProtocolFeeSharesBuybackTrue } = await publicClient.simulateContract({
+  const { request: setAutoProtocolFeeSharesBuybackTrue } = await publicClientMainnet.simulateContract({
     ...prepareSetAutoProtocolFeeSharesBuybackParams({
       enabled: true,
     }),
@@ -37,7 +37,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(autoProtocolFeeSharesBuybackAfter).toBe(true);
 
-  const { request: setAutoProtocolFeeSharesBuybackFalse } = await publicClient.simulateContract({
+  const { request: setAutoProtocolFeeSharesBuybackFalse } = await publicClientMainnet.simulateContract({
     ...prepareSetAutoProtocolFeeSharesBuybackParams({
       enabled: false,
     }),

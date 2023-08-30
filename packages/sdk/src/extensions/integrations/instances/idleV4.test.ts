@@ -9,7 +9,7 @@ import {
   INTEGRATION_MANAGER,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
@@ -21,7 +21,7 @@ import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";
 import { expect, test } from "vitest";
 
 async function getIdlePoolTokenRate(idlePoolToken: Address) {
-  const { result } = await publicClient.simulateContract({
+  const { result } = await publicClientMainnet.simulateContract({
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IIdlePriceFeed, name: "calcUnderlyingValues" }),
       args: [idlePoolToken, parseUnits("1", 18)],
@@ -167,7 +167,7 @@ test("prepare adapter trade for Idle V4 redeem should work correctly", async () 
   });
 
   // wait at least one block so reentrancy guard is not triggered
-  await testClient.mine({ blocks: 1 });
+  await testClientMainnet.mine({ blocks: 1 });
 
   await sendTestTransaction({
     ...prepareUseIntegration({

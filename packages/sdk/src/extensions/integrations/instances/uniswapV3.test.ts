@@ -7,7 +7,7 @@ import {
   UNISWAP_V3_SWAP_ROUTER,
   WETH,
 } from "../../../../tests/constants.js";
-import { publicClient, sendTestTransaction, testActions, testClient } from "../../../../tests/globals.js";
+import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
@@ -60,7 +60,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   const secondStepPath = encodePacked(["bytes", "address"], [firstStepPath, pathAddresses[1]]);
 
   // give vaultProxy some ether to pay for the gas
-  await testClient.setBalance({
+  await testClientMainnet.setBalance({
     address: vaultProxy,
     value: parseEther("1"),
   });
@@ -77,7 +77,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   });
 
   // simulate the trade
-  const { result: minIncomingAssetAmount } = await publicClient.simulateContract({
+  const { result: minIncomingAssetAmount } = await publicClientMainnet.simulateContract({
     ...prepareExactInputTrade({
       deadline: BigInt(Math.ceil(new Date().getTime() / 1000 + 1)),
       path: secondStepPath,

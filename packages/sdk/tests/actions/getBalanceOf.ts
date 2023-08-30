@@ -1,4 +1,4 @@
-import { publicClient } from "../globals.js";
+import { publicClientMainnet } from "../globals.js";
 import { type Address, parseAbi } from "viem";
 
 export function getBalanceOf({
@@ -8,7 +8,7 @@ export function getBalanceOf({
   token: Address;
   account: Address;
 }) {
-  return publicClient.readContract({
+  return publicClientMainnet.readContract({
     address: token,
     abi: parseAbi(["function balanceOf(address account) view returns (uint256)"] as const),
     functionName: "balanceOf",

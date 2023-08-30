@@ -24,6 +24,7 @@ export const IDLE_V4_PRICE_FEED = "0x8Ddf1f3f0c13E099378B2B6F73cdB8F61526ed6F" a
 export const ERC4626_ADAPTER = "0x64Fa106DD89F21d6e687EEbE9384637F7d54f707" as const;
 export const PARASWAP_V5_ADAPTER = "0x871a7f0ef4917a1534e651d1fde3763a52a23ece" as const;
 export const ONE_INCH_V5_ADAPTER = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
+export const ZERO_EX_V4_ADAPTER = "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5" as const;
 
 export const BALANCER_MINTER = "0x239e55F427D44C3cc793f49bFB507ebe76638a2b" as const;
 export const VOTE_LOCKED_CVX = "0x72a19342e8F1838460eBFCCEf09F6585e32db86E" as const;
@@ -36,30 +37,31 @@ export const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 export const UNISWAP_V2_SWAP_ROUTER = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" as const;
 export const UNISWAP_V3_SWAP_ROUTER = "0xE592427A0AEce92De3Edee1F18E0157C05861564" as const;
 
+export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e" as const;
+export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8" as const;
 export const AURA = "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF" as const;
 export const BAL = "0xba100000625a3754423978a60c9317c58a424e3D" as const;
-export const DAI = "0x6B175474E89094C44Da98b954EedeAC495271d0F" as const;
-export const IDLE = "0x875773784Af8135eA0ef43b5a374AaD105c5D39e" as const;
 export const COMP = "0xc00e94Cb662C3520282E6f5717214004A7f26888" as const;
+export const COMPOUND_V2_C_ETH = "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5" as const;
+export const COMPOUND_V3_C_WETH = "0xA17581A9E3356d9A858b789D68B4d866e593aE94" as const;
 export const CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER = "0xFa325D1Aa0ad84b1513893F393D4c0CBE3435a20" as const;
 export const CRV = "0xD533a949740bb3306d119CC777fa900bA034cd52" as const;
 export const CURVE_FRAX_USDC_LP = "0x3175Df0976dFA876431C2E9eE6Bc45b65d3473CC" as const;
 export const CURVE_FRAX_USDC_GAUGE = "0xCFc25170633581Bf896CB6CDeE170e3E3Aa59503" as const;
 export const CVX = "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B" as const;
+export const DAI = "0x6B175474E89094C44Da98b954EedeAC495271d0F" as const;
+export const DPI = "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b" as const;
 export const FRAX = "0x853d955aCEf822Db058eb8505911ED77F175b99e" as const;
+export const IDLE = "0x875773784Af8135eA0ef43b5a374AaD105c5D39e" as const;
+export const IDLE_V4_WETH = "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80" as const;
+export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
+export const RETH = "0xae78736Cd615f374D3085123A210448E74Fc6393" as const;
+export const STETH = "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84" as const;
+export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
 export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as const;
 export const WBTC = "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599" as const;
 export const WETH = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2" as const;
-export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e" as const;
-export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8" as const;
-export const COMPOUND_V2_C_ETH = "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5" as const;
-export const COMPOUND_V3_C_WETH = "0xA17581A9E3356d9A858b789D68B4d866e593aE94" as const;
-export const IDLE_V4_WETH = "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80" as const;
-export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
-export const RETH = "0xae78736Cd615f374D3085123A210448E74Fc6393" as const;
-export const STETH = "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84" as const;
 export const YEARN_VAULT_V2_WETH = "0xa258C4606Ca8206D8aA700cE2143D7db854D168c" as const;
-export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
 
 // Test accounts
 export const ACCOUNTS = [
@@ -74,6 +76,9 @@ export const ACCOUNTS = [
   "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
   "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
 ] as const;
+
+// Testnet contracts
+export const TESTNET_EXTERNAL_POSITION_MANAGER = "0x370826fa91762609964723962187efba705c1f17" as const;
 
 // Named accounts
 export const [ALICE, BOB, CAROL, DAVE] = ACCOUNTS;
@@ -92,3 +97,15 @@ if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER === undefined) {
 }
 
 export const FORK_BLOCK_NUMBER = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER));
+
+if (process.env.VITE_ANVIL_FORK_URL_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_URL_POLYGON"');
+}
+
+export const FORK_URL_POLYGON = process.env.VITE_ANVIL_FORK_URL_POLYGON;
+
+if (process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON === undefined) {
+  throw new Error('Missing environment variable "VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON"');
+}
+
+export const FORK_BLOCK_NUMBER_POLYGON = BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON));

@@ -1,4 +1,4 @@
-import { testClient } from "../globals.js";
+import { testClientMainnet } from "../globals.js";
 
 export async function increaseTimeAndMine({ seconds, blocks = 1 }: { seconds: bigint; blocks?: number }) {
   if (seconds <= 0) {
@@ -9,6 +9,6 @@ export async function increaseTimeAndMine({ seconds, blocks = 1 }: { seconds: bi
     throw new Error("Number of blocks must be a positive integer");
   }
 
-  await testClient.increaseTime({ seconds: Number(seconds) });
-  await testClient.mine({ blocks });
+  await testClientMainnet.increaseTime({ seconds: Number(seconds) });
+  await testClientMainnet.mine({ blocks });
 }
