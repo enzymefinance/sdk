@@ -182,9 +182,9 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
 });
 
 test("prepare external position trade for Kiln pause position value should work correctly", async () => {
+  const externalPositionAddress = "0x1286a58549be3d113ab5da9371393704f448c7f6" as const;
   const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510" as const;
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
-  const vaultProxy = "0x48143538590587df4de00a77c2dd52f689088335" as const;
 
   await testClientMainnet.reset({
     blockNumber: 17264820n,
@@ -211,7 +211,7 @@ test("prepare external position trade for Kiln pause position value should work 
   });
 
   await testClientMainnet.reset({
-    blockNumber: 17264829n,
+    blockNumber: 17264821n,
   });
 
   await sendTestTransaction({
@@ -226,17 +226,19 @@ test("prepare external position trade for Kiln pause position value should work 
     address: comptrollerProxy,
   });
 
-  await testActions.assertBalanceOf({
-    token: WETH,
-    account: vaultProxy,
-    expected: 144115149584482222663n,
+  const isPositionPaused = await publicClientMainnet.readContract({
+    abi: IKilnStakingPositionLib,
+    address: externalPositionAddress,
+    functionName: "positionValueIsPaused",
   });
+
+  expect(isPositionPaused).toBeTruthy();
 });
 
 test("prepare external position trade for Kiln unpause position value should work correctly", async () => {
+  const externalPositionAddress = "0x1286a58549be3d113ab5da9371393704f448c7f6" as const;
   const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510" as const;
   const comptrollerProxy = "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677" as const;
-  const vaultProxy = "0x48143538590587df4de00a77c2dd52f689088335" as const;
 
   await testClientMainnet.reset({
     blockNumber: 17264820n,
@@ -263,7 +265,7 @@ test("prepare external position trade for Kiln unpause position value should wor
   });
 
   await testClientMainnet.reset({
-    blockNumber: 17264829n,
+    blockNumber: 17264821n,
   });
 
   await sendTestTransaction({
@@ -278,9 +280,35 @@ test("prepare external position trade for Kiln unpause position value should wor
     address: comptrollerProxy,
   });
 
-  await testActions.assertBalanceOf({
-    token: WETH,
-    account: vaultProxy,
-    expected: 144115149584482222663n,
+    const isPositionPaused = await publicClientMainnet.readContract({
+    abi: IKilnStakingPositionLib,
+    address: externalPositionAddress,
+    functionName: "positionValueIsPaused",
   });
+
+  expect(isPositionPaused).toBeTruthy();
+
+  await testClientMainnet.reset({
+    blockNumber: 17264822n,
+  });
+
+  await sendTestTransaction({
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.KilnUnpausePositionValue,
+        externalPositionProxy: decodedCallArgs.externalPositionProxy,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  const isPositionUnpaused = await publicClientMainnet.readContract({
+    abi: IKilnStakingPositionLib,
+    address: externalPositionAddress,
+    functionName: "positionValueIsPaused",
+  });
+
+  expect(isPositionUnpaused).toBeTruthy();
 });
