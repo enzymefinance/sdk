@@ -21,7 +21,6 @@ test("should be able to buy shares", async () => {
 
   await testActions.approveSpend({
     clientNetwork: "mainnet",
-
     token: WETH,
     account: ALICE,
     spender: comptrollerProxy,
