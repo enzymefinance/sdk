@@ -18,8 +18,11 @@ test("prepare adapter trade for ParaswapV5 take order should work correctly", as
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const swapData =
@@ -27,11 +30,13 @@ test("prepare adapter trade for ParaswapV5 take order should work correctly", as
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: parseEther("1"),
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: PARASWAP_V5_ADAPTER,

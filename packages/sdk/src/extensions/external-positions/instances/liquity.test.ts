@@ -32,6 +32,7 @@ test("prepare external position trade for Liquity debt position Open Trove shoul
   const decodedCallArgs = decodeLiquityDebtPositionOpenTroveArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -64,6 +65,7 @@ test("prepare external position trade for Liquity debt position add collateral s
   const decodedCallArgs = decodeLiquityDebtPositionAddCollateralArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -96,6 +98,7 @@ test("prepare external position trade for Liquity debt position remove collatera
   const decodedCallArgs = decodeLiquityDebtPositionRemoveCollateralArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -128,6 +131,7 @@ test("prepare external position trade for Liquity debt position borrow should wo
   const decodedCallArgs = decodeLiquityDebtPositionBorrowArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -160,6 +164,7 @@ test("prepare external position trade for Liquity debt position repay borrow sho
   const decodedCallArgs = decodeLiquityDebtPositionRepayBorrowArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

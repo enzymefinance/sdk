@@ -9,8 +9,11 @@ import { expect, test } from "vitest";
 
 test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const { request: setAutoProtocolFeeSharesBuybackTrue } = await publicClientMainnet.simulateContract({
@@ -29,7 +32,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(autoProtocolFeeSharesBuybackBefore).toBe(false);
 
-  await sendTestTransaction(setAutoProtocolFeeSharesBuybackTrue);
+  await sendTestTransaction({ ...setAutoProtocolFeeSharesBuybackTrue, network: "mainnet" });
 
   const autoProtocolFeeSharesBuybackAfter = await testActions.usesAutoProcolFeeSharesBuyBack({
     address: comptrollerProxy,
@@ -47,7 +50,7 @@ test("setAutoProtocolFeeSharesBuyback should work correctly", async () => {
 
   expect(setAutoProtocolFeeSharesBuybackFalse).toBeTruthy();
 
-  await sendTestTransaction(setAutoProtocolFeeSharesBuybackFalse);
+  await sendTestTransaction({ ...setAutoProtocolFeeSharesBuybackFalse, network: "mainnet" });
 
   const autoProtocolFeeSharesBuybackAfterAgain = await testActions.usesAutoProcolFeeSharesBuyBack({
     address: comptrollerProxy,

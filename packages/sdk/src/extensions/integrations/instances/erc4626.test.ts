@@ -17,14 +17,18 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const outgoingAssetAmount = toWei(100);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: outgoingAssetAmount,
   });
@@ -45,6 +49,7 @@ test("prepare adapter trade for ERC4626 lend should work correctly", async () =>
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
@@ -72,14 +77,18 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const outgoingAssetAmount = toWei(100);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: outgoingAssetAmount,
   });
@@ -100,6 +109,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,
@@ -135,6 +145,7 @@ test("prepare adapter trade for ERC4626 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ERC4626_ADAPTER,

@@ -12,13 +12,17 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   const sharesBuyer = BOB;
 
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
+    network: "mainnet",
     comptrollerProxy,
     sharesBuyer,
     investmentAmount: depositAmount,
@@ -28,6 +32,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   const validatorAmount = 1n;
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,
@@ -47,6 +52,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   assert(externalPositionProxy);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

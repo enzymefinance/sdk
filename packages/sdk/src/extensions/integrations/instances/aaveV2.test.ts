@@ -10,19 +10,24 @@ test("prepare adapter trade for Aave V2 lend should work correctly", async () =>
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,
@@ -49,19 +54,24 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const investmentAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: investmentAmount,
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,
@@ -83,6 +93,7 @@ test("prepare adapter trade for Aave V2 redeem should work correctly", async () 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AAVE_V2_ADAPTER,

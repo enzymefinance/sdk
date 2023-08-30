@@ -1,14 +1,15 @@
 import { type PrepareSetupVaultParamsArgs, prepareSetupVaultParams } from "../../src/actions/setupVault.js";
 import type { PartialPick } from "../../src/utils/types.js";
 import { ALICE, FUND_DEPLOYER } from "../constants.js";
-import { sendTestTransaction } from "../globals.js";
+import { type Network, sendTestTransaction } from "../globals.js";
 
 export type CreateTestVaultSettings = PartialPick<PrepareSetupVaultParamsArgs, "vaultName" | "vaultSymbol">;
 
-export async function createTestVault(settings: CreateTestVaultSettings) {
+export async function createTestVault({ settings, network }: { settings: CreateTestVaultSettings; network: Network }) {
   const {
     result: [comptrollerProxy, vaultProxy],
   } = await sendTestTransaction({
+    network,
     ...prepareSetupVaultParams({
       vaultName: "Test Vault",
       vaultSymbol: "TEST",

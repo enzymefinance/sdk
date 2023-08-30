@@ -5,8 +5,11 @@ import { expect, test } from "vitest";
 
 test("sets freely transferable shares correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const firstFreelyTransferableShares = await testActions.sharesAreFreelyTransferable({
@@ -16,6 +19,7 @@ test("sets freely transferable shares correctly", async () => {
   expect(firstFreelyTransferableShares).toBe(false);
 
   await testActions.setFreelyTransferableShares({
+    network: "mainnet",
     vaultProxy,
     account: ALICE,
   });

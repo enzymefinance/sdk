@@ -41,14 +41,18 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -67,6 +71,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
 
   // approve uniswapV3SwapRouter to so we can simulate the trade
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IERC20, name: "approve" }),
       args: [UNISWAP_V3_SWAP_ROUTER, depositAmount],
@@ -92,6 +97,7 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   const minIncomingAssetAmountWithSlippage = multiplyBySlippage({ amount: minIncomingAssetAmount, slippage: 1n });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V3_ADAPTER,

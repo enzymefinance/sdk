@@ -6,8 +6,11 @@ import { expect, test } from "vitest";
 
 test("should claim ownership correctly", async () => {
   const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const originalOwner = await publicClientMainnet.readContract({
@@ -19,6 +22,7 @@ test("should claim ownership correctly", async () => {
   expect(originalOwner).toEqual(ALICE);
 
   await testActions.setNominatedOwner({
+    network: "mainnet",
     nominatedOwner: BOB,
     account: ALICE,
     vaultProxy,
@@ -30,7 +34,7 @@ test("should claim ownership correctly", async () => {
     account: BOB,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, network: "mainnet" });
 
   const newOwner = await publicClientMainnet.readContract({
     abi: IVaultLib,
