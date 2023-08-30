@@ -14,14 +14,18 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   const sharesBuyer = BOB;
 
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -30,6 +34,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   const validatorAmount = 1n;
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareCreateExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       typeId: kilnTypeId,
@@ -49,6 +54,7 @@ test("prepare external position trade for Kiln stake should work correctly", asy
   assert(externalPositionProxy);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -89,6 +95,7 @@ test("prepare external position trade for Kiln claim fees should work correctly"
   const decodedCallArgs = decodeKilnStakeArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -105,6 +112,7 @@ test("prepare external position trade for Kiln claim fees should work correctly"
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -147,6 +155,7 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
   const decodedCallArgs = decodeKilnStakeArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -163,6 +172,7 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -199,6 +209,7 @@ test("prepare external position trade for Kiln pause position value should work 
   const decodedCallArgs = decodeKilnStakeArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -215,6 +226,7 @@ test("prepare external position trade for Kiln pause position value should work 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -253,6 +265,7 @@ test("prepare external position trade for Kiln unpause position value should wor
   const decodedCallArgs = decodeKilnStakeArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -269,6 +282,7 @@ test("prepare external position trade for Kiln unpause position value should wor
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -293,6 +307,7 @@ test("prepare external position trade for Kiln unpause position value should wor
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
