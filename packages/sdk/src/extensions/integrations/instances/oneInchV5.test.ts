@@ -28,6 +28,7 @@ test("prepare adapter trade for 1inchV5 take order should work correctly", async
   );
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: ONE_INCH_V5_ADAPTER,

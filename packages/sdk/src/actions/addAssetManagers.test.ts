@@ -6,8 +6,11 @@ import { expect, test } from "vitest";
 
 test("should add asset managers", async () => {
   const { vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const { request } = await publicClientMainnet.simulateContract({
@@ -18,7 +21,7 @@ test("should add asset managers", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, network: "mainnet" });
 
   const [bobIsManager, carolIsManager, daveIsManager] = await testActions.isAssetManagers({
     vaultProxy,

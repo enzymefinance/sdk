@@ -35,14 +35,18 @@ test("prepare adapter trade for Curve Liquidity lend should work correctly", asy
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -80,6 +84,7 @@ test("prepare adapter trade for Curve Liquidity lend should work correctly", asy
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -108,14 +113,18 @@ test("prepare adapter trade for Curve Liquidity lend and stake should work corre
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -153,6 +162,7 @@ test("prepare adapter trade for Curve Liquidity lend and stake should work corre
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -182,14 +192,18 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -227,6 +241,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -264,6 +279,7 @@ test("prepare adapter trade for Curve Liquidity redeem should work correctly", a
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -299,14 +315,18 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -344,6 +364,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -382,6 +403,7 @@ test("prepare adapter trade for Curve Liquidity unstake and redeem should work c
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -418,14 +440,18 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -463,6 +489,7 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -486,6 +513,7 @@ test("prepare adapter trade for Curve Liquidity stake should work correctly", as
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -512,14 +540,18 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -557,6 +589,7 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -581,6 +614,7 @@ test("prepare adapter trade for Curve Liquidity unstake should work correctly", 
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -607,14 +641,18 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -652,6 +690,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,
@@ -676,6 +715,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareFunctionParams({
       abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
       args: [
@@ -694,6 +734,7 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: CURVE_LIQUIDITY_ADAPTER,

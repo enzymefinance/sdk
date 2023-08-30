@@ -37,6 +37,7 @@ test("prepare external position trade for Convex Voting lock should work correct
   const decodedCallArgs = decodeConvexVotingLockArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -72,6 +73,7 @@ test("prepare external position trade for Convex Voting relock should work corre
   const decodedCallArgs = decodeConvexVotingRelockArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -108,6 +110,7 @@ test("prepare external position trade for Convex Voting withdraw should work cor
   const decodedCallArgs = decodeConvexVotingWithdrawArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -148,6 +151,7 @@ test("prepare external position trade for Convex Voting claim rewards should wor
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {
@@ -181,6 +185,7 @@ test("prepare external position trade for Convex Voting delegate should work cor
   const decodedCallArgs = decodeConvexVotingDelegateArgs(callArgs);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseExternalPosition({
       externalPositionManager: EXTERNAL_POSITION_MANAGER,
       callArgs: {

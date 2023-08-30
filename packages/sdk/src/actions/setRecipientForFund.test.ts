@@ -8,19 +8,23 @@ import { expect, test } from "vitest";
 
 test("should set recipient for fund correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-    feeSettings: [
-      {
-        address: MANAGEMENT_FEE,
-        settings: encodeManagementFeeSettings({
-          perAnnumRateInBps: toBps(0.1),
-        }),
-      },
-    ],
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+      feeSettings: [
+        {
+          address: MANAGEMENT_FEE,
+          settings: encodeManagementFeeSettings({
+            perAnnumRateInBps: toBps(0.1),
+          }),
+        },
+      ],
+    },
+    network: "mainnet",
   });
 
   await testActions.setRecipientForFund({
+    network: "mainnet",
     account: ALICE,
     comptrollerProxy,
     recipient: BOB,
@@ -35,16 +39,19 @@ test("should set recipient for fund correctly", async () => {
 
 test("should prepare params correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-    feeSettings: [
-      {
-        address: MANAGEMENT_FEE,
-        settings: encodeManagementFeeSettings({
-          perAnnumRateInBps: toBps(0.1),
-        }),
-      },
-    ],
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+      feeSettings: [
+        {
+          address: MANAGEMENT_FEE,
+          settings: encodeManagementFeeSettings({
+            perAnnumRateInBps: toBps(0.1),
+          }),
+        },
+      ],
+    },
+    network: "mainnet",
   });
 
   expect(
@@ -83,16 +90,19 @@ test("should prepare params correctly", async () => {
 
 test("should decode params correctly", async () => {
   const { comptrollerProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
-    feeSettings: [
-      {
-        address: MANAGEMENT_FEE,
-        settings: encodeManagementFeeSettings({
-          perAnnumRateInBps: toBps(0.1),
-        }),
-      },
-    ],
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+      feeSettings: [
+        {
+          address: MANAGEMENT_FEE,
+          settings: encodeManagementFeeSettings({
+            perAnnumRateInBps: toBps(0.1),
+          }),
+        },
+      ],
+    },
+    network: "mainnet",
   });
 
   const params = {

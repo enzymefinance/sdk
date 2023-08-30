@@ -95,14 +95,18 @@ test("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly"
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -125,6 +129,7 @@ test("prepare adapter trade for Uniswap Liquidity V2 lend should work correctly"
   await testActions.deal({ token: DAI, to: vaultProxy, amount: rates.amountBDesired, slotOfBalancesMapping: 2 });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,
@@ -161,8 +166,11 @@ test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctl
   const vaultOwner = ALICE;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const redeemAmount = toWei(250);
@@ -182,6 +190,7 @@ test("prepare adapter trade for Uniswap Liquidity V2 redeem should work correctl
   const slippage = 1n;
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: UNISWAP_V2_LIQUIDITY_ADAPTER,

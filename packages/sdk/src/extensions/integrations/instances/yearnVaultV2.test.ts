@@ -22,14 +22,18 @@ test("prepare adapter trade for Yearn Vault V2 lend should work correctly", asyn
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: depositAmount,
   });
@@ -55,6 +59,7 @@ test("prepare adapter trade for Yearn Vault V2 lend should work correctly", asyn
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,
@@ -82,14 +87,18 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
   const sharesBuyer = BOB;
 
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const investmentAmount = toWei(250);
 
   await testActions.buyShares({
     comptrollerProxy,
+    network: "mainnet",
     sharesBuyer,
     investmentAmount: investmentAmount,
   });
@@ -115,6 +124,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,
@@ -155,6 +165,7 @@ test("prepare adapter trade for Yearn Vault V2 redeem should work correctly", as
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: YEARN_VAULT_V2_ADAPTER,

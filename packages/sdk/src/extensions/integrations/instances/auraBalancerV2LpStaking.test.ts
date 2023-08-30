@@ -28,6 +28,7 @@ test("prepare adapter trade for Aura Balancer V2 Lp Staking lend and stake shoul
   const decodedIntegrationData = decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(integrationData);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AURA_BALANCER_V2_LP_STAKING_ADAPTER,
@@ -61,6 +62,7 @@ test("prepare adapter trade for Aura Balancer V2 Lp Staking unstake and redeem s
   const decodedIntegrationData = decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs(integrationData);
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AURA_BALANCER_V2_LP_STAKING_ADAPTER,
@@ -98,6 +100,7 @@ test("prepare adapter trade for Aura Balancer V2 Lp Staking claim rewards should
   });
 
   await sendTestTransaction({
+    network: "mainnet",
     ...prepareUseIntegration({
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: AURA_BALANCER_V2_LP_STAKING_ADAPTER,

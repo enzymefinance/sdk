@@ -7,13 +7,17 @@ import { expect, test } from "vitest";
 
 test("redeem shares in kind should work correctly", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(250);
 
   await testActions.buyShares({
+    network: "mainnet",
     comptrollerProxy,
     sharesBuyer: ALICE,
     investmentAmount: depositAmount,
@@ -36,7 +40,7 @@ test("redeem shares in kind should work correctly", async () => {
     account: ALICE,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, network: "mainnet" });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,

@@ -7,18 +7,23 @@ import { expect, test } from "vitest";
 
 test("should be able to buy shares", async () => {
   const { comptrollerProxy, vaultProxy } = await testActions.createTestVault({
-    vaultOwner: ALICE,
-    denominationAsset: WETH,
+    settings: {
+      vaultOwner: ALICE,
+      denominationAsset: WETH,
+    },
+    network: "mainnet",
   });
 
   const depositAmount = toWei(150);
 
   await testActions.wrapEther({
+    network: "mainnet",
     account: ALICE,
     amount: depositAmount,
   });
 
   await testActions.approveSpend({
+    network: "mainnet",
     token: WETH,
     account: ALICE,
     spender: comptrollerProxy,
@@ -50,7 +55,7 @@ test("should be able to buy shares", async () => {
     expected: 0n,
   });
 
-  await sendTestTransaction(request);
+  await sendTestTransaction({ ...request, network: "mainnet" });
 
   await testActions.assertBalanceOf({
     token: vaultProxy,
