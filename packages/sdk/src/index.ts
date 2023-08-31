@@ -242,11 +242,11 @@ export { getAssetTotalSupply } from "./reads/getAssetTotalSupply.js";
 // ./reads/getBuySharesAmount.js
 export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 
-// ./reads/getComptrollerProxy.js
-export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
-
 // ./reads/getCanonicalAssetValue.js
 export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
+
+// ./reads/getComptrollerProxy.js
+export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
 // ./reads/getCumulativeSlippageTolerancePolicySettings.js
 export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
