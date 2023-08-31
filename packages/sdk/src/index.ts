@@ -378,6 +378,9 @@ export { getVaultSharePrice } from "./reads/getVaultSharePrice.js";
 // ./reads/getVaultSharePriceInAsset.js
 export { getVaultSharePriceInAsset } from "./reads/getVaultSharePriceInAsset.js";
 
+// ./reads/getVaultTimelockRemainingForMigrationRequest.js
+export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTimelockRemainingForMigrationRequest.js";
+
 // ./reads/hasExecutableMigrationRequest.js
 export {
   hasExecutableMigrationRequest,
