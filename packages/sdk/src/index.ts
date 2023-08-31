@@ -260,6 +260,9 @@ export { getAssetWithAmount } from "./reads/getAssetWithAmount.js";
 // ./reads/getBuySharesAmount.js
 export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 
+// ./reads/getCanonicalAssetValue.js
+export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
+
 // ./reads/getCumulativeSlippageTolerancePolicySettings.js
 export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
 
@@ -512,6 +515,30 @@ export {
   aaveV2DebtRepayBorrowArgsEncoding,
   type AaveV2DebtRepayBorrowArgs,
 } from "./extensions/external-positions/instances/aaveV2Debt.js";
+
+// ./extensions/external-positions/instances/arbitraryLoan.js
+export {
+  encodeArbitraryLoanConfigureLoanArgs,
+  decodeArbitraryLoanConfigureLoanArgs,
+  encodeArbitraryLoanUpdateBorrowableAmountArgs,
+  decodeArbitraryLoanUpdateBorrowableAmountArgs,
+  encodeArbitraryLoanCallOnAccountingModuleArgs,
+  decodeArbitraryLoanCallOnAccountingModuleArgs,
+  encodeArbitraryLoanReconcileArgs,
+  decodeArbitraryLoanReconcileArgs,
+  encodeArbitraryLoanCloseLoanArgs,
+  decodeArbitraryLoanCloseLoanArgs,
+  type ArbitraryLoanAction,
+  arbitraryLoanConfigureLoanArgsEncoding,
+  type ArbitraryLoanConfigureLoanArgs,
+  arbitraryLoanUpdateBorrowableAmountArgsEncoding,
+  type ArbitraryLoanUpdateBorrowableAmountArgs,
+  type ArbitraryLoanCallOnAccountingModuleArgs,
+  arbitraryLoanReconcileArgsEncoding,
+  type ArbitraryLoanReconcileArgs,
+  arbitraryLoanCloseLoanArgsEncoding,
+  type ArbitraryLoanCloseLoanArgs,
+} from "./extensions/external-positions/instances/arbitraryLoan.js";
 
 // ./extensions/external-positions/instances/compoundV2Debt.js
 export {
