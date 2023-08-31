@@ -132,7 +132,7 @@ export type KilnPausePositionValueArgs = {
 export function encodeKilnPausePositionValueArgs({ externalPositionProxy }: KilnPausePositionValueArgs): Hex {
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
-    actionId: KilnAction.SweepEth,
+    actionId: KilnAction.PausePositionValue,
     actionArgs: "0x",
   });
 }
@@ -152,7 +152,7 @@ export type KilnUnpausePositionValueArgs = {
 export function encodeKilnUnpausePositionValueArgs({ externalPositionProxy }: KilnUnpausePositionValueArgs): Hex {
   return encodeCallOnExternalPositionArgs({
     externalPositionProxy,
-    actionId: KilnAction.SweepEth,
+    actionId: KilnAction.UnpausePositionValue,
     actionArgs: "0x",
   });
 }
