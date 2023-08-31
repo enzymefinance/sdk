@@ -8,7 +8,7 @@ export async function getNetAssetValueInAsset(
   args: ReadContractParameters<{
     asset: Address;
     vaultProxy: Address;
-    fundValueCalculatorRouter: Address;
+    valueCalculator: Address;
   }>,
 ) {
   try {
@@ -16,7 +16,7 @@ export async function getNetAssetValueInAsset(
       ...readContractParameters(args),
       abi: IFundValueCalculatorRouter,
       functionName: "calcNavInAsset",
-      address: args.fundValueCalculatorRouter,
+      address: args.valueCalculator,
       args: [args.vaultProxy, args.asset],
     });
 

@@ -1,5 +1,5 @@
 // ./enums.js
-export type { RateAsset, VaultAction, ListUpdateType, MigrationOutHook } from "./enums.js";
+export type { VaultAction, ListUpdateType, MigrationOutHook } from "./enums.js";
 
 // ./actions/addAssetManagers.js
 export {
@@ -280,9 +280,6 @@ export { getFeeManager } from "./reads/getFeeManager.js";
 
 // ./reads/getFeeRecipient.js
 export { getFeeRecipient } from "./reads/getFeeRecipient.js";
-
-// ./reads/getFundDeployerForVaultProxy.js
-export { getFundDeployerForVaultProxy } from "./reads/getFundDeployerForVaultProxy.js";
 
 // ./reads/getGasRelayerBalance.js
 export { getGasRelayerBalance } from "./reads/getGasRelayerBalance.js";

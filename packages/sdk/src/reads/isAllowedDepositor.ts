@@ -8,7 +8,7 @@ export async function isAllowedDepositor(
   args: ReadContractParameters<{
     allowedDepositRecipientsPolicy: Address;
     comptrollerProxy: Address;
-    policyManager: Address;
+    policyManager?: Address;
     depositor: Address;
   }>,
 ) {

@@ -1,19 +1,22 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
+import { getPolicyManager } from "./getPolicyManager.js";
 import { IPolicyManager } from "@enzymefinance/abis/IPolicyManager";
 import type { Address, PublicClient } from "viem";
 
-export function getEnabledPolicies(
+export async function getEnabledPolicies(
   client: PublicClient,
   args: ReadContractParameters<{
-    comptroller: Address;
-    policyManager: Address;
+    comptrollerProxy: Address;
+    policyManager?: Address;
   }>,
 ) {
+  const policyManager = args.policyManager ?? (await getPolicyManager(client, args));
+
   return client.readContract({
     ...readContractParameters(args),
     abi: IPolicyManager,
     functionName: "getEnabledPoliciesForFund",
-    address: args.policyManager,
-    args: [args.comptroller],
+    address: policyManager,
+    args: [args.comptrollerProxy],
   });
 }

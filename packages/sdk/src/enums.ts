@@ -1,11 +1,4 @@
 // TODO: Move these to their respective directories once we have a better idea of how to organize them.
-
-export type RateAsset = typeof RateAsset[keyof typeof RateAsset];
-export const RateAsset = {
-  ETH: 0,
-  USD: 1,
-} as const;
-
 export type VaultAction = typeof VaultAction[keyof typeof VaultAction];
 export const VaultAction = {
   None: 0,
