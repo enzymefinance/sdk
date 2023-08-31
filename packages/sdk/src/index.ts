@@ -588,9 +588,23 @@ export {
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
+  encodeKilnClaimFeesArgs,
+  decodeKilnClaimFeesArgs,
+  encodeKilnSweepEthArgs,
+  decodeKilnSweepEthArgs,
+  encodeKilnPausePositionValueArgs,
+  decodeKilnPausePositionValueArgs,
+  encodeKilnUnpausePositionValueArgs,
+  decodeKilnUnpausePositionValueArgs,
   type KilnAction,
+  type KilnClaimType,
   kilnStakeArgsEncoding,
+  kilnClaimFeesArgsEncoding,
   type KilnStakeArgs,
+  type KilnClaimFeesArgs,
+  type KilnSweepEthArgs,
+  type KilnPausePositionValueArgs,
+  type KilnUnpausePositionValueArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/external-positions/instances/liquity.js
