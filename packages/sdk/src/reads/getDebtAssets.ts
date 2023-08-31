@@ -1,28 +1,25 @@
-import { getAssetInfo } from "./getAssetInfo.js";
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IExternalPosition } from "@enzymefinance/abis/IExternalPosition";
 import type { Address, PublicClient } from "viem";
 import { simulateContract } from "viem/contract";
 
 export async function getDebtAssets(
   client: PublicClient,
-  {
-    address,
-  }: {
-    address: Address;
-  },
+  args: ReadContractParameters<{
+    externalPosition: Address;
+  }>,
 ) {
   const {
     result: [assets, amounts],
   } = await simulateContract(client, {
+    ...readContractParameters(args),
     abi: IExternalPosition,
     functionName: "getDebtAssets",
-    address,
+    address: args.externalPosition,
   });
 
-  return Promise.all(
-    assets.map(async (asset, index) => ({
-      asset: await getAssetInfo(client, { asset }),
-      amount: amounts[index] ?? BigInt(0),
-    })),
-  );
+  return assets.map((asset, index) => ({
+    asset: asset,
+    amount: amounts[index],
+  }));
 }

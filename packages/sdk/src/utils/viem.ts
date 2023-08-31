@@ -1,5 +1,5 @@
 import type { AbiFunction } from "abitype";
-import type { GetFunctionArgs } from "viem";
+import type { BlockNumber, BlockTag, GetFunctionArgs } from "viem";
 
 export type PrepareFunctionParamsArgs<TFunction extends AbiFunction,> = {
   abi: TFunction;
@@ -20,3 +20,33 @@ export function prepareFunctionParams<TFunction extends AbiFunction>({
     ...(args !== undefined ? { args } : {}),
   } as PrepareFunctionParamsReturnType<TFunction>;
 }
+
+export function readContractParameters(args: ReadContractParameters) {
+  if ("blockTag" in args) {
+    return { blockTag: args.blockTag };
+  }
+
+  if ("blockNumber" in args) {
+    return { blockNumber: args.blockNumber };
+  }
+
+  return undefined;
+}
+
+export type ReadContractParameters<
+  T extends {
+    // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+    [key: string]: any;
+    // rome-ignore lint/nursery/noBannedTypes: <explanation>
+  } = {},
+> = T &
+  (
+    | {
+        blockTag?: BlockTag;
+        blockNumber?: never;
+      }
+    | {
+        blockNumber?: BlockNumber;
+        blockTag?: never;
+      }
+  );
