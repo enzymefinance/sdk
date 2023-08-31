@@ -1,18 +1,18 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export type DoesAutoProtocolFeeSharesBuybackParams = {
-  comptrollerProxy: Address;
-};
-
 export function doesAutoProtocolFeeSharesBuyback(
   client: PublicClient,
-  { comptrollerProxy }: DoesAutoProtocolFeeSharesBuybackParams,
+  args: ReadContractParameters<{
+    comptrollerProxy: Address;
+  }>,
 ) {
   return readContract(client, {
+    ...readContractParameters(args),
     abi: IComptrollerLib,
-    address: comptrollerProxy,
     functionName: "doesAutoProtocolFeeSharesBuyback",
+    address: args.comptrollerProxy,
   });
 }

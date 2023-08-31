@@ -1,20 +1,20 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
+import { IPerformanceFee } from "@enzymefinance/abis/IPerformanceFee";
 import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/contract";
 
-export function isActiveExternalPosition(
+export async function getPerformanceFeeInfo(
   client: PublicClient,
   args: ReadContractParameters<{
-    vaultProxy: Address;
-    externalPosition: Address;
+    comptrollerProxy: Address;
+    performanceFee: Address;
   }>,
 ) {
   return readContract(client, {
     ...readContractParameters(args),
-    abi: IVaultLib,
-    address: args.vaultProxy,
-    functionName: "isActiveExternalPosition",
-    args: [args.externalPosition],
+    abi: IPerformanceFee,
+    functionName: "getFeeInfoForFund",
+    args: [args.comptrollerProxy],
+    address: args.performanceFee,
   });
 }
