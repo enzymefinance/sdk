@@ -176,11 +176,11 @@ export type ZeroExV4RfqOrder = {
 
 export type ZeroExV4SignatureType = typeof ZeroExV4SignatureType[keyof typeof ZeroExV4SignatureType];
 export const ZeroExV4SignatureType = {
-  ILLEGAL: 0,
-  INVALID: 1,
-  EIP712: 2,
-  ETHSIGN: 3,
-  PRESIGNED: 4,
+  Illegal: 0,
+  Invalid: 1,
+  Eip712: 2,
+  EthSign: 3,
+  PreSigned: 4,
 } as const;
 
 type ZeroExV4Signature = {
