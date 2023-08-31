@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const yearnVaultV2LendEncoding = [
+const yearnVaultV2LendEncoding = [
   {
     type: "address",
     name: "yVault",
@@ -42,7 +42,7 @@ export function decodeYearnVaultV2LendArgs(callArgs: Hex): YearnVaultV2LendArgs 
   };
 }
 
-export const yearnVaultV2RedeemEncoding = [
+const yearnVaultV2RedeemEncoding = [
   {
     type: "address",
     name: "yVault",

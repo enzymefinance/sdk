@@ -1,6 +1,6 @@
 import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const createExternalPositionArgsEncoding = [
+const createExternalPositionArgsEncoding = [
   {
     name: "typeId",
     type: "uint256",

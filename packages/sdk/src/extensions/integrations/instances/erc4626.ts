@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const ERC4626LendEncoding = [
+const ERC4626LendEncoding = [
   {
     name: "tokenAddress",
     type: "address",
@@ -35,7 +35,7 @@ export function decodeERC4626LendArgs(callArgs: Hex): ERC4626LendArgs {
   };
 }
 
-export const ERC4626RedeemEncoding = [
+const ERC4626RedeemEncoding = [
   {
     name: "tokenAddress",
     type: "address",

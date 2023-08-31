@@ -359,6 +359,9 @@ export { isGasRelayerEnabled } from "./reads/isGasRelayerEnabled.js";
 // ./reads/isPolicyEnabled.js
 export { isPolicyEnabled } from "./reads/isPolicyEnabled.js";
 
+// ./utils/assertions.js
+export { never, invariant } from "./utils/assertions.js";
+
 // ./utils/conversion.js
 export { toBps, toWei, fromWei, toSeconds, applySlippage } from "./utils/conversion.js";
 
@@ -392,7 +395,6 @@ export {
 export {
   encodeCallOnExternalPositionArgs,
   decodeCallOnExternalPositionArgs,
-  callOnExternalPositionArgsEncoding,
   type CallOnExternalPositionArgs,
 } from "./extensions/external-positions/callOnExternalPosition.js";
 
@@ -400,7 +402,6 @@ export {
 export {
   encodeCreateExternalPositionArgs,
   decodeCreateExternalPositionArgs,
-  createExternalPositionArgsEncoding,
   type CreateExternalPositionArgs,
 } from "./extensions/external-positions/createExternalPosition.js";
 
@@ -426,18 +427,12 @@ export {
 export type { FeeHook, FeeManagerAction, FeeSettlementType } from "./extensions/fees/enums.js";
 
 // ./extensions/fees/settings.js
-export {
-  encodeFeeSettings,
-  decodeFeeSettings,
-  feeSettingsEncoding,
-  type FeeSettings,
-} from "./extensions/fees/settings.js";
+export { encodeFeeSettings, decodeFeeSettings, type FeeSettings } from "./extensions/fees/settings.js";
 
 // ./extensions/integrations/callOnIntegration.js
 export {
   encodeCallOnIntegrationArgs,
   decodeCallOnIntegrationArgs,
-  callOnIntegrationArgsEncoding,
   type CallOnIntegrationArgs,
 } from "./extensions/integrations/callOnIntegration.js";
 
@@ -456,12 +451,7 @@ export {
 export type { PolicyHook } from "./extensions/policies/enums.js";
 
 // ./extensions/policies/settings.js
-export {
-  encodePolicySettings,
-  decodePolicySettings,
-  policySettingsEncoding,
-  type PolicySettings,
-} from "./extensions/policies/settings.js";
+export { encodePolicySettings, decodePolicySettings, type PolicySettings } from "./extensions/policies/settings.js";
 
 // ./extensions/external-positions/instances/aaveV2Debt.js
 export {
@@ -474,13 +464,9 @@ export {
   encodeAaveV2DebtRepayBorrowArgs,
   decodeAaveV2DebtRepayBorrowArgs,
   type AaveV2DebtAction,
-  aaveV2DebtAddCollateralArgsEncoding,
   type AaveV2DebtAddCollateralArgs,
-  aaveV2DebtRemoveCollateralArgsEncoding,
   type AaveV2DebtRemoveCollateralArgs,
-  aaveV2DebtBorrowArgsEncoding,
   type AaveV2DebtBorrowArgs,
-  aaveV2DebtRepayBorrowArgsEncoding,
   type AaveV2DebtRepayBorrowArgs,
 } from "./extensions/external-positions/instances/aaveV2Debt.js";
 
@@ -497,14 +483,10 @@ export {
   encodeArbitraryLoanCloseLoanArgs,
   decodeArbitraryLoanCloseLoanArgs,
   type ArbitraryLoanAction,
-  arbitraryLoanConfigureLoanArgsEncoding,
   type ArbitraryLoanConfigureLoanArgs,
-  arbitraryLoanUpdateBorrowableAmountArgsEncoding,
   type ArbitraryLoanUpdateBorrowableAmountArgs,
   type ArbitraryLoanCallOnAccountingModuleArgs,
-  arbitraryLoanReconcileArgsEncoding,
   type ArbitraryLoanReconcileArgs,
-  arbitraryLoanCloseLoanArgsEncoding,
   type ArbitraryLoanCloseLoanArgs,
 } from "./extensions/external-positions/instances/arbitraryLoan.js";
 
@@ -521,7 +503,6 @@ export {
   encodeCompoundV2DebtClaimCompArgs,
   decodeCompoundV2DebtClaimCompArgs,
   type CompoundV2DebtAction,
-  compoundV2DebtArgsEncoding,
   type CompoundV2DebtAddCollateralArgs,
   type CompoundV2DebtRemoveCollateralArgs,
   type CompoundV2DebtBorrowArgs,
@@ -542,13 +523,10 @@ export {
   encodeConvexVotingDelegateArgs,
   decodeConvexVotingDelegateArgs,
   type ConvexVotingAction,
-  convexVotingLockArgsEncoding,
   type ConvexVotingLockArgs,
   type ConvexVotingRelockArgs,
   type ConvexVotingWithdrawArgs,
-  convexClaimRewardsArgsEncoding,
   type ConvexVotingClaimRewardsArgs,
-  convexVotingDelegateArgsEncoding,
   type ConvexVotingDelegateArgs,
 } from "./extensions/external-positions/instances/convexVoting.js";
 
@@ -566,8 +544,6 @@ export {
   decodeKilnUnpausePositionValueArgs,
   type KilnAction,
   type KilnClaimType,
-  kilnStakeArgsEncoding,
-  kilnClaimFeesArgsEncoding,
   type KilnStakeArgs,
   type KilnClaimFeesArgs,
   type KilnSweepEthArgs,
@@ -588,11 +564,6 @@ export {
   encodeLiquityDebtPositionRepayBorrowArgs,
   decodeLiquityDebtPositionRepayBorrowArgs,
   type LiquityDebtPositionAction,
-  liquityDebtPositionOpenTroveArgsEncoding,
-  liquityDebtPositionAddCollateralArgsEncoding,
-  liquityDebtPositionRemoveCollateralArgsEncoding,
-  liquityDebtPositionBorrowArgsEncoding,
-  liquityDebtPositionRepayBorrowArgsEncoding,
   type LiquityDebtPositionOpenTroveArgs,
   type LiquityDebtPositionAddCollateralArgs,
   type LiquityDebtPositionRemoveCollateralArgs,
@@ -613,15 +584,10 @@ export {
   encodeMapleLiquidityClaimRewardsV1Args,
   decodeMapleLiquidityClaimRewardsV1Args,
   type MapleLiquidityAction,
-  mapleLiquidityLendV2ArgsEncoding,
   type MapleLiquidityLendV2Args,
-  mapleLiquidityRequestRedeemV2ArgsEncoding,
   type MapleLiquidityRequestRedeemV2Args,
-  mapleLiquidityRedeemV2ArgsEncoding,
   type MapleLiquidityRedeemV2Args,
-  mapleLiquidityCancelRedeemV2ArgsEncoding,
   type MapleLiquidityCancelRedeemV2Args,
-  mapleLiquidityClaimRewardsV1ArgsEncoding,
   type MapleLiquidityClaimRewardsV1Args,
 } from "./extensions/external-positions/instances/mapleLiquidity.js";
 
@@ -634,11 +600,8 @@ export {
   encodeTheGraphDelegationWithdrawArgs,
   decodeTheGraphDelegationWithdrawArgs,
   type TheGraphDelegationAction,
-  theGraphDelegationDelegateArgsEncoding,
   type TheGraphDelegationDelegateArgs,
-  theGraphDelegationUndelegateArgsEncoding,
   type TheGraphDelegationUndelegateArgs,
-  theGraphDelegationWithdrawArgsEncoding,
   type TheGraphDelegationWithdrawArgs,
 } from "./extensions/external-positions/instances/theGraphDelegation.js";
 
@@ -655,15 +618,10 @@ export {
   encodeUniswapV3LiquidityPurgeArgs,
   decodeUniswapV3LiquidityPurgeArgs,
   type UniswapV3LiquidityAction,
-  uniswapV3LiquidityMintArgsEncoding,
   type UniswapV3LiquidityMintArgs,
-  uniswapV3LiquidityAddLiquidityArgsEncoding,
   type UniswapV3LiquidityAddLiquidityArgs,
-  uniswapV3LiquidityRemoveLiquidityArgsEncoding,
   type UniswapV3LiquidityRemoveLiquidityArgs,
-  uniswapV3LiquidityCollectArgsEncoding,
   type UniswapV3LiquidityCollectArgs,
-  uniswapV3LiquidityPurgeArgsEncoding,
   type UniswapV3LiquidityPurgeArgs,
 } from "./extensions/external-positions/instances/uniswapV3Liquidity.js";
 
@@ -674,9 +632,7 @@ export {
   encodeEntranceRateDirectFeeSettings,
   decodeEntranceRateDirectFeeSettings,
   calculateEntranceRateFeeSharesDue,
-  entranceRateBurnFeeSettingsEncoding,
   type EntranceRateBurnFeeSettings,
-  entranceRateDirectFeeSettingsEncoding,
   type EntranceRateDirectFeeSettings,
   type EncodeEntranceRateDirectFeeSettingsArgs,
   type CalculateEntranceRateFeeSharesDueArgs,
@@ -689,10 +645,8 @@ export {
   encodeExitRateDirectFeeSettings,
   decodeExitRateDirectFeeSettings,
   calculateExitRateFeeSharesDue,
-  exitRateBurnFeeSettingsEncoding,
   type ExitRateBurnFeeSettings,
   type EncodeExitRateBurnFeeSettingsArgs,
-  exitRateDirectFeeSettingsEncoding,
   type ExitRateDirectFeeSettings,
   type EncodeExitRateDirectFeeSettingsArgs,
   type CalculateExitRateFeeSharesDueArgs,
@@ -703,7 +657,6 @@ export {
   encodeManagementFeeSettings,
   decodeManagementFeeSettings,
   calculateManagementFeeSharesDue,
-  managementFeeSettingsEncoding,
   type ManagementFeeSettings,
   type EncodeManagementFeeSettingsArgs,
   type CalculateManagementFeeSharesDueArgs,
@@ -713,7 +666,6 @@ export {
 export {
   encodePerformanceFeeSettings,
   decodePerformanceFeeSettings,
-  performanceFeeSettingsEncoding,
   type PerformanceFeeSettings,
   type EncodePerformanceFeeSettingsArgs,
 } from "./extensions/fees/instances/performanceFee.js";
@@ -724,9 +676,7 @@ export {
   decodeAaveV2LendArgs,
   encodeAaveV2RedeemArgs,
   decodeAaveV2RedeemArgs,
-  aaveV2LendEncoding,
   type AaveV2LendArgs,
-  aaveV2RedeemEncoding,
   type AaveV2RedeemArgs,
 } from "./extensions/integrations/instances/aaveV2.js";
 
@@ -736,9 +686,7 @@ export {
   decodeAaveV3LendArgs,
   encodeAaveV3RedeemArgs,
   decodeAaveV3RedeemArgs,
-  aaveV3LendEncoding,
   type AaveV3LendArgs,
-  aaveV3RedeemEncoding,
   type AaveV3RedeemArgs,
 } from "./extensions/integrations/instances/aaveV3.js";
 
@@ -754,17 +702,12 @@ export {
   decodeBalancerV2LiquidityStakeArgsAndUnstakeArgs,
   encodeBalancerV2LiquidityTakeOrderArgs,
   decodeBalancerV2LiquidityTakeOrderArgs,
-  balancerV2LiquidityLendEncodingAndRedeemEncoding,
   type BalancerV2LiquidityLendArgsAndRedeemArgs,
-  balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding,
   type BalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs,
-  balancerV2LiquidityClaimRewardsEncoding,
   type BalancerV2LiquidityClaimRewardsArgs,
-  balancerV2LiquidityStakeEncodingAndUnstakeEncoding,
   type BalancerV2LiquidityStakeArgsAndUnstakeArgs,
   SwapKind,
   type SwapKindValue,
-  balancerV2LiquidityTakeOrderEncoding,
   type BalancerV2LiquidityTakeOrderArgs,
 } from "./extensions/integrations/instances/balancerV2Liquidity.js";
 
@@ -774,9 +717,7 @@ export {
   decodeCompoundV2LendArgs,
   encodeCompoundV2RedeemArgs,
   decodeCompoundV2RedeemArgs,
-  compoundV2LendEncoding,
   type CompoundV2LendArgs,
-  compoundV2RedeemEncoding,
   type CompoundV2RedeemArgs,
 } from "./extensions/integrations/instances/compoundV2.js";
 
@@ -788,11 +729,8 @@ export {
   decodeCompoundV3RedeemArgs,
   encodeCompoundV3ClaimRewardsArgs,
   decodeCompoundV3ClaimRewardsArgs,
-  compoundV3LendEncoding,
   type CompoundV3LendArgs,
-  compoundV3RedeemEncoding,
   type CompoundV3RedeemArgs,
-  compoundV3ClaimRewardsEncoding,
   type CompoundV3ClaimRewardsArgs,
 } from "./extensions/integrations/instances/compoundV3.js";
 
@@ -808,15 +746,10 @@ export {
   decodeConvexCurveLpStakingUnstakeArgs,
   encodeConvexCurveLpStakingUnstakeAndRedeemArgs,
   decodeConvexCurveLpStakingUnstakeAndRedeemArgs,
-  convexCurveLpStakingLendAndStakeEncoding,
   type ConvexCurveLpStakingLendAndStakeArgs,
-  convexCurveLpStakingClaimRewardsEncoding,
   type ConvexCurveLpStakingClaimRewardsArgs,
-  convexCurveLpStakingStakeEncoding,
   type ConvexCurveLpStakingStakeArgs,
-  convexCurveLpStakingUnstakeEncoding,
   type ConvexCurveLpStakingUnstakeArgs,
-  convexCurveLpStakingUnstakeAndRedeemEncoding,
   type ConvexCurveLpStakingUnstakeAndRedeemArgs,
 } from "./extensions/integrations/instances/convexCurveLpStaking.js";
 
@@ -824,7 +757,6 @@ export {
 export {
   encodeCurveExchangeTakeOrderArgs,
   decodeCurveExchangeTakeOrderArgs,
-  curveExchangeTakeOrderEncoding,
   type CurveExchangeTakeOrderArgs,
 } from "./extensions/integrations/instances/curveExchange.js";
 
@@ -845,21 +777,14 @@ export {
   decodeCurveLiquidityUnstakeArgs,
   encodeCurveLiquidityUnstakeAndRedeemArgs,
   decodeCurveLiquidityUnstakeAndRedeemArgs,
-  curveLiquidityLendEncoding,
   type CurveLiquidityLendArgs,
-  curveLiquidityLendAndStakeEncoding,
   type CurveLiquidityLendAndStakeArgs,
   RedeemType,
   type RedeemTypeValue,
-  curveLiquidityRedeemEncoding,
   type CurveLiquidityRedeemArgs,
-  curveLiquidityClaimRewardsEncoding,
   type CurveLiquidityClaimRewardsArgs,
-  curveLiquidityStakeEncoding,
   type CurveLiquidityStakeArgs,
-  curveLiquidityUnstakeEncoding,
   type CurveLiquidityUnstakeArgs,
-  curveLiquidityUnstakeAndRedeemEncoding,
   type CurveLiquidityUnstakeAndRedeemArgs,
 } from "./extensions/integrations/instances/curveLiquidity.js";
 
@@ -869,9 +794,7 @@ export {
   decodeERC4626LendArgs,
   encodeERC4626RedeemArgs,
   decodeERC4626RedeemArgs,
-  ERC4626LendEncoding,
   type ERC4626LendArgs,
-  ERC4626RedeemEncoding,
   type ERC4626RedeemArgs,
 } from "./extensions/integrations/instances/erc4626.js";
 
@@ -883,11 +806,8 @@ export {
   decodeIdleV4RedeemArgs,
   encodeIdleV4ClaimRewardsArgs,
   decodeIdleV4ClaimRewardsArgs,
-  idleV4LendEncoding,
   type IdleV4LendArgs,
-  idleV4RedeemEncoding,
   type IdleV4RedeemArgs,
-  idleV4ClaimRewardsEncoding,
   type IdleV4ClaimRewardsArgs,
 } from "./extensions/integrations/instances/idleV4.js";
 
@@ -895,7 +815,6 @@ export {
 export {
   encodeOneInchV5TakeOrderArgs,
   decodeOneInchV5TakeOrderArgs,
-  oneInchV5TakeOrderEncoding,
   type OneInchV5TakeOrderArgs,
 } from "./extensions/integrations/instances/oneInchV5.js";
 
@@ -903,7 +822,6 @@ export {
 export {
   encodeParaswapV5TakeOrderArgs,
   decodeParaswapV5TakeOrderArgs,
-  paraswapV5TakeOrderEncoding,
   type ParaswapV5TakeOrderArgs,
 } from "./extensions/integrations/instances/paraswapV5.js";
 
@@ -911,7 +829,6 @@ export {
 export {
   encodeUniswapV2ExchangeTakeOrderArgs,
   decodeUniswapV2ExchangeTakeOrderArgs,
-  uniswapV2ExchangeTakeOrderEncoding,
   type UniswapV2ExchangeTakeOrderArgs,
 } from "./extensions/integrations/instances/uniswapV2Exchange.js";
 
@@ -921,9 +838,7 @@ export {
   decodeUniswapV2LiquidityLendArgs,
   encodeUniswapV2LiquidityRedeemArgs,
   decodeUniswapV2LiquidityRedeemArgs,
-  uniswapV2LiquidityLendEncoding,
   type UniswapV2LiquidityLendArgs,
-  uniswapV2LiquidityRedeemEncoding,
   type UniswapV2LiquidityRedeemArgs,
 } from "./extensions/integrations/instances/uniswapV2Liquidity.js";
 
@@ -931,7 +846,6 @@ export {
 export {
   encodeUniswapV3TakeOrderArgs,
   decodeUniswapV3TakeOrderArgs,
-  uniswapV3TakeOrderEncoding,
   type UniswapV3TakeOrderArgs,
 } from "./extensions/integrations/instances/uniswapV3.js";
 
@@ -941,9 +855,7 @@ export {
   decodeYearnVaultV2LendArgs,
   encodeYearnVaultV2RedeemArgs,
   decodeYearnVaultV2RedeemArgs,
-  yearnVaultV2LendEncoding,
   type YearnVaultV2LendArgs,
-  yearnVaultV2RedeemEncoding,
   type YearnVaultV2RedeemArgs,
 } from "./extensions/integrations/instances/yearnVaultV2.js";
 
@@ -952,10 +864,6 @@ export {
   encodeZeroExV4TakeOrderArgs,
   decodeZeroExV4TakeOrderArgs,
   type ZeroExV4OrderType,
-  zeroExV4LimitOrderEncoding,
-  zeroExV4RfqOrderEncoding,
-  zeroExV4SignatureEncoding,
-  zeroExV4TakeOrderEncoding,
   type ZeroExV4LimitOrder,
   type ZeroExV4RfqOrder,
   type ZeroExV4SignatureType,
@@ -966,7 +874,6 @@ export {
 export {
   encodeAllowedExternalPositionTypesPolicySettings,
   decodeAllowedExternalPositionTypesPolicySettings,
-  allowedExternalPositionTypesPolicySettingsEncoding,
   type AllowedExternalPositionTypesPolicySettings,
 } from "./extensions/policies/instances/allowedExternalPositionTypesPolicy.js";
 
@@ -974,7 +881,6 @@ export {
 export {
   encodeCumulativeSlippageTolerancePolicySettings,
   decodeCumulativeSlippageTolerancePolicySettings,
-  cumulativeSlippageTolerancePolicyEncoding,
   type CumulativeSlippageTolerancePolicySettings,
 } from "./extensions/policies/instances/cumulativeSlippageTolerancePolicy.js";
 
@@ -982,7 +888,6 @@ export {
 export {
   encodeMinAssetBalancesPostRedemptionPolicySettings,
   decodeMinAssetBalancesPostRedemptionPolicySettings,
-  minAssetBalancesPostRedemptionPolicySettingsEncoding,
   type MinAssetBalancesPostRedemptionPolicySettings,
 } from "./extensions/policies/instances/minAssetBalancesPostRedemptionPolicy.js";
 
@@ -990,6 +895,5 @@ export {
 export {
   encodeMinMaxInvestmentPolicySettings,
   decodeMinMaxInvestmentPolicySettings,
-  minMaxInvestmentPolicySettingsEncoding,
   type MinMaxInvestmentPolicySettings,
 } from "./extensions/policies/instances/minMaxInvestmentPolicy.js";

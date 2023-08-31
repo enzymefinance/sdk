@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const compoundV2LendEncoding = [
+const compoundV2LendEncoding = [
   {
     type: "address",
     name: "cToken",
@@ -35,7 +35,7 @@ export function decodeCompoundV2LendArgs(callArgs: Hex): CompoundV2LendArgs {
   };
 }
 
-export const compoundV2RedeemEncoding = [
+const compoundV2RedeemEncoding = [
   {
     type: "address",
     name: "cToken",

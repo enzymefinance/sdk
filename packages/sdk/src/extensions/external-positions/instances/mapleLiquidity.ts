@@ -11,7 +11,7 @@ export const MapleLiquidityAction = {
   CancelRedeemV2: 12n,
 } as const;
 
-export const mapleLiquidityLendV2ArgsEncoding = [
+const mapleLiquidityLendV2ArgsEncoding = [
   {
     name: "pool",
     type: "address",
@@ -53,7 +53,7 @@ export function decodeMapleLiquidityLendV2Args(callArgs: Hex): MapleLiquidityLen
   };
 }
 
-export const mapleLiquidityRequestRedeemV2ArgsEncoding = [
+const mapleLiquidityRequestRedeemV2ArgsEncoding = [
   {
     name: "pool",
     type: "address",
@@ -95,7 +95,7 @@ export function decodeMapleLiquidityRequestRedeemV2Args(callArgs: Hex): MapleLiq
   };
 }
 
-export const mapleLiquidityRedeemV2ArgsEncoding = [
+const mapleLiquidityRedeemV2ArgsEncoding = [
   {
     name: "pool",
     type: "address",
@@ -137,7 +137,7 @@ export function decodeMapleLiquidityRedeemV2Args(callArgs: Hex): MapleLiquidityR
   };
 }
 
-export const mapleLiquidityCancelRedeemV2ArgsEncoding = [
+const mapleLiquidityCancelRedeemV2ArgsEncoding = [
   {
     name: "pool",
     type: "address",
@@ -179,7 +179,7 @@ export function decodeMapleLiquidityCancelRedeemV2Args(callArgs: Hex): MapleLiqu
   };
 }
 
-export const mapleLiquidityClaimRewardsV1ArgsEncoding = [
+const mapleLiquidityClaimRewardsV1ArgsEncoding = [
   {
     name: "rewardsContract",
     type: "address",

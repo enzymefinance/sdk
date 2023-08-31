@@ -6,7 +6,7 @@ export const ZeroExV4OrderType = {
   Rfq: 1,
 } as const;
 
-export const zeroExV4LimitOrderEncoding = {
+const zeroExV4LimitOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -61,7 +61,7 @@ export const zeroExV4LimitOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4RfqOrderEncoding = {
+const zeroExV4RfqOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -108,7 +108,7 @@ export const zeroExV4RfqOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4SignatureEncoding = {
+const zeroExV4SignatureEncoding = {
   components: [
     {
       name: "signatureType",
@@ -131,7 +131,7 @@ export const zeroExV4SignatureEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4TakeOrderEncoding = [
+const zeroExV4TakeOrderEncoding = [
   {
     name: "encodedZeroExOrderArgs",
     type: "bytes",

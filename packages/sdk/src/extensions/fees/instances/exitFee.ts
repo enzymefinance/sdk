@@ -1,7 +1,7 @@
 import { ZERO_ADDRESS } from "../../../constants/misc.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const exitRateBurnFeeSettingsEncoding = [
+const exitRateBurnFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "inKindRate", // bps
@@ -32,7 +32,7 @@ export function decodeExitRateBurnFeeSettings(settings: Hex): ExitRateBurnFeeSet
   return { inKindRateInBps, specificAssetsRate };
 }
 
-export const exitRateDirectFeeSettingsEncoding = [
+const exitRateDirectFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "inKindRate",

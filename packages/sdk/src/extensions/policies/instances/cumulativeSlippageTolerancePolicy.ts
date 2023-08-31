@@ -1,6 +1,6 @@
 import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const cumulativeSlippageTolerancePolicyEncoding = [
+const cumulativeSlippageTolerancePolicyEncoding = [
   {
     type: "uint256",
     name: "tolerance",

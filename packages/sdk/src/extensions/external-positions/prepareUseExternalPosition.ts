@@ -1,3 +1,4 @@
+import { never } from "../../utils/assertions.js";
 import type { Prettify } from "../../utils/types.js";
 import { ExternalPositionManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
 import { ExternalPosition, type ExternalPositionArgs } from "./externalPositionTypes.js";
@@ -172,5 +173,8 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeUniswapV3LiquidityCollectArgs(callArgs);
     case ExternalPosition.UniswapV3LiquidityPurge:
       return encodeUniswapV3LiquidityPurgeArgs(callArgs);
+    default: {
+      never(callArgs, "Unknown external position type");
+    }
   }
 }

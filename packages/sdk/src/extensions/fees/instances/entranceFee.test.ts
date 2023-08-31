@@ -6,8 +6,6 @@ import {
   decodeEntranceRateDirectFeeSettings,
   encodeEntranceRateBurnFeeSettings,
   encodeEntranceRateDirectFeeSettings,
-  entranceRateBurnFeeSettingsEncoding,
-  entranceRateDirectFeeSettingsEncoding,
 } from "./entranceFee.js";
 import { expect, test } from "vitest";
 
@@ -71,30 +69,4 @@ test("should calculate entrance fee shares due correctly", () => {
   expect(
     calculateEntranceRateFeeSharesDue({ feeRateInBps: toBps(0.12345), sharesBought: 1000000000000000000n }),
   ).toMatchInlineSnapshot("123400000000000000n");
-});
-
-test("entranceRateBurnFeeSettingsEncoding should have correct properties", () => {
-  expect(entranceRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "feeRate",
-        "type": "uint256",
-      },
-    ]
-  `);
-});
-
-test("entranceRateDirectFeeSettingsEncoding should have correct properties", () => {
-  expect(entranceRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "feeRate",
-        "type": "uint256",
-      },
-      {
-        "name": "feeRecipient",
-        "type": "address",
-      },
-    ]
-  `);
 });

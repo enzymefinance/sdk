@@ -2,7 +2,7 @@ import { ZERO_ADDRESS } from "../../../constants/misc.js";
 import type { PartialPick } from "../../../utils/types.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const entranceRateBurnFeeSettingsEncoding = [
+const entranceRateBurnFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "feeRate", // bps
@@ -25,7 +25,7 @@ export function decodeEntranceRateBurnFeeSettings(settings: Hex): EntranceRateBu
   };
 }
 
-export const entranceRateDirectFeeSettingsEncoding = [
+const entranceRateDirectFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "feeRate", // bps

@@ -10,7 +10,7 @@ export const UniswapV3LiquidityAction = {
   Purge: 4n,
 } as const;
 
-export const uniswapV3LiquidityMintArgsEncoding = [
+const uniswapV3LiquidityMintArgsEncoding = [
   {
     name: "token0",
     type: "address",
@@ -112,7 +112,7 @@ export function decodeUniswapV3LiquidityMintArgs(callArgs: Hex): UniswapV3Liquid
   };
 }
 
-export const uniswapV3LiquidityAddLiquidityArgsEncoding = [
+const uniswapV3LiquidityAddLiquidityArgsEncoding = [
   {
     name: "nftId",
     type: "uint256",
@@ -184,7 +184,7 @@ export function decodeUniswapV3LiquidityAddLiquidityArgs(callArgs: Hex): Uniswap
   };
 }
 
-export const uniswapV3LiquidityRemoveLiquidityArgsEncoding = [
+const uniswapV3LiquidityRemoveLiquidityArgsEncoding = [
   {
     name: "nftId",
     type: "uint256",
@@ -248,7 +248,7 @@ export function decodeUniswapV3LiquidityRemoveLiquidityArgs(callArgs: Hex): Unis
   };
 }
 
-export const uniswapV3LiquidityCollectArgsEncoding = [
+const uniswapV3LiquidityCollectArgsEncoding = [
   {
     name: "nftId",
     type: "uint256",
@@ -283,7 +283,7 @@ export function decodeUniswapV3LiquidityCollectArgs(callArgs: Hex): UniswapV3Liq
   };
 }
 
-export const uniswapV3LiquidityPurgeArgsEncoding = [
+const uniswapV3LiquidityPurgeArgsEncoding = [
   {
     name: "nftId",
     type: "uint256",

@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const paraswapV5TakeOrderEncoding = [
+const paraswapV5TakeOrderEncoding = [
   {
     name: "minIncomingAssetAmount",
     type: "uint256",

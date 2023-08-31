@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const uniswapV3TakeOrderEncoding = [
+const uniswapV3TakeOrderEncoding = [
   {
     name: "pathAddresses",
     type: "address[]",

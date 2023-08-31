@@ -10,7 +10,7 @@ export const ConvexVotingAction = {
   Delegate: 4n,
 } as const;
 
-export const convexVotingLockArgsEncoding = [
+const convexVotingLockArgsEncoding = [
   {
     name: "amount",
     type: "uint256",
@@ -88,7 +88,7 @@ export function decodeConvexVotingWithdrawArgs(callArgs: Hex): ConvexVotingReloc
   };
 }
 
-export const convexClaimRewardsArgsEncoding = [
+const convexClaimRewardsArgsEncoding = [
   {
     name: "allTokensToTransfer",
     type: "address[]",
@@ -186,7 +186,7 @@ export function decodeConvexVotingClaimRewardsArgs(callArgs: Hex): ConvexVotingC
   };
 }
 
-export const convexVotingDelegateArgsEncoding = [
+const convexVotingDelegateArgsEncoding = [
   {
     name: "delegate",
     type: "address",

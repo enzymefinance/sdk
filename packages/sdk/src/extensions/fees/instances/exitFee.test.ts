@@ -6,8 +6,6 @@ import {
   decodeExitRateDirectFeeSettings,
   encodeExitRateBurnFeeSettings,
   encodeExitRateDirectFeeSettings,
-  exitRateBurnFeeSettingsEncoding,
-  exitRateDirectFeeSettingsEncoding,
 } from "./exitFee.js";
 import { expect, test } from "vitest";
 
@@ -40,21 +38,6 @@ test("encodeExitRateBurnFeeSettings should work correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000000000007b"',
   );
-});
-
-test("exitRateBurnFeeSettingsEncoding should have correct properties", () => {
-  expect(exitRateBurnFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "inKindRate",
-        "type": "uint256",
-      },
-      {
-        "name": "specificAssetsRate",
-        "type": "uint256",
-      },
-    ]
-  `);
 });
 
 test("decodeExitRateBurnFeeSettings should decode correctly", () => {
@@ -93,25 +76,6 @@ test("encodeExitRateDirectFeeSettings should work correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004d2000000000000000000000000000000000000000000000000000000853a433923000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"',
   );
-});
-
-test("exitRateDirectFeeSettingsEncoding should have correct properties", () => {
-  expect(exitRateDirectFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "inKindRate",
-        "type": "uint256",
-      },
-      {
-        "name": "specificAssetsRate",
-        "type": "uint256",
-      },
-      {
-        "name": "feeRecipient",
-        "type": "address",
-      },
-    ]
-  `);
 });
 
 test("decodeExitRateDirectFeeSettings should decode correctly", () => {

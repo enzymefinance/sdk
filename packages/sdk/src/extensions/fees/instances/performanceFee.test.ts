@@ -1,10 +1,6 @@
 import { ALICE } from "../../../../tests/constants.js";
 import { toBps } from "../../../utils/conversion.js";
-import {
-  decodePerformanceFeeSettings,
-  encodePerformanceFeeSettings,
-  performanceFeeSettingsEncoding,
-} from "./performanceFee.js";
+import { decodePerformanceFeeSettings, encodePerformanceFeeSettings } from "./performanceFee.js";
 import { expect, test } from "vitest";
 
 test("should encode performance fee settings correctly", () => {
@@ -47,20 +43,5 @@ test("should decode performance fee settings correctly", () => {
       "feeRateInBps": 1230n,
       "feeRecipient": "0x0000000000000000000000000000000000000000",
     }
-  `);
-});
-
-test("performanceFeeSettingsEncoding should have correct properties", () => {
-  expect(performanceFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "feeRate",
-        "type": "uint256",
-      },
-      {
-        "name": "feeRecipient",
-        "type": "address",
-      },
-    ]
   `);
 });

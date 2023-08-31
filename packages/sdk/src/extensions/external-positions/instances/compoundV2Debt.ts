@@ -10,7 +10,7 @@ export const CompoundV2DebtAction = {
   ClaimComp: 4n,
 } as const;
 
-export const compoundV2DebtArgsEncoding = [
+const compoundV2DebtArgsEncoding = [
   {
     name: "tokens",
     type: "address[]",

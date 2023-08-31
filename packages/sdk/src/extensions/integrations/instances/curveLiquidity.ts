@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const curveLiquidityLendEncoding = [
+const curveLiquidityLendEncoding = [
   {
     name: "pool",
     type: "address",
@@ -54,7 +54,7 @@ export function decodeCurveLiquidityLendArgs(callArgs: Hex): CurveLiquidityLendA
   };
 }
 
-export const curveLiquidityLendAndStakeEncoding = [
+const curveLiquidityLendAndStakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -121,7 +121,7 @@ export const RedeemType = {
 
 export type RedeemTypeValue = typeof RedeemType[keyof typeof RedeemType];
 
-export const curveLiquidityRedeemEncoding = [
+const curveLiquidityRedeemEncoding = [
   {
     name: "pool",
     type: "address",
@@ -191,7 +191,7 @@ export function decodeCurveLiquidityRedeemArgs(integrationData: Hex): CurveLiqui
   };
 }
 
-export const curveLiquidityClaimRewardsEncoding = [
+const curveLiquidityClaimRewardsEncoding = [
   {
     name: "stakingToken",
     type: "address",
@@ -212,7 +212,7 @@ export function decodeCurveLiquidityClaimRewardsArgs(integrationData: Hex): Curv
   return { stakingToken };
 }
 
-export const curveLiquidityStakeEncoding = [
+const curveLiquidityStakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -243,7 +243,7 @@ export function decodeCurveLiquidityStakeArgs(integrationData: Hex): CurveLiquid
   return { pool, incomingStakingToken, amount };
 }
 
-export const curveLiquidityUnstakeEncoding = [
+const curveLiquidityUnstakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -278,7 +278,7 @@ export function decodeCurveLiquidityUnstakeArgs(integrationData: Hex): CurveLiqu
   return { pool, outgoingStakingToken, amount };
 }
 
-export const curveLiquidityUnstakeAndRedeemEncoding = [
+const curveLiquidityUnstakeAndRedeemEncoding = [
   {
     name: "pool",
     type: "address",

@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const uniswapV2LiquidityLendEncoding = [
+const uniswapV2LiquidityLendEncoding = [
   {
     name: "outgoingAssets",
     type: "address[2]",
@@ -52,7 +52,7 @@ export function decodeUniswapV2LiquidityLendArgs(callArgs: Hex): UniswapV2Liquid
   };
 }
 
-export const uniswapV2LiquidityRedeemEncoding = [
+const uniswapV2LiquidityRedeemEncoding = [
   {
     name: "outgoingAssetAmount",
     type: "uint256",

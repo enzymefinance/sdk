@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const curveExchangeTakeOrderEncoding = [
+const curveExchangeTakeOrderEncoding = [
   {
     name: "pool",
     type: "address",

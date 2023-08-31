@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const minAssetBalancesPostRedemptionPolicySettingsEncoding = [
+const minAssetBalancesPostRedemptionPolicySettingsEncoding = [
   {
     type: "address[]",
     name: "assets",

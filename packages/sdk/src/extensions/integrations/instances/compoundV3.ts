@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const compoundV3LendEncoding = [
+const compoundV3LendEncoding = [
   {
     type: "address",
     name: "cToken",
@@ -29,7 +29,7 @@ export function decodeCompoundV3LendArgs(callArgs: Hex): CompoundV3LendArgs {
   };
 }
 
-export const compoundV3RedeemEncoding = [
+const compoundV3RedeemEncoding = [
   {
     type: "address",
     name: "cToken",
@@ -55,7 +55,7 @@ export function decodeCompoundV3RedeemArgs(integrationData: Hex): CompoundV3Rede
   return { cToken, redeemAmount };
 }
 
-export const compoundV3ClaimRewardsEncoding = [
+const compoundV3ClaimRewardsEncoding = [
   {
     type: "address[]",
     name: "cTokens",
