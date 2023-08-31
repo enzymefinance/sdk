@@ -513,6 +513,30 @@ export {
   type AaveV2DebtRepayBorrowArgs,
 } from "./extensions/external-positions/instances/aaveV2Debt.js";
 
+// ./extensions/external-positions/instances/arbitraryLoan.js
+export {
+  encodeArbitraryLoanConfigureLoanArgs,
+  decodeArbitraryLoanConfigureLoanArgs,
+  encodeArbitraryLoanUpdateBorrowableAmountArgs,
+  decodeArbitraryLoanUpdateBorrowableAmountArgs,
+  encodeArbitraryLoanCallOnAccountingModuleArgs,
+  decodeArbitraryLoanCallOnAccountingModuleArgs,
+  encodeArbitraryLoanReconcileArgs,
+  decodeArbitraryLoanReconcileArgs,
+  encodeArbitraryLoanCloseLoanArgs,
+  decodeArbitraryLoanCloseLoanArgs,
+  type ArbitraryLoanAction,
+  arbitraryLoanConfigureLoanArgsEncoding,
+  type ArbitraryLoanConfigureLoanArgs,
+  arbitraryLoanUpdateBorrowableAmountArgsEncoding,
+  type ArbitraryLoanUpdateBorrowableAmountArgs,
+  type ArbitraryLoanCallOnAccountingModuleArgs,
+  arbitraryLoanReconcileArgsEncoding,
+  type ArbitraryLoanReconcileArgs,
+  arbitraryLoanCloseLoanArgsEncoding,
+  type ArbitraryLoanCloseLoanArgs,
+} from "./extensions/external-positions/instances/arbitraryLoan.js";
+
 // ./extensions/external-positions/instances/compoundV2Debt.js
 export {
   encodeCompoundV2DebtAddCollateralArgs,
@@ -561,9 +585,23 @@ export {
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
+  encodeKilnClaimFeesArgs,
+  decodeKilnClaimFeesArgs,
+  encodeKilnSweepEthArgs,
+  decodeKilnSweepEthArgs,
+  encodeKilnPausePositionValueArgs,
+  decodeKilnPausePositionValueArgs,
+  encodeKilnUnpausePositionValueArgs,
+  decodeKilnUnpausePositionValueArgs,
   type KilnAction,
+  type KilnClaimType,
   kilnStakeArgsEncoding,
+  kilnClaimFeesArgsEncoding,
   type KilnStakeArgs,
+  type KilnClaimFeesArgs,
+  type KilnSweepEthArgs,
+  type KilnPausePositionValueArgs,
+  type KilnUnpausePositionValueArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/external-positions/instances/liquity.js
