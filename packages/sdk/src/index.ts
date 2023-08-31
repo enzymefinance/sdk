@@ -239,6 +239,9 @@ export { getAssetAllowance, type GetAssetAllowanceParams } from "./reads/getAsse
 // ./reads/getAssetAmount.js
 export { getAssetAmount, getAssetAmountMultiple } from "./reads/getAssetAmount.js";
 
+// ./reads/getAssetBalanceOf.js
+export { getAssetBalanceOf } from "./reads/getAssetBalanceOf.js";
+
 // ./reads/getAssetDecimals.js
 export { getAssetDecimals } from "./reads/getAssetDecimals.js";
 
