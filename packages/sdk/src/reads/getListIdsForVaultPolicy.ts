@@ -1,6 +1,5 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 const abi = {
   inputs: [
@@ -29,7 +28,7 @@ export function getListIdsForVaultPolicy(
     comptrollerProxy: Address;
   }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     functionName: "getListIdsForFund",

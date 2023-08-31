@@ -2,7 +2,6 @@ import { type ReadContractParameters, readContractParameters } from "../utils/vi
 import { isPolicyEnabled } from "./isPolicyEnabled.js";
 import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis/IAllowedDepositRecipientsPolicy";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export async function isAllowedDepositor(
   client: PublicClient,
@@ -22,7 +21,7 @@ export async function isAllowedDepositor(
     return true;
   }
 
-  return readContract(client, {
+  return client.readContract({
     ...readContractParameters(args),
     abi: IAllowedDepositRecipientsPolicy,
     functionName: "passesRule",

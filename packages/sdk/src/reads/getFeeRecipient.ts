@@ -1,5 +1,4 @@
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 const abi = {
   inputs: [
@@ -28,7 +27,7 @@ export function getFeeRecipient(
     fee: Address;
   },
 ) {
-  return readContract(client, {
+  return client.readContract({
     abi: [abi],
     functionName: "getRecipientForFund",
     args: [args.comptrollerProxy],

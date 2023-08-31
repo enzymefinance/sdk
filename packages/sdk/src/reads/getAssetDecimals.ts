@@ -1,6 +1,5 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { type Address, type PublicClient, parseAbi } from "viem";
-import { readContract } from "viem/contract";
 
 export function getAssetDecimals(
   client: PublicClient,
@@ -8,7 +7,7 @@ export function getAssetDecimals(
     asset: Address;
   }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
     ...readContractParameters(args),
     abi: parseAbi(["function decimals() view returns (uint)"] as const),
     functionName: "decimals",

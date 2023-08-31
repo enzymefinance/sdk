@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { ICumulativeSlippageTolerancePolicy } from "@enzymefinance/abis/ICumulativeSlippageTolerancePolicy";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getCumulativeSlippageTolerancePolicySettings(
   client: PublicClient,
@@ -10,7 +9,7 @@ export function getCumulativeSlippageTolerancePolicySettings(
     cumulativeSlippageTolerancePolicy: Address;
   }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
     ...readContractParameters(args),
     abi: ICumulativeSlippageTolerancePolicy,
     functionName: "getPolicyInfoForFund",

@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IEntranceRateBurnFee } from "@enzymefinance/abis/IEntranceRateBurnFee";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getEntranceFeeRate(
   client: PublicClient,
@@ -10,7 +9,7 @@ export function getEntranceFeeRate(
     entranceFee: Address;
   }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
     ...readContractParameters(args),
     abi: IEntranceRateBurnFee,
     functionName: "getRateForFund",

@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IPolicyManager } from "@enzymefinance/abis/IPolicyManager";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
-import { readContract } from "viem/contract";
 
 export async function isPolicyEnabled(
   client: PublicClient,
@@ -11,7 +10,7 @@ export async function isPolicyEnabled(
     comptrollerProxy: Address;
   }>,
 ): Promise<boolean> {
-  const enabledPolicies = await readContract(client, {
+  const enabledPolicies = await client.readContract({
     ...readContractParameters(args),
     abi: IPolicyManager,
     functionName: "getEnabledPoliciesForFund",

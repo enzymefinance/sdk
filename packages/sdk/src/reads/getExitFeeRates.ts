@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IExitRateBurnFee } from "@enzymefinance/abis/IExitRateBurnFee";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export async function getExitFeeRates(
   client: PublicClient,
@@ -12,7 +11,7 @@ export async function getExitFeeRates(
 ) {
   const commonArgs = readContractParameters(args);
 
-  const getInKindRateForFund = readContract(client, {
+  const getInKindRateForFund = client.readContract({
     ...commonArgs,
     abi: IExitRateBurnFee,
     functionName: "getInKindRateForFund",
@@ -20,7 +19,7 @@ export async function getExitFeeRates(
     address: args.exitFee,
   });
 
-  const getSpecificAssetsRateForFund = readContract(client, {
+  const getSpecificAssetsRateForFund = client.readContract({
     ...commonArgs,
     abi: IExitRateBurnFee,
     functionName: "getSpecificAssetsRateForFund",
