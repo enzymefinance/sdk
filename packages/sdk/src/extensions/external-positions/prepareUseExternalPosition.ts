@@ -28,7 +28,13 @@ import {
   encodeConvexVotingRelockArgs,
   encodeConvexVotingWithdrawArgs,
 } from "./instances/convexVoting.js";
-import { encodeKilnStakeArgs } from "./instances/kiln.js";
+import {
+  encodeKilnClaimFeesArgs,
+  encodeKilnPausePositionValueArgs,
+  encodeKilnStakeArgs,
+  encodeKilnSweepEthArgs,
+  encodeKilnUnpausePositionValueArgs,
+} from "./instances/kiln.js";
 import {
   encodeLiquityDebtPositionAddCollateralArgs,
   encodeLiquityDebtPositionBorrowArgs,
@@ -82,8 +88,16 @@ export function prepareUseExternalPosition({ callArgs, externalPositionManager }
 
 export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCallArgs) {
   switch (callArgs.type) {
+    case ExternalPosition.KilnClaimFees:
+      return encodeKilnClaimFeesArgs(callArgs);
     case ExternalPosition.KilnStake:
       return encodeKilnStakeArgs(callArgs);
+    case ExternalPosition.KilnSweepEth:
+      return encodeKilnSweepEthArgs(callArgs);
+    case ExternalPosition.KilnPausePositionValue:
+      return encodeKilnPausePositionValueArgs(callArgs);
+    case ExternalPosition.KilnUnpausePositionValue:
+      return encodeKilnUnpausePositionValueArgs(callArgs);
     case ExternalPosition.AaveV2DebtAddCollateral:
       return encodeAaveV2DebtAddCollateralArgs(callArgs);
     case ExternalPosition.AaveV2DebtRemoveCollateral:

@@ -245,6 +245,9 @@ export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
+// ./reads/getCanonicalAssetValue.js
+export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
+
 // ./reads/getCumulativeSlippageTolerancePolicySettings.js
 export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
 
@@ -553,9 +556,23 @@ export {
 export {
   encodeKilnStakeArgs,
   decodeKilnStakeArgs,
+  encodeKilnClaimFeesArgs,
+  decodeKilnClaimFeesArgs,
+  encodeKilnSweepEthArgs,
+  decodeKilnSweepEthArgs,
+  encodeKilnPausePositionValueArgs,
+  decodeKilnPausePositionValueArgs,
+  encodeKilnUnpausePositionValueArgs,
+  decodeKilnUnpausePositionValueArgs,
   type KilnAction,
+  type KilnClaimType,
   kilnStakeArgsEncoding,
+  kilnClaimFeesArgsEncoding,
   type KilnStakeArgs,
+  type KilnClaimFeesArgs,
+  type KilnSweepEthArgs,
+  type KilnPausePositionValueArgs,
+  type KilnUnpausePositionValueArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/external-positions/instances/liquity.js
