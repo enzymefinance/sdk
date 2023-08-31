@@ -349,6 +349,15 @@ export { getVaultHasReconfigurationRequest } from "./reads/getVaultHasReconfigur
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
 
+// ./reads/getVaultNav.js
+export { getVaultNav } from "./reads/getVaultNav.js";
+
+// ./reads/getVaultNavInAsset.js
+export { getVaultNavInAsset } from "./reads/getVaultNavInAsset.js";
+
+// ./reads/getVaultNominatedOwner.js
+export { getVaultNominatedOwner } from "./reads/getVaultNominatedOwner.js";
+
 // ./reads/getVaultOwner.js
 export { getVaultOwner } from "./reads/getVaultOwner.js";
 
