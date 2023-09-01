@@ -335,6 +335,9 @@ export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
+// ./reads/getVaultHasMigration.js
+export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
+
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
 
