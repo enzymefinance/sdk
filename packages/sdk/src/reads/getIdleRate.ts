@@ -1,7 +1,7 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IIdlePriceFeed } from "@enzymefinance/abis/IIdlePriceFeed";
 import { type Address, ContractFunctionExecutionError, type PublicClient, parseUnits } from "viem";
 import { simulateContract } from "viem/contract";
-import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 
 export async function getIdleRate(
   client: PublicClient,

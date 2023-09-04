@@ -1,7 +1,7 @@
-import { type Address, isAddress } from "viem";
-import { expect, test } from "vitest";
 import { publicClientMainnet } from "../../tests/globals.js";
 import { getIdleRate } from "./getIdleRate.js";
+import { type Address, isAddress } from "viem";
+import { expect, test } from "vitest";
 
 test("get idle rate should work correctly", async () => {
   const idlePriceFeed = "0x13c2263e534BD27149d96b8Cb9961ea1beB560Ef" as const;
