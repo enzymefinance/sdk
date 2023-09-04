@@ -224,6 +224,9 @@ export { getAssetAllowance } from "./reads/getAssetAllowance.js";
 // ./reads/getAssetAmount.js
 export { getAssetAmount } from "./reads/getAssetAmount.js";
 
+// ./reads/getAssetAmounts.js
+export { getAssetAmounts } from "./reads/getAssetAmounts.js";
+
 // ./reads/getAssetDecimals.js
 export { getAssetDecimals } from "./reads/getAssetDecimals.js";
 
