@@ -1,13 +1,6 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
-
-export type GetSharesActionTimelockParams = {
-  /**
-   * The address of the `ComptrollerProxy` contract of the vault.
-   */
-  comptrollerProxy: Address;
-};
 
 /**
  * Get the shares action timelock.
@@ -15,10 +8,16 @@ export type GetSharesActionTimelockParams = {
  * @param client The public client to use to read the contract.
  * @returns The shares action timelock in seconds.
  */
-export function getSharesActionTimelock(client: PublicClient, { comptrollerProxy }: GetSharesActionTimelockParams) {
-  return readContract(client, {
+export function getSharesActionTimelock(
+  client: PublicClient,
+  args: ReadContractParameters<{
+    comptrollerProxy: Address;
+  }>,
+) {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IComptrollerLib,
-    address: comptrollerProxy,
+    address: args.comptrollerProxy,
     functionName: "getSharesActionTimelock",
   });
 }

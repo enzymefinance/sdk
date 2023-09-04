@@ -1,20 +1,8 @@
 import {
-  allowedExternalPositionTypesPolicySettingsEncoding,
   decodeAllowedExternalPositionTypesPolicySettings,
   encodeAllowedExternalPositionTypesPolicySettings,
 } from "./allowedExternalPositionTypesPolicy.js";
 import { expect, test } from "vitest";
-
-test("allowedExternalPositionTypesPolicySettingsEncoding should have the correct properties", () => {
-  expect(allowedExternalPositionTypesPolicySettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "externalPositionTypeIds",
-        "type": "uint256[]",
-      },
-    ]
-  `);
-});
 
 test("encodeAllowedExternalPositionTypesPolicySettings should encode correctly", () => {
   expect(

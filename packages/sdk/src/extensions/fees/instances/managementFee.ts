@@ -2,7 +2,7 @@ import { ZERO_ADDRESS } from "../../../constants/misc.js";
 import { calculateAmountDueForScaledPerSecondRate, convertRateToScaledPerSecondRate } from "../../../utils/rates.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const managementFeeSettingsEncoding = [
+const managementFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "feeRate", // scaled per second

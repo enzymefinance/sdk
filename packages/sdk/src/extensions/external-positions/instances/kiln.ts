@@ -18,7 +18,7 @@ export const KilnClaimType = {
   All: 2,
 } as const;
 
-export const kilnStakeArgsEncoding = [
+const kilnStakeArgsEncoding = [
   {
     type: "address",
     name: "stakingContract",
@@ -29,7 +29,7 @@ export const kilnStakeArgsEncoding = [
   },
 ] as const;
 
-export const kilnClaimFeesArgsEncoding = [
+const kilnClaimFeesArgsEncoding = [
   {
     type: "address",
     name: "stakingContract",

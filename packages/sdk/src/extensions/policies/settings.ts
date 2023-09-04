@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const policySettingsEncoding = [
+const policySettingsEncoding = [
   {
     type: "address[]",
     name: "policyAddresses",

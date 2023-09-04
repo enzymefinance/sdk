@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const callOnExternalPositionArgsEncoding = [
+const callOnExternalPositionArgsEncoding = [
   {
     type: "address",
     name: "externalPositionProxy",

@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const aaveV2LendEncoding = [
+const aaveV2LendEncoding = [
   {
     type: "address",
     name: "aToken",
@@ -29,7 +29,7 @@ export function decodeAaveV2LendArgs(callArgs: Hex): AaveV2LendArgs {
   };
 }
 
-export const aaveV2RedeemEncoding = [
+const aaveV2RedeemEncoding = [
   {
     type: "address",
     name: "aToken",

@@ -1,21 +1,19 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IMinMaxInvestmentPolicy } from "@enzymefinance/abis/IMinMaxInvestmentPolicy";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getMinMaxInvestmentPolicySettings(
   client: PublicClient,
-  {
-    comptrollerProxy,
-    address,
-  }: {
+  args: ReadContractParameters<{
     comptrollerProxy: Address;
-    address: Address;
-  },
+    minMaxInvestmentPolicy: Address;
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IMinMaxInvestmentPolicy,
     functionName: "getFundSettings",
-    args: [comptrollerProxy],
-    address,
+    args: [args.comptrollerProxy],
+    address: args.minMaxInvestmentPolicy,
   });
 }

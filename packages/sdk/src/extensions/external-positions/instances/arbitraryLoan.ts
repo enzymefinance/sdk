@@ -10,7 +10,7 @@ export const ArbitraryLoanAction = {
   CloseLoan: 4n,
 } as const;
 
-export const arbitraryLoanConfigureLoanArgsEncoding = [
+const arbitraryLoanConfigureLoanArgsEncoding = [
   {
     name: "borrower",
     type: "address",
@@ -91,7 +91,7 @@ export function decodeArbitraryLoanConfigureLoanArgs(callArgs: Hex): ArbitraryLo
   };
 }
 
-export const arbitraryLoanUpdateBorrowableAmountArgsEncoding = [
+const arbitraryLoanUpdateBorrowableAmountArgsEncoding = [
   {
     name: "amountDelta",
     type: "uint256",
@@ -151,7 +151,7 @@ export function decodeArbitraryLoanCallOnAccountingModuleArgs(callArgs: Hex): Ar
   };
 }
 
-export const arbitraryLoanReconcileArgsEncoding = [
+const arbitraryLoanReconcileArgsEncoding = [
   {
     name: "extraAssetsToSweep",
     type: "address[]",
@@ -186,7 +186,7 @@ export function decodeArbitraryLoanReconcileArgs(callArgs: Hex): ArbitraryLoanRe
   };
 }
 
-export const arbitraryLoanCloseLoanArgsEncoding = [
+const arbitraryLoanCloseLoanArgsEncoding = [
   {
     name: "extraAssetsToSweep",
     type: "address[]",

@@ -1,24 +1,8 @@
 import { toBps } from "../../utils/conversion.js";
 import { encodeManagementFeeSettings } from "./instances/managementFee.js";
 import { encodePerformanceFeeSettings } from "./instances/performanceFee.js";
-import { decodeFeeSettings, encodeFeeSettings, feeSettingsEncoding } from "./settings.js";
-import { encodeAbiParameters } from "viem";
+import { decodeFeeSettings, encodeFeeSettings } from "./settings.js";
 import { expect, test } from "vitest";
-
-test("feeSettingsEncoding should have the correct properties", () => {
-  expect(feeSettingsEncoding).toMatchInlineSnapshot(`
-      [
-        {
-          "name": "feeAddresses",
-          "type": "address[]",
-        },
-        {
-          "name": "feeSettings",
-          "type": "bytes[]",
-        },
-      ]
-    `);
-});
 
 test("encodeFeeSettings should encode correctly", () => {
   expect(
@@ -35,17 +19,6 @@ test("encodeFeeSettings should encode correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000002000000000000000000000000fedc73464dfd156d30f6524654a5d56e766da0c3000000000000000000000000faf2c3db614e9d38fe05edc634848be7ff0542b90000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000a0000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000003e8000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000033b2e3cce25d9e52486e3880000000000000000000000000000000000000000000000000000000000000000"',
   );
-});
-
-test("decodeFeeSettings should throw error if encoded addresses and settings have different lengths", () => {
-  const addresses = [
-    "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
-    "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
-  ] as const;
-  const settings = [encodeManagementFeeSettings({ perAnnumRateInBps: toBps(0.1) })] as const;
-  const encoded = encodeAbiParameters(feeSettingsEncoding, [addresses, settings]);
-
-  expect(() => decodeFeeSettings(encoded)).toThrowError("Expected fee addresses and settings to have the same length");
 });
 
 test("decodeFeeSettings should encode correctly", () => {

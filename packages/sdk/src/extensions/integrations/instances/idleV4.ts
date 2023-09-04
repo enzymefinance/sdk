@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const idleV4LendEncoding = [
+const idleV4LendEncoding = [
   {
     name: "idleToken",
     type: "address",
@@ -35,7 +35,7 @@ export function decodeIdleV4LendArgs(callArgs: Hex): IdleV4LendArgs {
   };
 }
 
-export const idleV4RedeemEncoding = [
+const idleV4RedeemEncoding = [
   {
     type: "address",
     name: "idleToken",
@@ -73,7 +73,7 @@ export function decodeIdleV4RedeemArgs(integrationData: Hex): IdleV4RedeemArgs {
   return { idleToken, outgoingIdleTokenAmount, minIncomingUnderlyingAmount };
 }
 
-export const idleV4ClaimRewardsEncoding = [
+const idleV4ClaimRewardsEncoding = [
   {
     type: "address",
     name: "idleToken",

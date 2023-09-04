@@ -17,12 +17,11 @@ import {
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
-import { prepareFunctionParams } from "../../../utils/viem.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { abiCurvePool } from "./curveLiquidity.test.js";
-import { encodeAbiParameters, getAbiItem, parseAbi, parseEther } from "viem";
+import { encodeAbiParameters, parseAbi, parseEther } from "viem";
 import { expect, test } from "vitest";
 
 test("prepare adapter trade for Convex Curve Lp Staking lend and stake should work correctly", async () => {
@@ -517,10 +516,9 @@ test("prepare adapter trade for Convex Curve Lp Staking claim rewards should wor
   });
   await sendTestTransaction({
     network: "mainnet",
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: abiCRVoken, name: "mint" }),
-      args: [CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER, crvRewardsAmount],
-    }),
+    abi: abiCRVoken,
+    functionName: "mint",
+    args: [CONVEX_CURVE_FRAX_USDC_STAKING_WRAPPER, crvRewardsAmount],
     address: CRV,
     account: CURVE_MINTER,
   });

@@ -1,33 +1,31 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { isPolicyEnabled } from "./isPolicyEnabled.js";
 import { IAllowedDepositRecipientsPolicy } from "@enzymefinance/abis/IAllowedDepositRecipientsPolicy";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
-
-export type IsAllowedDepositorParams = {
-  allowedDepositRecipientsPolicy: Address;
-  comptrollerProxy: Address;
-  policyManager: Address;
-  depositor: Address;
-};
 
 export async function isAllowedDepositor(
   client: PublicClient,
-  { depositor, comptrollerProxy, policyManager, allowedDepositRecipientsPolicy }: IsAllowedDepositorParams,
-): Promise<boolean> {
+  args: ReadContractParameters<{
+    allowedDepositRecipientsPolicy: Address;
+    comptrollerProxy: Address;
+    policyManager?: Address;
+    depositor: Address;
+  }>,
+) {
   const hasAllowedDepositorPolicy = await isPolicyEnabled(client, {
-    policy: allowedDepositRecipientsPolicy,
-    comptrollerProxy,
-    policyManager,
+    ...args,
+    policy: args.allowedDepositRecipientsPolicy,
   });
 
   if (!hasAllowedDepositorPolicy) {
     return true;
   }
 
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IAllowedDepositRecipientsPolicy,
     functionName: "passesRule",
-    address: allowedDepositRecipientsPolicy,
-    args: [comptrollerProxy, depositor],
+    address: args.allowedDepositRecipientsPolicy,
+    args: [args.comptrollerProxy, args.depositor],
   });
 }

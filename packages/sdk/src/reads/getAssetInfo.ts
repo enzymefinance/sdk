@@ -1,3 +1,4 @@
+import type { ReadContractParameters } from "../utils/viem.js";
 import { getAssetDecimals } from "./getAssetDecimals.js";
 import { getAssetName } from "./getAssetName.js";
 import { getAssetSymbol } from "./getAssetSymbol.js";
@@ -5,28 +6,15 @@ import type { Address, PublicClient } from "viem";
 
 export async function getAssetInfo(
   client: PublicClient,
-  {
-    asset,
-  }: {
+  args: ReadContractParameters<{
     asset: Address;
-  },
+  }>,
 ) {
   const [name, symbol, decimals] = await Promise.all([
-    getAssetName(client, { asset }),
-    getAssetSymbol(client, { asset }),
-    getAssetDecimals(client, { asset }),
+    getAssetName(client, args),
+    getAssetSymbol(client, args),
+    getAssetDecimals(client, args),
   ]);
 
-  return { name, symbol, decimals, address: asset };
-}
-
-export function getAssetInfoMultiple(
-  client: PublicClient,
-  {
-    assets,
-  }: {
-    assets: readonly Address[];
-  },
-) {
-  return Promise.all(assets.map((asset) => getAssetInfo(client, { asset })));
+  return { name, symbol, decimals, address: args.asset };
 }

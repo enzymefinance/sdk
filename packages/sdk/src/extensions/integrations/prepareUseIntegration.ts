@@ -8,6 +8,7 @@ import {
   UNSTAKE_AND_REDEEM_SELECTOR,
   UNSTAKE_SELECTOR,
 } from "../../constants/selectors.js";
+import { never } from "../../utils/assertions.js";
 import type { Prettify } from "../../utils/types.js";
 import { IntegrationManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
 import { encodeCallOnIntegrationArgs } from "./callOnIntegration.js";
@@ -201,5 +202,8 @@ export function encodeIntegrationCallArgs(callArgs: TypedIntegrationCallArgs): [
       return [TAKE_ORDER_SELECTOR, encodeOneInchV5TakeOrderArgs(callArgs)];
     case Integration.ZeroExV4TakeOrder:
       return [TAKE_ORDER_SELECTOR, encodeZeroExV4TakeOrderArgs(callArgs)];
+    default: {
+      never(callArgs, "Unknown external position type");
+    }
   }
 }

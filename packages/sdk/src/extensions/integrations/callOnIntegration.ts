@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const callOnIntegrationArgsEncoding = [
+const callOnIntegrationArgsEncoding = [
   {
     type: "address",
     name: "adapter",

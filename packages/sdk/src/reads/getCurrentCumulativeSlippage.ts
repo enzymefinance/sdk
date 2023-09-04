@@ -1,38 +1,30 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { ICumulativeSlippageTolerancePolicy } from "@enzymefinance/abis/ICumulativeSlippageTolerancePolicy";
 import type { Address, PublicClient } from "viem";
 import { multicall } from "viem/contract";
 
-export type GetCurrentCumulativeSlippageParams = {
-  cumulativeSlippageTolerancePolicy: Address;
-  comptrollerProxy: Address;
-};
-
-export type GetCurrentCumulativeSlippageResult = {
-  tolerancePeriodDuration: bigint;
-  lastSlippageTimestamp: bigint;
-  currentCumulativeSlippage: bigint;
-  policyIsEnabled: boolean;
-  configuredTolerance: bigint;
-};
-
 export async function getCurrentCumulativeSlippage(
   client: PublicClient,
-  { comptrollerProxy, cumulativeSlippageTolerancePolicy }: GetCurrentCumulativeSlippageParams,
-): Promise<GetCurrentCumulativeSlippageResult> {
+  args: ReadContractParameters<{
+    cumulativeSlippageTolerancePolicy: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
   const [tolerancePeriodDuration, { cumulativeSlippage, lastSlippageTimestamp, tolerance: configuredTolerance }] =
     await multicall(client, {
+      ...readContractParameters(args),
       allowFailure: false,
       contracts: [
         {
-          address: cumulativeSlippageTolerancePolicy,
+          address: args.cumulativeSlippageTolerancePolicy,
           abi: ICumulativeSlippageTolerancePolicy,
           functionName: "getTolerancePeriodDuration",
         },
         {
-          address: cumulativeSlippageTolerancePolicy,
+          address: args.cumulativeSlippageTolerancePolicy,
           abi: ICumulativeSlippageTolerancePolicy,
           functionName: "getPolicyInfoForFund",
-          args: [comptrollerProxy],
+          args: [args.comptrollerProxy],
         },
       ],
     });

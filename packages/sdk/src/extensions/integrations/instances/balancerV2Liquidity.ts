@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const balancerV2LiquidityLendEncodingAndRedeemEncoding = [
+const balancerV2LiquidityLendEncodingAndRedeemEncoding = [
   {
     name: "poolId",
     type: "bytes32",
@@ -87,7 +87,7 @@ export function decodeBalancerV2LiquidityLendArgsAndRedeemArgs(
   };
 }
 
-export const balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding = [
+const balancerV2LiquidityLendAndStakeEncodingAndUnstakeEncodingAndUnstakeAndRedeemEncoding = [
   {
     name: "stakingToken",
     type: "address",
@@ -135,7 +135,7 @@ export function decodeBalancerV2LiquidityLendAndStakeArgsAndUnstakeAndRedeemArgs
   };
 }
 
-export const balancerV2LiquidityClaimRewardsEncoding = [
+const balancerV2LiquidityClaimRewardsEncoding = [
   {
     name: "stakingToken",
     type: "address",
@@ -156,7 +156,7 @@ export function decodeBalancerV2LiquidityClaimRewardsArgs(integrationData: Hex):
   return { stakingToken };
 }
 
-export const balancerV2LiquidityStakeEncodingAndUnstakeEncoding = [
+const balancerV2LiquidityStakeEncodingAndUnstakeEncoding = [
   {
     name: "stakingToken",
     type: "address",
@@ -203,7 +203,7 @@ function assertSwapKindValue(value: number): asserts value is SwapKindValue {
   }
 }
 
-export const balancerV2LiquidityTakeOrderEncoding = [
+const balancerV2LiquidityTakeOrderEncoding = [
   {
     name: "kind",
     type: "uint8",

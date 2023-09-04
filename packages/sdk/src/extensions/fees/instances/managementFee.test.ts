@@ -4,7 +4,6 @@ import {
   calculateManagementFeeSharesDue,
   decodeManagementFeeSettings,
   encodeManagementFeeSettings,
-  managementFeeSettingsEncoding,
 } from "./managementFee.js";
 import { expect, test } from "vitest";
 
@@ -42,21 +41,6 @@ test("encodeManagementFeeSettings should work correctly", () => {
   ).toMatchInlineSnapshot(
     '"0x00000000000000000000000000000000000000000000000000000000000004ce000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266"',
   );
-});
-
-test("managementFeeSettingsEncoding should have correct properties", () => {
-  expect(managementFeeSettingsEncoding).toMatchInlineSnapshot(`
-    [
-      {
-        "name": "feeRate",
-        "type": "uint256",
-      },
-      {
-        "name": "feeRecipient",
-        "type": "address",
-      },
-    ]
-  `);
 });
 
 test("decodeManagementFeeSettings should decode correctly", () => {

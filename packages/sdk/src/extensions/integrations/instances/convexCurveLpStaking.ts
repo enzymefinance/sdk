@@ -1,7 +1,7 @@
 import { type RedeemTypeValue, assertRedeemTypeValue } from "./curveLiquidity.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const convexCurveLpStakingLendAndStakeEncoding = [
+const convexCurveLpStakingLendAndStakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -61,7 +61,7 @@ export function decodeConvexCurveLpStakingLendAndStakeArgs(callArgs: Hex): Conve
   };
 }
 
-export const convexCurveLpStakingClaimRewardsEncoding = [
+const convexCurveLpStakingClaimRewardsEncoding = [
   {
     name: "stakingToken",
     type: "address",
@@ -84,7 +84,7 @@ export function decodeConvexCurveLpStakingClaimRewardsArgs(integrationData: Hex)
   return { stakingToken };
 }
 
-export const convexCurveLpStakingStakeEncoding = [
+const convexCurveLpStakingStakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -119,7 +119,7 @@ export function decodeConvexCurveLpStakingStakeArgs(integrationData: Hex): Conve
   return { pool, incomingStakingToken, amount };
 }
 
-export const convexCurveLpStakingUnstakeEncoding = [
+const convexCurveLpStakingUnstakeEncoding = [
   {
     name: "pool",
     type: "address",
@@ -157,7 +157,7 @@ export function decodeConvexCurveLpStakingUnstakeArgs(integrationData: Hex): Con
   return { pool, outgoingStakingToken, amount };
 }
 
-export const convexCurveLpStakingUnstakeAndRedeemEncoding = [
+const convexCurveLpStakingUnstakeAndRedeemEncoding = [
   {
     name: "pool",
     type: "address",

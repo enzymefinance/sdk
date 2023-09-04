@@ -6,7 +6,7 @@ export const ZeroExV4OrderType = {
   Rfq: 1,
 } as const;
 
-export const zeroExV4LimitOrderEncoding = {
+const zeroExV4LimitOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -61,7 +61,7 @@ export const zeroExV4LimitOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4RfqOrderEncoding = {
+const zeroExV4RfqOrderEncoding = {
   components: [
     {
       name: "makerToken",
@@ -108,7 +108,7 @@ export const zeroExV4RfqOrderEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4SignatureEncoding = {
+const zeroExV4SignatureEncoding = {
   components: [
     {
       name: "signatureType",
@@ -131,7 +131,7 @@ export const zeroExV4SignatureEncoding = {
   type: "tuple",
 } as const;
 
-export const zeroExV4TakeOrderEncoding = [
+const zeroExV4TakeOrderEncoding = [
   {
     name: "encodedZeroExOrderArgs",
     type: "bytes",
@@ -176,11 +176,11 @@ export type ZeroExV4RfqOrder = {
 
 export type ZeroExV4SignatureType = typeof ZeroExV4SignatureType[keyof typeof ZeroExV4SignatureType];
 export const ZeroExV4SignatureType = {
-  ILLEGAL: 0,
-  INVALID: 1,
-  EIP712: 2,
-  ETHSIGN: 3,
-  PRESIGNED: 4,
+  Illegal: 0,
+  Invalid: 1,
+  Eip712: 2,
+  EthSign: 3,
+  PreSigned: 4,
 } as const;
 
 type ZeroExV4Signature = {

@@ -1,4 +1,3 @@
-import { IComptrollerLib } from "../../../../../abis/src/abis/IComptrollerLib.js";
 import { increaseTimeAndMine } from "../../../../tests/actions/increaseTimeAndMine.js";
 import {
   ALICE,
@@ -18,11 +17,11 @@ import { publicClientMainnet, sendTestTransaction, testActions } from "../../../
 import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
-import { prepareFunctionParams } from "../../../utils/viem.js";
 import { RedeemType } from "../instances/curveLiquidity.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
-import { encodeAbiParameters, getAbiItem, parseAbi } from "viem";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
+import { encodeAbiParameters, parseAbi } from "viem";
 import { expect, test } from "vitest";
 
 export const abiCurvePool = parseAbi([
@@ -716,14 +715,13 @@ test("prepare adapter trade for Curve Liquidity claim rewards should work correc
 
   await sendTestTransaction({
     network: "mainnet",
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
-      args: [
-        CURVE_MINTER,
-        TOGGLE_APPROVE_MINT_SELECTOR,
-        encodeAbiParameters([{ name: "adapter", type: "address" }], [CURVE_LIQUIDITY_ADAPTER]),
-      ],
-    }),
+    abi: IComptrollerLib,
+    functionName: "vaultCallOnContract",
+    args: [
+      CURVE_MINTER,
+      TOGGLE_APPROVE_MINT_SELECTOR,
+      encodeAbiParameters([{ name: "adapter", type: "address" }], [CURVE_LIQUIDITY_ADAPTER]),
+    ],
     account: vaultOwner,
     address: comptrollerProxy,
   });

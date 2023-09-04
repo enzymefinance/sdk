@@ -8,7 +8,7 @@ export const TheGraphDelegationAction = {
   Withdraw: 2n,
 } as const;
 
-export const theGraphDelegationDelegateArgsEncoding = [
+const theGraphDelegationDelegateArgsEncoding = [
   {
     name: "indexer",
     type: "address",
@@ -50,7 +50,7 @@ export function decodeTheGraphDelegationDelegateArgs(callArgs: Hex): TheGraphDel
   };
 }
 
-export const theGraphDelegationUndelegateArgsEncoding = [
+const theGraphDelegationUndelegateArgsEncoding = [
   {
     name: "indexer",
     type: "address",
@@ -92,7 +92,7 @@ export function decodeTheGraphDelegationUndelegateArgs(callArgs: Hex): TheGraphD
   };
 }
 
-export const theGraphDelegationWithdrawArgsEncoding = [
+const theGraphDelegationWithdrawArgsEncoding = [
   {
     name: "indexer",
     type: "address",

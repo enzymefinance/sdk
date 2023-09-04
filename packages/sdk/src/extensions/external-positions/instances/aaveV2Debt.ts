@@ -9,7 +9,7 @@ export const AaveV2DebtAction = {
   RepayBorrow: 3n,
 } as const;
 
-export const aaveV2DebtAddCollateralArgsEncoding = [
+const aaveV2DebtAddCollateralArgsEncoding = [
   {
     name: "aTokens",
     type: "address[]",
@@ -51,7 +51,7 @@ export function decodeAaveV2DebtAddCollateralArgs(callArgs: Hex): AaveV2DebtAddC
   };
 }
 
-export const aaveV2DebtRemoveCollateralArgsEncoding = [
+const aaveV2DebtRemoveCollateralArgsEncoding = [
   {
     name: "underlyingTokens",
     type: "address[]",
@@ -93,7 +93,7 @@ export function decodeAaveV2DebtRemoveCollateralArgs(callArgs: Hex): AaveV2DebtR
   };
 }
 
-export const aaveV2DebtBorrowArgsEncoding = [
+const aaveV2DebtBorrowArgsEncoding = [
   {
     name: "underlyingTokens",
     type: "address[]",
@@ -135,7 +135,7 @@ export function decodeAaveV2DebtBorrowArgs(callArgs: Hex): AaveV2DebtBorrowArgs 
   };
 }
 
-export const aaveV2DebtRepayBorrowArgsEncoding = [
+const aaveV2DebtRepayBorrowArgsEncoding = [
   {
     name: "underlyingTokens",
     type: "address[]",

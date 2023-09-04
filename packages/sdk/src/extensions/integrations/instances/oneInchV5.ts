@@ -1,6 +1,6 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const oneInchV5TakeOrderEncoding = [
+const oneInchV5TakeOrderEncoding = [
   {
     name: "executor",
     type: "address",

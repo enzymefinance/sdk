@@ -11,7 +11,7 @@ export const LiquityDebtPositionAction = {
   CloseTrove: 5n,
 } as const;
 
-export const liquityDebtPositionOpenTroveArgsEncoding = [
+const liquityDebtPositionOpenTroveArgsEncoding = [
   {
     name: "maxFeePercentage",
     type: "uint256",
@@ -34,7 +34,7 @@ export const liquityDebtPositionOpenTroveArgsEncoding = [
   },
 ] as const;
 
-export const liquityDebtPositionAddCollateralArgsEncoding = [
+const liquityDebtPositionAddCollateralArgsEncoding = [
   {
     name: "collateralAmount",
     type: "uint256",
@@ -49,7 +49,7 @@ export const liquityDebtPositionAddCollateralArgsEncoding = [
   },
 ] as const;
 
-export const liquityDebtPositionRemoveCollateralArgsEncoding = [
+const liquityDebtPositionRemoveCollateralArgsEncoding = [
   {
     name: "collateralAmount",
     type: "uint256",
@@ -64,7 +64,7 @@ export const liquityDebtPositionRemoveCollateralArgsEncoding = [
   },
 ] as const;
 
-export const liquityDebtPositionBorrowArgsEncoding = [
+const liquityDebtPositionBorrowArgsEncoding = [
   {
     name: "lusdAmount",
     type: "uint256",
@@ -83,7 +83,7 @@ export const liquityDebtPositionBorrowArgsEncoding = [
   },
 ] as const;
 
-export const liquityDebtPositionRepayBorrowArgsEncoding = [
+const liquityDebtPositionRepayBorrowArgsEncoding = [
   {
     name: "lusdAmount",
     type: "uint256",

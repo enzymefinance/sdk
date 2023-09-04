@@ -12,11 +12,10 @@ import {
 } from "../../../../tests/constants.js";
 import { sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { TOGGLE_APPROVE_MINT_SELECTOR } from "../../../constants/selectors.js";
-import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { SwapKind } from "./balancerV2Liquidity.js";
-import { encodeAbiParameters, getAbiItem, parseEther, parseUnits, zeroAddress } from "viem";
+import { encodeAbiParameters, parseEther, parseUnits, zeroAddress } from "viem";
 import { keccak256 } from "viem/utils";
 import { expect, test } from "vitest";
 
@@ -192,14 +191,13 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
   // register vault call to allow approving minter by vault owner
   await sendTestTransaction({
     network: "mainnet",
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IFundDeployer, name: "registerVaultCalls" }),
-      args: [
-        [BALANCER_MINTER],
-        [TOGGLE_APPROVE_MINT_SELECTOR],
-        [keccak256(encodeAbiParameters([{ name: "adapter", type: "address" }], [BALANCER_V2_ADAPTER]))],
-      ],
-    }),
+    abi: IFundDeployer,
+    functionName: "registerVaultCalls",
+    args: [
+      [BALANCER_MINTER],
+      [TOGGLE_APPROVE_MINT_SELECTOR],
+      [keccak256(encodeAbiParameters([{ name: "adapter", type: "address" }], [BALANCER_V2_ADAPTER]))],
+    ],
     account: ENZYME_COUNCIL,
     address: FUND_DEPLOYER,
   });
@@ -207,14 +205,13 @@ test("prepare adapter trade for Balancer V2 Liquidity claim rewards should work 
   // approve minter
   await sendTestTransaction({
     network: "mainnet",
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IComptrollerLib, name: "vaultCallOnContract" }),
-      args: [
-        BALANCER_MINTER,
-        TOGGLE_APPROVE_MINT_SELECTOR,
-        encodeAbiParameters([{ name: "adapter", type: "address" }], [BALANCER_V2_ADAPTER]),
-      ],
-    }),
+    abi: IComptrollerLib,
+    functionName: "vaultCallOnContract",
+    args: [
+      BALANCER_MINTER,
+      TOGGLE_APPROVE_MINT_SELECTOR,
+      encodeAbiParameters([{ name: "adapter", type: "address" }], [BALANCER_V2_ADAPTER]),
+    ],
     account: vaultOwner,
     address: comptrollerProxy,
   });

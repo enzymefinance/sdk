@@ -1,21 +1,19 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IExternalPositionFactory } from "@enzymefinance/abis/IExternalPositionFactory";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getLabelForExternalPositionType(
   client: PublicClient,
-  {
-    externalPositionFactory,
-    typeId,
-  }: {
+  args: ReadContractParameters<{
     externalPositionFactory: Address;
     typeId: bigint;
-  },
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IExternalPositionFactory,
     functionName: "getLabelForPositionType",
-    address: externalPositionFactory,
-    args: [typeId],
+    address: args.externalPositionFactory,
+    args: [args.typeId],
   });
 }

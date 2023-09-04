@@ -1,25 +1,23 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IFundValueCalculatorRouter } from "@enzymefinance/abis/IFundValueCalculatorRouter";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
 import { simulateContract } from "viem/contract";
 
-export async function getVaultSharePriceInAsset(
+export async function getSharePriceInAsset(
   client: PublicClient,
-  {
-    vault,
-    asset,
-    fundValueCalculatorRouter,
-  }: {
-    vault: Address;
+  args: ReadContractParameters<{
     asset: Address;
-    fundValueCalculatorRouter: Address;
-  },
+    vaultProxy: Address;
+    valueCalculator: Address;
+  }>,
 ) {
   try {
     const { result } = await simulateContract(client, {
+      ...readContractParameters(args),
       abi: IFundValueCalculatorRouter,
       functionName: "calcNetShareValueInAsset",
-      address: fundValueCalculatorRouter,
-      args: [vault, asset],
+      address: args.valueCalculator,
+      args: [args.vaultProxy, args.asset],
     });
 
     return result;

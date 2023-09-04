@@ -1,19 +1,18 @@
 import { ZERO_ADDRESS } from "../constants/misc.js";
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
-import { readContract } from "viem/contract";
 
-export async function getGasRelayerEnabled(
+export async function isGasRelayerEnabled(
   client: PublicClient,
-  {
-    comptrollerProxy,
-  }: {
+  args: ReadContractParameters<{
     comptrollerProxy: Address;
-  },
+  }>,
 ) {
-  const address = await readContract(client, {
+  const address = await client.readContract({
+    ...readContractParameters(args),
     abi: IComptrollerLib,
-    address: comptrollerProxy,
+    address: args.comptrollerProxy,
     functionName: "getGasRelayPaymaster",
   });
 

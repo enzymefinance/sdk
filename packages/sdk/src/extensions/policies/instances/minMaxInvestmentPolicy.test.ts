@@ -1,24 +1,8 @@
 import {
   decodeMinMaxInvestmentPolicySettings,
   encodeMinMaxInvestmentPolicySettings,
-  minMaxInvestmentPolicySettingsEncoding,
 } from "./minMaxInvestmentPolicy.js";
 import { expect, test } from "vitest";
-
-test("minMaxInvestmentPolicySettingsEncoding should have the correct properties", () => {
-  expect(minMaxInvestmentPolicySettingsEncoding).toMatchInlineSnapshot(`
-      [
-        {
-          "name": "minInvestmentAmount",
-          "type": "uint256",
-        },
-        {
-          "name": "maxInvestmentAmount",
-          "type": "uint256",
-        },
-      ]
-    `);
-});
 
 test("encodeMinMaxInvestmentPolicySettings should throw an error if minInvestmentAmount is greater than maxInvestmentAmount", () => {
   expect(() =>

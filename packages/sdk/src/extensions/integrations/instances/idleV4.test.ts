@@ -13,19 +13,17 @@ import { publicClientMainnet, sendTestTransaction, testActions, testClientMainne
 import { toSeconds, toWei } from "../../../utils/conversion.js";
 import { multiplyByRate } from "../../../utils/rates.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
-import { prepareFunctionParams } from "../../../utils/viem.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { IIdlePriceFeed } from "@enzymefinance/abis/IIdlePriceFeed";
-import { type Address, getAbiItem, parseUnits, zeroAddress } from "viem";
+import { type Address, parseUnits, zeroAddress } from "viem";
 import { expect, test } from "vitest";
 
 async function getIdlePoolTokenRate(idlePoolToken: Address) {
   const { result } = await publicClientMainnet.simulateContract({
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IIdlePriceFeed, name: "calcUnderlyingValues" }),
-      args: [idlePoolToken, parseUnits("1", 18)],
-    }),
+    abi: IIdlePriceFeed,
+    functionName: "calcUnderlyingValues",
+    args: [idlePoolToken, parseUnits("1", 18)],
     address: IDLE_V4_PRICE_FEED,
     account: zeroAddress,
   });

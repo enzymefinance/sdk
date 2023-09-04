@@ -2,7 +2,7 @@ import { ZERO_ADDRESS } from "../../../constants/misc.js";
 import type { PartialPick } from "../../../utils/types.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-export const performanceFeeSettingsEncoding = [
+const performanceFeeSettingsEncoding = [
   {
     type: "uint256",
     name: "feeRate", // bps

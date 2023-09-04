@@ -1,20 +1,19 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
-
-export type IsActiveExternalPositionParams = {
-  vaultProxy: Address;
-  externalPosition: Address;
-};
 
 export function isActiveExternalPosition(
   client: PublicClient,
-  { vaultProxy, externalPosition }: IsActiveExternalPositionParams,
+  args: ReadContractParameters<{
+    vaultProxy: Address;
+    externalPosition: Address;
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IVaultLib,
-    address: vaultProxy,
+    address: args.vaultProxy,
     functionName: "isActiveExternalPosition",
-    args: [externalPosition],
+    args: [args.externalPosition],
   });
 }
