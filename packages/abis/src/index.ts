@@ -113,6 +113,7 @@ export { ISolvV2BondIssuerPositionParser } from "./abis/ISolvV2BondIssuerPositio
 export { IStakeWiseV3StakingPositionLib } from "./abis/IStakeWiseV3StakingPositionLib.js";
 export { IStakeWiseV3StakingPositionParser } from "./abis/IStakeWiseV3StakingPositionParser.js";
 export { IStakingWrapper } from "./abis/IStakingWrapper.js";
+export { IStakingContractStorageLib } from "./abis/IStakingContractStorageLib.js";
 export { ISynthetixAdapter } from "./abis/ISynthetixAdapter.js";
 export { ITheGraphDelegationPositionLib } from "./abis/ITheGraphDelegationPositionLib.js";
 export { ITheGraphDelegationPositionParser } from "./abis/ITheGraphDelegationPositionParser.js";
