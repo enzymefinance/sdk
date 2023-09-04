@@ -1,3 +1,7 @@
+import { IKilnStakingPositionLib } from "@enzymefinance/abis";
+import { IStakingContractStorageLib } from "@enzymefinance/abis";
+import { parseAbiItem, parseEther } from "viem";
+import { assert, expect, test } from "vitest";
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
@@ -5,10 +9,6 @@ import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import { KilnClaimType, decodeKilnStakeArgs } from "./kiln.js";
-import { IKilnStakingPositionLib } from "@enzymefinance/abis";
-import { IStakingContractStorageLib } from "@enzymefinance/abis";
-import { parseAbiItem, parseEther } from "viem";
-import { assert, expect, test } from "vitest";
 
 test("prepare external position trade for Kiln stake should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -221,6 +221,7 @@ test("prepare external position trade for Kiln unstake should work correctly", a
   const stakingContract = "0x0816df553a89c4bff7ebfd778a9706a989dd3ce3" as const;
   const publicKey =
     "0x990d14af044765720ac6e058c70b7e0e97aaac6777f817a6a2d2980c0a29851d18f413dcc1cd8a9fffe74240bc06a874" as const;
+  const pubKeyRoot = "0x3159179a87d04f17975d9164c0921a702cf15f22b483868e09f29cc8ded6eb24" as const;
 
   await testClientMainnet.reset({
     blockNumber: 17883105n,
@@ -247,7 +248,7 @@ test("prepare external position trade for Kiln unstake should work correctly", a
     abi: IStakingContractStorageLib,
     address: stakingContract,
     functionName: "getExitRequestedFromRoot",
-    args: [publicKey],
+    args: [pubKeyRoot],
   });
 
   expect(isExitRequested).toBeTruthy();
