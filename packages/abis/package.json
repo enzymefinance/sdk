@@ -457,6 +457,11 @@
       "import": "./dist/esm/abis/IKilnStakingPositionParser.js",
       "default": "./dist/cjs/abis/IKilnStakingPositionParser.js"
     },
+    "./ILidoWithdrawalsPositionLib": {
+      "types": "./dist/types/abis/ILidoWithdrawalsPositionLib.d.ts",
+      "import": "./dist/esm/abis/ILidoWithdrawalsPositionLib.js",
+      "default": "./dist/cjs/abis/ILidoWithdrawalsPositionLib.js"
+    },
     "./ILiquityDebtPositionLib": {
       "types": "./dist/types/abis/ILiquityDebtPositionLib.d.ts",
       "import": "./dist/esm/abis/ILiquityDebtPositionLib.js",
@@ -516,6 +521,11 @@
       "types": "./dist/types/abis/IMinSharesSupplyFee.d.ts",
       "import": "./dist/esm/abis/IMinSharesSupplyFee.js",
       "default": "./dist/cjs/abis/IMinSharesSupplyFee.js"
+    },
+    "./INoDepegOnRedeemSharesForSpecificAssetsPolicy": {
+      "types": "./dist/types/abis/INoDepegOnRedeemSharesForSpecificAssetsPolicy.d.ts",
+      "import": "./dist/esm/abis/INoDepegOnRedeemSharesForSpecificAssetsPolicy.js",
+      "default": "./dist/cjs/abis/INoDepegOnRedeemSharesForSpecificAssetsPolicy.js"
     },
     "./INotionalV3PositionLib": {
       "types": "./dist/types/abis/INotionalV3PositionLib.d.ts",
