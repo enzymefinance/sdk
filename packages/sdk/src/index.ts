@@ -337,12 +337,17 @@ export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
 // ./reads/getVaultHasMigration.js
 export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
+// ./reads/getVaultHasReconfiguration.js
+export { getVaultHasReconfigurationRequest } from "./reads/getVaultHasReconfiguration.js";
 
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
 
 // ./reads/getVaultOwner.js
 export { getVaultOwner } from "./reads/getVaultOwner.js";
+
+// ./reads/getVaultTimelockRemainingForMigrationRequest.js
+export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTimelockRemainingForMigrationRequest.js";
 
 // ./reads/hasExecutableMigrationRequest.js
 export { hasExecutableMigrationRequest } from "./reads/hasExecutableMigrationRequest.js";
