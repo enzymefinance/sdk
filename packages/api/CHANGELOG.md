@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.0.11
+
+### Patch Changes
+
+- [`3d51357`](https://github.com/enzymefinance/sdk/commit/3d51357040c888176d57fbf8f845c941fb135df1) Thanks [@fubhy](https://github.com/fubhy)! - Update abis
+
 ## 0.0.10
 
 ### Patch Changes
