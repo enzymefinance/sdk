@@ -341,6 +341,9 @@ export { getVaultName } from "./reads/getVaultName.js";
 // ./reads/getVaultOwner.js
 export { getVaultOwner } from "./reads/getVaultOwner.js";
 
+// ./reads/getVaultTimelockRemainingForMigrationRequest.js
+export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTimelockRemainingForMigrationRequest.js";
+
 // ./reads/hasExecutableMigrationRequest.js
 export { hasExecutableMigrationRequest } from "./reads/hasExecutableMigrationRequest.js";
 
