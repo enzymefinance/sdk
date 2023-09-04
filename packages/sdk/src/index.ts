@@ -332,6 +332,9 @@ export { getSharePriceInAsset } from "./reads/getSharePriceInAsset.js";
 // ./reads/getSharesActionTimelock.js
 export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 
+// ./reads/getTheGraphDelegationPool.js
+export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js";
+
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
