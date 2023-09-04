@@ -1,5 +1,5 @@
-import { decodeCallOnExternalPositionArgs, encodeCallOnExternalPositionArgs } from "../callOnExternalPosition.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { decodeCallOnExternalPositionArgs, encodeCallOnExternalPositionArgs } from "../callOnExternalPosition.js";
 
 export type KilnAction = typeof KilnAction[keyof typeof KilnAction];
 export const KilnAction = {
@@ -41,6 +41,17 @@ const kilnClaimFeesArgsEncoding = [
   {
     name: "claimFeeType",
     type: "uint8",
+  },
+] as const;
+
+const kilnUnstakeArgsEncoding = [
+  {
+    type: "address",
+    name: "stakingContract",
+  },
+  {
+    name: "publicKeys",
+    type: "bytes[]",
   },
 ] as const;
 
@@ -162,5 +173,32 @@ export function decodeKilnUnpausePositionValueArgs(callArgs: Hex): KilnUnpausePo
 
   return {
     externalPositionProxy,
+  };
+}
+
+export type KilnUnstakeArgs = {
+  externalPositionProxy: Address;
+  publicKeys: Hex[];
+  stakingContract: Address;
+};
+
+export function encodeKilnUnstakeArgs({ externalPositionProxy, stakingContract, publicKeys }: KilnUnstakeArgs): Hex {
+  const actionArgs = encodeAbiParameters(kilnUnstakeArgsEncoding, [stakingContract, publicKeys]);
+
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.Unstake,
+    actionArgs,
+  });
+}
+
+export function decodeKilnUnstakeArgs(callArgs: Hex): KilnUnstakeArgs {
+  const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
+  const [stakingContract, publicKeys] = decodeAbiParameters(kilnUnstakeArgsEncoding, actionArgs);
+
+  return {
+    externalPositionProxy,
+    stakingContract,
+    publicKeys: [...publicKeys],
   };
 }

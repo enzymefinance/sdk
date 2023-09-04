@@ -31,6 +31,7 @@ import type {
   KilnStakeArgs,
   KilnSweepEthArgs,
   KilnUnpausePositionValueArgs,
+  KilnUnstakeArgs,
 } from "./instances/kiln.js";
 import type {
   LiquityDebtPositionAddCollateralArgs,
@@ -63,6 +64,7 @@ export type ExternalPosition = typeof ExternalPosition[keyof typeof ExternalPosi
 export const ExternalPosition = {
   KilnClaimFees: "KilnClaimFees",
   KilnStake: "KilnStake",
+  KilnUnstake: "KilnUnstake",
   KilnSweepEth: "KilnSweepEth",
   KilnPausePositionValue: "KilnPausePositionValue",
   KilnUnpausePositionValue: "KilnUnpausePositionValue",
@@ -108,6 +110,7 @@ export const ExternalPosition = {
 export type ExternalPositionArgs = {
   [ExternalPosition.KilnClaimFees]: KilnClaimFeesArgs;
   [ExternalPosition.KilnStake]: KilnStakeArgs;
+  [ExternalPosition.KilnUnstake]: KilnUnstakeArgs;
   [ExternalPosition.KilnSweepEth]: KilnSweepEthArgs;
   [ExternalPosition.KilnPausePositionValue]: KilnPausePositionValueArgs;
   [ExternalPosition.KilnUnpausePositionValue]: KilnUnpausePositionValueArgs;
