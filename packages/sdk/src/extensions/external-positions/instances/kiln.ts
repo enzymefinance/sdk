@@ -1,5 +1,5 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { decodeCallOnExternalPositionArgs, encodeCallOnExternalPositionArgs } from "../callOnExternalPosition.js";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type KilnAction = typeof KilnAction[keyof typeof KilnAction];
 export const KilnAction = {
@@ -51,7 +51,7 @@ const kilnUnstakeArgsEncoding = [
   },
   {
     name: "publicKeys",
-    type: "bytes[]",
+    type: "bytes",
   },
 ] as const;
 
@@ -178,7 +178,7 @@ export function decodeKilnUnpausePositionValueArgs(callArgs: Hex): KilnUnpausePo
 
 export type KilnUnstakeArgs = {
   externalPositionProxy: Address;
-  publicKeys: Hex[];
+  publicKeys: Hex;
   stakingContract: Address;
 };
 
@@ -199,6 +199,6 @@ export function decodeKilnUnstakeArgs(callArgs: Hex): KilnUnstakeArgs {
   return {
     externalPositionProxy,
     stakingContract,
-    publicKeys: [...publicKeys],
+    publicKeys,
   };
 }

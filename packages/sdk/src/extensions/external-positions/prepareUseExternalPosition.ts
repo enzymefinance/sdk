@@ -1,4 +1,3 @@
-import type { Address } from "viem";
 import { never } from "../../utils/assertions.js";
 import type { Prettify } from "../../utils/types.js";
 import { ExternalPositionManagerActionId, prepareCallOnExtensionParams } from "../callOnExtension.js";
@@ -64,6 +63,7 @@ import {
   encodeUniswapV3LiquidityPurgeArgs,
   encodeUniswapV3LiquidityRemoveLiquidityArgs,
 } from "./instances/uniswapV3Liquidity.js";
+import type { Address } from "viem";
 
 export type TypedExternalPositionCallArgs = {
   [TKey in keyof ExternalPositionArgs]: Prettify<{ type: TKey } & ExternalPositionArgs[TKey]>;
