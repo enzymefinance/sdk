@@ -7,7 +7,7 @@ export async function getIdleRate(
   client: PublicClient,
   args: ReadContractParameters<{
     idlePriceFeed: Address;
-    idlePoolToken: { id: Address; decimals: number };
+    idlePoolToken: { address: Address; decimals: number };
   }>,
 ) {
   const idleTokenUnit = parseUnits("1", args.idlePoolToken.decimals);
@@ -18,7 +18,7 @@ export async function getIdleRate(
       abi: IIdlePriceFeed,
       functionName: "calcUnderlyingValues",
       address: args.idlePriceFeed,
-      args: [args.idlePoolToken.id, idleTokenUnit],
+      args: [args.idlePoolToken.address, idleTokenUnit],
     });
 
     return result;
