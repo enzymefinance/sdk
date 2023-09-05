@@ -1,18 +1,17 @@
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 
 export function getVaultNominatedOwner(
   client: PublicClient,
-  {
-    vault,
-  }: {
+  args: ReadContractParameters<{
     vault: Address;
-  },
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IVaultLib,
     functionName: "getNominatedOwner",
-    address: vault,
+    address: args.vault,
   });
 }

@@ -343,17 +343,12 @@ export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
 // ./reads/getVaultHasMigration.js
 export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
+
 // ./reads/getVaultHasReconfiguration.js
 export { getVaultHasReconfigurationRequest } from "./reads/getVaultHasReconfiguration.js";
 
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
-
-// ./reads/getVaultNav.js
-export { getVaultNav } from "./reads/getVaultNav.js";
-
-// ./reads/getVaultNavInAsset.js
-export { getVaultNavInAsset } from "./reads/getVaultNavInAsset.js";
 
 // ./reads/getVaultNominatedOwner.js
 export { getVaultNominatedOwner } from "./reads/getVaultNominatedOwner.js";
