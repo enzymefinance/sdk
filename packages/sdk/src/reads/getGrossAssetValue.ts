@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IFundValueCalculatorRouter } from "@enzymefinance/abis/IFundValueCalculatorRouter";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export async function getGrossAssetValue(
   client: PublicClient,
@@ -13,7 +12,7 @@ export async function getGrossAssetValue(
   try {
     const {
       result: [asset, value],
-    } = await simulateContract(client, {
+    } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IFundValueCalculatorRouter,
       functionName: "calcGav",

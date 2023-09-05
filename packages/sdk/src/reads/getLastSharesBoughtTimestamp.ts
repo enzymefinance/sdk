@@ -1,5 +1,5 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { IComptrollerLib } from "@enzymefinance/abis";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
 
 export function getLastSharesBoughtTimestamp(

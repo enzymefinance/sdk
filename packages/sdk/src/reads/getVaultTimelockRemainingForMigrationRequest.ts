@@ -1,21 +1,19 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IDispatcher } from "@enzymefinance/abis/IDispatcher";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getVaultTimelockRemainingForMigrationRequest(
   client: PublicClient,
-  {
-    vault,
-    dispatcher,
-  }: {
+  args: ReadContractParameters<{
     vault: Address;
     dispatcher: Address;
-  },
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IDispatcher,
     functionName: "getTimelockRemainingForMigrationRequest",
-    address: dispatcher,
-    args: [vault],
+    address: args.dispatcher,
+    args: [args.vault],
   });
 }

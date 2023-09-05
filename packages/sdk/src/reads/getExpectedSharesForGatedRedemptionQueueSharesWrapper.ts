@@ -1,5 +1,5 @@
-import { IGatedRedemptionQueueSharesWrapperLib } from "../../../abis/src/abis/IGatedRedemptionQueueSharesWrapperLib.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
+import { IGatedRedemptionQueueSharesWrapperLib } from "@enzymefinance/abis/IGatedRedemptionQueueSharesWrapperLib";
 import type { Address, PublicClient } from "viem";
 
 export function getExpectedSharesForGatedRedemptionQueueSharesWrapper(

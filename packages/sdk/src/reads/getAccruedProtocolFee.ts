@@ -1,7 +1,6 @@
-import { IProtocolFeeTracker } from "../../../abis/src/abis/IProtocolFeeTracker.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
+import { IProtocolFeeTracker } from "@enzymefinance/abis/IProtocolFeeTracker";
 import type { Address, PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export function getAccruedProtocolFee(
   client: PublicClient,
@@ -10,7 +9,7 @@ export function getAccruedProtocolFee(
     protocolFeeTracker: Address;
   }>,
 ) {
-  return simulateContract(client, {
+  return client.simulateContract({
     ...readContractParameters(args),
     abi: IProtocolFeeTracker,
     functionName: "payFee",

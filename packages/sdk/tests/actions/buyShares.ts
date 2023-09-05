@@ -7,7 +7,7 @@ import { type Network, publicClientMainnet, sendTestTransaction } from "../globa
 import { approveSpend } from "./approveSpend.js";
 import { increaseTimeAndMine } from "./increaseTimeAndMine.js";
 import { wrapEther } from "./wrapEther.js";
-import { IComptrollerLib } from "@enzymefinance/abis";
+import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address } from "viem";
 
 export type BuySharesSettings = PartialPick<BuySharesParams, "minSharesQuantity"> & {

@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IValueInterpreter } from "@enzymefinance/abis/IValueInterpreter";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export async function getCanonicalAssetValue(
   client: PublicClient,
@@ -13,7 +12,7 @@ export async function getCanonicalAssetValue(
   }>,
 ) {
   try {
-    const { result } = await simulateContract(client, {
+    const { result } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IValueInterpreter,
       functionName: "calcCanonicalAssetValue",

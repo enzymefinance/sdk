@@ -1,5 +1,5 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { IDispatcher } from "@enzymefinance/abis";
+import { IDispatcher } from "@enzymefinance/abis/IDispatcher";
 import type { Address, PublicClient } from "viem";
 
 export function getMigrationRequestDetails(

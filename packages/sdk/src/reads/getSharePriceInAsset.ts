@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IFundValueCalculatorRouter } from "@enzymefinance/abis/IFundValueCalculatorRouter";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export async function getSharePriceInAsset(
   client: PublicClient,
@@ -12,7 +11,7 @@ export async function getSharePriceInAsset(
   }>,
 ) {
   try {
-    const { result } = await simulateContract(client, {
+    const { result } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IFundValueCalculatorRouter,
       functionName: "calcNetShareValueInAsset",
