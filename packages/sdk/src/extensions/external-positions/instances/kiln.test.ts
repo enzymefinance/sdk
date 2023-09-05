@@ -1,5 +1,4 @@
 import { IKilnStakingPositionLib } from "@enzymefinance/abis";
-import { IStakingContractStorageLib } from "@enzymefinance/abis";
 import { parseAbiItem, parseEther } from "viem";
 import { assert, expect, test } from "vitest";
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
@@ -158,6 +157,7 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
   });
 });
 
+
 test("prepare external position trade for Kiln pause, and unpause position value should work correctly", async () => {
   // use info from tx 0x22b9715c6f371fa1fd025f37d22f02bcee273cbd097ff1a6aed746ff67d5da0c
   const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510" as const;
@@ -212,6 +212,29 @@ test("prepare external position trade for Kiln pause, and unpause position value
 
   expect(isPositionPausedAfterUnpause).toBeFalsy();
 });
+
+// abi for staking contract: 0x0816df553a89c4bff7ebfd778a9706a989dd3ce3 used in unstake test
+const IStakingContractStorageLib = [
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "_publicKeyRoot",
+        type: "bytes32",
+      },
+    ],
+    name: "getExitRequestedFromRoot",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
 
 test("prepare external position trade for Kiln unstake should work correctly", async () => {
   // use info from tx 0x22b9715c6f371fa1fd025f37d22f02bcee273cbd097ff1a6aed746ff67d5da0c
