@@ -302,6 +302,9 @@ export { getManagedAssets } from "./reads/getManagedAssets.js";
 // ./reads/getManagementFeeInfo.js
 export { getManagementFeeInfo } from "./reads/getManagementFeeInfo.js";
 
+// ./reads/getMigrationRequestDetails.js
+export { getMigrationRequestDetails } from "./reads/getMigrationRequestDetails.js";
+
 // ./reads/getMinMaxInvestmentPolicySettings.js
 export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
 
@@ -334,9 +337,6 @@ export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
-
-// ./reads/getVaultMigrationRequestDetails.js
-export { getVaultMigrationRequestDetails } from "./reads/getVaultMigrationRequestDetails.js";
 
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
