@@ -275,6 +275,9 @@ export { getEntranceFeeRate } from "./reads/getEntranceFeeRate.js";
 // ./reads/getExitFeeRates.js
 export { getExitFeeRates } from "./reads/getExitFeeRates.js";
 
+// ./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js
+export { getExpectedSharesForGatedRedemptionQueueSharesWrapper } from "./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js";
+
 // ./reads/getExternalPositionAssets.js
 export { getExternalPositionAssets } from "./reads/getExternalPositionAssets.js";
 
