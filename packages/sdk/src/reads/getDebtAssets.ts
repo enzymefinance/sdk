@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IExternalPosition } from "@enzymefinance/abis/IExternalPosition";
 import type { Address, PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export async function getDebtAssets(
   client: PublicClient,
@@ -11,7 +10,7 @@ export async function getDebtAssets(
 ) {
   const {
     result: [assets, amounts],
-  } = await simulateContract(client, {
+  } = await client.simulateContract({
     ...readContractParameters(args),
     abi: IExternalPosition,
     functionName: "getDebtAssets",

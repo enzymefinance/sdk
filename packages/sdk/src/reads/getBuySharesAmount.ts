@@ -1,7 +1,6 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import type { Address, PublicClient } from "viem";
-import { simulateContract } from "viem/contract";
 
 export async function getBuySharesAmount(
   client: PublicClient,
@@ -11,7 +10,7 @@ export async function getBuySharesAmount(
     buyer: Address;
   }>,
 ) {
-  const { result } = await simulateContract(client, {
+  const { result } = await client.simulateContract({
     ...readContractParameters(args),
     abi: IComptrollerLib,
     functionName: "buyShares",

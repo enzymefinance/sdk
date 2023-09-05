@@ -2,7 +2,6 @@ import { prepareFunctionParams } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, type PublicClient, decodeFunctionData, getAbiItem } from "viem";
 import type { Hex } from "viem";
-import { simulateContract } from "viem/contract";
 
 export type BuySharesParams = {
   /**
@@ -69,7 +68,7 @@ export async function getExpectedShareQuantity(
   client: PublicClient,
   { comptrollerProxy, investmentAmount, sharesBuyer }: GetExpectedShareQuantityParams,
 ) {
-  const { result } = await simulateContract(client, {
+  const { result } = await client.simulateContract({
     ...prepareBuySharesParams({
       investmentAmount: investmentAmount,
       minSharesQuantity: 1n,

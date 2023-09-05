@@ -1,21 +1,19 @@
-import { IFundDeployer } from "@enzymefinance/abis";
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
+import { IFundDeployer } from "@enzymefinance/abis/IFundDeployer";
 import type { Address, PublicClient } from "viem";
-import { readContract } from "viem/contract";
 
 export function getVaultHasReconfigurationRequest(
   client: PublicClient,
-  {
-    vault,
-    dispatcher,
-  }: {
+  args: ReadContractParameters<{
     vault: Address;
     dispatcher: Address;
-  },
+  }>,
 ) {
-  return readContract(client, {
+  return client.readContract({
+    ...readContractParameters(args),
     abi: IFundDeployer,
     functionName: "hasReconfigurationRequest",
-    address: dispatcher,
-    args: [vault],
+    address: args.dispatcher,
+    args: [args.vault],
   });
 }

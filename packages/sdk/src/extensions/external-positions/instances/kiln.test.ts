@@ -5,7 +5,7 @@ import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import { KilnClaimType, decodeKilnStakeArgs } from "./kiln.js";
-import { IKilnStakingPositionLib } from "@enzymefinance/abis";
+import { IKilnStakingPositionLib } from "@enzymefinance/abis/IKilnStakingPositionLib";
 import { parseAbiItem, parseEther } from "viem";
 import { assert, expect, test } from "vitest";
 
