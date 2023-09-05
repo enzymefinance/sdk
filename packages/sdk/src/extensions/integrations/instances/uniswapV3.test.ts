@@ -11,7 +11,6 @@ import { publicClientMainnet, sendTestTransaction, testActions, testClientMainne
 import { toWei } from "../../../utils/conversion.js";
 import { multiplyBySlippage } from "../../../utils/slippage.js";
 import { prepareFunctionParams } from "../../../utils/viem.js";
-import { IERC20 } from "../../abis/IERC20.js";
 import { Integration } from "../integrationTypes.js";
 import { prepareUseIntegration } from "../prepareUseIntegration.js";
 import { type Address, type Hex, getAbiItem, parseAbi, parseEther } from "viem";
@@ -72,13 +71,11 @@ test("prepare adapter trade for Uniswap V3 take order should work correctly", as
   // approve uniswapV3SwapRouter to so we can simulate the trade
   await sendTestTransaction({
     network: "mainnet",
-    ...prepareFunctionParams({
-      abi: getAbiItem({ abi: IERC20, name: "approve" }),
-      args: [UNISWAP_V3_SWAP_ROUTER, depositAmount],
-    }),
+    abi: parseAbi(["function approve(address spender, uint256 amount) returns (bool)"] as const),
+    functionName: "approve",
+    args: [UNISWAP_V3_SWAP_ROUTER, depositAmount],
     address: pathAddresses[0],
     account: vaultProxy,
-    value: 0n,
   });
 
   // simulate the trade

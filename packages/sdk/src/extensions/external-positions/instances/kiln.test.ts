@@ -211,3 +211,67 @@ test("prepare external position trade for Kiln pause, and unpause position value
 
   expect(isPositionPausedAfterUnpause).toBeFalsy();
 });
+
+// abi for staking contract: 0x0816df553a89c4bff7ebfd778a9706a989dd3ce3 used in unstake test
+const IStakingContractStorageLib = [
+  {
+    inputs: [
+      {
+        internalType: "bytes32",
+        name: "_publicKeyRoot",
+        type: "bytes32",
+      },
+    ],
+    name: "getExitRequestedFromRoot",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+test("prepare external position trade for Kiln unstake should work correctly", async () => {
+  // use info from tx 0x22b9715c6f371fa1fd025f37d22f02bcee273cbd097ff1a6aed746ff67d5da0c
+  const vaultOwner = "0x01bfb6b1051f0a6072ef0c079ea81274095e1510" as const;
+  const comptrollerProxy = "0xad2cf50ad663639c6d22f72f8f4d686f51fc89f8" as const;
+  const externalPositionProxy = "0xb0d4d3fbdbc89dadb2546b68fead1b10f2cc27f0" as const;
+  const stakingContract = "0x0816df553a89c4bff7ebfd778a9706a989dd3ce3" as const;
+  const publicKey =
+    "0x990d14af044765720ac6e058c70b7e0e97aaac6777f817a6a2d2980c0a29851d18f413dcc1cd8a9fffe74240bc06a874" as const;
+  const pubKeyRoot = "0x3159179a87d04f17975d9164c0921a702cf15f22b483868e09f29cc8ded6eb24" as const;
+
+  await testClientMainnet.reset({
+    blockNumber: 17883105n,
+  });
+
+  await testClientMainnet.setBalance({ address: vaultOwner, value: parseEther("1") });
+
+  await sendTestTransaction({
+    network: "mainnet",
+    ...prepareUseExternalPosition({
+      externalPositionManager: EXTERNAL_POSITION_MANAGER,
+      callArgs: {
+        type: ExternalPosition.KilnUnstake,
+        externalPositionProxy,
+        publicKeys: publicKey,
+        stakingContract,
+      },
+    }),
+    account: vaultOwner,
+    address: comptrollerProxy,
+  });
+
+  const isExitRequested = await publicClientMainnet.readContract({
+    abi: IStakingContractStorageLib,
+    address: stakingContract,
+    functionName: "getExitRequestedFromRoot",
+    args: [pubKeyRoot],
+  });
+
+  expect(isExitRequested).toBeTruthy();
+});

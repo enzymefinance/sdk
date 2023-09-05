@@ -127,6 +127,7 @@ export {
   UNSTAKE_SELECTOR,
   UNSTAKE_AND_REDEEM_SELECTOR,
   TAKE_ORDER_SELECTOR,
+  TAKE_MULTIPLE_ORDERS_SELECTOR,
   TOGGLE_APPROVE_MINT_SELECTOR,
 } from "./constants/selectors.js";
 
@@ -211,6 +212,9 @@ export {
   type ExternalPositionManagerActionId,
   type IntegrationManagerActionId,
 } from "./extensions/callOnExtension.js";
+
+// ./reads/convertMapleSharesToExitAssets.js
+export { convertMapleSharesToExitAssets } from "./reads/convertMapleSharesToExitAssets.js";
 
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
@@ -353,6 +357,9 @@ export { getSharePriceInAsset } from "./reads/getSharePriceInAsset.js";
 // ./reads/getSharesActionTimelock.js
 export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 
+// ./reads/getSharesWrapperRedemptionQueueUsers.js
+export { getSharesWrapperRedemptionQueueUsers } from "./reads/getSharesWrapperRedemptionQueueUsers.js";
+
 // ./reads/getTheGraphDelegationPool.js
 export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js";
 
@@ -413,7 +420,7 @@ export {
 export { multiplyBySlippage } from "./utils/slippage.js";
 
 // ./utils/types.js
-export type { PartialPick, Prettify, TupleOf, Tuple } from "./utils/types.js";
+export type { PartialPick, Prettify, TupleOf, Tuple, DeepWriteable } from "./utils/types.js";
 
 // ./utils/viem.js
 export {
@@ -575,6 +582,8 @@ export {
   decodeKilnPausePositionValueArgs,
   encodeKilnUnpausePositionValueArgs,
   decodeKilnUnpausePositionValueArgs,
+  encodeKilnUnstakeArgs,
+  decodeKilnUnstakeArgs,
   type KilnAction,
   type KilnClaimType,
   type KilnStakeArgs,
@@ -582,6 +591,7 @@ export {
   type KilnSweepEthArgs,
   type KilnPausePositionValueArgs,
   type KilnUnpausePositionValueArgs,
+  type KilnUnstakeArgs,
 } from "./extensions/external-positions/instances/kiln.js";
 
 // ./extensions/external-positions/instances/liquity.js
@@ -855,7 +865,17 @@ export {
 export {
   encodeParaswapV5TakeOrderArgs,
   decodeParaswapV5TakeOrderArgs,
+  encodeParaswapV5TakeMultipleOrdersArgs,
+  decodeParaswapV5TakeMultipleOrdersArgs,
+  type ParaswapV5SwapType,
+  type ParaswapV5Route,
+  type ParaswapV5Adapter,
+  type ParaswapV5Path,
+  type ParaswapV5MegaSwapData,
+  type ParaswapV5MultiSwapData,
+  type ParaswapV5SimpleSwapData,
   type ParaswapV5TakeOrderArgs,
+  type ParaswapV5TakeMultipleOrdersArgs,
 } from "./extensions/integrations/instances/paraswapV5.js";
 
 // ./extensions/integrations/instances/uniswapV2Exchange.js
