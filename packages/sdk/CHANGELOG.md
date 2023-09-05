@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.26
+
+### Patch Changes
+
+- [#119](https://github.com/enzymefinance/sdk/pull/119) [`a44df29`](https://github.com/enzymefinance/sdk/commit/a44df29bf180514a55ddd9c7be11c4948ba6c317) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Improve paraswap v5 take order encoding, and add multiple take orders
+
 ## 0.0.25
 
 ### Patch Changes

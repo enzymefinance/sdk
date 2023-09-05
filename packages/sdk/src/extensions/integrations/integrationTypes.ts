@@ -29,7 +29,7 @@ import type {
 import type { ERC4626LendArgs, ERC4626RedeemArgs } from "./instances/erc4626.js";
 import type { IdleV4ClaimRewardsArgs, IdleV4LendArgs, IdleV4RedeemArgs } from "./instances/idleV4.js";
 import type { OneInchV5TakeOrderArgs } from "./instances/oneInchV5.js";
-import type { ParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
+import type { ParaswapV5TakeMultipleOrdersArgs, ParaswapV5TakeOrderArgs } from "./instances/paraswapV5.js";
 import type { UniswapV2ExchangeTakeOrderArgs } from "./instances/uniswapV2Exchange.js";
 import type { UniswapV2LiquidityLendArgs, UniswapV2LiquidityRedeemArgs } from "./instances/uniswapV2Liquidity.js";
 import type { UniswapV3TakeOrderArgs } from "./instances/uniswapV3.js";
@@ -86,6 +86,7 @@ export const Integration = {
   ERC4626Lend: "ERC4626Lend",
   ERC4626Redeem: "ERC4626Redeem",
   ParaswapV5TakeOrder: "ParaswapV5TakeOrder",
+  ParaswapV5TakeMultipleOrders: "ParaswapV5TakeMultipleOrders",
   OneInchV5TakeOrder: "OneInchV5TakeOrder",
   ZeroExV4TakeOrder: "ZeroExV4TakeOrder",
 } as const;
@@ -138,6 +139,7 @@ export type IntegrationArgs = {
   [Integration.ERC4626Lend]: ERC4626LendArgs;
   [Integration.ERC4626Redeem]: ERC4626RedeemArgs;
   [Integration.ParaswapV5TakeOrder]: ParaswapV5TakeOrderArgs;
+  [Integration.ParaswapV5TakeMultipleOrders]: ParaswapV5TakeMultipleOrdersArgs;
   [Integration.OneInchV5TakeOrder]: OneInchV5TakeOrderArgs;
   [Integration.ZeroExV4TakeOrder]: ZeroExV4TakeOrderArgs;
 };
