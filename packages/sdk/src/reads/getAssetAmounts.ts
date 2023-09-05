@@ -10,22 +10,20 @@ export async function getAssetAmounts(
   }>,
 ) {
   const balances = await Promise.all(
-    args.assets.map((asset) => {
-      return getAssetAmount(client, {
+    args.assets.map(async (asset) => {
+      const amount = await getAssetAmount(client, {
+        ...args,
         asset,
-        owner: args.owner,
       });
+
+      return { asset, amount };
     }),
   );
 
-  return balances.reduce<Record<Address, bigint>>((balancesMap, balance, currentIndex) => {
-    const asset = args.assets[currentIndex];
+  const amounts: Record<Address, bigint> = {};
+  for (const { asset, amount } of balances) {
+    amounts[asset] = amount;
+  }
 
-    if (!asset) {
-      throw new Error(`Asset not found at index ${currentIndex}`);
-    }
-
-    balancesMap[asset] = balance;
-    return balancesMap;
-  }, {});
+  return amounts;
 }
