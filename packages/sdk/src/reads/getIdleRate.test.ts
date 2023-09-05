@@ -1,7 +1,7 @@
-import { isAddress } from "viem";
-import { assert, expect, test } from "vitest";
 import { publicClientMainnet } from "../../tests/globals.js";
 import { getIdleRate } from "./getIdleRate.js";
+import { isAddress } from "viem";
+import { assert, expect, test } from "vitest";
 
 test("get idle rate should work correctly", async () => {
   const result = await getIdleRate(publicClientMainnet, {
