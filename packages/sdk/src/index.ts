@@ -314,6 +314,9 @@ export { getManagedAssets } from "./reads/getManagedAssets.js";
 // ./reads/getManagementFeeInfo.js
 export { getManagementFeeInfo } from "./reads/getManagementFeeInfo.js";
 
+// ./reads/getMigrationRequestDetails.js
+export { getMigrationRequestDetails } from "./reads/getMigrationRequestDetails.js";
+
 // ./reads/getMinMaxInvestmentPolicySettings.js
 export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
 
