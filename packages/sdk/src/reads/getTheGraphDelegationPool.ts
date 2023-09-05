@@ -1,35 +1,35 @@
-import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import type { Address, PublicClient } from "viem";
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 
-const abiStakingContract = [
-  {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "delegationPools",
-    outputs: [
-      { internalType: "uint32", name: "cooldownBlocks", type: "uint32" },
-      { internalType: "uint32", name: "indexingRewardCut", type: "uint32" },
-      { internalType: "uint32", name: "queryFeeCut", type: "uint32" },
-      { internalType: "uint256", name: "updatedAtBlock", type: "uint256" },
-      { internalType: "uint256", name: "tokens", type: "uint256" },
-      { internalType: "uint256", name: "shares", type: "uint256" },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-];
+const abi = {
+  inputs: [{ internalType: "address", name: "", type: "address" }],
+  name: "delegationPools",
+  outputs: [
+    { internalType: "uint32", name: "cooldownBlocks", type: "uint32" },
+    { internalType: "uint32", name: "indexingRewardCut", type: "uint32" },
+    { internalType: "uint32", name: "queryFeeCut", type: "uint32" },
+    { internalType: "uint256", name: "updatedAtBlock", type: "uint256" },
+    { internalType: "uint256", name: "tokens", type: "uint256" },
+    { internalType: "uint256", name: "shares", type: "uint256" },
+  ],
+  stateMutability: "view",
+  type: "function",
+} as const;
 
-export function getTheGraphDelegationPool(
+export async function getTheGraphDelegationPool(
   client: PublicClient,
   args: ReadContractParameters<{
     stakingContract: Address;
     indexer: Address;
   }>,
 ) {
-  return client.readContract({
+  const [cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares] = await client.readContract({
     ...readContractParameters(args),
-    abi: abiStakingContract,
+    abi: [abi],
     functionName: "delegationPools",
     address: args.stakingContract,
     args: [args.indexer],
   });
+
+  return { cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares };
 }
