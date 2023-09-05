@@ -1,7 +1,7 @@
-import { publicClientMainnet } from "../../tests/globals.js";
-import { getIdleRate } from "./getIdleRate.js";
 import { isAddress } from "viem";
 import { assert, expect, test } from "vitest";
+import { publicClientMainnet } from "../../tests/globals.js";
+import { getIdleRate } from "./getIdleRate.js";
 
 test("get idle rate should work correctly", async () => {
   const result = await getIdleRate(publicClientMainnet, {
@@ -11,10 +11,10 @@ test("get idle rate should work correctly", async () => {
   });
 
   assert(result !== undefined);
+  expect(Object.keys(result).length).toBeGreaterThan(0);
 
-  const rateAddress = result[0][0] ?? "";
-  const rate = result[1][0] ?? undefined;
-
-  expect(isAddress(rateAddress)).toBeTruthy();
-  expect(rate).toBeTypeOf("bigint");
+  for (const [underlying, amount] of Object.entries(result)) {
+    expect(isAddress(underlying)).toBeTruthy();
+    expect(amount).toBeTypeOf("bigint");
+  }
 });
