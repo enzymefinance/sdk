@@ -44,6 +44,17 @@ const kilnClaimFeesArgsEncoding = [
   },
 ] as const;
 
+const kilnUnstakeArgsEncoding = [
+  {
+    type: "address",
+    name: "stakingContract",
+  },
+  {
+    name: "publicKeys",
+    type: "bytes",
+  },
+] as const;
+
 export type KilnStakeArgs = {
   stakingContract: Address;
   validatorAmount: bigint;
@@ -162,5 +173,32 @@ export function decodeKilnUnpausePositionValueArgs(callArgs: Hex): KilnUnpausePo
 
   return {
     externalPositionProxy,
+  };
+}
+
+export type KilnUnstakeArgs = {
+  externalPositionProxy: Address;
+  publicKeys: Hex;
+  stakingContract: Address;
+};
+
+export function encodeKilnUnstakeArgs({ externalPositionProxy, stakingContract, publicKeys }: KilnUnstakeArgs): Hex {
+  const actionArgs = encodeAbiParameters(kilnUnstakeArgsEncoding, [stakingContract, publicKeys]);
+
+  return encodeCallOnExternalPositionArgs({
+    externalPositionProxy,
+    actionId: KilnAction.Unstake,
+    actionArgs,
+  });
+}
+
+export function decodeKilnUnstakeArgs(callArgs: Hex): KilnUnstakeArgs {
+  const { externalPositionProxy, actionArgs } = decodeCallOnExternalPositionArgs(callArgs);
+  const [stakingContract, publicKeys] = decodeAbiParameters(kilnUnstakeArgsEncoding, actionArgs);
+
+  return {
+    externalPositionProxy,
+    stakingContract,
+    publicKeys,
   };
 }

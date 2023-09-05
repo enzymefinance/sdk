@@ -35,6 +35,7 @@ import {
   encodeKilnStakeArgs,
   encodeKilnSweepEthArgs,
   encodeKilnUnpausePositionValueArgs,
+  encodeKilnUnstakeArgs,
 } from "./instances/kiln.js";
 import {
   encodeLiquityDebtPositionAddCollateralArgs,
@@ -93,6 +94,8 @@ export function encodeExternalPositionCallArgs(callArgs: TypedExternalPositionCa
       return encodeKilnClaimFeesArgs(callArgs);
     case ExternalPosition.KilnStake:
       return encodeKilnStakeArgs(callArgs);
+    case ExternalPosition.KilnUnstake:
+      return encodeKilnUnstakeArgs(callArgs);
     case ExternalPosition.KilnSweepEth:
       return encodeKilnSweepEthArgs(callArgs);
     case ExternalPosition.KilnPausePositionValue:
