@@ -1,5 +1,5 @@
-import type { Address, PublicClient } from "viem";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
+import type { Address, PublicClient } from "viem";
 
 const abi = {
   inputs: [{ internalType: "address", name: "", type: "address" }],
