@@ -1,3 +1,4 @@
+import { never } from "../../../utils/assertions.js";
 import type { DeepWriteable } from "../../../utils/types.js";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
@@ -8,7 +9,7 @@ export const ParaswapV5SwapType = {
   Mega: 2n,
 } as const;
 
-const paraswapV5TakeOrderEncoding = [
+const takeOrderEncoding = [
   {
     name: "minIncomingAssetAmount",
     type: "uint256",
@@ -39,7 +40,7 @@ const paraswapV5TakeOrderEncoding = [
   },
 ] as const;
 
-const paraswapV5RouteEncoding = {
+const routeEncoding = {
   components: [
     {
       name: "targetExchange",
@@ -64,7 +65,7 @@ const paraswapV5RouteEncoding = {
   ],
 } as const;
 
-const paraswapV5AdapterEncoding = {
+const adapterEncoding = {
   components: [
     {
       name: "adapter",
@@ -81,12 +82,12 @@ const paraswapV5AdapterEncoding = {
     {
       name: "route",
       type: "tuple[]",
-      ...paraswapV5RouteEncoding,
+      ...routeEncoding,
     },
   ],
 } as const;
 
-const paraswapV5PathEncoding = {
+const pathEncoding = {
   components: [
     {
       name: "to",
@@ -99,12 +100,12 @@ const paraswapV5PathEncoding = {
     {
       name: "adapter",
       type: "tuple[]",
-      ...paraswapV5AdapterEncoding,
+      ...adapterEncoding,
     },
   ],
 } as const;
 
-const paraswapV5MegaSwapDataEncoding = {
+const megaSwapDataEncoding = {
   components: [
     {
       name: "fromAmountPercent",
@@ -113,20 +114,20 @@ const paraswapV5MegaSwapDataEncoding = {
     {
       name: "path",
       type: "tuple[]",
-      ...paraswapV5PathEncoding,
+      ...pathEncoding,
     },
   ],
   name: "megaSwapData",
   type: "tuple[]",
 } as const;
 
-const paraswapV5MultiSwapDataEncoding = {
+const multiSwapDataEncoding = {
   name: "multiSwapPath",
   type: "tuple[]",
-  ...paraswapV5PathEncoding,
+  ...pathEncoding,
 } as const;
 
-const paraswapV5SimpleSwapDataEncoding = {
+const simpleSwapDataEncoding = {
   components: [
     {
       name: "incomingAsset",
@@ -201,12 +202,6 @@ export type ParaswapV5TakeOrderArgs = {
   | { swapType: typeof ParaswapV5SwapType.Simple; swapData: ParaswapV5SimpleSwapData }
 );
 
-function assertParaswapV5SwapType(value: bigint): asserts value is ParaswapV5SwapType {
-  if (!Object.values(ParaswapV5SwapType).includes(value as ParaswapV5SwapType)) {
-    throw new Error(`Invalid ParaswapV5SwapType: ${value}`);
-  }
-}
-
 export function encodeParaswapV5TakeOrderArgs({
   expectedIncomingAssetAmount,
   minIncomingAssetAmount,
@@ -218,18 +213,28 @@ export function encodeParaswapV5TakeOrderArgs({
 }: ParaswapV5TakeOrderArgs): Hex {
   let encodedSwapData: Hex;
 
-  if (swapType === ParaswapV5SwapType.Mega) {
-    encodedSwapData = encodeAbiParameters([paraswapV5MegaSwapDataEncoding], [swapData]);
-  } else if (swapType === ParaswapV5SwapType.Multi) {
-    encodedSwapData = encodeAbiParameters([paraswapV5MultiSwapDataEncoding], [swapData]);
-  } else if (swapType === ParaswapV5SwapType.Simple) {
-    encodedSwapData = encodeAbiParameters([paraswapV5SimpleSwapDataEncoding], [swapData]);
-  } else {
-    const _exhaustiveCheck: never = swapType;
-    return _exhaustiveCheck;
+  switch (swapType) {
+    case ParaswapV5SwapType.Mega: {
+      encodedSwapData = encodeAbiParameters([megaSwapDataEncoding], [swapData]);
+      break;
+    }
+
+    case ParaswapV5SwapType.Multi: {
+      encodedSwapData = encodeAbiParameters([multiSwapDataEncoding], [swapData]);
+      break;
+    }
+
+    case ParaswapV5SwapType.Simple: {
+      encodedSwapData = encodeAbiParameters([simpleSwapDataEncoding], [swapData]);
+      break;
+    }
+
+    default: {
+      never(swapType, "Invalid swap type");
+    }
   }
 
-  return encodeAbiParameters(paraswapV5TakeOrderEncoding, [
+  return encodeAbiParameters(takeOrderEncoding, [
     minIncomingAssetAmount,
     expectedIncomingAssetAmount,
     outgoingAsset,
@@ -247,13 +252,11 @@ export function decodeParaswapV5TakeOrderArgs(callArgs: Hex): ParaswapV5TakeOrde
     outgoingAsset,
     outgoingAssetAmount,
     uuid,
-    swapType,
+    swapTypeUntyped,
     encodedSwapData,
-  ] = decodeAbiParameters(paraswapV5TakeOrderEncoding, callArgs);
+  ] = decodeAbiParameters(takeOrderEncoding, callArgs);
 
-  assertParaswapV5SwapType(swapType);
-
-  const commonDecodedData = {
+  const common = {
     minIncomingAssetAmount,
     expectedIncomingAssetAmount,
     outgoingAsset,
@@ -261,41 +264,46 @@ export function decodeParaswapV5TakeOrderArgs(callArgs: Hex): ParaswapV5TakeOrde
     uuid,
   };
 
-  if (swapType === ParaswapV5SwapType.Mega) {
-    const [swapData] = decodeAbiParameters([paraswapV5MegaSwapDataEncoding], encodedSwapData);
+  const swapType = swapTypeUntyped as ParaswapV5SwapType;
 
-    return {
-      ...commonDecodedData,
-      swapType,
-      swapData: swapData as DeepWriteable<ParaswapV5MegaSwapData>,
-    };
+  switch (swapType) {
+    case ParaswapV5SwapType.Mega: {
+      const [swapData] = decodeAbiParameters([megaSwapDataEncoding], encodedSwapData);
+
+      return {
+        ...common,
+        swapType,
+        swapData: swapData as DeepWriteable<ParaswapV5MegaSwapData>,
+      };
+    }
+
+    case ParaswapV5SwapType.Multi: {
+      const [swapData] = decodeAbiParameters([multiSwapDataEncoding], encodedSwapData);
+
+      return {
+        ...common,
+        swapType,
+        swapData: swapData as DeepWriteable<ParaswapV5MultiSwapData>,
+      };
+    }
+
+    case ParaswapV5SwapType.Simple: {
+      const [swapData] = decodeAbiParameters([simpleSwapDataEncoding], encodedSwapData);
+
+      return {
+        ...common,
+        swapType,
+        swapData: swapData as DeepWriteable<ParaswapV5SimpleSwapData>,
+      };
+    }
+
+    default: {
+      never(swapType, "Invalid swap type");
+    }
   }
-
-  if (swapType === ParaswapV5SwapType.Multi) {
-    const [swapData] = decodeAbiParameters([paraswapV5MultiSwapDataEncoding], encodedSwapData);
-
-    return {
-      ...commonDecodedData,
-      swapType,
-      swapData: swapData as DeepWriteable<ParaswapV5MultiSwapData>,
-    };
-  }
-
-  if (swapType === ParaswapV5SwapType.Simple) {
-    const [swapData] = decodeAbiParameters([paraswapV5SimpleSwapDataEncoding], encodedSwapData);
-
-    return {
-      ...commonDecodedData,
-      swapType,
-      swapData: swapData as DeepWriteable<ParaswapV5SimpleSwapData>,
-    };
-  }
-
-  const _exhaustiveCheck: never = swapType;
-  return _exhaustiveCheck;
 }
 
-const paraswapV5TakeMultipleOrdersEncoding = [
+const takeMultipleOrdersEncoding = [
   {
     name: "ordersData",
     type: "bytes[]",
@@ -317,11 +325,11 @@ export function encodeParaswapV5TakeMultipleOrdersArgs({
 }: ParaswapV5TakeMultipleOrdersArgs): Hex {
   const ordersData = orders.map((order) => encodeParaswapV5TakeOrderArgs(order));
 
-  return encodeAbiParameters(paraswapV5TakeMultipleOrdersEncoding, [ordersData, allowOrdersToFail]);
+  return encodeAbiParameters(takeMultipleOrdersEncoding, [ordersData, allowOrdersToFail]);
 }
 
 export function decodeParaswapV5TakeMultipleOrdersArgs(callArgs: Hex): ParaswapV5TakeMultipleOrdersArgs {
-  const [ordersData, allowOrdersToFail] = decodeAbiParameters(paraswapV5TakeMultipleOrdersEncoding, callArgs);
+  const [ordersData, allowOrdersToFail] = decodeAbiParameters(takeMultipleOrdersEncoding, callArgs);
 
   return {
     allowOrdersToFail,
