@@ -1,6 +1,3 @@
-import { IKilnStakingPositionLib } from "@enzymefinance/abis";
-import { parseAbiItem, parseEther } from "viem";
-import { assert, expect, test } from "vitest";
 import { ALICE, BOB, EXTERNAL_POSITION_MANAGER, KILN_STAKING_CONTRACT, WETH } from "../../../../tests/constants.js";
 import { publicClientMainnet, sendTestTransaction, testActions, testClientMainnet } from "../../../../tests/globals.js";
 import { toWei } from "../../../utils/conversion.js";
@@ -8,6 +5,9 @@ import { ExternalPosition } from "../externalPositionTypes.js";
 import { prepareCreateExternalPosition } from "../prepareCreateExternalPosition.js";
 import { prepareUseExternalPosition } from "../prepareUseExternalPosition.js";
 import { KilnClaimType, decodeKilnStakeArgs } from "./kiln.js";
+import { IKilnStakingPositionLib } from "@enzymefinance/abis";
+import { parseAbiItem, parseEther } from "viem";
+import { assert, expect, test } from "vitest";
 
 test("prepare external position trade for Kiln stake should work correctly", async () => {
   const vaultOwner = ALICE;
@@ -156,7 +156,6 @@ test("prepare external position trade for Kiln sweep ETH should work correctly",
     expected: 144115149584482222663n,
   });
 });
-
 
 test("prepare external position trade for Kiln pause, and unpause position value should work correctly", async () => {
   // use info from tx 0x22b9715c6f371fa1fd025f37d22f02bcee273cbd097ff1a6aed746ff67d5da0c
