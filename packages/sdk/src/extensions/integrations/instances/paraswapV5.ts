@@ -294,3 +294,37 @@ export function decodeParaswapV5TakeOrderArgs(callArgs: Hex): ParaswapV5TakeOrde
   const _exhaustiveCheck: never = swapType;
   return _exhaustiveCheck;
 }
+
+const paraswapV5TakeMultipleOrdersEncoding = [
+  {
+    name: "ordersData",
+    type: "bytes[]",
+  },
+  {
+    name: "allowOrdersToFail",
+    type: "bool",
+  },
+] as const;
+
+export type ParaswapV5TakeMultipleOrdersArgs = {
+  allowOrdersToFail: boolean;
+  orders: ParaswapV5TakeOrderArgs[];
+};
+
+export function encodeParaswapV5TakeMultipleOrdersArgs({
+  orders,
+  allowOrdersToFail,
+}: ParaswapV5TakeMultipleOrdersArgs): Hex {
+  const ordersData = orders.map((order) => encodeParaswapV5TakeOrderArgs(order));
+
+  return encodeAbiParameters(paraswapV5TakeMultipleOrdersEncoding, [ordersData, allowOrdersToFail]);
+}
+
+export function decodeParaswapV5TakeMultipleOrdersArgs(callArgs: Hex): ParaswapV5TakeMultipleOrdersArgs {
+  const [ordersData, allowOrdersToFail] = decodeAbiParameters(paraswapV5TakeMultipleOrdersEncoding, callArgs);
+
+  return {
+    allowOrdersToFail,
+    orders: ordersData.map((orderData) => decodeParaswapV5TakeOrderArgs(orderData)),
+  };
+}
