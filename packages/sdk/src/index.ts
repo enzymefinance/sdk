@@ -215,6 +215,9 @@ export {
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
+// ./reads/getAccruedProtocolFee.js
+export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
+
 // ./reads/getActiveExternalPositions.js
 export { getActiveExternalPositions } from "./reads/getActiveExternalPositions.js";
 
@@ -223,6 +226,9 @@ export { getAssetAllowance } from "./reads/getAssetAllowance.js";
 
 // ./reads/getAssetAmount.js
 export { getAssetAmount } from "./reads/getAssetAmount.js";
+
+// ./reads/getAssetAmounts.js
+export { getAssetAmounts } from "./reads/getAssetAmounts.js";
 
 // ./reads/getAssetDecimals.js
 export { getAssetDecimals } from "./reads/getAssetDecimals.js";
@@ -272,6 +278,9 @@ export { getEntranceFeeRate } from "./reads/getEntranceFeeRate.js";
 // ./reads/getExitFeeRates.js
 export { getExitFeeRates } from "./reads/getExitFeeRates.js";
 
+// ./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js
+export { getExpectedSharesForGatedRedemptionQueueSharesWrapper } from "./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js";
+
 // ./reads/getExternalPositionAssets.js
 export { getExternalPositionAssets } from "./reads/getExternalPositionAssets.js";
 
@@ -293,8 +302,14 @@ export { getGrossAssetValue } from "./reads/getGrossAssetValue.js";
 // ./reads/getGrossAssetValueInAsset.js
 export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js";
 
+// ./reads/getIdleRate.js
+export { getIdleRate } from "./reads/getIdleRate.js";
+
 // ./reads/getLabelForPositionType.js
 export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType.js";
+
+// ./reads/getLastSharesBoughtTimestamp.js
+export { getLastSharesBoughtTimestamp } from "./reads/getLastSharesBoughtTimestamp.js";
 
 // ./reads/getListIdsForVaultPolicy.js
 export { getListIdsForVaultPolicy } from "./reads/getListIdsForVaultPolicy.js";
@@ -304,6 +319,9 @@ export { getManagedAssets } from "./reads/getManagedAssets.js";
 
 // ./reads/getManagementFeeInfo.js
 export { getManagementFeeInfo } from "./reads/getManagementFeeInfo.js";
+
+// ./reads/getMigrationRequestDetails.js
+export { getMigrationRequestDetails } from "./reads/getMigrationRequestDetails.js";
 
 // ./reads/getMinMaxInvestmentPolicySettings.js
 export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
@@ -341,11 +359,17 @@ export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js"
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
+// ./reads/getVaultHasMigration.js
+export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
+
 // ./reads/getVaultHasReconfiguration.js
 export { getVaultHasReconfigurationRequest } from "./reads/getVaultHasReconfiguration.js";
 
 // ./reads/getVaultName.js
 export { getVaultName } from "./reads/getVaultName.js";
+
+// ./reads/getVaultNominatedOwner.js
+export { getVaultNominatedOwner } from "./reads/getVaultNominatedOwner.js";
 
 // ./reads/getVaultOwner.js
 export { getVaultOwner } from "./reads/getVaultOwner.js";

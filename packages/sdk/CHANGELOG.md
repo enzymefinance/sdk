@@ -1,5 +1,20 @@
 # @enzymefinance/sdk
 
+## 0.0.25
+
+### Patch Changes
+
+- [#100](https://github.com/enzymefinance/sdk/pull/100) [`a95a913`](https://github.com/enzymefinance/sdk/commit/a95a913181126c7c05b62f0d9a63ded1c8db631d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add get canonical asset value
+
+- [#95](https://github.com/enzymefinance/sdk/pull/95) [`5ced3dc`](https://github.com/enzymefinance/sdk/commit/5ced3dc67435d0cb57182e66aeec7f102cf53e1d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add uniswap v3 liquidity trade helpers
+
+- [#85](https://github.com/enzymefinance/sdk/pull/85) [`e0123ab`](https://github.com/enzymefinance/sdk/commit/e0123ab31d5e3a9af7a3e9f6d99e0615c3c8b3cf) Thanks [@manimal1](https://github.com/manimal1)! - Add zero ex v4 trade helpers
+
+- [`3d51357`](https://github.com/enzymefinance/sdk/commit/3d51357040c888176d57fbf8f845c941fb135df1) Thanks [@fubhy](https://github.com/fubhy)! - Update abis
+
+- Updated dependencies [[`3d51357`](https://github.com/enzymefinance/sdk/commit/3d51357040c888176d57fbf8f845c941fb135df1)]:
+  - @enzymefinance/abis@0.0.11
+
 ## 0.0.24
 
 ### Patch Changes

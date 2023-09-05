@@ -2,8 +2,8 @@ export const IDepositWrapper = [
   {
     inputs: [
       {
-        internalType: "address",
-        name: "_weth",
+        internalType: "contract IWETH",
+        name: "_wrappedNativeAsset",
         type: "address",
       },
     ],
@@ -13,7 +13,61 @@ export const IDepositWrapper = [
   {
     inputs: [
       {
+        internalType: "contract IComptroller",
+        name: "_comptrollerProxy",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_minSharesQuantity",
+        type: "uint256",
+      },
+      {
+        internalType: "contract ERC20",
+        name: "_inputAsset",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_maxInputAssetAmount",
+        type: "uint256",
+      },
+      {
         internalType: "address",
+        name: "_exchange",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "_exchangeApproveTarget",
+        type: "address",
+      },
+      {
+        internalType: "bytes",
+        name: "_exchangeData",
+        type: "bytes",
+      },
+      {
+        internalType: "uint256",
+        name: "_exchangeMinReceived",
+        type: "uint256",
+      },
+    ],
+    name: "exchangeErc20AndBuyShares",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "sharesReceived_",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "contract IComptroller",
         name: "_comptrollerProxy",
         type: "address",
       },
@@ -39,7 +93,7 @@ export const IDepositWrapper = [
       },
       {
         internalType: "uint256",
-        name: "_minInvestmentAmount",
+        name: "_exchangeMinReceived",
         type: "uint256",
       },
     ],
@@ -52,19 +106,6 @@ export const IDepositWrapper = [
       },
     ],
     stateMutability: "payable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getWethToken",
-    outputs: [
-      {
-        internalType: "address",
-        name: "wethToken_",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
