@@ -215,6 +215,9 @@ export {
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
+// ./reads/getAccruedProtocolFee.js
+export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
+
 // ./reads/getActiveExternalPositions.js
 export { getActiveExternalPositions } from "./reads/getActiveExternalPositions.js";
 
@@ -274,6 +277,9 @@ export { getExitFeeRates } from "./reads/getExitFeeRates.js";
 
 // ./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js
 export { getExpectedSharesForGatedRedemptionQueueSharesWrapper } from "./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js";
+
+// ./reads/getExternalPositionAssets.js
+export { getExternalPositionAssets } from "./reads/getExternalPositionAssets.js";
 
 // ./reads/getExternalPositionType.js
 export { getExternalPositionType } from "./reads/getExternalPositionType.js";
@@ -338,6 +344,8 @@ export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
+// ./reads/getVaultHasMigration.js
+export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
 // ./reads/getVaultHasReconfiguration.js
 export { getVaultHasReconfigurationRequest } from "./reads/getVaultHasReconfiguration.js";
 
