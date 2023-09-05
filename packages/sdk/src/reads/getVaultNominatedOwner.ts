@@ -1,6 +1,6 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IVaultLib } from "@enzymefinance/abis/IVaultLib";
 import type { Address, PublicClient } from "viem";
-import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 
 export function getVaultNominatedOwner(
   client: PublicClient,
