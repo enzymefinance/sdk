@@ -293,8 +293,8 @@ export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js"
 // ./reads/getLabelForPositionType.js
 export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType.js";
 
-// ./reads/getLastSharesBoughtTimestampForAccount.js
-export { getLastSharesBoughtTimestampForAccountRequest } from "./reads/getLastSharesBoughtTimestampForAccount.js";
+// ./reads/getLastSharesBoughtTimestamp.js
+export { getLastSharesBoughtTimestamp } from "./reads/getLastSharesBoughtTimestamp.js";
 
 // ./reads/getListIdsForVaultPolicy.js
 export { getListIdsForVaultPolicy } from "./reads/getListIdsForVaultPolicy.js";
