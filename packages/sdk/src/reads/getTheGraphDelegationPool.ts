@@ -1,9 +1,22 @@
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { type Address, type PublicClient, parseAbi } from "viem";
+import type { Address, PublicClient } from "viem";
 
-const abiStakingContract = parseAbi([
-  "function delegationPools(address indexer) view returns (uint32 cooldownBlocks, uint32 indexingRewardCut, uint32 queryFeeCut, uint256 updatedAtBlock, uint256 tokens, uint256 shares)",
-] as const);
+const abiStakingContract = [
+  {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "delegationPools",
+    outputs: [
+      { internalType: "uint32", name: "cooldownBlocks", type: "uint32" },
+      { internalType: "uint32", name: "indexingRewardCut", type: "uint32" },
+      { internalType: "uint32", name: "queryFeeCut", type: "uint32" },
+      { internalType: "uint256", name: "updatedAtBlock", type: "uint256" },
+      { internalType: "uint256", name: "tokens", type: "uint256" },
+      { internalType: "uint256", name: "shares", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
 
 export function getTheGraphDelegationPool(
   client: PublicClient,
