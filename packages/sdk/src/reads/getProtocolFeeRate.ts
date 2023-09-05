@@ -6,12 +6,14 @@ export function getProtocolFeeRate(
   client: PublicClient,
   args: ReadContractParameters<{
     vaultProxy: Address;
+    protocolFeeTracker: Address;
   }>,
 ) {
   return client.readContract({
     ...readContractParameters(args),
-    abi: [IProtocolFeeTracker],
+    abi: IProtocolFeeTracker,
     functionName: "getFeeBpsForVault",
-    address: args.vaultProxy,
+    address: args.protocolFeeTracker,
+    args: [args.vaultProxy],
   });
 }
