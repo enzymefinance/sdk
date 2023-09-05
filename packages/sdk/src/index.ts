@@ -215,6 +215,9 @@ export {
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
+// ./reads/getAccruedProtocolFee.js
+export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
+
 // ./reads/getActiveExternalPositions.js
 export { getActiveExternalPositions } from "./reads/getActiveExternalPositions.js";
 
