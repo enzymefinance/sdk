@@ -213,6 +213,9 @@ export {
   type IntegrationManagerActionId,
 } from "./extensions/callOnExtension.js";
 
+// ./reads/convertCrvToCvxWithCvxMining.js
+export { convertCrvToCvxWithCvxMining } from "./reads/convertCrvToCvxWithCvxMining.js";
+
 // ./reads/convertMapleSharesToExitAssets.js
 export { convertMapleSharesToExitAssets } from "./reads/convertMapleSharesToExitAssets.js";
 
