@@ -47,7 +47,7 @@ export type LockedBalances = {
   total: bigint;
   unlockable: bigint;
   locked: bigint;
-  lockedData: lockedData[],
+  lockedData: lockedData[];
 };
 
 export async function getVoteLockedConvexTokenLockedBalances(
