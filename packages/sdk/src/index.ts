@@ -249,6 +249,9 @@ export { getAssetSymbol } from "./reads/getAssetSymbol.js";
 // ./reads/getAssetTotalSupply.js
 export { getAssetTotalSupply } from "./reads/getAssetTotalSupply.js";
 
+// ./reads/getBalancerMinterRewards.js
+export { getBalancerMinterRewards } from "./reads/getBalancerMinterRewards.js";
+
 // ./reads/getBuySharesAmount.js
 export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 
@@ -347,6 +350,9 @@ export { getPolicyManager } from "./reads/getPolicyManager.js";
 
 // ./reads/getPortfolio.js
 export { getPortfolio } from "./reads/getPortfolio.js";
+
+// ./reads/getProtocolFeeRate.js
+export { getProtocolFeeRate } from "./reads/getProtocolFeeRate.js";
 
 // ./reads/getSharePrice.js
 export { getSharePrice } from "./reads/getSharePrice.js";
