@@ -1,6 +1,6 @@
 {
   "name": "@enzymefinance/sdk",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,12 @@
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
-  "files": ["dist/**", "!dist/**/*.tsbuildinfo", "src/**/*.ts", "!src/**/*.test.ts"],
+  "files": [
+    "dist/**",
+    "!dist/**/*.tsbuildinfo",
+    "src/**/*.ts",
+    "!src/**/*.test.ts"
+  ],
   "sideEffects": false,
   "type": "module",
   "main": "./dist/cjs/index.js",

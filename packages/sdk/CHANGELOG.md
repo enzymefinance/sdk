@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.0.27
+
+### Patch Changes
+
+- [#125](https://github.com/enzymefinance/sdk/pull/125) [`eb5ef12`](https://github.com/enzymefinance/sdk/commit/eb5ef12a21d97fb064b8fb2cc292df2e90929dd1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add get balancer minter rewards
+
 ## 0.0.26
 
 ### Patch Changes
