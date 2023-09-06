@@ -12,7 +12,7 @@ const abi = {
 export async function getBalancerMinterRewards(
   client: PublicClient,
   args: ReadContractParameters<{
-    beneficient: Address;
+    beneficiary: Address;
     gauge: Address;
     minter: Address;
   }>,
@@ -23,7 +23,7 @@ export async function getBalancerMinterRewards(
     functionName: "mint",
     address: args.minter,
     args: [args.gauge],
-    account: args.beneficient,
+    account: args.beneficiary,
   });
 
   return result;
