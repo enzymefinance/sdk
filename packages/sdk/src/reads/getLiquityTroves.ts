@@ -6,63 +6,75 @@ const abi = {
     {
       internalType: "address",
       name: "",
-      type: "address"
-    }
+      type: "address",
+    },
   ],
   name: "Troves",
   outputs: [
     {
       internalType: "uint256",
       name: "debt",
-      type: "uint256"
+      type: "uint256",
     },
     {
       internalType: "uint256",
       name: "coll",
-      type: "uint256"
+      type: "uint256",
     },
     {
       internalType: "uint256",
       name: "stake",
-      type: "uint256"
+      type: "uint256",
     },
     {
       internalType: "enum TroveManager.Status",
       name: "status",
-      type: "uint8"
+      type: "uint8",
     },
     {
       internalType: "uint128",
       name: "arrayIndex",
-      type: "uint128"
-    }
+      type: "uint128",
+    },
   ],
   stateMutability: "view",
-  type: "function"
-}
+  type: "function",
+};
 
 export type LiquityTrove = {
   debt: bigint;
-  coll: bigint;
+  collateral: bigint;
   stake: bigint;
   status: number;
   arrayIndex: bigint;
-}
+};
 
-export function getLiquityTrove(
+export async function getLiquityTrove(
   client: PublicClient,
   args: ReadContractParameters<{
     liquityTroveManager: Address;
     debtPosition: Address;
   }>,
 ) {
-  return client.readContract({
+  const result = (await client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     functionName: "Troves",
     address: args.liquityTroveManager,
     args: [args.debtPosition],
-  }) as unknown as Promise<LiquityTrove>;
+  })) as unknown as [bigint, bigint, bigint, number, bigint];
+
+  if (result === undefined) {
+    throw new Error("Trove not found");
+  }
+
+  return {
+    debt: result[0],
+    collateral: result[1],
+    stake: result[2],
+    status: result[3],
+    arrayIndex: result[4],
+  };
 }
 
 export async function getLiquityTroves(
