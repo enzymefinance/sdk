@@ -255,6 +255,9 @@ export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 // ./reads/getCanonicalAssetValue.js
 export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
 
+// ./reads/getCERC20ExchangeRateStored.js
+export { getCERC20ExchangeRateStored } from "./reads/getCERC20ExchangeRateStored.js";
+
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
@@ -347,6 +350,9 @@ export { getPolicyManager } from "./reads/getPolicyManager.js";
 
 // ./reads/getPortfolio.js
 export { getPortfolio } from "./reads/getPortfolio.js";
+
+// ./reads/getProtocolFeeRate.js
+export { getProtocolFeeRate } from "./reads/getProtocolFeeRate.js";
 
 // ./reads/getSharePrice.js
 export { getSharePrice } from "./reads/getSharePrice.js";
