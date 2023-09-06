@@ -1,44 +1,53 @@
-import type { Address, PublicClient } from "viem";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-
+import type { Address, PublicClient } from "viem";
 
 const abi = {
   inputs: [
     {
       internalType: "address",
       name: "_user",
-      type: "address"
+      type: "address",
     },
   ],
   name: "lockedBalances",
   outputs: [
-    { internalType: "uint256",
-      name: "total",
-      type: "uint256"
-    },
+    { internalType: "uint256", name: "total", type: "uint256" },
     {
       internalType: "uint256",
       name: "unlockable",
-      type: "uint256"
+      type: "uint256",
     },
     {
       internalType: "uint256",
       name: "locked",
-      type: "uint256"
+      type: "uint256",
     },
-    { 
+    {
       components: [
         { internalType: "uint112", name: "amount", type: "uint112" },
         { internalType: "uint112", name: "boosted", type: "uint112" },
-        { internalType: "uint32", name: "unlockTime", type: "uint32" }
+        { internalType: "uint32", name: "unlockTime", type: "uint32" },
       ],
       internalType: "struct CvxLockerV2.LockedBalance[]",
       name: "lockData",
-      type: "tuple[]"
+      type: "tuple[]",
     },
   ],
   stateMutability: "view",
-  type: "function"
+  type: "function",
+};
+
+export type lockedData = {
+  amount: bigint;
+  boosted: bigint;
+  unlockTime: bigint;
+};
+
+export type LockedBalances = {
+  total: bigint;
+  unlockable: bigint;
+  locked: bigint;
+  lockedData: lockedData[],
 };
 
 export async function getVoteLockedConvexTokenLockedBalances(
@@ -48,16 +57,30 @@ export async function getVoteLockedConvexTokenLockedBalances(
     positionAddress: Address;
   }>,
 ) {
-
-  const lockedBalances = await client.readContract({
+  const lockedBalances = (await client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     address: args.voteLockedConvexToken,
     functionName: "lockedBalances",
     args: [args.positionAddress],
+  })) as unknown as [bigint, bigint, bigint, lockedData[]];
+
+  const lockedData = lockedBalances[3].map((data) => {
+    return {
+      amount: data.amount,
+      boosted: data.boosted,
+      unlockTime: data.unlockTime,
+    };
   });
 
-  return lockedBalances;
+  const lockedBalancesData = {
+    total: lockedBalances[0],
+    unlockable: lockedBalances[1],
+    locked: lockedBalances[2],
+    lockedData,
+  };
+
+  return lockedBalancesData;
 }
 
 export async function getAllVoteLockedConvexTokenLockedBalances(
@@ -78,7 +101,7 @@ export async function getAllVoteLockedConvexTokenLockedBalances(
     }),
   );
 
-  const lockedBalancesMap: Record<Address, any> = {};
+  const lockedBalancesMap: Record<Address, LockedBalances> = {};
   for (const { position, lockedBalances } of allLockedBalances) {
     lockedBalancesMap[position] = lockedBalances;
   }
