@@ -219,6 +219,9 @@ export { convertMapleSharesToExitAssets } from "./reads/convertMapleSharesToExit
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
+// ./reads/doesCurvePoolAllowSingelAssetRedemption.js
+export { doesCurvePoolAllowSingelAssetRedemption } from "./reads/doesCurvePoolAllowSingelAssetRedemption.js";
+
 // ./reads/getAccruedProtocolFee.js
 export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
 
@@ -347,6 +350,9 @@ export { getPolicyManager } from "./reads/getPolicyManager.js";
 
 // ./reads/getPortfolio.js
 export { getPortfolio } from "./reads/getPortfolio.js";
+
+// ./reads/getProtocolFeeRate.js
+export { getProtocolFeeRate } from "./reads/getProtocolFeeRate.js";
 
 // ./reads/getSharePrice.js
 export { getSharePrice } from "./reads/getSharePrice.js";
