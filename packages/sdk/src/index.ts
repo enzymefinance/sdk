@@ -309,6 +309,9 @@ export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js"
 // ./reads/getIdleRate.js
 export { getIdleRate } from "./reads/getIdleRate.js";
 
+// ./reads/getIdleSpeeds.js
+export { getIdleSpeeds } from "./reads/getIdleSpeeds.js";
+
 // ./reads/getLabelForPositionType.js
 export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType.js";
 
@@ -347,6 +350,9 @@ export { getPolicyManager } from "./reads/getPolicyManager.js";
 
 // ./reads/getPortfolio.js
 export { getPortfolio } from "./reads/getPortfolio.js";
+
+// ./reads/getProtocolFeeRate.js
+export { getProtocolFeeRate } from "./reads/getProtocolFeeRate.js";
 
 // ./reads/getSharePrice.js
 export { getSharePrice } from "./reads/getSharePrice.js";
