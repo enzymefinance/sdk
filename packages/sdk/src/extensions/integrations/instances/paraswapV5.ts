@@ -105,7 +105,7 @@ const pathEncoding = {
   ],
 } as const;
 
-export const megaSwapDataEncoding = {
+const megaSwapDataEncoding = {
   components: [
     {
       name: "fromAmountPercent",
