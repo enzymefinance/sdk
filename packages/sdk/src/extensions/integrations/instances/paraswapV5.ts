@@ -98,14 +98,14 @@ const pathEncoding = {
       type: "uint256",
     },
     {
-      name: "adapter",
+      name: "adapters",
       type: "tuple[]",
       ...adapterEncoding,
     },
   ],
 } as const;
 
-const megaSwapDataEncoding = {
+export const megaSwapDataEncoding = {
   components: [
     {
       name: "fromAmountPercent",
@@ -172,7 +172,7 @@ export type ParaswapV5Adapter = {
 export type ParaswapV5Path = {
   to: Address;
   totalNetworkFee: bigint;
-  adapter: ParaswapV5Adapter[];
+  adapters: ParaswapV5Adapter[];
 };
 
 export type ParaswapV5MegaSwapData = {
