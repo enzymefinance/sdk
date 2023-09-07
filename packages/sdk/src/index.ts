@@ -309,6 +309,9 @@ export { getGrossAssetValue } from "./reads/getGrossAssetValue.js";
 // ./reads/getGrossAssetValueInAsset.js
 export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js";
 
+// ./reads/getIdleGovTokensAmountAndAddress.js
+export { getIdleGovTokensAmounts as getIdleGovTokensAmountAndAddress } from "./reads/getIdleGovTokensAmounts.js";
+
 // ./reads/getIdleRate.js
 export { getIdleRate } from "./reads/getIdleRate.js";
 
