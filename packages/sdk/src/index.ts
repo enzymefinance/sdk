@@ -333,6 +333,9 @@ export { getMigrationRequestDetails } from "./reads/getMigrationRequestDetails.j
 // ./reads/getMinMaxInvestmentPolicySettings.js
 export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
 
+// ./reads/getMlnValueAndBurnAmountForSharesBuyback.js
+export { getMlnValueAndBurnAmountForSharesBuyback } from "./reads/getMlnValueAndBurnAmountForSharesBuyback.js";
+
 // ./reads/getNetAssetValue.js
 export { getNetAssetValue } from "./reads/getNetAssetValue.js";
 
