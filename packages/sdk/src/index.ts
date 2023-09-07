@@ -276,6 +276,9 @@ export { getDenominationAsset } from "./reads/getDenominationAsset.js";
 // ./reads/getEnabledFees.js
 export { getEnabledFees } from "./reads/getEnabledFees.js";
 
+// ./reads/getEnabledMinMaxInvestmentPolicySettings.js
+export { getEnabledMinMaxInvestmentPolicySettings } from "./reads/getEnabledMinMaxInvestmentPolicySettings.js";
+
 // ./reads/getEnabledPolicies.js
 export { getEnabledPolicies } from "./reads/getEnabledPolicies.js";
 
