@@ -17,7 +17,7 @@ export async function getManagedAssets(
     address: args.externalPosition,
   });
 
-  return assets.map(async (asset, index) => ({
+  return assets.map((asset, index) => ({
     asset,
     amount: amounts[index],
   }));

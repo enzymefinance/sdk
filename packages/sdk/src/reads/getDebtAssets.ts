@@ -18,7 +18,7 @@ export async function getDebtAssets(
   });
 
   return assets.map((asset, index) => ({
-    asset: asset,
+    asset,
     amount: amounts[index],
   }));
 }
