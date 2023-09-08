@@ -1,4 +1,5 @@
 import { WETH } from "../../tests/constants.js";
+import { ETH_ADDRESS } from "../constants/misc.js";
 import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { type Address, type PublicClient, parseAbi, zeroAddress } from "viem";
@@ -19,7 +20,6 @@ type Asset = {
 };
 
 const curveRegistry = "0x0000000022d53366457f9d5e68ec105046fc4383" as const;
-const ethAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" as const;
 const swapId = 2n; // id won't change, for swaps it will be always the same id in the registry
 
 export async function getCurveBestPrice(
@@ -40,8 +40,8 @@ export async function getCurveBestPrice(
     args: [swapId],
   });
 
-  const curveOutgoing = args.outgoing.address === WETH ? ethAddress : args.outgoing.address;
-  const curveIncoming = args.incoming.address === WETH ? ethAddress : args.incoming.address;
+  const curveOutgoing = args.outgoing.address === WETH ? ETH_ADDRESS : args.outgoing.address;
+  const curveIncoming = args.incoming.address === WETH ? ETH_ADDRESS : args.incoming.address;
 
   const curveSwaps = parseAbi([
     "function get_best_rate(address _from, address to, uint256 amount) view returns (address bestPool, uint256 amountReceived)",
