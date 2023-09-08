@@ -1,0 +1,6 @@
+export const SharesUnit = 1_000_000_000_000_000_000n;
+export const MaxUint128 = 340_282_366_920_938_463_463_374_607_431_768_211_455n;
+export const MaxUint256 =
+  115_792_089_237_316_195_423_570_985_008_687_907_853_269_984_665_640_564_039_457_584_007_913_129_639_935n;
+export const EthAddress = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
+export const ZeroAddress = "0x0000000000000000000000000000000000000000";

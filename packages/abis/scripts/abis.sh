@@ -31,9 +31,6 @@ rm -f $root/src/index.ts
 mkdir -p $root/src/abis
 touch $root/src/index.ts
 
-# Preserve the "." and "./package.json" exports from package.json.
-exports=$(jq ".exports | { \".\": .[\".\"], \"./package.json\": .[\"./package.json\"] }" $root/package.json)
-
 for abi in $abis; do
   name=$(basename $abi .abi.json)
   echo "Processing $name"
@@ -41,11 +38,4 @@ for abi in $abis; do
   # Create typescript file with json of the abi file as named export using the name of the file.
   echo "export const $name = $(cat $abi) as const;" > $root/src/abis/$name.ts
   echo "export { $name } from \"./abis/$name.js\";" >> $root/src/index.ts
- 
-  # Add the export declaration for the abi file to the stored exports.
-  exports=$(echo $exports | jq ". += { \"./$name\": { \"types\": \"./dist/types/abis/$name.d.ts\", \"import\": \"./dist/esm/abis/$name.js\", \"default\": \"./dist/cjs/abis/$name.js\" } }")
 done
-
-# Write the exports to the package.json file.
-jq ".exports = $exports" $root/package.json > $root/package.json.tmp
-mv $root/package.json.tmp $root/package.json
