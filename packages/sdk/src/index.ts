@@ -366,6 +366,9 @@ export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 // ./reads/getSharesWrapperRedemptionQueueUsers.js
 export { getSharesWrapperRedemptionQueueUsers } from "./reads/getSharesWrapperRedemptionQueueUsers.js";
 
+// ./reads/getSpecificAssetsRedemptionExpectedAmounts.js
+export { getSpecificAssetsRedemptionExpectedAmounts } from "./reads/getSpecificAssetsRedemptionExpectedAmounts.js";
+
 // ./reads/getTheGraphDelegationPool.js
 export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js";
 
