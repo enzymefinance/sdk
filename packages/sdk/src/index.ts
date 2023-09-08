@@ -270,6 +270,9 @@ export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippa
 // ./reads/getDebtAssets.js
 export { getDebtAssets } from "./reads/getDebtAssets.js";
 
+// ./reads/getDelegates.js
+export { getDelegates } from "./reads/getDelegates.js";
+
 // ./reads/getDenominationAsset.js
 export { getDenominationAsset } from "./reads/getDenominationAsset.js";
 
