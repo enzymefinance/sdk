@@ -6,6 +6,7 @@
 !.vscode
 !.node-version
 !.env.tpl
+!.envrc
 
 # Ignore log output
 *.log
