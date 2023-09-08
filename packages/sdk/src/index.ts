@@ -363,6 +363,9 @@ export { getSharePriceInAsset } from "./reads/getSharePriceInAsset.js";
 // ./reads/getSharesActionTimelock.js
 export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 
+// ./reads/getSharesWrapperDepositQueueUser.js
+export { getSharesWrapperDepositQueueUser } from "./reads/getSharesWrapperDepositQueueUser.js";
+
 // ./reads/getSharesWrapperRedemptionQueueUsers.js
 export { getSharesWrapperRedemptionQueueUsers } from "./reads/getSharesWrapperRedemptionQueueUsers.js";
 
