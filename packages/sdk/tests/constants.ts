@@ -37,6 +37,7 @@ export const ETH_ADDRESS = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE";
 export const UNISWAP_V2_SWAP_ROUTER = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D" as const;
 export const UNISWAP_V3_SWAP_ROUTER = "0xE592427A0AEce92De3Edee1F18E0157C05861564" as const;
 
+export const AAVE = "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9" as const;
 export const AAVE_V2_A_WETH = "0x030bA81f1c18d280636F32af80b9AAd02Cf0854e" as const;
 export const AAVE_V3_A_WETH = "0x4d5F47FA6A74757f35C14fD3a6Ef8E3C9BC514E8" as const;
 export const AURA = "0xC0c293ce456fF0ED870ADd98a0828Dd4d2903DBF" as const;
@@ -56,7 +57,9 @@ export const IDLE = "0x875773784Af8135eA0ef43b5a374AaD105c5D39e" as const;
 export const IDLE_V4_WETH = "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80" as const;
 export const MA_WETH = "0x490bbbc2485e99989ba39b34802fafa58e26aba4" as const;
 export const RETH = "0xae78736Cd615f374D3085123A210448E74Fc6393" as const;
+export const STKAAVE = "0x4da27a545c0c5b758a6ba100e3a049001de870f5" as const;
 export const STETH = "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84" as const;
+export const UNI = "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984" as const;
 export const UNISWAP_V2_POOL_DAI_ETH = "0xA478c2975Ab1Ea89e8196811F51A7B7Ade33eB11" as const;
 export const USDC = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48" as const;
 export const WBTC = "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599" as const;
