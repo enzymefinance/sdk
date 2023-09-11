@@ -267,6 +267,9 @@ export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulat
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
 
+// ./reads/getCurveExpectedWithdrawalTokens.js
+export { getCurveExpectedWithdrawalTokens } from "./reads/getCurveExpectedWithdrawalTokens.js";
+
 // ./reads/getDebtAssets.js
 export { getDebtAssets } from "./reads/getDebtAssets.js";
 
@@ -371,6 +374,9 @@ export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js"
 
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
+
+// ./reads/getUniswapV2LendRate.js
+export { getUniswapV2LendRate } from "./reads/getUniswapV2LendRate.js";
 
 // ./reads/getVaultHasMigration.js
 export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
