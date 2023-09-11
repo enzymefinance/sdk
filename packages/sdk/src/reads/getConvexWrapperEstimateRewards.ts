@@ -1,6 +1,6 @@
+import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IConvexCurveLpStakingWrapperLib } from "@enzymefinance/abis/IConvexCurveLpStakingWrapperLib";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
-import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 
 export async function getConvexWrapperEstimateRewards(
   client: PublicClient,
