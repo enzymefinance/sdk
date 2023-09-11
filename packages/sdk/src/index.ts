@@ -375,9 +375,6 @@ export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js"
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
-// ./reads/getUniswapV2LendRate.js
-export { getUniswapV2LendRate } from "./reads/getUniswapV2LendRate.js";
-
 // ./reads/getVaultHasMigration.js
 export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
 
