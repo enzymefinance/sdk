@@ -261,6 +261,9 @@ export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
+// ./reads/getConvexWrapperEstimateRewards.js
+export { getConvexWrapperEstimateRewards } from "./reads/getConvexWrapperEstimateRewards.js";
+
 // ./reads/getCumulativeSlippageTolerancePolicySettings.js
 export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
 
