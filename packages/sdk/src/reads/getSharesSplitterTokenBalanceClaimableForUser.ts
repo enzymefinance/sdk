@@ -5,7 +5,7 @@ import type { Address, PublicClient } from "viem";
 export function getSharesSplitterTokenBalanceClaimableForUser(
   client: PublicClient,
   args: ReadContractParameters<{
-    splitterAddress: Address;
+    splitter: Address;
     token: Address;
     user: Address;
   }>,
@@ -13,7 +13,7 @@ export function getSharesSplitterTokenBalanceClaimableForUser(
   return client.readContract({
     ...readContractParameters(args),
     abi: ISharesSplitterLib,
-    address: args.splitterAddress,
+    address: args.splitter,
     functionName: "getTokenBalClaimableForUser",
     args: [args.user, args.token],
   });
