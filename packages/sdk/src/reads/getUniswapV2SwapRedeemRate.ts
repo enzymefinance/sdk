@@ -25,7 +25,7 @@ const pairAbi = [
     stateMutability: "view",
     type: "function",
   },
-];
+] as const;
 
 export async function getUniswapV2SwapRedeemRate(
   client: PublicClient,
@@ -40,13 +40,15 @@ export async function getUniswapV2SwapRedeemRate(
   }>,
 ) {
   try {
-    const [underlyings, underlyingAmounts] = (await client.simulateContract({
+    const {
+      result: [underlyings, underlyingAmounts],
+    } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IUniswapV2PoolPriceFeed,
       functionName: "calcUnderlyingValues",
       address: args.uniswapV2PoolPriceFeedAddress,
       args: [args.poolValue.token, args.poolValue.value],
-    })) as unknown as [Address[], bigint[]];
+    });
 
     const token0Expected = underlyings[0] === args.token0 ? underlyingAmounts[0] : underlyingAmounts[1];
 
@@ -60,17 +62,15 @@ export async function getUniswapV2SwapRedeemRate(
       address: args.poolValue.token,
     })) as bigint;
 
-    const poolTokenReserves = (await client.readContract({
+    const [reserve0, reserve1] = await client.readContract({
       abi: pairAbi,
       functionName: "getReserves",
       address: args.poolValue.token,
-    })) as { reserve0_: bigint; reserve1_: bigint };
-
-    const [token0Reserve, token1Reserve] = [poolTokenReserves.reserve0_, poolTokenReserves.reserve1_];
+    });
 
     const expectedTokens = [
-      (args.poolValue.value * token0Reserve) / poolTokensSupply,
-      (args.poolValue.value * token1Reserve) / poolTokensSupply,
+      (args.poolValue.value * reserve0) / poolTokensSupply,
+      (args.poolValue.value * reserve1) / poolTokensSupply,
     ];
 
     return { token0Expected: expectedTokens[0], token1Expected: expectedTokens[1] };
