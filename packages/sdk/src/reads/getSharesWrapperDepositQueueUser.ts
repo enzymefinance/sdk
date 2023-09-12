@@ -5,7 +5,7 @@ import type { Address, PublicClient } from "viem";
 export function getSharesWrapperDepositQueueUser(
   client: PublicClient,
   args: ReadContractParameters<{
-    sharesWrapperAddress: Address;
+    sharesWrapper: Address;
     depositAsset: Address;
     user: Address;
   }>,
@@ -14,7 +14,7 @@ export function getSharesWrapperDepositQueueUser(
     ...readContractParameters(args),
     abi: IGatedRedemptionQueueSharesWrapperLib,
     functionName: "getDepositQueueUserRequest",
-    address: args.sharesWrapperAddress,
+    address: args.sharesWrapper,
     args: [args.depositAsset, args.user],
   });
 }
