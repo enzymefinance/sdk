@@ -1,6 +1,6 @@
 import { publicClientMainnet } from "../../tests/globals.js";
 import { convertCrvToCvxWithCvxMining } from "./convertCrvToCvxWithCvxMining.js";
-import { assert, expect, test } from "vitest";
+import { expect, test } from "vitest";
 
 test("convert crv to cvx with cvx mining should work correctly", async () => {
   const cvxMining = "0x3c75BFe6FbfDa3A94E7E7E8c2216AFc684dE5343" as const;
@@ -10,8 +10,6 @@ test("convert crv to cvx with cvx mining should work correctly", async () => {
     cvxMining,
     amount,
   });
-
-  assert(result !== undefined && result !== null);
 
   expect(result).toBeTypeOf("bigint");
 });
