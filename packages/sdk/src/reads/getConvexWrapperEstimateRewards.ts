@@ -5,25 +5,31 @@ import { type Address, ContractFunctionExecutionError, type PublicClient } from 
 export async function getConvexWrapperEstimateRewards(
   client: PublicClient,
   args: ReadContractParameters<{
-    assetAddress: Address;
-    claimAddress: Address;
+    stakingWrapper: Address;
+    beneficiary: Address;
   }>,
 ) {
   try {
     const {
-      result: [claimedAmounts, rewardTokens],
+      result: [rewardTokens, claimedAmounts],
     } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IConvexCurveLpStakingWrapperLib,
       functionName: "claimRewardsFor",
-      address: args.assetAddress,
-      args: [args.claimAddress],
+      address: args.stakingWrapper,
+      args: [args.beneficiary],
     });
 
-    return {
-      claimedAmounts,
-      rewardTokens,
-    };
+    const tokenRewards: Record<Address, bigint> = {};
+    for (let i = 0; i < rewardTokens.length; i++) {
+      // rome-ignore lint/style/noNonNullAssertion: <explanation>
+      const rewardToken = rewardTokens[i]!;
+      // rome-ignore lint/style/noNonNullAssertion: <explanation>
+      const claimedAmount = claimedAmounts[i]! ?? 0n;
+      tokenRewards[rewardToken] = claimedAmount;
+    }
+
+    return tokenRewards;
   } catch (error) {
     // TODO: More selectively catch this error here.
     if (error instanceof ContractFunctionExecutionError) {
@@ -32,4 +38,23 @@ export async function getConvexWrapperEstimateRewards(
 
     throw error;
   }
+}
+
+export async function getAllConvexWrapperEstimateRewards(
+  client: PublicClient,
+  args: ReadContractParameters<{
+    stakingWrappers: Address[];
+    beneficiary: Address;
+  }>,
+) {
+  const tokenRewards = await Promise.all(
+    args.stakingWrappers.map(async (stakingWrapper) =>
+      getConvexWrapperEstimateRewards(client, {
+        ...args,
+        stakingWrapper,
+      }),
+    ),
+  );
+
+  return tokenRewards;
 }
