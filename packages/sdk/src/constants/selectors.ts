@@ -21,3 +21,4 @@ export const UNSTAKE_AND_REDEEM_SELECTOR = "0x8334eb99"; // unstakeAndRedeem(add
 export const TAKE_ORDER_SELECTOR = "0x03e38a2b" as const; // takeOrder(address,bytes,bytes)
 export const TAKE_MULTIPLE_ORDERS_SELECTOR = "0x0e7f692d" as const; // takeMultipleOrders(address,bytes,bytes)
 export const TOGGLE_APPROVE_MINT_SELECTOR = "0xdd289d60" as const; // toggle_approve_mint(address)
+export const CURVE_REGISTRY = "0x0000000022d53366457f9d5e68ec105046fc4383" as const; // get_address(address)
