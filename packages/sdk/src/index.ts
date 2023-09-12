@@ -388,8 +388,6 @@ export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTi
 export {
   getVoteLockedConvexTokenLockedBalances,
   getAllVoteLockedConvexTokenLockedBalances,
-  type lockedData,
-  type LockedBalances,
 } from "./reads/getVoteLockedConvexTokenLockedBalances.js";
 
 // ./reads/hasExecutableMigrationRequest.js

@@ -35,19 +35,19 @@ const abi = {
   ],
   stateMutability: "view",
   type: "function",
-};
+} as const;
 
-export type lockedData = {
+type LockData = {
   amount: bigint;
   boosted: bigint;
-  unlockTime: bigint;
+  unlockTime: number;
 };
 
-export type LockedBalances = {
+type LockedBalances = {
   total: bigint;
   unlockable: bigint;
   locked: bigint;
-  lockedData: lockedData[];
+  lockedData: LockData[];
 };
 
 export async function getVoteLockedConvexTokenLockedBalances(
@@ -57,15 +57,15 @@ export async function getVoteLockedConvexTokenLockedBalances(
     positionAddress: Address;
   }>,
 ) {
-  const lockedBalances = (await client.readContract({
+  const [total, unlockable, locked, balancesData] = await client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     address: args.voteLockedConvexToken,
     functionName: "lockedBalances",
     args: [args.positionAddress],
-  })) as unknown as [bigint, bigint, bigint, lockedData[]];
+  });
 
-  const lockedData = lockedBalances[3].map((data) => {
+  const lockedData = balancesData.map((data) => {
     return {
       amount: data.amount,
       boosted: data.boosted,
@@ -74,9 +74,9 @@ export async function getVoteLockedConvexTokenLockedBalances(
   });
 
   const lockedBalancesData = {
-    total: lockedBalances[0],
-    unlockable: lockedBalances[1],
-    locked: lockedBalances[2],
+    total,
+    unlockable,
+    locked,
     lockedData,
   };
 
