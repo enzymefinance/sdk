@@ -32,13 +32,16 @@ export async function getCurveBestPrice(
 ) {
   invariant(args.incoming.address !== args.outgoing.address, "Incoming and outgoing asset are identical");
 
-  const address = await client.readContract({
+  const [address] = await client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     functionName: "get_address",
     address: curveRegistry,
     args: [swapId],
   });
+
+  invariant(address !== zeroAddress, "Registry returned zero address");
+  invariant(address !== undefined, "Registry returned undefined address");
 
   const curveOutgoing = args.outgoing.address === WETH ? ETH_ADDRESS : args.outgoing.address;
   const curveIncoming = args.incoming.address === WETH ? ETH_ADDRESS : args.incoming.address;
@@ -47,12 +50,12 @@ export async function getCurveBestPrice(
     "function get_best_rate(address _from, address to, uint256 amount) view returns (address bestPool, uint256 amountReceived)",
   ] as const);
 
-  const [bestPool, amountReceived] = (await client.readContract({
+  const [bestPool, amountReceived] = await client.readContract({
     abi: curveSwaps,
-    address,
+    address: address as Address,
     functionName: "get_best_rate",
     args: [curveOutgoing, curveIncoming, args.quantity],
-  })) as unknown as [Address, bigint];
+  });
 
   invariant(bestPool !== zeroAddress, "Pool returned zero address");
   invariant(amountReceived !== 0n, "Amount received is zero");
@@ -64,11 +67,11 @@ export async function getCurveBestPrice(
 
   const ERC20 = parseAbi(["function name() view returns (string)"] as const);
 
-  const [name] = (await client.readContract({
+  const [name] = await client.readContract({
     abi: ERC20,
     address: bestPool,
     functionName: "name",
-  })) as unknown as [string];
+  });
 
   const bestPoolName = name ?? `Curve Pool ${args.incoming.symbol}-${args.outgoing.symbol}`;
 
