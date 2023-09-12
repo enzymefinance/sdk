@@ -39,7 +39,7 @@ const abi = {
   ],
   stateMutability: "view",
   type: "function",
-};
+} as const;
 
 export type LiquityTrove = {
   debt: bigint;
@@ -56,24 +56,20 @@ export async function getLiquityTrove(
     debtPosition: Address;
   }>,
 ) {
-  const result = (await client.readContract({
+  const [debt, collateral, stake, status, arrayIndex] = await client.readContract({
     ...readContractParameters(args),
     abi: [abi],
     functionName: "Troves",
     address: args.liquityTroveManager,
     args: [args.debtPosition],
-  })) as unknown as [bigint, bigint, bigint, number, bigint];
-
-  if (result === undefined) {
-    throw new Error("Trove not found");
-  }
+  });
 
   return {
-    debt: result[0],
-    collateral: result[1],
-    stake: result[2],
-    status: result[3],
-    arrayIndex: result[4],
+    debt,
+    collateral,
+    stake,
+    status,
+    arrayIndex,
   };
 }
 
