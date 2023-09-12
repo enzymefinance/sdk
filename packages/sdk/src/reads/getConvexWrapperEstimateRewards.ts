@@ -10,13 +10,15 @@ export async function getConvexWrapperEstimateRewards(
   }>,
 ) {
   try {
-    const [claimedAmounts, rewardTokens] = (await client.simulateContract({
+    const {
+      result: [claimedAmounts, rewardTokens],
+    } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IConvexCurveLpStakingWrapperLib,
       functionName: "claimRewardsFor",
       address: args.assetAddress,
       args: [args.claimAddress],
-    })) as unknown as [bigint[], Address[]];
+    });
 
     return {
       claimedAmounts,
