@@ -1,55 +1,83 @@
 import { AAVE, COMP, STKAAVE, UNI } from "../../tests/constants.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { type Address, type PublicClient, parseAbi } from "viem";
+import type { Address, PublicClient } from "viem";
 
-export async function getDelegates(
+export async function getDAODelegates(
   client: PublicClient,
   args: ReadContractParameters<{
     vaultProxy: Address;
   }>,
 ) {
-  const tokenDaoDelegates = parseAbi(["function delegates(address account) view returns (address)"] as const);
+  const tokenDaoDelegatesAbi = {
+    name: "delegates",
+    type: "function",
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  } as const;
 
-  const tokenDaoDelegateeByType = parseAbi([
-    "function getDelegateeByType(address delegator, uint8 type) view returns (address)",
-  ] as const);
-
-  const contractsWithoutVotingPower = [{ address: COMP }, { address: UNI }];
-
-  const [nonVotingPowerContracts] = await Promise.all([
-    contractsWithoutVotingPower.map((params) =>
-      client.readContract({
-        ...readContractParameters(args),
-        abi: tokenDaoDelegates,
-        functionName: "delegates",
-        address: params.address,
-        args: [args.vaultProxy],
-      }),
-    ),
-  ]);
-
-  const [compDelegatee, uniDelegatee] = nonVotingPowerContracts;
+  const tokenDaoDelegateeByTypeAbi = {
+    name: "getDelegateeByType",
+    type: "function",
+    inputs: [
+      {
+        name: "delegator",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "type",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  } as const;
 
   // it doesn't matter what type we use, in our case voting power delegatee and proposition power delegatee will be always the same
   const votingPowerType = 0;
-  const contractsWithVotingPower = [
-    { address: AAVE, votingPowerType },
-    { address: STKAAVE, votingPowerType },
-  ];
+  const contractsWithoutVotingPower = [COMP, UNI];
+  const contractsWithVotingPower = [AAVE, STKAAVE];
 
-  const [votingPowerContracts] = await Promise.all([
-    contractsWithVotingPower.map((params) =>
+  const [[compDelegatee, uniDelegatee], [aaveDelegatee, stkaaveDelegatee]] = await Promise.all([
+    contractsWithoutVotingPower.map((address) =>
       client.readContract({
         ...readContractParameters(args),
-        abi: tokenDaoDelegateeByType,
+        abi: [tokenDaoDelegatesAbi],
+        functionName: "delegates",
+        address: address,
+        args: [args.vaultProxy],
+      }),
+    ),
+    contractsWithVotingPower.map((address) =>
+      client.readContract({
+        ...readContractParameters(args),
+        abi: [tokenDaoDelegateeByTypeAbi],
         functionName: "getDelegateeByType",
-        address: params.address,
-        args: [args.vaultProxy, params.votingPowerType],
+        address: address,
+        args: [args.vaultProxy, votingPowerType],
       }),
     ),
   ]);
-
-  const [aaveDelegatee, stkaaveDelegatee] = votingPowerContracts;
 
   return {
     aaveDelegatee,
