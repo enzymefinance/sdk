@@ -1,6 +1,7 @@
+import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IUniswapV2PoolPriceFeed } from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import { type Address, type PublicClient, isAddressEqual } from "viem";
 
 const pairAbi = [
   {
@@ -50,29 +51,30 @@ export async function getUniswapV2SwapRedeemRate(
       args: [args.poolValue.token, args.poolValue.value],
     });
 
-    const token0Expected = underlyings[0] === args.token0 ? underlyingAmounts[0] : underlyingAmounts[1];
+    invariant(underlyings[0] !== undefined, "underlying is undefined");
+    invariant(underlyings[1] !== undefined, "underlying is undefined");
 
-    const token1Expected = underlyings[1] === args.token1 ? underlyingAmounts[1] : underlyingAmounts[0];
+    const token0Expected = isAddressEqual(underlyings[0], args.token0) ? underlyingAmounts[0] : underlyingAmounts[1];
+    const token1Expected = isAddressEqual(underlyings[1], args.token1) ? underlyingAmounts[1] : underlyingAmounts[0];
 
     return { token0Expected, token1Expected };
   } catch {
-    const poolTokensSupply = (await client.readContract({
-      abi: pairAbi,
-      functionName: "totalSupply",
-      address: args.poolValue.token,
-    })) as bigint;
+    const [poolTokensSupply, [reserve0, reserve1]] = await Promise.all([
+      client.readContract({
+        abi: pairAbi,
+        functionName: "totalSupply",
+        address: args.poolValue.token,
+      }),
+      client.readContract({
+        abi: pairAbi,
+        functionName: "getReserves",
+        address: args.poolValue.token,
+      }),
+    ]);
 
-    const [reserve0, reserve1] = await client.readContract({
-      abi: pairAbi,
-      functionName: "getReserves",
-      address: args.poolValue.token,
-    });
+    const token0Expected = (args.poolValue.value * reserve0) / poolTokensSupply;
+    const token1Expected = (args.poolValue.value * reserve1) / poolTokensSupply;
 
-    const expectedTokens = [
-      (args.poolValue.value * reserve0) / poolTokensSupply,
-      (args.poolValue.value * reserve1) / poolTokensSupply,
-    ];
-
-    return { token0Expected: expectedTokens[0], token1Expected: expectedTokens[1] };
+    return { token0Expected, token1Expected };
   }
 }
