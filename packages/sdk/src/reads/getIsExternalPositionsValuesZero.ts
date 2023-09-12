@@ -1,23 +1,27 @@
-import { publicClientMainnet } from "../../tests/globals.js";
+import type { ReadContractParameters } from "../utils/viem.js";
 import { getActiveExternalPositions } from "./getActiveExternalPositions.js";
 import { getExternalPositionAssets } from "./getExternalPositionAssets.js";
-import type { Address } from "viem";
+import type { Address, PublicClient } from "viem";
 
-export async function getIsExternalPositionsValueZero(vaultProxy: Address) {
-  const addresses = await getActiveExternalPositions(publicClientMainnet, {
-    vaultProxy,
+export async function getIsExternalPositionsValueZero(
+  client: PublicClient,
+  args: ReadContractParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  const addresses = await getActiveExternalPositions(client, {
+    vaultProxy: args.vaultProxy,
   });
 
   const values = await Promise.all(
-    addresses.map(async (address) => {
-      const { debtAssets, managedAssets } = await getExternalPositionAssets(publicClientMainnet, {
-        externalPosition: address,
+    addresses.map(async (externalPosition) => {
+      const { debtAssets, managedAssets } = await getExternalPositionAssets(client, {
+        ...args,
+        externalPosition,
       });
 
-      const debtAssetsValue =
-        debtAssets.map((asset) => asset.amount).reduce((acc, amount) => (acc ?? 0n) + (amount ?? 0n), 0n) ?? 0n;
-      const managedAssetsValues =
-        managedAssets.map((asset) => asset.amount).reduce((acc, amount) => (acc ?? 0n) + (amount ?? 0n), 0n) ?? 0n;
+      const debtAssetsValue = debtAssets.map((asset) => asset.amount).reduce((acc, amount) => acc + amount, 0n);
+      const managedAssetsValues = managedAssets.map((asset) => asset.amount).reduce((acc, amount) => acc + amount, 0n);
 
       if (managedAssetsValues > debtAssetsValue) {
         return managedAssetsValues - debtAssetsValue;
