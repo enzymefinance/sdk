@@ -2,7 +2,7 @@ import { type ReadContractParameters, readContractParameters } from "../utils/vi
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
 
-export function getSpecificAssetsRedemptionExpectedAmounts(
+export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
   args: ReadContractParameters<{
     signerAddress: Address;
@@ -13,13 +13,17 @@ export function getSpecificAssetsRedemptionExpectedAmounts(
   }>,
 ) {
   try {
-    return client.simulateContract({
+    const {
+      result: [payoutAmounts],
+    } = await client.simulateContract({
       ...readContractParameters(args),
       abi: IComptrollerLib,
       functionName: "redeemSharesForSpecificAssets",
       address: args.signerAddress,
       args: [args.recipient, args.sharesQuantity, args.payoutAssets, args.payoutPercentages],
     });
+
+    return { payoutAmounts };
   } catch (error) {
     // TODO: More selectively catch this error here.
     if (error instanceof ContractFunctionExecutionError) {
