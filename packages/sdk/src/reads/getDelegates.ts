@@ -14,16 +14,9 @@ export async function getDelegates(
     "function getDelegateeByType(address delegator, uint8 type) view returns (address)",
   ] as const);
 
-  // it doesn't matter what type we use, in our case voting power delegatee and proposition power delegatee will be always the same
-  const votingPowerType = 0;
-
-  const contractsWithVotingPower = [
-    { address: AAVE, votingPowerType },
-    { address: STKAAVE, votingPowerType },
-  ];
   const contractsWithoutVotingPower = [{ address: COMP }, { address: UNI }];
 
-  const [compDelegatee, uniDelegatee] = (await Promise.all([
+  const [nonVotingPowerContracts] = await Promise.all([
     contractsWithoutVotingPower.map((params) =>
       client.readContract({
         ...readContractParameters(args),
@@ -33,9 +26,18 @@ export async function getDelegates(
         args: [args.vaultProxy],
       }),
     ),
-  ])) as unknown as [Address, Address];
+  ]);
 
-  const [aaveDelegatee, stkaaveDelegatee] = (await Promise.all([
+  const [compDelegatee, uniDelegatee] = nonVotingPowerContracts;
+
+  // it doesn't matter what type we use, in our case voting power delegatee and proposition power delegatee will be always the same
+  const votingPowerType = 0;
+  const contractsWithVotingPower = [
+    { address: AAVE, votingPowerType },
+    { address: STKAAVE, votingPowerType },
+  ];
+
+  const [votingPowerContracts] = await Promise.all([
     contractsWithVotingPower.map((params) =>
       client.readContract({
         ...readContractParameters(args),
@@ -45,7 +47,9 @@ export async function getDelegates(
         args: [args.vaultProxy, params.votingPowerType],
       }),
     ),
-  ])) as unknown as [Address, Address];
+  ]);
+
+  const [aaveDelegatee, stkaaveDelegatee] = votingPowerContracts;
 
   return {
     aaveDelegatee,
