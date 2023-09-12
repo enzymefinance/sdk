@@ -1,3 +1,4 @@
+import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IExternalPosition } from "@enzymefinance/abis/IExternalPosition";
 import type { Address, PublicClient } from "viem";
@@ -17,8 +18,10 @@ export async function getManagedAssets(
     address: args.externalPosition,
   });
 
+  invariant(assets.length === amounts.length, "assets and amounts must have the same length");
+
   return assets.map((asset, index) => ({
     asset,
-    amount: amounts[index],
+    amount: amounts[index] ?? 0n,
   }));
 }
