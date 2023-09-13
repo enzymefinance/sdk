@@ -1,7 +1,7 @@
 import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IUniswapV2PoolPriceFeed } from "@enzymefinance/abis";
-import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { type Address, ContractFunctionExecutionError, type PublicClient, isAddressEqual } from "viem";
 
 const pairAbi = [
   {
@@ -58,23 +58,26 @@ export async function getUniswapV2SwapRedeemRate(
     const token1Expected = isAddressEqual(underlyings[1], args.token1) ? underlyingAmounts[1] : underlyingAmounts[0];
 
     return { token0Expected, token1Expected };
-  } catch {
-    const [poolTokensSupply, [reserve0, reserve1]] = await Promise.all([
-      client.readContract({
-        abi: pairAbi,
-        functionName: "totalSupply",
-        address: args.poolValue.token,
-      }),
-      client.readContract({
-        abi: pairAbi,
-        functionName: "getReserves",
-        address: args.poolValue.token,
-      }),
-    ]);
+  } catch (error) {
+    if (error instanceof ContractFunctionExecutionError) {
+      const [poolTokensSupply, [reserve0, reserve1]] = await Promise.all([
+        client.readContract({
+          abi: pairAbi,
+          functionName: "totalSupply",
+          address: args.poolValue.token,
+        }),
+        client.readContract({
+          abi: pairAbi,
+          functionName: "getReserves",
+          address: args.poolValue.token,
+        }),
+      ]);
 
-    const token0Expected = (args.poolValue.value * reserve0) / poolTokensSupply;
-    const token1Expected = (args.poolValue.value * reserve1) / poolTokensSupply;
+      const token0Expected = (args.poolValue.value * reserve0) / poolTokensSupply;
+      const token1Expected = (args.poolValue.value * reserve1) / poolTokensSupply;
 
-    return { token0Expected, token1Expected };
+      return { token0Expected, token1Expected };
+    }
+    throw error;
   }
 }
