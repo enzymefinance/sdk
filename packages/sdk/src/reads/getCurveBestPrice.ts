@@ -1,8 +1,10 @@
 import { WETH } from "../../tests/constants.js";
 import { ETH_ADDRESS } from "../constants/misc.js";
-import { CURVE_REGISTRY } from "../constants/selectors.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import type { Address, PublicClient } from "viem";
+import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
+
+// same address for polygon and ethereum
+const CURVE_REGISTRY = "0x0000000022d53366457f9d5e68ec105046fc4383" as const;
 
 const curveRegistryAbi = {
   name: "get_address",
@@ -45,7 +47,7 @@ export async function getCurveBestPrice(
     quantity: bigint;
   }>,
 ) {
-  const address = await client.readContract({
+  const curveSwaps = await client.readContract({
     ...readContractParameters(args),
     abi: [curveRegistryAbi],
     functionName: "get_address",
@@ -58,7 +60,7 @@ export async function getCurveBestPrice(
 
   const [bestPool, amountReceived] = await client.readContract({
     abi: [curveSwapsAbi],
-    address: address,
+    address: curveSwaps,
     functionName: "get_best_rate",
     args: [curveOutgoing, curveIncoming, args.quantity],
   });
@@ -66,15 +68,22 @@ export async function getCurveBestPrice(
   const amount = amountReceived;
   const price = amount / args.quantity;
 
-  const name = await client.readContract({
-    abi: [erc20Abi],
-    address: bestPool,
-    functionName: "name",
-  });
+  let poolName;
+  try {
+    poolName = await client.readContract({
+      abi: [erc20Abi],
+      address: bestPool,
+      functionName: "name",
+    });
+  } catch (error) {
+    if (!(error instanceof ContractFunctionExecutionError)) {
+      throw error;
+    }
+  }
 
   return {
     amount,
-    bestRoute: name,
+    poolName,
     pool: bestPool,
     price,
   };
