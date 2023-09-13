@@ -18,10 +18,13 @@ export async function getManagedAssets(
     address: args.externalPosition,
   });
 
-  invariant(assets.length === amounts.length, "assets and amounts must have the same length");
+  return assets.map((asset, index) => {
+    const amount = amounts[index];
 
-  return assets.map((asset, index) => ({
-    asset,
-    amount: amounts[index] ?? 0n,
-  }));
+    invariant(amount !== undefined, "amount must be defined");
+    return {
+      asset,
+      amount,
+    };
+  });
 }

@@ -9,9 +9,7 @@ export async function getIsExternalPositionsValueZero(
     vaultProxy: Address;
   }>,
 ) {
-  const addresses = await getActiveExternalPositions(client, {
-    vaultProxy: args.vaultProxy,
-  });
+  const addresses = await getActiveExternalPositions(client, args);
 
   const values = await Promise.all(
     addresses.map(async (externalPosition) => {
