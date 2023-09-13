@@ -7,9 +7,9 @@ const abi = {
   outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
   stateMutability: "view",
   type: "function",
-};
+} as const;
 
-export async function convertCrvToCvxWithCvxMining(
+export async function convertCrvToCvx(
   client: PublicClient,
   args: ReadContractParameters<{
     cvxMining: Address;
