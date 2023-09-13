@@ -1,7 +1,6 @@
-import { WETH } from "../../tests/constants.js";
 import { ETH_ADDRESS } from "../constants/misc.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
+import { type Address, ContractFunctionExecutionError, type PublicClient, isAddressEqual } from "viem";
 
 // same address for polygon and ethereum
 const CURVE_REGISTRY = "0x0000000022d53366457f9d5e68ec105046fc4383" as const;
@@ -45,6 +44,7 @@ export async function getCurveBestPrice(
     incoming: Address;
     outgoing: Address;
     quantity: bigint;
+    weth: Address;
   }>,
 ) {
   const curveSwaps = await client.readContract({
@@ -55,8 +55,8 @@ export async function getCurveBestPrice(
     args: [swapId],
   });
 
-  const curveOutgoing = args.outgoing === WETH ? ETH_ADDRESS : args.outgoing;
-  const curveIncoming = args.incoming === WETH ? ETH_ADDRESS : args.incoming;
+  const curveOutgoing = isAddressEqual(args.outgoing, args.weth) ? ETH_ADDRESS : args.outgoing;
+  const curveIncoming = isAddressEqual(args.incoming, args.weth) ? ETH_ADDRESS : args.incoming;
 
   const [bestPool, amountReceived] = await client.readContract({
     abi: [curveSwapsAbi],
