@@ -1,3 +1,4 @@
+import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
@@ -22,11 +23,13 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
     });
 
     const output: Record<Address, bigint> = {};
+
     for (let i = 0; i < args.payoutAssets.length; i++) {
-      // rome-ignore lint/style/noNonNullAssertion: <explanation>
-      const payoutAsset = args.payoutAssets[i]!;
-      // rome-ignore lint/style/noNonNullAssertion: <explanation>
-      const payoutAmount = payoutAmounts[i]!;
+      const payoutAsset = args.payoutAssets[i];
+      const payoutAmount = payoutAmounts[i];
+      invariant(payoutAmount !== undefined, "Expected payout amount to be defined.");
+      invariant(payoutAsset !== undefined, "Expected payout asset to be defined.");
+
       output[payoutAsset] = payoutAmount;
     }
 
