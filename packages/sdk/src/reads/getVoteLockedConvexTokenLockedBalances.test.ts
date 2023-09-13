@@ -1,6 +1,6 @@
 import { publicClientMainnet } from "../../tests/globals.js";
 import { getVoteLockedConvexTokenLockedBalances } from "./getVoteLockedConvexTokenLockedBalances.js";
-import { assert, expect, test } from "vitest";
+import { expect, test } from "vitest";
 
 test("get vote locked convex token locked balances should work correctly", async () => {
   const voteLockedConvexToken = "0x72a19342e8F1838460eBFCCEf09F6585e32db86E" as const;
@@ -11,7 +11,6 @@ test("get vote locked convex token locked balances should work correctly", async
     positionAddress,
   });
 
-  assert(result !== undefined && result !== null);
   expect(Object.keys(result).length).toBeGreaterThan(0);
 
   expect(result.total).toBeTypeOf("bigint");
