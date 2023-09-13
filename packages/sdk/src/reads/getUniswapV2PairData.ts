@@ -1,6 +1,8 @@
-import { UNISWAP_V2_FACTORY } from "../../tests/constants.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import type { Address, PublicClient } from "viem";
+
+// same address for ethereum and polygon
+const UNISWAP_V2_FACTORY = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f" as const;
 
 const pairAbi = {
   constant: true,
