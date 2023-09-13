@@ -70,6 +70,7 @@ export async function getCurveBestPrice(
 
   let poolName;
   try {
+    // not all pools support this method, this is why we need to catch the error
     poolName = await client.readContract({
       abi: [erc20Abi],
       address: bestPool,
