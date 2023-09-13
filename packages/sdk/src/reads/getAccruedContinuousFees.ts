@@ -1,93 +1,46 @@
+import { IManagementFee } from "../../../abis/src/abis/IManagementFee.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
-import { IComptrollerLib } from "@enzymefinance/abis";
-import { IPerformanceFee } from "@enzymefinance/abis";
+import { getComptrollerProxy } from "./getComptrollerProxy.js";
+import { IComptrollerLib, IPerformanceFee } from "@enzymefinance/abis";
 import { IUnpermissionedActionsWrapper } from "@enzymefinance/abis/IUnpermissionedActionsWrapper";
 import type { Address, PublicClient } from "viem";
-
-const managementAbi = {
-  name: "settle",
-  type: "function",
-  inputs: [
-    {
-      internalType: "address",
-      name: "accessor",
-      type: "address",
-    },
-    {
-      internalType: "address",
-      name: "vaultProxy",
-      type: "address",
-    },
-    {
-      internalType: "uint8",
-      name: "feeType",
-      type: "uint8",
-    },
-    {
-      internalType: "bytes",
-      name: "feeData",
-      type: "bytes",
-    },
-    {
-      internalType: "uint256",
-      name: "gav",
-      type: "uint256",
-    },
-  ],
-  outputs: [
-    {
-      internalType: "uint256",
-      name: "sharesDue_",
-      type: "uint256",
-    },
-    {
-      internalType: "string",
-      name: "reason",
-      type: "string",
-    },
-    {
-      internalType: "uint256",
-      name: "sharesTransferred_",
-      type: "uint256",
-    },
-  ],
-  stateMutability: "view",
-} as const;
+import { isAddressEqual } from "viem";
 
 export async function getAccruedContinuousFees(
   client: PublicClient,
   args: ReadContractParameters<{
     unpermissionedActionsWrapper: Address;
-    accessor: Address;
+    comptrollerProxy?: Address;
     vaultProxy: Address;
-    contracts: {
-      feeManager: Address;
-      unpermissionedActionsWrapper: Address;
-      managementFee: Address;
-      performanceFee: Address;
-    };
+    feeManager: Address;
+    managementFee: Address;
+    performanceFee: Address;
   }>,
 ) {
+  const comptrollerProxy = args.comptrollerProxy ?? (await getComptrollerProxy(client, args));
+
   const continuousFees = await client.readContract({
     ...readContractParameters(args),
     abi: IUnpermissionedActionsWrapper,
     functionName: "getContinuousFeesForFund",
     address: args.unpermissionedActionsWrapper,
-    args: [args.accessor],
+    args: [comptrollerProxy],
   });
 
-  const hasManagementFee = continuousFees.some((fee) => fee === args.contracts.managementFee);
-  const hasPerformanceFee = continuousFees.some((fee) => fee === args.contracts.performanceFee);
+  const hasManagementFee = continuousFees.some((fee) => isAddressEqual(fee, args.managementFee));
+  const hasPerformanceFee = continuousFees.some((fee) => isAddressEqual(fee, args.performanceFee));
 
   let managementFeeSharesDue = 0n;
 
   if (hasManagementFee) {
-    const [sharesDue, _, __] = await client.readContract({
+    const {
+      result: [_, __, sharesDue],
+    } = await client.simulateContract({
       ...readContractParameters(args),
-      abi: [managementAbi],
+      abi: IManagementFee,
       functionName: "settle",
-      address: args.accessor,
-      args: [args.accessor, args.vaultProxy, 0, "0x", 0n],
+      address: args.managementFee,
+      args: [comptrollerProxy, args.vaultProxy, 0, "0x", 0n],
     });
 
     managementFeeSharesDue = sharesDue;
@@ -101,7 +54,7 @@ export async function getAccruedContinuousFees(
       ...readContractParameters(args),
       abi: IComptrollerLib,
       functionName: "calcGav",
-      address: args.accessor,
+      address: comptrollerProxy,
     });
 
     const [
@@ -114,15 +67,15 @@ export async function getAccruedContinuousFees(
         ...readContractParameters(args),
         abi: IPerformanceFee,
         functionName: "settle",
-        address: args.contracts.managementFee,
-        args: [args.accessor, args.vaultProxy, 0, "0x", gav],
+        address: args.performanceFee,
+        args: [comptrollerProxy, args.vaultProxy, 0, "0x", gav],
       }),
       client.readContract({
         ...readContractParameters(args),
         abi: IPerformanceFee,
         functionName: "getFeeInfoForFund",
-        address: args.contracts.performanceFee,
-        args: [args.accessor],
+        address: args.performanceFee,
+        args: [comptrollerProxy],
       }),
     ]);
 
