@@ -267,11 +267,11 @@ export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulat
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
 
+// ./reads/getDAODelegates.js
+export { getDAODelegates } from "./reads/getDAODelegates.js";
+
 // ./reads/getDebtAssets.js
 export { getDebtAssets } from "./reads/getDebtAssets.js";
-
-// ./reads/getDelegates.js
-export { getDAODelegates } from "./reads/getDelegates.js";
 
 // ./reads/getDenominationAsset.js
 export { getDenominationAsset } from "./reads/getDenominationAsset.js";
