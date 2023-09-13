@@ -1,3 +1,4 @@
+import { invariant } from "../utils/assertions.js";
 import { type ReadContractParameters, readContractParameters } from "../utils/viem.js";
 import { IConvexCurveLpStakingWrapperLib } from "@enzymefinance/abis/IConvexCurveLpStakingWrapperLib";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
@@ -22,10 +23,11 @@ export async function getConvexWrapperEstimateRewards(
 
     const tokenRewards: Record<Address, bigint> = {};
     for (let i = 0; i < rewardTokens.length; i++) {
-      // rome-ignore lint/style/noNonNullAssertion: <explanation>
-      const rewardToken = rewardTokens[i]!;
-      // rome-ignore lint/style/noNonNullAssertion: <explanation>
-      const claimedAmount = claimedAmounts[i]! ?? 0n;
+      const rewardToken = rewardTokens[i];
+      const claimedAmount = claimedAmounts[i];
+      invariant(rewardToken !== undefined, "Expected reward token to be defined.");
+      invariant(claimedAmount !== undefined, "Expected claimed amount to be defined.");
+
       tokenRewards[rewardToken] = claimedAmount;
     }
 
@@ -48,13 +50,21 @@ export async function getAllConvexWrapperEstimateRewards(
   }>,
 ) {
   const tokenRewards = await Promise.all(
-    args.stakingWrappers.map(async (stakingWrapper) =>
-      getConvexWrapperEstimateRewards(client, {
+    args.stakingWrappers.map(async (stakingWrapper) => {
+      const rewards = await getConvexWrapperEstimateRewards(client, {
         ...args,
         stakingWrapper,
-      }),
-    ),
+      });
+
+      return { rewards, stakingWrapper };
+    }),
   );
 
-  return tokenRewards;
+  const tokenRewardsMap: Record<Address, Record<`0x${string}`, bigint> | undefined> = {};
+
+  for (const { rewards, stakingWrapper } of tokenRewards) {
+    tokenRewardsMap[stakingWrapper] = rewards;
+  }
+
+  return tokenRewardsMap;
 }
