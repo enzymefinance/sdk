@@ -1,55 +1,49 @@
 {
   "name": "@enzymefinance/sdk",
+  "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
   "version": "0.0.27",
-  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/enzymefinance/enzyme-sdk.git",
     "directory": "packages/sdk"
   },
+  "author": "Sebastian Lorenz <fubhy@fubhy.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enzymefinance/enzyme-sdk/issues"
+  },
+  "homepage": "https://github.com/enzymefinance/enzyme-sdk",
+  "exports": {
+    "./*": {
+      "require": "./build/cjs/*.js"
+    }
+  },
   "scripts": {
-    "clean": "rm -rf dist",
-    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm+types",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --verbatimModuleSyntax false --outDir ./dist/cjs && echo > ./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
-    "build:esm+types": "tsc --project tsconfig.build.json --module es2015 --outDir ./dist/esm --declaration --declarationMap --declarationDir ./dist/types && echo > ./dist/esm/package.json '{\"type\":\"module\", \"sideEffects\":false}'",
-    "release": "pnpm build && ../../scripts/prerelease.sh ./package.json",
+    "clean": "rimraf dist build",
+    "build": "pnpm build:cjs && pnpm build:mjs && build-utils pack-v1",
+    "build:cjs": "babel build/esm --config-file ../../babel.cjs.json --out-dir build/cjs --out-file-extension .js --source-maps",
+    "build:mjs": "babel build/esm --config-file ../../babel.mjs.json --out-dir build/mjs --out-file-extension .mjs --source-maps",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --noEmit"
-  },
-  "files": [
-    "dist/**",
-    "!dist/**/*.tsbuildinfo",
-    "src/**/*.ts",
-    "!src/**/*.test.ts"
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "typings": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/cjs/index.js"
-    },
-    "./package.json": "./package.json"
   },
   "dependencies": {
     "@enzymefinance/abis": "^0.0.11",
     "abitype": "^0.9.8",
     "decimal.js": "^10.4.3",
-    "viem": "^1.6.7"
+    "viem": "^1.10.9"
   },
   "devDependencies": {
     "@viem/anvil": "^0.0.6",
     "@vitest/coverage-c8": "^0.32.4",
     "@vitest/ui": "^0.32.4",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-tsconfig-paths": "^4.2.0",
+    "vite-tsconfig-paths": "^4.2.1",
     "vitest": "^0.32.4"
   }
 }

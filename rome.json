@@ -1,6 +1,6 @@
 {
   "files": {
-    "ignore": ["dist", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
+    "ignore": ["dist", "build", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
   },
   "formatter": {
     "indentStyle": "space",
@@ -8,7 +8,13 @@
   },
   "linter": {
     "rules": {
-      "all": true
+      "all": true,
+      "suspicious": {
+        "noExplicitAny": "off"
+      },
+      "style": {
+        "useShorthandArrayType": "off"
+      }
     }
   },
   "organizeImports": {

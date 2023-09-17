@@ -17,12 +17,18 @@
     "noUncheckedIndexedAccess": true,
 
     // Modules
-    "module": "ESNext",
-    "moduleResolution": "NodeNext",
+    "module": "ES6",
+    "moduleResolution": "Node",
 
     // JavaScript support
     "allowJs": false,
     "checkJs": false,
+
+    // Emit
+    "removeComments": false,
+    "sourceMap": true,
+    "declarationMap": true,
+    "declaration": true,
 
     // Interop constraints
     "forceConsistentCasingInFileNames": true,
@@ -31,10 +37,21 @@
     "allowSyntheticDefaultImports": false,
 
     // Language and environment
-    "lib": ["ESNext"],
-    "target": "ESNext",
+    "lib": ["ES2021", "DOM"],
+    "target": "ES2021",
 
-    // Sourcemaps
-    "sourceMap": true
+    // Project references
+    "composite": true,
+
+    // Path aliasing
+    "baseUrl": ".",
+    "paths": {
+      "@enzymefinance/sdk": ["./packages/sdk/src/index.js"],
+      "@enzymefinance/sdk/*": ["./packages/sdk/src/*.js"],
+      "@enzymefinance/abis": ["./packages/abis/src/index.js"],
+      "@enzymefinance/abis/*": ["./packages/abis/src/abis/*.js"],
+      "@enzymefinance/api": ["./packages/api/src/index.js"],
+      "@enzymefinance/api/*": ["./packages/api/src/*.js"]
+    }
   }
 }
