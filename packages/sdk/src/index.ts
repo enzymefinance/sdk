@@ -213,11 +213,17 @@ export {
   type IntegrationManagerActionId,
 } from "./extensions/callOnExtension.js";
 
+// ./reads/convertCrvToCvx.js
+export { convertCrvToCvx } from "./reads/convertCrvToCvx.js";
+
 // ./reads/convertMapleSharesToExitAssets.js
 export { convertMapleSharesToExitAssets } from "./reads/convertMapleSharesToExitAssets.js";
 
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
+
+// ./reads/doesCurvePoolAllowSingelAssetRedemption.js
+export { doesCurvePoolAllowSingelAssetRedemption } from "./reads/doesCurvePoolAllowSingelAssetRedemption.js";
 
 // ./reads/getAccruedProtocolFee.js
 export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
@@ -258,14 +264,23 @@ export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 // ./reads/getCanonicalAssetValue.js
 export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
 
+// ./reads/getCERC20ExchangeRateStored.js
+export { getCERC20ExchangeRateStored } from "./reads/getCERC20ExchangeRateStored.js";
+
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
+
+// ./reads/getCTokenFromBorrowedAsset.js
+export { getCTokenFromBorrowedAsset } from "./reads/getCTokenFromBorrowedAsset.js";
 
 // ./reads/getCumulativeSlippageTolerancePolicySettings.js
 export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulativeSlippageTolerancePolicySettings.js";
 
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
+
+// ./reads/getCurveExpectedGaugeTokens.js
+export { getCurveExpectedGaugeTokens } from "./reads/getCurveExpectedGaugeTokens.js";
 
 // ./reads/getDebtAssets.js
 export { getDebtAssets } from "./reads/getDebtAssets.js";
@@ -275,6 +290,9 @@ export { getDenominationAsset } from "./reads/getDenominationAsset.js";
 
 // ./reads/getEnabledFees.js
 export { getEnabledFees } from "./reads/getEnabledFees.js";
+
+// ./reads/getEnabledMinMaxInvestmentPolicySettings.js
+export { getEnabledMinMaxInvestmentPolicySettings } from "./reads/getEnabledMinMaxInvestmentPolicySettings.js";
 
 // ./reads/getEnabledPolicies.js
 export { getEnabledPolicies } from "./reads/getEnabledPolicies.js";
@@ -287,6 +305,9 @@ export { getExitFeeRates } from "./reads/getExitFeeRates.js";
 
 // ./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js
 export { getExpectedSharesForGatedRedemptionQueueSharesWrapper } from "./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js";
+
+// ./reads/getExpectedSharesForNativeToken.js
+export { getExpectedSharesForNativeToken } from "./reads/getExpectedSharesForNativeToken.js";
 
 // ./reads/getExternalPositionAssets.js
 export { getExternalPositionAssets } from "./reads/getExternalPositionAssets.js";
@@ -309,14 +330,26 @@ export { getGrossAssetValue } from "./reads/getGrossAssetValue.js";
 // ./reads/getGrossAssetValueInAsset.js
 export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js";
 
+// ./reads/getIdleGovTokensAmountAndAddress.js
+export { getIdleGovTokensAmounts as getIdleGovTokensAmountAndAddress } from "./reads/getIdleGovTokensAmounts.js";
+
 // ./reads/getIdleRate.js
 export { getIdleRate } from "./reads/getIdleRate.js";
+
+// ./reads/getIsExternalPositionsValuesZero.js
+export { getIsExternalPositionsValueZero } from "./reads/getIsExternalPositionsValuesZero.js";
+
+// ./reads/getIdleSpeeds.js
+export { getIdleSpeeds } from "./reads/getIdleSpeeds.js";
 
 // ./reads/getLabelForPositionType.js
 export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType.js";
 
 // ./reads/getLastSharesBoughtTimestamp.js
 export { getLastSharesBoughtTimestamp } from "./reads/getLastSharesBoughtTimestamp.js";
+
+// ./reads/getLiquityTroves.js
+export { getLiquityTrove, getLiquityTroves, type LiquityTrove } from "./reads/getLiquityTroves.js";
 
 // ./reads/getListIdsForVaultPolicy.js
 export { getListIdsForVaultPolicy } from "./reads/getListIdsForVaultPolicy.js";
@@ -332,6 +365,9 @@ export { getMigrationRequestDetails } from "./reads/getMigrationRequestDetails.j
 
 // ./reads/getMinMaxInvestmentPolicySettings.js
 export { getMinMaxInvestmentPolicySettings } from "./reads/getMinMaxInvestmentPolicySettings.js";
+
+// ./reads/getMlnValueAndBurnAmountForSharesBuyback.js
+export { getMlnValueAndBurnAmountForSharesBuyback } from "./reads/getMlnValueAndBurnAmountForSharesBuyback.js";
 
 // ./reads/getNetAssetValue.js
 export { getNetAssetValue } from "./reads/getNetAssetValue.js";
@@ -366,6 +402,9 @@ export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 // ./reads/getSharesWrapperDepositQueueUser.js
 export { getSharesWrapperDepositQueueUser } from "./reads/getSharesWrapperDepositQueueUser.js";
 
+// ./reads/getSharesSplitterTokenBalanceClaimableForUser.js
+export { getSharesSplitterTokenBalanceClaimableForUser } from "./reads/getSharesSplitterTokenBalanceClaimableForUser.js";
+
 // ./reads/getSharesWrapperRedemptionQueueUsers.js
 export { getSharesWrapperRedemptionQueueUsers } from "./reads/getSharesWrapperRedemptionQueueUsers.js";
 
@@ -374,6 +413,9 @@ export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js"
 
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
+
+// ./reads/getUniswapV2PairData.js
+export { getUniswapV2PairData } from "./reads/getUniswapV2PairData.js";
 
 // ./reads/getVaultHasMigration.js
 export { getVaultHasMigrationRequest } from "./reads/getVaultHasMigration.js";
@@ -392,6 +434,12 @@ export { getVaultOwner } from "./reads/getVaultOwner.js";
 
 // ./reads/getVaultTimelockRemainingForMigrationRequest.js
 export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTimelockRemainingForMigrationRequest.js";
+
+// ./reads/getVoteLockedConvexTokenLockedBalances.js
+export {
+  getVoteLockedConvexTokenLockedBalances,
+  getAllVoteLockedConvexTokenLockedBalances,
+} from "./reads/getVoteLockedConvexTokenLockedBalances.js";
 
 // ./reads/hasExecutableMigrationRequest.js
 export { hasExecutableMigrationRequest } from "./reads/hasExecutableMigrationRequest.js";
