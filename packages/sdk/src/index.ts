@@ -270,6 +270,12 @@ export { getCERC20ExchangeRateStored } from "./reads/getCERC20ExchangeRateStored
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
+// ./reads/getConvexWrapperEstimateRewards.js
+export {
+  getConvexWrapperEstimateRewards,
+  getAllConvexWrapperEstimateRewards,
+} from "./reads/getConvexWrapperEstimateRewards.js";
+
 // ./reads/getCTokenFromBorrowedAsset.js
 export { getCTokenFromBorrowedAsset } from "./reads/getCTokenFromBorrowedAsset.js";
 
