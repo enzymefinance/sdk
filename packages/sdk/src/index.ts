@@ -324,6 +324,9 @@ export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js"
 // ./reads/getIdleRate.js
 export { getIdleRate } from "./reads/getIdleRate.js";
 
+// ./reads/getIsExternalPositionsValuesZero.js
+export { getIsExternalPositionsValueZero } from "./reads/getIsExternalPositionsValuesZero.js";
+
 // ./reads/getIdleSpeeds.js
 export { getIdleSpeeds } from "./reads/getIdleSpeeds.js";
 
