@@ -258,6 +258,9 @@ export { getBuySharesAmount } from "./reads/getBuySharesAmount.js";
 // ./reads/getCanonicalAssetValue.js
 export { getCanonicalAssetValue } from "./reads/getCanonicalAssetValue.js";
 
+// ./reads/getCERC20ExchangeRateStored.js
+export { getCERC20ExchangeRateStored } from "./reads/getCERC20ExchangeRateStored.js";
+
 // ./reads/getComptrollerProxy.js
 export { getComptrollerProxy } from "./reads/getComptrollerProxy.js";
 
