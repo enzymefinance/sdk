@@ -300,6 +300,9 @@ export { getExitFeeRates } from "./reads/getExitFeeRates.js";
 // ./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js
 export { getExpectedSharesForGatedRedemptionQueueSharesWrapper } from "./reads/getExpectedSharesForGatedRedemptionQueueSharesWrapper.js";
 
+// ./reads/getExpectedSharesForNativeToken.js
+export { getExpectedSharesForNativeToken } from "./reads/getExpectedSharesForNativeToken.js";
+
 // ./reads/getExternalPositionAssets.js
 export { getExternalPositionAssets } from "./reads/getExternalPositionAssets.js";
 
