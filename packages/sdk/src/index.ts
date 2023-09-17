@@ -399,6 +399,9 @@ export { getSharePriceInAsset } from "./reads/getSharePriceInAsset.js";
 // ./reads/getSharesActionTimelock.js
 export { getSharesActionTimelock } from "./reads/getSharesActionTimelock.js";
 
+// ./reads/getSharesWrapperDepositQueueUser.js
+export { getSharesWrapperDepositQueueUser } from "./reads/getSharesWrapperDepositQueueUser.js";
+
 // ./reads/getSharesSplitterTokenBalanceClaimableForUser.js
 export { getSharesSplitterTokenBalanceClaimableForUser } from "./reads/getSharesSplitterTokenBalanceClaimableForUser.js";
 
