@@ -276,6 +276,9 @@ export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulat
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
 
+// ./reads/getCurveExpectedGaugeTokens.js
+export { getCurveExpectedGaugeTokens } from "./reads/getCurveExpectedGaugeTokens.js";
+
 // ./reads/getDebtAssets.js
 export { getDebtAssets } from "./reads/getDebtAssets.js";
 
