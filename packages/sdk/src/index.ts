@@ -312,6 +312,9 @@ export { getGrossAssetValueInAsset } from "./reads/getGrossAssetValueInAsset.js"
 // ./reads/getIdleRate.js
 export { getIdleRate } from "./reads/getIdleRate.js";
 
+// ./reads/getIdleSpeeds.js
+export { getIdleSpeeds } from "./reads/getIdleSpeeds.js";
+
 // ./reads/getLabelForPositionType.js
 export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType.js";
 
