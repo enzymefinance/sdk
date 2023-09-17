@@ -1,4 +1,4 @@
-import { never } from "../../Utils/assertion.js";
+import { Assertion } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
@@ -229,7 +229,7 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
     }
 
     default: {
-      never(args, "Invalid swap type");
+      Assertion.never(args, "Invalid swap type");
     }
   }
 
@@ -297,7 +297,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     }
 
     default: {
-      never(swapType, "Invalid swap type");
+      Assertion.never(swapType, "Invalid swap type");
     }
   }
 }
