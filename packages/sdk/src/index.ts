@@ -279,6 +279,9 @@ export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulat
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
 
+// ./reads/getDAODelegates.js
+export { getDAODelegates } from "./reads/getDAODelegates.js";
+
 // ./reads/getCurveBestPrice.js
 export { getCurveBestPrice } from "./reads/getCurveBestPrice.js";
 
