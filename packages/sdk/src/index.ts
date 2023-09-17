@@ -474,6 +474,9 @@ export { isGasRelayerEnabled } from "./reads/isGasRelayerEnabled.js";
 // ./reads/isPolicyEnabled.js
 export { isPolicyEnabled } from "./reads/isPolicyEnabled.js";
 
+// ./reads/queryBalancerBatchSwap.js
+export { queryBalancerBatchSwap } from "./reads/queryBalancerBatchSwap.js";
+
 // ./utils/assertions.js
 export { never, invariant } from "./utils/assertions.js";
 
@@ -825,7 +828,6 @@ export {
   type BalancerV2LiquidityClaimRewardsArgs,
   type BalancerV2LiquidityStakeArgsAndUnstakeArgs,
   SwapKind,
-  type SwapKindValue,
   type BalancerV2LiquidityTakeOrderArgs,
 } from "./extensions/integrations/instances/balancerV2Liquidity.js";
 
