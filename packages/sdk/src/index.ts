@@ -402,6 +402,12 @@ export { getVaultOwner } from "./reads/getVaultOwner.js";
 // ./reads/getVaultTimelockRemainingForMigrationRequest.js
 export { getVaultTimelockRemainingForMigrationRequest } from "./reads/getVaultTimelockRemainingForMigrationRequest.js";
 
+// ./reads/getVoteLockedConvexTokenLockedBalances.js
+export {
+  getVoteLockedConvexTokenLockedBalances,
+  getAllVoteLockedConvexTokenLockedBalances,
+} from "./reads/getVoteLockedConvexTokenLockedBalances.js";
+
 // ./reads/hasExecutableMigrationRequest.js
 export { hasExecutableMigrationRequest } from "./reads/hasExecutableMigrationRequest.js";
 
