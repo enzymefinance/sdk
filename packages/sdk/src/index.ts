@@ -285,6 +285,9 @@ export { getCumulativeSlippageTolerancePolicySettings } from "./reads/getCumulat
 // ./reads/getCurrentCumulativeSlippage.js
 export { getCurrentCumulativeSlippage } from "./reads/getCurrentCumulativeSlippage.js";
 
+// ./reads/getCurveExpectedWithdrawalTokens.js
+export { getCurveExpectedWithdrawalTokens } from "./reads/getCurveExpectedWithdrawalTokens.js";
+
 // ./reads/getDAODelegates.js
 export { getDAODelegates } from "./reads/getDAODelegates.js";
 
