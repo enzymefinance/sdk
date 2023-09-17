@@ -429,6 +429,9 @@ export { getTheGraphDelegationPool } from "./reads/getTheGraphDelegationPool.js"
 // ./reads/getTrackedAssets.js
 export { getTrackedAssets } from "./reads/getTrackedAssets.js";
 
+// ./reads/getUniswapV2SwapRedeemRate.js
+export { getUniswapV2SwapRedeemRate } from "./reads/getUniswapV2SwapRedeemRate.js";
+
 // ./reads/getUniswapV2LendRate.js
 export { getUniswapV2LendRate } from "./reads/getUniswapV2LendRate.js";
 
