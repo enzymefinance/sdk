@@ -195,10 +195,10 @@ export const SwapKind = {
   GivenOut: 1,
 } as const;
 
-export type SwapKindValue = typeof SwapKind[keyof typeof SwapKind];
+export type SwapKind = typeof SwapKind[keyof typeof SwapKind];
 
-function assertSwapKindValue(value: number): asserts value is SwapKindValue {
-  if (!Object.values(SwapKind).includes(value as SwapKindValue)) {
+function assertSwapKindValue(value: number): asserts value is SwapKind {
+  if (!Object.values(SwapKind).includes(value as SwapKind)) {
     throw new Error(`Invalid SwapKind: ${value}`);
   }
 }
@@ -249,7 +249,7 @@ const balancerV2LiquidityTakeOrderEncoding = [
 ] as const;
 
 export type BalancerV2LiquidityTakeOrderArgs = {
-  kind: SwapKindValue;
+  kind: SwapKind;
   swaps: {
     poolId: Hex;
     assetInIndex: bigint;
