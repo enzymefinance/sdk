@@ -1,4 +1,4 @@
-import { toSeconds } from "@enzymefinance/sdk/internal/utils/conversion";
+import { toSeconds } from "@enzymefinance/sdk/internal/Utils/conversion";
 import { Decimal } from "decimal.js";
 import { parseEther } from "viem";
 
