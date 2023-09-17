@@ -219,6 +219,9 @@ export { convertMapleSharesToExitAssets } from "./reads/convertMapleSharesToExit
 // ./reads/doesAutoProtocolFeeSharesBuyback.js
 export { doesAutoProtocolFeeSharesBuyback } from "./reads/doesAutoProtocolFeeSharesBuyback.js";
 
+// ./reads/doesCurvePoolAllowSingelAssetRedemption.js
+export { doesCurvePoolAllowSingelAssetRedemption } from "./reads/doesCurvePoolAllowSingelAssetRedemption.js";
+
 // ./reads/getAccruedProtocolFee.js
 export { getAccruedProtocolFee } from "./reads/getAccruedProtocolFee.js";
 
