@@ -324,6 +324,9 @@ export { getLabelForExternalPositionType } from "./reads/getLabelForPositionType
 // ./reads/getLastSharesBoughtTimestamp.js
 export { getLastSharesBoughtTimestamp } from "./reads/getLastSharesBoughtTimestamp.js";
 
+// ./reads/getLiquityTroves.js
+export { getLiquityTrove, getLiquityTroves, type LiquityTrove } from "./reads/getLiquityTroves.js";
+
 // ./reads/getListIdsForVaultPolicy.js
 export { getListIdsForVaultPolicy } from "./reads/getListIdsForVaultPolicy.js";
 
