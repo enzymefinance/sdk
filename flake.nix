@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     utils.url = "github:numtide/flake-utils";
-    foundry.url = "github:fubhy/foundry.nix";
+    foundry.url = "github:shazow/foundry.nix";
   };
 
   outputs = { self, nixpkgs, utils, foundry, ... }:
