@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "references": [{ "path": "../../packages/api" }, { "path": "../../packages/abis" }, { "path": "../../packages/sdk" }],
+  "references": [
+    { "path": "../../packages/abis" },
+    { "path": "../../packages/sdk" }
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "types": ["web"],
@@ -10,7 +13,8 @@
     "paths": {
       "@enzymefinance/abis": ["../../packages/abis/src/index.js"],
       "@enzymefinance/abis/*": ["../../packages/abis/src/abis/*.js"],
-      "@enzymefinance/sdk": ["../../packages/sdk/src/index.js"]
+      "@enzymefinance/sdk": ["../../packages/sdk/src/index.js"],
+      "@enzymefinance/sdk/*": ["../../packages/sdk/src/*.js"]
     }
   }
 }
