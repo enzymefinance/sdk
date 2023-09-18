@@ -1,4 +1,3 @@
-import type { AbiFunction } from "abitype";
 import type {
   Abi,
   Account,
@@ -10,13 +9,16 @@ import type {
   ContractFunctionConfig,
   EstimateContractGasReturnType,
   EstimateGasParameters,
-  GetFunctionArgs,
   GetValue,
   Hex,
   PublicClient,
+  ReadContractParameters,
+  ReadContractReturnType,
+  SimulateContractParameters,
   SimulateContractReturnType,
   Transport,
 } from "viem";
+import { readContract as viemReadContract, simulateContract as viemSimulateContract } from "viem/actions";
 
 export type PopulatedTransactionParams<TFunctionName extends string, TAbi extends Abi> = ContractFunctionConfig<
   TAbi,
@@ -75,39 +77,7 @@ export class PopulatedTransaction<TFunctionName extends string, TAbi extends Abi
   }
 }
 
-export type PrepareFunctionParamsArgs<TFunction extends AbiFunction,> = {
-  abi: TFunction;
-} & GetFunctionArgs<[TFunction], TFunction["name"]>;
-
-export type PrepareFunctionParamsReturnType<TFunction extends AbiFunction> = {
-  functionName: TFunction["name"];
-  abi: [TFunction];
-} & GetFunctionArgs<[TFunction], TFunction["name"]>;
-
-export function prepareFunctionParams<TFunction extends AbiFunction>({
-  abi,
-  args,
-}: PrepareFunctionParamsArgs<TFunction>): PrepareFunctionParamsReturnType<TFunction> {
-  return {
-    functionName: abi.name,
-    abi: [abi],
-    ...(args !== undefined ? { args } : {}),
-  } as PrepareFunctionParamsReturnType<TFunction>;
-}
-
-export function readContractParameters(args: ReadContractParameters) {
-  if ("blockTag" in args) {
-    return { blockTag: args.blockTag };
-  }
-
-  if ("blockNumber" in args) {
-    return { blockNumber: args.blockNumber };
-  }
-
-  return undefined;
-}
-
-export type ReadContractParameters<
+export type ContractCallParameters<
   T extends {
     [key: string]: any;
   } = {},
@@ -122,3 +92,31 @@ export type ReadContractParameters<
         blockTag?: never;
       }
   );
+
+export function readContract<TAbi extends Abi, TFunctionName extends string>(
+  client: PublicClient,
+  args: ContractCallParameters,
+  params: ReadContractParameters<TAbi, TFunctionName>,
+): Promise<ReadContractReturnType<TAbi, TFunctionName>> {
+  return viemReadContract(
+    client,
+    Object.assign({}, params, {
+      ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
+      ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
+    }) as ReadContractParameters<TAbi, TFunctionName>,
+  );
+}
+
+export function simulateContract<TAbi extends Abi, TFunctionName extends string>(
+  client: PublicClient,
+  args: ContractCallParameters,
+  params: SimulateContractParameters<TAbi, TFunctionName>,
+): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
+  return viemSimulateContract(
+    client,
+    Object.assign({}, params, {
+      ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
+      ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
+    }) as SimulateContractParameters<TAbi, TFunctionName>,
+  );
+}

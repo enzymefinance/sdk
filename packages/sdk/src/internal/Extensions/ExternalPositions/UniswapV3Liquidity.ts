@@ -12,9 +12,9 @@ export const Action = {
 
 export const create = ExternalPositionManager.createOnly;
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // MINT
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const mint = ExternalPositionManager.makeUse(Action.Mint, mintEncode);
 export const createAndMint = ExternalPositionManager.makeCreateAndUse(Action.Mint, mintEncode);
@@ -101,9 +101,9 @@ export function mintDecode(encoded: Hex): MintArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // ADD LIQUIDITY
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const addLiquidity = ExternalPositionManager.makeUse(Action.AddLiquidity, addLiquidityEncode);
 export const createAndAddLiquidity = ExternalPositionManager.makeCreateAndUse(Action.AddLiquidity, addLiquidityEncode);
@@ -164,9 +164,9 @@ export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // REMOVE LIQUIDITY
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, removeLiquidityEncode);
 
@@ -211,9 +211,9 @@ export function removeLiquidityDecode(encoded: Hex): RemoveLiquidityArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // COLLECT
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const collect = ExternalPositionManager.makeUse(Action.Collect, collectEncode);
 
@@ -240,9 +240,9 @@ export function collectDecode(encoded: Hex): CollectArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // PURGE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const purge = ExternalPositionManager.makeUse(Action.Purge, purgeEncode);
 

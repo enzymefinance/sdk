@@ -2,9 +2,9 @@ import { Assertion } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // TAKE ORDER
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
 export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
@@ -302,9 +302,9 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // TAKE MULTIPLE ORDERS
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const takeMultipleOrdersSelector = "0x0e7f692d"; // takeMultipleOrders(address,bytes,bytes)
 export const takeMultipleOrders = IntegrationManager.makeUse(takeMultipleOrdersSelector, takeMultipleOrdersEncode);

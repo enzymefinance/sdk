@@ -27,9 +27,9 @@ const commonEncoding = [
 
 export const create = ExternalPositionManager.createOnly;
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // ADD COLLATERAL
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const addCollateral = ExternalPositionManager.makeUse(Action.AddCollateral, addCollateralEncode);
 export const createAndAddCollateral = ExternalPositionManager.makeCreateAndUse(
@@ -55,9 +55,9 @@ export function addCollateralDecode(encoded: Hex): AddCollateralArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // REMOVE COLLATERAL
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const removeCollateral = ExternalPositionManager.makeUse(Action.RemoveCollateral, removeCollateralEncode);
 
@@ -76,9 +76,9 @@ export function removeCollateralDecode(encoded: Hex): RemoveCollateralArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // BORROW
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const borrow = ExternalPositionManager.makeUse(Action.Borrow, borrowEncode);
 export const createAndBorrow = ExternalPositionManager.makeCreateAndUse(Action.Borrow, borrowEncode);
@@ -107,9 +107,9 @@ export function borrowDecode(encoded: Hex): BorrowArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // REPAY BORROW
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const repayBorrow = ExternalPositionManager.makeUse(Action.RepayBorrow, repayBorrowEncode);
 
@@ -131,8 +131,8 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CLAIM COMP
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const claimComp = ExternalPositionManager.makeUse(Action.ClaimComp);

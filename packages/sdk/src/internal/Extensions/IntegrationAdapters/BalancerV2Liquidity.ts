@@ -2,9 +2,9 @@ import { Assertion, Types } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // LEND
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const lendSelector = "0x099f7515" as const; // lend(address,bytes,bytes)
 export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
@@ -85,9 +85,9 @@ export function lendDecode(encoded: Hex): LendArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // REDEEM
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export type RedeemArgs = LendArgs;
 export const redeemEncode: (args: RedeemArgs) => Hex = lendEncode;
@@ -96,9 +96,9 @@ export const redeemDecode: (args: Hex) => RedeemArgs = lendDecode;
 const redeemSelector = "0xc29fa9dd" as const; // redeem(address,bytes,bytes)
 export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // LEND AND STAKE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const lendAndStakeSelector = "0x29fa046e" as const; // lendAndStake(address,bytes,bytes)
 export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
@@ -140,9 +140,9 @@ export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // UNSTAKE AND REDEEM
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export type UnstakeAndRedeemArgs = LendAndStakeArgs;
 export const unstakeAndRedeemEncode: (args: UnstakeAndRedeemArgs) => Hex = lendAndStakeEncode;
@@ -151,9 +151,9 @@ export const unstakeAndRedeemDecode: (args: Hex) => UnstakeAndRedeemArgs = lendA
 const unstakeAndRedeemSelector = "0x8334eb99" as const; // unstakeAndRedeem(address,bytes,bytes)
 export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CLAIM REWARDS
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const claimRewardsSelector = "0xb9dfbacc" as const; // claimRewards(address,bytes,bytes)
 export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
@@ -179,9 +179,9 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
   return { stakingToken };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // STAKE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const stakeSelector = "0xfa7dd04d" as const; // stake(address,bytes,bytes)
 export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
@@ -212,9 +212,9 @@ export function stakeDecode(encoded: Hex): StakeArgs {
   return { stakingToken, bptAmount };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // UNSTAKE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export type UnstakeArgs = StakeArgs;
 export const unstakeEncode: (args: UnstakeArgs) => Hex = stakeEncode;
@@ -223,9 +223,9 @@ export const unstakeDecode: (args: Hex) => UnstakeArgs = stakeDecode;
 const unstakeSelector = "0x68e30677" as const; // unstake(address,bytes,bytes)
 export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // TAKE ORDER
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const takeOrderSelector = "0x03e38a2b" as const; // takeOrder(address,bytes,bytes)
 export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);

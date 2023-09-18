@@ -1,9 +1,9 @@
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // TAKE ORDER
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
 export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
