@@ -1,9 +1,9 @@
-import { enzyme } from "../client.js";
-import { Spinner } from "./Spinner.js";
 import { type PartialMessage, Timestamp } from "@bufbuild/protobuf";
 import { Currency, Deployment, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart, Card, Title } from "@tremor/react";
+import { enzyme } from "../client.js";
+import { Spinner } from "./Spinner.js";
 
 // Start of day today and a year ago.
 const to = new Date(new Date().setUTCHours(0, 0, 0, 0));

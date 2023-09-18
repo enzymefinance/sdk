@@ -1,6 +1,15 @@
 {
   "files": {
-    "ignore": ["dist", "build", "generated", "coverage", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.*.json"]
+    "ignore": [
+      ".direnv",
+      "dist",
+      "build",
+      "generated",
+      "coverage",
+      "pnpm-lock.yaml",
+      "tsconfig.json",
+      "tsconfig.*.json"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
@@ -12,8 +21,14 @@
       "suspicious": {
         "noExplicitAny": "off"
       },
+      "nursery": {
+        "useImportRestrictions": "off"
+      },
       "style": {
         "useShorthandArrayType": "off"
+      },
+      "complexity": {
+        "noBannedTypes": "off"
       }
     }
   },

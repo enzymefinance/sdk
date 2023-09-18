@@ -110,7 +110,6 @@ export function readContractParameters(args: ReadContractParameters) {
 export type ReadContractParameters<
   T extends {
     [key: string]: any;
-    // rome-ignore lint/nursery/noBannedTypes: <explanation>
   } = {},
 > = T &
   (

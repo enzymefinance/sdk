@@ -1,8 +1,8 @@
-import { Spinner } from "./Spinner.js";
 import { decodeSetupVaultParams } from "@enzymefinance/sdk";
 import { useQuery } from "@tanstack/react-query";
-import { type Hash, createPublicClient, http } from "viem";
+import { http, type Hash, createPublicClient } from "viem";
 import { mainnet } from "viem/chains";
+import { Spinner } from "./Spinner.js";
 
 export const client = createPublicClient({
   chain: mainnet,

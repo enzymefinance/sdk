@@ -52,6 +52,6 @@ export function decodeSettings(encoded: Hex): Settings {
     "Expected policy addresses and settings to have the same length",
   );
 
-  // rome-ignore lint/style/noNonNullAssertion: length is checked above
+  // biome-ignore lint/style/noNonNullAssertion: length is checked above
   return addresses.map((address, i) => ({ address, settings: settings[i]! }));
 }
