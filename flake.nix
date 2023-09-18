@@ -2,7 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     utils.url = "github:numtide/flake-utils";
-    foundry.url = "github:shazow/foundry.nix/monthly";
+    foundry.url = "github:fubhy/foundry.nix";
   };
 
   outputs = { self, nixpkgs, utils, foundry, ... }:
@@ -11,6 +11,7 @@
         inherit system;
         overlays = [ foundry.overlay ];
       };
+
       corepack = pkgs.runCommand "corepack" {} ''
         mkdir -p $out/bin
         ${pkgs.nodejs}/bin/corepack enable --install-directory $out/bin
