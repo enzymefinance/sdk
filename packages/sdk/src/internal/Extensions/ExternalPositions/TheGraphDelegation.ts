@@ -1,5 +1,6 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as ExternalPositionManager from "@enzymefinance/sdk/internal/ExternalPositionManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {
@@ -10,9 +11,9 @@ export const Action = {
 
 export const create = ExternalPositionManager.createOnly;
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // DELEGATE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const delegate = ExternalPositionManager.makeUse(Action.Delegate, delegateEncode);
 export const createAndDelegate = ExternalPositionManager.makeCreateAndUse(Action.Delegate, delegateEncode);
@@ -46,9 +47,9 @@ export function delegateDecode(encoded: Hex): DelegateArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // UNDELEGATE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const undelegate = ExternalPositionManager.makeUse(Action.Undelegate, undelegateEncode);
 
@@ -81,9 +82,9 @@ export function undelegateDecode(encoded: Hex): UndelegateArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // WITHDRAW
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const withdraw = ExternalPositionManager.makeUse(Action.Withdraw, withdrawEncode);
 
@@ -114,4 +115,44 @@ export function withdrawDecode(encoded: Hex): WithdrawArgs {
     indexer,
     nextIndexer,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// GETTERS
+//--------------------------------------------------------------------------------------------
+
+const delegationPoolsAbi = {
+  inputs: [{ internalType: "address", name: "", type: "address" }],
+  name: "delegationPools",
+  outputs: [
+    { internalType: "uint32", name: "cooldownBlocks", type: "uint32" },
+    { internalType: "uint32", name: "indexingRewardCut", type: "uint32" },
+    { internalType: "uint32", name: "queryFeeCut", type: "uint32" },
+    { internalType: "uint256", name: "updatedAtBlock", type: "uint256" },
+    { internalType: "uint256", name: "tokens", type: "uint256" },
+    { internalType: "uint256", name: "shares", type: "uint256" },
+  ],
+  stateMutability: "view",
+  type: "function",
+} as const;
+
+export async function getDelegationPool(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    stakingContract: Address;
+    indexer: Address;
+  }>,
+) {
+  const [cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares] = await Viem.readContract(
+    client,
+    args,
+    {
+      abi: [delegationPoolsAbi],
+      functionName: "delegationPools",
+      address: args.stakingContract,
+      args: [args.indexer],
+    },
+  );
+
+  return { cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares };
 }

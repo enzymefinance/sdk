@@ -12,9 +12,9 @@ export const Action = {
 
 export const create = ExternalPositionManager.createOnly;
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CONFIGURE LOAN
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const configureLoan = ExternalPositionManager.makeUse(Action.ConfigureLoan, configureLoanEncode);
 export const createAndConfigureLoan = ExternalPositionManager.makeCreateAndUse(
@@ -85,9 +85,9 @@ export function configureLoanDecode(encoded: Hex): ConfigureLoanArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // UPDATE BORROWABLE AMOUNT
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const updateBorrowableAmount = ExternalPositionManager.makeUse(
   Action.UpdateBorrowableAmount,
@@ -117,9 +117,9 @@ export function updateBorrowableAmountDecode(encoded: Hex): UpdateBorrowableAmou
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CALL ON ACCOUNTING MODULE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 // TODO: Can we do something about the arg encoding here?
 export const callOnAccountingModule = ExternalPositionManager.makeUse(
@@ -127,9 +127,9 @@ export const callOnAccountingModule = ExternalPositionManager.makeUse(
   (args: Hex) => args,
 );
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // RECONCILE
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const reconcile = ExternalPositionManager.makeUse(Action.Reconcile, reconcileEncode);
 
@@ -156,9 +156,9 @@ export function reconcileDecode(encoded: Hex): ReconcileArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CLOSE LOAN
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export const closeLoan = ExternalPositionManager.makeUse(Action.CloseLoan, closeLoanEncode);
 

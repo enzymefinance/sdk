@@ -1,4 +1,4 @@
-import { IComptrollerLib } from "@enzymefinance/abis/IComptrollerLib";
+import * as Abis from "@enzymefinance/abis";
 import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, Hex } from "viem";
 
@@ -21,16 +21,11 @@ export type CallExtensionParams = {
   callArgs: Hex;
 };
 
-export type PopulatedExtensionCall = Viem.PopulatedTransaction<"callOnExtension", typeof IComptrollerLib>;
+export type PopulatedExtensionCall = Viem.PopulatedTransaction<"callOnExtension", typeof Abis.IComptrollerLib>;
 
-/**
- * Prepare the parameters for the `callOnExtension` function.
- *
- * @returns The prepared parameters to be encoded.
- */
 export function callExtension(args: CallExtensionParams): PopulatedExtensionCall {
   return new Viem.PopulatedTransaction({
-    abi: IComptrollerLib,
+    abi: Abis.IComptrollerLib,
     functionName: "callOnExtension",
     args: [args.extensionManager, args.actionId, args.callArgs],
     address: args.comptrollerProxy,

@@ -1,9 +1,9 @@
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // LEND
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
 export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
@@ -60,9 +60,9 @@ export function lendDecode(encoded: Hex): LendArgs {
   };
 }
 
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // REDEEM
-// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
 export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);

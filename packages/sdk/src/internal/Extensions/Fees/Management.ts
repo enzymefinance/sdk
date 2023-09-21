@@ -1,9 +1,10 @@
-import { Constants, Rates } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Constants, Rates, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // CALCULATIONS
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 export type CalculateSharesDueParams = {
   scaledPerSecondRate: bigint;
@@ -23,9 +24,9 @@ export function calculateSharesDue({
   });
 }
 
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // SETTINGS
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const SettingsEncoding = [
   {
@@ -76,4 +77,23 @@ export function decodeSettings(settings: Hex): Settings {
   const [scaledPerSecondRate, feeRecipient] = decodeAbiParameters(SettingsEncoding, settings);
 
   return { scaledPerSecondRate, feeRecipient };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getInfo(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    performanceFee: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IManagementFee,
+    functionName: "getFeeInfoForFund",
+    args: [args.comptrollerProxy],
+    address: args.performanceFee,
+  });
 }

@@ -1,9 +1,10 @@
-import { Constants, type Types } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Constants, type Types, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 // SETTINGS
-//----------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
 
 const performanceFeeSettingsEncoding = [
   {
@@ -35,4 +36,23 @@ export function decodePerformanceFeeSettings(settings: Hex): PerformanceFeeSetti
     feeRateInBps,
     feeRecipient,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getInfo(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    performanceFee: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IPerformanceFee,
+    functionName: "getFeeInfoForFund",
+    args: [args.comptrollerProxy],
+    address: args.performanceFee,
+  });
 }
