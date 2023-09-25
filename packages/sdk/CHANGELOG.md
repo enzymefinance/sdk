@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.1
+
+### Patch Changes
+
+- [#156](https://github.com/enzymefinance/sdk/pull/156) [`1fb6f4c`](https://github.com/enzymefinance/sdk/commit/1fb6f4c4ec89646bda4753ccfdc76baa51db8668) Thanks [@iherger](https://github.com/iherger)! - Paraswap ABI
+
 ## 0.1.0
 
 ### Minor Changes
