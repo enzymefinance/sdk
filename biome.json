@@ -1,0 +1,38 @@
+{
+  "files": {
+    "ignore": [
+      ".direnv",
+      "dist",
+      "build",
+      "generated",
+      "coverage",
+      "pnpm-lock.yaml",
+      "tsconfig.json",
+      "tsconfig.*.json"
+    ]
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "linter": {
+    "rules": {
+      "all": true,
+      "suspicious": {
+        "noExplicitAny": "off"
+      },
+      "nursery": {
+        "useImportRestrictions": "off"
+      },
+      "style": {
+        "useShorthandArrayType": "off"
+      },
+      "complexity": {
+        "noBannedTypes": "off"
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  }
+}
