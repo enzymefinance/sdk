@@ -172,7 +172,7 @@ export type Adapter = {
 export type Path = {
   to: Address;
   totalNetworkFee: bigint;
-  adapter: ReadonlyArray<Adapter>;
+  adapters: ReadonlyArray<Adapter>;
 };
 
 export type MegaSwapData = ReadonlyArray<{
