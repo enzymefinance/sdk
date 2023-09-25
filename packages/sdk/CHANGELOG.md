@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.0
+
+### Minor Changes
+
+- [`5b13e11`](https://github.com/enzymefinance/sdk/commit/5b13e11afcd6057b1d9856648d23e7537d64bcb7) Thanks [@fubhy](https://github.com/fubhy)! - Organizing exports
+
 ## 0.0.27
 
 ### Patch Changes
