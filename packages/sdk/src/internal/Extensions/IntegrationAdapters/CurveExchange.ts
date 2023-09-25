@@ -22,7 +22,7 @@ const takeOrderEncoding = [
     type: "uint256",
   },
   {
-    name: "minIncomingAsset",
+    name: "incomingAsset",
     type: "address",
   },
   {
