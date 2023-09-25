@@ -98,7 +98,7 @@ const pathEncoding = {
       type: "uint256",
     },
     {
-      name: "adapter",
+      name: "adapters",
       type: "tuple[]",
       ...adapterEncoding,
     },
