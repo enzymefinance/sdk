@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.3
+
+### Patch Changes
+
+- [#160](https://github.com/enzymefinance/sdk/pull/160) [`77cd6e5`](https://github.com/enzymefinance/sdk/commit/77cd6e5371136641a59b87d9c41a43a5e333cb81) Thanks [@iherger](https://github.com/iherger)! - 0x adapter fix
+
 ## 0.1.2
 
 ### Patch Changes
