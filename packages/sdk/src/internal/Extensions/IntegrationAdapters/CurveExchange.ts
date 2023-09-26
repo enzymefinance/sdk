@@ -35,7 +35,7 @@ export type TakeOrderArgs = {
   pool: Address;
   outgoingAsset: Address;
   outgoingAssetAmount: bigint;
-  minIncomingAsset: Address;
+  incomingAsset: Address;
   minIncomingAssetAmount: bigint;
 };
 
@@ -44,13 +44,13 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
     args.pool,
     args.outgoingAsset,
     args.outgoingAssetAmount,
-    args.minIncomingAsset,
+    args.incomingAsset,
     args.minIncomingAssetAmount,
   ]);
 }
 
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
-  const [pool, outgoingAsset, outgoingAssetAmount, minIncomingAsset, minIncomingAssetAmount] = decodeAbiParameters(
+  const [pool, outgoingAsset, outgoingAssetAmount, incomingAsset, minIncomingAssetAmount] = decodeAbiParameters(
     takeOrderEncoding,
     encoded,
   );
@@ -59,7 +59,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     pool,
     outgoingAsset,
     outgoingAssetAmount,
-    minIncomingAsset,
+    incomingAsset,
     minIncomingAssetAmount,
   };
 }
