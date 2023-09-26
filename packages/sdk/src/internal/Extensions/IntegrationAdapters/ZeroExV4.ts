@@ -136,7 +136,7 @@ const signatureEncoding = {
 
 const takeOrderEncoding = [
   {
-    name: "dZeroExOrderEncode",
+    name: "encodedZeroExOrderArgs",
     type: "bytes",
   },
   {
@@ -200,7 +200,6 @@ export type Signature = {
 };
 
 export type TakeOrderArgs = {
-  dZeroExOrderEncode: Hex;
   takerAssetFillAmount: bigint;
   signature: Signature;
 } & ({ orderType: typeof OrderType.Limit; order: LimitOrder } | { orderType: typeof OrderType.Rfq; order: RfqOrder });
@@ -236,7 +235,7 @@ export function isValidSignatureType(value: number): value is SignatureType {
 }
 
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
-  const [dZeroExOrderEncode, takerAssetFillAmount, orderType] = decodeAbiParameters(takeOrderEncoding, encoded);
+  const [encodedZeroExOrderArgs, takerAssetFillAmount, orderType] = decodeAbiParameters(takeOrderEncoding, encoded);
 
   if (!isValidOrderType(orderType)) {
     Assertion.invariant(false, "Invalid order type");
@@ -244,7 +243,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 
   switch (orderType) {
     case OrderType.Limit: {
-      const [order, signature] = decodeAbiParameters([limitOrderEncoding, signatureEncoding], dZeroExOrderEncode);
+      const [order, signature] = decodeAbiParameters([limitOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
       if (!isValidSignatureType(signatureType)) {
@@ -252,7 +251,6 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       }
 
       return {
-        dZeroExOrderEncode,
         takerAssetFillAmount,
         orderType,
         order,
@@ -264,7 +262,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     }
 
     case OrderType.Rfq: {
-      const [order, signature] = decodeAbiParameters([rfqOrderEncoding, signatureEncoding], dZeroExOrderEncode);
+      const [order, signature] = decodeAbiParameters([rfqOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
       if (!isValidSignatureType(signatureType)) {
@@ -272,7 +270,6 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       }
 
       return {
-        dZeroExOrderEncode,
         takerAssetFillAmount,
         orderType,
         order,
