@@ -5,5 +5,6 @@ export * as ConvexVoting from "@enzymefinance/sdk/internal/Extensions/ExternalPo
 export * as Kiln from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Kiln";
 export * as Liquity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Liquity";
 export * as MapleLiquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/MapleLiquidity";
+export * as StakeWise from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/StakeWise";
 export * as TheGraphDelegation from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/TheGraphDelegation";
 export * as UniswapV3Liquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/UniswapV3Liquidity";
