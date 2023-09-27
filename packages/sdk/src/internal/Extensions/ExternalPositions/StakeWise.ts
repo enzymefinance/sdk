@@ -35,10 +35,7 @@ export type StakeArgs = {
 };
 
 export function stakeEncode(args: StakeArgs): Hex {
-  return encodeAbiParameters(
-    stakeEncoding,
-    [args.stakeWiseVaultAddress, args.assetAmount],
-  );
+  return encodeAbiParameters(stakeEncoding, [args.stakeWiseVaultAddress, args.assetAmount]);
 }
 
 export function stakeDecode(encoded: Hex): StakeArgs {
@@ -78,7 +75,6 @@ export function redeemEncode(args: RedeemArgs): Hex {
 
 export function claimFeesDecode(encoded: Hex): RedeemArgs {
   const [stakeWiseVaultAddress, sharesAmount] = decodeAbiParameters(redeemEncoding, encoded);
-
 
   return {
     stakeWiseVaultAddress,
