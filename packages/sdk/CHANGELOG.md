@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.6
+
+### Patch Changes
+
+- [#166](https://github.com/enzymefinance/sdk/pull/166) [`04afa08`](https://github.com/enzymefinance/sdk/commit/04afa08b5c03e960f90216ea7cfd41d8861f14c3) Thanks [@iherger](https://github.com/iherger)! - Improve 1Inch naming
+
 ## 0.1.5
 
 ### Patch Changes
