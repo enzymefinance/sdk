@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.5
+
+### Patch Changes
+
+- [#164](https://github.com/enzymefinance/sdk/pull/164) [`447fbb3`](https://github.com/enzymefinance/sdk/commit/447fbb30df9312f749248b644eae14dd16fbfda5) Thanks [@iherger](https://github.com/iherger)! - Add helper function to decode 1Inch data received from their API
+
 ## 0.1.4
 
 ### Patch Changes
