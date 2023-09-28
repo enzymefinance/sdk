@@ -91,7 +91,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   };
 }
 
-const oneInchSwapArgsEncoding = [
+const swapArgsEncoding = [
   {
     name: "executor",
     type: "address",
@@ -144,8 +144,8 @@ const oneInchSwapArgsEncoding = [
   },
 ] as const;
 
-export function decodedOneInchSwapArgs(encoded: Hex): TakeOrderArgs {
-  const [executor, orderDescription, , data] = decodeAbiParameters(oneInchSwapArgsEncoding, `0x${encoded.slice(10)}`);
+export function decodedSwapArgs(encoded: Hex): TakeOrderArgs {
+  const [executor, orderDescription, , data] = decodeAbiParameters(swapArgsEncoding, `0x${encoded.slice(10)}`);
   const { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags } = orderDescription;
 
   return {
