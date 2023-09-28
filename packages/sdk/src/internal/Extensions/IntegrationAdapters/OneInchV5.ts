@@ -90,3 +90,67 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     data,
   };
 }
+
+const oneInchSwapArgsEncoding = [
+  {
+    name: "executor",
+    type: "address",
+  },
+  {
+    components: [
+      {
+        internalType: "address",
+        name: "srcToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "dstToken",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "srcReceiver",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "dstReceiver",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "minReturnAmount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "flags",
+        type: "uint256",
+      },
+    ],
+    name: "orderDescription",
+    type: "tuple",
+  },
+  { name: "unknown", type: "bytes" },
+  {
+    name: "data",
+    type: "bytes",
+  },
+] as const;
+
+export function decodedOneInchSwapArgs(encoded: Hex): TakeOrderArgs {
+  const [executor, orderDescription, , data] = decodeAbiParameters(oneInchSwapArgsEncoding, `0x${encoded.slice(10)}`);
+  const { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags } = orderDescription;
+
+  return {
+    executor,
+    orderDescription: { srcToken, dstToken, srcReceiver, dstReceiver, amount, minReturnAmount, flags },
+    data,
+  };
+}
