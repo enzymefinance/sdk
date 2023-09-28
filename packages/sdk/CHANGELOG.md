@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.4
+
+### Patch Changes
+
+- [#162](https://github.com/enzymefinance/sdk/pull/162) [`cc70323`](https://github.com/enzymefinance/sdk/commit/cc70323cc74fffa1ce595fc5cdc895871ced64bb) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - StakeWise External Position
+
 ## 0.1.3
 
 ### Patch Changes
