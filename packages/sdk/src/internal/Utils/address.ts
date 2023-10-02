@@ -1,5 +1,4 @@
-import { type Address, getAddress, isAddress, isAddressEqual } from "viem";
-import { ZeroAddress } from "./constants";
+import { type Address, getAddress, isAddress, isAddressEqual, zeroAddress } from "viem";
 
 export function sameAddress(a: string, b: string) {
   return isAddressEqual(getAddress(a), getAddress(b));
@@ -14,7 +13,7 @@ export function safeSameAddress(a: Address | string | null | undefined, b: Addre
 }
 
 export function isNonZeroAddress(value: any): value is Address {
-  return isAddress(value) && value !== ZeroAddress;
+  return isAddress(value) && value !== zeroAddress;
 }
 
 export function asAddress(value: string): Address {

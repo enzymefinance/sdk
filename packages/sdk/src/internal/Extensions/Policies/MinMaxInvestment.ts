@@ -1,5 +1,4 @@
-import { Constants } from "@enzymefinance/sdk/Utils";
-import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Hex, decodeAbiParameters, encodeAbiParameters, maxUint256 } from "viem";
 
 const settingsEncoding = [
   {
@@ -43,7 +42,7 @@ export type Settings = {
 export function encodeSettings(args: Partial<Settings>): Hex {
   return encodeAbiParameters(settingsEncoding, [
     args.minInvestmentAmount ?? 0n,
-    args.maxInvestmentAmount ?? Constants.MaxUint256,
+    args.maxInvestmentAmount ?? maxUint256,
   ]);
 }
 
