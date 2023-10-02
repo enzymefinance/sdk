@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.7
+
+### Patch Changes
+
+- [#168](https://github.com/enzymefinance/sdk/pull/168) [`78eb209`](https://github.com/enzymefinance/sdk/commit/78eb209777fe3dfc5233568ea974b0ebe992679a) Thanks [@iherger](https://github.com/iherger)! - Add address and hex utils
+
 ## 0.1.6
 
 ### Patch Changes
