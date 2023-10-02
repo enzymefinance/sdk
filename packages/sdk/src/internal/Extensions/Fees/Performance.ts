@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Constants, type Types, Viem } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Types, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // SETTINGS
@@ -24,7 +24,7 @@ export type PerformanceFeeSettings = {
 
 export function encodePerformanceFeeSettings({
   feeRateInBps,
-  feeRecipient = Constants.ZeroAddress,
+  feeRecipient = zeroAddress,
 }: Types.PartialPick<PerformanceFeeSettings, "feeRecipient">): Hex {
   return encodeAbiParameters(performanceFeeSettingsEncoding, [feeRateInBps, feeRecipient]);
 }
