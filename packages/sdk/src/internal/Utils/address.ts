@@ -17,7 +17,7 @@ export function isNonZeroAddress(value: any): value is Address {
   return isAddress(value) && value !== ZeroAddress;
 }
 
-export function toAddress(value: string): Address {
+export function asAddress(value: string): Address {
   const address = value.toLowerCase();
 
   if (isAddress(address)) {
