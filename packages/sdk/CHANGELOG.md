@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.9
+
+### Patch Changes
+
+- [#172](https://github.com/enzymefinance/sdk/pull/172) [`4ffdf67`](https://github.com/enzymefinance/sdk/commit/4ffdf67c6aab3648fc40b6f9c3ddfa6ad5bb22f8) Thanks [@iherger](https://github.com/iherger)! - Use viem constants
+
 ## 0.1.8
 
 ### Patch Changes
