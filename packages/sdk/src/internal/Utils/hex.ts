@@ -1,6 +1,6 @@
 import { type Hex, isHex } from "viem";
 
-export function toHex(input: string): Hex {
+export function asHex(input: string): Hex {
   const hex = input.toLowerCase();
 
   if (isHex(hex)) {
