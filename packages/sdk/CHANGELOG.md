@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.8
+
+### Patch Changes
+
+- [#170](https://github.com/enzymefinance/sdk/pull/170) [`611e7a1`](https://github.com/enzymefinance/sdk/commit/611e7a151f13d6e80a0fa0471adccaeb2a4b5c9d) Thanks [@iherger](https://github.com/iherger)! - Rename utils
+
 ## 0.1.7
 
 ### Patch Changes
