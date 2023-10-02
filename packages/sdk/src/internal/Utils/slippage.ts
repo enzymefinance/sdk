@@ -8,3 +8,7 @@ export function applySlippage(value: bigint, slippageInBps: bigint) {
   const output = value - (value * slippageInBps) / 10000n;
   return output >= 0n ? output : 0n;
 }
+
+export function convertFromRatioToBps(ratio: number) {
+  return BigInt(Math.floor((1 - ratio) * 10000));
+}
