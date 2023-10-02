@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Constants, Rates, Viem } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Rates, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
@@ -60,7 +60,7 @@ export type EncodeSettingsParams = {
 export function encodeSettings({
   scaledPerSecondRate,
   perAnnumRateInBps,
-  feeRecipient = Constants.ZeroAddress,
+  feeRecipient = zeroAddress,
 }: EncodeSettingsParams): Hex {
   const fee: bigint =
     scaledPerSecondRate !== undefined

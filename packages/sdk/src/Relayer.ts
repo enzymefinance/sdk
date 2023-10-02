@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Constants, Viem } from "@enzymefinance/sdk/Utils";
-import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type PublicClient, isAddressEqual, zeroAddress } from "viem";
 
 export async function isRelayerEnabled(
   client: PublicClient,
@@ -14,7 +14,7 @@ export async function isRelayerEnabled(
     functionName: "getGasRelayPaymaster",
   });
 
-  return !isAddressEqual(address, Constants.ZeroAddress);
+  return !isAddressEqual(address, zeroAddress);
 }
 
 export function getRelayerBalance(

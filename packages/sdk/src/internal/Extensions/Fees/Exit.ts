@@ -1,5 +1,4 @@
-import { Constants } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
@@ -75,7 +74,7 @@ export type DirectFeeSettings = {
 export function encodeDirectFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
-  feeRecipient = Constants.ZeroAddress,
+  feeRecipient = zeroAddress,
 }: Partial<DirectFeeSettings>): Hex {
   return encodeAbiParameters(directFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, feeRecipient]);
 }
