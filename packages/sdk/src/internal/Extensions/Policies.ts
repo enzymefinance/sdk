@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
-import { Viem } from "../../Utils";
+import { Viem } from "@enzymefinance/sdk/Utils";
 
 export * as AllowedExternalPositionTypes from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedExternalPositionTypes";
 export * as CumulativeSlippageTolerance from "@enzymefinance/sdk/internal/Extensions/Policies/CumulativeSlippageTolerance";

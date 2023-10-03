@@ -9,7 +9,7 @@ import {
   encodeAbiParameters,
   parseUnits,
 } from "viem";
-import { Viem } from "../../../Utils";
+import { Viem } from "@enzymefinance/sdk/Utils";
 
 //--------------------------------------------------------------------------------------------
 // LEND

@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
-import { Viem } from "../../Utils";
+import { Viem } from "@enzymefinance/sdk/Utils";
 
 export * as AaveV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/AaveV2Debt";
 export * as ArbitraryLoan from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/ArbitraryLoan";

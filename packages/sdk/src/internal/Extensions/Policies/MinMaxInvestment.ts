@@ -7,7 +7,7 @@ import {
   encodeAbiParameters,
   maxUint256,
 } from "viem";
-import { Viem } from "../../../Utils";
+import { Viem } from "@enzymefinance/sdk/Utils";
 
 const settingsEncoding = [
   {
