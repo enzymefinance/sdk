@@ -1,7 +1,8 @@
 import * as Abis from "@enzymefinance/abis";
 import * as Policies from "@enzymefinance/sdk/Policies";
 import { Viem } from "@enzymefinance/sdk/Utils";
-import type { Address, Hex, PublicClient } from "viem";
+import { Assertion } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient } from "viem";
 
 /**
  * Get the shares action timelock.
@@ -118,7 +119,7 @@ export async function isAllowedDepositor(
     depositor: Address;
   }>,
 ) {
-  const hasAllowedDepositorPolicy = await Policies.isEnabledPolicy(client, {
+  const hasAllowedDepositorPolicy = await Policies.isEnabled(client, {
     ...args,
     policy: args.allowedDepositRecipientsPolicy,
   });
@@ -133,4 +134,35 @@ export async function isAllowedDepositor(
     address: args.allowedDepositRecipientsPolicy,
     args: [args.comptrollerProxy, args.depositor],
   });
+}
+
+export async function getSpecificAssetsRedemptionExpectedAmounts(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    signer: Address;
+    recipient: Address;
+    sharesQuantity: bigint;
+    payoutAssets: Address[];
+    payoutPercentages: bigint[];
+  }>,
+) {
+  const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
+    abi: Abis.IComptrollerLib,
+    functionName: "redeemSharesForSpecificAssets",
+    address: args.signer,
+    args: [args.recipient, args.sharesQuantity, args.payoutAssets, args.payoutPercentages],
+  });
+
+  const output: Record<Address, bigint> = {};
+
+  for (let i = 0; i < args.payoutAssets.length; i++) {
+    const payoutAsset = args.payoutAssets[i];
+    const payoutAmount = payoutAmounts[i];
+    Assertion.invariant(payoutAmount !== undefined, "Expected payout amount to be defined.");
+    Assertion.invariant(payoutAsset !== undefined, "Expected payout asset to be defined.");
+
+    output[payoutAsset] = payoutAmount;
+  }
+
+  return output;
 }

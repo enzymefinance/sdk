@@ -5,6 +5,7 @@ import type { Address, PublicClient } from "viem";
 
 export * as ExternalPositions from "@enzymefinance/sdk/internal/Extensions/ExternalPositions";
 export * as IntegrationAdapters from "@enzymefinance/sdk/internal/Extensions/IntegrationAdapters";
+export * as VoteDelegation from "@enzymefinance/sdk/internal/VoteDelegation";
 
 export {
   call as callIntegration,

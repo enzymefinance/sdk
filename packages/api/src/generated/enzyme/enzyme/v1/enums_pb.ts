@@ -339,3 +339,203 @@ proto3.util.setEnumType(UintListUpdateType, "enzyme.enzyme.v1.UintListUpdateType
   { no: 4, name: "UINT_LIST_UPDATE_TYPE_ADD_AND_REMOVE" },
 ]);
 
+/**
+ * @generated from enum enzyme.enzyme.v1.ActivityType
+ */
+export enum ActivityType {
+  /**
+   * @generated from enum value: DEPOSITOR_SHARES = 0;
+   */
+  DEPOSITOR_SHARES = 0,
+
+  /**
+   * @generated from enum value: FEE_SHARES = 1;
+   */
+  FEE_SHARES = 1,
+
+  /**
+   * @generated from enum value: NETWORK_SETTINGS = 2;
+   */
+  NETWORK_SETTINGS = 2,
+
+  /**
+   * @generated from enum value: PROTOCOL_FEE = 3;
+   */
+  PROTOCOL_FEE = 3,
+
+  /**
+   * @generated from enum value: TRADE = 4;
+   */
+  TRADE = 4,
+
+  /**
+   * @generated from enum value: VAULT_SETTINGS = 5;
+   */
+  VAULT_SETTINGS = 5,
+}
+// Retrieve enum metadata with: proto3.getEnumType(ActivityType)
+proto3.util.setEnumType(ActivityType, "enzyme.enzyme.v1.ActivityType", [
+  { no: 0, name: "DEPOSITOR_SHARES" },
+  { no: 1, name: "FEE_SHARES" },
+  { no: 2, name: "NETWORK_SETTINGS" },
+  { no: 3, name: "PROTOCOL_FEE" },
+  { no: 4, name: "TRADE" },
+  { no: 5, name: "VAULT_SETTINGS" },
+]);
+
+/**
+ * @generated from enum enzyme.enzyme.v1.ActivityCategory
+ */
+export enum ActivityCategory {
+  /**
+   * @generated from enum value: ACTIVITY_CATEGORY_DEPOSITOR = 0;
+   */
+  DEPOSITOR = 0,
+
+  /**
+   * @generated from enum value: ACTIVITY_CATEGORY_NETWORK = 1;
+   */
+  NETWORK = 1,
+
+  /**
+   * @generated from enum value: ACTIVITY_CATEGORY_VAULT = 2;
+   */
+  VAULT = 2,
+}
+// Retrieve enum metadata with: proto3.getEnumType(ActivityCategory)
+proto3.util.setEnumType(ActivityCategory, "enzyme.enzyme.v1.ActivityCategory", [
+  { no: 0, name: "ACTIVITY_CATEGORY_DEPOSITOR" },
+  { no: 1, name: "ACTIVITY_CATEGORY_NETWORK" },
+  { no: 2, name: "ACTIVITY_CATEGORY_VAULT" },
+]);
+
+/**
+ * @generated from enum enzyme.enzyme.v1.TradeType
+ */
+export enum TradeType {
+  /**
+   * @generated from enum value: TRADE_TYPE_ADD_TRACKED_ASSETS = 0;
+   */
+  ADD_TRACKED_ASSETS = 0,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_APPROVE_ASSETS = 1;
+   */
+  APPROVE_ASSETS = 1,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_CLAIM_REWARDS = 2;
+   */
+  CLAIM_REWARDS = 2,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_CLAIM_REWARDS_AND_REINVEST = 3;
+   */
+  CLAIM_REWARDS_AND_REINVEST = 3,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_CLAIM_REWARDS_AND_SWAP = 4;
+   */
+  CLAIM_REWARDS_AND_SWAP = 4,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_LEND = 5;
+   */
+  LEND = 5,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_LEND_AND_STAKE = 6;
+   */
+  LEND_AND_STAKE = 6,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_REDEEM = 7;
+   */
+  REDEEM = 7,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_REMOVE_TRACKED_ASSETS = 8;
+   */
+  REMOVE_TRACKED_ASSETS = 8,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_STAKE = 9;
+   */
+  STAKE = 9,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_TAKE_ORDER = 10;
+   */
+  TAKE_ORDER = 10,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_UNKNOWN = 11;
+   */
+  UNKNOWN = 11,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_UNSTAKE = 12;
+   */
+  UNSTAKE = 12,
+
+  /**
+   * @generated from enum value: TRADE_TYPE_UNSTAKE_AND_REDEEM = 13;
+   */
+  UNSTAKE_AND_REDEEM = 13,
+}
+// Retrieve enum metadata with: proto3.getEnumType(TradeType)
+proto3.util.setEnumType(TradeType, "enzyme.enzyme.v1.TradeType", [
+  { no: 0, name: "TRADE_TYPE_ADD_TRACKED_ASSETS" },
+  { no: 1, name: "TRADE_TYPE_APPROVE_ASSETS" },
+  { no: 2, name: "TRADE_TYPE_CLAIM_REWARDS" },
+  { no: 3, name: "TRADE_TYPE_CLAIM_REWARDS_AND_REINVEST" },
+  { no: 4, name: "TRADE_TYPE_CLAIM_REWARDS_AND_SWAP" },
+  { no: 5, name: "TRADE_TYPE_LEND" },
+  { no: 6, name: "TRADE_TYPE_LEND_AND_STAKE" },
+  { no: 7, name: "TRADE_TYPE_REDEEM" },
+  { no: 8, name: "TRADE_TYPE_REMOVE_TRACKED_ASSETS" },
+  { no: 9, name: "TRADE_TYPE_STAKE" },
+  { no: 10, name: "TRADE_TYPE_TAKE_ORDER" },
+  { no: 11, name: "TRADE_TYPE_UNKNOWN" },
+  { no: 12, name: "TRADE_TYPE_UNSTAKE" },
+  { no: 13, name: "TRADE_TYPE_UNSTAKE_AND_REDEEM" },
+]);
+
+/**
+ * @generated from enum enzyme.enzyme.v1.AaveDebtPositionChangeType
+ */
+export enum AaveDebtPositionChangeType {
+  /**
+   * @generated from enum value: AAVE_DEBT_POSITION_CHANGE_TYPE_ADD_COLLATERAL = 0;
+   */
+  ADD_COLLATERAL = 0,
+
+  /**
+   * @generated from enum value: AAVE_DEBT_POSITION_CHANGE_TYPE_REMOVE_COLLATERAL = 1;
+   */
+  REMOVE_COLLATERAL = 1,
+
+  /**
+   * @generated from enum value: AAVE_DEBT_POSITION_CHANGE_TYPE_BORROW = 2;
+   */
+  BORROW = 2,
+
+  /**
+   * @generated from enum value: AAVE_DEBT_POSITION_CHANGE_TYPE_REPAY_BORROW = 3;
+   */
+  REPAY_BORROW = 3,
+
+  /**
+   * @generated from enum value: AAVE_DEBT_POSITION_CHANGE_TYPE_CLAIM_REWARDS = 4;
+   */
+  CLAIM_REWARDS = 4,
+}
+// Retrieve enum metadata with: proto3.getEnumType(AaveDebtPositionChangeType)
+proto3.util.setEnumType(AaveDebtPositionChangeType, "enzyme.enzyme.v1.AaveDebtPositionChangeType", [
+  { no: 0, name: "AAVE_DEBT_POSITION_CHANGE_TYPE_ADD_COLLATERAL" },
+  { no: 1, name: "AAVE_DEBT_POSITION_CHANGE_TYPE_REMOVE_COLLATERAL" },
+  { no: 2, name: "AAVE_DEBT_POSITION_CHANGE_TYPE_BORROW" },
+  { no: 3, name: "AAVE_DEBT_POSITION_CHANGE_TYPE_REPAY_BORROW" },
+  { no: 4, name: "AAVE_DEBT_POSITION_CHANGE_TYPE_CLAIM_REWARDS" },
+]);
+

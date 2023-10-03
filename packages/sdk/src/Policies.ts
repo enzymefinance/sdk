@@ -4,7 +4,7 @@ import { type Address, type PublicClient, isAddressEqual } from "viem";
 
 export * as Policies from "@enzymefinance/sdk/internal/Extensions/Policies";
 
-export async function getEnabledPolicies(
+export async function getEnabled(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -19,7 +19,7 @@ export async function getEnabledPolicies(
   });
 }
 
-export async function isEnabledPolicy(
+export async function isEnabled(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     policy: Address;
@@ -27,11 +27,11 @@ export async function isEnabledPolicy(
     comptrollerProxy: Address;
   }>,
 ): Promise<boolean> {
-  const enabledPolicies = await getEnabledPolicies(client, args);
+  const enabledPolicies = await getEnabled(client, args);
   return enabledPolicies.some((enabledPolicy) => isAddressEqual(enabledPolicy, args.policy));
 }
 
-export function getPolicyIdentifier(
+export function getIdentifier(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     policy: Address;

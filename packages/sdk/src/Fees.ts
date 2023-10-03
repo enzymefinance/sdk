@@ -70,3 +70,42 @@ export function doesAutoProtocolFeeSharesBuyback(
     address: args.comptrollerProxy,
   });
 }
+
+export async function getMlnValueAndBurnAmountForSharesBuyback(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    denominationAsset: Address;
+    buybackSharesAmount: bigint;
+    mln: Address;
+    valueInterpreter: Address;
+    vaultProxy: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  const [sharesSupply, { result: gav }] = await Promise.all([
+    Viem.readContract(client, args, {
+      abi: Abis.IVaultLib,
+      functionName: "totalSupply",
+      address: args.vaultProxy,
+    }),
+    Viem.simulateContract(client, args, {
+      abi: Abis.IComptrollerLib,
+      functionName: "calcGav",
+      address: args.comptrollerProxy,
+    }),
+  ]);
+
+  const denominationValue = (gav * args.buybackSharesAmount) / sharesSupply;
+
+  const { result: mlnValueOfBuyback } = await Viem.simulateContract(client, args, {
+    abi: Abis.IValueInterpreter,
+    functionName: "calcCanonicalAssetValue",
+    address: args.valueInterpreter,
+    args: [args.denominationAsset, denominationValue, args.mln],
+  });
+
+  // 50% discount
+  const mlnAmountToBurn = mlnValueOfBuyback / 2n;
+
+  return { mlnAmountToBurn, mlnValue: mlnValueOfBuyback };
+}

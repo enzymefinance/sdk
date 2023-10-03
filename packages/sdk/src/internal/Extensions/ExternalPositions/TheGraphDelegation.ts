@@ -118,7 +118,7 @@ export function withdrawDecode(encoded: Hex): WithdrawArgs {
 }
 
 //--------------------------------------------------------------------------------------------
-// GETTERS
+// EXTERNAL CONTRACT METHODS
 //--------------------------------------------------------------------------------------------
 
 const delegationPoolsAbi = {

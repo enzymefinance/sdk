@@ -1,5 +1,6 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as ExternalPositionManager from "@enzymefinance/sdk/internal/ExternalPositionManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {
@@ -181,4 +182,31 @@ export function decodeClaimRewardsV1(encoded: Hex): ClaimRewardsV1Args {
   return {
     rewardsContract,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL CONTRACT METHODS
+//--------------------------------------------------------------------------------------------
+
+const convertToExitAssetsAbi = {
+  inputs: [{ internalType: "uint256", name: "shares_", type: "uint256" }],
+  name: "convertToExitAssets",
+  outputs: [{ internalType: "uint256", name: "assets_", type: "uint256" }],
+  stateMutability: "view",
+  type: "function",
+} as const;
+
+export async function convertSharesToExitAssets(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pool: Address;
+    shares: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: [convertToExitAssetsAbi],
+    functionName: "convertToExitAssets",
+    address: args.pool,
+    args: [args.shares],
+  });
 }

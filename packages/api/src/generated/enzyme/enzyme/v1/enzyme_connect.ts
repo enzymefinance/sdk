@@ -5,7 +5,7 @@
 
 // This package contains all endpoints of the Enzyme API 
 
-import { GetAssetListRequest, GetAssetListResponse, GetDepositorTimeSeriesRequest, GetDepositorTimeSeriesResponse, GetManagerTimeSeriesRequest, GetManagerTimeSeriesResponse, GetNetworkFeeStatisticsRequest, GetNetworkFeeStatisticsResponse, GetNetworkTimeSeriesRequest, GetNetworkTimeSeriesResponse, GetVaultConfigurationRequest, GetVaultConfigurationResponse, GetVaultDepositorsRequest, GetVaultDepositorsResponse, GetVaultListRequest, GetVaultListResponse, GetVaultPortfolioRequest, GetVaultPortfolioResponse, GetVaultRequest, GetVaultResponse, GetVaultTimeSeriesRequest, GetVaultTimeSeriesResponse } from "./enzyme_pb.js";
+import { GetAssetListRequest, GetAssetListResponse, GetDepositorTimeSeriesRequest, GetDepositorTimeSeriesResponse, GetManagerTimeSeriesRequest, GetManagerTimeSeriesResponse, GetNetworkFeeStatisticsRequest, GetNetworkFeeStatisticsResponse, GetNetworkTimeSeriesRequest, GetNetworkTimeSeriesResponse, GetVaultActivitiesRequest, GetVaultActivitiesResponse, GetVaultConfigurationRequest, GetVaultConfigurationResponse, GetVaultDepositorsRequest, GetVaultDepositorsResponse, GetVaultListRequest, GetVaultListResponse, GetVaultPortfolioRequest, GetVaultPortfolioResponse, GetVaultRequest, GetVaultResponse, GetVaultTimeSeriesRequest, GetVaultTimeSeriesResponse } from "./enzyme_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -55,6 +55,18 @@ export const EnzymeService = {
       name: "GetVault",
       I: GetVaultRequest,
       O: GetVaultResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     *
+     * Basic details about an individual vaults activities.
+     *
+     * @generated from rpc enzyme.enzyme.v1.EnzymeService.GetVaultActivities
+     */
+    getVaultActivities: {
+      name: "GetVaultActivities",
+      I: GetVaultActivitiesRequest,
+      O: GetVaultActivitiesResponse,
       kind: MethodKind.Unary,
     },
     /**

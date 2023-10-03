@@ -79,3 +79,42 @@ export function getComptrollerProxy(
     address: args.vaultProxy,
   });
 }
+
+export function getActiveExternalPositions(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  return client.readContract({
+    abi: Abis.IVaultLib,
+    functionName: "getActiveExternalPositions",
+    address: args.vaultProxy,
+  });
+}
+
+export function getPolicyManager(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IComptrollerLib,
+    functionName: "getPolicyManager",
+    address: args.comptrollerProxy,
+  });
+}
+
+export function getFeeManager(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IComptrollerLib,
+    functionName: "getFeeManager",
+    address: args.comptrollerProxy,
+  });
+}
