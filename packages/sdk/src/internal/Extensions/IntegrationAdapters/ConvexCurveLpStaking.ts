@@ -1,11 +1,10 @@
-import * as Abis from "@enzymefinance/abis";
-import { Assertion, Viem } from "@enzymefinance/sdk/Utils";
+import { Assertion } from "@enzymefinance/sdk/Utils";
 import {
   type RedeemType,
   isValidRedeemType,
 } from "@enzymefinance/sdk/internal/Extensions/IntegrationAdapters/CurveLiquidity";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE
@@ -242,87 +241,4 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
     redeemType,
     incomingAssetsData,
   };
-}
-
-//--------------------------------------------------------------------------------------------
-// EXTERNAL CONTRACT METHODS
-//--------------------------------------------------------------------------------------------
-
-const convertCrvToCvxAbi = {
-  inputs: [{ internalType: "uint256", name: "_amount", type: "uint256" }],
-  name: "ConvertCrvToCvx",
-  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-  stateMutability: "view",
-  type: "function",
-} as const;
-
-export async function convertCrvToCvx(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    cvxMining: Address;
-    amount: bigint;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: [convertCrvToCvxAbi],
-    address: args.cvxMining,
-    functionName: "ConvertCrvToCvx",
-    args: [args.amount],
-  });
-}
-
-export async function getEstimateRewards(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    stakingWrapper: Address;
-    beneficiary: Address;
-  }>,
-) {
-  const {
-    result: [rewardTokens, claimedAmounts],
-  } = await Viem.simulateContract(client, args, {
-    abi: Abis.IConvexCurveLpStakingWrapperLib,
-    functionName: "claimRewardsFor",
-    address: args.stakingWrapper,
-    args: [args.beneficiary],
-  });
-
-  const tokenRewards: Record<Address, bigint> = {};
-  for (let i = 0; i < rewardTokens.length; i++) {
-    const rewardToken = rewardTokens[i];
-    const claimedAmount = claimedAmounts[i];
-    Assertion.invariant(rewardToken !== undefined, "Expected reward token to be defined.");
-    Assertion.invariant(claimedAmount !== undefined, "Expected claimed amount to be defined.");
-
-    tokenRewards[rewardToken] = claimedAmount;
-  }
-
-  return tokenRewards;
-}
-
-export async function getAllEstimateRewards(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    stakingWrappers: Address[];
-    beneficiary: Address;
-  }>,
-) {
-  const tokenRewards = await Promise.all(
-    args.stakingWrappers.map(async (stakingWrapper) => {
-      const rewards = await getEstimateRewards(client, {
-        ...args,
-        stakingWrapper,
-      });
-
-      return { rewards, stakingWrapper };
-    }),
-  );
-
-  const tokenRewardsMap: Record<Address, Record<`0x${string}`, bigint> | undefined> = {};
-
-  for (const { rewards, stakingWrapper } of tokenRewards) {
-    tokenRewardsMap[stakingWrapper] = rewards;
-  }
-
-  return tokenRewardsMap;
 }
