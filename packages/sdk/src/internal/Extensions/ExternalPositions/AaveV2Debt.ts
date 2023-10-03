@@ -1,5 +1,6 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as ExternalPositionManager from "@enzymefinance/sdk/internal/ExternalPositionManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {
@@ -154,4 +155,59 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
     underlyingTokens,
     amounts,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL CONTRACT METHODS
+//--------------------------------------------------------------------------------------------
+
+const aaveIncentivesControllerAbi = [
+  {
+    inputs: [
+      { internalType: "address[]", name: "assets", type: "address[]" },
+      { internalType: "address", name: "user", type: "address" },
+    ],
+    name: "getRewardsBalance",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_user", type: "address" }],
+    name: "getUserUnclaimedRewards",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export async function getRewardsBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    aaveIncentivesController: Address;
+    assets: Address[];
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: aaveIncentivesControllerAbi,
+    functionName: "getRewardsBalance",
+    address: args.aaveIncentivesController,
+    args: [args.assets, args.user],
+  });
+}
+
+export async function getUserUnclaimedRewards(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    aaveIncentivesController: Address;
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: aaveIncentivesControllerAbi,
+    functionName: "getUserUnclaimedRewards",
+    address: args.aaveIncentivesController,
+    args: [args.user],
+  });
 }
