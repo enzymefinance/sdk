@@ -1,5 +1,4 @@
 export * as Assets from "@enzymefinance/sdk/Assets";
-export * as Comptroller from "@enzymefinance/sdk/Comptroller";
 export * as Deposit from "@enzymefinance/sdk/Deposit";
 export * as Fees from "@enzymefinance/sdk/Fees";
 export * as Migration from "@enzymefinance/sdk/Migration";
