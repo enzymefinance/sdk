@@ -187,6 +187,19 @@ export function getBorrowRatePerBlock(
   });
 }
 
+export function getSupplyRatePerBlock(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    cToken: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: cTokenAbi,
+    functionName: "supplyRatePerBlock",
+    address: args.cToken,
+  });
+}
+
 export function getTotalSupply(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
