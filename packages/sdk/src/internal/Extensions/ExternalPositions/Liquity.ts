@@ -1,6 +1,6 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as ExternalPositionManager from "@enzymefinance/sdk/internal/ExternalPositionManager";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Viem } from "@enzymefinance/sdk/Utils";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {

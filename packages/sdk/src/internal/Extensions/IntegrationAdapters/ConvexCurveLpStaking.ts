@@ -5,13 +5,7 @@ import {
   isValidRedeemType,
 } from "@enzymefinance/sdk/internal/Extensions/IntegrationAdapters/CurveLiquidity";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
-import {
-  type Address,
-  type Hex,
-  type PublicClient,
-  decodeAbiParameters,
-  encodeAbiParameters,
-} from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE

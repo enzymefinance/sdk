@@ -1,4 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import {
   type Address,
@@ -9,7 +10,6 @@ import {
   encodeAbiParameters,
   parseUnits,
 } from "viem";
-import { Viem } from "@enzymefinance/sdk/Utils";
 
 //--------------------------------------------------------------------------------------------
 // LEND

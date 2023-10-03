@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
 import { Viem } from "@enzymefinance/sdk/Utils";
+import type { Address, PublicClient } from "viem";
 
 export function getDepositQueueUser(
   client: PublicClient,
