@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.10
+
+### Patch Changes
+
+- [#174](https://github.com/enzymefinance/sdk/pull/174) [`92e53d8`](https://github.com/enzymefinance/sdk/commit/92e53d8237b255ba95aa919c94b1bad65d0f9c62) Thanks [@iherger](https://github.com/iherger)! - Re-add external contract read functions
+
 ## 0.1.9
 
 ### Patch Changes
