@@ -399,7 +399,7 @@ const calcWithdrawOneCoinAbi = {
   stateMutability: "view",
 } as const;
 
-export async function doesCurvePoolAllowSingleAssetRedemption(
+export async function isSingleAssetRedemptionAllowed(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;

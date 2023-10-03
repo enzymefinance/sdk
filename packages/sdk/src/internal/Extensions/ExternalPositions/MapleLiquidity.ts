@@ -196,7 +196,7 @@ const convertToExitAssetsAbi = {
   type: "function",
 } as const;
 
-export async function convertMapleSharesToExitAssets(
+export async function convertSharesToExitAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;

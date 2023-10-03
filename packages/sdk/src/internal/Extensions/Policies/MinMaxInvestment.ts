@@ -75,15 +75,15 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export async function getEnabledMinMaxInvestmentPolicySettings(
+export async function getEnabledPolicySettings(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     minMaxInvestmentPolicy: Address;
-    policyManager?: Address;
+    policyManager: Address;
   }>,
 ) {
-  const enabledPolicies = await Policies.getEnabledPolicies(client, args);
+  const enabledPolicies = await Policies.getEnabled(client, args);
 
   const hasMinMaxInvestmentPolicy = enabledPolicies.some((policy) =>
     isAddressEqual(policy, args.minMaxInvestmentPolicy),
@@ -93,10 +93,10 @@ export async function getEnabledMinMaxInvestmentPolicySettings(
     return null;
   }
 
-  return getMinMaxInvestmentPolicySettings(client, args);
+  return getSettings(client, args);
 }
 
-export function getMinMaxInvestmentPolicySettings(
+export function getSettings(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;

@@ -96,7 +96,7 @@ const exchangeRateStoredAbi = {
   type: "function",
 } as const;
 
-export function getCerc20ExchangeRateStored(
+export function getExchangeRateStored(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     cToken: Address;

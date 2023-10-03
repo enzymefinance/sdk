@@ -44,7 +44,7 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getInfoForFund(
+export function getInfo(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;

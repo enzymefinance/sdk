@@ -325,7 +325,7 @@ const mintAbi = {
   type: "function",
 } as const;
 
-export async function getBalancerMinterRewards(
+export async function getMinterRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     beneficiary: Address;

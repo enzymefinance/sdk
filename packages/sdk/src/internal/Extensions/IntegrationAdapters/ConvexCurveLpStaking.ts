@@ -278,7 +278,7 @@ export async function convertCrvToCvx(
   });
 }
 
-export async function getConvexWrapperEstimateRewards(
+export async function getEstimateRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     stakingWrapper: Address;
@@ -316,7 +316,7 @@ export async function getConvexWrapperEstimateRewards(
   }
 }
 
-export async function getAllConvexWrapperEstimateRewards(
+export async function getAllEstimateRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     stakingWrappers: Address[];
@@ -325,7 +325,7 @@ export async function getAllConvexWrapperEstimateRewards(
 ) {
   const tokenRewards = await Promise.all(
     args.stakingWrappers.map(async (stakingWrapper) => {
-      const rewards = await getConvexWrapperEstimateRewards(client, {
+      const rewards = await getEstimateRewards(client, {
         ...args,
         stakingWrapper,
       });

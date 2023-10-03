@@ -121,7 +121,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 //--------------------------------------------------------------------------------------------
 
 // same address for ethereum and polygon
-const UNISWAP_V2_FACTORY = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f" as const;
+const UNISWAP_V2_FACTORY = "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f" as const;
 
 const uniswapV2PoolAbi = [
   {
@@ -173,7 +173,7 @@ const uniswapV2FactoryAbi = [
   },
 ] as const;
 
-export async function getUniswapV2LendRate(
+export async function getLendRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -218,7 +218,7 @@ export async function getUniswapV2LendRate(
   return { amountBDesired, expectedPoolTokens };
 }
 
-export async function getUniswapV2PairData(
+export async function getPairData(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     token0: Address;
@@ -251,7 +251,7 @@ export async function getUniswapV2PairData(
   };
 }
 
-export async function getUniswapV2SwapRedeemRate(
+export async function getSwapRedeemRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     poolValue: {

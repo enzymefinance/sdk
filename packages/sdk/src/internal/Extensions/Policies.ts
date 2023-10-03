@@ -27,7 +27,7 @@ const getListIdsForFundAbi = {
   type: "function",
 } as const;
 
-export function getListIdsForPolicy(
+export function getListIds(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     policyContract: Address;
@@ -42,7 +42,7 @@ export function getListIdsForPolicy(
   });
 }
 
-export function getPolicyIdentifier(
+export function getIdentifier(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     policy: Address;

@@ -13,7 +13,7 @@ export * as StakeWise from "@enzymefinance/sdk/internal/Extensions/ExternalPosit
 export * as TheGraphDelegation from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/TheGraphDelegation";
 export * as UniswapV3Liquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/UniswapV3Liquidity";
 
-export function getLabelForExternalPositionType(
+export function getLabelForType(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;
@@ -28,7 +28,7 @@ export function getLabelForExternalPositionType(
   });
 }
 
-export function isActiveExternalPosition(
+export function isActive(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;

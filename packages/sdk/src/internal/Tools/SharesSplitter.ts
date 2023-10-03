@@ -2,7 +2,7 @@ import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
 import { Viem } from "../../Utils";
 
-export function getSharesSplitterTokenBalanceClaimableForUser(
+export function getClaimableTokenBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     splitter: Address;

@@ -7,7 +7,7 @@ export * as Exit from "@enzymefinance/sdk/internal/Extensions/Fees/Exit";
 export * as Management from "@enzymefinance/sdk/internal/Extensions/Fees/Management";
 export * as Performance from "@enzymefinance/sdk/internal/Extensions/Fees/Performance";
 
-export function getFeeRecipient(
+export function getRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;

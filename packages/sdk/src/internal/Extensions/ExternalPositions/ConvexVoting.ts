@@ -231,7 +231,7 @@ type LockedBalances = {
   lockedData: LockData[];
 };
 
-export async function getVoteLockedConvexTokenLockedBalances(
+export async function getVoteLockedBalances(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
@@ -263,7 +263,7 @@ export async function getVoteLockedConvexTokenLockedBalances(
   return lockedBalancesData;
 }
 
-export async function getAllVoteLockedConvexTokenLockedBalances(
+export async function getAllVoteLockedBalances(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
@@ -272,7 +272,7 @@ export async function getAllVoteLockedConvexTokenLockedBalances(
 ) {
   const allLockedBalances = await Promise.all(
     args.positionAddresses.map(async (position) => {
-      const lockedBalances = await getVoteLockedConvexTokenLockedBalances(client, {
+      const lockedBalances = await getVoteLockedBalances(client, {
         voteLockedConvexToken: args.voteLockedConvexToken,
         positionAddress: position,
       });

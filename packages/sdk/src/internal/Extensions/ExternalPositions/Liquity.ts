@@ -296,7 +296,7 @@ const troveManagerAbi = {
   type: "function",
 } as const;
 
-export type LiquityTrove = {
+type Trove = {
   debt: bigint;
   collateral: bigint;
   stake: bigint;
@@ -304,7 +304,7 @@ export type LiquityTrove = {
   arrayIndex: bigint;
 };
 
-export async function getLiquityTrove(
+export async function getTrove(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     liquityTroveManager: Address;
@@ -327,7 +327,7 @@ export async function getLiquityTrove(
   };
 }
 
-export async function getLiquityTroves(
+export async function getTroves(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     liquityTroveManager: Address;
@@ -336,7 +336,7 @@ export async function getLiquityTroves(
 ) {
   const troves = await Promise.all(
     args.debtPositions.map(async (position) => {
-      const trove = await getLiquityTrove(client, {
+      const trove = await getTrove(client, {
         ...args,
         debtPosition: position,
       });
@@ -345,7 +345,7 @@ export async function getLiquityTroves(
     }),
   );
 
-  const troveMap: Record<Address, LiquityTrove> = {};
+  const troveMap: Record<Address, Trove> = {};
   for (const { position, trove } of troves) {
     troveMap[position] = trove;
   }

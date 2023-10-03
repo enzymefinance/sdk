@@ -2,7 +2,7 @@ import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
 import { Viem } from "../../Utils";
 
-export function getSharesWrapperDepositQueueUser(
+export function getDepositQueueUserRequest(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sharesWrapper: Address;
@@ -18,7 +18,7 @@ export function getSharesWrapperDepositQueueUser(
   });
 }
 
-export async function getSharesWrapperRedemptionQueueUsers(
+export async function getRedemptionQueueUsers(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
