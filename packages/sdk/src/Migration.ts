@@ -66,13 +66,13 @@ export function hasReconfigurationRequest(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    dispatcher: Address;
+    fundDeployer: Address;
   }>,
 ) {
   return Viem.readContract(client, args, {
     abi: Abis.IFundDeployer,
     functionName: "hasReconfigurationRequest",
-    address: args.dispatcher,
+    address: args.fundDeployer,
     args: [args.vaultProxy],
   });
 }
