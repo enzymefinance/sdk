@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.13
+
+### Patch Changes
+
+- [#181](https://github.com/enzymefinance/sdk/pull/181) [`baccb53`](https://github.com/enzymefinance/sdk/commit/baccb5310f145bb94986af4f5c78c1531ceee29f) Thanks [@iherger](https://github.com/iherger)! - Add missing compound function getSupplyRatePerBlock
+
 ## 0.1.12
 
 ### Patch Changes
