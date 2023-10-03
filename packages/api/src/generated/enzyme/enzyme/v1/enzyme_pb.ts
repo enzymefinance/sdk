@@ -20,6 +20,7 @@ import { VaultListItem } from "./vault_list_item_pb.js";
 import { PortfolioAssetItem } from "./portfolio_asset_item_pb.js";
 import { ExternalPositionItem } from "./external_position_item_pb.js";
 import { VaultTimeSeriesItem } from "./vault_time_series_item_pb.js";
+import { VaultActivities } from "./vault_activities_pb.js";
 
 /**
  * GetAssetListRequest contains the input parameters for the GetAssetList endpoint 
@@ -1312,6 +1313,102 @@ export class GetVaultResponse extends Message<GetVaultResponse> {
 
   static equals(a: GetVaultResponse | PlainMessage<GetVaultResponse> | undefined, b: GetVaultResponse | PlainMessage<GetVaultResponse> | undefined): boolean {
     return proto3.util.equals(GetVaultResponse, a, b);
+  }
+}
+
+/**
+ * GetVaultActivitiesRequest contains the input parameters for the GetVaultActivities endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1.GetVaultActivitiesRequest
+ */
+export class GetVaultActivitiesRequest extends Message<GetVaultActivitiesRequest> {
+  /**
+   * The deployment of the vault
+   *
+   * @generated from field: enzyme.enzyme.v1.Deployment deployment = 1;
+   */
+  deployment = Deployment.UNSPECIFIED;
+
+  /**
+   * The address of the vault
+   *
+   * @generated from field: string address = 2;
+   */
+  address = "";
+
+  /**
+   * The currency in which all amounts and prices are displayed.
+   *
+   * @generated from field: enzyme.enzyme.v1.Currency currency = 3;
+   */
+  currency = Currency.UNSPECIFIED;
+
+  constructor(data?: PartialMessage<GetVaultActivitiesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.GetVaultActivitiesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
+    { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultActivitiesRequest {
+    return new GetVaultActivitiesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultActivitiesRequest {
+    return new GetVaultActivitiesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultActivitiesRequest {
+    return new GetVaultActivitiesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultActivitiesRequest | PlainMessage<GetVaultActivitiesRequest> | undefined, b: GetVaultActivitiesRequest | PlainMessage<GetVaultActivitiesRequest> | undefined): boolean {
+    return proto3.util.equals(GetVaultActivitiesRequest, a, b);
+  }
+}
+
+/**
+ * GetVaultActivitiesResponse contains the output parameters for the GetVaultActivity endpoint 
+ *
+ * @generated from message enzyme.enzyme.v1.GetVaultActivitiesResponse
+ */
+export class GetVaultActivitiesResponse extends Message<GetVaultActivitiesResponse> {
+  /**
+   * @generated from field: repeated enzyme.enzyme.v1.VaultActivities vault_activities = 1;
+   */
+  vaultActivities: VaultActivities[] = [];
+
+  constructor(data?: PartialMessage<GetVaultActivitiesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.GetVaultActivitiesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "vault_activities", kind: "message", T: VaultActivities, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultActivitiesResponse {
+    return new GetVaultActivitiesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetVaultActivitiesResponse {
+    return new GetVaultActivitiesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetVaultActivitiesResponse {
+    return new GetVaultActivitiesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetVaultActivitiesResponse | PlainMessage<GetVaultActivitiesResponse> | undefined, b: GetVaultActivitiesResponse | PlainMessage<GetVaultActivitiesResponse> | undefined): boolean {
+    return proto3.util.equals(GetVaultActivitiesResponse, a, b);
   }
 }
 

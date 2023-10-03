@@ -1,5 +1,7 @@
 import * as Abis from "@enzymefinance/abis";
 import { Viem } from "@enzymefinance/sdk/Utils";
+import { Assertion } from "@enzymefinance/sdk/Utils";
+import { getComptrollerProxy } from "@enzymefinance/sdk/Vault";
 import type { Address, PublicClient } from "viem";
 
 export * as Fees from "@enzymefinance/sdk/internal/Extensions/Fees";
@@ -69,4 +71,49 @@ export function doesAutoProtocolFeeSharesBuyback(
     functionName: "doesAutoProtocolFeeSharesBuyback",
     address: args.comptrollerProxy,
   });
+}
+
+export async function getMlnValueAndBurnAmountForSharesBuyback(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    denominationAsset: Address;
+    buybackSharesAmount: bigint;
+    mln: Address;
+    valueInterpreter: Address;
+    vaultProxy: Address;
+    comptrollerProxy?: Address;
+  }>,
+) {
+  const [sharesSupply, _comptrollerProxy] = await Promise.all([
+    Viem.readContract(client, args, {
+      abi: Abis.IVaultLib,
+      functionName: "totalSupply",
+      address: args.vaultProxy,
+    }),
+    ...(args.comptrollerProxy === undefined ? [getComptrollerProxy(client, { vaultProxy: args.vaultProxy })] : []),
+  ]);
+
+  const comptrollerProxy = args.comptrollerProxy ?? _comptrollerProxy;
+
+  Assertion.invariant(comptrollerProxy !== undefined, "Comptroller is undefined");
+
+  const { result: gav } = await Viem.simulateContract(client, args, {
+    abi: Abis.IComptrollerLib,
+    functionName: "calcGav",
+    address: comptrollerProxy,
+  });
+
+  const denominationValue = (gav * args.buybackSharesAmount) / sharesSupply;
+
+  const { result: mlnValueOfBuyback } = await Viem.simulateContract(client, args, {
+    abi: Abis.IValueInterpreter,
+    functionName: "calcCanonicalAssetValue",
+    address: args.valueInterpreter,
+    args: [args.denominationAsset, denominationValue, args.mln],
+  });
+
+  // 50% discount
+  const mlnAmountToBurn = mlnValueOfBuyback / 2n;
+
+  return { mlnAmountToBurn, mlnValue: mlnValueOfBuyback };
 }

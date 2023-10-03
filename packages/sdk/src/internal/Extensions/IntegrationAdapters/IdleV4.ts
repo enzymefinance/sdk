@@ -1,5 +1,15 @@
+import * as Abis from "@enzymefinance/abis";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import {
+  type Address,
+  ContractFunctionExecutionError,
+  type Hex,
+  type PublicClient,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseUnits,
+} from "viem";
+import { Viem } from "../../../Utils";
 
 //--------------------------------------------------------------------------------------------
 // LEND
@@ -114,4 +124,133 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
   const [idleToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
 
   return { idleToken };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    priceFeed: Address;
+    poolToken: Address;
+    poolTokenDecimals: number;
+  }>,
+) {
+  try {
+    const {
+      result: [underlyings, amounts],
+    } = await Viem.simulateContract(client, args, {
+      abi: Abis.IIdlePriceFeed,
+      functionName: "calcUnderlyingValues",
+      address: args.priceFeed,
+      args: [args.poolToken, parseUnits("1", args.poolTokenDecimals)],
+    });
+
+    const output: Record<Address, bigint> = {};
+    for (let i = 0; i < underlyings.length; i++) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      const underlying = underlyings[i]!;
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
+      const amount = amounts[i]!;
+
+      output[underlying] = amount;
+    }
+
+    return output;
+  } catch (error) {
+    // TODO: More selectively catch this error here.
+    if (error instanceof ContractFunctionExecutionError) {
+      return undefined;
+    }
+
+    throw error;
+  }
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL CONTRACT METHODS
+//--------------------------------------------------------------------------------------------
+
+const getGovTokensAmountsAbi = [
+  {
+    constant: true,
+    inputs: [{ internalType: "address", name: "_usr", type: "address" }],
+    name: "getGovTokensAmounts",
+    outputs: [{ internalType: "uint256[]", name: "_amounts", type: "uint256[]" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    constant: true,
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "govTokens",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export async function getGovTokensAmounts(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pool: Address;
+    tokensOwner: Address;
+  }>,
+) {
+  const amounts = await Viem.readContract(client, args, {
+    abi: getGovTokensAmountsAbi,
+    functionName: "getGovTokensAmounts",
+    address: args.pool,
+    args: [args.tokensOwner],
+  });
+
+  const tokensAmounts = await Promise.all(
+    amounts.map(async (amount, index) => {
+      const token = await Viem.readContract(client, args, {
+        abi: getGovTokensAmountsAbi,
+        functionName: "govTokens",
+        address: args.pool,
+        args: [BigInt(index)],
+      });
+
+      return {
+        amount,
+        token,
+      };
+    }),
+  );
+
+  const tokensAmountsMap: Record<Address, bigint> = {};
+  for (const { token, amount } of tokensAmounts) {
+    tokensAmountsMap[token] = amount;
+  }
+
+  return tokensAmountsMap;
+}
+
+const idleSpeedsAbi = {
+  inputs: [{ internalType: "address", name: "", type: "address" }],
+  name: "idleSpeeds",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  stateMutability: "view",
+  type: "function",
+} as const;
+
+export function getSpeeds(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    idleController: Address;
+    idlePool: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: [idleSpeedsAbi],
+    functionName: "idleSpeeds",
+    address: args.idleController,
+    args: [args.idlePool],
+  });
 }

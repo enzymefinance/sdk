@@ -1,3 +1,7 @@
+import * as Abis from "@enzymefinance/abis";
+import type { Address, PublicClient } from "viem";
+import { Viem } from "../../Utils";
+
 export * as AaveV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/AaveV2Debt";
 export * as ArbitraryLoan from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/ArbitraryLoan";
 export * as CompoundV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/CompoundV2Debt";
@@ -8,3 +12,33 @@ export * as MapleLiquidity from "@enzymefinance/sdk/internal/Extensions/External
 export * as StakeWise from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/StakeWise";
 export * as TheGraphDelegation from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/TheGraphDelegation";
 export * as UniswapV3Liquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/UniswapV3Liquidity";
+
+export function getLabelForExternalPositionType(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    externalPositionFactory: Address;
+    typeId: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IExternalPositionFactory,
+    functionName: "getLabelForPositionType",
+    address: args.externalPositionFactory,
+    args: [args.typeId],
+  });
+}
+
+export function isActiveExternalPosition(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    externalPosition: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IVaultLib,
+    address: args.vaultProxy,
+    functionName: "isActiveExternalPosition",
+    args: [args.externalPosition],
+  });
+}

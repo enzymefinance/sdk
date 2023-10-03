@@ -1,6 +1,6 @@
-import { Assertion, Types } from "@enzymefinance/sdk/Utils";
+import { Assertion, Types, Viem } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // LEND
@@ -311,4 +311,35 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 
   return { kind, swaps, assets, limits, stakingTokens };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL CONTRACT METHODS
+//--------------------------------------------------------------------------------------------
+
+const mintAbi = {
+  inputs: [{ internalType: "address", name: "gauge", type: "address" }],
+  name: "mint",
+  outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+  stateMutability: "nonpayable",
+  type: "function",
+} as const;
+
+export async function getBalancerMinterRewards(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    beneficiary: Address;
+    gauge: Address;
+    minter: Address;
+  }>,
+) {
+  const { result } = await Viem.simulateContract(client, args, {
+    abi: [mintAbi],
+    functionName: "mint",
+    address: args.minter,
+    args: [args.gauge],
+    account: args.beneficiary,
+  });
+
+  return result;
 }

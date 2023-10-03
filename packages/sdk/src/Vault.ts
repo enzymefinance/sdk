@@ -79,3 +79,91 @@ export function getComptrollerProxy(
     address: args.vaultProxy,
   });
 }
+
+export function getActiveExternalPositions(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  return client.readContract({
+    abi: Abis.IVaultLib,
+    functionName: "getActiveExternalPositions",
+    address: args.vaultProxy,
+  });
+}
+
+export function getMigrationRequestDetails(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vault: Address;
+    dispatcher: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IDispatcher,
+    functionName: "getMigrationRequestDetailsForVaultProxy",
+    address: args.dispatcher,
+    args: [args.vault],
+  });
+}
+
+export function getHasMigrationRequest(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vault: Address;
+    dispatcher: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IDispatcher,
+    functionName: "hasMigrationRequest",
+    address: args.dispatcher,
+    args: [args.vault],
+  });
+}
+
+export function hasExecutableMigrationRequest(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    dispatcher: Address;
+    vaultProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IDispatcher,
+    address: args.dispatcher,
+    functionName: "hasExecutableMigrationRequest",
+    args: [args.vaultProxy],
+  });
+}
+
+export function getHasReconfigurationRequest(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vault: Address;
+    fundDeployer: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IFundDeployer,
+    functionName: "hasReconfigurationRequest",
+    address: args.fundDeployer,
+    args: [args.vault],
+  });
+}
+
+export function getVaultTimelockRemainingForMigrationRequest(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vault: Address;
+    dispatcher: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IDispatcher,
+    functionName: "getTimelockRemainingForMigrationRequest",
+    address: args.dispatcher,
+    args: [args.vault],
+  });
+}

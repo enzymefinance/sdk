@@ -1,4 +1,15 @@
-import { type Hex, decodeAbiParameters, encodeAbiParameters, maxUint256 } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Policies } from "@enzymefinance/sdk";
+import {
+  type Address,
+  type Hex,
+  type PublicClient,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  isAddressEqual,
+  maxUint256,
+} from "viem";
+import { Viem } from "../../../Utils";
 
 const settingsEncoding = [
   {
@@ -58,4 +69,44 @@ export function decodeSettings(settings: Hex): Settings {
     minInvestmentAmount,
     maxInvestmentAmount,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getEnabledMinMaxInvestmentPolicySettings(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    minMaxInvestmentPolicy: Address;
+    policyManager?: Address;
+  }>,
+) {
+  const enabledPolicies = await Policies.getEnabledPolicies(client, args);
+
+  const hasMinMaxInvestmentPolicy = enabledPolicies.some((policy) =>
+    isAddressEqual(policy, args.minMaxInvestmentPolicy),
+  );
+
+  if (!hasMinMaxInvestmentPolicy) {
+    return null;
+  }
+
+  return getMinMaxInvestmentPolicySettings(client, args);
+}
+
+export function getMinMaxInvestmentPolicySettings(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    minMaxInvestmentPolicy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IMinMaxInvestmentPolicy,
+    functionName: "getFundSettings",
+    args: [args.comptrollerProxy],
+    address: args.minMaxInvestmentPolicy,
+  });
 }

@@ -1,4 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
+import { Comptroller } from "@enzymefinance/sdk";
 import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
 
@@ -8,13 +9,15 @@ export async function getEnabledPolicies(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
-    policyManager: Address;
+    policyManager?: Address;
   }>,
 ) {
+  const policyManager = args.policyManager ?? (await Comptroller.getPolicyManager(client, args));
+
   return Viem.readContract(client, args, {
     abi: Abis.IPolicyManager,
     functionName: "getEnabledPoliciesForFund",
-    address: args.policyManager,
+    address: policyManager,
     args: [args.comptrollerProxy],
   });
 }

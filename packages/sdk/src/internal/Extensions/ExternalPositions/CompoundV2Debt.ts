@@ -1,5 +1,7 @@
+import * as Abis from "@enzymefinance/abis";
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as ExternalPositionManager from "@enzymefinance/sdk/internal/ExternalPositionManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {
@@ -136,3 +138,22 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
 //--------------------------------------------------------------------------------------------
 
 export const claimComp = ExternalPositionManager.makeUse(Action.ClaimComp);
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export function getCTokenFromBorrowedAsset(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    externalPositionProxy: Address;
+    borrowedAsset: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.ICompoundDebtPositionLib,
+    functionName: "getCTokenFromBorrowedAsset",
+    address: args.externalPositionProxy,
+    args: [args.borrowedAsset],
+  });
+}

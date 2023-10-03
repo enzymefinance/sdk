@@ -1,5 +1,6 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // LEND
@@ -79,4 +80,31 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
   const [cToken, redeemAmount, minUnderlyingAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
   return { cToken, redeemAmount, minUnderlyingAmount };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL CONTRACT METHODS
+//--------------------------------------------------------------------------------------------
+
+const exchangeRateStoredAbi = {
+  constant: true,
+  inputs: [],
+  name: "exchangeRateStored",
+  outputs: [{ name: "", type: "uint256" }],
+  payable: false,
+  stateMutability: "view",
+  type: "function",
+} as const;
+
+export function getCerc20ExchangeRateStored(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    cToken: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: [exchangeRateStoredAbi],
+    functionName: "exchangeRateStored",
+    address: args.cToken,
+  });
 }

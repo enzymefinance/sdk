@@ -1,5 +1,7 @@
-import { Assertion } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Comptroller } from "@enzymefinance/sdk";
+import { Assertion, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 const settingsEncoding = [
   {
@@ -54,4 +56,25 @@ export function decodeSettings(encoded: Hex): Settings {
 
   // biome-ignore lint/style/noNonNullAssertion: length is checked above
   return addresses.map((address, i) => ({ address, settings: settings[i]! }));
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getEnabledPolicies(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    policyManager?: Address;
+  }>,
+) {
+  const policyManager = args.policyManager ?? (await Comptroller.getPolicyManager(client, args));
+
+  return Viem.readContract(client, args, {
+    abi: Abis.IPolicyManager,
+    functionName: "getEnabledPoliciesForFund",
+    address: policyManager,
+    args: [args.comptrollerProxy],
+  });
 }
