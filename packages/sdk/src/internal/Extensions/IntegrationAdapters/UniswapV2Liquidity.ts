@@ -264,6 +264,8 @@ export async function getSwapRedeemRate(
   }>,
 ) {
   try {
+    // The UniswapV2PoolPriceFeed should produce results if all assets are in the universe,
+    // but otherwise it will fail.
     const {
       result: [underlyings, underlyingAmounts],
     } = await Viem.simulateContract(client, args, {

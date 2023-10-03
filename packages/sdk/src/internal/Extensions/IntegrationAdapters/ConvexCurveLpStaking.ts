@@ -285,35 +285,26 @@ export async function getEstimateRewards(
     beneficiary: Address;
   }>,
 ) {
-  try {
-    const {
-      result: [rewardTokens, claimedAmounts],
-    } = await Viem.simulateContract(client, args, {
-      abi: Abis.IConvexCurveLpStakingWrapperLib,
-      functionName: "claimRewardsFor",
-      address: args.stakingWrapper,
-      args: [args.beneficiary],
-    });
+  const {
+    result: [rewardTokens, claimedAmounts],
+  } = await Viem.simulateContract(client, args, {
+    abi: Abis.IConvexCurveLpStakingWrapperLib,
+    functionName: "claimRewardsFor",
+    address: args.stakingWrapper,
+    args: [args.beneficiary],
+  });
 
-    const tokenRewards: Record<Address, bigint> = {};
-    for (let i = 0; i < rewardTokens.length; i++) {
-      const rewardToken = rewardTokens[i];
-      const claimedAmount = claimedAmounts[i];
-      Assertion.invariant(rewardToken !== undefined, "Expected reward token to be defined.");
-      Assertion.invariant(claimedAmount !== undefined, "Expected claimed amount to be defined.");
+  const tokenRewards: Record<Address, bigint> = {};
+  for (let i = 0; i < rewardTokens.length; i++) {
+    const rewardToken = rewardTokens[i];
+    const claimedAmount = claimedAmounts[i];
+    Assertion.invariant(rewardToken !== undefined, "Expected reward token to be defined.");
+    Assertion.invariant(claimedAmount !== undefined, "Expected claimed amount to be defined.");
 
-      tokenRewards[rewardToken] = claimedAmount;
-    }
-
-    return tokenRewards;
-  } catch (error) {
-    // TODO: More selectively catch this error here.
-    if (error instanceof ContractFunctionExecutionError) {
-      return undefined;
-    }
-
-    throw error;
+    tokenRewards[rewardToken] = claimedAmount;
   }
+
+  return tokenRewards;
 }
 
 export async function getAllEstimateRewards(
