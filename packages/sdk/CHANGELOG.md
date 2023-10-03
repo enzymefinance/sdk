@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.12
+
+### Patch Changes
+
+- [#179](https://github.com/enzymefinance/sdk/pull/179) [`d90867e`](https://github.com/enzymefinance/sdk/commit/d90867e8281c89e17572b8e2db5b1af4aff06dbe) Thanks [@iherger](https://github.com/iherger)! - Add Compound read functions
+
 ## 0.1.11
 
 ### Patch Changes
