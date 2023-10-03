@@ -7,7 +7,6 @@ import {
 import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import {
   type Address,
-  ContractFunctionExecutionError,
   type Hex,
   type PublicClient,
   decodeAbiParameters,

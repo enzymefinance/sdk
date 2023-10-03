@@ -1,12 +1,10 @@
 import * as Abis from "@enzymefinance/abis";
-import { Policies } from "@enzymefinance/sdk";
 import {
   type Address,
   type Hex,
   type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
-  isAddressEqual,
   maxUint256,
 } from "viem";
 import { Viem } from "../../../Utils";
@@ -74,27 +72,6 @@ export function decodeSettings(settings: Hex): Settings {
 //--------------------------------------------------------------------------------------------
 // READ
 //--------------------------------------------------------------------------------------------
-
-export async function getEnabledPolicySettings(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    comptrollerProxy: Address;
-    minMaxInvestmentPolicy: Address;
-    policyManager: Address;
-  }>,
-) {
-  const enabledPolicies = await Policies.getEnabled(client, args);
-
-  const hasMinMaxInvestmentPolicy = enabledPolicies.some((policy) =>
-    isAddressEqual(policy, args.minMaxInvestmentPolicy),
-  );
-
-  if (!hasMinMaxInvestmentPolicy) {
-    return null;
-  }
-
-  return getSettings(client, args);
-}
 
 export function getSettings(
   client: PublicClient,
