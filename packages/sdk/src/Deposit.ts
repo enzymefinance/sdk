@@ -90,6 +90,34 @@ export async function getExpectedSharesForNativeTokenDeposit(
   return result;
 }
 
+export async function depositNativeToken(
+  args: Viem.ContractCallParameters<{
+    depositWrapper: Address;
+    comptrollerProxy: Address;
+    minSharesQuantity: bigint;
+    exchange: Address;
+    exchangeApproveTarget: Address;
+    exchangeData: Hex;
+    minInvestmentAmount: bigint;
+    amount: bigint;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IDepositWrapper,
+    address: args.depositWrapper,
+    functionName: "exchangeEthAndBuyShares",
+    args: [
+      args.comptrollerProxy,
+      args.minSharesQuantity,
+      args.exchange,
+      args.exchangeApproveTarget,
+      args.exchangeData,
+      args.minInvestmentAmount,
+    ],
+    value: args.amount,
+  });
+}
+
 export async function getExpectedSharesForSharesWrapperDeposit(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
