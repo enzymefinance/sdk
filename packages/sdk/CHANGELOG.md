@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.15
+
+### Patch Changes
+
+- [#185](https://github.com/enzymefinance/sdk/pull/185) [`1991cf2`](https://github.com/enzymefinance/sdk/commit/1991cf284d739a83cdc5a989f9c9a0bcaf8446ae) Thanks [@iherger](https://github.com/iherger)! - Deposit transactions for backend
+
 ## 0.1.14
 
 ### Patch Changes
