@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.18
+
+### Patch Changes
+
+- [#192](https://github.com/enzymefinance/sdk/pull/192) [`9e8b5f8`](https://github.com/enzymefinance/sdk/commit/9e8b5f8bd3111f9a98c6f6d2d742d79163cae882) Thanks [@iherger](https://github.com/iherger)! - External calls for Compound v3
+
 ## 0.1.17
 
 ### Patch Changes
