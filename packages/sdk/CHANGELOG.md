@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.17
+
+### Patch Changes
+
+- [#190](https://github.com/enzymefinance/sdk/pull/190) [`6269525`](https://github.com/enzymefinance/sdk/commit/6269525732658a3f33091aa3fc1827805d7e6f4b) Thanks [@iherger](https://github.com/iherger)! - Add external calls for Balancer
+
 ## 0.1.16
 
 ### Patch Changes
