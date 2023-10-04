@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.16
+
+### Patch Changes
+
+- [#188](https://github.com/enzymefinance/sdk/pull/188) [`6f58544`](https://github.com/enzymefinance/sdk/commit/6f5854479f282a13ec670385ad545d04731a10a3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 debt
+
 ## 0.1.15
 
 ### Patch Changes
