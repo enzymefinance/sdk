@@ -4,10 +4,15 @@ import { Viem } from "@enzymefinance/sdk/Utils";
 import { Assertion } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, type PublicClient } from "viem";
 
+//--------------------------------------------------------------------------------------------
+// DEPOSIT
+//--------------------------------------------------------------------------------------------
+
 /**
  * Get the shares action timelock.
  *
  * @param client The public client to use to read the contract.
+ * @param args
  * @returns The shares action timelock in seconds.
  */
 export function getSharesActionTimelock(
@@ -42,8 +47,8 @@ export async function getExpectedSharesForDeposit(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
-    depositor: Address;
     amount: bigint;
+    depositor: Address;
   }>,
 ) {
   const { result } = await Viem.simulateContract(client, args, {
@@ -57,112 +62,25 @@ export async function getExpectedSharesForDeposit(
   return result;
 }
 
-export async function getExpectedSharesForNativeTokenDeposit(
-  client: PublicClient,
+export async function deposit(
   args: Viem.ContractCallParameters<{
-    depositWrapper: Address;
     comptrollerProxy: Address;
-    minSharesQuantity: bigint;
-    exchange: Address;
-    exchangeApproveTarget: Address;
-    exchangeData: Hex;
-    minInvestmentAmount: bigint;
+    amount: bigint;
     depositor: Address;
-    amount: bigint;
-  }>,
-) {
-  const { result } = await Viem.simulateContract(client, args, {
-    abi: Abis.IDepositWrapper,
-    address: args.depositWrapper,
-    functionName: "exchangeEthAndBuyShares",
-    args: [
-      args.comptrollerProxy,
-      args.minSharesQuantity,
-      args.exchange,
-      args.exchangeApproveTarget,
-      args.exchangeData,
-      args.minInvestmentAmount,
-    ],
-    value: args.amount,
-    account: args.depositor,
-  });
-
-  return result;
-}
-
-export async function depositNativeToken(
-  args: Viem.ContractCallParameters<{
-    depositWrapper: Address;
-    comptrollerProxy: Address;
     minSharesQuantity: bigint;
-    exchange: Address;
-    exchangeApproveTarget: Address;
-    exchangeData: Hex;
-    minInvestmentAmount: bigint;
-    amount: bigint;
   }>,
 ) {
   return new Viem.PopulatedTransaction({
-    abi: Abis.IDepositWrapper,
-    address: args.depositWrapper,
-    functionName: "exchangeEthAndBuyShares",
-    args: [
-      args.comptrollerProxy,
-      args.minSharesQuantity,
-      args.exchange,
-      args.exchangeApproveTarget,
-      args.exchangeData,
-      args.minInvestmentAmount,
-    ],
-    value: args.amount,
+    abi: Abis.IComptrollerLib,
+    functionName: "buyShares",
+    address: args.comptrollerProxy,
+    args: [args.amount, args.minSharesQuantity],
   });
 }
 
-export async function getExpectedSharesForSharesWrapperDeposit(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
-    denominationAsset: Address;
-    depositor: Address;
-    amount: bigint;
-  }>,
-) {
-  const { result } = await Viem.simulateContract(client, args, {
-    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
-    functionName: "deposit",
-    address: args.sharesWrapper,
-    args: [args.denominationAsset, args.amount, 1n],
-    account: args.depositor,
-  });
-
-  return result;
-}
-
-export async function isAllowedDepositor(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    allowedDepositRecipientsPolicy: Address;
-    comptrollerProxy: Address;
-    policyManager: Address;
-    depositor: Address;
-  }>,
-) {
-  const hasAllowedDepositorPolicy = await Policies.isEnabled(client, {
-    ...args,
-    policy: args.allowedDepositRecipientsPolicy,
-  });
-
-  if (!hasAllowedDepositorPolicy) {
-    return true;
-  }
-
-  return Viem.readContract(client, args, {
-    abi: Abis.IAllowedDepositRecipientsPolicy,
-    functionName: "passesRule",
-    address: args.allowedDepositRecipientsPolicy,
-    args: [args.comptrollerProxy, args.depositor],
-  });
-}
+//--------------------------------------------------------------------------------------------
+// REDEMPTION
+//--------------------------------------------------------------------------------------------
 
 export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
@@ -193,4 +111,126 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
   }
 
   return output;
+}
+
+//--------------------------------------------------------------------------------------------
+// DEPOSIT WRAPPER
+//--------------------------------------------------------------------------------------------
+
+interface NativeDepositArgs {
+  depositWrapper: Address;
+  comptrollerProxy: Address;
+  exchange: Address;
+  exchangeApproveTarget: Address;
+  exchangeData: Hex;
+  minInvestmentAmount: bigint;
+  amount: bigint;
+}
+
+export async function getExpectedSharesForNativeTokenDeposit(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<NativeDepositArgs & { depositor: Address }>,
+) {
+  const { result } = await Viem.simulateContract(client, args, {
+    abi: Abis.IDepositWrapper,
+    address: args.depositWrapper,
+    functionName: "exchangeEthAndBuyShares",
+    args: [
+      args.comptrollerProxy,
+      1n,
+      args.exchange,
+      args.exchangeApproveTarget,
+      args.exchangeData,
+      args.minInvestmentAmount,
+    ],
+    value: args.amount,
+    account: args.depositor,
+  });
+
+  return result;
+}
+
+export async function depositNativeToken(
+  args: Viem.ContractCallParameters<NativeDepositArgs & { minSharesQuantity: bigint }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IDepositWrapper,
+    address: args.depositWrapper,
+    functionName: "exchangeEthAndBuyShares",
+    args: [
+      args.comptrollerProxy,
+      args.minSharesQuantity,
+      args.exchange,
+      args.exchangeApproveTarget,
+      args.exchangeData,
+      args.minInvestmentAmount,
+    ],
+    value: args.amount,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// SHARES WRAPPER DEPOSIT
+//--------------------------------------------------------------------------------------------
+
+export async function getExpectedSharesForSharesWrapperDeposit(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+    denominationAsset: Address;
+    depositor: Address;
+    amount: bigint;
+  }>,
+) {
+  const { result } = await Viem.simulateContract(client, args, {
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "deposit",
+    address: args.sharesWrapper,
+    args: [args.denominationAsset, args.amount, 1n],
+    account: args.depositor,
+  });
+
+  return result;
+}
+
+export async function sharesWrapperDeposit(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+    denominationAsset: Address;
+    amount: bigint;
+    minSharesAmount: bigint;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "deposit",
+    address: args.sharesWrapper,
+    args: [args.denominationAsset, args.amount, args.minSharesAmount],
+  });
+}
+
+export async function isAllowedDepositor(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    allowedDepositRecipientsPolicy: Address;
+    comptrollerProxy: Address;
+    policyManager: Address;
+    depositor: Address;
+  }>,
+) {
+  const hasAllowedDepositorPolicy = await Policies.isEnabled(client, {
+    ...args,
+    policy: args.allowedDepositRecipientsPolicy,
+  });
+
+  if (!hasAllowedDepositorPolicy) {
+    return true;
+  }
+
+  return Viem.readContract(client, args, {
+    abi: Abis.IAllowedDepositRecipientsPolicy,
+    functionName: "passesRule",
+    address: args.allowedDepositRecipientsPolicy,
+    args: [args.comptrollerProxy, args.depositor],
+  });
 }
