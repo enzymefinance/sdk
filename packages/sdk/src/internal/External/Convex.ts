@@ -40,18 +40,73 @@ const voteLockedConvexTokenAbi = [
   },
 ] as const;
 
-type LockData = {
+// ABI from https://etherscan.io/address/0xf403c135812408bfbe8713b5a23a04b3d48aae31#code
+const boosterAbi = [
+  {
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "poolInfo",
+    outputs: [
+      { internalType: "address", name: "lptoken", type: "address" },
+      { internalType: "address", name: "token", type: "address" },
+      { internalType: "address", name: "gauge", type: "address" },
+      { internalType: "address", name: "crvRewards", type: "address" },
+      { internalType: "address", name: "stash", type: "address" },
+      { internalType: "bool", name: "shutdown", type: "bool" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "lockIncentive",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "stakerIncentive",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "earmarkIncentive",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "platformFee",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+interface LockData {
   amount: bigint;
   boosted: bigint;
   unlockTime: number;
-};
+}
 
-type LockedBalances = {
+interface LockedBalances {
   total: bigint;
   unlockable: bigint;
   locked: bigint;
   lockedData: LockData[];
-};
+}
+
+export interface PoolInfo {
+  lptoken: Address;
+  token: Address;
+  gauge: Address;
+  crvRewards: Address;
+  stash: Address;
+  shutdown: boolean;
+}
 
 export async function getVoteLockedBalances(
   client: PublicClient,
@@ -188,4 +243,73 @@ export async function getAllEstimateRewards(
   }
 
   return tokenRewardsMap;
+}
+
+export async function getPoolInfo(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    booster: Address;
+    pid: bigint;
+  }>,
+) {
+  const [lptoken, token, gauge, crvRewards, stash, shutdown] = await Viem.readContract(client, args, {
+    abi: boosterAbi,
+    functionName: "poolInfo",
+    address: args.booster,
+    args: [args.pid],
+  });
+
+  return { lptoken, token, gauge, crvRewards, stash, shutdown };
+}
+
+export async function getLockIncentive(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    booster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: boosterAbi,
+    functionName: "lockIncentive",
+    address: args.booster,
+  });
+}
+
+export async function getStakerIncentive(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    booster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: boosterAbi,
+    functionName: "stakerIncentive",
+    address: args.booster,
+  });
+}
+
+export async function getEarmarkIncentive(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    booster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: boosterAbi,
+    functionName: "earmarkIncentive",
+    address: args.booster,
+  });
+}
+
+export async function getPlatformFee(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    booster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: boosterAbi,
+    functionName: "platformFee",
+    address: args.booster,
+  });
 }
