@@ -1,6 +1,7 @@
 export * as AaveV2 from "@enzymefinance/sdk/internal/External/AaveV2";
 export * as BalancerV2 from "@enzymefinance/sdk/internal/External/BalancerV2";
 export * as CompoundV2 from "@enzymefinance/sdk/internal/External/CompoundV2";
+export * as CompoundV3 from "@enzymefinance/sdk/internal/External/CompoundV3";
 export * as Convex from "@enzymefinance/sdk/internal/External/Convex";
 export * as Curve from "@enzymefinance/sdk/internal/External/Curve";
 export * as IdleV4 from "@enzymefinance/sdk/internal/External/IdleV4";
