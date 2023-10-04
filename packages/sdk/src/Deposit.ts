@@ -8,13 +8,6 @@ import { type Address, type Hex, type PublicClient } from "viem";
 // DEPOSIT
 //--------------------------------------------------------------------------------------------
 
-/**
- * Get the shares action timelock.
- *
- * @param client The public client to use to read the contract.
- * @param args
- * @returns The shares action timelock in seconds.
- */
 export function getSharesActionTimelock(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
