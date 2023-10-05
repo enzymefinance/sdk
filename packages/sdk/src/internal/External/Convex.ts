@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { Assertion, Viem } from "@enzymefinance/sdk/Utils";
-import { type Address, type PublicClient } from "viem";
+import { type Address, type PublicClient, parseAbi } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CVX MINING
@@ -140,12 +140,14 @@ export async function getUserLocks(
     lockNumber: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  const [amount, boosted, unlockTime] = await Viem.readContract(client, args, {
     abi: cvxLockerV2Abi,
     address: args.voteLockedConvexToken,
     functionName: "userLocks",
     args: [args.user, args.lockNumber],
   });
+
+  return { amount, boosted, unlockTime };
 }
 
 //--------------------------------------------------------------------------------------------
@@ -277,7 +279,7 @@ export async function getPlatformFee(
 }
 
 //--------------------------------------------------------------------------------------------
-// CVX BOOSTER
+// CVX CRV REWARDS
 //--------------------------------------------------------------------------------------------
 
 // ABI from https://etherscan.io/address/0x3fe65692bfcd0e6cf84cb1e7d24108e434a7587e#code
@@ -346,6 +348,39 @@ export async function getExtraRewards(
     functionName: "extraRewards",
     address: args.cvxCrvRewards,
     args: [args.id],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// CVX CRV EXTRA REWARDS
+//--------------------------------------------------------------------------------------------
+
+export async function getExtraRewardsRewards(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    cvxCrvExtraRewards: Address;
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function rewards(address user) view returns (uint256)"]),
+    functionName: "rewards",
+    address: args.cvxCrvExtraRewards,
+    args: [args.user],
+  });
+}
+
+export async function getExtraRewardsRewardToken(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    cvxCrvExtraRewards: Address;
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function rewardToken() view returns (address)"]),
+    functionName: "rewardToken",
+    address: args.cvxCrvExtraRewards,
   });
 }
 
