@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.19
+
+### Patch Changes
+
+- [#194](https://github.com/enzymefinance/sdk/pull/194) [`9af0982`](https://github.com/enzymefinance/sdk/commit/9af098272ca753f65005742c010b2bedcc21ac20) Thanks [@iherger](https://github.com/iherger)! - External calls for Convex
+
 ## 0.1.18
 
 ### Patch Changes
