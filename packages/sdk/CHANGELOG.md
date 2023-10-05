@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.24
+
+### Patch Changes
+
+- [#205](https://github.com/enzymefinance/sdk/pull/205) [`1f3dbf9`](https://github.com/enzymefinance/sdk/commit/1f3dbf9de7ec5f9a69a6ab2954cf093d9107e0e4) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix ParaSwapV5 route encoding
+
 ## 0.1.23
 
 ### Patch Changes
