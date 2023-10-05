@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.21
+
+### Patch Changes
+
+- [#199](https://github.com/enzymefinance/sdk/pull/199) [`51dcc19`](https://github.com/enzymefinance/sdk/commit/51dcc19515b295ef3af707e9334b9103d729c5ce) Thanks [@iherger](https://github.com/iherger)! - Remove unnecessary argument
+
 ## 0.1.20
 
 ### Patch Changes
