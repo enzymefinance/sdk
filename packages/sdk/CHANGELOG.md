@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.23
+
+### Patch Changes
+
+- [#203](https://github.com/enzymefinance/sdk/pull/203) [`7580f23`](https://github.com/enzymefinance/sdk/commit/7580f23a2b5c3c3ccd875711a1fb9267109a45bc) Thanks [@iherger](https://github.com/iherger)! - Fix convertFromRatioToBps
+
 ## 0.1.22
 
 ### Patch Changes
