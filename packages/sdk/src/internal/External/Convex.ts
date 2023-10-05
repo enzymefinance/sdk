@@ -374,7 +374,6 @@ export async function getExtraRewardsRewardToken(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     cvxCrvExtraRewards: Address;
-    user: Address;
   }>,
 ) {
   return Viem.readContract(client, args, {
