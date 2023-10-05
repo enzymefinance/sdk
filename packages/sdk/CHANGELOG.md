@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.1.20
+
+### Patch Changes
+
+- [#197](https://github.com/enzymefinance/sdk/pull/197) [`46194c7`](https://github.com/enzymefinance/sdk/commit/46194c76001b6bed011be1dcafece282dd1b35d4) Thanks [@iherger](https://github.com/iherger)! - Add external calls for cvx crv extra rewards
+
+- [#196](https://github.com/enzymefinance/sdk/pull/196) [`859d135`](https://github.com/enzymefinance/sdk/commit/859d135d0edbc17abb517b92a5bd5db75378c8a2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Export aave v3 debt
+
 ## 0.1.19
 
 ### Patch Changes
