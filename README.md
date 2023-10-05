@@ -1,4 +1,4 @@
-# Enzymet SDK
+# Enzyme SDK
 
 [![CI](https://github.com/enzymefinance/sdk/actions/workflows/on-push-to-main.yaml/badge.svg)](https://github.com/enzymefinance/sdk/actions/workflows/on-push-to-main.yaml)
 [![License: MIT](https://img.shields.io/github/license/enzymefinance/sdk)](/LICENSE)
