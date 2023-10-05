@@ -43,12 +43,12 @@ const takeOrderEncoding = [
 const routeEncoding = {
   components: [
     {
-      name: "targetExchange",
-      type: "address",
-    },
-    {
       name: "index",
       type: "uint256",
+    },
+    {
+      name: "targetExchange",
+      type: "address",
     },
     {
       name: "percent",
