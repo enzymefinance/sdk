@@ -9,6 +9,10 @@ import {
   parseUnits,
 } from "viem";
 
+//--------------------------------------------------------------------------------------------
+// CURVE REGISTRY
+//--------------------------------------------------------------------------------------------
+
 const CURVE_REGISTRY = "0x0000000022d53366457f9d5e68ec105046fc4383" as const;
 
 const curveRegistryAbi = {
@@ -156,6 +160,10 @@ export async function getExpectedGaugeTokens(
   return result;
 }
 
+//--------------------------------------------------------------------------------------------
+// CURVE POOL
+//--------------------------------------------------------------------------------------------
+
 const curvePoolAbi = [
   {
     stateMutability: "view",
@@ -288,4 +296,25 @@ export async function getExpectedWithdrawalTokens(
   });
 
   return { expectedTokens, singleTokenAllowed };
+}
+
+//--------------------------------------------------------------------------------------------
+// GAUGE
+//--------------------------------------------------------------------------------------------
+
+export async function getClaimableTokens(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    curveGauge: Address;
+    user: Address;
+  }>,
+) {
+  const { result } = await Viem.simulateContract(client, args, {
+    abi: parseAbi(["function claimable_tokens(address addr) nonpayable returns (uint256)"]),
+    functionName: "claimable_tokens",
+    address: args.curveGauge,
+    args: [args.user],
+  });
+
+  return result;
 }
