@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.22
+
+### Patch Changes
+
+- [#201](https://github.com/enzymefinance/sdk/pull/201) [`6197207`](https://github.com/enzymefinance/sdk/commit/61972077e6364179f4e08a801b12da1a9ad76039) Thanks [@iherger](https://github.com/iherger)! - External calls for curve gauge
+
 ## 0.1.21
 
 ### Patch Changes
