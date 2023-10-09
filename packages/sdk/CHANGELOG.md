@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.1.28
+
+### Patch Changes
+
+- [#214](https://github.com/enzymefinance/sdk/pull/214) [`0353985`](https://github.com/enzymefinance/sdk/commit/0353985522eeae16b38d184c5baa39c79ba751e8) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 external utils
+
+- [#216](https://github.com/enzymefinance/sdk/pull/216) [`d50135f`](https://github.com/enzymefinance/sdk/commit/d50135f64a9675a7fc44b156e967e9d064ac760b) Thanks [@iherger](https://github.com/iherger)! - Refactor Compound v2 getMarkets
+
 ## 0.1.27
 
 ### Patch Changes
