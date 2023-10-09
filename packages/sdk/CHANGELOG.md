@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.27
+
+### Patch Changes
+
+- [#212](https://github.com/enzymefinance/sdk/pull/212) [`153dd6d`](https://github.com/enzymefinance/sdk/commit/153dd6dce3fe28f939fa649520fd66e968332e5a) Thanks [@iherger](https://github.com/iherger)! - Refactor Idle
+
 ## 0.1.26
 
 ### Patch Changes
