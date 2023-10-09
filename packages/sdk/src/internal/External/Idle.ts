@@ -15,10 +15,12 @@ export async function getGovTokensAmounts(
     args: [args.tokensOwner],
   });
 
+  const govTokensAbi = parseAbi(["function govTokens(uint256) view returns (address)"]);
+
   const tokensAmounts = await Promise.all(
     amounts.map(async (amount, index) => {
       const token = await Viem.readContract(client, args, {
-        abi: parseAbi(["function govTokens(uint256) view returns (address)"]),
+        abi: govTokensAbi,
         functionName: "govTokens",
         address: args.pool,
         args: [BigInt(index)],
