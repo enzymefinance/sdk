@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.25
+
+### Patch Changes
+
+- [#207](https://github.com/enzymefinance/sdk/pull/207) [`5416d52`](https://github.com/enzymefinance/sdk/commit/5416d5290a9a0449814903987609503e34fdcded) Thanks [@iherger](https://github.com/iherger)! - Add calls for delegate votes
+
 ## 0.1.24
 
 ### Patch Changes
