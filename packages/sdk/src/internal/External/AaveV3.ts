@@ -51,13 +51,13 @@ export async function getEModeCategoryData(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
-    catoegoryId: number;
+    categoryId: number;
   }>,
 ) {
   return Viem.readContract(client, args, {
     abi: poolAbi,
     functionName: "getEModeCategoryData",
     address: args.pool,
-    args: [args.catoegoryId],
+    args: [args.categoryId],
   });
 }
