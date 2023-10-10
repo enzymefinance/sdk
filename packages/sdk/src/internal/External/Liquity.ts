@@ -79,14 +79,6 @@ const troveManagerAbi = [
   },
 ] as const;
 
-type Trove = {
-  debt: bigint;
-  collateral: bigint;
-  stake: bigint;
-  status: number;
-  arrayIndex: bigint;
-};
-
 export async function getTrove(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -108,32 +100,6 @@ export async function getTrove(
     status,
     arrayIndex,
   };
-}
-
-export async function getTroves(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    troveManager: Address;
-    debtPositions: [Address];
-  }>,
-) {
-  const troves = await Promise.all(
-    args.debtPositions.map(async (position) => {
-      const trove = await getTrove(client, {
-        ...args,
-        debtPosition: position,
-      });
-
-      return { position, trove };
-    }),
-  );
-
-  const troveMap: Record<Address, Trove> = {};
-  for (const { position, trove } of troves) {
-    troveMap[position] = trove;
-  }
-
-  return troveMap;
 }
 
 export async function getLusdGasCompensation(
