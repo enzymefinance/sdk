@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.29
+
+### Patch Changes
+
+- [#217](https://github.com/enzymefinance/sdk/pull/217) [`e150d49`](https://github.com/enzymefinance/sdk/commit/e150d492d632d51e296c170653668d24a08488e6) Thanks [@iherger](https://github.com/iherger)! - Add external calls for Kiln
+
 ## 0.1.28
 
 ### Patch Changes
