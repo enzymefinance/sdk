@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.33
+
+### Patch Changes
+
+- [#226](https://github.com/enzymefinance/sdk/pull/226) [`a0f724b`](https://github.com/enzymefinance/sdk/commit/a0f724b7c430f0ae0645e142859db46bae249d63) Thanks [@iherger](https://github.com/iherger)! - Fix function name
+
 ## 0.1.32
 
 ### Patch Changes
