@@ -12,3 +12,4 @@ export * as Liquity from "@enzymefinance/sdk/internal/External/Liquity";
 export * as Maple from "@enzymefinance/sdk/internal/External/Maple";
 export * as TheGraph from "@enzymefinance/sdk/internal/External/TheGraph";
 export * as UniswapV2 from "@enzymefinance/sdk/internal/External/UniswapV2";
+export * as UniswapV3 from "@enzymefinance/sdk/internal/External/UniswapV3";
