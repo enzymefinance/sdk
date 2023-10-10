@@ -218,7 +218,7 @@ const sortedTrovesAbi = [
   },
 ] as const;
 
-export async function getSize(
+export function getSize(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
@@ -240,12 +240,14 @@ export async function findInsertPosition(
     nextId: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  const [upperHint, lowerHint] = await Viem.readContract(client, args, {
     abi: sortedTrovesAbi,
     functionName: "findInsertPosition",
     address: args.sortedTroves,
     args: [args.nicr, args.prevId, args.nextId],
   });
+
+  return { upperHint, lowerHint };
 }
 
 //--------------------------------------------------------------------------------------------
@@ -303,10 +305,12 @@ export async function getApproxHint(
     inputRandomSeed: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  const [hintAddress, diff, latestRandomSeed] = await Viem.readContract(client, args, {
     abi: hintHelpersAbi,
     functionName: "getApproxHint",
     address: args.hintHelpers,
     args: [args.nicr, args.numTrials, args.inputRandomSeed],
   });
+
+  return { hintAddress, diff, latestRandomSeed };
 }
