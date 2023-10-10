@@ -218,7 +218,7 @@ const sortedTrovesAbi = [
   },
 ] as const;
 
-export function getSize(
+export function getSortedTrovesSize(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
