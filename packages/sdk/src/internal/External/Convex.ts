@@ -403,14 +403,14 @@ export async function getEstimateRewards(
     args: [args.beneficiary],
   });
 
-  const tokenRewards: Record<Address, bigint> = {};
+  const tokenRewards: { rewardToken: Address; claimedAmount: bigint }[] = [];
   for (let i = 0; i < rewardTokens.length; i++) {
     const rewardToken = rewardTokens[i];
     const claimedAmount = claimedAmounts[i];
     Assertion.invariant(rewardToken !== undefined, "Expected reward token to be defined.");
     Assertion.invariant(claimedAmount !== undefined, "Expected claimed amount to be defined.");
 
-    tokenRewards[rewardToken] = claimedAmount;
+    tokenRewards.push({ rewardToken, claimedAmount });
   }
 
   return tokenRewards;
@@ -423,7 +423,7 @@ export async function getAllEstimateRewards(
     beneficiary: Address;
   }>,
 ) {
-  const tokenRewards = await Promise.all(
+  return Promise.all(
     args.stakingWrappers.map(async (stakingWrapper) => {
       const rewards = await getEstimateRewards(client, {
         ...args,
@@ -433,12 +433,4 @@ export async function getAllEstimateRewards(
       return { rewards, stakingWrapper };
     }),
   );
-
-  const tokenRewardsMap: Record<Address, Record<`0x${string}`, bigint> | undefined> = {};
-
-  for (const { rewards, stakingWrapper } of tokenRewards) {
-    tokenRewardsMap[stakingWrapper] = rewards;
-  }
-
-  return tokenRewardsMap;
 }
