@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.35
+
+### Patch Changes
+
+- [#230](https://github.com/enzymefinance/sdk/pull/230) [`8927d5c`](https://github.com/enzymefinance/sdk/commit/8927d5c076d2e079a575c305a4e3e29381e0d9f0) Thanks [@iherger](https://github.com/iherger)! - Simplify StakingWrapper calls
+
 ## 0.1.34
 
 ### Patch Changes
