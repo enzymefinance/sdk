@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.30
+
+### Patch Changes
+
+- [#219](https://github.com/enzymefinance/sdk/pull/219) [`4f1186b`](https://github.com/enzymefinance/sdk/commit/4f1186b49765203259ffdb4c466b0be1ec5b7738) Thanks [@iherger](https://github.com/iherger)! - Additional external calls for Liquity
+
 ## 0.1.29
 
 ### Patch Changes
