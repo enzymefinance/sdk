@@ -35,7 +35,6 @@ export async function getGlobalFee(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
-    validatorPublicKey: Hex;
   }>,
 ) {
   return Viem.readContract(client, args, {
