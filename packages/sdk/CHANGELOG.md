@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.31
+
+### Patch Changes
+
+- [#222](https://github.com/enzymefinance/sdk/pull/222) [`7b17c14`](https://github.com/enzymefinance/sdk/commit/7b17c14b66f29079e201e37bdcd1daf0b34f0a68) Thanks [@iherger](https://github.com/iherger)! - Add additional external calls for Maple
+
 ## 0.1.30
 
 ### Patch Changes
