@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.32
+
+### Patch Changes
+
+- [#224](https://github.com/enzymefinance/sdk/pull/224) [`611079c`](https://github.com/enzymefinance/sdk/commit/611079c9ed4429436077a81623104e54c8f41a2f) Thanks [@iherger](https://github.com/iherger)! - Additional external calls for The Graph
+
 ## 0.1.31
 
 ### Patch Changes
