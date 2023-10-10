@@ -24,7 +24,7 @@ export async function getDelegationPool(
   return { cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares };
 }
 
-export function getClaimableTokens(
+export function getDelegationTaxPercentage(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
