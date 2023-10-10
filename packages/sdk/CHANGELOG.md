@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.34
+
+### Patch Changes
+
+- [#228](https://github.com/enzymefinance/sdk/pull/228) [`c2ce11d`](https://github.com/enzymefinance/sdk/commit/c2ce11d87a0db60a9cb9ecf01a830577d33152a0) Thanks [@iherger](https://github.com/iherger)! - Add Uniswap v3 external calls
+
 ## 0.1.33
 
 ### Patch Changes
