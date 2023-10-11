@@ -9,7 +9,9 @@ export * as DelegateVotes from "@enzymefinance/sdk/internal/External/DelegateVot
 export * as Idle from "@enzymefinance/sdk/internal/External/Idle";
 export * as Kiln from "@enzymefinance/sdk/internal/External/Kiln";
 export * as Liquity from "@enzymefinance/sdk/internal/External/Liquity";
+export * as Maker from "@enzymefinance/sdk/internal/External/Maker";
 export * as Maple from "@enzymefinance/sdk/internal/External/Maple";
+export * as Morpho from "@enzymefinance/sdk/internal/External/Morpho";
 export * as TheGraph from "@enzymefinance/sdk/internal/External/TheGraph";
 export * as UniswapV2 from "@enzymefinance/sdk/internal/External/UniswapV2";
 export * as UniswapV3 from "@enzymefinance/sdk/internal/External/UniswapV3";
