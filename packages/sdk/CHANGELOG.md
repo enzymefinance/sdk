@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.36
+
+### Patch Changes
+
+- [#209](https://github.com/enzymefinance/sdk/pull/209) [`4dbf4d5`](https://github.com/enzymefinance/sdk/commit/4dbf4d5d655dd2bea20959924c3c2174cc7ad5d5) Thanks [@iherger](https://github.com/iherger)! - Add external calls for ERC4626 tokens
+
 ## 0.1.35
 
 ### Patch Changes
