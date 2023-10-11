@@ -1,5 +1,5 @@
+import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, parseAbi } from "viem";
-import { Viem } from "../../Utils";
 
 export async function getDsr(
   client: PublicClient,

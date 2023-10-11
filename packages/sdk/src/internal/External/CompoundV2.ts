@@ -89,6 +89,12 @@ const compoundComptrollerAbi = [
   },
 ] as const;
 
+export interface Market {
+  isListed: boolean;
+  collateralFactorMantissa: bigint;
+  isComped: boolean;
+}
+
 export function getBorrowRatePerBlock(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -199,19 +205,21 @@ export function getCompBorrowSpeeds(
   });
 }
 
-export function getMarkets(
+export async function getMarkets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  const [isListed, collateralFactorMantissa, isComped] = await Viem.readContract(client, args, {
     abi: compoundComptrollerAbi,
     functionName: "markets",
     address: args.compoundComptroller,
     args: [args.cToken],
   });
+
+  return { isListed, collateralFactorMantissa, isComped };
 }
 
 export function getMintGuardianPaused(

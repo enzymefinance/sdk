@@ -1,5 +1,67 @@
 # @enzymefinance/sdk
 
+## 0.1.35
+
+### Patch Changes
+
+- [#230](https://github.com/enzymefinance/sdk/pull/230) [`8927d5c`](https://github.com/enzymefinance/sdk/commit/8927d5c076d2e079a575c305a4e3e29381e0d9f0) Thanks [@iherger](https://github.com/iherger)! - Simplify StakingWrapper calls
+
+## 0.1.34
+
+### Patch Changes
+
+- [#228](https://github.com/enzymefinance/sdk/pull/228) [`c2ce11d`](https://github.com/enzymefinance/sdk/commit/c2ce11d87a0db60a9cb9ecf01a830577d33152a0) Thanks [@iherger](https://github.com/iherger)! - Add Uniswap v3 external calls
+
+## 0.1.33
+
+### Patch Changes
+
+- [#226](https://github.com/enzymefinance/sdk/pull/226) [`a0f724b`](https://github.com/enzymefinance/sdk/commit/a0f724b7c430f0ae0645e142859db46bae249d63) Thanks [@iherger](https://github.com/iherger)! - Fix function name
+
+## 0.1.32
+
+### Patch Changes
+
+- [#224](https://github.com/enzymefinance/sdk/pull/224) [`611079c`](https://github.com/enzymefinance/sdk/commit/611079c9ed4429436077a81623104e54c8f41a2f) Thanks [@iherger](https://github.com/iherger)! - Additional external calls for The Graph
+
+## 0.1.31
+
+### Patch Changes
+
+- [#222](https://github.com/enzymefinance/sdk/pull/222) [`7b17c14`](https://github.com/enzymefinance/sdk/commit/7b17c14b66f29079e201e37bdcd1daf0b34f0a68) Thanks [@iherger](https://github.com/iherger)! - Add additional external calls for Maple
+
+## 0.1.30
+
+### Patch Changes
+
+- [#219](https://github.com/enzymefinance/sdk/pull/219) [`4f1186b`](https://github.com/enzymefinance/sdk/commit/4f1186b49765203259ffdb4c466b0be1ec5b7738) Thanks [@iherger](https://github.com/iherger)! - Additional external calls for Liquity
+
+## 0.1.29
+
+### Patch Changes
+
+- [#217](https://github.com/enzymefinance/sdk/pull/217) [`e150d49`](https://github.com/enzymefinance/sdk/commit/e150d492d632d51e296c170653668d24a08488e6) Thanks [@iherger](https://github.com/iherger)! - Add external calls for Kiln
+
+## 0.1.28
+
+### Patch Changes
+
+- [#214](https://github.com/enzymefinance/sdk/pull/214) [`0353985`](https://github.com/enzymefinance/sdk/commit/0353985522eeae16b38d184c5baa39c79ba751e8) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 external utils
+
+- [#216](https://github.com/enzymefinance/sdk/pull/216) [`d50135f`](https://github.com/enzymefinance/sdk/commit/d50135f64a9675a7fc44b156e967e9d064ac760b) Thanks [@iherger](https://github.com/iherger)! - Refactor Compound v2 getMarkets
+
+## 0.1.27
+
+### Patch Changes
+
+- [#212](https://github.com/enzymefinance/sdk/pull/212) [`153dd6d`](https://github.com/enzymefinance/sdk/commit/153dd6dce3fe28f939fa649520fd66e968332e5a) Thanks [@iherger](https://github.com/iherger)! - Refactor Idle
+
+## 0.1.26
+
+### Patch Changes
+
+- [#210](https://github.com/enzymefinance/sdk/pull/210) [`d97b7c1`](https://github.com/enzymefinance/sdk/commit/d97b7c1f96f0d1b65b89c6ab5156743d9b1065b9) Thanks [@iherger](https://github.com/iherger)! - Fix import
+
 ## 0.1.25
 
 ### Patch Changes
