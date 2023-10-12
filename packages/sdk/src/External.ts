@@ -12,6 +12,7 @@ export * as Liquity from "@enzymefinance/sdk/internal/External/Liquity";
 export * as Maker from "@enzymefinance/sdk/internal/External/Maker";
 export * as Maple from "@enzymefinance/sdk/internal/External/Maple";
 export * as Morpho from "@enzymefinance/sdk/internal/External/Morpho";
+export * as StakeWiseV3 from "@enzymefinance/sdk/internal/External/StakeWiseV3";
 export * as TheGraph from "@enzymefinance/sdk/internal/External/TheGraph";
 export * as UniswapV2 from "@enzymefinance/sdk/internal/External/UniswapV2";
 export * as UniswapV3 from "@enzymefinance/sdk/internal/External/UniswapV3";
