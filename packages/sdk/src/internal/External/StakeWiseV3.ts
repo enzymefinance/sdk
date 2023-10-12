@@ -12,7 +12,7 @@ export async function getSharesBalance(
     abi: parseAbi(["function balanceOf(address _account) view returns (uint256 balance_)"]),
     functionName: "balanceOf",
     address: args.stakeWiseVaultAddress,
-    args: [args.account]
+    args: [args.account],
   });
 }
 
@@ -29,8 +29,6 @@ export async function getStakedEthBalance(
     abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
     functionName: "convertToAssets",
     address: args.stakeWiseVaultAddress,
-    args: [sharesBalance]
+    args: [sharesBalance],
   });
 }
-
-
