@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.37
+
+### Patch Changes
+
+- [#233](https://github.com/enzymefinance/sdk/pull/233) [`831912d`](https://github.com/enzymefinance/sdk/commit/831912dde7bd278ba81c1577e25ab429333fdece) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add StakeWise sharesBalance and stakedEthBalance helpers
+
 ## 0.1.36
 
 ### Patch Changes
