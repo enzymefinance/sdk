@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.38
+
+### Patch Changes
+
+- [#236](https://github.com/enzymefinance/sdk/pull/236) [`51afb19`](https://github.com/enzymefinance/sdk/commit/51afb1915f2a280dba62b58e671d531f9cedbb53) Thanks [@manimal1](https://github.com/manimal1)! - Add Lido Withdrawals helpers
+
 ## 0.1.37
 
 ### Patch Changes
