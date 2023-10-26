@@ -8,6 +8,7 @@ export * as ArbitraryLoan from "@enzymefinance/sdk/internal/Extensions/ExternalP
 export * as CompoundV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/CompoundV2Debt";
 export * as ConvexVoting from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/ConvexVoting";
 export * as Kiln from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Kiln";
+export * as LidoWithdrawals from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/LidoWithdrawals";
 export * as Liquity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Liquity";
 export * as MapleLiquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/MapleLiquidity";
 export * as StakeWise from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/StakeWise";
