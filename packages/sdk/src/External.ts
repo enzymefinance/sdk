@@ -8,7 +8,7 @@ export * as Curve from "@enzymefinance/sdk/internal/External/Curve";
 export * as DelegateVotes from "@enzymefinance/sdk/internal/External/DelegateVotes";
 export * as Idle from "@enzymefinance/sdk/internal/External/Idle";
 export * as Kiln from "@enzymefinance/sdk/internal/External/Kiln";
-export * as LidoWithdrawals from "@enzymefinance/sdk/internal/External/LidoWithdrawals";
+export * as Lido from "@enzymefinance/sdk/internal/External/Lido";
 export * as Liquity from "@enzymefinance/sdk/internal/External/Liquity";
 export * as Maker from "@enzymefinance/sdk/internal/External/Maker";
 export * as Maple from "@enzymefinance/sdk/internal/External/Maple";
