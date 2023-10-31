@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.1.40
+
+### Patch Changes
+
+- [#240](https://github.com/enzymefinance/sdk/pull/240) [`4d1ee07`](https://github.com/enzymefinance/sdk/commit/4d1ee0756eaf83cdff6908d25e215f80fb337929) Thanks [@iherger](https://github.com/iherger)! - Add getWithdrawalStatus for Lido
+
+- [`0c5de5f`](https://github.com/enzymefinance/sdk/commit/0c5de5ff8c3ebc7cd4b76aa0ab7a2b260c5538f4) Thanks [@iherger](https://github.com/iherger)! - Add getWithdrawalStatus for Lido
+
 ## 0.1.39
 
 ### Patch Changes
