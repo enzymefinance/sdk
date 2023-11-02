@@ -41,11 +41,11 @@ const SettingsEncoding = [
 
 export type Settings = {
   scaledPerSecondRate: bigint;
-  feeRecipient: Address;
+  recipient: Address;
 };
 
 export type EncodeSettingsParams = {
-  feeRecipient?: Address;
+  recipient?: Address;
 } & (
   | {
       perAnnumRateInBps?: never;
@@ -60,7 +60,7 @@ export type EncodeSettingsParams = {
 export function encodeSettings({
   scaledPerSecondRate,
   perAnnumRateInBps,
-  feeRecipient = zeroAddress,
+  recipient = zeroAddress,
 }: EncodeSettingsParams): Hex {
   const fee: bigint =
     scaledPerSecondRate !== undefined
@@ -70,13 +70,13 @@ export function encodeSettings({
           adjustInflation: true,
         });
 
-  return encodeAbiParameters(SettingsEncoding, [fee, feeRecipient]);
+  return encodeAbiParameters(SettingsEncoding, [fee, recipient]);
 }
 
 export function decodeSettings(settings: Hex): Settings {
-  const [scaledPerSecondRate, feeRecipient] = decodeAbiParameters(SettingsEncoding, settings);
+  const [scaledPerSecondRate, recipient] = decodeAbiParameters(SettingsEncoding, settings);
 
-  return { scaledPerSecondRate, feeRecipient };
+  return { scaledPerSecondRate, recipient };
 }
 
 //--------------------------------------------------------------------------------------------

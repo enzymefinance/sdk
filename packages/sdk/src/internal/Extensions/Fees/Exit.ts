@@ -70,21 +70,21 @@ const directFeeSettingsEncoding = [
 export type DirectFeeSettings = {
   inKindRateInBps: bigint;
   specificAssetsRate: bigint;
-  feeRecipient: Address;
+  recipient: Address;
 };
 
 export function encodeDirectFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
-  feeRecipient = zeroAddress,
+  recipient = zeroAddress,
 }: Partial<DirectFeeSettings>): Hex {
-  return encodeAbiParameters(directFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, feeRecipient]);
+  return encodeAbiParameters(directFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, recipient]);
 }
 
 export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
-  const [inKindRateInBps, specificAssetsRate, feeRecipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
+  const [inKindRateInBps, specificAssetsRate, recipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
 
-  return { inKindRateInBps, specificAssetsRate, feeRecipient };
+  return { inKindRateInBps, specificAssetsRate, recipient };
 }
 
 //--------------------------------------------------------------------------------------------
