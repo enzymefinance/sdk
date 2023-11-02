@@ -87,13 +87,13 @@ export async function getInfo(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
-    performanceFee: Address;
+    managementFee: Address;
   }>,
 ) {
   return Viem.readContract(client, args, {
     abi: Abis.IManagementFee,
     functionName: "getFeeInfoForFund",
     args: [args.comptrollerProxy],
-    address: args.performanceFee,
+    address: args.managementFee,
   });
 }

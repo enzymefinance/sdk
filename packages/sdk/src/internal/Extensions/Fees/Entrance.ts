@@ -1,5 +1,6 @@
-import { type Types } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { type Types, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
@@ -75,4 +76,23 @@ export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
     feeRateInBps,
     feeRecipient,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ - BOTH TYPES
+//--------------------------------------------------------------------------------------------
+
+export async function getRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    entranceRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IEntranceRateBurnFee,
+    functionName: "getRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.entranceRateFee,
+  });
 }

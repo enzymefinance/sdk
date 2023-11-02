@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
@@ -83,4 +85,38 @@ export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
   const [inKindRateInBps, specificAssetsRate, feeRecipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
 
   return { inKindRateInBps, specificAssetsRate, feeRecipient };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ - BOTH TYPES
+//--------------------------------------------------------------------------------------------
+
+export async function getInKindRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    exitRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IExitRateBurnFee,
+    functionName: "getInKindRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.exitRateFee,
+  });
+}
+
+export async function getSpecificAssetsRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    exitRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IExitRateBurnFee,
+    functionName: "getSpecificAssetsRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.exitRateFee,
+  });
 }
