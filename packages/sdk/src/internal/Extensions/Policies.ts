@@ -5,7 +5,7 @@ import type { Address, PublicClient } from "viem";
 export * as AllowedAdapters from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdapters";
 export * as AllowedAdaptersPerManager from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdaptersPerManager";
 export * as AllowedAssetsForRedemption from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAssetsForRedemption";
-export * as AllowedDepositRecipients from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedDepositRecipients";
+export * as AllowedDepositRecipients from "@enzymefinance/sdk/internal/Extensions/Policies/AllowDepositRecipients";
 export * as AllowedExternalPositionTypes from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedExternalPositionTypes";
 export * as AllowedExternalPositionTypesPerManager from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedExternalPositionTypesPerManager";
 export * as AllowedSharesTransferRecipients from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedSharesTransferRecipients";
