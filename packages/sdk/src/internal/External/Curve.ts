@@ -64,8 +64,8 @@ export async function getBestPrice(
     args: [swapId],
   });
 
-  const curveOutgoing = isAddressEqual(args.outgoing, args.weth) ? Constants.EthAddress : args.outgoing;
-  const curveIncoming = isAddressEqual(args.incoming, args.weth) ? Constants.EthAddress : args.incoming;
+  const curveOutgoing = isAddressEqual(args.outgoing, args.weth) ? Constants.ETH_ADDRESS : args.outgoing;
+  const curveIncoming = isAddressEqual(args.incoming, args.weth) ? Constants.ETH_ADDRESS : args.incoming;
 
   const [bestPool, amountReceived] = await client.readContract({
     abi: [curveSwapsAbi],
