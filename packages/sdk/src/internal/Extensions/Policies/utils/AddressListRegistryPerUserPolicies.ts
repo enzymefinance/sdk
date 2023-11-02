@@ -1,9 +1,9 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import {
   type AddressListRegistryPolicySettings,
   decodeAddressListRegistryPolicySettings,
   encodeAddressListRegistryPolicySettings,
-} from "./AddressListRegistryPolicies";
+} from "@enzymefinance/sdk/internal/Extensions/Policies/utils/AddressListRegistryPolicies";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 const settingsEncoding = [
   {

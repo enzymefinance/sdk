@@ -1,9 +1,9 @@
-import type { Hex } from "viem";
 import {
   type AddressListRegistryPolicySettings,
   decodeAddressListRegistryPolicySettings,
   encodeAddressListRegistryPolicySettings,
-} from "./utils/AddressListRegistryPolicies";
+} from "@enzymefinance/sdk/internal/Extensions/Policies/utils/AddressListRegistryPolicies";
+import type { Hex } from "viem";
 
 export type Settings = AddressListRegistryPolicySettings;
 
