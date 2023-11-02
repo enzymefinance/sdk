@@ -16,8 +16,15 @@ export const ONE_ONE_HUNDREDTH_PERCENT_IN_WEI = ONE_HUNDRED_PERCENT_IN_WEI / 10_
 export const NULL_ADDRESS_ALT = "0x0000000000000000000000000000000000000001";
 
 export const AddressListUpdateType = {
-  None: "0",
-  AddOnly: "1",
-  RemoveOnly: "2",
-  AddAndRemove: "3",
+  None: 0n,
+  AddOnly: 1n,
+  RemoveOnly: 2n,
+  AddAndRemove: 3n,
+} as const;
+
+export const UintListUpdateType = {
+  None: 0n,
+  AddOnly: 1n,
+  RemoveOnly: 2n,
+  AddAndRemove: 3n,
 } as const;

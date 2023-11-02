@@ -2,6 +2,7 @@ import * as Abis from "@enzymefinance/abis";
 import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
 
+export * as AllowedAdapterIncomingAssets from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdapterIncomingAssets";
 export * as AllowedAdapters from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdapters";
 export * as AllowedAdaptersPerManager from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdaptersPerManager";
 export * as AllowedAssetsForRedemption from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAssetsForRedemption";
