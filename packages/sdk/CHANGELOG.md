@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.1.43
+
+### Patch Changes
+
+- [#247](https://github.com/enzymefinance/sdk/pull/247) [`79a3380`](https://github.com/enzymefinance/sdk/commit/79a3380cec645bb746dc30e2d92c01cb731783ca) Thanks [@iherger](https://github.com/iherger)! - Add functions for vault setup
+
+- [#247](https://github.com/enzymefinance/sdk/pull/247) [`79a3380`](https://github.com/enzymefinance/sdk/commit/79a3380cec645bb746dc30e2d92c01cb731783ca) Thanks [@iherger](https://github.com/iherger)! - Various small updates
+
 ## 0.1.42
 
 ### Patch Changes
