@@ -3,6 +3,7 @@ import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
 
 export * as Policies from "@enzymefinance/sdk/internal/Extensions/Policies";
+export * as PolicyManager from "@enzymefinance/sdk/internal/PolicyManager";
 
 export async function getEnabled(
   client: PublicClient,

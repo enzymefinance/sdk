@@ -3,6 +3,7 @@ import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
 
 export * as Fees from "@enzymefinance/sdk/internal/Extensions/Fees";
+export * as FeeManager from "@enzymefinance/sdk/internal/FeeManager";
 
 export {
   payoutOutstandingFees,
