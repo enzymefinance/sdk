@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
@@ -68,19 +70,53 @@ const directFeeSettingsEncoding = [
 export type DirectFeeSettings = {
   inKindRateInBps: bigint;
   specificAssetsRate: bigint;
-  feeRecipient: Address;
+  recipient: Address;
 };
 
 export function encodeDirectFeeSettings({
   inKindRateInBps = 0n,
   specificAssetsRate = 0n,
-  feeRecipient = zeroAddress,
+  recipient = zeroAddress,
 }: Partial<DirectFeeSettings>): Hex {
-  return encodeAbiParameters(directFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, feeRecipient]);
+  return encodeAbiParameters(directFeeSettingsEncoding, [inKindRateInBps, specificAssetsRate, recipient]);
 }
 
 export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
-  const [inKindRateInBps, specificAssetsRate, feeRecipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
+  const [inKindRateInBps, specificAssetsRate, recipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
 
-  return { inKindRateInBps, specificAssetsRate, feeRecipient };
+  return { inKindRateInBps, specificAssetsRate, recipient };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ - BOTH TYPES
+//--------------------------------------------------------------------------------------------
+
+export async function getInKindRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    exitRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IExitRateBurnFee,
+    functionName: "getInKindRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.exitRateFee,
+  });
+}
+
+export async function getSpecificAssetsRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    exitRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IExitRateBurnFee,
+    functionName: "getSpecificAssetsRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.exitRateFee,
+  });
 }

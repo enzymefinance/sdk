@@ -1,17 +1,18 @@
-import { type Types } from "@enzymefinance/sdk/Utils";
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import * as Abis from "@enzymefinance/abis";
+import { type Types, Viem } from "@enzymefinance/sdk/Utils";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS
 //--------------------------------------------------------------------------------------------
 
 export type CalculateFeeSharesDueParams = {
-  feeRateInBps: bigint;
+  rateInBps: bigint;
   sharesBought: bigint;
 };
 
-export function calculateFeeSharesDue({ feeRateInBps, sharesBought }: CalculateFeeSharesDueParams) {
-  return (sharesBought * feeRateInBps) / 10000n;
+export function calculateFeeSharesDue({ rateInBps, sharesBought }: CalculateFeeSharesDueParams) {
+  return (sharesBought * rateInBps) / 10000n;
 }
 
 //--------------------------------------------------------------------------------------------
@@ -26,18 +27,18 @@ const burnFeeSettingsEncoding = [
 ] as const;
 
 export type BurnFeeSettings = {
-  feeRateInBps: bigint;
+  rateInBps: bigint;
 };
 
-export function encodeBurnFeeSettings({ feeRateInBps }: BurnFeeSettings): Hex {
-  return encodeAbiParameters(burnFeeSettingsEncoding, [feeRateInBps]);
+export function encodeBurnFeeSettings({ rateInBps }: BurnFeeSettings): Hex {
+  return encodeAbiParameters(burnFeeSettingsEncoding, [rateInBps]);
 }
 
 export function decodeBurnFeeSettings(settings: Hex): BurnFeeSettings {
-  const [feeRateInBps] = decodeAbiParameters(burnFeeSettingsEncoding, settings);
+  const [rateInBps] = decodeAbiParameters(burnFeeSettingsEncoding, settings);
 
   return {
-    feeRateInBps,
+    rateInBps,
   };
 }
 
@@ -57,22 +58,41 @@ const directFeeSettingsEncoding = [
 ] as const;
 
 export type DirectFeeSettings = {
-  feeRateInBps: bigint;
-  feeRecipient: Address;
+  rateInBps: bigint;
+  recipient: Address;
 };
 
 export function encodeDirectFeeSettings({
-  feeRateInBps,
-  feeRecipient = zeroAddress,
-}: Types.PartialPick<DirectFeeSettings, "feeRecipient">): Hex {
-  return encodeAbiParameters(directFeeSettingsEncoding, [feeRateInBps, feeRecipient]);
+  rateInBps,
+  recipient = zeroAddress,
+}: Types.PartialPick<DirectFeeSettings, "recipient">): Hex {
+  return encodeAbiParameters(directFeeSettingsEncoding, [rateInBps, recipient]);
 }
 
 export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
-  const [feeRateInBps, feeRecipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
+  const [rateInBps, recipient] = decodeAbiParameters(directFeeSettingsEncoding, settings);
 
   return {
-    feeRateInBps,
-    feeRecipient,
+    rateInBps,
+    recipient,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ - BOTH TYPES
+//--------------------------------------------------------------------------------------------
+
+export async function getRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    entranceRateFee: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IEntranceRateBurnFee,
+    functionName: "getRateForFund",
+    args: [args.comptrollerProxy],
+    address: args.entranceRateFee,
+  });
 }

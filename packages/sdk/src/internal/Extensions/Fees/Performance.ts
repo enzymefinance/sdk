@@ -18,23 +18,23 @@ const performanceFeeSettingsEncoding = [
 ] as const;
 
 export type PerformanceFeeSettings = {
-  feeRateInBps: bigint;
-  feeRecipient: Address;
+  rateInBps: bigint;
+  recipient: Address;
 };
 
 export function encodePerformanceFeeSettings({
-  feeRateInBps,
-  feeRecipient = zeroAddress,
-}: Types.PartialPick<PerformanceFeeSettings, "feeRecipient">): Hex {
-  return encodeAbiParameters(performanceFeeSettingsEncoding, [feeRateInBps, feeRecipient]);
+  rateInBps,
+  recipient = zeroAddress,
+}: Types.PartialPick<PerformanceFeeSettings, "recipient">): Hex {
+  return encodeAbiParameters(performanceFeeSettingsEncoding, [rateInBps, recipient]);
 }
 
 export function decodePerformanceFeeSettings(settings: Hex): PerformanceFeeSettings {
-  const [feeRateInBps, feeRecipient] = decodeAbiParameters(performanceFeeSettingsEncoding, settings);
+  const [rateInBps, recipient] = decodeAbiParameters(performanceFeeSettingsEncoding, settings);
 
   return {
-    feeRateInBps,
-    feeRecipient,
+    rateInBps,
+    recipient,
   };
 }
 
