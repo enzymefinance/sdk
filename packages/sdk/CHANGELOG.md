@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.44
+
+### Patch Changes
+
+- [#249](https://github.com/enzymefinance/sdk/pull/249) [`dd206cc`](https://github.com/enzymefinance/sdk/commit/dd206cc13957a9d62fe62790594341f55543db67) Thanks [@iherger](https://github.com/iherger)! - Fix per second rate input
+
 ## 0.1.43
 
 ### Patch Changes
