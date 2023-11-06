@@ -4,6 +4,9 @@ import { parseEther } from "viem";
 
 const LocalDecimal = Decimal.clone({ precision: 2 * 27 });
 
+const rateScale = 10n ** 18n;
+const rateScaleDecimal = new LocalDecimal(`${rateScale}`);
+
 const scaledPerSecondRateScale = 10n ** 27n;
 const scaledPerSecondRateScaleDecimal = new LocalDecimal(`${scaledPerSecondRateScale}`);
 
@@ -23,13 +26,13 @@ export function calculateAmountDueForScaledPerSecondRate({
 }
 
 export function convertRateToScaledPerSecondRate({
-  perAnnumRateInBps,
+  perAnnumRate,
   adjustInflation,
 }: {
-  perAnnumRateInBps: bigint;
+  perAnnumRate: bigint;
   adjustInflation: boolean;
 }) {
-  const rateDecimal = new LocalDecimal(`${perAnnumRateInBps}`).div(10000);
+  const rateDecimal = new LocalDecimal(`${perAnnumRate}`).div(rateScaleDecimal);
   const effectiveRate = adjustInflation ? rateDecimal.div(new LocalDecimal(1).minus(rateDecimal)) : rateDecimal;
   const scaledRate = new LocalDecimal(1)
     .plus(effectiveRate)
