@@ -48,25 +48,25 @@ export type EncodeSettingsParams = {
   recipient?: Address;
 } & (
   | {
-      perAnnumRateInBps?: never;
+      perAnnumRate?: never;
       scaledPerSecondRate: bigint;
     }
   | {
-      perAnnumRateInBps: bigint;
+      perAnnumRate: bigint;
       scaledPerSecondRate?: never;
     }
 );
 
 export function encodeSettings({
   scaledPerSecondRate,
-  perAnnumRateInBps,
+  perAnnumRate,
   recipient = zeroAddress,
 }: EncodeSettingsParams): Hex {
   const fee: bigint =
     scaledPerSecondRate !== undefined
       ? scaledPerSecondRate
       : Rates.convertRateToScaledPerSecondRate({
-          perAnnumRateInBps,
+          perAnnumRate,
           adjustInflation: true,
         });
 
