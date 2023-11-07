@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "packageManager": "pnpm@8.6.1",
+  "packageManager": "pnpm@8.10.0",
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build && pnpm run --recursive --filter \"./packages/*\" build",
@@ -14,10 +14,10 @@
     "lint": "biome check ."
   },
   "devDependencies": {
-    "@babel/cli": "^7.22.10",
-    "@babel/core": "^7.22.11",
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
     "@babel/plugin-transform-export-namespace-from": "^7.22.11",
-    "@babel/plugin-transform-modules-commonjs": "^7.22.11",
+    "@babel/plugin-transform-modules-commonjs": "^7.23.0",
     "@biomejs/biome": "^1.2.2",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
@@ -32,11 +32,6 @@
       "@enzymefinance/api": "workspace:*",
       "@enzymefinance/abis": "workspace:*",
       "@enzymefinance/sdk": "workspace:*"
-    },
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "prop-types"
-      ]
     }
   }
 }
