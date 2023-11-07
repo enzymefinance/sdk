@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.1.45
+
+### Patch Changes
+
+- [#251](https://github.com/enzymefinance/sdk/pull/251) [`2dbbc6e`](https://github.com/enzymefinance/sdk/commit/2dbbc6e3f64c20b9662bdc858434373999602f67) Thanks [@iherger](https://github.com/iherger)! - Fix multiplyBySlippage
+
 ## 0.1.44
 
 ### Patch Changes
