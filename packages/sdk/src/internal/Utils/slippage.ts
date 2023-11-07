@@ -1,7 +1,10 @@
-export function multiplyBySlippage({ amount, slippage }: { amount: bigint; slippage: number }) {
+export function multiplyBySlippage({ value, slippage }: { value: bigint; slippage?: number }) {
+  if (!slippage) {
+    return value;
+  }
   const slippageInBps = convertFromRatioToBps(slippage);
 
-  return applySlippage(amount, slippageInBps);
+  return applySlippage(value, slippageInBps);
 }
 
 export function applySlippage(value: bigint, slippageInBps: bigint) {
