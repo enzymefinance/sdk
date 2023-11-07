@@ -14,7 +14,7 @@
 
       corepack = pkgs.runCommand "corepack" {} ''
         mkdir -p $out/bin
-        ${pkgs.nodejs}/bin/corepack enable --install-directory $out/bin
+        ${pkgs.nodejs_20}/bin/corepack enable --install-directory $out/bin
       '';
     in {
       formatter = pkgs.alejandra;
@@ -23,7 +23,7 @@
         default = pkgs.mkShell {
           buildInputs = with pkgs; [
             bun
-            nodejs
+            nodejs_20
             corepack
             foundry-bin
           ];
