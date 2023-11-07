@@ -52,7 +52,7 @@ export function decodeSettings(encoded: Hex): Settings {
 
   return {
     minAssetBalances: assets.map((asset, i) => {
-      const balance = limits.at(i);
+      const balance = limits[i];
       Assertion.invariant(balance, "Expected balances and assets to have the same length");
 
       return { asset, balance };
