@@ -4,17 +4,17 @@ import { expect, test } from "vitest";
 test("multiplyBySlippage should work correctly", () => {
   expect(
     Slippage.multiplyBySlippage({
-      amount: 250n,
-      slippage: 1n,
+      value: 250n,
+      slippage: 0.01,
     }),
-  ).toMatchInlineSnapshot("247n");
+  ).toMatchInlineSnapshot("248n");
 
   expect(
     Slippage.multiplyBySlippage({
-      amount: 2432n,
-      slippage: 13n,
+      value: 2432n,
+      slippage: 0.13,
     }),
-  ).toMatchInlineSnapshot("2115n");
+  ).toMatchInlineSnapshot("2116n");
 });
 
 test.each([
