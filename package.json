@@ -6,8 +6,8 @@
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build && pnpm run --recursive --filter \"./packages/*\" build",
     "release": "changeset version && pnpm run build && changeset publish",
-    "test": "pnpm run --recursive --filter \"./packages/*\" test --run",
-    "test:coverage": "pnpm run --recursive --filter \"./packages/*\" test:coverage",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "clean": "pnpm run --recursive --parallel clean",
     "typecheck": "pnpm run --recursive --parallel typecheck",
     "format": "biome format --write . && biome check --apply-unsafe .",
@@ -23,9 +23,11 @@
     "@changesets/cli": "^2.26.2",
     "@effect/build-utils": "^0.1.4",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
-    "bun": "^1.0.10",
     "rimraf": "^5.0.5",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.6"
   },
   "pnpm": {
     "overrides": {

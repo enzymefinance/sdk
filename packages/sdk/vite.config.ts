@@ -1,18 +1,13 @@
 /// <reference types="vitest" />
-
+import path from "node:path";
 import aliases from "vite-tsconfig-paths";
-import { defineConfig } from "vitest/config";
+import { defineProject } from "vitest/config";
 
-export default defineConfig({
-  envDir: "../../",
-  plugins: [aliases()],
+export default defineProject({
+  envDir: "./",
+  plugins: [aliases({ projects: ["./tsconfig.json"] })],
   test: {
     testTimeout: 200_000,
-    globalSetup: ["./test/setup/global.ts"],
-    include: ["./test/**/*.test.ts"],
-    coverage: {
-      reporter: process.env.CI ? ["lcov"] : ["text", "json", "html"],
-      include: ["./src/**/*.ts"],
-    },
+    globalSetup: [path.join(__dirname, "test/setup/global.ts")],
   },
 });

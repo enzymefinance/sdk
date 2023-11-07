@@ -22,7 +22,6 @@
       devShells = {
         default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            bun
             nodejs_20
             corepack
             foundry-bin
