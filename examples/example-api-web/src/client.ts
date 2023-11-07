@@ -1,5 +1,5 @@
-import { createQueryService } from "@bufbuild/connect-query";
-import { type ConnectTransportOptions, createConnectTransport } from "@bufbuild/connect-web";
+import { createQueryService } from "@connectrpc/connect-query";
+import { type ConnectTransportOptions, createConnectTransport } from "@connectrpc/connect-web";
 import { EnzymeService, withTokenAuth } from "@enzymefinance/api";
 
 const token = import.meta.env.VITE_ENZYME_API_TOKEN as string | undefined;

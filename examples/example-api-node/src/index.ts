@@ -1,4 +1,4 @@
-import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createGrpcTransport } from "@connectrpc/connect-node";
 import { Currency, Deployment, createClient, withTokenAuth } from "@enzymefinance/api";
 import type { GrpcTransportOptions } from "./types.js";
 
