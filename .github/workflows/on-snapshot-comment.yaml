@@ -58,9 +58,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Checkout pull request branch
-        run: hub pr checkout ${{ github.event.issue.number }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.issue.number }}/head
 
       - name: Retrieve changeset entries
         run: |
