@@ -26,15 +26,17 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "dependencies": {
-    "@enzymefinance/abis": "^0.1.0",
+    "@enzymefinance/abis": "^0.1.0"
+  },
+  "peerDependencies": {
     "abitype": "^0.10.2",
     "decimal.js": "^10.4.3",
     "viem": "^1.18.9"
   },
   "devDependencies": {
-    "@viem/anvil": "^0.0.6"
-  },
-  "effect": {
-    "generateIndex": false
+    "@viem/anvil": "^0.0.6",
+    "abitype": "^0.10.2",
+    "decimal.js": "^10.4.3",
+    "viem": "^1.18.9"
   }
 }

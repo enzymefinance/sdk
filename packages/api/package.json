@@ -26,14 +26,13 @@
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@bufbuild/protobuf": "^1.4.2",
     "@connectrpc/connect": "^1.1.3"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.27.2"
-  },
-  "effect": {
-    "generateIndex": false
+    "@bufbuild/buf": "1.27.2",
+    "@bufbuild/protobuf": "^1.4.2",
+    "@connectrpc/connect": "^1.1.3"
   }
 }
