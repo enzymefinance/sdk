@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/abis",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -26,6 +26,8 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "effect": {
-    "publicModules": ["abis/*.ts"]
+    "publicModules": [
+      "abis/*.ts"
+    ]
   }
 }

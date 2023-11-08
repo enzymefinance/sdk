@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/sdk",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -26,7 +26,7 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "dependencies": {
-    "@enzymefinance/abis": "^0.1.0"
+    "@enzymefinance/abis": "^0.1.1"
   },
   "peerDependencies": {
     "abitype": "^0.10.2",
