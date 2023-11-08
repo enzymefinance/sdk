@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.1.1
+
+### Patch Changes
+
+- [`152c87f`](https://github.com/enzymefinance/sdk/commit/152c87f496b01eda8640ebbd1bc33f9e56b34a90) Thanks [@fubhy](https://github.com/fubhy)! - Use peer dependencies
+
 ## 0.1.0
 
 ### Minor Changes
