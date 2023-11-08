@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    {
+      "path": "packages/abis/tsconfig.build.json"
+    },
+    {
+      "path": "packages/sdk/tsconfig.build.json"
+    },
+    {
+      "path": "packages/api/tsconfig.build.json"
+    }
+  ]
+}

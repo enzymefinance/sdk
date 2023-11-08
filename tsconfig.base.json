@@ -1,57 +1,50 @@
 {
   "include": [],
   "compilerOptions": {
-    // Incremental builds
-    "incremental": true,
-
-    // Type checking
     "strict": true,
+    "moduleDetection": "force",
+    "composite": true,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": false,
+    "declaration": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-
-    // Modules
-    "module": "ES6",
-    "moduleResolution": "Node",
-
-    // JavaScript support
-    "allowJs": false,
-    "checkJs": false,
-
-    // Emit
-    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "NodeNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "isolatedModules": true,
     "sourceMap": true,
     "declarationMap": true,
-    "declaration": true,
-
-    // Interop constraints
+    "noImplicitReturns": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
+    "noEmitOnError": false,
+    "noErrorTruncation": false,
+    "allowJs": false,
+    "checkJs": false,
     "forceConsistentCasingInFileNames": true,
-    "verbatimModuleSyntax": true,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": false,
-
-    // Language and environment
-    "lib": ["ES2021", "DOM"],
-    "target": "ES2021",
-
-    // Project references
-    "composite": true,
-
-    // Path aliasing
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": false,
+    "strictNullChecks": true,
     "baseUrl": ".",
+    "target": "ES2022",
+    "module": "NodeNext",
+    "incremental": true,
+    "removeComments": false,
     "paths": {
-      "@enzymefinance/sdk": ["./packages/sdk/src/index.js"],
-      "@enzymefinance/sdk/*": ["./packages/sdk/src/*.js"],
-      "@enzymefinance/abis": ["./packages/abis/src/index.js"],
-      "@enzymefinance/abis/*": ["./packages/abis/src/abis/*.js"],
-      "@enzymefinance/api": ["./packages/api/src/index.js"],
-      "@enzymefinance/api/*": ["./packages/api/src/*.js"]
+        "@enzymefinance/sdk": ["./packages/sdk/src/index.js"],
+        "@enzymefinance/sdk/*": ["./packages/sdk/src/*.js"],
+        "@enzymefinance/abis": ["./packages/abis/src/index.js"],
+        "@enzymefinance/abis/*": ["./packages/abis/src/abis/*.js"],
+        "@enzymefinance/api": ["./packages/api/src/index.js"],
+        "@enzymefinance/api/*": ["./packages/api/src/*.js"]
     }
   }
 }
