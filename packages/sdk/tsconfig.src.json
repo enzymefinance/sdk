@@ -3,6 +3,11 @@
   "include": [
     "src"
   ],
+  "references": [
+    {
+      "path": "../abis"
+    }
+  ],
   "compilerOptions": {
     "tsBuildInfoFile": ".tsbuildinfo/src.tsbuildinfo",
     "rootDir": "src",
