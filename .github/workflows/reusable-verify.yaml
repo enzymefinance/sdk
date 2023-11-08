@@ -16,7 +16,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Check linting
-        run: pnpm run lint
+        run: pnpm lint
 
   types:
     name: Types
@@ -31,10 +31,10 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Run build
-        run: pnpm run build
+        run: pnpm build
 
       - name: Check types
-        run: pnpm run typecheck
+        run: pnpm typecheck
 
   build:
     name: Build
@@ -49,7 +49,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Run build
-        run: pnpm run build
+        run: pnpm build
 
   test:
     name: Test (${{ matrix.shard }})
@@ -74,7 +74,7 @@ jobs:
 
       - name: Run tests
         working-directory: packages/sdk
-        run: pnpm run test --shard ${{ matrix.shard }}
+        run: pnpm vitest --shard ${{ matrix.shard }}
         env:
           VITE_ANVIL_FORK_URL: ${{ secrets.VITE_ANVIL_FORK_URL }}
           VITE_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITE_ANVIL_FORK_BLOCK_NUMBER }}

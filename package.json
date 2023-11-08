@@ -5,10 +5,10 @@
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
-    "release": "pnpm run build && changeset publish",
+    "release": "pnpm build && changeset publish",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
-    "typecheck": "pnpm run --recursive --parallel typecheck",
+    "typecheck": "tsc --build tsconfig.json",
     "format": "biome format --write . && biome check --apply-unsafe .",
     "lint": "biome check ."
   },
