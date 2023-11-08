@@ -69,7 +69,7 @@ jobs:
           fi
 
       - name: Install dependencies
-        uses: ./.github/actions/setup
+        uses: ./.github/actions/install-dependencies
 
       - name: Exit prerelease
         run: pnpm changeset pre exit || true
