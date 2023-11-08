@@ -5,7 +5,7 @@
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
-    "release": "changeset version && pnpm run build && changeset publish",
+    "release": "pnpm run build && changeset publish",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "pnpm run --recursive --parallel typecheck",
