@@ -1,9 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { Viem } from "./Utils.js";
 
-export * as Policies from "@enzymefinance/sdk/internal/Extensions/Policies";
-export * as PolicyManager from "@enzymefinance/sdk/internal/PolicyManager";
+export * as Policies from "./internal/Extensions/Policies.js";
+export * as PolicyManager from "./internal/PolicyManager.js";
 
 export async function getEnabled(
   client: PublicClient,

@@ -1,5 +1,5 @@
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, type PublicClient, parseAbi } from "viem";
+import { Viem } from "../../Utils.js";
 
 export async function getCLFeeRecipient(
   client: PublicClient,

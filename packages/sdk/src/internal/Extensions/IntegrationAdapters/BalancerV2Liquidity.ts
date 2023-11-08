@@ -1,6 +1,6 @@
-import { Assertion, Types } from "@enzymefinance/sdk/Utils";
-import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion, Types } from "../../../Utils.js";
+import * as IntegrationManager from "../../IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND

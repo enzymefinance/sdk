@@ -1,16 +1,16 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "./Utils.js";
 
-export * as Fees from "@enzymefinance/sdk/internal/Extensions/Fees";
-export * as FeeManager from "@enzymefinance/sdk/internal/FeeManager";
+export * as Fees from "./internal/Extensions/Fees.js";
+export * as FeeManager from "./internal/FeeManager.js";
 
 export {
   payoutOutstandingFees,
   type PayoutOutstandingFeesParams,
   settleContinuousFees,
   type SettleContinuousFeesParams,
-} from "@enzymefinance/sdk/internal/FeeManager";
+} from "./internal/FeeManager.js";
 
 export async function getEnabledFees(
   client: PublicClient,

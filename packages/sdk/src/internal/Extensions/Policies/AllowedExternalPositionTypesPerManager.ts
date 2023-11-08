@@ -1,9 +1,9 @@
+import type { Hex } from "viem";
 import {
   type UintListRegistryPerUserPolicySettings,
   decodeUintListRegistryPerUserPolicySettings,
   encodeUintListRegistryPerUserPolicySettings,
-} from "@enzymefinance/sdk/internal/Extensions/Policies/utils/UintListRegistryPerUserPolicies";
-import type { Hex } from "viem";
+} from "./utils/UintListRegistryPerUserPolicies.js";
 
 export type Settings = UintListRegistryPerUserPolicySettings;
 

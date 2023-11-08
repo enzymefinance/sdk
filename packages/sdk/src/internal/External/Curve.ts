@@ -1,4 +1,3 @@
-import { Assertion, Constants, Rates, Viem } from "@enzymefinance/sdk/Utils";
 import {
   type Address,
   ContractFunctionExecutionError,
@@ -8,6 +7,7 @@ import {
   parseEther,
   parseUnits,
 } from "viem";
+import { Assertion, Constants, Rates, Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // CURVE REGISTRY

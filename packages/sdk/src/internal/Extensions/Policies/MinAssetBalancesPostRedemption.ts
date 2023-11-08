@@ -1,5 +1,5 @@
-import { Assertion } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion } from "../../../Utils.js";
 
 const settingsEncoding = [
   {

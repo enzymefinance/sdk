@@ -1,18 +1,18 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "../../Utils.js";
 
-export * as AllowedAdapterIncomingAssets from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdapterIncomingAssets";
-export * as AllowedAdapters from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdapters";
-export * as AllowedAdaptersPerManager from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAdaptersPerManager";
-export * as AllowedAssetsForRedemption from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedAssetsForRedemption";
-export * as AllowedDepositRecipients from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedDepositRecipients";
-export * as AllowedExternalPositionTypes from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedExternalPositionTypes";
-export * as AllowedExternalPositionTypesPerManager from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedExternalPositionTypesPerManager";
-export * as AllowedSharesTransferRecipients from "@enzymefinance/sdk/internal/Extensions/Policies/AllowedSharesTransferRecipients";
-export * as CumulativeSlippageTolerance from "@enzymefinance/sdk/internal/Extensions/Policies/CumulativeSlippageTolerance";
-export * as MinAssetBalancesPostRedemption from "@enzymefinance/sdk/internal/Extensions/Policies/MinAssetBalancesPostRedemption";
-export * as MinMaxInvestment from "@enzymefinance/sdk/internal/Extensions/Policies/MinMaxInvestment";
+export * as AllowedAdapterIncomingAssets from "./Policies/AllowedAdapterIncomingAssets.js";
+export * as AllowedAdapters from "./Policies/AllowedAdapters.js";
+export * as AllowedAdaptersPerManager from "./Policies/AllowedAdaptersPerManager.js";
+export * as AllowedAssetsForRedemption from "./Policies/AllowedAssetsForRedemption.js";
+export * as AllowedDepositRecipients from "./Policies/AllowedDepositRecipients.js";
+export * as AllowedExternalPositionTypes from "./Policies/AllowedExternalPositionTypes.js";
+export * as AllowedExternalPositionTypesPerManager from "./Policies/AllowedExternalPositionTypesPerManager.js";
+export * as AllowedSharesTransferRecipients from "./Policies/AllowedSharesTransferRecipients.js";
+export * as CumulativeSlippageTolerance from "./Policies/CumulativeSlippageTolerance.js";
+export * as MinAssetBalancesPostRedemption from "./Policies/MinAssetBalancesPostRedemption.js";
+export * as MinMaxInvestment from "./Policies/MinMaxInvestment.js";
 
 const getListIdsForFundAbi = {
   inputs: [

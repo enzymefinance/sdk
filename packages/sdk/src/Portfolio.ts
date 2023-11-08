@@ -1,11 +1,11 @@
 import * as Abis from "@enzymefinance/abis";
-import * as Assets from "@enzymefinance/sdk/Assets";
-import { Assertion, Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import * as Assets from "./Assets.js";
+import { Assertion, Viem } from "./Utils.js";
 
-export * as ExternalPositions from "@enzymefinance/sdk/internal/Extensions/ExternalPositions";
-export * as IntegrationAdapters from "@enzymefinance/sdk/internal/Extensions/IntegrationAdapters";
-export * as VoteDelegation from "@enzymefinance/sdk/internal/VoteDelegation";
+export * as ExternalPositions from "./internal/Extensions/ExternalPositions.js";
+export * as IntegrationAdapters from "./internal/Extensions/IntegrationAdapters.js";
+export * as VoteDelegation from "./internal/VoteDelegation.js";
 
 export {
   call as callIntegration,
@@ -14,7 +14,7 @@ export {
   type AddTracketAssetsParams,
   removeTracketAssets,
   type RemoveTrackedAssetsParams,
-} from "@enzymefinance/sdk/internal/IntegrationManager";
+} from "./internal/IntegrationManager.js";
 
 export {
   call as callExternalPosition,
@@ -25,7 +25,7 @@ export {
   type RemoveParams as RemoveExternalPositionParams,
   reactivate as reactivateExternalPosition,
   type ReactivateParams as ReactivateExternalPositionParams,
-} from "@enzymefinance/sdk/internal/ExternalPositionManager";
+} from "./internal/ExternalPositionManager.js";
 
 export async function getPortfolio(
   client: PublicClient,

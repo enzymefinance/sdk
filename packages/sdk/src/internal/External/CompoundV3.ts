@@ -1,5 +1,5 @@
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "../../Utils.js";
 
 // ABI from https://etherscan.io/address/0x7a1316220a46dce22fd5c6d55a39513367e6c967#code
 const cometAbi = [

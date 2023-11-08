@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Assertion, BI, Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, ContractFunctionExecutionError, type PublicClient, isAddressEqual } from "viem";
+import { Assertion, BI, Viem } from "../../Utils.js";
 
 // same address for ethereum and polygon
 const UNISWAP_V2_FACTORY = "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f" as const;

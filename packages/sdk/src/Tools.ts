@@ -1,2 +1,2 @@
-export * as SharesSplitter from "@enzymefinance/sdk/internal/Tools/SharesSplitter";
-export * as GatedRedemptionQueueSharesWrapper from "@enzymefinance/sdk/internal/Tools/GatedRedemptionQueueSharesWrapper";
+export * as SharesSplitter from "./internal/Tools/SharesSplitter.js";
+export * as GatedRedemptionQueueSharesWrapper from "./internal/Tools/GatedRedemptionQueueSharesWrapper.js";

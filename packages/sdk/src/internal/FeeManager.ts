@@ -1,6 +1,6 @@
-import { Assertion } from "@enzymefinance/sdk/Utils";
-import { callExtension } from "@enzymefinance/sdk/internal/Extensions";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion } from "../Utils.js";
+import { callExtension } from "./Extensions.js";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {

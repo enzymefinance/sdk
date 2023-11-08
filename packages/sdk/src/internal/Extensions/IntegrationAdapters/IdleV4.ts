@@ -1,6 +1,4 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
-import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import {
   type Address,
   ContractFunctionExecutionError,
@@ -10,6 +8,8 @@ import {
   encodeAbiParameters,
   parseUnits,
 } from "viem";
+import { Viem } from "../../../Utils.js";
+import * as IntegrationManager from "../../IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND

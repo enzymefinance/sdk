@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, Hex } from "viem";
+import { Viem } from "../Utils.js";
 
 export type CallExtensionParams = {
   /**

@@ -1,10 +1,7 @@
-import { Assertion } from "@enzymefinance/sdk/Utils";
-import {
-  type RedeemType,
-  isValidRedeemType,
-} from "@enzymefinance/sdk/internal/Extensions/IntegrationAdapters/CurveLiquidity";
-import * as IntegrationManager from "@enzymefinance/sdk/internal/IntegrationManager";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion } from "../../../Utils.js";
+import * as IntegrationManager from "../../IntegrationManager.js";
+import { type RedeemType, isValidRedeemType } from "../IntegrationAdapters/CurveLiquidity.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE

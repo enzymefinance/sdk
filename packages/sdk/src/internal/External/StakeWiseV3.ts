@@ -1,6 +1,6 @@
-import { getBalanceOf } from "@enzymefinance/sdk/Assets";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, parseAbi } from "viem";
+import { getBalanceOf } from "../../Assets.js";
+import { Viem } from "../../Utils.js";
 
 export async function getStakedEthBalance(
   client: PublicClient,

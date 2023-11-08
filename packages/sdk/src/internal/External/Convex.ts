@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Assertion, Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, parseAbi } from "viem";
+import { Assertion, Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // CVX MINING

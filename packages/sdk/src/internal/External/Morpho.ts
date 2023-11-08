@@ -1,5 +1,5 @@
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, parseAbi } from "viem";
+import { Viem } from "../../Utils.js";
 
 export async function getPoolToken(
   client: PublicClient,

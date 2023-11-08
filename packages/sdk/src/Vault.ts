@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient } from "viem";
+import { Viem } from "./Utils.js";
 
 export function getName(
   client: PublicClient,

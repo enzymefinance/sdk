@@ -1,11 +1,11 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "../../Utils.js";
 
-export * as Entrance from "@enzymefinance/sdk/internal/Extensions/Fees/Entrance";
-export * as Exit from "@enzymefinance/sdk/internal/Extensions/Fees/Exit";
-export * as Management from "@enzymefinance/sdk/internal/Extensions/Fees/Management";
-export * as Performance from "@enzymefinance/sdk/internal/Extensions/Fees/Performance";
+export * as Entrance from "./Fees/Entrance.js";
+export * as Exit from "./Fees/Exit.js";
+export * as Management from "./Fees/Management.js";
+export * as Performance from "./Fees/Performance.js";
 
 export function getRecipient(
   client: PublicClient,

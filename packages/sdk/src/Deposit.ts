@@ -1,8 +1,8 @@
 import * as Abis from "@enzymefinance/abis";
-import * as Policies from "@enzymefinance/sdk/Policies";
-import { Viem } from "@enzymefinance/sdk/Utils";
-import { Assertion } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, type PublicClient } from "viem";
+import * as Policies from "./Policies.js";
+import { Viem } from "./Utils.js";
+import { Assertion } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // DEPOSIT

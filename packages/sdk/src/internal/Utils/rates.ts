@@ -1,6 +1,6 @@
-import { toSeconds } from "@enzymefinance/sdk/internal/Utils/conversion";
 import { Decimal } from "decimal.js";
 import { parseEther } from "viem";
+import { toSeconds } from "../Utils/conversion.js";
 
 const LocalDecimal = Decimal.clone({ precision: 2 * 27 });
 

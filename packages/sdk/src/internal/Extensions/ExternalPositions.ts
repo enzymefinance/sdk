@@ -1,19 +1,19 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "../../Utils.js";
 
-export * as AaveV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/AaveV2Debt";
-export * as AaveV3Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/AaveV3Debt";
-export * as ArbitraryLoan from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/ArbitraryLoan";
-export * as CompoundV2Debt from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/CompoundV2Debt";
-export * as ConvexVoting from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/ConvexVoting";
-export * as Kiln from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Kiln";
-export * as LidoWithdrawals from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/LidoWithdrawals";
-export * as Liquity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/Liquity";
-export * as MapleLiquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/MapleLiquidity";
-export * as StakeWise from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/StakeWise";
-export * as TheGraphDelegation from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/TheGraphDelegation";
-export * as UniswapV3Liquidity from "@enzymefinance/sdk/internal/Extensions/ExternalPositions/UniswapV3Liquidity";
+export * as AaveV2Debt from "./ExternalPositions/AaveV2Debt.js";
+export * as AaveV3Debt from "./ExternalPositions/AaveV3Debt.js";
+export * as ArbitraryLoan from "./ExternalPositions/ArbitraryLoan.js";
+export * as CompoundV2Debt from "./ExternalPositions/CompoundV2Debt.js";
+export * as ConvexVoting from "./ExternalPositions/ConvexVoting.js";
+export * as Kiln from "./ExternalPositions/Kiln.js";
+export * as LidoWithdrawals from "./ExternalPositions/LidoWithdrawals.js";
+export * as Liquity from "./ExternalPositions/Liquity.js";
+export * as MapleLiquidity from "./ExternalPositions/MapleLiquidity.js";
+export * as StakeWise from "./ExternalPositions/StakeWise.js";
+export * as TheGraphDelegation from "./ExternalPositions/TheGraphDelegation.js";
+export * as UniswapV3Liquidity from "./ExternalPositions/UniswapV3Liquidity.js";
 
 export function getLabelForType(
   client: PublicClient,

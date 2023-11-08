@@ -1,7 +1,7 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { multicall } from "viem/contract";
+import { Viem } from "../../../Utils.js";
 
 const settingsEncoding = [
   {

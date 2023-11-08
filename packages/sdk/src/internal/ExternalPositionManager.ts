@@ -1,6 +1,6 @@
-import type { Types } from "@enzymefinance/sdk/Utils";
-import { type PopulatedExtensionCall, callExtension } from "@enzymefinance/sdk/internal/Extensions";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import type { Types } from "../Utils.js";
+import { type PopulatedExtensionCall, callExtension } from "./Extensions.js";
 
 export type Action = typeof Action[keyof typeof Action];
 export const Action = {

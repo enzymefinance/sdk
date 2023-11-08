@@ -1,5 +1,5 @@
-import { Viem } from "@enzymefinance/sdk/Utils";
 import type { Address, PublicClient } from "viem";
+import { Viem } from "../Utils.js";
 
 // delegates are only for ethereum
 const AAVE = "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9" as const;

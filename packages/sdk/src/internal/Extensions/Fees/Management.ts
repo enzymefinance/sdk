@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Rates, Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import { Rates, Viem } from "../../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
 // CALCULATIONS

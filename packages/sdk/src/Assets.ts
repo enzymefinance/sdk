@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, ContractFunctionExecutionError, type PublicClient, hexToString, parseAbi } from "viem";
+import { Viem } from "./Utils.js";
 
 export async function getInfo(
   client: PublicClient,
