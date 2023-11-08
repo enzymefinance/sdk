@@ -1,5 +1,16 @@
 # @enzymefinance/sdk
 
+## 0.2.0
+
+### Minor Changes
+
+- [`6d3e6fe`](https://github.com/enzymefinance/sdk/commit/6d3e6fed4314b26598b4793cbe51f9205efc7002) Thanks [@fubhy](https://github.com/fubhy)! - Publish build changes
+
+### Patch Changes
+
+- Updated dependencies [[`6d3e6fe`](https://github.com/enzymefinance/sdk/commit/6d3e6fed4314b26598b4793cbe51f9205efc7002)]:
+  - @enzymefinance/abis@0.1.0
+
 ## 0.1.45
 
 ### Patch Changes
