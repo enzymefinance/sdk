@@ -26,7 +26,7 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "dependencies": {
-    "@enzymefinance/abis": "^0.1.1"
+    "@enzymefinance/abis": "workspace:*"
   },
   "peerDependencies": {
     "abitype": "^0.10.2",
