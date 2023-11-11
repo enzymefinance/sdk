@@ -55,6 +55,8 @@ jobs:
 
       - name: Version snapshot
         run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} | grep -q "All files have been updated"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build snapshot
         run: pnpm build
