@@ -21,8 +21,7 @@ jobs:
           if [[ -n $snapshot ]]; then
             echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
           else
-            echo ::error::Invalid snapshot comment
-            exit
+            exit 1
           fi
 
       - name: Enforce permission requirement
@@ -66,36 +65,26 @@ jobs:
 
       - name: Publish snapshot
         id: snapshot
-        run: |
-          output=$(pnpm changeset publish --tag ${{ steps.comment.outputs.snapshot }} --no-git-tag)
-          # Extract the part of the output after "packages published successfully".
-          tags=$(echo "$output" | awk '/packages published successfully:/{flag=1; next} flag')
-          # Format the packages as json.
-          tags="[$(echo "$tags" | grep -o '@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')]"
-          echo "tags=$tags" >> $GITHUB_OUTPUT
+        run: echo "stdout=$(pnpm changeset publish --tag ${{ steps.comment.outputs.snapshot }} --no-git-tag)" >> $GITHUB_OUTPUT
 
-      - name: Add comment
+      - name: Generate comment update
+        id: update
         uses: actions/github-script@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const tags = ${{ steps.snapshot.outputs.tags }}
-            const body = (
-              `🫰✨ **Thanks @${context.actor}! ` +
-              `Your snapshot has been published to npm.**\n\n` +
-              `Test the snapshot by updating your \`package.json\` ` +
-              `with the newly published version:\n` +
-              tags.map(tag => (
-                '```sh\n' +
-                `pnpm add ${tag}\n` +
-                '```'
-              )).join('\n')
-            )
+            // Extract the published tags from the output after "packages published successfully:"`
+            const output = "${{ steps.snapshot.outputs.stdout }}"
+            const [, lines] = output.split('packages published successfully:')
+            const commands = lines.match(/@[^ ]*/g).map(tag => '```sh\n' + `pnpm add ${tag}\n` + '```')
+            return `**Thanks @${context.actor}! Your snapshot has been published.**\n\n${commands.join('\n')}`
 
-            await github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body,
-            })
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          edit-mode: append
+          body: \n\n${{ steps.update.outputs.result }}
