@@ -32,12 +32,14 @@ jobs:
       - name: Checkout default branch
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Checkout pull request branch
         uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.issue.number }}/head
+          fetch-depth: 0
 
       - name: Get current branch name
         id: branch  
@@ -56,7 +58,7 @@ jobs:
 
       - name: Check changeset status
         run: |
-          pnpm changeset status --since refs/remotes/origin/main --output changeset.json
+          pnpm changeset status --since main --output changeset.json
           if [[ $(jq '.releases | length' changeset.json) -eq 0 ]]; then
             echo ::error::No changeset entries found
           fi
