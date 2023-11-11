@@ -65,7 +65,12 @@ jobs:
 
       - name: Publish snapshot
         id: snapshot
-        run: echo "stdout=$(pnpm changeset publish --tag ${{ steps.comment.outputs.snapshot }} --no-git-tag)" >> $GITHUB_OUTPUT
+        run: |
+          # Publish and extract published tags from stdout.
+          output=$(pnpm changeset publish --tag ${{ steps.comment.outputs.snapshot }} --no-git-tag)
+          output=$(echo "$output" | awk '/packages published successfully:/{flag=1; next} flag')
+          output=$(echo "$output" | grep -o '@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')
+          echo "tags=[$output]" >> $GITHUB_OUTPUT
 
       - name: Generate comment update
         id: update
@@ -74,11 +79,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            // Extract the published tags from the output after "packages published successfully:"`
-            const output = "${{ steps.snapshot.outputs.stdout }}"
-            const [, lines] = output.split('packages published successfully:')
-            const commands = lines.match(/@[^ ]*/g).map(tag => '```sh\n' + `pnpm add ${tag}\n` + '```')
-            return `**Thanks @${context.actor}! Your snapshot has been published.**\n\n${commands.join('\n')}`
+            const commands = ${{ steps.snapshot.outputs.tags }}.map(tag => '```sh\n' + `pnpm add ${tag}\n` + '```')
+            const header = `**Thanks @${context.actor}! Your snapshot has been published.**`
+            return `${header}\n\n${commands.join('\n')}`
 
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v2
