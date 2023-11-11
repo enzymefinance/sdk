@@ -31,11 +31,7 @@ jobs:
 
       - name: Checkout default branch
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
   
-      # issue_comment requires us to checkout the branch
-      # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
       - name: Checkout pull request branch
         run: gh pr checkout ${{ github.event.issue.number }}
         env:
@@ -44,6 +40,9 @@ jobs:
       - name: Get current branch name
         id: branch  
         run: echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
+    
+      - name: Debug
+        run: git checkout origin/main -- .changeset
 
       - name: Retrieve changeset entries
         if: ${{ steps.branch.outputs.branch == 'changeset-release/main' }}
@@ -56,16 +55,8 @@ jobs:
         if: ${{ hashFiles('.changeset/pre.json') != '' }}
         run: pnpm changeset pre exit
 
-      - name: Check changeset status
-        if: ${{ steps.branch.outputs.branch != 'changeset-release/main' }}
-        run: |
-          pnpm changeset status --output changeset.json
-          if [[ $(jq '.releases | length' changeset.json) -eq 0 ]]; then
-            echo ::error::No changeset entries found
-          fi
-
       - name: Version snapshot
-        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }}
+        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} 2>&1 | grep -q "All files have been updated"
 
       - name: Build snapshot
         run: pnpm build
