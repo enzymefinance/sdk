@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Extract snapshot comment
-        id: comment
+        id: command
         run: |
           snapshot=$(echo "${{ github.event.comment.body }}" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
           if [[ -n $snapshot ]]; then
@@ -28,6 +28,17 @@ jobs:
         uses: prince-chrismc/check-actor-permissions-action@v3
         with:
           permission: write
+
+      - name: Initial comment
+        id: comment
+        uses: peter-evans/create-or-update-comment@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          body: |
+            **Alright @${context.actor}, I'm working on your snapshot!**
+            
+            You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
       - name: Checkout default branch
         uses: actions/checkout@v2
@@ -53,7 +64,7 @@ jobs:
         run: pnpm changeset pre exit
 
       - name: Version snapshot
-        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} | grep -q "All files have been updated"
+        run: pnpm changeset version --snapshot ${{ steps.command.outputs.snapshot }} | grep -q "All files have been updated"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -67,27 +78,51 @@ jobs:
         id: snapshot
         run: |
           # Publish and extract published tags from stdout.
-          output=$(pnpm changeset publish --tag ${{ steps.comment.outputs.snapshot }} --no-git-tag)
+          output=$(pnpm changeset publish --tag ${{ steps.command.outputs.snapshot }} --no-git-tag)
           output=$(echo "$output" | awk '/packages published successfully:/{flag=1; next} flag')
           output=$(echo "$output" | grep -o '@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')
           echo "tags=[$output]" >> $GITHUB_OUTPUT
 
-      - name: Generate comment update
-        id: update
-        uses: actions/github-script@v6
+      - name: Update comment (failure)
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          script: |
-            const commands = ${{ steps.snapshot.outputs.tags }}.map(tag => '```sh\n' + `pnpm add ${tag}\n` + '```')
-            const header = `**Thanks @${context.actor}! Your snapshot has been published.**`
-            return `${header}\n\n${commands.join('\n')}`
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Sorry @${context.actor}, I failed to publish your snapshot!**
+            
+            You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
-      - name: Create or update comment
-        uses: peter-evans/create-or-update-comment@v2
+      - name: Update comment (failure)
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          comment-id: ${{ github.event.comment.id }}
-          edit-mode: append
-          body: \n\n${{ steps.update.outputs.result }}
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Sorry @${context.actor}, I failed to publish your snapshot!**
+            
+            You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+      - name: Update comment (success)
+        uses: peter-evans/create-or-update-comment@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Good news @${context.actor}, your snapshot has been published!**
+            
+            You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+
+            Here are the tags I published:
+              
+            ```sh
+            ${{ steps.snapshot.outputs.tags }}
+            ```
