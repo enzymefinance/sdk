@@ -56,7 +56,7 @@ jobs:
         run: pnpm changeset pre exit
 
       - name: Version snapshot
-        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} 2>&1 | grep -q "All files have been updated"
+        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} | grep -q "All files have been updated"
 
       - name: Build snapshot
         run: pnpm build
