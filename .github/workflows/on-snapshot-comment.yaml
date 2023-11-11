@@ -1,8 +1,7 @@
 name: Snapshot
 on:
   issue_comment:
-    types:
-      - created
+    types: [created]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,107 +15,58 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Extract snapshot comment
-        uses: actions-ecosystem/action-regex-match@v2
         id: comment
-        with:
-          text: ${{ github.event.comment.body }}
-          regex: '^/snapshot\s(\w{4,16})\s*$'
+        run: |
+          snapshot=$(echo "${{ github.event.comment.body }}" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
+          if [[ -n $snapshot ]]; then
+            echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
+          else
+            echo ::error::Invalid snapshot comment
+            exit
+          fi
 
       - name: Enforce permission requirement
         uses: prince-chrismc/check-actor-permissions-action@v3
         with:
           permission: write
 
-      - name: Add initial reaction
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: eyes
-
-      - name: Validate pull request
-        uses: actions/github-script@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          script: |
-            try {
-              const pr = await github.rest.pulls.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: context.issue.number,
-              })
-
-              if (context.payload.repository.full_name !== pr.data.head.repo.full_name) {
-                const message = 'The `/snapshot` command is not supported on pull requests from forked repositories.'
-                core.setFailed(message)
-              }
-            } catch (error) {
-              core.setFailed(`Request failed with error ${error}`)
-            }
-
       - name: Checkout default branch
-        uses: actions/checkout@v4
-
+        uses: actions/checkout@v2
+  
       - name: Checkout pull request branch
-        run: hub pr checkout ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get current branch name
+        id: branch  
+        run: echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
+    
+      - name: Debug
+        run: git checkout origin/main -- .changeset
 
       - name: Retrieve changeset entries
-        run: |
-          if [[ $(git branch --show-current) == 'changeset-release/main' ]]; then
-            git checkout origin/main -- .changeset
-          fi
+        if: ${{ steps.branch.outputs.branch == 'changeset-release/main' }}
+        run: git checkout origin/main -- .changeset
 
       - name: Install dependencies
-        uses: ./.github/actions/setup
+        uses: ./.github/actions/install-dependencies
 
-      - name: Exit prerelease
-        run: pnpm changeset pre exit || true
+      - name: Exit pre-release mode
+        if: ${{ hashFiles('.changeset/pre.json') != '' }}
+        run: pnpm changeset pre exit
 
       - name: Version snapshot
-        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.group1 }}
+        run: pnpm changeset version --snapshot ${{ steps.comment.outputs.snapshot }} | grep -q "All files have been updated"
 
       - name: Build snapshot
         run: pnpm build
-
-      - name: Create an .npmrc
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          cat << EOF > "$HOME/.npmrc"
-            //registry.npmjs.org/:_authToken=$NPM_TOKEN
-          EOF
+ 
+      - name: Set registry config
+        run: pnpn config set --location project "//registry.npmjs.org/:_authToken" "${{ secrets.NPM_TOKEN }}"
 
       - name: Publish snapshot
-        uses: actions/github-script@v6
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          script: |
-            const execa = require('execa')
-            const result = await execa.command('pnpm changeset publish --no-git-tag').pipeStdout(process.stdout);
-            const tags = Array
-              .from(result.stdout.matchAll(/New tag:\s+([^\s\n]+)/g))
-              .map(([_, tag]) => tag)
-
-            if (tags.length) {
-              const body = (
-                `**Thanks @${context.actor}! Your snapshot has been published.**\n\n` +
-                `Test the snapshot by updating your \`package.json\` with the newly published version:\n\n` +
-                tags.map(tag => `- ${tag}`).join('\n')
-              )
-
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body,
-              })
-            }
-
-      - name: Add final reaction
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          reactions: rocket
+        id: snapshot
+        run: |
+          tags=($(pnpm changeset publish --no-git-tag | grep -oP 'New tag:\s+([^\s\n]+)' | cut -d' ' -f3))
+          echo "tags=$(printf '%s\n' "${tags[@]}" | jq -R -s .)" >> $GITHUB_OUTPUT
