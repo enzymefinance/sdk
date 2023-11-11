@@ -29,17 +29,13 @@ jobs:
         with:
           permission: write
 
-      - name: Checkout default branch
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
       - name: Checkout pull request branch
         uses: actions/checkout@v4
         with:
           ref: refs/pull/${{ github.event.issue.number }}/head
-          clean: false
+
+      - name: Fetch main
+        run: git fetch origin main
 
       - name: Get current branch name
         id: branch  
