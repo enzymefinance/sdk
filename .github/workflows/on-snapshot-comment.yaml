@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           body: |
-            **Alright @${context.actor}, I'm working on your snapshot!**
+            **Alright @${{ github.actor }}, I'm working on your snapshot!**
             
             You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
@@ -92,20 +92,7 @@ jobs:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           edit-mode: replace
           body: |
-            **Sorry @${context.actor}, I failed to publish your snapshot!**
-            
-            You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
-
-      - name: Update comment (failure)
-        if: failure()
-        uses: peter-evans/create-or-update-comment@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          comment-id: ${{ steps.comment.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            **Sorry @${context.actor}, I failed to publish your snapshot!**
+            **Sorry @${{ github.actor }}, I failed to publish your snapshot!**
             
             You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
@@ -117,7 +104,7 @@ jobs:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           edit-mode: replace
           body: |
-            **Good news @${context.actor}, your snapshot has been published!**
+            **Good news @${{ github.actor }}, your snapshot has been published!**
             
             You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
