@@ -80,8 +80,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
-            const tags = JSON.parse("${{ steps.snapshot.outputs.tags }}")
-            console.log(tags)
+            const tags = ${{ steps.snapshot.outputs.tags }}
             const body = (
               `🫰✨ **Thanks @${context.actor}! ` +
               `Your snapshot has been published to npm.**\n\n` +
