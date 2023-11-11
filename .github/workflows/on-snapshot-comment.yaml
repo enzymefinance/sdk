@@ -35,7 +35,7 @@ jobs:
           ref: refs/pull/${{ github.event.issue.number }}/head
 
       - name: Fetch main
-        run: git fetch origin main && git pull --force --no-tags origin
+        run: git fetch origin main && git pull --force --no-tags origin main:main
 
       - name: Get current branch name
         id: branch  
