@@ -67,5 +67,5 @@ jobs:
       - name: Publish snapshot
         id: snapshot
         run: |
-          tags=($(pnpm changeset publish --no-git-tag | grep -oP 'New tag:\s+([^\s\n]+)' | cut -d' ' -f3))
+          tags=($(pnpm changeset publish --tag snapshot-${{ steps.comment.outputs.snapshot }} --no-git-tag | grep -oP 'New tag:\s+([^\s\n]+)' | cut -d' ' -f3))
           echo "tags=$(printf '%s\n' "${tags[@]}" | jq -R -s .)" >> $GITHUB_OUTPUT
