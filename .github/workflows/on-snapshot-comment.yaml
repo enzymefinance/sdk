@@ -31,6 +31,8 @@ jobs:
 
       - name: Checkout default branch
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
   
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
