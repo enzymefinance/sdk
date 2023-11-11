@@ -41,13 +41,10 @@ jobs:
       - name: Get current branch name
         id: branch  
         run: echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
-    
-      - name: Debug
-        run: git checkout origin/main -- .changeset
 
       - name: Retrieve changeset entries
         if: ${{ steps.branch.outputs.branch == 'changeset-release/main' }}
-        run: git checkout origin/main -- .changeset
+        run: git checkout origin/main -- .changeset/*.md
 
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
