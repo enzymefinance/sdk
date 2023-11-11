@@ -69,3 +69,4 @@ jobs:
         run: |
           tags=($(pnpm changeset publish --tag snapshot-${{ steps.comment.outputs.snapshot }} --no-git-tag | grep -oP 'New tag:\s+([^\s\n]+)' | cut -d' ' -f3))
           echo "tags=$(printf '%s\n' "${tags[@]}" | jq -R -s .)" >> $GITHUB_OUTPUT
+          printf '%s\n' "${tags[@]}" | jq -R -s .
