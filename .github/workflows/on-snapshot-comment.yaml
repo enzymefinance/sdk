@@ -37,7 +37,7 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            **Alright @${{ github.actor }}, I'm working on your snapshot!**
+            **Alright @${{ github.actor }}, I'm working on the snapshot!**
             
             You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
@@ -84,17 +84,21 @@ jobs:
           output=$(echo "$output" | grep -o '@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')
           echo "tags=[$output]" >> $GITHUB_OUTPUT
 
-      - name: Update comment (failure)
-        if: failure()
-        uses: peter-evans/create-or-update-comment@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Render template
+        uses: chuhlomin/render-template@v1
+        id: template
         with:
-          comment-id: ${{ steps.comment.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            **Sorry @${{ github.actor }}, I failed to publish your snapshot!**
-            
+          vars: |
+            tags: ${{ steps.snapshot.outputs.tags }}
+          template: |
+            **Good news @${{ github.actor }}, I've published the snapshot!**
+
+            {{range .tags}}
+            ```sh
+            {{.}}
+            ```
+            {{end}}
+
             You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
       - name: Update comment (success)
@@ -114,3 +118,16 @@ jobs:
             ```sh
             ${{ steps.snapshot.outputs.tags }}
             ```
+
+      - name: Update comment (failure)
+        if: failure()
+        uses: peter-evans/create-or-update-comment@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            **Sorry @${{ github.actor }}, I failed to publish the snapshot!**
+            
+            You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
