@@ -29,14 +29,15 @@ jobs:
         with:
           permission: write
 
+      - name: Checkout default branch
+        uses: actions/checkout@v2
+  
+      # issue_comment requires us to checkout the branch
+      # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
       - name: Checkout pull request branch
-        uses: actions/checkout@v4
-        with:
-          ref: refs/pull/${{ github.event.issue.number }}/head
-          fetch-depth: 0
-
-      - name: Fetch main
-        run: git pull --force --no-tags origin main:main
+        run: gh pr checkout ${{ github.event.issue.number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current branch name
         id: branch  
