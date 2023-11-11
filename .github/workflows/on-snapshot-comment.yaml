@@ -22,6 +22,7 @@ jobs:
             echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
           else
             echo ::error::Invalid snapshot comment
+            exit
           fi
 
       - name: Enforce permission requirement
