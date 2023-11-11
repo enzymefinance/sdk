@@ -19,7 +19,7 @@ jobs:
         run: |
           snapshot=$(echo "${{ github.event.comment.body }}" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
           if [[ -n $snapshot ]]; then
-            echo ::set-output name=snapshot::$snapshot
+            echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
           else
             echo ::error::Invalid snapshot comment
           fi
@@ -31,6 +31,8 @@ jobs:
 
       - name: Checkout default branch
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Checkout pull request branch
         uses: actions/checkout@v4
@@ -39,7 +41,7 @@ jobs:
 
       - name: Get current branch name
         id: branch  
-        run: echo ::set-output name=branch::$(git branch --show-current)
+        run: echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
 
       - name: Retrieve changeset entries
         if: ${{ steps.branch.outputs.branch == 'changeset-release/main' }}
@@ -72,4 +74,4 @@ jobs:
         id: snapshot
         run: |
           tags=($(pnpm changeset publish --no-git-tag | grep -oP 'New tag:\s+([^\s\n]+)' | cut -d' ' -f3))
-          echo ::set-output name=tags::$(printf '%s\n' "${tags[@]}" | jq -R -s .)
+          echo "tags=$(printf '%s\n' "${tags[@]}" | jq -R -s .)" >> $GITHUB_OUTPUT
