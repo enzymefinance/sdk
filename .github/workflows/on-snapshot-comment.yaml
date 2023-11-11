@@ -62,7 +62,7 @@ jobs:
         run: pnpm build
  
       - name: Set registry config
-        run: pnpn config set --location project "//registry.npmjs.org/:_authToken" "${{ secrets.NPM_TOKEN }}"
+        run: pnpm config set --location project "//registry.npmjs.org/:_authToken" "${{ secrets.NPM_TOKEN }}"
 
       - name: Publish snapshot
         id: snapshot
