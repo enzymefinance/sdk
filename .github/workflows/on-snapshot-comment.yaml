@@ -56,7 +56,7 @@ jobs:
 
       - name: Check changeset status
         run: |
-          pnpm changeset status --output changeset.json
+          pnpm changeset status --since origin/main --output changeset.json
           if [[ $(jq '.releases | length' changeset.json) -eq 0 ]]; then
             echo ::error::No changeset entries found
           fi
