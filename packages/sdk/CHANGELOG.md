@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.2.3
+
+### Patch Changes
+
+- [`5c51178`](https://github.com/enzymefinance/sdk/commit/5c5117848128340e327c1bbcf25b405fe840ee4a) Thanks [@fubhy](https://github.com/fubhy)! - Publishing packages
+
+- Updated dependencies [[`5c51178`](https://github.com/enzymefinance/sdk/commit/5c5117848128340e327c1bbcf25b405fe840ee4a)]:
+  - @enzymefinance/abis@0.1.2
+
 ## 0.2.2
 
 ### Patch Changes
