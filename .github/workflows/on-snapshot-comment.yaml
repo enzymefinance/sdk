@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: Extract snapshot comment
         id: command
+        env:
+          COMMENT: ${{ github.event.comment.body }}
         run: |
-          snapshot=$(echo "${{ github.event.comment.body }}" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
+          snapshot=$(echo "$COMMENT" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
           if [[ -n $snapshot ]]; then
             echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
           else
@@ -26,6 +28,8 @@ jobs:
 
       - name: Enforce permission requirement
         uses: prince-chrismc/check-actor-permissions-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           permission: write
 
