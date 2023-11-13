@@ -2,17 +2,16 @@
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IAuraBalancerV2LpStakingWrapperFactory {
-    event CanonicalLibSet(address nextCanonicalLib);
-    event ProxyDeployed(address indexed caller, address proxy, bytes constructData);
+    event ImplementationSet(address implementation);
+    event ProxyDeployed(address proxy);
     event WrapperDeployed(uint256 indexed pid, address wrapperProxy, address curveLpToken);
 
     function deploy(uint256 _pid) external returns (address wrapperProxy_);
-    function deployProxy(bytes memory _constructData) external returns (address proxy_);
-    function getCanonicalLib() external view returns (address canonicalLib_);
     function getCurveLpTokenForWrapper(address _wrapper) external view returns (address lpToken_);
     function getOwner() external view returns (address owner_);
     function getWrapperForConvexPool(uint256 _pid) external view returns (address wrapper_);
+    function implementation() external view returns (address);
     function pauseWrappers(address[] memory _wrappers) external;
-    function setCanonicalLib(address _nextCanonicalLib) external;
+    function setImplementation(address _nextImplementation) external;
     function unpauseWrappers(address[] memory _wrappers) external;
 }

@@ -51,7 +51,7 @@ export const IChainlinkPriceFeedMixin = [
       },
       {
         indexed: false,
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset",
         type: "uint8",
       },
@@ -121,7 +121,7 @@ export const IChainlinkPriceFeedMixin = [
     name: "getRateAssetForPrimitive",
     outputs: [
       {
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset_",
         type: "uint8",
       },
