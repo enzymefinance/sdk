@@ -1,5 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Assertion } from "../../../Utils.js";
+import * as Abis from "@enzymefinance/abis";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion, Viem } from "../../../Utils.js";
 import * as IntegrationManager from "../../IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -284,4 +285,24 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       Assertion.never(orderType, "Invalid order type");
     }
   }
+}
+
+//--------------------------------------------------------------------------------------------
+// READ
+//--------------------------------------------------------------------------------------------
+
+export async function getZeroExV2Exchange(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    aaveIncentivesController: Address;
+    assets: Address[];
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis,
+    functionName: "getRewardsBalance",
+    address: args.aaveIncentivesController,
+    args: [args.assets, args.user],
+  });
 }
