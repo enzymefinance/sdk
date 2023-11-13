@@ -118,3 +118,16 @@ export function getFeeManager(
     address: args.comptrollerProxy,
   });
 }
+
+export function sharesAreFreelyTransferable(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IVaultLib,
+    functionName: "sharesAreFreelyTransferable",
+    address: args.vaultProxy,
+  });
+}

@@ -17,3 +17,4 @@ export * as StakeWiseV3 from "./internal/External/StakeWiseV3.js";
 export * as TheGraph from "./internal/External/TheGraph.js";
 export * as UniswapV2 from "./internal/External/UniswapV2.js";
 export * as UniswapV3 from "./internal/External/UniswapV3.js";
+export * as Yearn from "./internal/External/Yearn.js";

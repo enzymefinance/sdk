@@ -99,7 +99,7 @@ export async function getBalancesOf(
     assets: Address[];
   }>,
 ) {
-  const balances = await Promise.all(
+  return Promise.all(
     args.assets.map(async (asset) => {
       const amount = await getBalanceOf(client, {
         ...args,
@@ -109,13 +109,6 @@ export async function getBalancesOf(
       return { asset, amount };
     }),
   );
-
-  const amounts: Record<Address, bigint> = {};
-  for (const { asset, amount } of balances) {
-    amounts[asset] = amount;
-  }
-
-  return amounts;
 }
 
 export function getAllowance(
@@ -194,6 +187,34 @@ export async function getCanonicalAssetValue(
       functionName: "calcCanonicalAssetValue",
       address: args.valueInterpreter,
       args: [args.baseAsset, args.amount, args.quoteAsset],
+    });
+
+    return result;
+  } catch (error) {
+    // TODO: More selectively catch this error here.
+    if (error instanceof ContractFunctionExecutionError) {
+      return undefined;
+    }
+
+    throw error;
+  }
+}
+
+export async function calcCanonicalAssetsTotalValue(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    valueInterpreter: Address;
+    baseAssets: Address[];
+    amounts: bigint[];
+    quoteAsset: Address;
+  }>,
+) {
+  try {
+    const { result } = await Viem.simulateContract(client, args, {
+      abi: Abis.IValueInterpreter,
+      functionName: "calcCanonicalAssetsTotalValue",
+      address: args.valueInterpreter,
+      args: [args.baseAssets, args.amounts, args.quoteAsset],
     });
 
     return result;

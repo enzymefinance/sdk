@@ -18,17 +18,28 @@ export function getDepositQueueUser(
   });
 }
 
-export async function getRedemptionQueueUsers(
+export function getRedemptionQueueUsers(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
   }>,
 ) {
-  const sharesWrapperUsers = await Viem.readContract(client, args, {
+  return Viem.readContract(client, args, {
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "getRedemptionQueueUsers",
     address: args.sharesWrapperId,
   });
+}
 
-  return sharesWrapperUsers.length;
+export async function getRedemptionQueueUsersLength(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    sharesWrapperId: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "getRedemptionQueueUsersLength",
+    address: args.sharesWrapperId,
+  });
 }
