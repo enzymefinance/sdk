@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.5
+
+### Patch Changes
+
+- [#260](https://github.com/enzymefinance/sdk/pull/260) [`a0c4259`](https://github.com/enzymefinance/sdk/commit/a0c4259305d288449da9425fc774003f7adca26a) Thanks [@iherger](https://github.com/iherger)! - More read functions
+
 ## 0.2.4
 
 ### Patch Changes
