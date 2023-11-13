@@ -2,6 +2,10 @@ import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
 import { Viem } from "./Utils.js";
 
+//--------------------------------------------------------------------------------------------
+// MIGRATION
+//--------------------------------------------------------------------------------------------
+
 export function hasMigrationRequest(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -47,20 +51,31 @@ export function getRemainingMigrationRequestTimelock(
   });
 }
 
-export function getMigrationRequestDetails(
+export async function getMigrationRequestDetails(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vault: Address;
     dispatcher: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  const result = await Viem.readContract(client, args, {
     abi: Abis.IDispatcher,
     functionName: "getMigrationRequestDetailsForVaultProxy",
     address: args.dispatcher,
     args: [args.vault],
   });
+
+  return {
+    executableTimestamp: result[0],
+    nextFundDeployer: result[1],
+    nextVaultAccessor_: result[2],
+    nextVaultLib_: result[3],
+  };
 }
+
+//--------------------------------------------------------------------------------------------
+// RECONFIGURATION
+//--------------------------------------------------------------------------------------------
 
 export function hasReconfigurationRequest(
   client: PublicClient,
@@ -72,6 +87,21 @@ export function hasReconfigurationRequest(
   return Viem.readContract(client, args, {
     abi: Abis.IFundDeployer,
     functionName: "hasReconfigurationRequest",
+    address: args.fundDeployer,
+    args: [args.vaultProxy],
+  });
+}
+
+export function getReconfigurationRequestDetails(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    fundDeployer: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IFundDeployer,
+    functionName: "getReconfigurationRequestForVaultProxy",
     address: args.fundDeployer,
     args: [args.vaultProxy],
   });

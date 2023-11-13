@@ -318,3 +318,25 @@ export async function getClaimableTokens(
 
   return result;
 }
+
+//--------------------------------------------------------------------------------------------
+// MINTER
+//--------------------------------------------------------------------------------------------
+
+export async function isAllowedToMintFor(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    curveMinter: Address;
+    vault: Address;
+    adapter: Address;
+  }>,
+) {
+  const { result } = await Viem.simulateContract(client, args, {
+    abi: parseAbi(["function allowed_to_mint_for(address args0, address arg1) payable returns (bool)"]),
+    functionName: "allowed_to_mint_for",
+    address: args.curveMinter,
+    args: [args.adapter, args.vault],
+  });
+
+  return result;
+}
