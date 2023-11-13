@@ -691,7 +691,7 @@ export const IFundDeployer = [
             type: "uint256",
           },
         ],
-        internalType: "struct FundDeployer.ReconfigurationRequest",
+        internalType: "struct IFundDeployer.ReconfigurationRequest",
         name: "reconfigurationRequest_",
         type: "tuple",
       },

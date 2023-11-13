@@ -15,7 +15,9 @@ interface IStakingWrapper {
     function claimRewardsFor(address _for)
         external
         returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
-    function deposit(uint256 _amount) external;
+    function claimRewardsForWithoutCheckpoint(address _for)
+        external
+        returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
     function depositTo(address _to, uint256 _amount) external;
     function getRewardTokenAtIndex(uint256 _index) external view returns (address rewardToken_);
     function getRewardTokenCount() external view returns (uint256 count_);
@@ -29,9 +31,8 @@ interface IStakingWrapper {
         view
         returns (UserHarvestData memory userHarvestData_);
     function isPaused() external view returns (bool isPaused_);
-    function withdraw(uint256 _amount, bool _claimRewards)
-        external
-        returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
-    function withdrawTo(address _to, uint256 _amount, bool _claimRewardsToHolder) external;
-    function withdrawToOnBehalf(address _onBehalf, address _to, uint256 _amount, bool _claimRewardsToHolder) external;
+    function togglePause(bool _isPaused) external;
+    function withdrawTo(address _to, uint256 _amount) external;
+    function withdrawToOnBehalf(address _onBehalf, address _to, uint256 _amount) external;
+    function withdrawToWithoutCheckpoint(address _to, uint256 _amount) external;
 }

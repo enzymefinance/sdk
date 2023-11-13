@@ -88,7 +88,7 @@ export const IValueInterpreter = [
       },
       {
         indexed: false,
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset",
         type: "uint8",
       },
@@ -146,7 +146,7 @@ export const IValueInterpreter = [
         type: "address[]",
       },
       {
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset[]",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
         name: "_rateAssets",
         type: "uint8[]",
       },
@@ -302,7 +302,7 @@ export const IValueInterpreter = [
     name: "getRateAssetForPrimitive",
     outputs: [
       {
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset_",
         type: "uint8",
       },
@@ -482,7 +482,7 @@ export const IValueInterpreter = [
         type: "address[]",
       },
       {
-        internalType: "enum ChainlinkPriceFeedMixin.RateAsset[]",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
         name: "_rateAssets",
         type: "uint8[]",
       },

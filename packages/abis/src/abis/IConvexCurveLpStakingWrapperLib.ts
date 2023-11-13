@@ -27,12 +27,6 @@ export const IConvexCurveLpStakingWrapperLib = [
   },
   {
     anonymous: false,
-    inputs: [],
-    name: "AddExtraRewardsBypassed",
-    type: "event",
-  },
-  {
-    anonymous: false,
     inputs: [
       {
         indexed: true,
@@ -85,19 +79,6 @@ export const IConvexCurveLpStakingWrapperLib = [
     anonymous: false,
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "rewardToken",
-        type: "address",
-      },
-    ],
-    name: "HarvestUpdateBypassed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
         indexed: false,
         internalType: "bool",
         name: "isPaused",
@@ -118,50 +99,6 @@ export const IConvexCurveLpStakingWrapperLib = [
       },
     ],
     name: "RewardTokenAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-    ],
-    name: "RewardTokenRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address[]",
-        name: "rewardTokens",
-        type: "address[]",
-      },
-      {
-        indexed: false,
-        internalType: "uint256[]",
-        name: "claimedAmounts",
-        type: "uint256[]",
-      },
-    ],
-    name: "RewardsClaimed",
     type: "event",
   },
   {
@@ -414,6 +351,30 @@ export const IConvexCurveLpStakingWrapperLib = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_for",
+        type: "address",
+      },
+    ],
+    name: "claimRewardsForWithoutCheckpoint",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "rewardTokens_",
+        type: "address[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimedAmounts_",
+        type: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "decimals",
     outputs: [
@@ -447,19 +408,6 @@ export const IConvexCurveLpStakingWrapperLib = [
         type: "bool",
       },
     ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "deposit",
-    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -696,19 +644,6 @@ export const IConvexCurveLpStakingWrapperLib = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_token",
-        type: "address",
-      },
-    ],
-    name: "removeExtraRewardToken",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "setApprovals",
     outputs: [],
@@ -758,7 +693,7 @@ export const IConvexCurveLpStakingWrapperLib = [
     inputs: [
       {
         internalType: "address",
-        name: "recipient",
+        name: "to",
         type: "address",
       },
       {
@@ -782,12 +717,12 @@ export const IConvexCurveLpStakingWrapperLib = [
     inputs: [
       {
         internalType: "address",
-        name: "sender",
+        name: "from",
         type: "address",
       },
       {
         internalType: "address",
-        name: "recipient",
+        name: "to",
         type: "address",
       },
       {
@@ -811,87 +746,6 @@ export const IConvexCurveLpStakingWrapperLib = [
     inputs: [
       {
         internalType: "address",
-        name: "_rewardToken",
-        type: "address",
-      },
-      {
-        internalType: "address[2]",
-        name: "_accounts",
-        type: "address[2]",
-      },
-      {
-        internalType: "uint256",
-        name: "_supply",
-        type: "uint256",
-      },
-    ],
-    name: "updateHarvest",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_rewardToken",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_account",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_supply",
-        type: "uint256",
-      },
-    ],
-    name: "updateHarvestAndClaim",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "claimedAmount_",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "_claimRewards",
-        type: "bool",
-      },
-    ],
-    name: "withdraw",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "rewardTokens_",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "claimedAmounts_",
-        type: "uint256[]",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_to",
         type: "address",
       },
@@ -899,11 +753,6 @@ export const IConvexCurveLpStakingWrapperLib = [
         internalType: "uint256",
         name: "_amount",
         type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "_claimRewardsToHolder",
-        type: "bool",
       },
     ],
     name: "withdrawTo",
@@ -928,13 +777,26 @@ export const IConvexCurveLpStakingWrapperLib = [
         name: "_amount",
         type: "uint256",
       },
-      {
-        internalType: "bool",
-        name: "_claimRewardsToHolder",
-        type: "bool",
-      },
     ],
     name: "withdrawToOnBehalf",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
+    ],
+    name: "withdrawToWithoutCheckpoint",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
