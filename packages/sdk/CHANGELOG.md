@@ -1,5 +1,12 @@
 # @enzymefinance/sdk
 
+## 0.2.4
+
+### Patch Changes
+
+- Updated dependencies [[`3f4f61b`](https://github.com/enzymefinance/sdk/commit/3f4f61ba95a161f03d869d85a1b71d775f1873da)]:
+  - @enzymefinance/abis@0.2.0
+
 ## 0.2.3
 
 ### Patch Changes
