@@ -2,14 +2,10 @@
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IConvexCurveLpStakingWrapperLib {
-    event AddExtraRewardsBypassed();
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Deposited(address indexed from, address indexed to, uint256 amount);
-    event HarvestUpdateBypassed(address indexed rewardToken);
     event PauseToggled(bool isPaused);
     event RewardTokenAdded(address token);
-    event RewardTokenRemoved(address token);
-    event RewardsClaimed(address caller, address indexed user, address[] rewardTokens, uint256[] claimedAmounts);
     event TokenNameSet(string name);
     event TokenSymbolSet(string symbol);
     event TotalHarvestIntegralUpdated(address indexed rewardToken, uint256 integral);
@@ -37,9 +33,11 @@ interface IConvexCurveLpStakingWrapperLib {
     function claimRewardsFor(address _for)
         external
         returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
+    function claimRewardsForWithoutCheckpoint(address _for)
+        external
+        returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
     function decimals() external view returns (uint8 decimals_);
     function decreaseAllowance(address spender, uint256 subtractedValue) external returns (bool);
-    function deposit(uint256 _amount) external;
     function depositTo(address _to, uint256 _amount) external;
     function getConvexPool() external view returns (address convexPool_);
     function getConvexPoolId() external view returns (uint256 convexPoolId_);
@@ -59,20 +57,13 @@ interface IConvexCurveLpStakingWrapperLib {
     function init(uint256 _pid) external;
     function isPaused() external view returns (bool isPaused_);
     function name() external view returns (string memory name_);
-    function removeExtraRewardToken(address _token) external;
     function setApprovals() external;
     function symbol() external view returns (string memory symbol_);
     function togglePause(bool _isPaused) external;
     function totalSupply() external view returns (uint256);
-    function transfer(address recipient, uint256 amount) external returns (bool);
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
-    function updateHarvest(address _rewardToken, address[2] memory _accounts, uint256 _supply) external;
-    function updateHarvestAndClaim(address _rewardToken, address _account, uint256 _supply)
-        external
-        returns (uint256 claimedAmount_);
-    function withdraw(uint256 _amount, bool _claimRewards)
-        external
-        returns (address[] memory rewardTokens_, uint256[] memory claimedAmounts_);
-    function withdrawTo(address _to, uint256 _amount, bool _claimRewardsToHolder) external;
-    function withdrawToOnBehalf(address _onBehalf, address _to, uint256 _amount, bool _claimRewardsToHolder) external;
+    function transfer(address to, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+    function withdrawTo(address _to, uint256 _amount) external;
+    function withdrawToOnBehalf(address _onBehalf, address _to, uint256 _amount) external;
+    function withdrawToWithoutCheckpoint(address _to, uint256 _amount) external;
 }
