@@ -26,8 +26,8 @@ jobs:
         env:
           COMMENT: ${{ github.event.comment.body }}
         run: |
-          snapshot=$(echo "$COMMENT" | grep -oP '^/snapshot\s([a-z-]{4,16})\s*$' | cut -d' ' -f2)
-          if [[ -n $snapshot ]]; then
+          if [[ $COMMENT =~ ^/snapshot(\s([a-z]{3,12}))?$ ]]; then
+            snapshot="${BASH_REMATCH[2]:-snapshot}"
             echo "snapshot=$snapshot" >> $GITHUB_OUTPUT
           else
             exit 1
