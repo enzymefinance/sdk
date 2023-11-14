@@ -78,7 +78,7 @@ export async function deposit(
 export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    signer: Address;
+    comptrollerProxy: Address;
     recipient: Address;
     sharesQuantity: bigint;
     payoutAssets: Address[];
@@ -88,8 +88,9 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
   const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
     abi: Abis.IComptrollerLib,
     functionName: "redeemSharesForSpecificAssets",
-    address: args.signer,
+    address: args.comptrollerProxy,
     args: [args.recipient, args.sharesQuantity, args.payoutAssets, args.payoutPercentages],
+    account: args.recipient,
   });
 
   const output: Record<Address, bigint> = {};

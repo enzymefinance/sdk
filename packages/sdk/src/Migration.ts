@@ -58,7 +58,7 @@ export async function getMigrationRequestDetails(
     dispatcher: Address;
   }>,
 ) {
-  const result = await Viem.readContract(client, args, {
+  const [nextFundDeployer, nextVaultAccessor,nextVaultLib, executableTimestamp] = await Viem.readContract(client, args, {
     abi: Abis.IDispatcher,
     functionName: "getMigrationRequestDetailsForVaultProxy",
     address: args.dispatcher,
@@ -66,10 +66,10 @@ export async function getMigrationRequestDetails(
   });
 
   return {
-    executableTimestamp: result[0],
-    nextFundDeployer: result[1],
-    nextVaultAccessor_: result[2],
-    nextVaultLib_: result[3],
+    nextFundDeployer,
+    nextVaultAccessor,
+    nextVaultLib,
+    executableTimestamp,
   };
 }
 
