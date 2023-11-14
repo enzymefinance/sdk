@@ -1,5 +1,9 @@
-import { type Address, type PublicClient } from "viem";
+import { type Address, Hex, type PublicClient, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
+
+//--------------------------------------------------------------------------------------------
+// BALANCER MINTER
+//--------------------------------------------------------------------------------------------
 
 const minterAbi = [
   {
@@ -7,19 +11,6 @@ const minterAbi = [
     name: "mint",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-] as const;
-
-const gaugeAbi = [
-  {
-    inputs: [
-      { internalType: "address", name: "user", type: "address" },
-      { internalType: "address", name: "rewardToken", type: "address" },
-    ],
-    name: "claimable_reward",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
     type: "function",
   },
 ] as const;
@@ -43,6 +34,23 @@ export async function getMinterRewards(
   return result;
 }
 
+//--------------------------------------------------------------------------------------------
+// BALANCER GAUGE
+//--------------------------------------------------------------------------------------------
+
+const gaugeAbi = [
+  {
+    inputs: [
+      { internalType: "address", name: "user", type: "address" },
+      { internalType: "address", name: "rewardToken", type: "address" },
+    ],
+    name: "claimable_reward",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
 export async function getClaimableRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -56,5 +64,49 @@ export async function getClaimableRewards(
     functionName: "claimable_reward",
     address: args.gauge,
     args: [args.user, args.rewardToken],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// BALANCER VAULT
+//--------------------------------------------------------------------------------------------
+
+export const BalancerV2SwapKind = {
+  GIVEN_IN: 0n,
+  GIVEN_OUT: 1n,
+} as const;
+
+export interface BalancerV2BatchSwapStep {
+  poolId: Hex;
+  assetInIndex: bigint;
+  assetOutIndex: bigint;
+  amount: bigint;
+  userData: Hex;
+}
+
+export interface FundManagement {
+  sender: Address;
+  recipient: Address;
+  fromInternalBalance: boolean;
+  toInternalBalance: boolean;
+}
+
+export async function queryBatchSwap(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    balancerVault: Address;
+    kind: typeof BalancerV2SwapKind;
+    swaps: BalancerV2BatchSwapStep[];
+    assets: Address[];
+    funds: FundManagement;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi([
+      "function queryBatchSwap(uint8 kind, (bytes32 poolId, uint256 assetInIndex, uint256 assetOutIndex, uint256 amount, bytes userData)[] memory swaps, address[] memory assets, (address sender, bool fromInternalBalance, address payable recipient, bool toInternalBalance) memory funds) external view returns (int256[] memory assetDeltas)",
+    ]),
+    functionName: "queryBatchSwap",
+    address: args.balancerVault,
+    args: [args.kind, args.swaps, args.assets, args.funds],
   });
 }

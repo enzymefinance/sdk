@@ -205,7 +205,7 @@ export async function getExpectedWithdrawalTokens(
   let singleTokenAllowed = true;
   let expectedSingleToken;
 
-  // Some curve pools doesn't allow to withdraw single token.
+  // Some curve pools don't allow to withdraw single token.
   // We try to determine here which ones allows that.
   try {
     expectedSingleToken = await Viem.readContract(client, args, {
