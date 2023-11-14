@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.8
+
+### Patch Changes
+
+- [#268](https://github.com/enzymefinance/sdk/pull/268) [`c814781`](https://github.com/enzymefinance/sdk/commit/c81478157441b89a2ad2a9eec05f5e71b589ac88) Thanks [@iherger](https://github.com/iherger)! - Fix Balancer batch swap types
+
 ## 0.2.7
 
 ### Patch Changes
