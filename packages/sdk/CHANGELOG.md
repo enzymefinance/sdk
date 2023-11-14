@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.6
+
+### Patch Changes
+
+- [#264](https://github.com/enzymefinance/sdk/pull/264) [`8a1b202`](https://github.com/enzymefinance/sdk/commit/8a1b202160ed5802824c987e793816325163c375) Thanks [@iherger](https://github.com/iherger)! - Add remaining read functions used in frontend
+
 ## 0.2.5
 
 ### Patch Changes
