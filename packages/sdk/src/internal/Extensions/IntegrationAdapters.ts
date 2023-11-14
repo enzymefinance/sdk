@@ -14,4 +14,5 @@ export * as UniswapV2Exchange from "./IntegrationAdapters/UniswapV2Exchange.js";
 export * as UniswapV2Liquidity from "./IntegrationAdapters/UniswapV2Liquidity.js";
 export * as UniswapV3 from "./IntegrationAdapters/UniswapV3.js";
 export * as YearnVaultV2 from "./IntegrationAdapters/YearnVaultV2.js";
+export * as ZeroExV2 from "./IntegrationAdapters/ZeroExV2.js";
 export * as ZeroExV4 from "./IntegrationAdapters/ZeroExV4.js";
