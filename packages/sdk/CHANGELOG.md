@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.7
+
+### Patch Changes
+
+- [#266](https://github.com/enzymefinance/sdk/pull/266) [`ef37ce3`](https://github.com/enzymefinance/sdk/commit/ef37ce314cabeb91ec89e0e5f3da2bd5096823ca) Thanks [@iherger](https://github.com/iherger)! - Add BalancerVault read function
+
 ## 0.2.6
 
 ### Patch Changes
