@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.10
+
+### Patch Changes
+
+- [#272](https://github.com/enzymefinance/sdk/pull/272) [`09f7c5c`](https://github.com/enzymefinance/sdk/commit/09f7c5ceda5c9337d251020a83dd84e6819ca5ce) Thanks [@iherger](https://github.com/iherger)! - Add read functions for 0x v2 adapter
+
 ## 0.2.9
 
 ### Patch Changes
