@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.9
+
+### Patch Changes
+
+- [#270](https://github.com/enzymefinance/sdk/pull/270) [`a643a74`](https://github.com/enzymefinance/sdk/commit/a643a740b8cc24d24b539cf336115da961ee6fa7) Thanks [@iherger](https://github.com/iherger)! - Add getAccruedContinuousFees
+
 ## 0.2.8
 
 ### Patch Changes
