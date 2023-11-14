@@ -71,12 +71,12 @@ export async function getClaimableRewards(
 // BALANCER VAULT
 //--------------------------------------------------------------------------------------------
 
-export const BalancerV2SwapKind = {
+export const BatchSwapKind = {
   GIVEN_IN: 0n,
   GIVEN_OUT: 1n,
 } as const;
 
-export interface BalancerV2BatchSwapStep {
+export interface BatchSwapStep {
   poolId: Hex;
   assetInIndex: bigint;
   assetOutIndex: bigint;
@@ -84,7 +84,7 @@ export interface BalancerV2BatchSwapStep {
   userData: Hex;
 }
 
-export interface FundManagement {
+export interface BatchSwapFunds {
   sender: Address;
   recipient: Address;
   fromInternalBalance: boolean;
@@ -95,10 +95,10 @@ export async function queryBatchSwap(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     balancerVault: Address;
-    kind: typeof BalancerV2SwapKind;
-    swaps: BalancerV2BatchSwapStep[];
+    kind: typeof BatchSwapKind[keyof typeof BatchSwapKind];
+    swaps: BatchSwapStep[];
     assets: Address[];
-    funds: FundManagement;
+    funds: BatchSwapFunds;
   }>,
 ) {
   return Viem.readContract(client, args, {
