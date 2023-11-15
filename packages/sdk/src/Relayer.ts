@@ -17,15 +17,28 @@ export async function isRelayerEnabled(
   return !isAddressEqual(address, zeroAddress);
 }
 
-export function getRelayerBalance(
+export async function getGasRelayPaymaster(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: Abis.IGasRelayPaymasterLib,
+    abi: Abis.IComptrollerLib,
     address: args.comptrollerProxy,
+    functionName: "getGasRelayPaymaster",
+  });
+}
+
+export function getRelayerBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    gasRelayPaymaster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IGasRelayPaymasterLib,
+    address: args.gasRelayPaymaster,
     functionName: "getRelayHubDeposit",
   });
 }
