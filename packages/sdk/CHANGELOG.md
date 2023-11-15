@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.11
+
+### Patch Changes
+
+- [#274](https://github.com/enzymefinance/sdk/pull/274) [`25e4a0c`](https://github.com/enzymefinance/sdk/commit/25e4a0c9e6219eef479189b20e56142b150b218a) Thanks [@iherger](https://github.com/iherger)! - Add Uniswap v3 pool liquidity
+
 ## 0.2.10
 
 ### Patch Changes
