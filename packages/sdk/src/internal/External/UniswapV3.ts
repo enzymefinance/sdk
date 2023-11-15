@@ -49,6 +49,13 @@ const v3PoolAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "liquidity",
+    outputs: [{ internalType: "uint128", name: "", type: "uint128" }],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export async function getSlot0(
@@ -80,6 +87,19 @@ export async function getSlot0(
     feeProtocol,
     unlocked,
   };
+}
+
+export function getLiquidity(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pool: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: v3PoolAbi,
+    functionName: "liquidity",
+    address: args.pool,
+  });
 }
 
 //--------------------------------------------------------------------------------------------
