@@ -17,8 +17,8 @@ export const create = ExternalPositionManager.createOnly;
 // LEND V2
 //--------------------------------------------------------------------------------------------
 
-export const lendV2 = ExternalPositionManager.makeUse(Action.LendV2, encodeLendV2);
-export const createAndLendV2 = ExternalPositionManager.makeCreateAndUse(Action.LendV2, encodeLendV2);
+export const lendV2 = ExternalPositionManager.makeUse(Action.LendV2, lendV2Encode);
+export const createAndLendV2 = ExternalPositionManager.makeCreateAndUse(Action.LendV2, lendV2Encode);
 
 const lendV2Encoding = [
   {
@@ -53,7 +53,7 @@ export function lendV2Decode(encoded: Hex): LendV2Args {
 // REQUEST REEDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const requestRedeemV2 = ExternalPositionManager.makeUse(Action.RequestRedeemV2, encodeRequestRedeemV2);
+export const requestRedeemV2 = ExternalPositionManager.makeUse(Action.RequestRedeemV2, requestRedeemV2Encode);
 
 const requestRedeemV2Encoding = [
   {
@@ -88,7 +88,7 @@ export function requestRedeemV2Decode(encoded: Hex): RequestRedeemV2Args {
 // REDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const redeemV2 = ExternalPositionManager.makeUse(Action.RedeemV2, encodeRedeemV2);
+export const redeemV2 = ExternalPositionManager.makeUse(Action.RedeemV2, redeemV2Encode);
 
 const redeemV2Encoding = [
   {
@@ -123,7 +123,7 @@ export function redeemV2Decode(encoded: Hex): RedeemV2Args {
 // CANCEL REDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const cancelRedeemV2 = ExternalPositionManager.makeUse(Action.CancelRedeemV2, encodeCancelRedeemV2);
+export const cancelRedeemV2 = ExternalPositionManager.makeUse(Action.CancelRedeemV2, cancelRedeemV2Encode);
 
 const cancelRedeemV2Encoding = [
   {
@@ -158,7 +158,7 @@ export function cancelRedeemV2Decode(encoded: Hex): CancelRedeemV2Args {
 // CLAIM REWARDS V1
 //--------------------------------------------------------------------------------------------
 
-export const claimRewardsV1 = ExternalPositionManager.makeUse(Action.ClaimRewardsV1, encodeClaimRewardsV1);
+export const claimRewardsV1 = ExternalPositionManager.makeUse(Action.ClaimRewardsV1, claimRewardsV1Encode);
 
 const claimRewardsV1Encoding = [
   {

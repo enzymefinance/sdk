@@ -8,7 +8,7 @@ export * as IntegrationAdapters from "./internal/Extensions/IntegrationAdapters.
 export * as VoteDelegation from "./internal/VoteDelegation.js";
 
 export {
-  Action as IntergrationAction,
+  Action as IntegrationAction,
   call as callIntegration,
   type CallParams as CallOnIntegrationParams,
   addTrackedAssets,
