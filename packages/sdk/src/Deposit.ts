@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient } from "viem";
-import * as Policies from "./Policies.js";
+import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";
 import { Assertion } from "./Utils.js";
 
@@ -212,7 +212,7 @@ export async function isAllowedDepositor(
     depositor: Address;
   }>,
 ) {
-  const hasAllowedDepositorPolicy = await Policies.isEnabled(client, {
+  const hasAllowedDepositorPolicy = await isEnabled(client, {
     ...args,
     policy: args.allowedDepositRecipientsPolicy,
   });
