@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.13
+
+### Patch Changes
+
+- [#278](https://github.com/enzymefinance/sdk/pull/278) [`bb7e7e1`](https://github.com/enzymefinance/sdk/commit/bb7e7e1a4203936d504feadb8a612b7cda01686f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Arrakis V2
+
 ## 0.2.12
 
 ### Patch Changes
