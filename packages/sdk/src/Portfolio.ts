@@ -36,8 +36,8 @@ export {
   reactivateEncode as reactivateExternalPositionEncode,
   reactivateDecode as reactivateExternalPositionDecode,
   type ReactivateParams as ReactivateExternalPositionParams,
-  encodeCall as encodeExternalPositionCall,
-  decodeCall as decodeExternalPositionCall,
+  callEncode as encodeExternalPositionCall,
+  callDecode as decodeExternalPositionCall,
   type CallArgs as ExternalPositionCallArgs,
 } from "./internal/ExternalPositionManager.js";
 

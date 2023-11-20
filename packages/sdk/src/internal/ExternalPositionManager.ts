@@ -83,7 +83,7 @@ export function makeCreateAndUse<TArgs>(action: bigint, encoder?: (args: TArgs) 
       comptrollerProxy: args.comptrollerProxy,
       externalPositionManager: args.externalPositionManager,
       initializationData: args.initializationData,
-      callArgs: encodeCall({
+      callArgs: callEncode({
         actionId: action,
         actionArgs: encoded,
         externalPositionProxy: "0x",
@@ -117,11 +117,11 @@ export type CallArgs = {
   actionArgs?: Hex | undefined;
 };
 
-export function encodeCall(args: CallArgs): Hex {
+export function callEncode(args: CallArgs): Hex {
   return encodeAbiParameters(callEncoding, [args.externalPositionProxy, args.actionId, args.actionArgs ?? "0x"]);
 }
 
-export function decodeCall(params: Hex): CallArgs {
+export function callDecode(params: Hex): CallArgs {
   const [externalPositionProxy, actionId, actionArgs] = decodeAbiParameters(callEncoding, params);
 
   return {
@@ -159,7 +159,7 @@ export function call(args: CallParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.externalPositionManager,
     actionId: Action.CallOnExternalPosition,
-    callArgs: encodeCall({
+    callArgs: callEncode({
       externalPositionProxy: args.externalPositionProxy,
       actionId: args.actionId,
       actionArgs: args.actionArgs,
