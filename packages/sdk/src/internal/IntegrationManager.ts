@@ -129,11 +129,11 @@ export type AddTracketAssetsArgs = {
   addAssets: ReadonlyArray<Address>;
 };
 
-export function encodeAddTracketAssets(args: AddTracketAssetsArgs): Hex {
+export function addTrackedAssetsEncode(args: AddTracketAssetsArgs): Hex {
   return encodeAbiParameters(addTrackedAssetsEncoding, [args.addAssets]);
 }
 
-export function decodeAddTracketAssets(encoded: Hex): AddTracketAssetsArgs {
+export function addTracketAssetsDecode(encoded: Hex): AddTracketAssetsArgs {
   const [addAssets] = decodeAbiParameters(addTrackedAssetsEncoding, encoded);
 
   return {
@@ -161,7 +161,7 @@ export function addTrackedAssets(args: AddTracketAssetsParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.integrationManager,
     actionId: Action.AddTrackedAssets,
-    callArgs: encodeAddTracketAssets({
+    callArgs: addTrackedAssetsEncode({
       addAssets: args.addAssets,
     }),
   });

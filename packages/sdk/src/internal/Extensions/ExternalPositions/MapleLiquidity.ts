@@ -17,8 +17,8 @@ export const create = ExternalPositionManager.createOnly;
 // LEND V2
 //--------------------------------------------------------------------------------------------
 
-export const lendV2 = ExternalPositionManager.makeUse(Action.LendV2, encodeLendV2);
-export const createAndLendV2 = ExternalPositionManager.makeCreateAndUse(Action.LendV2, encodeLendV2);
+export const lendV2 = ExternalPositionManager.makeUse(Action.LendV2, lendV2Encode);
+export const createAndLendV2 = ExternalPositionManager.makeCreateAndUse(Action.LendV2, lendV2Encode);
 
 const lendV2Encoding = [
   {
@@ -36,11 +36,11 @@ export type LendV2Args = {
   liquidityAssetAmount: bigint;
 };
 
-export function encodeLendV2(args: LendV2Args): Hex {
+export function lendV2Encode(args: LendV2Args): Hex {
   return encodeAbiParameters(lendV2Encoding, [args.pool, args.liquidityAssetAmount]);
 }
 
-export function decodeLendV2(encoded: Hex): LendV2Args {
+export function lendV2Decode(encoded: Hex): LendV2Args {
   const [pool, liquidityAssetAmount] = decodeAbiParameters(lendV2Encoding, encoded);
 
   return {
@@ -53,7 +53,7 @@ export function decodeLendV2(encoded: Hex): LendV2Args {
 // REQUEST REEDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const requestRedeemV2 = ExternalPositionManager.makeUse(Action.RequestRedeemV2, encodeRequestRedeemV2);
+export const requestRedeemV2 = ExternalPositionManager.makeUse(Action.RequestRedeemV2, requestRedeemV2Encode);
 
 const requestRedeemV2Encoding = [
   {
@@ -71,11 +71,11 @@ export type RequestRedeemV2Args = {
   poolTokenAmount: bigint;
 };
 
-export function encodeRequestRedeemV2(args: RequestRedeemV2Args): Hex {
+export function requestRedeemV2Encode(args: RequestRedeemV2Args): Hex {
   return encodeAbiParameters(requestRedeemV2Encoding, [args.pool, args.poolTokenAmount]);
 }
 
-export function decodeRequestRedeemV2(encoded: Hex): RequestRedeemV2Args {
+export function requestRedeemV2Decode(encoded: Hex): RequestRedeemV2Args {
   const [pool, poolTokenAmount] = decodeAbiParameters(requestRedeemV2Encoding, encoded);
 
   return {
@@ -88,7 +88,7 @@ export function decodeRequestRedeemV2(encoded: Hex): RequestRedeemV2Args {
 // REDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const redeemV2 = ExternalPositionManager.makeUse(Action.RedeemV2, encodeRedeemV2);
+export const redeemV2 = ExternalPositionManager.makeUse(Action.RedeemV2, redeemV2Encode);
 
 const redeemV2Encoding = [
   {
@@ -106,11 +106,11 @@ export type RedeemV2Args = {
   poolTokenAmount: bigint;
 };
 
-export function encodeRedeemV2(args: RedeemV2Args): Hex {
+export function redeemV2Encode(args: RedeemV2Args): Hex {
   return encodeAbiParameters(redeemV2Encoding, [args.pool, args.poolTokenAmount]);
 }
 
-export function decodeRedeemV2(encoded: Hex): RedeemV2Args {
+export function redeemV2Decode(encoded: Hex): RedeemV2Args {
   const [pool, poolTokenAmount] = decodeAbiParameters(redeemV2Encoding, encoded);
 
   return {
@@ -123,7 +123,7 @@ export function decodeRedeemV2(encoded: Hex): RedeemV2Args {
 // CANCEL REDEEM V2
 //--------------------------------------------------------------------------------------------
 
-export const cancelRedeemV2 = ExternalPositionManager.makeUse(Action.CancelRedeemV2, encodeCancelRedeemV2);
+export const cancelRedeemV2 = ExternalPositionManager.makeUse(Action.CancelRedeemV2, cancelRedeemV2Encode);
 
 const cancelRedeemV2Encoding = [
   {
@@ -141,11 +141,11 @@ export type CancelRedeemV2Args = {
   poolTokenAmount: bigint;
 };
 
-export function encodeCancelRedeemV2(args: CancelRedeemV2Args): Hex {
+export function cancelRedeemV2Encode(args: CancelRedeemV2Args): Hex {
   return encodeAbiParameters(cancelRedeemV2Encoding, [args.pool, args.poolTokenAmount]);
 }
 
-export function decodeCancelRedeemV2(encoded: Hex): CancelRedeemV2Args {
+export function cancelRedeemV2Decode(encoded: Hex): CancelRedeemV2Args {
   const [pool, poolTokenAmount] = decodeAbiParameters(cancelRedeemV2Encoding, encoded);
 
   return {
@@ -158,7 +158,7 @@ export function decodeCancelRedeemV2(encoded: Hex): CancelRedeemV2Args {
 // CLAIM REWARDS V1
 //--------------------------------------------------------------------------------------------
 
-export const claimRewardsV1 = ExternalPositionManager.makeUse(Action.ClaimRewardsV1, encodeClaimRewardsV1);
+export const claimRewardsV1 = ExternalPositionManager.makeUse(Action.ClaimRewardsV1, claimRewardsV1Encode);
 
 const claimRewardsV1Encoding = [
   {
@@ -171,11 +171,11 @@ export type ClaimRewardsV1Args = {
   rewardsContract: Address;
 };
 
-export function encodeClaimRewardsV1(args: ClaimRewardsV1Args): Hex {
+export function claimRewardsV1Encode(args: ClaimRewardsV1Args): Hex {
   return encodeAbiParameters(claimRewardsV1Encoding, [args.rewardsContract]);
 }
 
-export function decodeClaimRewardsV1(encoded: Hex): ClaimRewardsV1Args {
+export function claimRewardsV1Decode(encoded: Hex): ClaimRewardsV1Args {
   const [rewardsContract] = decodeAbiParameters(claimRewardsV1Encoding, encoded);
 
   return {

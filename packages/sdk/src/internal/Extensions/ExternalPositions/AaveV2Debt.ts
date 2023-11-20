@@ -7,6 +7,7 @@ export const Action = {
   RemoveCollateral: 1n,
   Borrow: 2n,
   RepayBorrow: 3n,
+  ClaimRewards: 4n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -153,5 +154,34 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
   return {
     underlyingTokens,
     amounts,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  rewardTokens: ReadonlyArray<Address>;
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.rewardTokens]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [rewardTokens] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    rewardTokens,
   };
 }
