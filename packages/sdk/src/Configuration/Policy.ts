@@ -2,6 +2,12 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
 import { Viem } from "../Utils.js";
 
+export {
+  encodeSettings,
+  decodeSettings,
+  type SettingsArgs,
+} from "../_internal/PolicyManager.js";
+
 export async function getEnabled(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
