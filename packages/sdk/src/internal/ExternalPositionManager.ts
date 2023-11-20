@@ -263,11 +263,11 @@ export type ReactivateArgs = {
   externalPositionProxy: Address;
 };
 
-export function encodeReactivate(args: ReactivateArgs): Hex {
+export function reactivateEncode(args: ReactivateArgs): Hex {
   return encodeAbiParameters(reactivateEncoding, [args.externalPositionProxy]);
 }
 
-export function decodeReactivate(callArgs: Hex): ReactivateArgs {
+export function reactivateDecode(callArgs: Hex): ReactivateArgs {
   const [externalPositionProxy] = decodeAbiParameters(reactivateEncoding, callArgs);
 
   return {
@@ -295,7 +295,7 @@ export function reactivate(args: ReactivateParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.externalPositionManager,
     actionId: Action.ReactivateExternalPosition,
-    callArgs: encodeReactivate({
+    callArgs: reactivateEncode({
       externalPositionProxy: args.externalPositionProxy,
     }),
   });
@@ -316,11 +316,11 @@ export type RemoveArgs = {
   externalPositionProxy: Address;
 };
 
-export function encodeRemove(args: RemoveArgs): Hex {
+export function removeEncode(args: RemoveArgs): Hex {
   return encodeAbiParameters(removeEncoding, [args.externalPositionProxy]);
 }
 
-export function decodeRemove(callArgs: Hex): RemoveArgs {
+export function removeDecode(callArgs: Hex): RemoveArgs {
   const [externalPositionProxy] = decodeAbiParameters(removeEncoding, callArgs);
 
   return {
@@ -348,7 +348,7 @@ export function remove(args: RemoveParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.externalPositionManager,
     actionId: Action.RemoveExternalPosition,
-    callArgs: encodeRemove({
+    callArgs: removeEncode({
       externalPositionProxy: args.externalPositionProxy,
     }),
   });
