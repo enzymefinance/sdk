@@ -83,7 +83,7 @@ const settingsEncoding = [
   },
 ] as const;
 
-export type Settings = {
+export type SettingsArgs = {
   /**
    * The address of the fee contract.
    *
@@ -104,7 +104,7 @@ export type Settings = {
  *
  * @returns The encoded fee settings.
  */
-export function encodeSettings(fees: ReadonlyArray<Settings>): Hex {
+export function encodeSettings(fees: ReadonlyArray<SettingsArgs>): Hex {
   const addresses = fees.map(({ address }) => address);
   const settings = fees.map(({ settings }) => settings);
 
@@ -116,7 +116,7 @@ export function encodeSettings(fees: ReadonlyArray<Settings>): Hex {
  *
  * @returns The decoded fee settings.
  */
-export function decodeSettings(encoded: Hex): ReadonlyArray<Settings> {
+export function decodeSettings(encoded: Hex): ReadonlyArray<SettingsArgs> {
   const [addresses, settings] = decodeAbiParameters(settingsEncoding, encoded);
   Assertion.invariant(
     addresses.length === settings.length,

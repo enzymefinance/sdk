@@ -3,18 +3,20 @@ import { Address, PublicClient } from "viem";
 import { Assertion, Viem } from "../Utils.js";
 
 export {
+  Action,
   callEncode,
   callDecode,
   type CallArgs,
+  createEncode,
+  createDecode,
+  type CreateArgs,
+  removeEncode,
+  removeDecode,
+  type RemoveArgs,
+  reactivateEncode,
+  reactivateDecode,
+  type ReactivateArgs,
 } from "../_internal/ExternalPositionManager.js";
-
-export type Action = typeof Action[keyof typeof Action];
-export const Action = {
-  CreateExternalPosition: 0n,
-  CallOnExternalPosition: 1n,
-  RemoveExternalPosition: 2n,
-  ReactivateExternalPosition: 3n,
-} as const;
 
 export function isActiveExternalPosition(
   client: PublicClient,

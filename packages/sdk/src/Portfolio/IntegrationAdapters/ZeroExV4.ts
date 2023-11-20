@@ -7,7 +7,7 @@ import { Selector } from "../IntegrationAdapter.js";
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-export const takeOrder = IntegrationManager.makeUse(Selector.takeOrder, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(Selector.TakeOrder, takeOrderEncode);
 
 const limitOrderEncoding = {
   components: [

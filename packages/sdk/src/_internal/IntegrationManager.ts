@@ -1,6 +1,19 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Action } from "../Portfolio/IntegrationAdapter.js";
 import { callExtension } from "./Extensions.js";
+
+export type Action = typeof Action[keyof typeof Action];
+export const Action = {
+  CallOnIntegration: 0n,
+  AddTrackedAssets: 1n,
+  RemoveTrackedAssets: 2n,
+} as const;
+
+export type Selector = typeof Selector[keyof typeof Selector];
+export const Selector = {
+  Lend: "0x099f7515", // lend(address,bytes,bytes)
+  TakeOrder: "0x03e38a2b", // takeOrder(address,bytes,bytes)
+  Redeem: "0xc29fa9dd", // redeem(address,bytes,bytes)
+} as const;
 
 export type UseParams<TArgs> = {
   /**
@@ -58,11 +71,11 @@ export type CallArgs = {
   callArgs?: Hex | undefined;
 };
 
-export function encodeCall(args: CallArgs): Hex {
+export function callEncode(args: CallArgs): Hex {
   return encodeAbiParameters(callEncoding, [args.integrationAdapter, args.functionSelector, args.callArgs ?? "0x"]);
 }
 
-export function decodeCall(encoded: Hex): CallArgs {
+export function callDecode(encoded: Hex): CallArgs {
   const [integrationAdapter, functionSelector, callArgs] = decodeAbiParameters(callEncoding, encoded);
 
   return {
@@ -100,7 +113,7 @@ export function call(args: CallParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.integrationManager,
     actionId: Action.CallOnIntegration,
-    callArgs: encodeCall({
+    callArgs: callEncode({
       functionSelector: args.functionSelector,
       integrationAdapter: args.integrationAdapter,
       callArgs: args.callArgs ?? "0x",
@@ -176,11 +189,11 @@ export type RemoveTrackedAssetsArgs = {
   removeAssets: ReadonlyArray<Address>;
 };
 
-export function encodeRemoveTrackedAssets(args: RemoveTrackedAssetsArgs): Hex {
+export function removeTrackedAssetsEncode(args: RemoveTrackedAssetsArgs): Hex {
   return encodeAbiParameters(removeTracketAssetsEncoding, [args.removeAssets]);
 }
 
-export function decodeRemoveTrackedAssets(encoded: Hex): RemoveTrackedAssetsArgs {
+export function removeTrackedAssetsDecode(encoded: Hex): RemoveTrackedAssetsArgs {
   const [removeAssets] = decodeAbiParameters(removeTracketAssetsEncoding, encoded);
 
   return {
@@ -208,7 +221,7 @@ export function removeTracketAssets(args: RemoveTrackedAssetsParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.integrationManager,
     actionId: Action.RemoveTrackedAssets,
-    callArgs: encodeRemoveTrackedAssets({
+    callArgs: removeTrackedAssetsEncode({
       removeAssets: args.removeAssets,
     }),
   });

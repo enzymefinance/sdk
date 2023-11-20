@@ -12,7 +12,7 @@ const settingsEncoding = [
   },
 ] as const;
 
-export type Settings = ReadonlyArray<{
+export type SettingsArgs = ReadonlyArray<{
   /**
    * The address of the policy contract.
    *
@@ -33,7 +33,7 @@ export type Settings = ReadonlyArray<{
  *
  * @returns The encoded policy settings.
  */
-export function encodeSettings(policies: Settings): Hex {
+export function encodeSettings(policies: SettingsArgs): Hex {
   const addresses = policies.map(({ address }) => address);
   const settings = policies.map(({ settings }) => settings);
 
@@ -45,7 +45,7 @@ export function encodeSettings(policies: Settings): Hex {
  *
  * @returns The decoded policy settings.
  */
-export function decodeSettings(encoded: Hex): Settings {
+export function decodeSettings(encoded: Hex): SettingsArgs {
   const [addresses, settings] = decodeAbiParameters(settingsEncoding, encoded);
   Assertion.invariant(
     addresses.length === settings.length,

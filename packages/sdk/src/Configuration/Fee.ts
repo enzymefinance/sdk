@@ -4,6 +4,10 @@ import { Viem } from "../Utils.js";
 import { getInfo } from "./Fees/Performance.js";
 
 export {
+  Action,
+  encodeSettings,
+  decodeSettings,
+  type SettingsArgs,
   payoutOutstandingFees,
   type PayoutOutstandingFeesParams,
   settleContinuousFees,

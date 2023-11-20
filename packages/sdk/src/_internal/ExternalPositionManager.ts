@@ -1,7 +1,14 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Action } from "../Portfolio/ExternalPosition.js";
 import type { Types } from "../Utils.js";
 import { type PopulatedExtensionCall, callExtension } from "./Extensions.js";
+
+export type Action = typeof Action[keyof typeof Action];
+export const Action = {
+  CreateExternalPosition: 0n,
+  CallOnExternalPosition: 1n,
+  RemoveExternalPosition: 2n,
+  ReactivateExternalPosition: 3n,
+} as const;
 
 export type UseParams<TArgs> = {
   /**
@@ -185,11 +192,11 @@ export type CreateArgs = {
   callArgs?: Hex | undefined;
 };
 
-export function encodeCreate(args: CreateArgs): Hex {
+export function createEncode(args: CreateArgs): Hex {
   return encodeAbiParameters(createEncoding, [args.typeId, args.initializationData ?? "0x", args.callArgs ?? "0x"]);
 }
 
-export function decodeCreate(encoded: Hex): CreateArgs {
+export function createDecode(encoded: Hex): CreateArgs {
   const [typeId, initializationData, callArgs] = decodeAbiParameters(createEncoding, encoded);
 
   return {
@@ -229,7 +236,7 @@ export function create(args: CreateParams) {
     comptrollerProxy: args.comptrollerProxy,
     extensionManager: args.externalPositionManager,
     actionId: Action.CreateExternalPosition,
-    callArgs: encodeCreate({
+    callArgs: createEncode({
       typeId: args.typeId,
       initializationData: args.initializationData,
       callArgs: args.callArgs ?? "0x",
