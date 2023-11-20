@@ -1,5 +1,6 @@
 export * as AaveV2 from "./IntegrationAdapters/AaveV2.js";
 export * as AaveV3 from "./IntegrationAdapters/AaveV3.js";
+export * as ArrakisV2 from "./IntegrationAdapters/ArrakisV2.js";
 export * as BalancerV2Liquidity from "./IntegrationAdapters/BalancerV2Liquidity.js";
 export * as CompoundV2 from "./IntegrationAdapters/CompoundV2.js";
 export * as CompoundV3 from "./IntegrationAdapters/CompoundV3.js";

@@ -1,5 +1,6 @@
 export * as AaveV2 from "./internal/External/AaveV2.js";
 export * as AaveV3 from "./internal/External/AaveV3.js";
+export * as ArrakisV2 from "./internal/External/ArrakisV2.js";
 export * as BalancerV2 from "./internal/External/BalancerV2.js";
 export * as CompoundV2 from "./internal/External/CompoundV2.js";
 export * as CompoundV3 from "./internal/External/CompoundV3.js";
