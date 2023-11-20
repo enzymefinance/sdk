@@ -41,3 +41,36 @@ export async function getMintAmounts(
     mintAmount,
   };
 }
+
+const helperAbi = [
+  {
+    inputs: [{ internalType: "contract IArrakisV2", name: "vault_", type: "address" }],
+    name: "totalUnderlying",
+    outputs: [
+      { internalType: "uint256", name: "amount0", type: "uint256" },
+      { internalType: "uint256", name: "amount1", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export async function totalUnderlying(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    helper: Address;
+    arrakisVault: Address;
+  }>,
+) {
+  const [amount0, amount1] = await Viem.readContract(client, args, {
+    abi: helperAbi,
+    functionName: "totalUnderlying",
+    address: args.helper,
+    args: [args.arrakisVault],
+  });
+
+  return {
+    amount0,
+    amount1,
+  };
+}
