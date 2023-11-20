@@ -1,13 +1,12 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Assertion } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
-import { Selector } from "../IntegrationAdapter.js";
 
 //--------------------------------------------------------------------------------------------
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-export const takeOrder = IntegrationManager.makeUse(Selector.TakeOrder, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const limitOrderEncoding = {
   components: [

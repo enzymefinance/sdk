@@ -1,7 +1,7 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Assertion } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
-import { type RedeemType, isValidRedeemType } from "../IntegrationAdapters/CurveLiquidity.js";
+import { type RedeemType, isValidRedeemType } from "../Integrations/CurveLiquidity.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE

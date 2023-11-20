@@ -1,12 +1,11 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
-import { Selector } from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND
 //--------------------------------------------------------------------------------------------
 
-export const lend = IntegrationManager.makeUse(Selector.Lend, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -41,7 +40,7 @@ export function lendDecode(encoded: Hex): LendArgs {
 // REDEEM
 //--------------------------------------------------------------------------------------------
 
-export const redeem = IntegrationManager.makeUse(Selector.Redeem, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 const redeemEncoding = [
   {
