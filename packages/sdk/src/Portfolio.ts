@@ -8,15 +8,20 @@ export * as IntegrationAdapters from "./internal/Extensions/IntegrationAdapters.
 export * as VoteDelegation from "./internal/VoteDelegation.js";
 
 export {
+  Action as IntergrationAction,
   call as callIntegration,
   type CallParams as CallOnIntegrationParams,
   addTrackedAssets,
   type AddTracketAssetsParams,
   removeTracketAssets,
   type RemoveTrackedAssetsParams,
+  encodeCall as encodeIntegrationCall,
+  decodeCall as decodeIntegrationCall,
+  type CallArgs as IntegrationCallArgs,
 } from "./internal/IntegrationManager.js";
 
 export {
+  Action as ExternalPositionAction,
   call as callExternalPosition,
   type CallParams as CallOnExternalPositionParams,
   create as createExternalPosition,
@@ -25,6 +30,9 @@ export {
   type RemoveParams as RemoveExternalPositionParams,
   reactivate as reactivateExternalPosition,
   type ReactivateParams as ReactivateExternalPositionParams,
+  encodeCall as encodeExternalPositionCall,
+  decodeCall as decodeExternalPositionCall,
+  type CallArgs as ExternalPositionCallArgs,
 } from "./internal/ExternalPositionManager.js";
 
 export async function getPortfolio(

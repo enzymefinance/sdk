@@ -183,6 +183,8 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
     encoded,
   );
 
+  // TODO: decode incomingAssetsData
+
   if (!isValidRedeemType(redeemType)) {
     Assertion.invariant(false, "Invalid redeem type");
   }

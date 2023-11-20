@@ -1,4 +1,4 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, hexToString, stringToHex } from "viem";
 import * as ExternalPositionManager from "../../ExternalPositionManager.js";
 
 export type Action = typeof Action[keyof typeof Action];
@@ -55,7 +55,7 @@ export type ConfigureLoanArgs = {
   amount: bigint;
   accountingModule: Address;
   accountingModuleConfigData: Hex;
-  description: Hex;
+  description: string;
 };
 
 export function configureLoanEncode(args: ConfigureLoanArgs): Hex {
@@ -65,7 +65,7 @@ export function configureLoanEncode(args: ConfigureLoanArgs): Hex {
     args.amount,
     args.accountingModule,
     args.accountingModuleConfigData,
-    args.description,
+    stringToHex(args.description),
   ]);
 }
 
@@ -81,7 +81,7 @@ export function configureLoanDecode(encoded: Hex): ConfigureLoanArgs {
     amount,
     accountingModule,
     accountingModuleConfigData,
-    description,
+    description: hexToString(description, { size: 32 }),
   };
 }
 
