@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.14
+
+### Patch Changes
+
+- [#280](https://github.com/enzymefinance/sdk/pull/280) [`854bcc9`](https://github.com/enzymefinance/sdk/commit/854bcc95db16581efc8a2bfbbfefc7e8222c67dd) Thanks [@iherger](https://github.com/iherger)! - Additions for function decoding
+
 ## 0.2.13
 
 ### Patch Changes
