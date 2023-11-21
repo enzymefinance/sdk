@@ -16,7 +16,7 @@ export * as Maple from "./Integrations/Maple.js";
 export * as OneInchV5 from "./Integrations/OneInchV5.js";
 export * as ParaswapV5 from "./Integrations/ParaswapV5.js";
 export * as StakeWiseV3 from "./Integrations/StakeWiseV3.js";
-export * as TheGraphDelegation from "./Integrations/TheGraph.js";
+export * as TheGraph from "./Integrations/TheGraph.js";
 export * as UniswapV2 from "./Integrations/UniswapV2.js";
 export * as UniswapV3 from "./Integrations/UniswapV3.js";
 export * as YearnV2 from "./Integrations/YearnV2.js";
