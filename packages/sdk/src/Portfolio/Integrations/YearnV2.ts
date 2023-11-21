@@ -1,4 +1,5 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -94,4 +95,21 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
   );
 
   return { yVault, maxOutgoingSharesAmount, minIncomingUnderlyingAmount, slippageToleranceBps };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export async function pricePerShare(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    yearnVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function pricePerShare() view returns (uint256 price_)"]),
+    functionName: "pricePerShare",
+    address: args.yearnVault,
+  });
 }

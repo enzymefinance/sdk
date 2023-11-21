@@ -1,4 +1,5 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -79,4 +80,38 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
   const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
   return { tokenAddress, outgoingAssetAmount, minIncomingAmount };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS - MAKER
+//--------------------------------------------------------------------------------------------
+
+export async function getMakerDsr(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function dsr() view returns (uint256 dsr_)"]),
+    functionName: "dsr",
+    address: args.asset,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS - MORPHO
+//--------------------------------------------------------------------------------------------
+
+export async function getMorphoPoolToken(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function poolToken() view returns (address poolToken_)"]),
+    functionName: "poolToken",
+    address: args.asset,
+  });
 }

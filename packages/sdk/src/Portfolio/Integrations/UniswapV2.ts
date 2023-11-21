@@ -1,6 +1,166 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, ContractFunctionExecutionError, type PublicClient, isAddressEqual } from "viem";
-import { Assertion, BI, Viem } from "../Utils.js";
+import {
+  type Address,
+  ContractFunctionExecutionError,
+  type Hex,
+  PublicClient,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  isAddressEqual,
+} from "viem";
+import { Assertion, BI, Viem } from "../../Utils.js";
+import * as IntegrationManager from "../../_internal/IntegrationManager.js";
+
+//--------------------------------------------------------------------------------------------
+// TAKE ORDER
+//--------------------------------------------------------------------------------------------
+
+const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
+export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+
+const takeOrderEncoding = [
+  {
+    name: "path",
+    type: "address[]",
+  },
+  {
+    name: "outgoingAssetAmount",
+    type: "uint256",
+  },
+  {
+    name: "minIncomingAssetAmount",
+    type: "uint256",
+  },
+] as const;
+
+export type TakeOrderArgs = {
+  path: ReadonlyArray<Address>;
+  outgoingAssetAmount: bigint;
+  minIncomingAssetAmount: bigint;
+};
+
+export function takeOrderEncode(args: TakeOrderArgs): Hex {
+  return encodeAbiParameters(takeOrderEncoding, [args.path, args.outgoingAssetAmount, args.minIncomingAssetAmount]);
+}
+
+export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
+  const [path, outgoingAssetAmount, minIncomingAssetAmount] = decodeAbiParameters(takeOrderEncoding, encoded);
+
+  return {
+    path,
+    outgoingAssetAmount,
+    minIncomingAssetAmount,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// LEND
+//--------------------------------------------------------------------------------------------
+
+const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
+export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+
+const lendEncoding = [
+  {
+    name: "outgoingAssets",
+    type: "address[2]",
+  },
+  {
+    name: "maxOutgoingAssetAmounts",
+    type: "uint256[2]",
+  },
+  {
+    name: "minOutgoingAssetAmounts",
+    type: "uint256[2]",
+  },
+  {
+    name: "minIncomingAssetAmount",
+    type: "uint256",
+  },
+] as const;
+
+export type LendArgs = {
+  outgoingAssets: readonly [Address, Address];
+  maxOutgoingAssetAmounts: readonly [bigint, bigint];
+  minOutgoingAssetAmounts: readonly [bigint, bigint];
+  minIncomingAssetAmount: bigint;
+};
+
+export function lendEncode({
+  outgoingAssets,
+  maxOutgoingAssetAmounts,
+  minOutgoingAssetAmounts,
+  minIncomingAssetAmount,
+}: LendArgs): Hex {
+  return encodeAbiParameters(lendEncoding, [
+    outgoingAssets,
+    maxOutgoingAssetAmounts,
+    minOutgoingAssetAmounts,
+    minIncomingAssetAmount,
+  ]);
+}
+
+export function lendDecode(encoded: Hex): LendArgs {
+  const [outgoingAssets, maxOutgoingAssetAmounts, minOutgoingAssetAmounts, minIncomingAssetAmount] =
+    decodeAbiParameters(lendEncoding, encoded);
+
+  return {
+    outgoingAssets,
+    maxOutgoingAssetAmounts,
+    minOutgoingAssetAmounts,
+    minIncomingAssetAmount,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// REDEEM
+//--------------------------------------------------------------------------------------------
+
+const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
+export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+
+const redeemEncoding = [
+  {
+    name: "outgoingAssetAmount",
+    type: "uint256",
+  },
+  {
+    name: "incomingAssets",
+    type: "address[2]",
+  },
+  {
+    name: "minIncomingAssetAmounts",
+    type: "uint256[2]",
+  },
+] as const;
+
+export type RedeemArgs = {
+  outgoingAssetAmount: bigint;
+  incomingAssets: readonly [Address, Address];
+  minIncomingAssetAmounts: readonly [bigint, bigint];
+};
+
+export function redeemEncode(args: RedeemArgs): Hex {
+  return encodeAbiParameters(redeemEncoding, [
+    args.outgoingAssetAmount,
+    args.incomingAssets,
+    args.minIncomingAssetAmounts,
+  ]);
+}
+
+export function redeemDecode(encoded: Hex): RedeemArgs {
+  const [outgoingAssetAmount, incomingAssets, minIncomingAssetAmounts] = decodeAbiParameters(redeemEncoding, encoded);
+
+  return {
+    outgoingAssetAmount,
+    incomingAssets,
+    minIncomingAssetAmounts,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
 
 // same address for ethereum and polygon
 const UNISWAP_V2_FACTORY = "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f" as const;

@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { getBalanceOf } from "../../Assets.js";
+import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = typeof Action[keyof typeof Action];
@@ -150,4 +152,25 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
     stakeWiseVaultAddress,
     positionTicket,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export async function getStakedEthBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    account: Address;
+    stakeWiseVaultAddress: Address;
+  }>,
+) {
+  const sharesBalance = await getBalanceOf(client, { asset: args.stakeWiseVaultAddress, owner: args.account });
+
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
+    functionName: "convertToAssets",
+    address: args.stakeWiseVaultAddress,
+    args: [sharesBalance],
+  });
 }
