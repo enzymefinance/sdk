@@ -4,11 +4,12 @@ import * as Assets from "./Assets.js";
 import { getActive, getDebtAssets, getManagedAssets, getType } from "./Portfolio/ExternalPosition.js";
 import { Viem } from "./Utils.js";
 
-export * as ExternalPosition from "./Portfolio/ExternalPosition.js";
-export * as IntegrationAdapter from "./Portfolio/IntegrationAdapter.js";
-export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
-
 export * as Integrations from "./Portfolio/Integrations.js";
+
+export * as ExternalPosition from "./Portfolio/ExternalPosition.js";
+export * as ExternalPositionManager from "./Portfolio/ExternalPositionManager.js";
+export * as IntegrationManager from "./Portfolio/IntegrationManager.js";
+export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 
 export async function getPortfolio(
   client: PublicClient,

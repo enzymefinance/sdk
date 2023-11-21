@@ -1,0 +1,15 @@
+export {
+  Action,
+  callEncode,
+  callDecode,
+  type CallArgs,
+  createEncode,
+  createDecode,
+  type CreateArgs,
+  removeEncode,
+  removeDecode,
+  type RemoveArgs,
+  reactivateEncode,
+  reactivateDecode,
+  type ReactivateArgs,
+} from "../_internal/ExternalPositionManager.js";
