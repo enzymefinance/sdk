@@ -1,12 +1,7 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
 import * as Assets from "./Assets.js";
-import {
-  getActiveExternalPositions,
-  getExternalPositionDebtAssets,
-  getExternalPositionManagedAssets,
-  getExternalPositionType,
-} from "./Portfolio/ExternalPosition.js";
+import { getActive, getDebtAssets, getManagedAssets, getType } from "./Portfolio/ExternalPosition.js";
 import { Viem } from "./Utils.js";
 
 export * as ExternalPosition from "./Portfolio/ExternalPosition.js";
@@ -24,16 +19,16 @@ export async function getPortfolio(
   }>,
 ) {
   const [externalPositionAddresses, trackedAssetAddresses] = await Promise.all([
-    getActiveExternalPositions(client, args),
+    getActive(client, args),
     getTrackedAssets(client, args),
   ]);
 
   const getExternalPositionsData = Promise.all(
     externalPositionAddresses.map(async (externalPosition, _i) => {
       const [externalPositionType, debtAssets, managedAssets] = await Promise.all([
-        getExternalPositionType(client, { ...args, externalPosition }),
-        getExternalPositionDebtAssets(client, { ...args, externalPosition }),
-        getExternalPositionManagedAssets(client, { ...args, externalPosition }),
+        getType(client, { ...args, externalPosition }),
+        getDebtAssets(client, { ...args, externalPosition }),
+        getManagedAssets(client, { ...args, externalPosition }),
       ]);
 
       return {

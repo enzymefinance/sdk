@@ -18,7 +18,7 @@ export {
   type ReactivateArgs,
 } from "../_internal/ExternalPositionManager.js";
 
-export function isActiveExternalPosition(
+export function isActive(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -33,16 +33,16 @@ export function isActiveExternalPosition(
   });
 }
 
-export async function getTotalExternalPositionsValue(
+export async function getTotalValueForAll(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
 ) {
-  const addresses = await getActiveExternalPositions(client, args);
+  const addresses = await getActive(client, args);
   const values = await Promise.all(
     addresses.map(async (externalPosition) => {
-      const { debtAssets, managedAssets } = await getExternalPositionAssets(client, {
+      const { debtAssets, managedAssets } = await getAssets(client, {
         ...args,
         externalPosition,
       });
@@ -61,7 +61,7 @@ export async function getTotalExternalPositionsValue(
   return values.reduce((total, value) => total + value, 0n);
 }
 
-export function getActiveExternalPositions(
+export function getActive(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -74,7 +74,7 @@ export function getActiveExternalPositions(
   });
 }
 
-export async function getExternalPositionManagedAssets(
+export async function getManagedAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -99,7 +99,7 @@ export async function getExternalPositionManagedAssets(
   });
 }
 
-export async function getExternalPositionDebtAssets(
+export async function getDebtAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -124,16 +124,13 @@ export async function getExternalPositionDebtAssets(
   });
 }
 
-export async function getExternalPositionAssets(
+export async function getAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
 ) {
-  const [debtAssets, managedAssets] = await Promise.all([
-    getExternalPositionDebtAssets(client, args),
-    getExternalPositionManagedAssets(client, args),
-  ]);
+  const [debtAssets, managedAssets] = await Promise.all([getDebtAssets(client, args), getManagedAssets(client, args)]);
 
   return {
     debtAssets,
@@ -141,7 +138,7 @@ export async function getExternalPositionAssets(
   };
 }
 
-export function getExternalPositionType(
+export function getType(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -154,7 +151,7 @@ export function getExternalPositionType(
   });
 }
 
-export function getExternalPositionTypeLabel(
+export function getTypeLabel(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;

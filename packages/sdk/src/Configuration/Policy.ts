@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { getEnabledPolicies } from "../Configuration.js";
 import { Viem } from "../Utils.js";
 
 export {
@@ -7,21 +8,6 @@ export {
   decodeSettings,
   type SettingsArgs,
 } from "../_internal/PolicyManager.js";
-
-export async function getEnabled(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    comptrollerProxy: Address;
-    policyManager: Address;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: Abis.IPolicyManager,
-    functionName: "getEnabledPoliciesForFund",
-    address: args.policyManager,
-    args: [args.comptrollerProxy],
-  });
-}
 
 export async function isEnabled(
   client: PublicClient,
@@ -31,7 +17,7 @@ export async function isEnabled(
     comptrollerProxy: Address;
   }>,
 ): Promise<boolean> {
-  const enabledPolicies = await getEnabled(client, args);
+  const enabledPolicies = await getEnabledPolicies(client, args);
   return enabledPolicies.some((enabledPolicy) => isAddressEqual(enabledPolicy, args.policy));
 }
 
@@ -45,5 +31,40 @@ export function getIdentifier(
     abi: Abis.IPolicy,
     functionName: "identifier",
     address: args.policy,
+  });
+}
+
+const getListIdsForFundAbi = {
+  inputs: [
+    {
+      internalType: "address",
+      name: "_comptrollerProxy",
+      type: "address",
+    },
+  ],
+  name: "getListIdsForFund",
+  outputs: [
+    {
+      internalType: "uint256[]",
+      name: "listIds_",
+      type: "uint256[]",
+    },
+  ],
+  stateMutability: "view",
+  type: "function",
+} as const;
+
+export function getListIds(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    policyContract: Address;
+    comptrollerProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: [getListIdsForFundAbi],
+    functionName: "getListIdsForFund",
+    args: [args.comptrollerProxy],
+    address: args.policyContract,
   });
 }
