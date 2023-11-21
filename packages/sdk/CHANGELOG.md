@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.2.15
+
+### Patch Changes
+
+- [#283](https://github.com/enzymefinance/sdk/pull/283) [`9a390cb`](https://github.com/enzymefinance/sdk/commit/9a390cbdb7f7a4a73906f2acc253ba86c890480d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add arrakis v2 burn helper
+
 ## 0.2.14
 
 ### Patch Changes

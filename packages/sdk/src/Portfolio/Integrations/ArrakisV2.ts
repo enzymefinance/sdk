@@ -163,3 +163,42 @@ export async function totalUnderlying(
     amount1,
   };
 }
+
+const vaultAbi = [
+  {
+    inputs: [
+      { internalType: "uint256", name: "burnAmount_", type: "uint256" },
+      { internalType: "address", name: "receiver_", type: "address" },
+    ],
+    name: "burn",
+    outputs: [
+      { internalType: "uint256", name: "amount0", type: "uint256" },
+      { internalType: "uint256", name: "amount1", type: "uint256" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+] as const;
+
+export async function burn(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    arrakisVault: Address;
+    receiver: Address;
+    burnAmount: bigint;
+  }>,
+) {
+  const {
+    result: [amount0, amount1],
+  } = await Viem.simulateContract(client, args, {
+    abi: vaultAbi,
+    functionName: "burn",
+    address: args.arrakisVault,
+    args: [args.burnAmount, args.receiver],
+  });
+
+  return {
+    amount0,
+    amount1,
+  };
+}
