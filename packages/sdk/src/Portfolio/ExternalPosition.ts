@@ -2,22 +2,6 @@ import * as Abis from "@enzymefinance/abis";
 import { Address, PublicClient } from "viem";
 import { Assertion, Viem } from "../Utils.js";
 
-export {
-  Action,
-  callEncode,
-  callDecode,
-  type CallArgs,
-  createEncode,
-  createDecode,
-  type CreateArgs,
-  removeEncode,
-  removeDecode,
-  type RemoveArgs,
-  reactivateEncode,
-  reactivateDecode,
-  type ReactivateArgs,
-} from "../_internal/ExternalPositionManager.js";
-
 export function isActive(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
