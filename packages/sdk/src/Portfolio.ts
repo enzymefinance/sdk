@@ -1,45 +1,41 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
 import * as Assets from "./Assets.js";
+
 import { Assertion, Viem } from "./Utils.js";
 
-export * as ExternalPositions from "./internal/Extensions/ExternalPositions.js";
-export * as IntegrationAdapters from "./internal/Extensions/IntegrationAdapters.js";
-export * as VoteDelegation from "./internal/VoteDelegation.js";
-
-export {
-  Action as IntegrationAction,
-  call as callIntegration,
-  type CallParams as CallOnIntegrationParams,
-  addTrackedAssets,
-  addTrackedAssetsEncode,
-  addTracketAssetsDecode,
-  type AddTracketAssetsParams,
-  removeTracketAssets,
-  type RemoveTrackedAssetsParams,
-  encodeCall as encodeIntegrationCall,
-  decodeCall as decodeIntegrationCall,
-  type CallArgs as IntegrationCallArgs,
-} from "./internal/IntegrationManager.js";
+export * as Integrations from "./Portfolio/Integrations.js";
+export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 
 export {
   Action as ExternalPositionAction,
-  call as callExternalPosition,
-  type CallParams as CallOnExternalPositionParams,
-  create as createExternalPosition,
-  type CreateParams as CreateExternalPositionParams,
-  remove as removeExternalPosition,
+  callEncode as callExternalPositionEncode,
+  callDecode as callExternalPositionDecode,
+  type CallArgs as ExternalPositionCallArgs,
+  createEncode as createExternalPositionEncode,
+  createDecode as createExternalPositionDecode,
+  type CreateArgs as CreateExternalPositionArgs,
   removeEncode as removeExternalPositionEncode,
   removeDecode as removeExternalPositionDecode,
-  type RemoveParams as RemoveExternalPositionParams,
-  reactivate as reactivateExternalPosition,
+  type RemoveArgs as RemoveExternalPositionArgs,
   reactivateEncode as reactivateExternalPositionEncode,
   reactivateDecode as reactivateExternalPositionDecode,
-  type ReactivateParams as ReactivateExternalPositionParams,
-  callEncode as encodeExternalPositionCall,
-  callDecode as decodeExternalPositionCall,
-  type CallArgs as ExternalPositionCallArgs,
-} from "./internal/ExternalPositionManager.js";
+  type ReactivateArgs as ReactivateExternalPositionArgs,
+} from "./_internal/ExternalPositionManager.js";
+
+export {
+  Action as IntegrationAdapterAction,
+  Selector as IntegrationAdapterSelector,
+  callEncode as callIntegrationAdapterEncode,
+  callDecode as callIntegrationAdapterDecode,
+  type CallArgs as CallIntegrationAdapterArgs,
+  addTrackedAssetsEncode,
+  addTracketAssetsDecode,
+  type AddTracketAssetsArgs,
+  removeTrackedAssetsEncode,
+  removeTrackedAssetsDecode,
+  type RemoveTrackedAssetsArgs,
+} from "./_internal/IntegrationManager.js";
 
 export async function getPortfolio(
   client: PublicClient,
@@ -81,7 +77,39 @@ export async function getPortfolio(
   return { externalPositions, trackedAssets };
 }
 
-export async function getTotalExternalPositionsValue(
+export function getTrackedAssets(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IVaultLib,
+    functionName: "getTrackedAssets",
+    address: args.vaultProxy,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL POSITIONS
+//--------------------------------------------------------------------------------------------
+
+export function isActiveExternalPosition(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    externalPosition: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IVaultLib,
+    address: args.vaultProxy,
+    functionName: "isActiveExternalPosition",
+    args: [args.externalPosition],
+  });
+}
+
+export async function getTotalValueForAllExternalPositions(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -107,34 +135,6 @@ export async function getTotalExternalPositionsValue(
   );
 
   return values.reduce((total, value) => total + value, 0n);
-}
-
-export function getTrackedAssets(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    vaultProxy: Address;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: Abis.IVaultLib,
-    functionName: "getTrackedAssets",
-    address: args.vaultProxy,
-  });
-}
-
-export function isActiveExternalPosition(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    vaultProxy: Address;
-    externalPosition: Address;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: Abis.IVaultLib,
-    address: args.vaultProxy,
-    functionName: "isActiveExternalPosition",
-    args: [args.externalPosition],
-  });
 }
 
 export function getActiveExternalPositions(
@@ -230,7 +230,7 @@ export function getExternalPositionType(
   });
 }
 
-export function getExternalPositionTypeLabel(
+export function getTypeLabel(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;

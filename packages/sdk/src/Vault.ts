@@ -80,19 +80,6 @@ export function getComptrollerProxy(
   });
 }
 
-export function getActiveExternalPositions(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    vaultProxy: Address;
-  }>,
-) {
-  return client.readContract({
-    abi: Abis.IVaultLib,
-    functionName: "getActiveExternalPositions",
-    address: args.vaultProxy,
-  });
-}
-
 export function getPolicyManager(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
