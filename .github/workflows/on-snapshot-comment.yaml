@@ -46,7 +46,7 @@ jobs:
             You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
   
       - name: Checkout pull request branch
         run: gh pr checkout ${{ github.event.issue.number }}
