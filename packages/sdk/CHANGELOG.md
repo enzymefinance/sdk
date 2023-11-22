@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.0
+
+### Minor Changes
+
+- [#282](https://github.com/enzymefinance/sdk/pull/282) [`a7e13fd`](https://github.com/enzymefinance/sdk/commit/a7e13fd48b467ee6a4429139b5e2292f9e4ce5b7) Thanks [@iherger](https://github.com/iherger)! - Refactor directory structure and exports
+
 ## 0.2.15
 
 ### Patch Changes
