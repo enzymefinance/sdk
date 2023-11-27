@@ -87,7 +87,7 @@ export function claimFeesEncode(args: ClaimFeesArgs): Hex {
 }
 
 export function isValidClaimType(value: number): value is ClaimType {
-  return !Object.values(ClaimType).includes(value as ClaimType);
+  return Object.values(ClaimType).includes(value as ClaimType);
 }
 
 export function claimFeesDecode(encoded: Hex): ClaimFeesArgs {

@@ -2,7 +2,7 @@ import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from
 
 const settingsEncoding = [
   {
-    type: "address[]",
+    type: "uint256[]",
     name: "existingListIds",
   },
   {
@@ -23,7 +23,7 @@ const newAddressListArgsEncoding = [
 ] as const;
 
 export interface AddressListRegistryPolicySettings {
-  existingListIds: ReadonlyArray<Address>;
+  existingListIds: ReadonlyArray<bigint>;
   newListsArgs: ReadonlyArray<{
     updateType: bigint;
     initialItems: ReadonlyArray<Address>;
