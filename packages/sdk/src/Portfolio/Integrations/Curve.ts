@@ -17,8 +17,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {
@@ -80,8 +79,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -136,8 +134,7 @@ export function lendDecode(encoded: Hex): LendArgs {
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-const lendAndStakeSelector = "0x29fa046e"; // lendAndStake(address,bytes,bytes)
-export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
+export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
 
 const lendAndStakeEncoding = [
   {
@@ -197,8 +194,7 @@ export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
 // REDEEM
 //--------------------------------------------------------------------------------------------
 
-const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 const redeemEncoding = [
   {
@@ -276,8 +272,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-const claimRewardsSelector = "0xb9dfbacc"; // claimRewards(address,bytes,bytes)
-export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
+export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -304,8 +299,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-const stakeSelector = "0xfa7dd04d"; // stake(address,bytes,bytes)
-export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
+export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
 
 const stakeEncoding = [
   {
@@ -342,8 +336,7 @@ export function stakeDecode(encoded: Hex): StakeArgs {
 // UNSTAKE
 //--------------------------------------------------------------------------------------------
 
-const unstakeSelector = "0x68e30677"; // unstake(address,bytes,bytes)
-export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
+export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
 
 const unstakeEncoding = [
   {
@@ -380,8 +373,10 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // UNSTAKE AND REDEEM
 //--------------------------------------------------------------------------------------------
 
-const unstakeAndRedeemSelector = "0x8334eb99"; // unstakeAndRedeem(address,bytes,bytes)
-export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
+export const unstakeAndRedeem = IntegrationManager.makeUse(
+  IntegrationManager.Selector.UnstakeAndRedeem,
+  unstakeAndRedeemEncode,
+);
 
 const unstakeAndRedeemEncoding = [
   {

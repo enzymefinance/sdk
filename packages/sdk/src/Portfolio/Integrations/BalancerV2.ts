@@ -6,8 +6,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515" as const; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -93,15 +92,13 @@ export type RedeemArgs = LendArgs;
 export const redeemEncode: (args: RedeemArgs) => Hex = lendEncode;
 export const redeemDecode: (args: Hex) => RedeemArgs = lendDecode;
 
-const redeemSelector = "0xc29fa9dd" as const; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-const lendAndStakeSelector = "0x29fa046e" as const; // lendAndStake(address,bytes,bytes)
-export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
+export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
 
 const lendAndStakeEncoding = [
   {
@@ -148,15 +145,16 @@ export type UnstakeAndRedeemArgs = LendAndStakeArgs;
 export const unstakeAndRedeemEncode: (args: UnstakeAndRedeemArgs) => Hex = lendAndStakeEncode;
 export const unstakeAndRedeemDecode: (args: Hex) => UnstakeAndRedeemArgs = lendAndStakeDecode;
 
-const unstakeAndRedeemSelector = "0x8334eb99" as const; // unstakeAndRedeem(address,bytes,bytes)
-export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
+export const unstakeAndRedeem = IntegrationManager.makeUse(
+  IntegrationManager.Selector.UnstakeAndRedeem,
+  unstakeAndRedeemEncode,
+);
 
 //--------------------------------------------------------------------------------------------
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-const claimRewardsSelector = "0xb9dfbacc" as const; // claimRewards(address,bytes,bytes)
-export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
+export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -183,8 +181,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-const stakeSelector = "0xfa7dd04d" as const; // stake(address,bytes,bytes)
-export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
+export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
 
 const stakeEncoding = [
   {
@@ -220,15 +217,13 @@ export type UnstakeArgs = StakeArgs;
 export const unstakeEncode: (args: UnstakeArgs) => Hex = stakeEncode;
 export const unstakeDecode: (args: Hex) => UnstakeArgs = stakeDecode;
 
-const unstakeSelector = "0x68e30677" as const; // unstake(address,bytes,bytes)
-export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
+export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
 
 //--------------------------------------------------------------------------------------------
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b" as const; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {

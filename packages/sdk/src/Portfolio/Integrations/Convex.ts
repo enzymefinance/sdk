@@ -9,8 +9,7 @@ import { type RedeemType, isValidRedeemType } from "./Curve.js";
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-const lendAndStakeSelector = "0x29fa046e"; // lendAndStake(address,bytes,bytes)
-export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
+export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
 
 const lendAndStakeEncoding = [
   {
@@ -70,8 +69,7 @@ export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-const claimRewardsSelector = "0xb9dfbacc"; // claimRewards(address,bytes,bytes)
-export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
+export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -98,8 +96,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-const stakeSelector = "0xfa7dd04d"; // stake(address,bytes,bytes)
-export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
+export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
 
 const stakeEncoding = [
   {
@@ -136,8 +133,7 @@ export function stakeDecode(encoded: Hex): StakeArgs {
 // UNSTAKE
 //--------------------------------------------------------------------------------------------
 
-const unstakeSelector = "0x68e30677"; // unstake(address,bytes,bytes)
-export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
+export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
 
 const unstakeEncoding = [
   {
@@ -174,8 +170,10 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // UNSTAKE AND REDEEM
 //--------------------------------------------------------------------------------------------
 
-const unstakeAndRedeemSelector = "0x8334eb99"; // unstakeAndRedeem(address,bytes,bytes)
-export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
+export const unstakeAndRedeem = IntegrationManager.makeUse(
+  IntegrationManager.Selector.UnstakeAndRedeem,
+  unstakeAndRedeemEncode,
+);
 
 const unstakeAndRedeemEncoding = [
   {
