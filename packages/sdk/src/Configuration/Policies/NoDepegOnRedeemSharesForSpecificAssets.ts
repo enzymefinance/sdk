@@ -12,7 +12,7 @@ const settingsEncoding = [
   },
   {
     type: "uint16[]",
-    name: "deviationToleranceInBps",
+    name: "deviationTolerancesInBps",
   },
 ] as const;
 
@@ -41,15 +41,15 @@ export type Settings = {
 export function encodeSettings(args: Settings): Hex {
   const assets: Address[] = [];
   const referenceAssets: Address[] = [];
-  const deviationToleranceInBps: number[] = [];
+  const deviationTolerancesInBps: number[] = [];
 
   for (const value of args.assetConfigs) {
     assets.push(value.asset);
     referenceAssets.push(value.referenceAsset);
-    deviationToleranceInBps.push(value.deviationToleranceInBps);
+    deviationTolerancesInBps.push(value.deviationToleranceInBps);
   }
 
-  return encodeAbiParameters(settingsEncoding, [assets, referenceAssets, deviationToleranceInBps]);
+  return encodeAbiParameters(settingsEncoding, [assets, referenceAssets, deviationTolerancesInBps]);
 }
 
 /**
@@ -58,12 +58,12 @@ export function encodeSettings(args: Settings): Hex {
  * @returns The decoded settings.
  */
 export function decodeSettings(encoded: Hex): Settings {
-  const [assets, referenceAssets, deviationToleranceInBpss] = decodeAbiParameters(settingsEncoding, encoded);
+  const [assets, referenceAssets, deviationTolerancesInBps] = decodeAbiParameters(settingsEncoding, encoded);
 
   return {
     assetConfigs: assets.map((asset, i) => {
       const referenceAsset = referenceAssets[i];
-      const deviationToleranceInBps = deviationToleranceInBpss[i];
+      const deviationToleranceInBps = deviationTolerancesInBps[i];
       Assertion.invariant(referenceAsset !== undefined, "Expected referenceAssets and assets to have the same length");
       Assertion.invariant(
         deviationToleranceInBps !== undefined,
