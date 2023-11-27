@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.2
+
+### Patch Changes
+
+- [#290](https://github.com/enzymefinance/sdk/pull/290) [`101a475`](https://github.com/enzymefinance/sdk/commit/101a47502632a103a263534f8fdf66a6b86db9a7) Thanks [@iherger](https://github.com/iherger)! - Fix Kiln claim fee type
+
 ## 0.3.1
 
 ### Patch Changes
