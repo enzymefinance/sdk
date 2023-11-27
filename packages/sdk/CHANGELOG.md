@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.1
+
+### Patch Changes
+
+- [#288](https://github.com/enzymefinance/sdk/pull/288) [`fd77294`](https://github.com/enzymefinance/sdk/commit/fd77294a980de6a51d3cbd27428267ad11edbdf1) Thanks [@iherger](https://github.com/iherger)! - Fix address list encoding
+
 ## 0.3.0
 
 ### Minor Changes
