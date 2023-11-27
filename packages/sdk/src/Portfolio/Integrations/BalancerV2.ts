@@ -1,4 +1,12 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  type Hex,
+  PublicClient,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+  parseAbiParameters,
+} from "viem";
 import { Assertion, Types, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -416,4 +424,279 @@ export async function queryBatchSwap(
     address: args.balancerVault,
     args: [args.kind, args.swaps, args.assets, args.funds],
   });
+}
+
+//--------------------------------------------------------------------------------------------
+// WEIGHTED POOLS
+//--------------------------------------------------------------------------------------------
+
+export enum WeightedPoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+  ADD_TOKEN = 4,
+}
+
+export enum WeightedPoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  EXACT_BPT_IN_FOR_TOKENS_OUT = 1,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 2,
+  REMOVE_TOKEN = 3,
+}
+
+// exits
+
+export function weightedPoolsUserDataBptInForExactTokensOut({
+  amountsOut,
+  maxBPTAmountIn,
+}: {
+  amountsOut: bigint[];
+  maxBPTAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
+    WeightedPoolExitKind.BPT_IN_FOR_EXACT_TOKENS_OUT,
+    amountsOut,
+    maxBPTAmountIn,
+  ]);
+}
+
+export function weightedPoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    WeightedPoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function weightedPoolsUserDataExactBptInForTokensOut({ bptAmountIn }: { bptAmountIn: bigint }) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    WeightedPoolExitKind.EXACT_BPT_IN_FOR_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+// joins
+
+export function weightedPoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    WeightedPoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+export function weightedPoolsUserDataTokenInForExactBptOut({
+  bptAmountOut,
+  tokenIndex,
+}: {
+  bptAmountOut: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    WeightedPoolJoinKind.TOKEN_IN_FOR_EXACT_BPT_OUT,
+    bptAmountOut,
+    tokenIndex,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// STABLE POOLS
+//--------------------------------------------------------------------------------------------
+
+export enum StablePoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum StablePoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  EXACT_BPT_IN_FOR_TOKENS_OUT = 1,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 2,
+}
+
+// exits
+
+export function stablePoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    StablePoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function stablePoolsUserDataExactBptInForTokensOut({ bptAmountIn }: { bptAmountIn: bigint }) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    StablePoolExitKind.EXACT_BPT_IN_FOR_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+// joins
+
+export function stablePoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    StablePoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+export function stablePoolsUserDataTokenInForExactBptOut({
+  bptAmountOut,
+  tokenIndex,
+}: {
+  bptAmountOut: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    StablePoolJoinKind.TOKEN_IN_FOR_EXACT_BPT_OUT,
+    bptAmountOut,
+    tokenIndex,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// COMPOSABLE STABLE POOLS - V1
+//--------------------------------------------------------------------------------------------
+
+export enum ComposableStableV1PoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum ComposableStableV1PoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
+}
+
+// joins
+
+export function composableStableV1PoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    ComposableStableV1PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+// exits
+
+export function composableStableV1PoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    ComposableStableV1PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function composableStableV1PoolsUserDataBptInForExactTokensOut({
+  bptAmountIn,
+}: {
+  bptAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    ComposableStableV1PoolExitKind.BPT_IN_FOR_EXACT_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// COMPOSABLE STABLE POOLS - V2
+//--------------------------------------------------------------------------------------------
+
+export enum ComposableStableV2PoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum ComposableStableV2PoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
+  EXACT_BPT_IN_FOR_ALL_TOKENS_OUT = 2,
+}
+
+// joins
+
+export function composableStableV2PoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    ComposableStableV2PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+// exits
+
+export function composableStableV2PoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function composableStableV2PoolsUserDataExactBptInForTokensOut({
+  bptAmountIn,
+}: {
+  bptAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
+    bptAmountIn,
+  ]);
 }
