@@ -1,8 +1,8 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 
 const settingsEncoding = [
   {
-    type: "address[]",
+    type: "uint256[]",
     name: "existingListIds",
   },
   {
@@ -23,7 +23,7 @@ const newUintListArgsEncoding = [
 ] as const;
 
 export interface UintListRegistryPolicySettings {
-  existingListIds: ReadonlyArray<Address>;
+  existingListIds: ReadonlyArray<bigint>;
   newListsArgs: ReadonlyArray<{
     updateType: bigint;
     initialItems: ReadonlyArray<bigint>;
