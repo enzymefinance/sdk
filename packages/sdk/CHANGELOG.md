@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.3.3
+
+### Patch Changes
+
+- [#293](https://github.com/enzymefinance/sdk/pull/293) [`166087e`](https://github.com/enzymefinance/sdk/commit/166087e01b9b5d97c8a317c82ed3afe4b2506c22) Thanks [@iherger](https://github.com/iherger)! - Fix claim fee amounts
+
+- [#286](https://github.com/enzymefinance/sdk/pull/286) [`25ba2a0`](https://github.com/enzymefinance/sdk/commit/25ba2a022299dd3d8c81bee3da1a54477c9ffaa5) Thanks [@manimal1](https://github.com/manimal1)! - add no depeg redemption policy encoding
+
 ## 0.3.2
 
 ### Patch Changes
