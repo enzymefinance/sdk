@@ -76,7 +76,7 @@ export async function getAccruedContinuousFees(
     } = await Viem.simulateContract(client, args, {
       abi: Abis.IPerformanceFee,
       functionName: "settle",
-      address: args.managementFee,
+      address: args.performanceFee,
       args: [args.comptrollerProxy, args.vaultProxy, 0, "0x", gav],
       account: args.feeManager,
     });
