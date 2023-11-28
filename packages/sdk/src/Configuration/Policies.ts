@@ -9,3 +9,4 @@ export * as AllowedSharesTransferRecipients from "./Policies/AllowedSharesTransf
 export * as CumulativeSlippageTolerance from "./Policies/CumulativeSlippageTolerance.js";
 export * as MinAssetBalancesPostRedemption from "./Policies/MinAssetBalancesPostRedemption.js";
 export * as MinMaxInvestment from "./Policies/MinMaxInvestment.js";
+export * as NoDepegOnRedeemSharesForSpecificAssets from "./Policies/NoDepegOnRedeemSharesForSpecificAssets.js";
