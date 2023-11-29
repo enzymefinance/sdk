@@ -81,6 +81,40 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 }
 
 //--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export async function convertToAssets(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+    sharesAmount: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToAssets(uint256 sharesAmount) view returns (uint256 assetAmount)"]),
+    functionName: "convertToAssets",
+    address: args.asset,
+    args: [args.sharesAmount],
+  });
+}
+
+export async function convertToShares(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+    assetAmount: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToShares(uint256 assetAmount) view returns (uint256 sharesAmount)"]),
+    functionName: "convertToShares",
+    address: args.asset,
+    args: [args.assetAmount],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS - MAKER
 //--------------------------------------------------------------------------------------------
 
