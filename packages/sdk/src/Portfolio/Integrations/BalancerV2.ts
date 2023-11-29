@@ -386,11 +386,6 @@ export async function getClaimableRewards(
 // EXTERNAL READ FUNCTIONS - BALANCER VAULT
 //--------------------------------------------------------------------------------------------
 
-export const BatchSwapKind = {
-  GIVEN_IN: 0n,
-  GIVEN_OUT: 1n,
-} as const;
-
 export interface BatchSwapStep {
   poolId: Hex;
   assetInIndex: bigint;
@@ -410,7 +405,7 @@ export async function queryBatchSwap(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     balancerVault: Address;
-    kind: typeof BatchSwapKind[keyof typeof BatchSwapKind];
+    kind: typeof SwapKind[keyof typeof SwapKind];
     swaps: BatchSwapStep[];
     assets: Address[];
     funds: BatchSwapFunds;

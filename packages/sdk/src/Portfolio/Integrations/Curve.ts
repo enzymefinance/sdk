@@ -1,3 +1,4 @@
+import { decode } from "punycode";
 import {
   type Address,
   ContractFunctionExecutionError,
@@ -7,10 +8,12 @@ import {
   encodeAbiParameters,
   isAddressEqual,
   parseAbi,
+  parseAbiParameters,
   parseEther,
   parseUnits,
 } from "viem";
 import { Assertion, Constants, Rates, Viem } from "../../Utils.js";
+import { invariant } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -229,18 +232,46 @@ export type RedeemArgs = {
   pool: Address;
   outgoingLpTokenAmount: bigint;
   useUnderlyings: boolean;
-  redeemType: RedeemType;
-  incomingAssetsData: Hex;
-};
+} & (
+  | {
+      redeemType: typeof RedeemType.Standard;
+      orderedMinIncomingAssetAmounts: readonly bigint[];
+    }
+  | {
+      redeemType: typeof RedeemType.OneCoin;
+      incomingAssetPoolIndex: bigint;
+      minIncomingAssetAmount: bigint;
+    }
+);
 
 export function redeemEncode(args: RedeemArgs): Hex {
-  return encodeAbiParameters(redeemEncoding, [
-    args.pool,
-    args.outgoingLpTokenAmount,
-    args.useUnderlyings,
-    args.redeemType,
-    args.incomingAssetsData,
-  ]);
+  const redeemType = args.redeemType;
+
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
+
+      return encodeAbiParameters(redeemEncoding, [
+        args.pool,
+        args.outgoingLpTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+
+    case RedeemType.OneCoin: {
+      const incomingAssetsData = oneCoinRedeemEncode(args.incomingAssetPoolIndex, args.minIncomingAssetAmount);
+
+      return encodeAbiParameters(redeemEncoding, [
+        args.pool,
+        args.outgoingLpTokenAmount,
+        args.useUnderlyings,
+        args.redeemType,
+        incomingAssetsData,
+      ]);
+    }
+  }
 }
 
 export function isValidRedeemType(value: number): value is RedeemType {
@@ -253,19 +284,61 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
     encoded,
   );
 
-  // TODO: decode incomingAssetsData
+  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
 
-  if (!isValidRedeemType(redeemType)) {
-    Assertion.invariant(false, "Invalid redeem type");
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const { orderedMinIncomingAssetAmounts } = standardRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingLpTokenAmount,
+        useUnderlyings,
+        redeemType,
+        orderedMinIncomingAssetAmounts,
+      };
+    }
+
+    case RedeemType.OneCoin: {
+      const { incomingAssetPoolIndex, minIncomingAssetAmount } = oneCoinRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingLpTokenAmount,
+        useUnderlyings,
+        redeemType,
+        incomingAssetPoolIndex,
+        minIncomingAssetAmount,
+      };
+    }
   }
+}
 
-  return {
-    pool,
-    outgoingLpTokenAmount,
-    useUnderlyings,
-    redeemType,
-    incomingAssetsData,
-  };
+//--------------------------------------------------------------------------------------------
+// REDEEM TYPE SPECIFIC ENCODING / DECODING
+//--------------------------------------------------------------------------------------------
+
+const standardRedeemEncoding = parseAbiParameters("uint256[]");
+const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
+
+export function standardRedeemEncode(orderedMinIncomingAssetAmounts: readonly bigint[]): Hex {
+  return encodeAbiParameters(standardRedeemEncoding, [orderedMinIncomingAssetAmounts]);
+}
+
+export function standardRedeemDecode(encoded: Hex) {
+  const [orderedMinIncomingAssetAmounts] = decodeAbiParameters(standardRedeemEncoding, encoded);
+
+  return { orderedMinIncomingAssetAmounts };
+}
+
+export function oneCoinRedeemEncode(incomingAssetPoolIndex: bigint, minIncomingAssetAmount: bigint): Hex {
+  return encodeAbiParameters(oneCoinRedeemEncoding, [incomingAssetPoolIndex, minIncomingAssetAmount]);
+}
+
+export function oneCoinRedeemDecode(encoded: Hex) {
+  const [incomingAssetPoolIndex, minIncomingAssetAmount] = decodeAbiParameters(oneCoinRedeemEncoding, encoded);
+
+  return { incomingAssetPoolIndex, minIncomingAssetAmount };
 }
 
 //--------------------------------------------------------------------------------------------
