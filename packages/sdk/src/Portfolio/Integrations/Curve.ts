@@ -230,17 +230,7 @@ export type RedeemArgs = {
   pool: Address;
   outgoingLpTokenAmount: bigint;
   useUnderlyings: boolean;
-} & (
-  | {
-      redeemType: typeof RedeemType.Standard;
-      orderedMinIncomingAssetAmounts: readonly bigint[];
-    }
-  | {
-      redeemType: typeof RedeemType.OneCoin;
-      incomingAssetPoolIndex: bigint;
-      minIncomingAssetAmount: bigint;
-    }
-);
+} & (StandardRedeemArgs | OneCoinRedeemArgs);
 
 export function redeemEncode(args: RedeemArgs): Hex {
   const redeemType = args.redeemType;
@@ -315,6 +305,17 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 //--------------------------------------------------------------------------------------------
 // REDEEM TYPE SPECIFIC ENCODING / DECODING
 //--------------------------------------------------------------------------------------------
+
+export type StandardRedeemArgs = {
+  redeemType: typeof RedeemType.Standard;
+  orderedMinIncomingAssetAmounts: readonly bigint[];
+};
+
+export type OneCoinRedeemArgs = {
+  redeemType: typeof RedeemType.OneCoin;
+  incomingAssetPoolIndex: bigint;
+  minIncomingAssetAmount: bigint;
+};
 
 const standardRedeemEncoding = parseAbiParameters("uint256[]");
 const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
@@ -481,37 +482,72 @@ export type UnstakeAndRedeemArgs = {
   outgoingStakingToken: Address;
   outgoingStakingTokenAmount: bigint;
   useUnderlyings: boolean;
-  redeemType: RedeemType;
-  incomingAssetsData: Hex;
-};
+} & (StandardRedeemArgs | OneCoinRedeemArgs);
 
 export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
-  return encodeAbiParameters(unstakeAndRedeemEncoding, [
-    args.pool,
-    args.outgoingStakingToken,
-    args.outgoingStakingTokenAmount,
-    args.useUnderlyings,
-    args.redeemType,
-    args.incomingAssetsData,
-  ]);
+  const redeemType = args.redeemType;
+
+  switch (args.redeemType) {
+    case RedeemType.Standard: {
+      const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
+
+      return encodeAbiParameters(unstakeAndRedeemEncoding, [
+        args.pool,
+        args.outgoingStakingToken,
+        args.outgoingStakingTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+    case RedeemType.OneCoin: {
+      const incomingAssetsData = oneCoinRedeemEncode(args.incomingAssetPoolIndex, args.minIncomingAssetAmount);
+
+      return encodeAbiParameters(unstakeAndRedeemEncoding, [
+        args.pool,
+        args.outgoingStakingToken,
+        args.outgoingStakingTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+  }
 }
 
 export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
     decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
 
-  if (!isValidRedeemType(redeemType)) {
-    Assertion.invariant(false, "Invalid redeem type");
-  }
+  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
 
-  return {
-    pool,
-    outgoingStakingToken,
-    outgoingStakingTokenAmount,
-    useUnderlyings,
-    redeemType,
-    incomingAssetsData,
-  };
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const { orderedMinIncomingAssetAmounts } = standardRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingStakingToken,
+        outgoingStakingTokenAmount,
+        useUnderlyings,
+        redeemType,
+        orderedMinIncomingAssetAmounts,
+      };
+    }
+    case RedeemType.OneCoin: {
+      const { incomingAssetPoolIndex, minIncomingAssetAmount } = oneCoinRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingStakingToken,
+        outgoingStakingTokenAmount,
+        useUnderlyings,
+        redeemType,
+        incomingAssetPoolIndex,
+        minIncomingAssetAmount,
+      };
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------
