@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.6
+
+### Patch Changes
+
+- [#298](https://github.com/enzymefinance/sdk/pull/298) [`9187ad7`](https://github.com/enzymefinance/sdk/commit/9187ad722282ad01d34471be7efb13a2e686f74d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Number of ranges for arrakis v2 vault
+
 ## 0.3.5
 
 ### Patch Changes
