@@ -192,6 +192,24 @@ const vaultAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "getRanges",
+    outputs: [
+      {
+        components: [
+          { internalType: "int24", name: "lowerTick", type: "int24" },
+          { internalType: "int24", name: "upperTick", type: "int24" },
+          { internalType: "uint24", name: "feeTier", type: "uint24" },
+        ],
+        internalType: "struct Range[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export async function burn(
@@ -242,4 +260,19 @@ export async function inits(
     init0,
     init1,
   };
+}
+
+export async function numberOfRanges(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    arrakisVault: Address;
+  }>,
+) {
+  const ranges = await Viem.readContract(client, args, {
+    abi: vaultAbi,
+    functionName: "getRanges",
+    address: args.arrakisVault,
+  });
+
+  return ranges.length;
 }
