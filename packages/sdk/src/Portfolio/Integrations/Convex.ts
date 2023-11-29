@@ -2,242 +2,76 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
-import * as IntegrationManager from "../../_internal/IntegrationManager.js";
-import { type RedeemType, isValidRedeemType } from "./Curve.js";
+import * as Curve from "./Curve.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
+export const lendAndStake = Curve.lendAndStake;
 
-const lendAndStakeEncoding = [
-  {
-    name: "pool",
-    type: "address",
-  },
-  {
-    name: "orderedOutgoingAssetAmounts",
-    type: "uint256[]",
-  },
-  {
-    name: "incomingStakingToken",
-    type: "address",
-  },
-  {
-    name: "minIncomingStakingTokenAmount",
-    type: "uint256",
-  },
-  {
-    name: "useUnderlyings",
-    type: "bool",
-  },
-] as const;
-
-export type LendAndStakeArgs = {
-  pool: Address;
-  orderedOutgoingAssetAmounts: ReadonlyArray<bigint>;
-  incomingStakingToken: Address;
-  minIncomingStakingTokenAmount: bigint;
-  useUnderlyings: boolean;
-};
-
-export function lendAndStakeEncode(args: LendAndStakeArgs): Hex {
-  return encodeAbiParameters(lendAndStakeEncoding, [
-    args.pool,
-    args.orderedOutgoingAssetAmounts,
-    args.incomingStakingToken,
-    args.minIncomingStakingTokenAmount,
-    args.useUnderlyings,
-  ]);
+export function lendAndStakeEncode(args: Curve.LendAndStakeArgs): Hex {
+  return Curve.lendAndStakeEncode(args);
 }
 
-export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
-  const [pool, orderedOutgoingAssetAmounts, incomingStakingToken, minIncomingStakingTokenAmount, useUnderlyings] =
-    decodeAbiParameters(lendAndStakeEncoding, encoded);
-
-  return {
-    pool,
-    orderedOutgoingAssetAmounts,
-    incomingStakingToken,
-    minIncomingStakingTokenAmount,
-    useUnderlyings,
-  };
+export function lendAndStakeDecode(encoded: Hex): Curve.LendAndStakeArgs {
+  return Curve.lendAndStakeDecode(encoded);
 }
 
 //--------------------------------------------------------------------------------------------
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
+export const claimRewards = Curve.claimRewards;
 
-const claimRewardsEncoding = [
-  {
-    name: "stakingToken",
-    type: "address",
-  },
-] as const;
-
-export type ClaimRewardsArgs = {
-  stakingToken: Address;
-};
-
-export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
-  return encodeAbiParameters(claimRewardsEncoding, [args.stakingToken]);
+export function claimRewardsEncode(args: Curve.ClaimRewardsArgs): Hex {
+  return Curve.claimRewardsEncode(args);
 }
 
-export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
-  const [stakingToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
-
-  return { stakingToken };
+export function claimRewardsDecode(encoded: Hex): Curve.ClaimRewardsArgs {
+  return Curve.claimRewardsDecode(encoded);
 }
 
 //--------------------------------------------------------------------------------------------
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
+export const stake = Curve.stake;
 
-const stakeEncoding = [
-  {
-    name: "pool",
-    type: "address",
-  },
-  {
-    name: "incomingStakingToken",
-    type: "address",
-  },
-  {
-    name: "amount",
-    type: "uint256",
-  },
-] as const;
-
-export type StakeArgs = {
-  pool: Address;
-  incomingStakingToken: Address;
-  amount: bigint;
-};
-
-export function stakeEncode(args: StakeArgs): Hex {
-  return encodeAbiParameters(stakeEncoding, [args.pool, args.incomingStakingToken, args.amount]);
+export function stakeEncode(args: Curve.StakeArgs): Hex {
+  return Curve.stakeEncode(args);
 }
 
-export function stakeDecode(encoded: Hex): StakeArgs {
-  const [pool, incomingStakingToken, amount] = decodeAbiParameters(stakeEncoding, encoded);
-
-  return { pool, incomingStakingToken, amount };
+export function stakeDecode(encoded: Hex): Curve.StakeArgs {
+  return Curve.stakeDecode(encoded);
 }
 
 //--------------------------------------------------------------------------------------------
 // UNSTAKE
 //--------------------------------------------------------------------------------------------
 
-export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
+export const unstake = Curve.unstake;
 
-const unstakeEncoding = [
-  {
-    name: "pool",
-    type: "address",
-  },
-  {
-    name: "outgoingStakingToken",
-    type: "address",
-  },
-  {
-    name: "amount",
-    type: "uint256",
-  },
-] as const;
-
-export type UnstakeArgs = {
-  pool: Address;
-  outgoingStakingToken: Address;
-  amount: bigint;
-};
-
-export function unstakeEncode(args: UnstakeArgs): Hex {
-  return encodeAbiParameters(unstakeEncoding, [args.pool, args.outgoingStakingToken, args.amount]);
+export function unstakeEncode(args: Curve.UnstakeArgs): Hex {
+  return Curve.unstakeEncode(args);
 }
 
-export function unstakeDecode(encoded: Hex): UnstakeArgs {
-  const [pool, outgoingStakingToken, amount] = decodeAbiParameters(unstakeEncoding, encoded);
-
-  return { pool, outgoingStakingToken, amount };
+export function unstakeDecode(encoded: Hex): Curve.UnstakeArgs {
+  return Curve.unstakeDecode(encoded);
 }
 
 //--------------------------------------------------------------------------------------------
 // UNSTAKE AND REDEEM
 //--------------------------------------------------------------------------------------------
 
-export const unstakeAndRedeem = IntegrationManager.makeUse(
-  IntegrationManager.Selector.UnstakeAndRedeem,
-  unstakeAndRedeemEncode,
-);
+export const unstakeAndRedeem = Curve.unstakeAndRedeem;
 
-const unstakeAndRedeemEncoding = [
-  {
-    name: "pool",
-    type: "address",
-  },
-  {
-    name: "outgoingStakingToken",
-    type: "address",
-  },
-  {
-    name: "outgoingStakingTokenAmount",
-    type: "uint256",
-  },
-  {
-    name: "useUnderlyings",
-    type: "bool",
-  },
-  {
-    name: "redeemType",
-    type: "uint8",
-  },
-  {
-    name: "incomingAssetsData",
-    type: "bytes",
-  },
-] as const;
-
-export type UnstakeAndRedeemArgs = {
-  pool: Address;
-  outgoingStakingToken: Address;
-  outgoingStakingTokenAmount: bigint;
-  useUnderlyings: boolean;
-  redeemType: RedeemType;
-  incomingAssetsData: Hex;
-};
-
-export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
-  return encodeAbiParameters(unstakeAndRedeemEncoding, [
-    args.pool,
-    args.outgoingStakingToken,
-    args.outgoingStakingTokenAmount,
-    args.useUnderlyings,
-    args.redeemType,
-    args.incomingAssetsData,
-  ]);
+export function unstakeAndRedeemEncode(args: Curve.UnstakeAndRedeemArgs): Hex {
+  return Curve.unstakeAndRedeemEncode(args);
 }
 
-export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
-  const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
-    decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
-
-  if (!isValidRedeemType(redeemType)) {
-    Assertion.invariant(false, "Invalid redeem type");
-  }
-
-  return {
-    pool,
-    outgoingStakingToken,
-    outgoingStakingTokenAmount,
-    useUnderlyings,
-    redeemType,
-    incomingAssetsData,
-  };
+export function unstakeAndRedeemDecode(encoded: Hex): Curve.UnstakeAndRedeemArgs {
+  return Curve.unstakeAndRedeemDecode(encoded);
 }
 
 //--------------------------------------------------------------------------------------------
