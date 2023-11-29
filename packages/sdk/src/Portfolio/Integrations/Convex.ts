@@ -10,11 +10,13 @@ import * as Curve from "./Curve.js";
 
 export const lendAndStake = Curve.lendAndStake;
 
-export function lendAndStakeEncode(args: Curve.LendAndStakeArgs): Hex {
+export type LendAndStakeArgs = Curve.LendAndStakeArgs;
+
+export function lendAndStakeEncode(args: LendAndStakeArgs): Hex {
   return Curve.lendAndStakeEncode(args);
 }
 
-export function lendAndStakeDecode(encoded: Hex): Curve.LendAndStakeArgs {
+export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
   return Curve.lendAndStakeDecode(encoded);
 }
 
@@ -24,11 +26,13 @@ export function lendAndStakeDecode(encoded: Hex): Curve.LendAndStakeArgs {
 
 export const claimRewards = Curve.claimRewards;
 
-export function claimRewardsEncode(args: Curve.ClaimRewardsArgs): Hex {
+export type ClaimRewardsArgs = Curve.ClaimRewardsArgs;
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
   return Curve.claimRewardsEncode(args);
 }
 
-export function claimRewardsDecode(encoded: Hex): Curve.ClaimRewardsArgs {
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
   return Curve.claimRewardsDecode(encoded);
 }
 
@@ -38,11 +42,13 @@ export function claimRewardsDecode(encoded: Hex): Curve.ClaimRewardsArgs {
 
 export const stake = Curve.stake;
 
-export function stakeEncode(args: Curve.StakeArgs): Hex {
+export type StakeArgs = Curve.StakeArgs;
+
+export function stakeEncode(args: StakeArgs): Hex {
   return Curve.stakeEncode(args);
 }
 
-export function stakeDecode(encoded: Hex): Curve.StakeArgs {
+export function stakeDecode(encoded: Hex): StakeArgs {
   return Curve.stakeDecode(encoded);
 }
 
@@ -52,11 +58,13 @@ export function stakeDecode(encoded: Hex): Curve.StakeArgs {
 
 export const unstake = Curve.unstake;
 
-export function unstakeEncode(args: Curve.UnstakeArgs): Hex {
+export type UnstakeArgs = Curve.UnstakeArgs;
+
+export function unstakeEncode(args: UnstakeArgs): Hex {
   return Curve.unstakeEncode(args);
 }
 
-export function unstakeDecode(encoded: Hex): Curve.UnstakeArgs {
+export function unstakeDecode(encoded: Hex): UnstakeArgs {
   return Curve.unstakeDecode(encoded);
 }
 
@@ -66,11 +74,13 @@ export function unstakeDecode(encoded: Hex): Curve.UnstakeArgs {
 
 export const unstakeAndRedeem = Curve.unstakeAndRedeem;
 
-export function unstakeAndRedeemEncode(args: Curve.UnstakeAndRedeemArgs): Hex {
+export type UnstakeAndRedeemArgs = Curve.UnstakeAndRedeemArgs;
+
+export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
   return Curve.unstakeAndRedeemEncode(args);
 }
 
-export function unstakeAndRedeemDecode(encoded: Hex): Curve.UnstakeAndRedeemArgs {
+export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   return Curve.unstakeAndRedeemDecode(encoded);
 }
 
