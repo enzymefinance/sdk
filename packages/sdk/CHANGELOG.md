@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.5
+
+### Patch Changes
+
+- [#296](https://github.com/enzymefinance/sdk/pull/296) [`152b114`](https://github.com/enzymefinance/sdk/commit/152b114c9a47fbebaa1bf4ee9b1f7ce458fd07c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add account param to arrakis v2 burn
+
 ## 0.3.4
 
 ### Patch Changes

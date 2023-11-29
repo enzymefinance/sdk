@@ -198,6 +198,7 @@ export async function burn(
     arrakisVault: Address;
     receiver: Address;
     burnAmount: bigint;
+    account: Address;
   }>,
 ) {
   const {
@@ -207,6 +208,7 @@ export async function burn(
     functionName: "burn",
     address: args.arrakisVault,
     args: [args.burnAmount, args.receiver],
+    account: args.account,
   });
 
   return {
