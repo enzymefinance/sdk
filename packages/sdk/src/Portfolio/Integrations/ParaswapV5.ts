@@ -5,8 +5,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {
@@ -211,7 +210,8 @@ export type TakeOrderArgs = {
 export function takeOrderEncode(args: TakeOrderArgs): Hex {
   let encodedSwapData: Hex;
 
-  switch (args.swapType) {
+  const swapType = args.swapType;
+  switch (swapType) {
     case SwapType.Mega: {
       encodedSwapData = encodeAbiParameters([megaSwapDataEncoding], [args.swapData]);
       break;
@@ -228,7 +228,7 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
     }
 
     default: {
-      Assertion.never(args, "Invalid swap type");
+      Assertion.never(swapType, "Invalid swapType");
     }
   }
 
@@ -296,7 +296,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     }
 
     default: {
-      Assertion.never(swapType, "Invalid swap type");
+      Assertion.never(swapType, "Invalid swapType");
     }
   }
 }
@@ -305,8 +305,10 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 // TAKE MULTIPLE ORDERS
 //--------------------------------------------------------------------------------------------
 
-const takeMultipleOrdersSelector = "0x0e7f692d"; // takeMultipleOrders(address,bytes,bytes)
-export const takeMultipleOrders = IntegrationManager.makeUse(takeMultipleOrdersSelector, takeMultipleOrdersEncode);
+export const takeMultipleOrders = IntegrationManager.makeUse(
+  IntegrationManager.Selector.TakeMultipleOrders,
+  takeMultipleOrdersEncode,
+);
 
 const takeMultipleOrdersEncoding = [
   {

@@ -7,6 +7,7 @@ import {
   encodeAbiParameters,
   isAddressEqual,
   parseAbi,
+  parseAbiParameters,
   parseEther,
   parseUnits,
 } from "viem";
@@ -17,8 +18,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {
@@ -80,8 +80,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -136,8 +135,7 @@ export function lendDecode(encoded: Hex): LendArgs {
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-const lendAndStakeSelector = "0x29fa046e"; // lendAndStake(address,bytes,bytes)
-export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
+export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
 
 const lendAndStakeEncoding = [
   {
@@ -197,8 +195,7 @@ export function lendAndStakeDecode(encoded: Hex): LendAndStakeArgs {
 // REDEEM
 //--------------------------------------------------------------------------------------------
 
-const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 const redeemEncoding = [
   {
@@ -233,18 +230,38 @@ export type RedeemArgs = {
   pool: Address;
   outgoingLpTokenAmount: bigint;
   useUnderlyings: boolean;
-  redeemType: RedeemType;
-  incomingAssetsData: Hex;
-};
+} & (StandardRedeemArgs | OneCoinRedeemArgs);
 
 export function redeemEncode(args: RedeemArgs): Hex {
-  return encodeAbiParameters(redeemEncoding, [
-    args.pool,
-    args.outgoingLpTokenAmount,
-    args.useUnderlyings,
-    args.redeemType,
-    args.incomingAssetsData,
-  ]);
+  const redeemType = args.redeemType;
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
+
+      return encodeAbiParameters(redeemEncoding, [
+        args.pool,
+        args.outgoingLpTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+
+    case RedeemType.OneCoin: {
+      const incomingAssetsData = oneCoinRedeemEncode(args.incomingAssetPoolIndex, args.minIncomingAssetAmount);
+
+      return encodeAbiParameters(redeemEncoding, [
+        args.pool,
+        args.outgoingLpTokenAmount,
+        args.useUnderlyings,
+        args.redeemType,
+        incomingAssetsData,
+      ]);
+    }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
+  }
 }
 
 export function isValidRedeemType(value: number): value is RedeemType {
@@ -257,27 +274,82 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
     encoded,
   );
 
-  // TODO: decode incomingAssetsData
+  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
 
-  if (!isValidRedeemType(redeemType)) {
-    Assertion.invariant(false, "Invalid redeem type");
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const { orderedMinIncomingAssetAmounts } = standardRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingLpTokenAmount,
+        useUnderlyings,
+        redeemType,
+        orderedMinIncomingAssetAmounts,
+      };
+    }
+
+    case RedeemType.OneCoin: {
+      const { incomingAssetPoolIndex, minIncomingAssetAmount } = oneCoinRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingLpTokenAmount,
+        useUnderlyings,
+        redeemType,
+        incomingAssetPoolIndex,
+        minIncomingAssetAmount,
+      };
+    }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
   }
+}
 
-  return {
-    pool,
-    outgoingLpTokenAmount,
-    useUnderlyings,
-    redeemType,
-    incomingAssetsData,
-  };
+//--------------------------------------------------------------------------------------------
+// REDEEM TYPE SPECIFIC ENCODING / DECODING
+//--------------------------------------------------------------------------------------------
+
+export type StandardRedeemArgs = {
+  redeemType: typeof RedeemType.Standard;
+  orderedMinIncomingAssetAmounts: readonly bigint[];
+};
+
+export type OneCoinRedeemArgs = {
+  redeemType: typeof RedeemType.OneCoin;
+  incomingAssetPoolIndex: bigint;
+  minIncomingAssetAmount: bigint;
+};
+
+const standardRedeemEncoding = parseAbiParameters("uint256[]");
+const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
+
+export function standardRedeemEncode(orderedMinIncomingAssetAmounts: readonly bigint[]): Hex {
+  return encodeAbiParameters(standardRedeemEncoding, [orderedMinIncomingAssetAmounts]);
+}
+
+export function standardRedeemDecode(encoded: Hex) {
+  const [orderedMinIncomingAssetAmounts] = decodeAbiParameters(standardRedeemEncoding, encoded);
+
+  return { orderedMinIncomingAssetAmounts };
+}
+
+export function oneCoinRedeemEncode(incomingAssetPoolIndex: bigint, minIncomingAssetAmount: bigint): Hex {
+  return encodeAbiParameters(oneCoinRedeemEncoding, [incomingAssetPoolIndex, minIncomingAssetAmount]);
+}
+
+export function oneCoinRedeemDecode(encoded: Hex) {
+  const [incomingAssetPoolIndex, minIncomingAssetAmount] = decodeAbiParameters(oneCoinRedeemEncoding, encoded);
+
+  return { incomingAssetPoolIndex, minIncomingAssetAmount };
 }
 
 //--------------------------------------------------------------------------------------------
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-const claimRewardsSelector = "0xb9dfbacc"; // claimRewards(address,bytes,bytes)
-export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
+export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -304,8 +376,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-const stakeSelector = "0xfa7dd04d"; // stake(address,bytes,bytes)
-export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
+export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
 
 const stakeEncoding = [
   {
@@ -342,8 +413,7 @@ export function stakeDecode(encoded: Hex): StakeArgs {
 // UNSTAKE
 //--------------------------------------------------------------------------------------------
 
-const unstakeSelector = "0x68e30677"; // unstake(address,bytes,bytes)
-export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
+export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
 
 const unstakeEncoding = [
   {
@@ -380,8 +450,10 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // UNSTAKE AND REDEEM
 //--------------------------------------------------------------------------------------------
 
-const unstakeAndRedeemSelector = "0x8334eb99"; // unstakeAndRedeem(address,bytes,bytes)
-export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
+export const unstakeAndRedeem = IntegrationManager.makeUse(
+  IntegrationManager.Selector.UnstakeAndRedeem,
+  unstakeAndRedeemEncode,
+);
 
 const unstakeAndRedeemEncoding = [
   {
@@ -415,37 +487,77 @@ export type UnstakeAndRedeemArgs = {
   outgoingStakingToken: Address;
   outgoingStakingTokenAmount: bigint;
   useUnderlyings: boolean;
-  redeemType: RedeemType;
-  incomingAssetsData: Hex;
-};
+} & (StandardRedeemArgs | OneCoinRedeemArgs);
 
 export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
-  return encodeAbiParameters(unstakeAndRedeemEncoding, [
-    args.pool,
-    args.outgoingStakingToken,
-    args.outgoingStakingTokenAmount,
-    args.useUnderlyings,
-    args.redeemType,
-    args.incomingAssetsData,
-  ]);
+  const redeemType = args.redeemType;
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
+
+      return encodeAbiParameters(unstakeAndRedeemEncoding, [
+        args.pool,
+        args.outgoingStakingToken,
+        args.outgoingStakingTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+    case RedeemType.OneCoin: {
+      const incomingAssetsData = oneCoinRedeemEncode(args.incomingAssetPoolIndex, args.minIncomingAssetAmount);
+
+      return encodeAbiParameters(unstakeAndRedeemEncoding, [
+        args.pool,
+        args.outgoingStakingToken,
+        args.outgoingStakingTokenAmount,
+        args.useUnderlyings,
+        redeemType,
+        incomingAssetsData,
+      ]);
+    }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
+  }
 }
 
 export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
     decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
 
-  if (!isValidRedeemType(redeemType)) {
-    Assertion.invariant(false, "Invalid redeem type");
-  }
+  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
 
-  return {
-    pool,
-    outgoingStakingToken,
-    outgoingStakingTokenAmount,
-    useUnderlyings,
-    redeemType,
-    incomingAssetsData,
-  };
+  switch (redeemType) {
+    case RedeemType.Standard: {
+      const { orderedMinIncomingAssetAmounts } = standardRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingStakingToken,
+        outgoingStakingTokenAmount,
+        useUnderlyings,
+        redeemType,
+        orderedMinIncomingAssetAmounts,
+      };
+    }
+    case RedeemType.OneCoin: {
+      const { incomingAssetPoolIndex, minIncomingAssetAmount } = oneCoinRedeemDecode(incomingAssetsData);
+
+      return {
+        pool,
+        outgoingStakingToken,
+        outgoingStakingTokenAmount,
+        useUnderlyings,
+        redeemType,
+        incomingAssetPoolIndex,
+        minIncomingAssetAmount,
+      };
+    }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
+  }
 }
 
 //--------------------------------------------------------------------------------------------

@@ -15,8 +15,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b"; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {
@@ -57,8 +56,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -66,7 +64,7 @@ const lendEncoding = [
     type: "address[2]",
   },
   {
-    name: "maxOutgoingAssetAmounts",
+    name: "desiredOutgoingAssetAmounts",
     type: "uint256[2]",
   },
   {
@@ -74,41 +72,50 @@ const lendEncoding = [
     type: "uint256[2]",
   },
   {
-    name: "minIncomingAssetAmount",
+    name: "minPoolTokenAmount",
     type: "uint256",
   },
 ] as const;
 
 export type LendArgs = {
-  outgoingAssets: readonly [Address, Address];
-  maxOutgoingAssetAmounts: readonly [bigint, bigint];
-  minOutgoingAssetAmounts: readonly [bigint, bigint];
-  minIncomingAssetAmount: bigint;
+  tokenA: Address;
+  tokenB: Address;
+  amountADesired: bigint;
+  amountBDesired: bigint;
+  amountAMin: bigint;
+  amountBMin: bigint;
+  minPoolTokenAmount: bigint;
 };
 
 export function lendEncode({
-  outgoingAssets,
-  maxOutgoingAssetAmounts,
-  minOutgoingAssetAmounts,
-  minIncomingAssetAmount,
+  tokenA,
+  tokenB,
+  amountADesired,
+  amountBDesired,
+  amountAMin,
+  amountBMin,
+  minPoolTokenAmount,
 }: LendArgs): Hex {
   return encodeAbiParameters(lendEncoding, [
-    outgoingAssets,
-    maxOutgoingAssetAmounts,
-    minOutgoingAssetAmounts,
-    minIncomingAssetAmount,
+    [tokenA, tokenB],
+    [amountADesired, amountBDesired],
+    [amountAMin, amountBMin],
+    minPoolTokenAmount,
   ]);
 }
 
 export function lendDecode(encoded: Hex): LendArgs {
-  const [outgoingAssets, maxOutgoingAssetAmounts, minOutgoingAssetAmounts, minIncomingAssetAmount] =
+  const [outgoingAssets, desiredOutgoingAssetAmounts, minOutgoingAssetAmounts, minPoolTokenAmount] =
     decodeAbiParameters(lendEncoding, encoded);
 
   return {
-    outgoingAssets,
-    maxOutgoingAssetAmounts,
-    minOutgoingAssetAmounts,
-    minIncomingAssetAmount,
+    tokenA: outgoingAssets[0],
+    tokenB: outgoingAssets[1],
+    amountADesired: desiredOutgoingAssetAmounts[0],
+    amountBDesired: desiredOutgoingAssetAmounts[1],
+    amountAMin: minOutgoingAssetAmounts[0],
+    amountBMin: minOutgoingAssetAmounts[1],
+    minPoolTokenAmount,
   };
 }
 
@@ -116,8 +123,7 @@ export function lendDecode(encoded: Hex): LendArgs {
 // REDEEM
 //--------------------------------------------------------------------------------------------
 
-const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 const redeemEncoding = [
   {
@@ -135,26 +141,26 @@ const redeemEncoding = [
 ] as const;
 
 export type RedeemArgs = {
-  outgoingAssetAmount: bigint;
-  incomingAssets: readonly [Address, Address];
-  minIncomingAssetAmounts: readonly [bigint, bigint];
+  tokenA: Address;
+  tokenB: Address;
+  amountAMin: bigint;
+  amountBMin: bigint;
+  poolTokenAmount: bigint;
 };
 
-export function redeemEncode(args: RedeemArgs): Hex {
-  return encodeAbiParameters(redeemEncoding, [
-    args.outgoingAssetAmount,
-    args.incomingAssets,
-    args.minIncomingAssetAmounts,
-  ]);
+export function redeemEncode({ tokenA, tokenB, amountAMin, amountBMin, poolTokenAmount }: RedeemArgs): Hex {
+  return encodeAbiParameters(redeemEncoding, [poolTokenAmount, [tokenA, tokenB], [amountAMin, amountBMin]]);
 }
 
 export function redeemDecode(encoded: Hex): RedeemArgs {
   const [outgoingAssetAmount, incomingAssets, minIncomingAssetAmounts] = decodeAbiParameters(redeemEncoding, encoded);
 
   return {
-    outgoingAssetAmount,
-    incomingAssets,
-    minIncomingAssetAmounts,
+    tokenA: incomingAssets[0],
+    tokenB: incomingAssets[1],
+    amountAMin: minIncomingAssetAmounts[0],
+    amountBMin: minIncomingAssetAmounts[1],
+    poolTokenAmount: outgoingAssetAmount,
   };
 }
 

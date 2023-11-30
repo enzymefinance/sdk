@@ -1,4 +1,12 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  type Hex,
+  PublicClient,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+  parseAbiParameters,
+} from "viem";
 import { Assertion, Types, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -6,8 +14,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515" as const; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -93,15 +100,13 @@ export type RedeemArgs = LendArgs;
 export const redeemEncode: (args: RedeemArgs) => Hex = lendEncode;
 export const redeemDecode: (args: Hex) => RedeemArgs = lendDecode;
 
-const redeemSelector = "0xc29fa9dd" as const; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 //--------------------------------------------------------------------------------------------
 // LEND AND STAKE
 //--------------------------------------------------------------------------------------------
 
-const lendAndStakeSelector = "0x29fa046e" as const; // lendAndStake(address,bytes,bytes)
-export const lendAndStake = IntegrationManager.makeUse(lendAndStakeSelector, lendAndStakeEncode);
+export const lendAndStake = IntegrationManager.makeUse(IntegrationManager.Selector.LendAndStake, lendAndStakeEncode);
 
 const lendAndStakeEncoding = [
   {
@@ -148,15 +153,16 @@ export type UnstakeAndRedeemArgs = LendAndStakeArgs;
 export const unstakeAndRedeemEncode: (args: UnstakeAndRedeemArgs) => Hex = lendAndStakeEncode;
 export const unstakeAndRedeemDecode: (args: Hex) => UnstakeAndRedeemArgs = lendAndStakeDecode;
 
-const unstakeAndRedeemSelector = "0x8334eb99" as const; // unstakeAndRedeem(address,bytes,bytes)
-export const unstakeAndRedeem = IntegrationManager.makeUse(unstakeAndRedeemSelector, unstakeAndRedeemEncode);
+export const unstakeAndRedeem = IntegrationManager.makeUse(
+  IntegrationManager.Selector.UnstakeAndRedeem,
+  unstakeAndRedeemEncode,
+);
 
 //--------------------------------------------------------------------------------------------
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-const claimRewardsSelector = "0xb9dfbacc" as const; // claimRewards(address,bytes,bytes)
-export const claimRewards = IntegrationManager.makeUse(claimRewardsSelector, claimRewardsEncode);
+export const claimRewards = IntegrationManager.makeUse(IntegrationManager.Selector.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -183,8 +189,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // STAKE
 //--------------------------------------------------------------------------------------------
 
-const stakeSelector = "0xfa7dd04d" as const; // stake(address,bytes,bytes)
-export const stake = IntegrationManager.makeUse(stakeSelector, stakeEncode);
+export const stake = IntegrationManager.makeUse(IntegrationManager.Selector.Stake, stakeEncode);
 
 const stakeEncoding = [
   {
@@ -220,15 +225,13 @@ export type UnstakeArgs = StakeArgs;
 export const unstakeEncode: (args: UnstakeArgs) => Hex = stakeEncode;
 export const unstakeDecode: (args: Hex) => UnstakeArgs = stakeDecode;
 
-const unstakeSelector = "0x68e30677" as const; // unstake(address,bytes,bytes)
-export const unstake = IntegrationManager.makeUse(unstakeSelector, unstakeEncode);
+export const unstake = IntegrationManager.makeUse(IntegrationManager.Selector.Unstake, unstakeEncode);
 
 //--------------------------------------------------------------------------------------------
 // TAKE ORDER
 //--------------------------------------------------------------------------------------------
 
-const takeOrderSelector = "0x03e38a2b" as const; // takeOrder(address,bytes,bytes)
-export const takeOrder = IntegrationManager.makeUse(takeOrderSelector, takeOrderEncode);
+export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
 
 const takeOrderEncoding = [
   {
@@ -383,11 +386,6 @@ export async function getClaimableRewards(
 // EXTERNAL READ FUNCTIONS - BALANCER VAULT
 //--------------------------------------------------------------------------------------------
 
-export const BatchSwapKind = {
-  GIVEN_IN: 0n,
-  GIVEN_OUT: 1n,
-} as const;
-
 export interface BatchSwapStep {
   poolId: Hex;
   assetInIndex: bigint;
@@ -407,7 +405,7 @@ export async function queryBatchSwap(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     balancerVault: Address;
-    kind: typeof BatchSwapKind[keyof typeof BatchSwapKind];
+    kind: typeof SwapKind[keyof typeof SwapKind];
     swaps: BatchSwapStep[];
     assets: Address[];
     funds: BatchSwapFunds;
@@ -421,4 +419,279 @@ export async function queryBatchSwap(
     address: args.balancerVault,
     args: [args.kind, args.swaps, args.assets, args.funds],
   });
+}
+
+//--------------------------------------------------------------------------------------------
+// WEIGHTED POOLS
+//--------------------------------------------------------------------------------------------
+
+export enum WeightedPoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+  ADD_TOKEN = 4,
+}
+
+export enum WeightedPoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  EXACT_BPT_IN_FOR_TOKENS_OUT = 1,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 2,
+  REMOVE_TOKEN = 3,
+}
+
+// exits
+
+export function weightedPoolsUserDataBptInForExactTokensOut({
+  amountsOut,
+  maxBPTAmountIn,
+}: {
+  amountsOut: bigint[];
+  maxBPTAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
+    WeightedPoolExitKind.BPT_IN_FOR_EXACT_TOKENS_OUT,
+    amountsOut,
+    maxBPTAmountIn,
+  ]);
+}
+
+export function weightedPoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    WeightedPoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function weightedPoolsUserDataExactBptInForTokensOut({ bptAmountIn }: { bptAmountIn: bigint }) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    WeightedPoolExitKind.EXACT_BPT_IN_FOR_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+// joins
+
+export function weightedPoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    WeightedPoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+export function weightedPoolsUserDataTokenInForExactBptOut({
+  bptAmountOut,
+  tokenIndex,
+}: {
+  bptAmountOut: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    WeightedPoolJoinKind.TOKEN_IN_FOR_EXACT_BPT_OUT,
+    bptAmountOut,
+    tokenIndex,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// STABLE POOLS
+//--------------------------------------------------------------------------------------------
+
+export enum StablePoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum StablePoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  EXACT_BPT_IN_FOR_TOKENS_OUT = 1,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 2,
+}
+
+// exits
+
+export function stablePoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    StablePoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function stablePoolsUserDataExactBptInForTokensOut({ bptAmountIn }: { bptAmountIn: bigint }) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    StablePoolExitKind.EXACT_BPT_IN_FOR_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+// joins
+
+export function stablePoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    StablePoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+export function stablePoolsUserDataTokenInForExactBptOut({
+  bptAmountOut,
+  tokenIndex,
+}: {
+  bptAmountOut: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    StablePoolJoinKind.TOKEN_IN_FOR_EXACT_BPT_OUT,
+    bptAmountOut,
+    tokenIndex,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// COMPOSABLE STABLE POOLS - V1
+//--------------------------------------------------------------------------------------------
+
+export enum ComposableStableV1PoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum ComposableStableV1PoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
+}
+
+// joins
+
+export function composableStableV1PoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    ComposableStableV1PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+// exits
+
+export function composableStableV1PoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    ComposableStableV1PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function composableStableV1PoolsUserDataBptInForExactTokensOut({
+  bptAmountIn,
+}: {
+  bptAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    ComposableStableV1PoolExitKind.BPT_IN_FOR_EXACT_TOKENS_OUT,
+    bptAmountIn,
+  ]);
+}
+
+//--------------------------------------------------------------------------------------------
+// COMPOSABLE STABLE POOLS - V2
+//--------------------------------------------------------------------------------------------
+
+export enum ComposableStableV2PoolJoinKind {
+  INIT = 0,
+  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
+  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
+  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
+}
+
+export enum ComposableStableV2PoolExitKind {
+  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
+  BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
+  EXACT_BPT_IN_FOR_ALL_TOKENS_OUT = 2,
+}
+
+// joins
+
+export function composableStableV2PoolsUserDataExactTokensInForBptOut({
+  amountsIn,
+  bptOut,
+}: {
+  amountsIn: bigint[];
+  bptOut: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
+    ComposableStableV2PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    amountsIn,
+    bptOut,
+  ]);
+}
+
+// exits
+
+export function composableStableV2PoolsUserDataExactBptInForOneTokenOut({
+  bptAmountIn,
+  tokenIndex,
+}: {
+  bptAmountIn: bigint;
+  tokenIndex: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
+    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    bptAmountIn,
+    tokenIndex,
+  ]);
+}
+
+export function composableStableV2PoolsUserDataExactBptInForTokensOut({
+  bptAmountIn,
+}: {
+  bptAmountIn: bigint;
+}) {
+  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
+    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
+    bptAmountIn,
+  ]);
 }

@@ -6,8 +6,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 // LEND
 //--------------------------------------------------------------------------------------------
 
-const lendSelector = "0x099f7515"; // lend(address,bytes,bytes)
-export const lend = IntegrationManager.makeUse(lendSelector, lendEncode);
+export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend, lendEncode);
 
 const lendEncoding = [
   {
@@ -48,8 +47,7 @@ export function lendDecode(encoded: Hex): LendArgs {
 // REDEEM
 //--------------------------------------------------------------------------------------------
 
-const redeemSelector = "0xc29fa9dd"; // redeem(address,bytes,bytes)
-export const redeem = IntegrationManager.makeUse(redeemSelector, redeemEncode);
+export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Redeem, redeemEncode);
 
 const redeemEncoding = [
   {
@@ -80,6 +78,40 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
   const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
   return { tokenAddress, outgoingAssetAmount, minIncomingAmount };
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export async function convertToAssets(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+    sharesAmount: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToAssets(uint256 sharesAmount) view returns (uint256 assetAmount)"]),
+    functionName: "convertToAssets",
+    address: args.asset,
+    args: [args.sharesAmount],
+  });
+}
+
+export async function convertToShares(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    asset: Address;
+    assetAmount: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToShares(uint256 assetAmount) view returns (uint256 sharesAmount)"]),
+    functionName: "convertToShares",
+    address: args.asset,
+    args: [args.assetAmount],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
