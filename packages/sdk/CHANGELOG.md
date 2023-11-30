@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.7
+
+### Patch Changes
+
+- [#287](https://github.com/enzymefinance/sdk/pull/287) [`f00ead6`](https://github.com/enzymefinance/sdk/commit/f00ead6d0dab6c0889ce4453b4d712dc36d885ab) Thanks [@iherger](https://github.com/iherger)! - More functions for frontend
+
 ## 0.3.6
 
 ### Patch Changes
