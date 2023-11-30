@@ -234,7 +234,6 @@ export type RedeemArgs = {
 
 export function redeemEncode(args: RedeemArgs): Hex {
   const redeemType = args.redeemType;
-
   switch (redeemType) {
     case RedeemType.Standard: {
       const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
@@ -259,6 +258,9 @@ export function redeemEncode(args: RedeemArgs): Hex {
         incomingAssetsData,
       ]);
     }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
   }
 }
 
@@ -299,6 +301,9 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
         minIncomingAssetAmount,
       };
     }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
   }
 }
 
@@ -486,8 +491,7 @@ export type UnstakeAndRedeemArgs = {
 
 export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
   const redeemType = args.redeemType;
-
-  switch (args.redeemType) {
+  switch (redeemType) {
     case RedeemType.Standard: {
       const incomingAssetsData = standardRedeemEncode(args.orderedMinIncomingAssetAmounts);
 
@@ -512,6 +516,9 @@ export function unstakeAndRedeemEncode(args: UnstakeAndRedeemArgs): Hex {
         incomingAssetsData,
       ]);
     }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
   }
 }
 
@@ -547,6 +554,9 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
         minIncomingAssetAmount,
       };
     }
+
+    default:
+      Assertion.never(redeemType, "Invalid redeemType");
   }
 }
 

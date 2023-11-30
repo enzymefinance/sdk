@@ -206,7 +206,9 @@ export type TakeOrderArgs = {
 export function takeOrderEncode(args: TakeOrderArgs): Hex {
   let encodedOrder: Hex;
 
-  switch (args.orderType) {
+  const orderType = args.orderType;
+
+  switch (orderType) {
     case OrderType.Limit: {
       encodedOrder = encodeAbiParameters([limitOrderEncoding, signatureEncoding], [args.order, args.signature]);
       break;
@@ -218,7 +220,7 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
     }
 
     default: {
-      Assertion.never(args, "Invalid order type");
+      Assertion.never(orderType, "Invalid orderType");
     }
   }
 
@@ -280,7 +282,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     }
 
     default: {
-      Assertion.never(orderType, "Invalid order type");
+      Assertion.never(orderType, "Invalid orderType");
     }
   }
 }
