@@ -178,6 +178,38 @@ const vaultAbi = [
     stateMutability: "nonpayable",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "init0",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "init1",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getRanges",
+    outputs: [
+      {
+        components: [
+          { internalType: "int24", name: "lowerTick", type: "int24" },
+          { internalType: "int24", name: "upperTick", type: "int24" },
+          { internalType: "uint24", name: "feeTier", type: "uint24" },
+        ],
+        internalType: "struct Range[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export async function burn(
@@ -186,6 +218,7 @@ export async function burn(
     arrakisVault: Address;
     receiver: Address;
     burnAmount: bigint;
+    account: Address;
   }>,
 ) {
   const {
@@ -195,10 +228,51 @@ export async function burn(
     functionName: "burn",
     address: args.arrakisVault,
     args: [args.burnAmount, args.receiver],
+    account: args.account,
   });
 
   return {
     amount0,
     amount1,
   };
+}
+
+export async function inits(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    arrakisVault: Address;
+  }>,
+) {
+  const [init0, init1] = await Promise.all([
+    Viem.readContract(client, args, {
+      abi: vaultAbi,
+      functionName: "init0",
+      address: args.arrakisVault,
+    }),
+    Viem.readContract(client, args, {
+      abi: vaultAbi,
+      functionName: "init1",
+      address: args.arrakisVault,
+    }),
+  ]);
+
+  return {
+    init0,
+    init1,
+  };
+}
+
+export async function numberOfRanges(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    arrakisVault: Address;
+  }>,
+) {
+  const ranges = await Viem.readContract(client, args, {
+    abi: vaultAbi,
+    functionName: "getRanges",
+    address: args.arrakisVault,
+  });
+
+  return ranges.length;
 }

@@ -1,5 +1,23 @@
 # @enzymefinance/sdk
 
+## 0.3.6
+
+### Patch Changes
+
+- [#298](https://github.com/enzymefinance/sdk/pull/298) [`9187ad7`](https://github.com/enzymefinance/sdk/commit/9187ad722282ad01d34471be7efb13a2e686f74d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Number of ranges for arrakis v2 vault
+
+## 0.3.5
+
+### Patch Changes
+
+- [#296](https://github.com/enzymefinance/sdk/pull/296) [`152b114`](https://github.com/enzymefinance/sdk/commit/152b114c9a47fbebaa1bf4ee9b1f7ce458fd07c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add account param to arrakis v2 burn
+
+## 0.3.4
+
+### Patch Changes
+
+- [#294](https://github.com/enzymefinance/sdk/pull/294) [`943bd93`](https://github.com/enzymefinance/sdk/commit/943bd93b9223afdc28706295f31d5ef9723d9c13) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add arrakis v2 inits
+
 ## 0.3.3
 
 ### Patch Changes
