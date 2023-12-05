@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.10
+
+### Patch Changes
+
+- [#307](https://github.com/enzymefinance/sdk/pull/307) [`1a71fc8`](https://github.com/enzymefinance/sdk/commit/1a71fc8940d347018f37ba78528f572692451c4f) Thanks [@iherger](https://github.com/iherger)! - Deposit via shares wrapper
+
 ## 0.3.9
 
 ### Patch Changes
