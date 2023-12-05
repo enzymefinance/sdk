@@ -55,7 +55,7 @@ export async function getExpectedSharesForDeposit(
   return result;
 }
 
-export async function deposit(
+export function deposit(
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     amount: bigint;
@@ -155,7 +155,7 @@ export async function getExpectedSharesForNativeTokenDeposit(
   return result;
 }
 
-export async function depositNativeToken(args: NativeDepositArgs & { minSharesQuantity: bigint }) {
+export function depositNativeToken(args: NativeDepositArgs & { minSharesQuantity: bigint }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IDepositWrapper,
     address: args.depositWrapper,
@@ -179,7 +179,7 @@ export async function depositNativeToken(args: NativeDepositArgs & { minSharesQu
 export type SharesWrapperDepositBaseParams = {
   sharesWrapper: Address;
   depositAsset: Address;
-  depositAssetAmount: bigint;
+  depositAmount: bigint;
 };
 
 export async function getExpectedSharesForSharesWrapperDeposit(
@@ -194,23 +194,14 @@ export async function getExpectedSharesForSharesWrapperDeposit(
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.depositAsset, args.depositAssetAmount, 1n],
+    args: [args.depositAsset, args.depositAmount, 1n],
     account: args.depositor,
   });
 
   return result;
 }
 
-export async function sharesWrapperRequestDeposit(args: SharesWrapperDepositBaseParams) {
-  return new Viem.PopulatedTransaction({
-    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
-    functionName: "requestDeposit",
-    address: args.sharesWrapper,
-    args: [args.depositAsset, args.depositAssetAmount],
-  });
-}
-
-export async function sharesWrapperDeposit(
+export function sharesWrapperDeposit(
   args: SharesWrapperDepositBaseParams & {
     minSharesAmount: bigint;
   },
@@ -219,7 +210,25 @@ export async function sharesWrapperDeposit(
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.depositAsset, args.depositAssetAmount, args.minSharesAmount],
+    args: [args.depositAsset, args.depositAmount, args.minSharesAmount],
+  });
+}
+
+export function sharesWrapperRequestDeposit(args: SharesWrapperDepositBaseParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestDeposit",
+    address: args.sharesWrapper,
+    args: [args.depositAsset, args.depositAmount],
+  });
+}
+
+export function sharesWrapperCancelRequestDeposit(args: Omit<SharesWrapperDepositBaseParams, "depositAmount">) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "cancelRequestDeposit",
+    address: args.sharesWrapper,
+    args: [args.depositAsset],
   });
 }
 
