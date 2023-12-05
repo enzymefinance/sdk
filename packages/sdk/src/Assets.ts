@@ -2,6 +2,29 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, ContractFunctionExecutionError, type PublicClient, hexToString, parseAbi } from "viem";
 import { Viem } from "./Utils.js";
 
+//--------------------------------------------------------------------------------------------
+// TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export type ApproveParams = {
+  asset: Address;
+  spender: Address;
+  amount: bigint;
+};
+
+export function approve(args: ApproveParams) {
+  return new Viem.PopulatedTransaction({
+    abi: parseAbi(["function approve(address spender, uint256 amount)"] as const),
+    functionName: "approve",
+    args: [args.spender, args.amount],
+    address: args.asset,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
 export async function getInfo(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
