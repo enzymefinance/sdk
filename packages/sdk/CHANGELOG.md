@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.8
+
+### Patch Changes
+
+- [#302](https://github.com/enzymefinance/sdk/pull/302) [`23d52ec`](https://github.com/enzymefinance/sdk/commit/23d52ec9ce1ed8a352d762049a396824f6622abb) Thanks [@iherger](https://github.com/iherger)! - Add vault ownership transactions
+
 ## 0.3.7
 
 ### Patch Changes
