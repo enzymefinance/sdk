@@ -2,6 +2,64 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, type PublicClient } from "viem";
 import { Viem } from "./Utils.js";
 
+//--------------------------------------------------------------------------------------------
+// OWNERSHIP
+//--------------------------------------------------------------------------------------------
+
+export type SetNominatedOwnerParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+  /**
+   * The address of the next owner.
+   */
+  nextNominatedOwner: Address;
+};
+
+export function setNominatedOwner(args: SetNominatedOwnerParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setNominatedOwner",
+    args: [args.nextNominatedOwner],
+    address: args.vaultProxy,
+  });
+}
+
+export type RemoveNominatedOwnerParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+};
+
+export function removeNominatedOwner(args: RemoveNominatedOwnerParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "removeNominatedOwner",
+    address: args.vaultProxy,
+  });
+}
+
+export type ClaimOwnershipParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+};
+
+export function claimOwnership(args: ClaimOwnershipParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "claimOwnership",
+    address: args.vaultProxy,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
 export function getName(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
