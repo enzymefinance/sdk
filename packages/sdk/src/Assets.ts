@@ -14,7 +14,7 @@ export type ApproveParams = {
 
 export function approve(args: ApproveParams) {
   return new Viem.PopulatedTransaction({
-    abi: parseAbi(["function approve(address spender, uint256 amount)"] as const),
+    abi: parseAbi(["function approve(address spender, uint256 amount)"]),
     functionName: "approve",
     args: [args.spender, args.amount],
     address: args.asset,
@@ -48,7 +48,7 @@ export async function getName(
 ) {
   try {
     const name = await Viem.readContract(client, args, {
-      abi: parseAbi(["function name() view returns (string)"] as const),
+      abi: parseAbi(["function name() view returns (string)"]),
       functionName: "name",
       address: args.asset,
     });
@@ -58,7 +58,7 @@ export async function getName(
     if (error instanceof ContractFunctionExecutionError) {
       // TODO: Once `viem` exports the `SliceOutOfBoundsError` class, we should use that here too (`error.cause`).
       const name = await Viem.readContract(client, args, {
-        abi: parseAbi(["function name() view returns (bytes32)"] as const),
+        abi: parseAbi(["function name() view returns (bytes32)"]),
         functionName: "name",
         address: args.asset,
       });
@@ -78,7 +78,7 @@ export async function getSymbol(
 ) {
   try {
     const symbol = await Viem.readContract(client, args, {
-      abi: parseAbi(["function symbol() view returns (string)"] as const),
+      abi: parseAbi(["function symbol() view returns (string)"]),
       functionName: "symbol",
       address: args.asset,
     });
@@ -88,7 +88,7 @@ export async function getSymbol(
     if (error instanceof ContractFunctionExecutionError) {
       // TODO: Once `viem` exports the `SliceOutOfBoundsError` class, we should use that here too (`error.cause`).
       const symbol = await Viem.readContract(client, args, {
-        abi: parseAbi(["function symbol() view returns (bytes32)"] as const),
+        abi: parseAbi(["function symbol() view returns (bytes32)"]),
         functionName: "symbol",
         address: args.asset,
       });
@@ -108,7 +108,7 @@ export function getBalanceOf(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi(["function balanceOf(address account) view returns (uint256)"] as const),
+    abi: parseAbi(["function balanceOf(address account) view returns (uint256)"]),
     functionName: "balanceOf",
     address: args.asset,
     args: [args.owner],
@@ -143,7 +143,7 @@ export function getAllowance(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi(["function allowance(address, address) view returns (uint256)"] as const),
+    abi: parseAbi(["function allowance(address, address) view returns (uint256)"]),
     functionName: "allowance",
     address: args.asset,
     args: [args.owner, args.spender],
@@ -157,7 +157,7 @@ export function getDecimals(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi(["function decimals() view returns (uint)"] as const),
+    abi: parseAbi(["function decimals() view returns (uint)"]),
     functionName: "decimals",
     address: args.asset,
   });
@@ -170,7 +170,7 @@ export function getTotalSupply(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi(["function totalSupply() view returns (uint)"] as const),
+    abi: parseAbi(["function totalSupply() view returns (uint)"]),
     functionName: "totalSupply",
     address: args.asset,
   });
