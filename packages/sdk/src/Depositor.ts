@@ -75,15 +75,17 @@ export async function deposit(
 // REDEMPTION
 //--------------------------------------------------------------------------------------------
 
+export type RedeemSharesForSpecificAssetsParams = {
+  comptrollerProxy: Address;
+  recipient: Address;
+  sharesQuantity: bigint;
+  payoutAssets: Address[];
+  payoutPercentages: bigint[];
+};
+
 export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    comptrollerProxy: Address;
-    recipient: Address;
-    sharesQuantity: bigint;
-    payoutAssets: Address[];
-    payoutPercentages: bigint[];
-  }>,
+  args: Viem.ContractCallParameters<RedeemSharesForSpecificAssetsParams>,
 ) {
   const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
     abi: Abis.IComptrollerLib,
@@ -105,6 +107,15 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
   }
 
   return output;
+}
+
+export function redeemSharesForSpecificAssets(args: RedeemSharesForSpecificAssetsParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "redeemSharesForSpecificAssets",
+    address: args.comptrollerProxy,
+    args: [args.recipient, args.sharesQuantity, args.payoutAssets, args.payoutPercentages],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
@@ -144,9 +155,7 @@ export async function getExpectedSharesForNativeTokenDeposit(
   return result;
 }
 
-export async function depositNativeToken(
-  args: Viem.ContractCallParameters<NativeDepositArgs & { minSharesQuantity: bigint }>,
-) {
+export async function depositNativeToken(args: NativeDepositArgs & { minSharesQuantity: bigint }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IDepositWrapper,
     address: args.depositWrapper,
@@ -167,41 +176,56 @@ export async function depositNativeToken(
 // SHARES WRAPPER DEPOSIT
 //--------------------------------------------------------------------------------------------
 
+export type SharesWrapperDepositBaseParams = {
+  sharesWrapper: Address;
+  depositAsset: Address;
+  depositAssetAmount: bigint;
+};
+
 export async function getExpectedSharesForSharesWrapperDeposit(
   client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
-    denominationAsset: Address;
-    depositor: Address;
-    amount: bigint;
-  }>,
+  args: Viem.ContractCallParameters<
+    SharesWrapperDepositBaseParams & {
+      depositor: Address;
+    }
+  >,
 ) {
   const { result } = await Viem.simulateContract(client, args, {
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.denominationAsset, args.amount, 1n],
+    args: [args.depositAsset, args.depositAssetAmount, 1n],
     account: args.depositor,
   });
 
   return result;
 }
 
+export async function sharesWrapperRequestDeposit(args: SharesWrapperDepositBaseParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestDeposit",
+    address: args.sharesWrapper,
+    args: [args.depositAsset, args.depositAssetAmount],
+  });
+}
+
 export async function sharesWrapperDeposit(
-  args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
-    denominationAsset: Address;
-    amount: bigint;
+  args: SharesWrapperDepositBaseParams & {
     minSharesAmount: bigint;
-  }>,
+  },
 ) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.denominationAsset, args.amount, args.minSharesAmount],
+    args: [args.depositAsset, args.depositAssetAmount, args.minSharesAmount],
   });
 }
+
+//--------------------------------------------------------------------------------------------
+// POLICY CHECK
+//--------------------------------------------------------------------------------------------
 
 export async function isAllowedDepositor(
   client: PublicClient,

@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
-import * as Assets from "./Assets.js";
+import * as Assets from "./Asset.js";
 
 import { Assertion, Viem } from "./Utils.js";
 
