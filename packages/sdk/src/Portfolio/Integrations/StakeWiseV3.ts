@@ -1,5 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
-import { getBalanceOf } from "../../Assets.js";
+import { getBalanceOf } from "../../Asset.js";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 

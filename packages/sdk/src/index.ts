@@ -1,6 +1,6 @@
-export * as Assets from "./Assets.js";
+export * as Asset from "./Asset.js";
 export * as Configuration from "./Configuration.js";
-export * as Deposit from "./Deposit.js";
+export * as Depositor from "./Depositor.js";
 export * as Migration from "./Migration.js";
 export * as Performance from "./Performance.js";
 export * as Portfolio from "./Portfolio.js";
