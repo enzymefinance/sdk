@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.1
+
+### Patch Changes
+
+- [#304](https://github.com/enzymefinance/sdk/pull/304) [`82bbf72`](https://github.com/enzymefinance/sdk/commit/82bbf7232b0dabe3981f0b8be620b95e977a1bc2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more functions and otc order to zero ex v4
+
 ## 0.4.0
 
 ### Minor Changes
