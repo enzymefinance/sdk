@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@viem/anvil": "^0.0.6",
-    "abitype": "^0.10.2",
+    "abitype": "^0.10.3",
     "decimal.js": "^10.4.3",
-    "viem": "^1.18.9"
+    "viem": "^1.19.11"
   }
 }
