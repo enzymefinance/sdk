@@ -380,3 +380,9 @@ export async function isAllowedMaker(
     args: [args.who],
   });
 }
+
+// expiryAndNonce logic copied from 0xv4 tests
+// https://github.com/0xProject/protocol/blob/e66307ba319e8c3e2a456767403298b576abc85e/contracts/zero-ex/tests/forked/RfqtV2Test.t.sol#L150
+export function combineExpiryAndNonce({ expiry, nonce }: { expiry: bigint; nonce: bigint }) {
+  return (expiry << 192n) | nonce;
+}
