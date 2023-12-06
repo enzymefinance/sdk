@@ -307,9 +307,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([limitOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      if (!isValidSignatureType(signatureType)) {
-        Assertion.invariant(false, "Invalid signature type");
-      }
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
 
       return {
         takerAssetFillAmount,
@@ -326,9 +324,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([rfqOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      if (!isValidSignatureType(signatureType)) {
-        Assertion.invariant(false, "Invalid signature type");
-      }
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
 
       return {
         takerAssetFillAmount,
@@ -345,9 +341,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([otcOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      if (!isValidSignatureType(signatureType)) {
-        Assertion.invariant(false, "Invalid signature type");
-      }
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
 
       return {
         takerAssetFillAmount,
