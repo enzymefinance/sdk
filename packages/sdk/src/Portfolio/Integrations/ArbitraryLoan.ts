@@ -1,4 +1,6 @@
+import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, hexToString, stringToHex } from "viem";
+import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = typeof Action[keyof typeof Action];
@@ -183,4 +185,31 @@ export function closeLoanDecode(encoded: Hex): CloseLoanArgs {
   return {
     extraAssetsToSweep,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// BORROW / REPAY
+//--------------------------------------------------------------------------------------------
+
+export type BorrowRepayParams = {
+  externalPositionProxy: Address;
+  amount: bigint;
+};
+
+export function borrow(args: BorrowRepayParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IArbitraryLoanPositionLib,
+    functionName: "borrow",
+    address: args.externalPositionProxy,
+    args: [args.amount],
+  });
+}
+
+export function repay(args: BorrowRepayParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IArbitraryLoanPositionLib,
+    functionName: "repay",
+    address: args.externalPositionProxy,
+    args: [args.amount],
+  });
 }

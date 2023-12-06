@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
-import * as Assets from "./Assets.js";
+import * as Assets from "./Asset.js";
 
 import { Assertion, Viem } from "./Utils.js";
 
@@ -9,15 +9,19 @@ export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 
 export {
   Action as ExternalPositionAction,
+  call as callExternalPosition,
   callEncode as callExternalPositionEncode,
   callDecode as callExternalPositionDecode,
   type CallArgs as ExternalPositionCallArgs,
+  create as createExternalPosition,
   createEncode as createExternalPositionEncode,
   createDecode as createExternalPositionDecode,
   type CreateArgs as CreateExternalPositionArgs,
+  remove as removeExternalPosition,
   removeEncode as removeExternalPositionEncode,
   removeDecode as removeExternalPositionDecode,
   type RemoveArgs as RemoveExternalPositionArgs,
+  reactivate as reactivateExternalPosition,
   reactivateEncode as reactivateExternalPositionEncode,
   reactivateDecode as reactivateExternalPositionDecode,
   type ReactivateArgs as ReactivateExternalPositionArgs,
@@ -26,12 +30,15 @@ export {
 export {
   Action as IntegrationAdapterAction,
   Selector as IntegrationAdapterSelector,
+  call as callIntegrationAdapter,
   callEncode as callIntegrationAdapterEncode,
   callDecode as callIntegrationAdapterDecode,
   type CallArgs as CallIntegrationAdapterArgs,
+  addTrackedAssets,
   addTrackedAssetsEncode,
   addTracketAssetsDecode,
   type AddTracketAssetsArgs,
+  removeTracketAssets,
   removeTrackedAssetsEncode,
   removeTrackedAssetsDecode,
   type RemoveTrackedAssetsArgs,

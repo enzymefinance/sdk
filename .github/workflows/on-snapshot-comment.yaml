@@ -46,7 +46,7 @@ jobs:
             You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
   
       - name: Checkout pull request branch
         run: gh pr checkout ${{ github.event.issue.number }}
@@ -85,11 +85,11 @@ jobs:
           # Publish and extract published tags from stdout.
           output=$(pnpm changeset publish --tag ${{ steps.command.outputs.snapshot }} --no-git-tag)
           output=$(echo "$output" | awk '/packages published successfully:/{flag=1; next} flag')
-          output=$(echo "$output" | grep -o '@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')
+          output=$(echo "$output" | grep -o '[^ ]*@[^ ]*' | awk '{print "\"" $0 "\""}' | paste -sd ',')
           echo "tags=[$output]" >> $GITHUB_OUTPUT
 
       - name: Update comment (success)
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:

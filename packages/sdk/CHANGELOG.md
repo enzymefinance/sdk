@@ -1,5 +1,52 @@
 # @enzymefinance/sdk
 
+## 0.4.0
+
+### Minor Changes
+
+- [`4fc7693`](https://github.com/enzymefinance/sdk/commit/4fc7693dd15fb23fa58a979b6395be672286b1ee) Thanks [@fubhy](https://github.com/fubhy)! - Upgraded dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`4fc7693`](https://github.com/enzymefinance/sdk/commit/4fc7693dd15fb23fa58a979b6395be672286b1ee)]:
+  - @enzymefinance/abis@0.3.0
+
+## 0.3.13
+
+### Patch Changes
+
+- [#313](https://github.com/enzymefinance/sdk/pull/313) [`d52c018`](https://github.com/enzymefinance/sdk/commit/d52c01898f47322f4885cb14410a02e143ba7467) Thanks [@iherger](https://github.com/iherger)! - Arbitray loan borrow / repay
+
+## 0.3.12
+
+### Patch Changes
+
+- [#311](https://github.com/enzymefinance/sdk/pull/311) [`c162f95`](https://github.com/enzymefinance/sdk/commit/c162f95dc1d44573b797384b818ff3ffb37f6762) Thanks [@iherger](https://github.com/iherger)! - Add exports, add policy transactions
+
+## 0.3.11
+
+### Patch Changes
+
+- [#309](https://github.com/enzymefinance/sdk/pull/309) [`5ac7ba9`](https://github.com/enzymefinance/sdk/commit/5ac7ba99dc1b1850c082a0013c3c5d7f82c71856) Thanks [@iherger](https://github.com/iherger)! - Shares wrapper part 2
+
+## 0.3.10
+
+### Patch Changes
+
+- [#307](https://github.com/enzymefinance/sdk/pull/307) [`1a71fc8`](https://github.com/enzymefinance/sdk/commit/1a71fc8940d347018f37ba78528f572692451c4f) Thanks [@iherger](https://github.com/iherger)! - Deposit via shares wrapper
+
+## 0.3.9
+
+### Patch Changes
+
+- [#305](https://github.com/enzymefinance/sdk/pull/305) [`7139ffd`](https://github.com/enzymefinance/sdk/commit/7139ffdf45f39a3668c94f53237ec106adc96180) Thanks [@iherger](https://github.com/iherger)! - Add approve
+
+## 0.3.8
+
+### Patch Changes
+
+- [#302](https://github.com/enzymefinance/sdk/pull/302) [`23d52ec`](https://github.com/enzymefinance/sdk/commit/23d52ec9ce1ed8a352d762049a396824f6622abb) Thanks [@iherger](https://github.com/iherger)! - Add vault ownership transactions
+
 ## 0.3.7
 
 ### Patch Changes

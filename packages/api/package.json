@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/api",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -31,8 +31,8 @@
     "@connectrpc/connect": "^1.1.3"
   },
   "devDependencies": {
-    "@bufbuild/buf": "1.27.2",
-    "@bufbuild/protobuf": "^1.4.2",
-    "@connectrpc/connect": "^1.1.3"
+    "@bufbuild/buf": "1.28.1",
+    "@bufbuild/protobuf": "^1.5.0",
+    "@connectrpc/connect": "^1.1.4"
   }
 }

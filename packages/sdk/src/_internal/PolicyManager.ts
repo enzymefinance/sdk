@@ -1,5 +1,6 @@
+import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Assertion } from "../Utils.js";
+import { Assertion, Viem } from "../Utils.js";
 
 const settingsEncoding = [
   {
@@ -54,4 +55,44 @@ export function decodeSettings(encoded: Hex): SettingsArgs {
 
   // biome-ignore lint/style/noNonNullAssertion: length is checked above
   return addresses.map((address, i) => ({ address, settings: settings[i]! }));
+}
+
+export type EnableOrUpdateParams = {
+  policyManager: Address;
+  comptrollerProxy: Address;
+  policy: Address;
+  settingsData: Hex;
+};
+
+export function enable(args: EnableOrUpdateParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IPolicyManager,
+    functionName: "enablePolicyForFund",
+    address: args.policyManager,
+    args: [args.comptrollerProxy, args.policy, args.settingsData],
+  });
+}
+
+export function update(args: EnableOrUpdateParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IPolicyManager,
+    functionName: "updatePolicySettingsForFund",
+    address: args.policyManager,
+    args: [args.comptrollerProxy, args.policy, args.settingsData],
+  });
+}
+
+export type DisableParams = {
+  policyManager: Address;
+  comptrollerProxy: Address;
+  policy: Address;
+};
+
+export function disable(args: DisableParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IPolicyManager,
+    functionName: "disablePolicyForFund",
+    address: args.policyManager,
+    args: [args.comptrollerProxy, args.policy],
+  });
 }
