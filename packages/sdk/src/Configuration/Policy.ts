@@ -4,6 +4,9 @@ import { getEnabledPolicies } from "../Configuration.js";
 import { Viem } from "../Utils.js";
 
 export {
+  enable,
+  update,
+  disable,
   encodeSettings,
   decodeSettings,
   type SettingsArgs,
