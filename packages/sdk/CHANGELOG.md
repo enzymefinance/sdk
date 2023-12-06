@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.12
+
+### Patch Changes
+
+- [#311](https://github.com/enzymefinance/sdk/pull/311) [`c162f95`](https://github.com/enzymefinance/sdk/commit/c162f95dc1d44573b797384b818ff3ffb37f6762) Thanks [@iherger](https://github.com/iherger)! - Add exports, add policy transactions
+
 ## 0.3.11
 
 ### Patch Changes
