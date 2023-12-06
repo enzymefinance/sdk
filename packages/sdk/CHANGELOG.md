@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.3.13
+
+### Patch Changes
+
+- [#313](https://github.com/enzymefinance/sdk/pull/313) [`d52c018`](https://github.com/enzymefinance/sdk/commit/d52c01898f47322f4885cb14410a02e143ba7467) Thanks [@iherger](https://github.com/iherger)! - Arbitray loan borrow / repay
+
 ## 0.3.12
 
 ### Patch Changes
