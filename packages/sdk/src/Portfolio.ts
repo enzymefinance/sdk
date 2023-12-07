@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Hex, PublicClient } from "viem";
 import * as Assets from "./Asset.js";
 
 import { Assertion, Viem } from "./Utils.js";
@@ -43,6 +43,22 @@ export {
   removeTrackedAssetsDecode,
   type RemoveTrackedAssetsArgs,
 } from "./_internal/IntegrationManager.js";
+
+export type VaultCallOnContractParams = {
+  comptrollerProxy: Address;
+  contract: Address;
+  selector: Hex;
+  encodedArgs: Hex;
+};
+
+export function vaultCallOnContract(args: VaultCallOnContractParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "vaultCallOnContract",
+    address: args.comptrollerProxy,
+    args: [args.contract, args.selector, args.encodedArgs],
+  });
+}
 
 export async function getPortfolio(
   client: PublicClient,
