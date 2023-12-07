@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.3
+
+### Patch Changes
+
+- [#319](https://github.com/enzymefinance/sdk/pull/319) [`5e1a7c5`](https://github.com/enzymefinance/sdk/commit/5e1a7c52ea6664654b182aeedd650123d5c1a9fc) Thanks [@iherger](https://github.com/iherger)! - Add vaultCallOnContract
+
 ## 0.4.2
 
 ### Patch Changes
