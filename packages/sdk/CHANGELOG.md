@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.2
+
+### Patch Changes
+
+- [#317](https://github.com/enzymefinance/sdk/pull/317) [`9b74cf4`](https://github.com/enzymefinance/sdk/commit/9b74cf42fd44d6d77f895a12e5129164ddfa06cd) Thanks [@iherger](https://github.com/iherger)! - Add vault lifecycle transactions
+
 ## 0.4.1
 
 ### Patch Changes
