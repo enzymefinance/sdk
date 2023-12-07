@@ -26,8 +26,8 @@ importers:
         specifier: ^7.23.3
         version: 7.23.3(@babel/core@7.23.5)
       '@biomejs/biome':
-        specifier: ^1.3.3
-        version: 1.3.3
+        specifier: ^1.4.1
+        version: 1.4.1
       '@changesets/changelog-github':
         specifier: ^0.5.0
         version: 0.5.0
@@ -38,8 +38,8 @@ importers:
         specifier: ^0.7.0
         version: 0.7.0
       '@types/node':
-        specifier: ^20.10.3
-        version: 20.10.3
+        specifier: ^20.10.4
+        version: 20.10.4
       '@types/web':
         specifier: ^0.0.125
         version: 0.0.125
@@ -47,54 +47,54 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0(@babel/core@7.23.5)
       typescript:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^5.3.3
+        version: 5.3.3
       vite:
         specifier: ^5.0.6
-        version: 5.0.6(@types/node@20.10.3)
+        version: 5.0.6(@types/node@20.10.4)
       vite-tsconfig-paths:
         specifier: ^4.2.1
-        version: 4.2.1(typescript@5.3.2)(vite@5.0.6)
+        version: 4.2.1(typescript@5.3.3)(vite@5.0.6)
       vitest:
-        specifier: ^1.0.1
-        version: 1.0.1(@types/node@20.10.3)
+        specifier: ^1.0.2
+        version: 1.0.2(@types/node@20.10.4)
 
   examples/example-api-node:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.5.1
+        version: 1.5.1
       '@connectrpc/connect-node':
         specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4)
+        version: 1.1.4(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4)
       '@connectrpc/connect-web':
         specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4)
+        version: 1.1.4(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4)
       '@enzymefinance/api':
         specifier: workspace:*
         version: link:../../packages/api/dist
     devDependencies:
       '@types/node':
-        specifier: ^20.10.3
-        version: 20.10.3
+        specifier: ^20.10.4
+        version: 20.10.4
       tsx:
         specifier: ^4.6.2
         version: 4.6.2
       typescript:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^5.3.3
+        version: 5.3.3
 
   examples/example-api-web:
     dependencies:
       '@bufbuild/protobuf':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.5.1
+        version: 1.5.1
       '@connectrpc/connect-query':
         specifier: ^0.6.0
-        version: 0.6.0(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4)(@tanstack/react-query@5.12.2)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.6.0(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4)(@tanstack/react-query@5.12.2)(react-dom@18.2.0)(react@18.2.0)
       '@connectrpc/connect-web':
         specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4)
+        version: 1.1.4(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4)
       '@enzymefinance/api':
         specifier: workspace:*
         version: link:../../packages/api/dist
@@ -136,14 +136,14 @@ importers:
         specifier: ^4.6.2
         version: 4.6.2
       typescript:
-        specifier: ^5.3.2
-        version: 5.3.2
+        specifier: ^5.3.3
+        version: 5.3.3
       vite:
         specifier: ^5.0.6
-        version: 5.0.6(@types/node@20.10.3)
+        version: 5.0.6(@types/node@20.10.4)
       vite-tsconfig-paths:
         specifier: ^4.2.1
-        version: 4.2.1(typescript@5.3.2)(vite@5.0.6)
+        version: 4.2.1(typescript@5.3.3)(vite@5.0.6)
 
   packages/abis:
     publishDirectory: dist
@@ -154,11 +154,11 @@ importers:
         specifier: 1.28.1
         version: 1.28.1
       '@bufbuild/protobuf':
-        specifier: ^1.5.0
-        version: 1.5.0
+        specifier: ^1.5.1
+        version: 1.5.1
       '@connectrpc/connect':
         specifier: ^1.1.4
-        version: 1.1.4(@bufbuild/protobuf@1.5.0)
+        version: 1.1.4(@bufbuild/protobuf@1.5.1)
     publishDirectory: dist
 
   packages/sdk:
@@ -172,13 +172,13 @@ importers:
         version: 0.0.6
       abitype:
         specifier: ^0.10.3
-        version: 0.10.3(typescript@5.3.2)
+        version: 0.10.3(typescript@5.3.3)
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
       viem:
         specifier: ^1.19.11
-        version: 1.19.11(typescript@5.3.2)
+        version: 1.19.11(typescript@5.3.3)
     publishDirectory: dist
 
 packages:
@@ -502,22 +502,22 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@biomejs/biome@1.3.3:
-    resolution: {integrity: sha512-vTJn7RBzLWIabUuUIoEopO860YyBrbPEu4Pztfd28jRU5QD074hKZ9IQs24pFO6A2R296gaeYmN62f4u7pUruQ==}
+  /@biomejs/biome@1.4.1:
+    resolution: {integrity: sha512-JccVAwPbhi37pdxbAGmaOBjUTKEwEjWAhl7rKkVVuXHo4MLASXJ5HR8BTgrImi4/7rTBsGz1tgVD1Kwv1CHGRg==}
     engines: {node: '>=14.*'}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      '@biomejs/cli-darwin-arm64': 1.3.3
-      '@biomejs/cli-darwin-x64': 1.3.3
-      '@biomejs/cli-linux-arm64': 1.3.3
-      '@biomejs/cli-linux-x64': 1.3.3
-      '@biomejs/cli-win32-arm64': 1.3.3
-      '@biomejs/cli-win32-x64': 1.3.3
+      '@biomejs/cli-darwin-arm64': 1.4.1
+      '@biomejs/cli-darwin-x64': 1.4.1
+      '@biomejs/cli-linux-arm64': 1.4.1
+      '@biomejs/cli-linux-x64': 1.4.1
+      '@biomejs/cli-win32-arm64': 1.4.1
+      '@biomejs/cli-win32-x64': 1.4.1
     dev: true
 
-  /@biomejs/cli-darwin-arm64@1.3.3:
-    resolution: {integrity: sha512-2X87ZfbmWwe4NGukrUvnoYdI//muSgjNUCAHJ2DO+kS1sB7kDy1s6PN/IYyTJuqRcJtDuOnSpaUDE7KxR1YhtA==}
+  /@biomejs/cli-darwin-arm64@1.4.1:
+    resolution: {integrity: sha512-PZWy2Idndqux38p6AXSDQM2ldRAWi32bvb7bMbTN0ALzpWYMYnxd71ornatumSSJYoNhKmxzDLq+jct7nZJ79w==}
     engines: {node: '>=14.*'}
     cpu: [arm64]
     os: [darwin]
@@ -525,8 +525,8 @@ packages:
     dev: true
     optional: true
 
-  /@biomejs/cli-darwin-x64@1.3.3:
-    resolution: {integrity: sha512-t+7DWTCbSgHOBcPsGKuwS1qh1z9zbXFK8i8ktE18yW7iF/W0zI62k44fYqYeFJKlb0Q08aqUvez3L+AQJFsn+w==}
+  /@biomejs/cli-darwin-x64@1.4.1:
+    resolution: {integrity: sha512-soj3BWhnsM1M2JlzR09cibUzG1owJqetwj/Oo7yg0foijo9lNH9XWXZfJBYDKgW/6Fomn+CC2EcUS+hisQzt9g==}
     engines: {node: '>=14.*'}
     cpu: [x64]
     os: [darwin]
@@ -534,8 +534,8 @@ packages:
     dev: true
     optional: true
 
-  /@biomejs/cli-linux-arm64@1.3.3:
-    resolution: {integrity: sha512-D8CvXaB8lkXXBQ6B3n0MXSSZFiE60+aNHorBLimVTtKiMod8QvAP425oQFZFul5wMXZqPLGTKFjXbAi/rvnc1A==}
+  /@biomejs/cli-linux-arm64@1.4.1:
+    resolution: {integrity: sha512-YIZqfJUg4F+fPsBTXxgD7EU2E5OAYbmYSl/snf4PevwfQCWE/omOFZv+NnIQmjYj9I7ParDgcJvanoA3/kO0JQ==}
     engines: {node: '>=14.*'}
     cpu: [arm64]
     os: [linux]
@@ -543,8 +543,8 @@ packages:
     dev: true
     optional: true
 
-  /@biomejs/cli-linux-x64@1.3.3:
-    resolution: {integrity: sha512-bqB05fwJnRZwRlcm/BS/s4qPickqiXZkiU/nOYvHApfsPeqgSHgv5HWoBYuSUjgqBbX3XZJArsC5dCcVW7vAJw==}
+  /@biomejs/cli-linux-x64@1.4.1:
+    resolution: {integrity: sha512-9YOZw3qBd/KUj63A6Hn2zZgzGb2nbESM0qNmeMXgmqinVKM//uc4OgY5TuKITuGjMSvcVxxd4dX1IzYjV9qvNQ==}
     engines: {node: '>=14.*'}
     cpu: [x64]
     os: [linux]
@@ -552,8 +552,8 @@ packages:
     dev: true
     optional: true
 
-  /@biomejs/cli-win32-arm64@1.3.3:
-    resolution: {integrity: sha512-muFOjAv1ONMfaJDlo4Ds+Qb9lkdSLM2XaxOe3AJPejSq3Vi0aRr51ZnE02BofMnL2sVsOA9cO54wibsuTcopbw==}
+  /@biomejs/cli-win32-arm64@1.4.1:
+    resolution: {integrity: sha512-nWQbvkNKxYn/kCQ0yVF8kCaS3VzaGvtFSmItXiMknU4521LDjJ7tNWH12Gol+pIslrCbd4E1LhJa0a3ThRsBVg==}
     engines: {node: '>=14.*'}
     cpu: [arm64]
     os: [win32]
@@ -561,8 +561,8 @@ packages:
     dev: true
     optional: true
 
-  /@biomejs/cli-win32-x64@1.3.3:
-    resolution: {integrity: sha512-PMkMhS4smmmTMflxuZUx3REFSazEL9xsGscvZO1dKWI4ET23la+KxEM4TlSpjOyO66UerqSkuUlZecn0QhD63A==}
+  /@biomejs/cli-win32-x64@1.4.1:
+    resolution: {integrity: sha512-88fR2CQxQ4YLs2BUDuywWYQpUKgU3A3sTezANFc/4LGKQFFLV2yX+F7QAdZVkMHfA+RD9Xg178HomM/6mnTNPA==}
     engines: {node: '>=14.*'}
     cpu: [x64]
     os: [win32]
@@ -638,8 +638,8 @@ packages:
       '@bufbuild/buf-win32-x64': 1.28.1
     dev: true
 
-  /@bufbuild/protobuf@1.5.0:
-    resolution: {integrity: sha512-0Jg+B7Vl8YGCi7c3iZ8/38iTbZrwdU7or6QZlsA9lhSrhumaXOTMsGO8gqwDuus/THEkTiY3Uxn+PEJwgsLt0w==}
+  /@bufbuild/protobuf@1.5.1:
+    resolution: {integrity: sha512-LX+MeB1AzlbqgJXkq83lilQpLGnPvsAMj7SH8KtJAmQfBc55ee78Stxuff/HMw0xLMYJN3P1FBh5TENgjJof1w==}
 
   /@changesets/apply-release-plan@7.0.0:
     resolution: {integrity: sha512-vfi69JR416qC9hWmFGSxj7N6wA5J222XNBmezSVATPWDVPIF7gkd4d8CpbEbXmRWbVrkoli3oerGS6dcL/BGsQ==}
@@ -843,19 +843,19 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@connectrpc/connect-node@1.1.4(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4):
+  /@connectrpc/connect-node@1.1.4(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4):
     resolution: {integrity: sha512-1Pv4PSTh7k6+c8kNjVx9wZiWm8dChexsq+hW4EKcYItjSqvyKpmTfLBTl12y6W+RBQ9vCuFCu3xT79outhNY9g==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
       '@connectrpc/connect': 1.1.4
     dependencies:
-      '@bufbuild/protobuf': 1.5.0
-      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.0)
+      '@bufbuild/protobuf': 1.5.1
+      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.1)
       undici: 5.28.2
     dev: false
 
-  /@connectrpc/connect-query@0.6.0(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4)(@tanstack/react-query@5.12.2)(react-dom@18.2.0)(react@18.2.0):
+  /@connectrpc/connect-query@0.6.0(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4)(@tanstack/react-query@5.12.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-/qqQ1LRfxv+YCfK8DWzzo+sJyxctCwdBmwoTEB6tkNLhKBYn1xD8eGXi1rKCOjfOPWrQXHGCAjsYAJg3WCRl+w==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.3.3
@@ -864,30 +864,30 @@ packages:
       react: ^18.2.0
       react-dom: ^18.2.0
     dependencies:
-      '@bufbuild/protobuf': 1.5.0
-      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.0)
+      '@bufbuild/protobuf': 1.5.1
+      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.1)
       '@tanstack/react-query': 5.12.2(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       stable-hash: 0.0.3
     dev: false
 
-  /@connectrpc/connect-web@1.1.4(@bufbuild/protobuf@1.5.0)(@connectrpc/connect@1.1.4):
+  /@connectrpc/connect-web@1.1.4(@bufbuild/protobuf@1.5.1)(@connectrpc/connect@1.1.4):
     resolution: {integrity: sha512-y/CHMipRSpIIR1PCax536PquyuZ03soGTgO1gqQM4pv8lCCgAKE1S+OrirIbpyohJiUszxaRH69PoB8uACiOZA==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
       '@connectrpc/connect': 1.1.4
     dependencies:
-      '@bufbuild/protobuf': 1.5.0
-      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.0)
+      '@bufbuild/protobuf': 1.5.1
+      '@connectrpc/connect': 1.1.4(@bufbuild/protobuf@1.5.1)
     dev: false
 
-  /@connectrpc/connect@1.1.4(@bufbuild/protobuf@1.5.0):
+  /@connectrpc/connect@1.1.4(@bufbuild/protobuf@1.5.1):
     resolution: {integrity: sha512-kFiOi3jsEyOuL4gGW55LgNCqQBNA0Z/GLXrfeJO4r6pI/f8L9rqnjrFZTCeyrvzu1TuqEtL51cR+c46KMCposw==}
     peerDependencies:
       '@bufbuild/protobuf': ^1.4.2
     dependencies:
-      '@bufbuild/protobuf': 1.5.0
+      '@bufbuild/protobuf': 1.5.1
 
   /@effect/build-utils@0.7.0:
     resolution: {integrity: sha512-yYM6txQ0QgiQ1keUJwfuAWjoejiq0rB7H+pWyEnWDXNhfK8ZUn24G53jQDOB4btD7kbo4mfgdDBndm/DOIDZNA==}
@@ -1677,8 +1677,8 @@ packages:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: true
 
-  /@types/node@20.10.3:
-    resolution: {integrity: sha512-XJavIpZqiXID5Yxnxv3RUDKTN5b81ddNC3ecsA0SoFXz/QU8OGBwZGMomiq0zw+uuqbL/krztv/DINAQ/EV4gg==}
+  /@types/node@20.10.4:
+    resolution: {integrity: sha512-D08YG6rr8X90YB56tSIuBaddy/UXAA9RKJoFvrsnogAum/0pmjkgi4+2nx96A330FmioegBWmEYQ+syqCFaveg==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1741,50 +1741,50 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.23.3(@babel/core@7.23.5)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitest/expect@1.0.1:
-    resolution: {integrity: sha512-3cdrb/eKD/0tygDX75YscuHEHMUJ70u3UoLSq2eqhWks57AyzvsDQbyn53IhZ0tBN7gA8Jj2VhXiOV2lef7thw==}
+  /@vitest/expect@1.0.2:
+    resolution: {integrity: sha512-mAIo/8uddSWkjQMLFcjqZP3WmkwvvN0OtlyZIu33jFnwme3vZds8m8EDMxtj+Uzni2DwtPfHNjJcTM8zTV1f4A==}
     dependencies:
-      '@vitest/spy': 1.0.1
-      '@vitest/utils': 1.0.1
+      '@vitest/spy': 1.0.2
+      '@vitest/utils': 1.0.2
       chai: 4.3.10
     dev: true
 
-  /@vitest/runner@1.0.1:
-    resolution: {integrity: sha512-/+z0vhJ0MfRPT3AyTvAK6m57rzlew/ct8B2a4LMv7NhpPaiI2QLGyOBMB3lcioWdJHjRuLi9aYppfOv0B5aRQA==}
+  /@vitest/runner@1.0.2:
+    resolution: {integrity: sha512-ZcHJXPT2kg/9Hc4fNkCbItlsgZSs3m4vQbxB8LCSdzpbG85bExCmSvu6K9lWpMNdoKfAr1Jn0BwS9SWUcGnbTQ==}
     dependencies:
-      '@vitest/utils': 1.0.1
+      '@vitest/utils': 1.0.2
       p-limit: 5.0.0
       pathe: 1.1.1
     dev: true
 
-  /@vitest/snapshot@1.0.1:
-    resolution: {integrity: sha512-wIPtPDGSxEZ+DpNMc94AsybX6LV6uN6sosf5TojyP1m2QbKwiRuLV/5RSsjt1oWViHsTj8mlcwrQQ1zHGO0fMw==}
+  /@vitest/snapshot@1.0.2:
+    resolution: {integrity: sha512-9ClDz2/aV5TfWA4reV7XR9p+hE0e7bifhwxlURugj3Fw0YXeTFzHmKCNEHd6wOIFMfthbGGwhlq7TOJ2jDO4/g==}
     dependencies:
       magic-string: 0.30.5
       pathe: 1.1.1
       pretty-format: 29.7.0
     dev: true
 
-  /@vitest/spy@1.0.1:
-    resolution: {integrity: sha512-yXwm1uKhBVr/5MhVeSmtNqK+0q2RXIchJt8kokEKdrWLtkPeDgdbZ6SjR1VQGZuNdWL6sSBnLayIyVvcS0qLfA==}
+  /@vitest/spy@1.0.2:
+    resolution: {integrity: sha512-YlnHmDntp+zNV3QoTVFI5EVHV0AXpiThd7+xnDEbWnD6fw0TH/J4/+3GFPClLimR39h6nA5m0W4Bjm5Edg4A/A==}
     dependencies:
       tinyspy: 2.2.0
     dev: true
 
-  /@vitest/utils@1.0.1:
-    resolution: {integrity: sha512-MGPCHkzXbbAyscrhwGzh8uP1HPrTYLWaj1WTDtWSGrpe2yJWLRN9mF9ooKawr6NMOg9vTBtg2JqWLfuLC7Dknw==}
+  /@vitest/utils@1.0.2:
+    resolution: {integrity: sha512-GPQkGHAnFAP/+seSbB9pCsj339yRrMgILoI5H2sPevTLCYgBq0VRjF8QSllmnQyvf0EontF6KUIt2t5s2SmqoQ==}
     dependencies:
       diff-sequences: 29.6.3
       loupe: 2.3.7
       pretty-format: 29.7.0
     dev: true
 
-  /abitype@0.10.3(typescript@5.3.2):
+  /abitype@0.10.3(typescript@5.3.3):
     resolution: {integrity: sha512-tRN+7XIa7J9xugdbRzFv/95ka5ivR/sRe01eiWvM0HWWjHuigSZEACgKa0sj4wGuekTDtghCx+5Izk/cOi78pQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -1795,10 +1795,10 @@ packages:
       zod:
         optional: true
     dependencies:
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: true
 
-  /abitype@0.9.8(typescript@5.3.2):
+  /abitype@0.9.8(typescript@5.3.3):
     resolution: {integrity: sha512-puLifILdm+8sjyss4S+fsUN09obiT1g2YW6CtcQF+QDzxR0euzgEB29MZujC6zMk2a6SVmtttq1fc6+YFA7WYQ==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -1809,7 +1809,7 @@ packages:
       zod:
         optional: true
     dependencies:
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: true
 
   /acorn-walk@8.3.1:
@@ -4380,7 +4380,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: false
 
-  /tsconfck@2.1.1(typescript@5.3.2):
+  /tsconfck@2.1.1(typescript@5.3.3):
     resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==}
     engines: {node: ^14.13.1 || ^16 || >=18}
     hasBin: true
@@ -4390,7 +4390,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.3.2
+      typescript: 5.3.3
     dev: true
 
   /tslib@2.6.2:
@@ -4480,8 +4480,8 @@ packages:
       is-typed-array: 1.1.12
     dev: true
 
-  /typescript@5.3.2:
-    resolution: {integrity: sha512-6l+RyNy7oAHDfxC4FzSJcz9vnjTKxrLpDG5M2Vu4SHRVNg6xzqZp6LYSR9zjqQTu8DU/f5xwxUdADOkbrIX2gQ==}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
@@ -4567,7 +4567,7 @@ packages:
       d3-timer: 3.0.1
     dev: false
 
-  /viem@1.19.11(typescript@5.3.2):
+  /viem@1.19.11(typescript@5.3.3):
     resolution: {integrity: sha512-dbsXEWDBZkByuzJXAs/e01j7dpUJ5ICF5WcyntFwf8Y97n5vnC/91lAleSa6DA5V4WJvYZbhDpYeTctsMAQnhA==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -4580,9 +4580,9 @@ packages:
       '@noble/hashes': 1.3.2
       '@scure/bip32': 1.3.2
       '@scure/bip39': 1.2.1
-      abitype: 0.9.8(typescript@5.3.2)
+      abitype: 0.9.8(typescript@5.3.3)
       isows: 1.0.3(ws@8.13.0)
-      typescript: 5.3.2
+      typescript: 5.3.3
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
@@ -4590,8 +4590,8 @@ packages:
       - zod
     dev: true
 
-  /vite-node@1.0.1(@types/node@20.10.3):
-    resolution: {integrity: sha512-Y2Jnz4cr2azsOMMYuVPrQkp3KMnS/0WV8ezZjCy4hU7O5mUHCAVOnFmoEvs1nvix/4mYm74Len8bYRWZJMNP6g==}
+  /vite-node@1.0.2(@types/node@20.10.4):
+    resolution: {integrity: sha512-h7BbMJf46fLvFW/9Ygo3snkIBEHFh6fHpB4lge98H5quYrDhPFeI3S0LREz328uqPWSnii2yeJXktQ+Pmqk5BQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
@@ -4599,7 +4599,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 5.0.6(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4611,7 +4611,7 @@ packages:
       - terser
     dev: true
 
-  /vite-tsconfig-paths@4.2.1(typescript@5.3.2)(vite@5.0.6):
+  /vite-tsconfig-paths@4.2.1(typescript@5.3.3)(vite@5.0.6):
     resolution: {integrity: sha512-GNUI6ZgPqT3oervkvzU+qtys83+75N/OuDaQl7HmOqFTb0pjZsuARrRipsyJhJ3enqV8beI1xhGbToR4o78nSQ==}
     peerDependencies:
       vite: '*'
@@ -4621,14 +4621,14 @@ packages:
     dependencies:
       debug: 4.3.4
       globrex: 0.1.2
-      tsconfck: 2.1.1(typescript@5.3.2)
-      vite: 5.0.6(@types/node@20.10.3)
+      tsconfck: 2.1.1(typescript@5.3.3)
+      vite: 5.0.6(@types/node@20.10.4)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@5.0.6(@types/node@20.10.3):
+  /vite@5.0.6(@types/node@20.10.4):
     resolution: {integrity: sha512-MD3joyAEBtV7QZPl2JVVUai6zHms3YOmLR+BpMzLlX2Yzjfcc4gTgNi09d/Rua3F4EtC8zdwPU8eQYyib4vVMQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -4656,7 +4656,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.10.3
+      '@types/node': 20.10.4
       esbuild: 0.19.8
       postcss: 8.4.32
       rollup: 4.6.1
@@ -4664,8 +4664,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vitest@1.0.1(@types/node@20.10.3):
-    resolution: {integrity: sha512-MHsOj079S28hDsvdDvyD1pRj4dcS51EC5Vbe0xvOYX+WryP8soiK2dm8oULi+oA/8Xa/h6GoJEMTmcmBy5YM+Q==}
+  /vitest@1.0.2(@types/node@20.10.4):
+    resolution: {integrity: sha512-F3NVwwpXfRSDnJmyv+ALPwSRVt0zDkRRE18pwUHSUPXAlWQ47rY1dc99ziMW5bBHyqwK2ERjMisLNoef64qk9w==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4689,12 +4689,12 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/node': 20.10.3
-      '@vitest/expect': 1.0.1
-      '@vitest/runner': 1.0.1
-      '@vitest/snapshot': 1.0.1
-      '@vitest/spy': 1.0.1
-      '@vitest/utils': 1.0.1
+      '@types/node': 20.10.4
+      '@vitest/expect': 1.0.2
+      '@vitest/runner': 1.0.2
+      '@vitest/snapshot': 1.0.2
+      '@vitest/spy': 1.0.2
+      '@vitest/utils': 1.0.2
       acorn-walk: 8.3.1
       cac: 6.7.14
       chai: 4.3.10
@@ -4708,8 +4708,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.8.1
-      vite: 5.0.6(@types/node@20.10.3)
-      vite-node: 1.0.1(@types/node@20.10.3)
+      vite: 5.0.6(@types/node@20.10.4)
+      vite-node: 1.0.2(@types/node@20.10.4)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

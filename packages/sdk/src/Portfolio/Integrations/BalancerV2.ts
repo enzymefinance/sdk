@@ -278,7 +278,7 @@ const takeOrderEncoding = [
   },
 ] as const;
 
-export type SwapKind = typeof SwapKind[keyof typeof SwapKind];
+export type SwapKind = (typeof SwapKind)[keyof typeof SwapKind];
 export const SwapKind = {
   GivenIn: 0,
   GivenOut: 1,
@@ -405,7 +405,7 @@ export async function queryBatchSwap(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     balancerVault: Address;
-    kind: typeof SwapKind[keyof typeof SwapKind];
+    kind: (typeof SwapKind)[keyof typeof SwapKind];
     swaps: BatchSwapStep[];
     assets: Address[];
     funds: BatchSwapFunds;

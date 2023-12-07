@@ -62,7 +62,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
 // EXTERNAL POSITION
 //--------------------------------------------------------------------------------------------
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   Mint: 0n,
   AddLiquidity: 1n,

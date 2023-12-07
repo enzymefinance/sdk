@@ -188,7 +188,7 @@ export type SimpleSwapData = {
   values: ReadonlyArray<bigint>;
 };
 
-export type SwapType = typeof SwapType[keyof typeof SwapType];
+export type SwapType = (typeof SwapType)[keyof typeof SwapType];
 export const SwapType = {
   Simple: 0n,
   Multi: 1n,
