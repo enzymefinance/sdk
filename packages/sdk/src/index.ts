@@ -1,7 +1,7 @@
 export * as Asset from "./Asset.js";
 export * as Configuration from "./Configuration.js";
 export * as Depositor from "./Depositor.js";
-export * as Migration from "./Migration.js";
+export * as LifeCycle from "./LifeCycle.js";
 export * as Performance from "./Performance.js";
 export * as Portfolio from "./Portfolio.js";
 export * as Relayer from "./Relayer.js";
