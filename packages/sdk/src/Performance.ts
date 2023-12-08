@@ -1,9 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
+import { type Address, Chain, ContractFunctionExecutionError, type PublicClient, Transport } from "viem";
 import { Viem } from "./Utils.js";
 
-export async function getNav(
-  client: PublicClient,
+export async function getNav<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -21,8 +21,8 @@ export async function getNav(
   return { asset, value };
 }
 
-export async function getNavInAsset(
-  client: PublicClient,
+export async function getNavInAsset<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -39,8 +39,8 @@ export async function getNavInAsset(
   return result;
 }
 
-export async function getGav(
-  client: PublicClient,
+export async function getGav<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -58,8 +58,8 @@ export async function getGav(
   return { asset, value };
 }
 
-export async function getGavInAsset(
-  client: PublicClient,
+export async function getGavInAsset<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -76,8 +76,8 @@ export async function getGavInAsset(
   return result;
 }
 
-export async function getSharePrice(
-  client: PublicClient,
+export async function getSharePrice<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -95,8 +95,8 @@ export async function getSharePrice(
   return { asset, value };
 }
 
-export async function getSharePriceInAsset(
-  client: PublicClient,
+export async function getSharePriceInAsset<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -113,8 +113,8 @@ export async function getSharePriceInAsset(
   return result;
 }
 
-export async function getCanonicalAssetValue(
-  client: PublicClient,
+export async function getCanonicalAssetValue<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
     baseAsset: Address;
@@ -141,8 +141,8 @@ export async function getCanonicalAssetValue(
   }
 }
 
-export async function calcCanonicalAssetsTotalValue(
-  client: PublicClient,
+export async function calcCanonicalAssetsTotalValue<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
     baseAssets: Address[];

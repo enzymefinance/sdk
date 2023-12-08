@@ -1,4 +1,13 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  type Chain,
+  type Hex,
+  PublicClient,
+  type Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+} from "viem";
 import { getBalanceOf } from "../../Asset.js";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -158,8 +167,8 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getStakedEthBalance(
-  client: PublicClient,
+export async function getStakedEthBalance<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     account: Address;
     stakeWiseVaultAddress: Address;

@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type PublicClient } from "viem";
+import { type Address, Chain, type PublicClient, Transport } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ export function claimOwnership(args: ClaimOwnershipParams) {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export function getName(
-  client: PublicClient,
+export function getName<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -73,8 +73,8 @@ export function getName(
   });
 }
 
-export function getSymbol(
-  client: PublicClient,
+export function getSymbol<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -86,8 +86,8 @@ export function getSymbol(
   });
 }
 
-export function getOwner(
-  client: PublicClient,
+export function getOwner<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -99,8 +99,8 @@ export function getOwner(
   });
 }
 
-export function getNominatedOwner(
-  client: PublicClient,
+export function getNominatedOwner<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vault: Address;
   }>,
@@ -112,8 +112,8 @@ export function getNominatedOwner(
   });
 }
 
-export function getDenominationAsset(
-  client: PublicClient,
+export function getDenominationAsset<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -125,8 +125,8 @@ export function getDenominationAsset(
   });
 }
 
-export function getComptrollerProxy(
-  client: PublicClient,
+export function getComptrollerProxy<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -138,8 +138,8 @@ export function getComptrollerProxy(
   });
 }
 
-export function getPolicyManager(
-  client: PublicClient,
+export function getPolicyManager<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -151,8 +151,8 @@ export function getPolicyManager(
   });
 }
 
-export function getFeeManager(
-  client: PublicClient,
+export function getFeeManager<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -164,8 +164,8 @@ export function getFeeManager(
   });
 }
 
-export function sharesAreFreelyTransferable(
-  client: PublicClient,
+export function sharesAreFreelyTransferable<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,

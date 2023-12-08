@@ -1,4 +1,13 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  Chain,
+  type Hex,
+  PublicClient,
+  Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+} from "viem";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -84,8 +93,8 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function convertToAssets(
-  client: PublicClient,
+export async function convertToAssets<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     sharesAmount: bigint;
@@ -99,8 +108,8 @@ export async function convertToAssets(
   });
 }
 
-export async function convertToShares(
-  client: PublicClient,
+export async function convertToShares<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     assetAmount: bigint;
@@ -118,8 +127,8 @@ export async function convertToShares(
 // EXTERNAL READ FUNCTIONS - MAKER
 //--------------------------------------------------------------------------------------------
 
-export async function getMakerDsr(
-  client: PublicClient,
+export async function getMakerDsr<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -135,8 +144,8 @@ export async function getMakerDsr(
 // EXTERNAL READ FUNCTIONS - MORPHO
 //--------------------------------------------------------------------------------------------
 
-export async function getMorphoPoolToken(
-  client: PublicClient,
+export async function getMorphoPoolToken<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,

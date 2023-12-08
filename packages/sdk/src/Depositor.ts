@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient } from "viem";
+import { type Address, Chain, type Hex, type PublicClient, Transport } from "viem";
 import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";
 import { Assertion } from "./Utils.js";
@@ -8,8 +8,8 @@ import { Assertion } from "./Utils.js";
 // DEPOSIT
 //--------------------------------------------------------------------------------------------
 
-export function getSharesActionTimelock(
-  client: PublicClient,
+export function getSharesActionTimelock<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -21,8 +21,8 @@ export function getSharesActionTimelock(
   });
 }
 
-export function getLastSharesBoughtTimestamp(
-  client: PublicClient,
+export function getLastSharesBoughtTimestamp<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     depositor: Address;
     comptrollerProxy: Address;
@@ -36,8 +36,8 @@ export function getLastSharesBoughtTimestamp(
   });
 }
 
-export async function getExpectedSharesForDeposit(
-  client: PublicClient,
+export async function getExpectedSharesForDeposit<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     amount: bigint;
@@ -83,8 +83,8 @@ export type RedeemSharesForSpecificAssetsParams = {
   payoutPercentages: bigint[];
 };
 
-export async function getSpecificAssetsRedemptionExpectedAmounts(
-  client: PublicClient,
+export async function getSpecificAssetsRedemptionExpectedAmounts<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<RedeemSharesForSpecificAssetsParams>,
 ) {
   const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
@@ -132,8 +132,8 @@ interface NativeDepositArgs {
   amount: bigint;
 }
 
-export async function getExpectedSharesForNativeTokenDeposit(
-  client: PublicClient,
+export async function getExpectedSharesForNativeTokenDeposit<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<NativeDepositArgs & { depositor: Address }>,
 ) {
   const { result } = await Viem.simulateContract(client, args, {
@@ -182,8 +182,8 @@ export type SharesWrapperDepositBaseParams = {
   depositAmount: bigint;
 };
 
-export async function getExpectedSharesForSharesWrapperDeposit(
-  client: PublicClient,
+export async function getExpectedSharesForSharesWrapperDeposit<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<
     SharesWrapperDepositBaseParams & {
       depositor: Address;
@@ -236,8 +236,8 @@ export function sharesWrapperCancelRequestDeposit(args: Omit<SharesWrapperDeposi
 // POLICY CHECK
 //--------------------------------------------------------------------------------------------
 
-export async function isAllowedDepositor(
-  client: PublicClient,
+export async function isAllowedDepositor<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     allowedDepositRecipientsPolicy: Address;
     comptrollerProxy: Address;

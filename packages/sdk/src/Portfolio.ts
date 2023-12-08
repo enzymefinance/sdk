@@ -1,9 +1,7 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Hex, PublicClient } from "viem";
+import type { Address, Chain, Hex, PublicClient, Transport } from "viem";
 import * as Assets from "./Asset.js";
-
 import { Assertion, Viem } from "./Utils.js";
-
 export * as Integrations from "./Portfolio/Integrations.js";
 export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 
@@ -60,8 +58,8 @@ export function vaultCallOnContract(args: VaultCallOnContractParams) {
   });
 }
 
-export async function getPortfolio(
-  client: PublicClient,
+export async function getPortfolio<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -100,8 +98,8 @@ export async function getPortfolio(
   return { externalPositions, trackedAssets };
 }
 
-export function getTrackedAssets(
-  client: PublicClient,
+export function getTrackedAssets<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -117,8 +115,8 @@ export function getTrackedAssets(
 // EXTERNAL POSITIONS
 //--------------------------------------------------------------------------------------------
 
-export function isActiveExternalPosition(
-  client: PublicClient,
+export function isActiveExternalPosition<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     externalPosition: Address;
@@ -132,8 +130,8 @@ export function isActiveExternalPosition(
   });
 }
 
-export async function getTotalValueForAllExternalPositions(
-  client: PublicClient,
+export async function getTotalValueForAllExternalPositions<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -160,8 +158,8 @@ export async function getTotalValueForAllExternalPositions(
   return values.reduce((total, value) => total + value, 0n);
 }
 
-export function getActiveExternalPositions(
-  client: PublicClient,
+export function getActiveExternalPositions<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -173,8 +171,8 @@ export function getActiveExternalPositions(
   });
 }
 
-export async function getExternalPositionManagedAssets(
-  client: PublicClient,
+export async function getExternalPositionManagedAssets<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -198,8 +196,8 @@ export async function getExternalPositionManagedAssets(
   });
 }
 
-export async function getExternalPositionDebtAssets(
-  client: PublicClient,
+export async function getExternalPositionDebtAssets<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -223,8 +221,8 @@ export async function getExternalPositionDebtAssets(
   });
 }
 
-export async function getExternalPositionAssets(
-  client: PublicClient,
+export async function getExternalPositionAssets<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -240,8 +238,8 @@ export async function getExternalPositionAssets(
   };
 }
 
-export function getExternalPositionType(
-  client: PublicClient,
+export function getExternalPositionType<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -253,8 +251,8 @@ export function getExternalPositionType(
   });
 }
 
-export function getTypeLabel(
-  client: PublicClient,
+export function getTypeLabel<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;
     typeId: bigint;

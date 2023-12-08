@@ -1,4 +1,13 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  Chain,
+  type Hex,
+  PublicClient,
+  Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+} from "viem";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -161,8 +170,8 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getCLFeeRecipient(
-  client: PublicClient,
+export async function getCLFeeRecipient<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
     validatorPublicKey: Hex;
@@ -176,8 +185,8 @@ export async function getCLFeeRecipient(
   });
 }
 
-export async function getELFeeRecipient(
-  client: PublicClient,
+export async function getELFeeRecipient<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
     validatorPublicKey: Hex;
@@ -191,8 +200,8 @@ export async function getELFeeRecipient(
   });
 }
 
-export async function getGlobalFee(
-  client: PublicClient,
+export async function getGlobalFee<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
   }>,

@@ -1,5 +1,14 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import {
+  type Address,
+  Chain,
+  type Hex,
+  type PublicClient,
+  Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  zeroAddress,
+} from "viem";
 import { type Types, Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -42,8 +51,8 @@ export function decodePerformanceFeeSettings(settings: Hex): PerformanceFeeSetti
 // READ
 //--------------------------------------------------------------------------------------------
 
-export async function getInfo(
-  client: PublicClient,
+export async function getInfo<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     performanceFee: Address;

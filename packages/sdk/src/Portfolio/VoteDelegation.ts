@@ -1,4 +1,4 @@
-import type { Address, PublicClient } from "viem";
+import type { Address, Chain, PublicClient, Transport } from "viem";
 import { Viem } from "../Utils.js";
 
 // delegates are only for ethereum
@@ -52,8 +52,8 @@ const tokenDaoDelegateeByTypeAbi = {
   stateMutability: "view",
 } as const;
 
-export async function getDelegatees(
-  client: PublicClient,
+export async function getDelegatees<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,

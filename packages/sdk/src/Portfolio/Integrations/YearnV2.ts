@@ -1,4 +1,13 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import {
+  type Address,
+  Chain,
+  type Hex,
+  PublicClient,
+  Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  parseAbi,
+} from "viem";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -99,8 +108,8 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function pricePerShare(
-  client: PublicClient,
+export async function pricePerShare<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     yearnVault: Address;
   }>,

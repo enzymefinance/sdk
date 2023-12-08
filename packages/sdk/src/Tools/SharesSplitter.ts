@@ -1,9 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Chain, PublicClient, Transport } from "viem";
 import { Viem } from "../Utils.js";
 
-export function getClaimableTokenBalance(
-  client: PublicClient,
+export function getClaimableTokenBalance<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     splitter: Address;
     token: Address;

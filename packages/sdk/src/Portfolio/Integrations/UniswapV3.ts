@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, Chain, type Hex, PublicClient, Transport, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -405,8 +405,8 @@ const v3PoolAbi = [
   },
 ] as const;
 
-export async function getSlot0(
-  client: PublicClient,
+export async function getSlot0<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -436,8 +436,8 @@ export async function getSlot0(
   };
 }
 
-export function getLiquidity(
-  client: PublicClient,
+export function getLiquidity<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -509,8 +509,8 @@ export interface CollectParams {
   amount1Max: bigint;
 }
 
-export async function getPendingFees(
-  client: PublicClient,
+export async function getPendingFees<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     nonFungiblePositionManager: Address;
     params: CollectParams;

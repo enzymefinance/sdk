@@ -1,9 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Chain, PublicClient, Transport } from "viem";
 import { Viem } from "../Utils.js";
 
-export function getDepositQueueUser(
-  client: PublicClient,
+export function getDepositQueueUser<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     sharesWrapper: Address;
     depositAsset: Address;
@@ -18,8 +18,8 @@ export function getDepositQueueUser(
   });
 }
 
-export function getRedemptionQueueUsers(
-  client: PublicClient,
+export function getRedemptionQueueUsers<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
   }>,
@@ -31,8 +31,8 @@ export function getRedemptionQueueUsers(
   });
 }
 
-export async function getRedemptionQueueUsersLength(
-  client: PublicClient,
+export async function getRedemptionQueueUsersLength<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
   }>,

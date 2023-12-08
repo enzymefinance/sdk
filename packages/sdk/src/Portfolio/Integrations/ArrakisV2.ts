@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, Chain, type Hex, PublicClient, Transport, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -106,8 +106,8 @@ const resolverAbi = [
   },
 ] as const;
 
-export async function getMintAmounts(
-  client: PublicClient,
+export async function getMintAmounts<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     resolver: Address;
     arrakisVault: Address;
@@ -142,8 +142,8 @@ const helperAbi = [
   },
 ] as const;
 
-export async function totalUnderlying(
-  client: PublicClient,
+export async function totalUnderlying<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     helper: Address;
     arrakisVault: Address;
@@ -210,8 +210,8 @@ const vaultAbi = [
   },
 ] as const;
 
-export async function burn(
-  client: PublicClient,
+export async function burn<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
     receiver: Address;
@@ -235,8 +235,8 @@ export async function burn(
   };
 }
 
-export async function inits(
-  client: PublicClient,
+export async function inits<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
   }>,
@@ -260,8 +260,8 @@ export async function inits(
   };
 }
 
-export async function numberOfRanges(
-  client: PublicClient,
+export async function numberOfRanges<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
   }>,

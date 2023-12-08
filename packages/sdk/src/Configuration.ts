@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { Address, PublicClient, isAddressEqual } from "viem";
+import { Address, Chain, PublicClient, Transport, isAddressEqual } from "viem";
 import { getInfo } from "./Configuration/Fees/Performance.js";
 import { Viem } from "./Utils.js";
 
@@ -9,8 +9,8 @@ export * as Fees from "./Configuration/Fees.js";
 export * as Policy from "./Configuration/Policy.js";
 export * as Policies from "./Configuration/Policies.js";
 
-export async function getEnabledFees(
-  client: PublicClient,
+export async function getEnabledFees<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     feeManager: Address;
@@ -24,8 +24,8 @@ export async function getEnabledFees(
   });
 }
 
-export async function getAccruedContinuousFees(
-  client: PublicClient,
+export async function getAccruedContinuousFees<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     feeManager: Address;
     unpermissionedActionsWrapper: Address;
@@ -99,8 +99,8 @@ export async function getAccruedContinuousFees(
   };
 }
 
-export async function getEnabledPolicies(
-  client: PublicClient,
+export async function getEnabledPolicies<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     policyManager: Address;

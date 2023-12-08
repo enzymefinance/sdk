@@ -93,8 +93,8 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<TAbi extends Abi, TFunctionName extends string>(
-  client: PublicClient,
+export function readContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain = Chain>(
+  client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
   params: ReadContractParameters<TAbi, TFunctionName>,
 ): Promise<ReadContractReturnType<TAbi, TFunctionName>> {
@@ -107,8 +107,8 @@ export function readContract<TAbi extends Abi, TFunctionName extends string>(
   );
 }
 
-export function simulateContract<TAbi extends Abi, TFunctionName extends string>(
-  client: PublicClient,
+export function simulateContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain = Chain>(
+  client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
   params: SimulateContractParameters<TAbi, TFunctionName>,
 ): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {

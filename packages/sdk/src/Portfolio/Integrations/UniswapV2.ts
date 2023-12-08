@@ -1,9 +1,11 @@
 import * as Abis from "@enzymefinance/abis";
 import {
   type Address,
+  Chain,
   ContractFunctionExecutionError,
   type Hex,
   PublicClient,
+  Transport,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -221,8 +223,8 @@ const uniswapV2FactoryAbi = [
   },
 ] as const;
 
-export async function getLendRate(
-  client: PublicClient,
+export async function getLendRate<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
     amount: bigint;
@@ -266,8 +268,8 @@ export async function getLendRate(
   return { amountBDesired, expectedPoolTokens };
 }
 
-export async function getPairData(
-  client: PublicClient,
+export async function getPairData<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     token0: Address;
     token1: Address;
@@ -299,8 +301,8 @@ export async function getPairData(
   };
 }
 
-export async function getSwapRedeemRate(
-  client: PublicClient,
+export async function getSwapRedeemRate<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     poolValue: {
       token: Address;

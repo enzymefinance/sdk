@@ -11,15 +11,16 @@ import {
   SimulateContractReturnType,
   TestClient,
   TransactionReceipt,
+  WriteContractParameters,
   createPublicClient,
   createTestClient,
 } from "viem";
-import { parseAccount } from "viem/utils";
+import { encodeFunctionData, parseAccount } from "viem/utils";
 import { beforeAll, beforeEach } from "vitest";
 
 const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
 
-export type TestEnvironment<TChain extends Chain, TConstants> = {
+export type TestEnvironment<TChain extends Chain = Chain, TConstants = unknown> = {
   send: TestSend<TChain>;
   anvil: TestClient<"anvil", HttpTransport, TChain>;
   client: PublicClient<HttpTransport, TChain>;
@@ -91,9 +92,19 @@ export function createSetup<TChain extends Chain, TConstants>({
       transaction: Utils.Viem.PopulatedTransaction<TFunctionName, TAbi>;
     }): Promise<TestSendReturnType<TFunctionName, TAbi, TChain>> => {
       const { request, result } = await transaction.simulate(client, params);
+
+      // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
       const hash = await anvil.sendUnsignedTransaction({
-        ...request,
         from: parseAccount(request.account).address,
+        to: request.address,
+        data: encodeFunctionData(request as unknown as WriteContractParameters),
+        ...(request.value === undefined ? {} : { value: request.value }),
+        ...(request.nonce === undefined ? {} : { nonce: request.nonce }),
+        ...(request.gas === undefined ? {} : { gas: request.gas }),
+        ...(request.gasPrice === undefined ? {} : { gas: request.gasPrice }),
+        ...(request.accessList === undefined ? {} : { accessList: request.accessList }),
+        ...(request.maxFeePerGas === undefined ? {} : { maxFeePerGas: request.maxFeePerGas }),
+        ...(request.maxPriorityFeePerGas === undefined ? {} : { maxPriorityFeePerGas: request.maxPriorityFeePerGas }),
       });
 
       const receipt = await client.waitForTransactionReceipt({ hash });

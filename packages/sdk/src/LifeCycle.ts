@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Hex, PublicClient } from "viem";
+import type { Address, Chain, Hex, PublicClient, Transport } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -94,8 +94,8 @@ export function executeMigration(args: ExecuteMigrationParams) {
   });
 }
 
-export function hasMigrationRequest(
-  client: PublicClient,
+export function hasMigrationRequest<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -109,8 +109,8 @@ export function hasMigrationRequest(
   });
 }
 
-export function hasExecutableMigrationRequest(
-  client: PublicClient,
+export function hasExecutableMigrationRequest<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -124,8 +124,8 @@ export function hasExecutableMigrationRequest(
   });
 }
 
-export function getRemainingMigrationRequestTimelock(
-  client: PublicClient,
+export function getRemainingMigrationRequestTimelock<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -139,8 +139,8 @@ export function getRemainingMigrationRequestTimelock(
   });
 }
 
-export async function getMigrationRequestDetails(
-  client: PublicClient,
+export async function getMigrationRequestDetails<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vault: Address;
     dispatcher: Address;
@@ -221,8 +221,8 @@ export function executeReconfiguration(args: ExecuteReconfigurationParams) {
   });
 }
 
-export function hasReconfigurationRequest(
-  client: PublicClient,
+export function hasReconfigurationRequest<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;
@@ -236,8 +236,8 @@ export function hasReconfigurationRequest(
   });
 }
 
-export function getReconfigurationRequestDetails(
-  client: PublicClient,
+export function getReconfigurationRequestDetails<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;

@@ -1,5 +1,13 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import {
+  type Address,
+  type Chain,
+  type Hex,
+  type PublicClient,
+  type Transport,
+  decodeAbiParameters,
+  encodeAbiParameters,
+} from "viem";
 import { multicall } from "viem/contract";
 import { Viem } from "../../Utils.js";
 
@@ -44,8 +52,8 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getInfo(
-  client: PublicClient,
+export function getInfo<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     cumulativeSlippageTolerancePolicy: Address;
@@ -59,8 +67,8 @@ export function getInfo(
   });
 }
 
-export async function getCurrentCumulativeSlippage(
-  client: PublicClient,
+export async function getCurrentCumulativeSlippage<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
     comptrollerProxy: Address;
@@ -108,8 +116,8 @@ export async function getCurrentCumulativeSlippage(
   };
 }
 
-export function getPricelessAssetBypassTimeLimit(
-  client: PublicClient,
+export function getPricelessAssetBypassTimeLimit<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
   }>,
@@ -123,8 +131,8 @@ export function getPricelessAssetBypassTimeLimit(
 
 getPricelessAssetBypassTimelock;
 
-export function getPricelessAssetBypassTimelock(
-  client: PublicClient,
+export function getPricelessAssetBypassTimelock<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
   }>,

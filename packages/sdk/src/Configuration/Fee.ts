@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { Address, PublicClient } from "viem";
+import { Address, Chain, PublicClient, Transport } from "viem";
 import { Viem } from "../Utils.js";
 
 export {
@@ -13,8 +13,8 @@ export {
   type SettleContinuousFeesParams,
 } from "../_internal/FeeManager.js";
 
-export function getRecipient(
-  client: PublicClient,
+export function getRecipient<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     fee: Address;
@@ -28,8 +28,8 @@ export function getRecipient(
   });
 }
 
-export function getProtocolFeeRate(
-  client: PublicClient,
+export function getProtocolFeeRate<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -43,8 +43,8 @@ export function getProtocolFeeRate(
   });
 }
 
-export async function getAccruedProtocolFee(
-  client: PublicClient,
+export async function getAccruedProtocolFee<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -60,8 +60,8 @@ export async function getAccruedProtocolFee(
   return result;
 }
 
-export function doesAutoProtocolFeeSharesBuyback(
-  client: PublicClient,
+export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -73,8 +73,8 @@ export function doesAutoProtocolFeeSharesBuyback(
   });
 }
 
-export async function getMlnValueAndBurnAmountForSharesBuyback(
-  client: PublicClient,
+export async function getMlnValueAndBurnAmountForSharesBuyback<TChain extends Chain>(
+  client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     denominationAsset: Address;
     buybackSharesAmount: bigint;
