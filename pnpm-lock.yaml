@@ -170,9 +170,6 @@ importers:
       '@viem/anvil':
         specifier: ^0.0.6
         version: 0.0.6
-      abitype:
-        specifier: ^0.10.3
-        version: 0.10.3(typescript@5.3.3)
       decimal.js:
         specifier: ^10.4.3
         version: 10.4.3
@@ -1782,20 +1779,6 @@ packages:
       diff-sequences: 29.6.3
       loupe: 2.3.7
       pretty-format: 29.7.0
-    dev: true
-
-  /abitype@0.10.3(typescript@5.3.3):
-    resolution: {integrity: sha512-tRN+7XIa7J9xugdbRzFv/95ka5ivR/sRe01eiWvM0HWWjHuigSZEACgKa0sj4wGuekTDtghCx+5Izk/cOi78pQ==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      zod: ^3 >=3.22.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-      zod:
-        optional: true
-    dependencies:
-      typescript: 5.3.3
     dev: true
 
   /abitype@0.9.8(typescript@5.3.3):
