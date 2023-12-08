@@ -8,9 +8,9 @@ export const DepositMode = {
   Request: 1,
 } as const;
 
-export function setUseDepositApprovals(
+export function deploy(
   args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
+    sharesWrapperFactory: Address;
     vaultProxy: Address;
     managers: Address[];
     redemptionAsset: Address;
@@ -29,7 +29,7 @@ export function setUseDepositApprovals(
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperFactory,
     functionName: "deploy",
-    address: args.sharesWrapper,
+    address: args.sharesWrapperFactory,
     args: [
       args.vaultProxy,
       args.managers,
