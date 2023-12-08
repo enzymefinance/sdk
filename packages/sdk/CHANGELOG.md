@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.4
+
+### Patch Changes
+
+- [#321](https://github.com/enzymefinance/sdk/pull/321) [`cdacc82`](https://github.com/enzymefinance/sdk/commit/cdacc821a40910e9175052c5597cbeb42b1b4f3b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add shares wrapper
+
 ## 0.4.3
 
 ### Patch Changes
