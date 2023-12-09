@@ -8,7 +8,7 @@ export async function assertBalanceOf<TChain extends Chain>({
   asset,
   owner,
   expected,
-  fuzziness,
+  fuzziness = 100n,
 }: {
   environment: TestEnvironment<TChain>;
   /**
@@ -33,7 +33,7 @@ export async function assertBalanceOf<TChain extends Chain>({
     asset,
   });
 
-  if (fuzziness === undefined) {
+  if (fuzziness === undefined || fuzziness === 0n) {
     expect(actual).toBe(expected);
   } else {
     expect(actual).toBeGreaterThanOrEqual(expected - BigInt(fuzziness));

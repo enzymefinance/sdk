@@ -16,7 +16,7 @@ export default async function () {
       }
 
       if (!(typeof forkUrl === "string" && forkUrl !== "")) {
-        throw new Error("Invalid `x-anvil-fork-block` header");
+        throw new Error("Invalid `x-anvil-fork-url` header");
       }
 
       return {

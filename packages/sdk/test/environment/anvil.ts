@@ -123,9 +123,7 @@ export function createSetup<TChain extends Chain>({
     };
 
     if (resetState) {
-      beforeAll(async () => {
-        await anvil.reset({ blockNumber: forkBlockNumber });
-      });
+      beforeAll(() => anvil.reset());
     }
 
     beforeEach((context) => {
