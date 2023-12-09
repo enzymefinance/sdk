@@ -65,12 +65,19 @@ export function createSetup<TChain extends Chain>({
   forkBlockNumber: bigint;
   forkUrl: string;
 }) {
-  return (forkBlockNumber = defaultForkBlockNumber): TestEnvironment<TChain> => {
+  return ({
+    forkBlockNumber = defaultForkBlockNumber,
+    resetState = false,
+  }: {
+    forkBlockNumber?: bigint;
+    resetState?: boolean;
+  } = {}): TestEnvironment<TChain> => {
     const proxyId = proxyFamily + poolId;
     const transport = http(`http://127.0.0.1:8545/${proxyId}`, {
       timeout: 150_000,
       fetchOptions: {
         headers: {
+          "x-anvil-fork-chain": `${chain.id}`,
           "x-anvil-fork-block": `${forkBlockNumber}`,
           "x-anvil-fork-url": forkUrl,
         },
@@ -115,12 +122,11 @@ export function createSetup<TChain extends Chain>({
       return { request, result, receipt, hash } as const;
     };
 
-    beforeAll(async () => {
-      await anvil.reset({
-        blockNumber: forkBlockNumber,
-        jsonRpcUrl: forkUrl,
+    if (resetState) {
+      beforeAll(async () => {
+        await anvil.reset({ blockNumber: forkBlockNumber });
       });
-    });
+    }
 
     beforeEach((context) => {
       // Print the last log entries from anvil after each test.
