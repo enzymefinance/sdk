@@ -6,13 +6,13 @@ export async function buyShares<TChain extends Chain>({
   minSharesQuantity = 1n, // NOTE: You should never use `1n` in production. This is only for testing.
   skipSharesActionTimelock = false,
   comptrollerProxy,
-  investmentAmount,
+  depositAmount,
   sharesBuyer,
   environment,
 }: {
   minSharesQuantity?: bigint;
   skipSharesActionTimelock?: boolean;
-  investmentAmount: bigint;
+  depositAmount: bigint;
   environment: TestEnvironment<TChain>;
   comptrollerProxy: Address;
   sharesBuyer: Address;
@@ -22,16 +22,17 @@ export async function buyShares<TChain extends Chain>({
   });
 
   if (isAddressEqual(denominationAsset, (environment as any).constants.weth)) {
+    // @TODO Properly typed environments
     await TestActions.wrapEther({
       account: sharesBuyer,
-      amount: investmentAmount,
+      amount: depositAmount,
       environment,
     });
   }
 
   await TestActions.approveSpend({
     token: denominationAsset,
-    amount: investmentAmount,
+    amount: depositAmount,
     spender: comptrollerProxy,
     account: sharesBuyer,
     environment,
@@ -40,7 +41,7 @@ export async function buyShares<TChain extends Chain>({
   const { result: sharesReceived } = await environment.send({
     account: sharesBuyer,
     transaction: Depositor.deposit({
-      amount: investmentAmount,
+      amount: depositAmount,
       depositor: sharesBuyer,
       comptrollerProxy,
       minSharesQuantity,

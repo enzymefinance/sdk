@@ -111,3 +111,6 @@ export const setupMainnet = createSetup({
   forkBlockNumber: BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER)),
   proxyFamily: 1000,
 });
+
+// TODO: This type is a stop gap solution until we have fully ported the "environment" configuration to the sdk.
+export type Constants = typeof constants;

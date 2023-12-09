@@ -39,4 +39,6 @@ export async function assertBalanceOf<TChain extends Chain>({
     expect(actual).toBeGreaterThanOrEqual(expected - BigInt(fuzziness));
     expect(actual).toBeLessThanOrEqual(expected + BigInt(fuzziness));
   }
+
+  return actual;
 }

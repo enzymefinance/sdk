@@ -43,7 +43,7 @@ const constants = {
 
 export const setupPolygon = createSetup({
   chain,
-  constants,
+  constants: constants as any, // TODO: Use proper constants type.
   forkUrl: process.env.VITE_ANVIL_FORK_URL_POLYGON,
   forkBlockNumber: BigInt(Number(process.env.VITE_ANVIL_FORK_BLOCK_NUMBER_POLYGON)),
   proxyFamily: 2000,

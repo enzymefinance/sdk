@@ -18,14 +18,17 @@ import {
 import { encodeFunctionData, parseAccount } from "viem/utils";
 import { beforeAll, beforeEach } from "vitest";
 
+// TODO: Use proper constants type.
+import type { Constants } from "./mainnet.js";
+
 const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
 
-export type TestEnvironment<TChain extends Chain = Chain, TConstants = unknown> = {
+export type TestEnvironment<TChain extends Chain = Chain> = {
   send: TestSend<TChain>;
   anvil: TestClient<"anvil", HttpTransport, TChain>;
   client: PublicClient<HttpTransport, TChain>;
   chain: TChain;
-  constants: TConstants;
+  constants: Constants;
 };
 
 export type TestSend<TChain extends Chain> = <TFunctionName extends string, TAbi extends Abi>(
@@ -49,7 +52,7 @@ export type TestSendReturnType<
   receipt: ExtractChainFormatterReturnType<TChain, "transactionReceipt", TransactionReceipt>;
 };
 
-export function createSetup<TChain extends Chain, TConstants>({
+export function createSetup<TChain extends Chain>({
   chain,
   constants,
   proxyFamily,
@@ -57,12 +60,12 @@ export function createSetup<TChain extends Chain, TConstants>({
   forkBlockNumber: defaultForkBlockNumber,
 }: {
   chain: TChain;
-  constants: TConstants;
+  constants: Constants;
   proxyFamily: number;
   forkBlockNumber: bigint;
   forkUrl: string;
 }) {
-  return (forkBlockNumber = defaultForkBlockNumber): TestEnvironment<TChain, TConstants> => {
+  return (forkBlockNumber = defaultForkBlockNumber): TestEnvironment<TChain> => {
     const proxyId = proxyFamily + poolId;
     const transport = http(`http://127.0.0.1:8545/${proxyId}`, {
       timeout: 150_000,
