@@ -93,7 +93,11 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain = Chain>(
+export function readContract<
+  TAbi extends Abi,
+  TFunctionName extends string,
+  TChain extends Chain | undefined = Chain | undefined,
+>(
   client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
   params: ReadContractParameters<TAbi, TFunctionName>,
