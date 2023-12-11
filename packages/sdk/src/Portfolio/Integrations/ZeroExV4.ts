@@ -1,5 +1,5 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Assertion } from "../../Utils.js";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { Assertion, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -110,6 +110,45 @@ const rfqOrderEncoding = {
   type: "tuple",
 } as const;
 
+const otcOrderEncoding = {
+  components: [
+    {
+      name: "makerToken",
+      type: "address",
+    },
+    {
+      name: "takerToken",
+      type: "address",
+    },
+    {
+      name: "makerAmount",
+      type: "uint128",
+    },
+    {
+      name: "takerAmount",
+      type: "uint128",
+    },
+    {
+      name: "maker",
+      type: "address",
+    },
+    {
+      name: "taker",
+      type: "address",
+    },
+    {
+      name: "txOrigin",
+      type: "address",
+    },
+    {
+      name: "expiryAndNonce",
+      type: "uint256",
+    },
+  ],
+  name: "otcOrder",
+  type: "tuple",
+} as const;
+
 const signatureEncoding = {
   components: [
     {
@@ -148,10 +187,11 @@ const takeOrderEncoding = [
   },
 ] as const;
 
-export type OrderType = typeof OrderType[keyof typeof OrderType];
+export type OrderType = (typeof OrderType)[keyof typeof OrderType];
 export const OrderType = {
   Limit: 0,
   Rfq: 1,
+  Otc: 2,
 } as const;
 
 export type LimitOrder = {
@@ -182,7 +222,18 @@ export type RfqOrder = {
   salt: bigint;
 };
 
-export type SignatureType = typeof SignatureType[keyof typeof SignatureType];
+export type OtcOrder = {
+  makerToken: Address;
+  takerToken: Address;
+  makerAmount: bigint;
+  takerAmount: bigint;
+  maker: Address;
+  taker: Address;
+  txOrigin: Address;
+  expiryAndNonce: bigint;
+};
+
+export type SignatureType = (typeof SignatureType)[keyof typeof SignatureType];
 export const SignatureType = {
   Illegal: 0,
   Invalid: 1,
@@ -201,12 +252,18 @@ export type Signature = {
 export type TakeOrderArgs = {
   takerAssetFillAmount: bigint;
   signature: Signature;
-} & ({ orderType: typeof OrderType.Limit; order: LimitOrder } | { orderType: typeof OrderType.Rfq; order: RfqOrder });
+} & (
+  | { orderType: typeof OrderType.Limit; order: LimitOrder }
+  | { orderType: typeof OrderType.Rfq; order: RfqOrder }
+  | { orderType: typeof OrderType.Otc; order: OtcOrder }
+);
 
 export function takeOrderEncode(args: TakeOrderArgs): Hex {
   let encodedOrder: Hex;
 
-  switch (args.orderType) {
+  const orderType = args.orderType;
+
+  switch (orderType) {
     case OrderType.Limit: {
       encodedOrder = encodeAbiParameters([limitOrderEncoding, signatureEncoding], [args.order, args.signature]);
       break;
@@ -217,8 +274,13 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
       break;
     }
 
+    case OrderType.Otc: {
+      encodedOrder = encodeAbiParameters([otcOrderEncoding, signatureEncoding], [args.order, args.signature]);
+      break;
+    }
+
     default: {
-      Assertion.never(args, "Invalid order type");
+      Assertion.never(orderType, "Invalid orderType");
     }
   }
 
@@ -245,9 +307,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([limitOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      if (!isValidSignatureType(signatureType)) {
-        Assertion.invariant(false, "Invalid signature type");
-      }
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
 
       return {
         takerAssetFillAmount,
@@ -264,9 +324,24 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([rfqOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      if (!isValidSignatureType(signatureType)) {
-        Assertion.invariant(false, "Invalid signature type");
-      }
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
+
+      return {
+        takerAssetFillAmount,
+        orderType,
+        order,
+        signature: {
+          ...signature,
+          signatureType,
+        },
+      };
+    }
+
+    case OrderType.Otc: {
+      const [order, signature] = decodeAbiParameters([otcOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
+
+      const signatureType = signature.signatureType;
+      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
 
       return {
         takerAssetFillAmount,
@@ -280,7 +355,28 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
     }
 
     default: {
-      Assertion.never(orderType, "Invalid order type");
+      Assertion.never(orderType, "Invalid orderType");
     }
   }
+}
+
+export async function isAllowedMaker(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    zeroExV4Adapter: Address;
+    who: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function isAllowedMaker(address who) public view returns (bool isAllowedMaker)"]),
+    functionName: "isAllowedMaker",
+    address: args.zeroExV4Adapter,
+    args: [args.who],
+  });
+}
+
+// expiryAndNonce logic copied from 0xv4 tests
+// https://github.com/0xProject/protocol/blob/e66307ba319e8c3e2a456767403298b576abc85e/contracts/zero-ex/tests/forked/RfqtV2Test.t.sol#L150
+export function combineExpiryAndNonce({ expiry, nonce }: { expiry: bigint; nonce: bigint }) {
+  return (expiry << 192n) | nonce;
 }

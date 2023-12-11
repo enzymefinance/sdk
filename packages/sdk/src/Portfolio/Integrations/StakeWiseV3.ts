@@ -1,9 +1,9 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
-import { getBalanceOf } from "../../Assets.js";
+import { getBalanceOf } from "../../Asset.js";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   Stake: 0n,
   Redeem: 1n,

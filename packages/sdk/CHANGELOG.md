@@ -1,5 +1,124 @@
 # @enzymefinance/sdk
 
+## 0.6.0
+
+### Minor Changes
+
+- [`f35d279`](https://github.com/enzymefinance/sdk/commit/f35d279b7ec317fd61345cbbc1539e577c32518d) Thanks [@fubhy](https://github.com/fubhy)! - Removed chain types
+
+## 0.5.1
+
+### Patch Changes
+
+- [#332](https://github.com/enzymefinance/sdk/pull/332) [`d2c7675`](https://github.com/enzymefinance/sdk/commit/d2c7675b62c70a324c7d4cc53aada96d7107a2f6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add add/remove asset managers
+
+## 0.5.0
+
+### Minor Changes
+
+- [`deec41b`](https://github.com/enzymefinance/sdk/commit/deec41bb5c389fc476692f83cb9340c6ceb29672) Thanks [@fubhy](https://github.com/fubhy)! - Fixed `getExpectedSharesForNativeTokenDeposit` return type
+
+## 0.4.8
+
+### Patch Changes
+
+- [#329](https://github.com/enzymefinance/sdk/pull/329) [`1825b12`](https://github.com/enzymefinance/sdk/commit/1825b122d473d11b0ac20aaa6daf82eb37e32dda) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add missing redeem functions
+
+## 0.4.7
+
+### Patch Changes
+
+- [`9f4c611`](https://github.com/enzymefinance/sdk/commit/9f4c6117cf2b592348298cc08104801651a20fb3) Thanks [@fubhy](https://github.com/fubhy)! - Fix type parameter defaults
+
+## 0.4.6
+
+### Patch Changes
+
+- [#325](https://github.com/enzymefinance/sdk/pull/325) [`671db74`](https://github.com/enzymefinance/sdk/commit/671db74201ce89fe304a7aff2a97281733d97cd1) Thanks [@iherger](https://github.com/iherger)! - Fix parameter names
+
+## 0.4.5
+
+### Patch Changes
+
+- [#323](https://github.com/enzymefinance/sdk/pull/323) [`856010c`](https://github.com/enzymefinance/sdk/commit/856010c39ce3d3e807292809ba66770efa6dc120) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix shares wrapper factory
+
+## 0.4.4
+
+### Patch Changes
+
+- [#321](https://github.com/enzymefinance/sdk/pull/321) [`cdacc82`](https://github.com/enzymefinance/sdk/commit/cdacc821a40910e9175052c5597cbeb42b1b4f3b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add shares wrapper
+
+## 0.4.3
+
+### Patch Changes
+
+- [#319](https://github.com/enzymefinance/sdk/pull/319) [`5e1a7c5`](https://github.com/enzymefinance/sdk/commit/5e1a7c52ea6664654b182aeedd650123d5c1a9fc) Thanks [@iherger](https://github.com/iherger)! - Add vaultCallOnContract
+
+## 0.4.2
+
+### Patch Changes
+
+- [#317](https://github.com/enzymefinance/sdk/pull/317) [`9b74cf4`](https://github.com/enzymefinance/sdk/commit/9b74cf42fd44d6d77f895a12e5129164ddfa06cd) Thanks [@iherger](https://github.com/iherger)! - Add vault lifecycle transactions
+
+## 0.4.1
+
+### Patch Changes
+
+- [#304](https://github.com/enzymefinance/sdk/pull/304) [`82bbf72`](https://github.com/enzymefinance/sdk/commit/82bbf7232b0dabe3981f0b8be620b95e977a1bc2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more functions and otc order to zero ex v4
+
+## 0.4.0
+
+### Minor Changes
+
+- [`4fc7693`](https://github.com/enzymefinance/sdk/commit/4fc7693dd15fb23fa58a979b6395be672286b1ee) Thanks [@fubhy](https://github.com/fubhy)! - Upgraded dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`4fc7693`](https://github.com/enzymefinance/sdk/commit/4fc7693dd15fb23fa58a979b6395be672286b1ee)]:
+  - @enzymefinance/abis@0.3.0
+
+## 0.3.13
+
+### Patch Changes
+
+- [#313](https://github.com/enzymefinance/sdk/pull/313) [`d52c018`](https://github.com/enzymefinance/sdk/commit/d52c01898f47322f4885cb14410a02e143ba7467) Thanks [@iherger](https://github.com/iherger)! - Arbitray loan borrow / repay
+
+## 0.3.12
+
+### Patch Changes
+
+- [#311](https://github.com/enzymefinance/sdk/pull/311) [`c162f95`](https://github.com/enzymefinance/sdk/commit/c162f95dc1d44573b797384b818ff3ffb37f6762) Thanks [@iherger](https://github.com/iherger)! - Add exports, add policy transactions
+
+## 0.3.11
+
+### Patch Changes
+
+- [#309](https://github.com/enzymefinance/sdk/pull/309) [`5ac7ba9`](https://github.com/enzymefinance/sdk/commit/5ac7ba99dc1b1850c082a0013c3c5d7f82c71856) Thanks [@iherger](https://github.com/iherger)! - Shares wrapper part 2
+
+## 0.3.10
+
+### Patch Changes
+
+- [#307](https://github.com/enzymefinance/sdk/pull/307) [`1a71fc8`](https://github.com/enzymefinance/sdk/commit/1a71fc8940d347018f37ba78528f572692451c4f) Thanks [@iherger](https://github.com/iherger)! - Deposit via shares wrapper
+
+## 0.3.9
+
+### Patch Changes
+
+- [#305](https://github.com/enzymefinance/sdk/pull/305) [`7139ffd`](https://github.com/enzymefinance/sdk/commit/7139ffdf45f39a3668c94f53237ec106adc96180) Thanks [@iherger](https://github.com/iherger)! - Add approve
+
+## 0.3.8
+
+### Patch Changes
+
+- [#302](https://github.com/enzymefinance/sdk/pull/302) [`23d52ec`](https://github.com/enzymefinance/sdk/commit/23d52ec9ce1ed8a352d762049a396824f6622abb) Thanks [@iherger](https://github.com/iherger)! - Add vault ownership transactions
+
+## 0.3.7
+
+### Patch Changes
+
+- [#287](https://github.com/enzymefinance/sdk/pull/287) [`f00ead6`](https://github.com/enzymefinance/sdk/commit/f00ead6d0dab6c0889ce4453b4d712dc36d885ab) Thanks [@iherger](https://github.com/iherger)! - More functions for frontend
+
 ## 0.3.6
 
 ### Patch Changes

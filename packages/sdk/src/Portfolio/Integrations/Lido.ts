@@ -2,7 +2,7 @@ import { Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParamete
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   RequestWithdrawals: 0n,
   ClaimWithdrawals: 1n,

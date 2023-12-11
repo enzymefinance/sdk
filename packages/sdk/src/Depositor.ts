@@ -55,7 +55,7 @@ export async function getExpectedSharesForDeposit(
   return result;
 }
 
-export async function deposit(
+export function deposit(
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     amount: bigint;
@@ -75,15 +75,17 @@ export async function deposit(
 // REDEMPTION
 //--------------------------------------------------------------------------------------------
 
+export type RedeemSharesForSpecificAssetsParams = {
+  comptrollerProxy: Address;
+  recipient: Address;
+  sharesQuantity: bigint;
+  payoutAssets: Address[];
+  payoutPercentages: bigint[];
+};
+
 export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    comptrollerProxy: Address;
-    recipient: Address;
-    sharesQuantity: bigint;
-    payoutAssets: Address[];
-    payoutPercentages: bigint[];
-  }>,
+  args: Viem.ContractCallParameters<RedeemSharesForSpecificAssetsParams>,
 ) {
   const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
     abi: Abis.IComptrollerLib,
@@ -105,6 +107,32 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
   }
 
   return output;
+}
+
+export function redeemSharesForSpecificAssets(args: RedeemSharesForSpecificAssetsParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "redeemSharesForSpecificAssets",
+    address: args.comptrollerProxy,
+    args: [args.recipient, args.sharesQuantity, args.payoutAssets, args.payoutPercentages],
+  });
+}
+
+export function redeemSharesInKind(
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    recipient: Address;
+    sharesQuantity: bigint;
+    additionalAssets: Address[];
+    assetsToSkip: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "redeemSharesInKind",
+    address: args.comptrollerProxy,
+    args: [args.recipient, args.sharesQuantity, args.additionalAssets, args.assetsToSkip],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
@@ -137,16 +165,14 @@ export async function getExpectedSharesForNativeTokenDeposit(
       args.exchangeData,
       args.minInvestmentAmount,
     ],
-    value: args.amount,
+    value: args.amount as any,
     account: args.depositor,
   });
 
   return result;
 }
 
-export async function depositNativeToken(
-  args: Viem.ContractCallParameters<NativeDepositArgs & { minSharesQuantity: bigint }>,
-) {
+export function depositNativeToken(args: NativeDepositArgs & { minSharesQuantity: bigint }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IDepositWrapper,
     address: args.depositWrapper,
@@ -167,41 +193,95 @@ export async function depositNativeToken(
 // SHARES WRAPPER DEPOSIT
 //--------------------------------------------------------------------------------------------
 
+export type SharesWrapperDepositBaseParams = {
+  sharesWrapper: Address;
+  depositAsset: Address;
+  depositAmount: bigint;
+};
+
 export async function getExpectedSharesForSharesWrapperDeposit(
   client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
-    denominationAsset: Address;
-    depositor: Address;
-    amount: bigint;
-  }>,
+  args: Viem.ContractCallParameters<
+    SharesWrapperDepositBaseParams & {
+      depositor: Address;
+    }
+  >,
 ) {
   const { result } = await Viem.simulateContract(client, args, {
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.denominationAsset, args.amount, 1n],
+    args: [args.depositAsset, args.depositAmount, 1n],
     account: args.depositor,
   });
 
   return result;
 }
 
-export async function sharesWrapperDeposit(
-  args: Viem.ContractCallParameters<{
-    sharesWrapper: Address;
-    denominationAsset: Address;
-    amount: bigint;
+export function sharesWrapperDeposit(
+  args: SharesWrapperDepositBaseParams & {
     minSharesAmount: bigint;
-  }>,
+  },
 ) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
-    args: [args.denominationAsset, args.amount, args.minSharesAmount],
+    args: [args.depositAsset, args.depositAmount, args.minSharesAmount],
   });
 }
+
+export function sharesWrapperRequestDeposit(args: SharesWrapperDepositBaseParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestDeposit",
+    address: args.sharesWrapper,
+    args: [args.depositAsset, args.depositAmount],
+  });
+}
+
+export function sharesWrapperCancelRequestDeposit(args: Omit<SharesWrapperDepositBaseParams, "depositAmount">) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "cancelRequestDeposit",
+    address: args.sharesWrapper,
+    args: [args.depositAsset],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// SHARES WRAPPER REDEMPTION
+//--------------------------------------------------------------------------------------------
+
+export function sharesWrapperRequestRedeem(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+    amount: bigint;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestRedeem",
+    address: args.sharesWrapper,
+    args: [args.amount],
+  });
+}
+
+export function sharesWrapperCancelRequestRedeem(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "cancelRequestRedeem",
+    address: args.sharesWrapper,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// POLICY CHECK
+//--------------------------------------------------------------------------------------------
 
 export async function isAllowedDepositor(
   client: PublicClient,

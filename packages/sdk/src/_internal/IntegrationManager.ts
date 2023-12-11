@@ -1,18 +1,24 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { callExtension } from "./Extensions.js";
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   CallOnIntegration: 0n,
   AddTrackedAssets: 1n,
   RemoveTrackedAssets: 2n,
 } as const;
 
-export type Selector = typeof Selector[keyof typeof Selector];
+export type Selector = (typeof Selector)[keyof typeof Selector];
 export const Selector = {
+  ClaimRewards: "0xb9dfbacc", // claimRewards(address,bytes,bytes)
   Lend: "0x099f7515", // lend(address,bytes,bytes)
-  TakeOrder: "0x03e38a2b", // takeOrder(address,bytes,bytes)
+  LendAndStake: "0x29fa046e", // lendAndStake(address,bytes,bytes)
   Redeem: "0xc29fa9dd", // redeem(address,bytes,bytes)
+  Stake: "0xfa7dd04d", // stake(address,bytes,bytes)
+  TakeMultipleOrders: "0x0e7f692d", // takeMultipleOrders(address,bytes,bytes)
+  TakeOrder: "0x03e38a2b", // takeOrder(address,bytes,bytes)
+  Unstake: "0x68e30677", // unstake(address,bytes,bytes)
+  UnstakeAndRedeem: "0x8334eb99", // unstakeAndRedeem(address,bytes,bytes)
 } as const;
 
 export type UseParams<TArgs> = {

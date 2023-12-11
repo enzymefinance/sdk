@@ -1,25 +1,29 @@
 import { startProxy } from "@viem/anvil";
-import { FORK_BLOCK_NUMBER, FORK_BLOCK_NUMBER_POLYGON, FORK_URL, FORK_URL_POLYGON } from "../constants.js";
 
 export default async function () {
   return await startProxy({
-    options: (id) => {
-      let forkUrl: string;
-      let forkBlockNumber: bigint;
+    options: (_, request) => {
+      const forkUrl = request.headers["x-anvil-fork-url"];
+      const forkChainId = request.headers["x-anvil-fork-chain"];
+      const forkBlockNumber = request.headers["x-anvil-fork-block"];
 
-      if (id > 2000 && id < 3000) {
-        forkUrl = FORK_URL_POLYGON;
-        forkBlockNumber = FORK_BLOCK_NUMBER_POLYGON;
-      } else if (id > 1000 && id < 2000) {
-        forkUrl = FORK_URL;
-        forkBlockNumber = FORK_BLOCK_NUMBER;
-      } else {
-        throw new Error("Invalid pool id");
+      if (!(typeof forkChainId === "string" && forkChainId !== "")) {
+        throw new Error("Invalid `x-anvil-fork-chain` header");
+      }
+
+      if (!(typeof forkBlockNumber === "string" && forkBlockNumber !== "")) {
+        throw new Error("Invalid `x-anvil-fork-block` header");
+      }
+
+      if (!(typeof forkUrl === "string" && forkUrl !== "")) {
+        throw new Error("Invalid `x-anvil-fork-url` header");
       }
 
       return {
-        forkBlockNumber,
         forkUrl,
+        forkChainId: Number(forkChainId),
+        forkBlockNumber: BigInt(forkBlockNumber),
+        noRateLimit: true,
       };
     },
   });
