@@ -191,3 +191,17 @@ export function redeemFromQueue(
     args: [args.startIndex, args.lastIndex],
   });
 }
+
+export function requestRedeem(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+    amount: bigint;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestRedeem",
+    address: args.sharesWrapper,
+    args: [args.amount],
+  });
+}
