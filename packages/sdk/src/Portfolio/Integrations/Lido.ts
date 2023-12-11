@@ -1,4 +1,4 @@
-import { Address, Chain, type Hex, PublicClient, Transport, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -120,8 +120,8 @@ const lidoWithdrawalsQueueAbi = [
   },
 ] as const;
 
-export function getLastCheckpointIndex<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getLastCheckpointIndex(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
   }>,
@@ -133,8 +133,8 @@ export function getLastCheckpointIndex<TChain extends Chain | undefined = Chain>
   });
 }
 
-export function findCheckpointHints<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function findCheckpointHints(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
     requestIds: ReadonlyArray<bigint>;
@@ -150,8 +150,8 @@ export function findCheckpointHints<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getWithdrawalStatus<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getWithdrawalStatus(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
     requestIds: ReadonlyArray<bigint>;

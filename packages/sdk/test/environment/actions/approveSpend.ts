@@ -1,8 +1,8 @@
 import { Utils } from "@enzymefinance/sdk";
 import { type TestEnvironment } from "@enzymefinance/sdk/test";
-import { type Address, Chain, parseAbi } from "viem";
+import { type Address, parseAbi } from "viem";
 
-export async function approveSpend<TChain extends Chain | undefined = Chain>({
+export async function approveSpend({
   token,
   account,
   spender,
@@ -13,7 +13,7 @@ export async function approveSpend<TChain extends Chain | undefined = Chain>({
   account: Address;
   spender: Address;
   amount: bigint;
-  environment: TestEnvironment<TChain>;
+  environment: TestEnvironment;
 }) {
   await environment.send({
     account: account,

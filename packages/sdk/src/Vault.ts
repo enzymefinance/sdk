@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, Chain, type PublicClient, Transport } from "viem";
+import { type Address, type PublicClient } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ export function claimOwnership(args: ClaimOwnershipParams) {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export function getName<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getName(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -73,8 +73,8 @@ export function getName<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getSymbol<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getSymbol(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -86,8 +86,8 @@ export function getSymbol<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getOwner<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getOwner(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -99,8 +99,8 @@ export function getOwner<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getNominatedOwner<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getNominatedOwner(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vault: Address;
   }>,
@@ -112,8 +112,8 @@ export function getNominatedOwner<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getDenominationAsset<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getDenominationAsset(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -125,8 +125,8 @@ export function getDenominationAsset<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getComptrollerProxy<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getComptrollerProxy(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -138,8 +138,8 @@ export function getComptrollerProxy<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getPolicyManager<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getPolicyManager(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -151,8 +151,8 @@ export function getPolicyManager<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getFeeManager<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getFeeManager(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -164,8 +164,8 @@ export function getFeeManager<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function sharesAreFreelyTransferable<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function sharesAreFreelyTransferable(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,

@@ -1,13 +1,4 @@
-import {
-  type Address,
-  type Chain,
-  type Hex,
-  PublicClient,
-  type Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-  parseAbi,
-} from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -130,8 +121,8 @@ export function withdrawDecode(encoded: Hex): WithdrawArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getDelegationPool<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getDelegationPool(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
     indexer: Address;
@@ -153,8 +144,8 @@ export async function getDelegationPool<TChain extends Chain | undefined = Chain
   return { cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares };
 }
 
-export function getDelegationTaxPercentage<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getDelegationTaxPercentage(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
   }>,
@@ -166,8 +157,8 @@ export function getDelegationTaxPercentage<TChain extends Chain | undefined = Ch
   });
 }
 
-export function getCurrentEpoch<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getCurrentEpoch(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     epochManager: Address;
   }>,

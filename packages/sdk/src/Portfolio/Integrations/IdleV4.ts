@@ -1,11 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
 import {
   type Address,
-  Chain,
   ContractFunctionExecutionError,
   type Hex,
   type PublicClient,
-  Transport,
   decodeAbiParameters,
   encodeAbiParameters,
   parseAbi,
@@ -130,8 +128,8 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export async function getRate<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getRate(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     priceFeed: Address;
     poolToken: Address;
@@ -173,8 +171,8 @@ export async function getRate<TChain extends Chain | undefined = Chain>(
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getGovTokensAmounts<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getGovTokensAmounts(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
     tokensOwner: Address;
@@ -213,8 +211,8 @@ export async function getGovTokensAmounts<TChain extends Chain | undefined = Cha
   return tokensAmountsMap;
 }
 
-export function getSpeeds<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getSpeeds(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     idleController: Address;
     idlePool: Address;

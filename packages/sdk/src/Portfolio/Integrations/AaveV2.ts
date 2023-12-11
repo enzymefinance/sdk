@@ -1,4 +1,4 @@
-import { type Address, Chain, type Hex, PublicClient, Transport, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -283,8 +283,8 @@ const aaveIncentivesControllerAbi = [
   },
 ] as const;
 
-export async function getRewardsBalance<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getRewardsBalance(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
     assets: Address[];
@@ -299,8 +299,8 @@ export async function getRewardsBalance<TChain extends Chain | undefined = Chain
   });
 }
 
-export async function getUserUnclaimedRewards<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getUserUnclaimedRewards(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
     user: Address;

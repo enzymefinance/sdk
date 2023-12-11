@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Chain, Hex, PublicClient, Transport } from "viem";
+import type { Address, Hex, PublicClient } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -94,8 +94,8 @@ export function executeMigration(args: ExecuteMigrationParams) {
   });
 }
 
-export function hasMigrationRequest<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function hasMigrationRequest(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -109,8 +109,8 @@ export function hasMigrationRequest<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function hasExecutableMigrationRequest<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function hasExecutableMigrationRequest(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -124,8 +124,8 @@ export function hasExecutableMigrationRequest<TChain extends Chain | undefined =
   });
 }
 
-export function getRemainingMigrationRequestTimelock<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getRemainingMigrationRequestTimelock(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -139,8 +139,8 @@ export function getRemainingMigrationRequestTimelock<TChain extends Chain | unde
   });
 }
 
-export async function getMigrationRequestDetails<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getMigrationRequestDetails(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vault: Address;
     dispatcher: Address;
@@ -221,8 +221,8 @@ export function executeReconfiguration(args: ExecuteReconfigurationParams) {
   });
 }
 
-export function hasReconfigurationRequest<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function hasReconfigurationRequest(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;
@@ -236,8 +236,8 @@ export function hasReconfigurationRequest<TChain extends Chain | undefined = Cha
   });
 }
 
-export function getReconfigurationRequestDetails<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getReconfigurationRequestDetails(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;

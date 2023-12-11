@@ -1,7 +1,7 @@
 import { TestActions, TestEnvironment } from "@enzymefinance/sdk/test";
-import { Address, Chain, Hex } from "viem";
+import { Address, Hex } from "viem";
 
-export async function createVaultAndBuyShares<TChain extends Chain | undefined = Chain>({
+export async function createVaultAndBuyShares({
   environment,
   vaultOwner,
   vaultName = "Test Vault",
@@ -13,7 +13,7 @@ export async function createVaultAndBuyShares<TChain extends Chain | undefined =
   sharesBuyer,
   depositAmount,
 }: {
-  environment: TestEnvironment<TChain>;
+  environment: TestEnvironment;
   vaultOwner: Address;
   vaultName?: string;
   vaultSymbol?: string;

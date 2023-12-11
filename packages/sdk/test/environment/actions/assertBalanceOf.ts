@@ -1,16 +1,16 @@
 import { Asset } from "@enzymefinance/sdk";
-import { TestEnvironment } from "@enzymefinance/sdk/test";
-import type { Address, Chain } from "viem";
+import type { TestEnvironment } from "@enzymefinance/sdk/test";
+import type { Address } from "viem";
 import { expect } from "vitest";
 
-export async function assertBalanceOf<TChain extends Chain | undefined = Chain>({
+export async function assertBalanceOf({
   environment,
   asset,
   owner,
   expected,
   fuzziness = 100n,
 }: {
-  environment: TestEnvironment<TChain>;
+  environment: TestEnvironment;
   /**
    * The token to check the balance of.
    */

@@ -1,13 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import {
-  type Address,
-  type Chain,
-  type Hex,
-  type PublicClient,
-  type Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-} from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { multicall } from "viem/contract";
 import { Viem } from "../../Utils.js";
 
@@ -52,8 +44,8 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getInfo<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getInfo(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     cumulativeSlippageTolerancePolicy: Address;
@@ -67,8 +59,8 @@ export function getInfo<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getCurrentCumulativeSlippage<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getCurrentCumulativeSlippage(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
     comptrollerProxy: Address;
@@ -116,8 +108,8 @@ export async function getCurrentCumulativeSlippage<TChain extends Chain | undefi
   };
 }
 
-export function getPricelessAssetBypassTimeLimit<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getPricelessAssetBypassTimeLimit(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
   }>,
@@ -131,8 +123,8 @@ export function getPricelessAssetBypassTimeLimit<TChain extends Chain | undefine
 
 getPricelessAssetBypassTimelock;
 
-export function getPricelessAssetBypassTimelock<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getPricelessAssetBypassTimelock(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
   }>,

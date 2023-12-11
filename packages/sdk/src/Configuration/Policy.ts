@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, Chain, type PublicClient, Transport, isAddressEqual } from "viem";
+import { type Address, type PublicClient, isAddressEqual } from "viem";
 import { getEnabledPolicies } from "../Configuration.js";
 import { Viem } from "../Utils.js";
 
@@ -12,8 +12,8 @@ export {
   type SettingsArgs,
 } from "../_internal/PolicyManager.js";
 
-export async function isEnabled<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function isEnabled(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     policy: Address;
     policyManager: Address;
@@ -24,8 +24,8 @@ export async function isEnabled<TChain extends Chain | undefined = Chain>(
   return enabledPolicies.some((enabledPolicy) => isAddressEqual(enabledPolicy, args.policy));
 }
 
-export function getIdentifier<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getIdentifier(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     policy: Address;
   }>,
@@ -57,8 +57,8 @@ const getListIdsForFundAbi = {
   type: "function",
 } as const;
 
-export function getListIds<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getListIds(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     policyContract: Address;
     comptrollerProxy: Address;
