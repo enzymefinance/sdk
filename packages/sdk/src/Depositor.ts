@@ -153,7 +153,7 @@ export async function getExpectedSharesForNativeTokenDeposit<TChain extends Chai
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<NativeDepositArgs & { depositor: Address }>,
 ) {
-  const { result } = await Viem.simulateContract<TChain>(client, args, {
+  const { result } = await Viem.simulateContract(client, args, {
     abi: Abis.IDepositWrapper,
     address: args.depositWrapper,
     functionName: "exchangeEthAndBuyShares",
@@ -165,7 +165,7 @@ export async function getExpectedSharesForNativeTokenDeposit<TChain extends Chai
       args.exchangeData,
       args.minInvestmentAmount,
     ],
-    value: args.amount,
+    value: args.amount as any,
     account: args.depositor,
   });
 
