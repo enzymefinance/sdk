@@ -176,3 +176,31 @@ export function sharesAreFreelyTransferable<TChain extends Chain | undefined = C
     address: args.vaultProxy,
   });
 }
+
+export function addAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "addAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
+  });
+}
+
+export function removeAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "removeAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
+  });
+}
