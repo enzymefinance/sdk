@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.8
+
+### Patch Changes
+
+- [#329](https://github.com/enzymefinance/sdk/pull/329) [`1825b12`](https://github.com/enzymefinance/sdk/commit/1825b122d473d11b0ac20aaa6daf82eb37e32dda) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add missing redeem functions
+
 ## 0.4.7
 
 ### Patch Changes
