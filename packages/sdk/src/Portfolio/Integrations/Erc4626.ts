@@ -19,36 +19,40 @@ export const lend = IntegrationManager.makeUse(IntegrationManager.Selector.Lend,
 
 const lendEncoding = [
   {
-    name: "tokenAddress",
+    name: "erc4626Vault",
     type: "address",
   },
   {
-    name: "outgoingAssetAmount",
+    name: "underlyingAssetAmount",
     type: "uint256",
   },
   {
-    name: "minIncomingAmount",
+    name: "minIncomingSharesAmount",
     type: "uint256",
   },
 ] as const;
 
 export type LendArgs = {
-  tokenAddress: Address;
-  outgoingAssetAmount: bigint;
-  minIncomingAmount: bigint;
+  erc4626Vault: Address;
+  underlyingAssetAmount: bigint;
+  minIncomingSharesAmount: bigint;
 };
 
 export function lendEncode(args: LendArgs): Hex {
-  return encodeAbiParameters(lendEncoding, [args.tokenAddress, args.outgoingAssetAmount, args.minIncomingAmount]);
+  return encodeAbiParameters(lendEncoding, [
+    args.erc4626Vault,
+    args.underlyingAssetAmount,
+    args.minIncomingSharesAmount,
+  ]);
 }
 
 export function lendDecode(encoded: Hex): LendArgs {
-  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(lendEncoding, encoded);
+  const [erc4626Vault, underlyingAssetAmount, minIncomingSharesAmount] = decodeAbiParameters(lendEncoding, encoded);
 
   return {
-    tokenAddress,
-    outgoingAssetAmount,
-    minIncomingAmount,
+    erc4626Vault,
+    underlyingAssetAmount,
+    minIncomingSharesAmount,
   };
 }
 
@@ -60,33 +64,37 @@ export const redeem = IntegrationManager.makeUse(IntegrationManager.Selector.Red
 
 const redeemEncoding = [
   {
-    name: "tokenAddress",
+    name: "erc4626Vault",
     type: "address",
   },
   {
-    name: "outgoingAssetAmount",
+    name: "sharesAmount",
     type: "uint256",
   },
   {
-    name: "minIncomingAmount",
+    name: "minIncomingUnderlyingAssetAmount",
     type: "uint256",
   },
 ] as const;
 
 export type RedeemArgs = {
-  tokenAddress: Address;
-  outgoingAssetAmount: bigint;
-  minIncomingAmount: bigint;
+  erc4626Vault: Address;
+  sharesAmount: bigint;
+  minIncomingUnderlyingAssetAmount: bigint;
 };
 
 export function redeemEncode(args: RedeemArgs): Hex {
-  return encodeAbiParameters(redeemEncoding, [args.tokenAddress, args.outgoingAssetAmount, args.minIncomingAmount]);
+  return encodeAbiParameters(redeemEncoding, [
+    args.erc4626Vault,
+    args.sharesAmount,
+    args.minIncomingUnderlyingAssetAmount,
+  ]);
 }
 
 export function redeemDecode(encoded: Hex): RedeemArgs {
-  const [tokenAddress, outgoingAssetAmount, minIncomingAmount] = decodeAbiParameters(redeemEncoding, encoded);
+  const [erc4626Vault, sharesAmount, minIncomingUnderlyingAssetAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
-  return { tokenAddress, outgoingAssetAmount, minIncomingAmount };
+  return { erc4626Vault, sharesAmount, minIncomingUnderlyingAssetAmount };
 }
 
 //--------------------------------------------------------------------------------------------
@@ -96,14 +104,14 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 export async function convertToAssets<TChain extends Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
-    asset: Address;
+    erc4626Vault: Address;
     sharesAmount: bigint;
   }>,
 ) {
   return Viem.readContract(client, args, {
     abi: parseAbi(["function convertToAssets(uint256 sharesAmount) view returns (uint256 assetAmount)"]),
     functionName: "convertToAssets",
-    address: args.asset,
+    address: args.erc4626Vault,
     args: [args.sharesAmount],
   });
 }
@@ -111,14 +119,14 @@ export async function convertToAssets<TChain extends Chain>(
 export async function convertToShares<TChain extends Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
-    asset: Address;
+    erc4626Vault: Address;
     assetAmount: bigint;
   }>,
 ) {
   return Viem.readContract(client, args, {
     abi: parseAbi(["function convertToShares(uint256 assetAmount) view returns (uint256 sharesAmount)"]),
     functionName: "convertToShares",
-    address: args.asset,
+    address: args.erc4626Vault,
     args: [args.assetAmount],
   });
 }
