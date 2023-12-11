@@ -283,7 +283,7 @@ const cvxMiningAbi = {
   type: "function",
 } as const;
 
-export async function convertCrvToCvx<TChain extends Chain>(
+export async function convertCrvToCvx<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxMining: Address;
@@ -358,7 +358,7 @@ const cvxLockerV2Abi = [
   },
 ] as const;
 
-export async function getVoteLockedBalances<TChain extends Chain>(
+export async function getVoteLockedBalances<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
@@ -386,7 +386,7 @@ export async function getVoteLockedBalances<TChain extends Chain>(
   };
 }
 
-export async function getClaimableRewards<TChain extends Chain>(
+export async function getClaimableRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
@@ -401,7 +401,7 @@ export async function getClaimableRewards<TChain extends Chain>(
   });
 }
 
-export async function getUserLocks<TChain extends Chain>(
+export async function getUserLocks<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
@@ -478,7 +478,7 @@ export interface PoolInfo {
   shutdown: boolean;
 }
 
-export async function getPoolInfo<TChain extends Chain>(
+export async function getPoolInfo<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     booster: Address;
@@ -495,7 +495,7 @@ export async function getPoolInfo<TChain extends Chain>(
   return { lptoken, token, gauge, crvRewards, stash, shutdown };
 }
 
-export async function getLockIncentive<TChain extends Chain>(
+export async function getLockIncentive<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     booster: Address;
@@ -508,7 +508,7 @@ export async function getLockIncentive<TChain extends Chain>(
   });
 }
 
-export async function getStakerIncentive<TChain extends Chain>(
+export async function getStakerIncentive<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     booster: Address;
@@ -521,7 +521,7 @@ export async function getStakerIncentive<TChain extends Chain>(
   });
 }
 
-export async function getEarmarkIncentive<TChain extends Chain>(
+export async function getEarmarkIncentive<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     booster: Address;
@@ -534,7 +534,7 @@ export async function getEarmarkIncentive<TChain extends Chain>(
   });
 }
 
-export async function getPlatformFee<TChain extends Chain>(
+export async function getPlatformFee<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     booster: Address;
@@ -576,7 +576,7 @@ const cvxCrvRewards = [
   },
 ] as const;
 
-export async function getRewards<TChain extends Chain>(
+export async function getRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
@@ -591,7 +591,7 @@ export async function getRewards<TChain extends Chain>(
   });
 }
 
-export async function getExtraRewardsLength<TChain extends Chain>(
+export async function getExtraRewardsLength<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
@@ -605,7 +605,7 @@ export async function getExtraRewardsLength<TChain extends Chain>(
   });
 }
 
-export async function getExtraRewards<TChain extends Chain>(
+export async function getExtraRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
@@ -624,7 +624,7 @@ export async function getExtraRewards<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - CVX CRV EXTRA REWARDS
 //--------------------------------------------------------------------------------------------
 
-export async function getExtraRewardsRewards<TChain extends Chain>(
+export async function getExtraRewardsRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxCrvExtraRewards: Address;
@@ -639,7 +639,7 @@ export async function getExtraRewardsRewards<TChain extends Chain>(
   });
 }
 
-export async function getExtraRewardsRewardToken<TChain extends Chain>(
+export async function getExtraRewardsRewardToken<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cvxCrvExtraRewards: Address;
@@ -656,7 +656,7 @@ export async function getExtraRewardsRewardToken<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - STAKING WRAPPER
 //--------------------------------------------------------------------------------------------
 
-export async function getEstimateRewards<TChain extends Chain>(
+export async function getEstimateRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     stakingWrapper: Address;
@@ -685,7 +685,7 @@ export async function getEstimateRewards<TChain extends Chain>(
   return tokenRewards;
 }
 
-export async function getAllEstimateRewards<TChain extends Chain>(
+export async function getAllEstimateRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     stakingWrappers: Address[];

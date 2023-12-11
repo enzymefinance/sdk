@@ -108,7 +108,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function pricePerShare<TChain extends Chain>(
+export async function pricePerShare<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     yearnVault: Address;

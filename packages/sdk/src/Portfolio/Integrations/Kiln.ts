@@ -170,7 +170,7 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getCLFeeRecipient<TChain extends Chain>(
+export async function getCLFeeRecipient<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -185,7 +185,7 @@ export async function getCLFeeRecipient<TChain extends Chain>(
   });
 }
 
-export async function getELFeeRecipient<TChain extends Chain>(
+export async function getELFeeRecipient<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -200,7 +200,7 @@ export async function getELFeeRecipient<TChain extends Chain>(
   });
 }
 
-export async function getGlobalFee<TChain extends Chain>(
+export async function getGlobalFee<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;

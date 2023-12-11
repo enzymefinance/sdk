@@ -601,7 +601,7 @@ const erc20Abi = {
 
 const swapId = 2n; // id won't change, for swaps it will be always the same id in the registry
 
-export async function getBestPrice<TChain extends Chain>(
+export async function getBestPrice<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     incoming: Address;
@@ -665,7 +665,7 @@ const calcWithdrawOneCoinAbi = {
   stateMutability: "view",
 } as const;
 
-export async function isSingleAssetRedemptionAllowed<TChain extends Chain>(
+export async function isSingleAssetRedemptionAllowed<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -691,7 +691,7 @@ export async function isSingleAssetRedemptionAllowed<TChain extends Chain>(
   }
 }
 
-export async function getExpectedGaugeTokens<TChain extends Chain>(
+export async function getExpectedGaugeTokens<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
@@ -744,7 +744,7 @@ const lpTokenAbi = [
 
 const balancesUint256Signature = "function balances(uint256 i) view returns(uint256)" as const;
 
-export async function getExpectedWithdrawalTokens<TChain extends Chain>(
+export async function getExpectedWithdrawalTokens<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
@@ -855,7 +855,7 @@ export async function getExpectedWithdrawalTokens<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - GAUGE
 //--------------------------------------------------------------------------------------------
 
-export async function getClaimableTokens<TChain extends Chain>(
+export async function getClaimableTokens<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     curveGauge: Address;
@@ -876,7 +876,7 @@ export async function getClaimableTokens<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - MINTER
 //--------------------------------------------------------------------------------------------
 
-export async function isAllowedToMintFor<TChain extends Chain>(
+export async function isAllowedToMintFor<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     curveMinter: Address;

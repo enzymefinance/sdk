@@ -120,7 +120,7 @@ const lidoWithdrawalsQueueAbi = [
   },
 ] as const;
 
-export function getLastCheckpointIndex<TChain extends Chain>(
+export function getLastCheckpointIndex<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
@@ -133,7 +133,7 @@ export function getLastCheckpointIndex<TChain extends Chain>(
   });
 }
 
-export function findCheckpointHints<TChain extends Chain>(
+export function findCheckpointHints<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
@@ -150,7 +150,7 @@ export function findCheckpointHints<TChain extends Chain>(
   });
 }
 
-export async function getWithdrawalStatus<TChain extends Chain>(
+export async function getWithdrawalStatus<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;

@@ -330,7 +330,7 @@ const troveManagerAbi = [
   },
 ] as const;
 
-export async function getTrove<TChain extends Chain>(
+export async function getTrove<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
@@ -353,7 +353,7 @@ export async function getTrove<TChain extends Chain>(
   };
 }
 
-export async function getLusdGasCompensation<TChain extends Chain>(
+export async function getLusdGasCompensation<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
@@ -366,7 +366,7 @@ export async function getLusdGasCompensation<TChain extends Chain>(
   });
 }
 
-export async function getBorrowingFeeWithDecay<TChain extends Chain>(
+export async function getBorrowingFeeWithDecay<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
@@ -435,7 +435,7 @@ const sortedTrovesAbi = [
   },
 ] as const;
 
-export function getSortedTrovesSize<TChain extends Chain>(
+export function getSortedTrovesSize<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
@@ -448,7 +448,7 @@ export function getSortedTrovesSize<TChain extends Chain>(
   });
 }
 
-export async function findInsertPosition<TChain extends Chain>(
+export async function findInsertPosition<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
@@ -513,7 +513,7 @@ const hintHelpersAbi = [
   },
 ] as const;
 
-export async function getApproxHint<TChain extends Chain>(
+export async function getApproxHint<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     hintHelpers: Address;

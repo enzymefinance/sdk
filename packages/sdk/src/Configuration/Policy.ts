@@ -12,7 +12,7 @@ export {
   type SettingsArgs,
 } from "../_internal/PolicyManager.js";
 
-export async function isEnabled<TChain extends Chain>(
+export async function isEnabled<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     policy: Address;
@@ -24,7 +24,7 @@ export async function isEnabled<TChain extends Chain>(
   return enabledPolicies.some((enabledPolicy) => isAddressEqual(enabledPolicy, args.policy));
 }
 
-export function getIdentifier<TChain extends Chain>(
+export function getIdentifier<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     policy: Address;
@@ -57,7 +57,7 @@ const getListIdsForFundAbi = {
   type: "function",
 } as const;
 
-export function getListIds<TChain extends Chain>(
+export function getListIds<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     policyContract: Address;

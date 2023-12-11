@@ -2,7 +2,7 @@ import { LifeCycle } from "@enzymefinance/sdk";
 import { TestEnvironment } from "@enzymefinance/sdk/test";
 import { Address, Chain, Hex } from "viem";
 
-export async function createVault<TChain extends Chain>({
+export async function createVault<TChain extends Chain | undefined = Chain>({
   environment,
   vaultOwner,
   vaultName = "Test Vault",

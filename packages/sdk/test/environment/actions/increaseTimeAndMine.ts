@@ -1,7 +1,7 @@
 import { TestEnvironment } from "@enzymefinance/sdk/test";
 import { Chain } from "viem";
 
-export async function increaseTimeAndMine<TChain extends Chain>({
+export async function increaseTimeAndMine<TChain extends Chain | undefined = Chain>({
   environment,
   seconds,
   blocks = 1,

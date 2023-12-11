@@ -52,7 +52,7 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getInfo<TChain extends Chain>(
+export function getInfo<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -67,7 +67,7 @@ export function getInfo<TChain extends Chain>(
   });
 }
 
-export async function getCurrentCumulativeSlippage<TChain extends Chain>(
+export async function getCurrentCumulativeSlippage<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
@@ -116,7 +116,7 @@ export async function getCurrentCumulativeSlippage<TChain extends Chain>(
   };
 }
 
-export function getPricelessAssetBypassTimeLimit<TChain extends Chain>(
+export function getPricelessAssetBypassTimeLimit<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
@@ -131,7 +131,7 @@ export function getPricelessAssetBypassTimeLimit<TChain extends Chain>(
 
 getPricelessAssetBypassTimelock;
 
-export function getPricelessAssetBypassTimelock<TChain extends Chain>(
+export function getPricelessAssetBypassTimelock<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;

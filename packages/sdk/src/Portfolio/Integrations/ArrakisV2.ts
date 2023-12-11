@@ -106,7 +106,7 @@ const resolverAbi = [
   },
 ] as const;
 
-export async function getMintAmounts<TChain extends Chain>(
+export async function getMintAmounts<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     resolver: Address;
@@ -142,7 +142,7 @@ const helperAbi = [
   },
 ] as const;
 
-export async function totalUnderlying<TChain extends Chain>(
+export async function totalUnderlying<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     helper: Address;
@@ -210,7 +210,7 @@ const vaultAbi = [
   },
 ] as const;
 
-export async function burn<TChain extends Chain>(
+export async function burn<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
@@ -235,7 +235,7 @@ export async function burn<TChain extends Chain>(
   };
 }
 
-export async function inits<TChain extends Chain>(
+export async function inits<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
@@ -260,7 +260,7 @@ export async function inits<TChain extends Chain>(
   };
 }
 
-export async function numberOfRanges<TChain extends Chain>(
+export async function numberOfRanges<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;

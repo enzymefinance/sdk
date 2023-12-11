@@ -283,7 +283,7 @@ const aaveIncentivesControllerAbi = [
   },
 ] as const;
 
-export async function getRewardsBalance<TChain extends Chain>(
+export async function getRewardsBalance<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
@@ -299,7 +299,7 @@ export async function getRewardsBalance<TChain extends Chain>(
   });
 }
 
-export async function getUserUnclaimedRewards<TChain extends Chain>(
+export async function getUserUnclaimedRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;

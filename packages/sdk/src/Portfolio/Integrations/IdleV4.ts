@@ -130,7 +130,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export async function getRate<TChain extends Chain>(
+export async function getRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     priceFeed: Address;
@@ -173,7 +173,7 @@ export async function getRate<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getGovTokensAmounts<TChain extends Chain>(
+export async function getGovTokensAmounts<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -213,7 +213,7 @@ export async function getGovTokensAmounts<TChain extends Chain>(
   return tokensAmountsMap;
 }
 
-export function getSpeeds<TChain extends Chain>(
+export function getSpeeds<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     idleController: Address;

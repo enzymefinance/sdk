@@ -3,7 +3,7 @@ import { TestEnvironment } from "@enzymefinance/sdk/test";
 import type { Address, Chain } from "viem";
 import { expect } from "vitest";
 
-export async function assertBalanceOf<TChain extends Chain>({
+export async function assertBalanceOf<TChain extends Chain | undefined = Chain>({
   environment,
   asset,
   owner,

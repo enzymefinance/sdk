@@ -33,7 +33,7 @@ export function approve(args: ApproveParams) {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getInfo<TChain extends Chain>(
+export async function getInfo<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -48,7 +48,7 @@ export async function getInfo<TChain extends Chain>(
   return { name, symbol, decimals };
 }
 
-export async function getName<TChain extends Chain>(
+export async function getName<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -78,7 +78,7 @@ export async function getName<TChain extends Chain>(
   }
 }
 
-export async function getSymbol<TChain extends Chain>(
+export async function getSymbol<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -108,7 +108,7 @@ export async function getSymbol<TChain extends Chain>(
   }
 }
 
-export function getBalanceOf<TChain extends Chain>(
+export function getBalanceOf<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     owner: Address;
@@ -123,7 +123,7 @@ export function getBalanceOf<TChain extends Chain>(
   });
 }
 
-export async function getBalancesOf<TChain extends Chain>(
+export async function getBalancesOf<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     owner: Address;
@@ -142,7 +142,7 @@ export async function getBalancesOf<TChain extends Chain>(
   );
 }
 
-export function getAllowance<TChain extends Chain>(
+export function getAllowance<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -158,7 +158,7 @@ export function getAllowance<TChain extends Chain>(
   });
 }
 
-export function getDecimals<TChain extends Chain>(
+export function getDecimals<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -171,7 +171,7 @@ export function getDecimals<TChain extends Chain>(
   });
 }
 
-export function getTotalSupply<TChain extends Chain>(
+export function getTotalSupply<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -184,7 +184,7 @@ export function getTotalSupply<TChain extends Chain>(
   });
 }
 
-export async function getCanonicalValue<TChain extends Chain>(
+export async function getCanonicalValue<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;

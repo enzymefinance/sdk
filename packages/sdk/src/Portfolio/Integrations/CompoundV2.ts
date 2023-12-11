@@ -226,7 +226,7 @@ export const claimComp = ExternalPositionManager.makeUse(Action.ClaimComp);
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getCTokenFromBorrowedAsset<TChain extends Chain>(
+export function getCTokenFromBorrowedAsset<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPositionProxy: Address;
@@ -339,7 +339,7 @@ export interface Market {
   isComped: boolean;
 }
 
-export function getBorrowRatePerBlock<TChain extends Chain>(
+export function getBorrowRatePerBlock<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -352,7 +352,7 @@ export function getBorrowRatePerBlock<TChain extends Chain>(
   });
 }
 
-export function getSupplyRatePerBlock<TChain extends Chain>(
+export function getSupplyRatePerBlock<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -365,7 +365,7 @@ export function getSupplyRatePerBlock<TChain extends Chain>(
   });
 }
 
-export function getTotalSupply<TChain extends Chain>(
+export function getTotalSupply<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -378,7 +378,7 @@ export function getTotalSupply<TChain extends Chain>(
   });
 }
 
-export function getTotalBorrows<TChain extends Chain>(
+export function getTotalBorrows<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -391,7 +391,7 @@ export function getTotalBorrows<TChain extends Chain>(
   });
 }
 
-export function getExchangeRateStored<TChain extends Chain>(
+export function getExchangeRateStored<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -404,7 +404,7 @@ export function getExchangeRateStored<TChain extends Chain>(
   });
 }
 
-export function getBalanceOf<TChain extends Chain>(
+export function getBalanceOf<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cToken: Address;
@@ -419,7 +419,7 @@ export function getBalanceOf<TChain extends Chain>(
   });
 }
 
-export function getCompSupplySpeeds<TChain extends Chain>(
+export function getCompSupplySpeeds<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
@@ -434,7 +434,7 @@ export function getCompSupplySpeeds<TChain extends Chain>(
   });
 }
 
-export function getCompBorrowSpeeds<TChain extends Chain>(
+export function getCompBorrowSpeeds<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
@@ -449,7 +449,7 @@ export function getCompBorrowSpeeds<TChain extends Chain>(
   });
 }
 
-export async function getMarkets<TChain extends Chain>(
+export async function getMarkets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
@@ -466,7 +466,7 @@ export async function getMarkets<TChain extends Chain>(
   return { isListed, collateralFactorMantissa, isComped };
 }
 
-export function getMintGuardianPaused<TChain extends Chain>(
+export function getMintGuardianPaused<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;

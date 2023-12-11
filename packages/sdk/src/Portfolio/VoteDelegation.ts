@@ -52,7 +52,7 @@ const tokenDaoDelegateeByTypeAbi = {
   stateMutability: "view",
 } as const;
 
-export async function getDelegatees<TChain extends Chain>(
+export async function getDelegatees<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;

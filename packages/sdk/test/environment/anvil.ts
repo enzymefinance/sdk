@@ -31,7 +31,7 @@ export type TestEnvironment<TChain extends Chain = Chain> = {
   constants: Constants;
 };
 
-export type TestSend<TChain extends Chain> = <TFunctionName extends string, TAbi extends Abi>(
+export type TestSend<TChain extends Chain | undefined = Chain> = <TFunctionName extends string, TAbi extends Abi>(
   params: TestSendParams<TFunctionName, TAbi, TChain>,
 ) => Promise<TestSendReturnType<TFunctionName, TAbi, TChain>>;
 
@@ -52,7 +52,7 @@ export type TestSendReturnType<
   receipt: ExtractChainFormatterReturnType<TChain, "transactionReceipt", TransactionReceipt>;
 };
 
-export function createSetup<TChain extends Chain>({
+export function createSetup<TChain extends Chain | undefined = Chain>({
   chain,
   constants,
   proxyFamily,

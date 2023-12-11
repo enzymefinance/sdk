@@ -405,7 +405,7 @@ const v3PoolAbi = [
   },
 ] as const;
 
-export async function getSlot0<TChain extends Chain>(
+export async function getSlot0<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -436,7 +436,7 @@ export async function getSlot0<TChain extends Chain>(
   };
 }
 
-export function getLiquidity<TChain extends Chain>(
+export function getLiquidity<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -509,7 +509,7 @@ export interface CollectParams {
   amount1Max: bigint;
 }
 
-export async function getPendingFees<TChain extends Chain>(
+export async function getPendingFees<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     nonFungiblePositionManager: Address;

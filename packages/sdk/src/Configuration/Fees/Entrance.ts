@@ -91,7 +91,7 @@ export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
 // READ - BOTH TYPES
 //--------------------------------------------------------------------------------------------
 
-export async function getRate<TChain extends Chain>(
+export async function getRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     entranceRateFee: Address;

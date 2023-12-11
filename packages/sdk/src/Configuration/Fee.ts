@@ -13,7 +13,7 @@ export {
   type SettleContinuousFeesParams,
 } from "../_internal/FeeManager.js";
 
-export function getRecipient<TChain extends Chain>(
+export function getRecipient<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -28,7 +28,7 @@ export function getRecipient<TChain extends Chain>(
   });
 }
 
-export function getProtocolFeeRate<TChain extends Chain>(
+export function getProtocolFeeRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -43,7 +43,7 @@ export function getProtocolFeeRate<TChain extends Chain>(
   });
 }
 
-export async function getAccruedProtocolFee<TChain extends Chain>(
+export async function getAccruedProtocolFee<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -60,7 +60,7 @@ export async function getAccruedProtocolFee<TChain extends Chain>(
   return result;
 }
 
-export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain>(
+export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -73,7 +73,7 @@ export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain>(
   });
 }
 
-export async function getMlnValueAndBurnAmountForSharesBuyback<TChain extends Chain>(
+export async function getMlnValueAndBurnAmountForSharesBuyback<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     denominationAsset: Address;

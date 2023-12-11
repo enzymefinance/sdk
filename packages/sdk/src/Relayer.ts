@@ -2,7 +2,7 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, Chain, type PublicClient, Transport, isAddressEqual, zeroAddress } from "viem";
 import { Viem } from "./Utils.js";
 
-export async function isRelayerEnabled<TChain extends Chain>(
+export async function isRelayerEnabled<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -17,7 +17,7 @@ export async function isRelayerEnabled<TChain extends Chain>(
   return !isAddressEqual(address, zeroAddress);
 }
 
-export async function getGasRelayPaymaster<TChain extends Chain>(
+export async function getGasRelayPaymaster<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
@@ -30,7 +30,7 @@ export async function getGasRelayPaymaster<TChain extends Chain>(
   });
 }
 
-export function getRelayerBalance<TChain extends Chain>(
+export function getRelayerBalance<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     gasRelayPaymaster: Address;

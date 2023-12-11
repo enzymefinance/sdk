@@ -2,7 +2,7 @@ import { Depositor, Utils, Vault } from "@enzymefinance/sdk";
 import { TestActions, TestEnvironment } from "@enzymefinance/sdk/test";
 import { Address, Chain, isAddressEqual } from "viem";
 
-export async function buyShares<TChain extends Chain>({
+export async function buyShares<TChain extends Chain | undefined = Chain>({
   minSharesQuantity = 1n, // NOTE: You should never use `1n` in production. This is only for testing.
   skipSharesActionTimelock = false,
   comptrollerProxy,

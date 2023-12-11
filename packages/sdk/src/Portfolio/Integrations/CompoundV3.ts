@@ -156,7 +156,7 @@ const cometRewardsAbi = [
   },
 ] as const;
 
-export async function getUtilization<TChain extends Chain>(
+export async function getUtilization<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -169,7 +169,7 @@ export async function getUtilization<TChain extends Chain>(
   });
 }
 
-export async function getSupplyRate<TChain extends Chain>(
+export async function getSupplyRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -184,7 +184,7 @@ export async function getSupplyRate<TChain extends Chain>(
   });
 }
 
-export async function getTotalSupply<TChain extends Chain>(
+export async function getTotalSupply<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -197,7 +197,7 @@ export async function getTotalSupply<TChain extends Chain>(
   });
 }
 
-export async function getBaseTrackingSupplySpeed<TChain extends Chain>(
+export async function getBaseTrackingSupplySpeed<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -210,7 +210,7 @@ export async function getBaseTrackingSupplySpeed<TChain extends Chain>(
   });
 }
 
-export async function getRewardOwed<TChain extends Chain>(
+export async function getRewardOwed<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     cometRewards: Address;

@@ -58,7 +58,7 @@ export function vaultCallOnContract(args: VaultCallOnContractParams) {
   });
 }
 
-export async function getPortfolio<TChain extends Chain>(
+export async function getPortfolio<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -98,7 +98,7 @@ export async function getPortfolio<TChain extends Chain>(
   return { externalPositions, trackedAssets };
 }
 
-export function getTrackedAssets<TChain extends Chain>(
+export function getTrackedAssets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -115,7 +115,7 @@ export function getTrackedAssets<TChain extends Chain>(
 // EXTERNAL POSITIONS
 //--------------------------------------------------------------------------------------------
 
-export function isActiveExternalPosition<TChain extends Chain>(
+export function isActiveExternalPosition<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -130,7 +130,7 @@ export function isActiveExternalPosition<TChain extends Chain>(
   });
 }
 
-export async function getTotalValueForAllExternalPositions<TChain extends Chain>(
+export async function getTotalValueForAllExternalPositions<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -158,7 +158,7 @@ export async function getTotalValueForAllExternalPositions<TChain extends Chain>
   return values.reduce((total, value) => total + value, 0n);
 }
 
-export function getActiveExternalPositions<TChain extends Chain>(
+export function getActiveExternalPositions<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -171,7 +171,7 @@ export function getActiveExternalPositions<TChain extends Chain>(
   });
 }
 
-export async function getExternalPositionManagedAssets<TChain extends Chain>(
+export async function getExternalPositionManagedAssets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -196,7 +196,7 @@ export async function getExternalPositionManagedAssets<TChain extends Chain>(
   });
 }
 
-export async function getExternalPositionDebtAssets<TChain extends Chain>(
+export async function getExternalPositionDebtAssets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -221,7 +221,7 @@ export async function getExternalPositionDebtAssets<TChain extends Chain>(
   });
 }
 
-export async function getExternalPositionAssets<TChain extends Chain>(
+export async function getExternalPositionAssets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -238,7 +238,7 @@ export async function getExternalPositionAssets<TChain extends Chain>(
   };
 }
 
-export function getExternalPositionType<TChain extends Chain>(
+export function getExternalPositionType<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
@@ -251,7 +251,7 @@ export function getExternalPositionType<TChain extends Chain>(
   });
 }
 
-export function getTypeLabel<TChain extends Chain>(
+export function getTypeLabel<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;

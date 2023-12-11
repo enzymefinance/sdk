@@ -324,7 +324,7 @@ const poolAddressProviderAbi = [
   },
 ] as const;
 
-export async function getPool<TChain extends Chain>(
+export async function getPool<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     poolAddressProvider: Address;
@@ -360,7 +360,7 @@ const poolAbi = [
   },
 ] as const;
 
-export async function getEModeCategoryData<TChain extends Chain>(
+export async function getEModeCategoryData<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     pool: Address;

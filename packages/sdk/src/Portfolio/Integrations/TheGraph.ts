@@ -130,7 +130,7 @@ export function withdrawDecode(encoded: Hex): WithdrawArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getDelegationPool<TChain extends Chain>(
+export async function getDelegationPool<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
@@ -153,7 +153,7 @@ export async function getDelegationPool<TChain extends Chain>(
   return { cooldownBlocks, indexingRewardCut, queryFeeCut, updatedAtBlock, tokens, shares };
 }
 
-export function getDelegationTaxPercentage<TChain extends Chain>(
+export function getDelegationTaxPercentage<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
@@ -166,7 +166,7 @@ export function getDelegationTaxPercentage<TChain extends Chain>(
   });
 }
 
-export function getCurrentEpoch<TChain extends Chain>(
+export function getCurrentEpoch<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     epochManager: Address;

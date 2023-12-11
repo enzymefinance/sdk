@@ -2,7 +2,7 @@ import { Utils } from "@enzymefinance/sdk";
 import { type TestEnvironment } from "@enzymefinance/sdk/test";
 import { type Address, Chain, parseAbi } from "viem";
 
-export async function approveSpend<TChain extends Chain>({
+export async function approveSpend<TChain extends Chain | undefined = Chain>({
   token,
   account,
   spender,

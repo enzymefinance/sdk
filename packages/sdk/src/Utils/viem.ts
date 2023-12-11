@@ -93,7 +93,7 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain = Chain>(
+export function readContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
   params: ReadContractParameters<TAbi, TFunctionName>,
@@ -107,16 +107,20 @@ export function readContract<TAbi extends Abi, TFunctionName extends string, TCh
   );
 }
 
-export function simulateContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain = Chain>(
+export function simulateContract<
+  TAbi extends Abi,
+  TFunctionName extends string,
+  TChain extends Chain | undefined = Chain,
+>(
   client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
-  params: SimulateContractParameters<TAbi, TFunctionName>,
-): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
+  params: SimulateContractParameters<TAbi, TFunctionName, TChain>,
+): Promise<SimulateContractReturnType<TAbi, TFunctionName, TChain>> {
   return viemSimulateContract(
     client,
     Object.assign({}, params, {
       ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
       ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
-    }) as SimulateContractParameters<TAbi, TFunctionName>,
+    }) as SimulateContractParameters<TAbi, TFunctionName, TChain>,
   );
 }

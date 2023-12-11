@@ -101,7 +101,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function convertToAssets<TChain extends Chain>(
+export async function convertToAssets<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     erc4626Vault: Address;
@@ -116,7 +116,7 @@ export async function convertToAssets<TChain extends Chain>(
   });
 }
 
-export async function convertToShares<TChain extends Chain>(
+export async function convertToShares<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     erc4626Vault: Address;
@@ -135,7 +135,7 @@ export async function convertToShares<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - MAKER
 //--------------------------------------------------------------------------------------------
 
-export async function getMakerDsr<TChain extends Chain>(
+export async function getMakerDsr<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -152,7 +152,7 @@ export async function getMakerDsr<TChain extends Chain>(
 // EXTERNAL READ FUNCTIONS - MORPHO
 //--------------------------------------------------------------------------------------------
 
-export async function getMorphoPoolToken<TChain extends Chain>(
+export async function getMorphoPoolToken<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;

@@ -94,7 +94,7 @@ export function executeMigration(args: ExecuteMigrationParams) {
   });
 }
 
-export function hasMigrationRequest<TChain extends Chain>(
+export function hasMigrationRequest<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -109,7 +109,7 @@ export function hasMigrationRequest<TChain extends Chain>(
   });
 }
 
-export function hasExecutableMigrationRequest<TChain extends Chain>(
+export function hasExecutableMigrationRequest<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -124,7 +124,7 @@ export function hasExecutableMigrationRequest<TChain extends Chain>(
   });
 }
 
-export function getRemainingMigrationRequestTimelock<TChain extends Chain>(
+export function getRemainingMigrationRequestTimelock<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -139,7 +139,7 @@ export function getRemainingMigrationRequestTimelock<TChain extends Chain>(
   });
 }
 
-export async function getMigrationRequestDetails<TChain extends Chain>(
+export async function getMigrationRequestDetails<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vault: Address;
@@ -221,7 +221,7 @@ export function executeReconfiguration(args: ExecuteReconfigurationParams) {
   });
 }
 
-export function hasReconfigurationRequest<TChain extends Chain>(
+export function hasReconfigurationRequest<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -236,7 +236,7 @@ export function hasReconfigurationRequest<TChain extends Chain>(
   });
 }
 
-export function getReconfigurationRequestDetails<TChain extends Chain>(
+export function getReconfigurationRequestDetails<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;

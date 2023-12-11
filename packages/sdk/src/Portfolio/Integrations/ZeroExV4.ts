@@ -369,7 +369,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-export async function isAllowedMaker<TChain extends Chain>(
+export async function isAllowedMaker<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     zeroExV4Adapter: Address;

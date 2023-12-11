@@ -223,7 +223,7 @@ const uniswapV2FactoryAbi = [
   },
 ] as const;
 
-export async function getLendRate<TChain extends Chain>(
+export async function getLendRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -268,7 +268,7 @@ export async function getLendRate<TChain extends Chain>(
   return { amountBDesired, expectedPoolTokens };
 }
 
-export async function getPairData<TChain extends Chain>(
+export async function getPairData<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     token0: Address;
@@ -301,7 +301,7 @@ export async function getPairData<TChain extends Chain>(
   };
 }
 
-export async function getSwapRedeemRate<TChain extends Chain>(
+export async function getSwapRedeemRate<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     poolValue: {

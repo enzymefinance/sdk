@@ -332,7 +332,7 @@ const minterAbi = [
   },
 ] as const;
 
-export async function getMinterRewards<TChain extends Chain>(
+export async function getMinterRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     minter: Address;
@@ -368,7 +368,7 @@ const gaugeAbi = [
   },
 ] as const;
 
-export async function getClaimableRewards<TChain extends Chain>(
+export async function getClaimableRewards<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     gauge: Address;
@@ -403,7 +403,7 @@ export interface BatchSwapFunds {
   toInternalBalance: boolean;
 }
 
-export async function queryBatchSwap<TChain extends Chain>(
+export async function queryBatchSwap<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     balancerVault: Address;

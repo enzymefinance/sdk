@@ -2,7 +2,7 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, Chain, ContractFunctionExecutionError, type PublicClient, Transport } from "viem";
 import { Viem } from "./Utils.js";
 
-export async function getNav<TChain extends Chain>(
+export async function getNav<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -21,7 +21,7 @@ export async function getNav<TChain extends Chain>(
   return { asset, value };
 }
 
-export async function getNavInAsset<TChain extends Chain>(
+export async function getNavInAsset<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -39,7 +39,7 @@ export async function getNavInAsset<TChain extends Chain>(
   return result;
 }
 
-export async function getGav<TChain extends Chain>(
+export async function getGav<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -58,7 +58,7 @@ export async function getGav<TChain extends Chain>(
   return { asset, value };
 }
 
-export async function getGavInAsset<TChain extends Chain>(
+export async function getGavInAsset<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -76,7 +76,7 @@ export async function getGavInAsset<TChain extends Chain>(
   return result;
 }
 
-export async function getSharePrice<TChain extends Chain>(
+export async function getSharePrice<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
@@ -95,7 +95,7 @@ export async function getSharePrice<TChain extends Chain>(
   return { asset, value };
 }
 
-export async function getSharePriceInAsset<TChain extends Chain>(
+export async function getSharePriceInAsset<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -113,7 +113,7 @@ export async function getSharePriceInAsset<TChain extends Chain>(
   return result;
 }
 
-export async function getCanonicalAssetValue<TChain extends Chain>(
+export async function getCanonicalAssetValue<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
@@ -141,7 +141,7 @@ export async function getCanonicalAssetValue<TChain extends Chain>(
   }
 }
 
-export async function calcCanonicalAssetsTotalValue<TChain extends Chain>(
+export async function calcCanonicalAssetsTotalValue<TChain extends Chain | undefined = Chain>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
