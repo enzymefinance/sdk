@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.5.0
+
+### Minor Changes
+
+- [`deec41b`](https://github.com/enzymefinance/sdk/commit/deec41bb5c389fc476692f83cb9340c6ceb29672) Thanks [@fubhy](https://github.com/fubhy)! - Fixed `getExpectedSharesForNativeTokenDeposit` return type
+
 ## 0.4.8
 
 ### Patch Changes
