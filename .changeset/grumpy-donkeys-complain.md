@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-Request redeem shares wrapper
+Add missing redeem functions

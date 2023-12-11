@@ -118,6 +118,23 @@ export function redeemSharesForSpecificAssets(args: RedeemSharesForSpecificAsset
   });
 }
 
+export function redeemSharesInKind(
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    recipient: Address;
+    sharesQuantity: bigint;
+    additionalAssets: Address[];
+    assetsToSkip: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "redeemSharesInKind",
+    address: args.comptrollerProxy,
+    args: [args.recipient, args.sharesQuantity, args.additionalAssets, args.assetsToSkip],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // DEPOSIT WRAPPER
 //--------------------------------------------------------------------------------------------
@@ -247,6 +264,18 @@ export function sharesWrapperRequestRedeem(
     functionName: "requestRedeem",
     address: args.sharesWrapper,
     args: [args.amount],
+  });
+}
+
+export function sharesWrapperCancelRequestRedeem(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "cancelRequestRedeem",
+    address: args.sharesWrapper,
   });
 }
 
