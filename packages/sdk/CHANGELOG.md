@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.6
+
+### Patch Changes
+
+- [#325](https://github.com/enzymefinance/sdk/pull/325) [`671db74`](https://github.com/enzymefinance/sdk/commit/671db74201ce89fe304a7aff2a97281733d97cd1) Thanks [@iherger](https://github.com/iherger)! - Fix parameter names
+
 ## 0.4.5
 
 ### Patch Changes
