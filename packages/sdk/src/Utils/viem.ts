@@ -20,7 +20,7 @@ import type {
 } from "viem";
 import { readContract as viemReadContract, simulateContract as viemSimulateContract } from "viem/actions";
 
-export type PopulatedTransactionParams<TFunctionName extends string, TAbi extends Abi> = ContractFunctionConfig<
+export type PopulatedTransactionParams<TAbi extends Abi, TFunctionName extends string> = ContractFunctionConfig<
   TAbi,
   TFunctionName,
   "payable" | "nonpayable"
@@ -45,8 +45,8 @@ export type PopulatedTransactionEstimateParams<
   dataSuffix?: Hex;
 } & Omit<EstimateGasParameters<TChain>, "data" | "to" | "value">;
 
-export class PopulatedTransaction<TFunctionName extends string, TAbi extends Abi> {
-  constructor(public readonly params: PopulatedTransactionParams<TFunctionName, TAbi>) {}
+export class PopulatedTransaction<TAbi extends Abi, TFunctionName extends string> {
+  constructor(public readonly params: PopulatedTransactionParams<TAbi, TFunctionName>) {}
 
   async simulate<TChain extends Chain | undefined = Chain, TChainOverride extends Chain | undefined = Chain>(
     client: PublicClient<Transport, TChain>,
@@ -93,7 +93,11 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<TAbi extends Abi, TFunctionName extends string, TChain extends Chain | undefined = Chain>(
+export function readContract<
+  TChain extends Chain | undefined = Chain,
+  TAbi extends Abi = Abi,
+  TFunctionName extends string = string,
+>(
   client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,
   params: ReadContractParameters<TAbi, TFunctionName>,
@@ -108,9 +112,9 @@ export function readContract<TAbi extends Abi, TFunctionName extends string, TCh
 }
 
 export function simulateContract<
-  TAbi extends Abi,
-  TFunctionName extends string,
   TChain extends Chain | undefined = Chain,
+  TAbi extends Abi = Abi,
+  TFunctionName extends string = string,
 >(
   client: PublicClient<Transport, TChain>,
   args: ContractCallParameters,

@@ -21,7 +21,7 @@ export type CallOnExtensionParams = {
   callArgs: Hex;
 };
 
-export type PopulatedExtensionCall = Viem.PopulatedTransaction<"callOnExtension", typeof Abis.IComptrollerLib>;
+export type PopulatedExtensionCall = Viem.PopulatedTransaction<typeof Abis.IComptrollerLib, "callOnExtension">;
 
 export function callExtension(args: CallOnExtensionParams): PopulatedExtensionCall {
   return new Viem.PopulatedTransaction({

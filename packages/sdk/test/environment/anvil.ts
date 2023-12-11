@@ -23,7 +23,7 @@ import type { Constants } from "./mainnet.js";
 
 const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
 
-export type TestEnvironment<TChain extends Chain = Chain> = {
+export type TestEnvironment<TChain extends Chain | undefined = Chain> = {
   send: TestSend<TChain>;
   anvil: TestClient<"anvil", HttpTransport, TChain>;
   client: PublicClient<HttpTransport, TChain>;
@@ -32,27 +32,27 @@ export type TestEnvironment<TChain extends Chain = Chain> = {
 };
 
 export type TestSend<TChain extends Chain | undefined = Chain> = <TFunctionName extends string, TAbi extends Abi>(
-  params: TestSendParams<TFunctionName, TAbi, TChain>,
-) => Promise<TestSendReturnType<TFunctionName, TAbi, TChain>>;
+  params: TestSendParams<TChain, TAbi, TFunctionName>,
+) => Promise<TestSendReturnType<TChain, TAbi, TFunctionName>>;
 
 export type TestSendParams<
-  TFunctionName extends string,
-  TAbi extends Abi,
-  TChain extends Chain,
+  TChain extends Chain | undefined = Chain,
+  TAbi extends Abi = Abi,
+  TFunctionName extends string = string,
 > = Utils.Viem.PopulatedTransactionSimulateParams<TChain> & {
-  transaction: Utils.Viem.PopulatedTransaction<TFunctionName, TAbi>;
+  transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
 };
 
 export type TestSendReturnType<
-  TFunctionName extends string,
-  TAbi extends Abi,
-  TChain extends Chain,
+  TChain extends Chain | undefined = Chain,
+  TAbi extends Abi = Abi,
+  TFunctionName extends string = string,
 > = SimulateContractReturnType<TAbi, TFunctionName, TChain> & {
   hash: Hash;
   receipt: ExtractChainFormatterReturnType<TChain, "transactionReceipt", TransactionReceipt>;
 };
 
-export function createSetup<TChain extends Chain | undefined = Chain>({
+export function createSetup<TChain extends Chain>({
   chain,
   constants,
   proxyFamily,
@@ -95,12 +95,12 @@ export function createSetup<TChain extends Chain | undefined = Chain>({
       transport,
     });
 
-    const send = async <TFunctionName extends string, TAbi extends Abi>({
+    const send = async <TAbi extends Abi, TFunctionName extends string>({
       transaction,
       ...params
     }: Utils.Viem.PopulatedTransactionSimulateParams<TChain> & {
-      transaction: Utils.Viem.PopulatedTransaction<TFunctionName, TAbi>;
-    }): Promise<TestSendReturnType<TFunctionName, TAbi, TChain>> => {
+      transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
+    }): Promise<TestSendReturnType<TChain, TAbi, TFunctionName>> => {
       const { request, result } = await transaction.simulate(client, params);
 
       // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
