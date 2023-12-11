@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.5.1
+
+### Patch Changes
+
+- [#332](https://github.com/enzymefinance/sdk/pull/332) [`d2c7675`](https://github.com/enzymefinance/sdk/commit/d2c7675b62c70a324c7d4cc53aada96d7107a2f6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add add/remove asset managers
+
 ## 0.5.0
 
 ### Minor Changes
