@@ -94,7 +94,7 @@ export function executeMigration(args: ExecuteMigrationParams) {
   });
 }
 
-export function hasMigrationRequest<TChain extends Chain>(
+export function hasMigrationRequest<TChain extends Chain | undefined>(
   client: PublicClient<Transport, TChain>,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
