@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.4.7
+
+### Patch Changes
+
+- [`9f4c611`](https://github.com/enzymefinance/sdk/commit/9f4c6117cf2b592348298cc08104801651a20fb3) Thanks [@fubhy](https://github.com/fubhy)! - Fix type parameter defaults
+
 ## 0.4.6
 
 ### Patch Changes
