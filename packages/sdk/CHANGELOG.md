@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.0
+
+### Minor Changes
+
+- [`f35d279`](https://github.com/enzymefinance/sdk/commit/f35d279b7ec317fd61345cbbc1539e577c32518d) Thanks [@fubhy](https://github.com/fubhy)! - Removed chain types
+
 ## 0.5.1
 
 ### Patch Changes
