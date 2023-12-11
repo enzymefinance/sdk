@@ -233,6 +233,24 @@ export function sharesWrapperCancelRequestDeposit(args: Omit<SharesWrapperDeposi
 }
 
 //--------------------------------------------------------------------------------------------
+// SHARES WRAPPER REDEMPTION
+//--------------------------------------------------------------------------------------------
+
+export function sharesWrapperRequestRedeem(
+  args: Viem.ContractCallParameters<{
+    sharesWrapper: Address;
+    amount: bigint;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "requestRedeem",
+    address: args.sharesWrapper,
+    args: [args.amount],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
 // POLICY CHECK
 //--------------------------------------------------------------------------------------------
 
