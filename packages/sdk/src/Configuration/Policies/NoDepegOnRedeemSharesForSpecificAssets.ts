@@ -52,8 +52,8 @@ export function encodeSettings(args: Settings): Hex {
  *
  * @returns The decoded settings.
  */
-export function decodeSettings(encoded: Hex): Settings {
+export function decodeSettings(encoded: Hex): Settings["assetConfigs"] {
   const [assetConfigs] = decodeAbiParameters(settingsEncoding, encoded);
 
-  return { assetConfigs };
+  return assetConfigs;
 }
