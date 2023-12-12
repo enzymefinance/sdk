@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.1
+
+### Patch Changes
+
+- [#300](https://github.com/enzymefinance/sdk/pull/300) [`0f6ab97`](https://github.com/enzymefinance/sdk/commit/0f6ab97cd856d1268d2d3d2bbe59dc3033980d32) Thanks [@manimal1](https://github.com/manimal1)! - fix no depeg policy encoding
+
 ## 0.6.0
 
 ### Minor Changes
