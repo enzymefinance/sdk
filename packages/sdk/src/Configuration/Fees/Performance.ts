@@ -38,6 +38,21 @@ export function decodePerformanceFeeSettings(settings: Hex): PerformanceFeeSetti
   };
 }
 
+export type SetRecipientParams = {
+  comptrollerProxy: Address;
+  fee: Address;
+  recipient: Address;
+};
+
+export function setRecipient(args: SetRecipientParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IPerformanceFee,
+    functionName: "setRecipientForFund",
+    address: args.fee,
+    args: [args.comptrollerProxy, args.recipient],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ
 //--------------------------------------------------------------------------------------------

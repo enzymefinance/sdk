@@ -79,6 +79,21 @@ export function decodeSettings(settings: Hex): Settings {
   return { scaledPerSecondRate, recipient };
 }
 
+export type SetRecipientParams = {
+  comptrollerProxy: Address;
+  fee: Address;
+  recipient: Address;
+};
+
+export function setRecipient(args: SetRecipientParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IManagementFee,
+    functionName: "setRecipientForFund",
+    address: args.fee,
+    args: [args.comptrollerProxy, args.recipient],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ
 //--------------------------------------------------------------------------------------------

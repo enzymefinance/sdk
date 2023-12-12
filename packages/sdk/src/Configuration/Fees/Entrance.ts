@@ -78,6 +78,21 @@ export function decodeDirectFeeSettings(settings: Hex): DirectFeeSettings {
   };
 }
 
+export type SetRecipientParams = {
+  comptrollerProxy: Address;
+  fee: Address;
+  recipient: Address;
+};
+
+export function setRecipient(args: SetRecipientParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IEntranceRateDirectFee,
+    functionName: "setRecipientForFund",
+    address: args.fee,
+    args: [args.comptrollerProxy, args.recipient],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ - BOTH TYPES
 //--------------------------------------------------------------------------------------------

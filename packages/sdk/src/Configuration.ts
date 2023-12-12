@@ -2,10 +2,12 @@ import * as Abis from "@enzymefinance/abis";
 import { Address, PublicClient, isAddressEqual } from "viem";
 import { getInfo } from "./Configuration/Fees/Performance.js";
 import { Viem } from "./Utils.js";
+
 export * as Fee from "./Configuration/Fee.js";
 export * as Fees from "./Configuration/Fees.js";
 export * as Policy from "./Configuration/Policy.js";
 export * as Policies from "./Configuration/Policies.js";
+export * as ProtocolFee from "./Configuration/ProtocolFee.js";
 
 export async function getEnabledFees(
   client: PublicClient,
