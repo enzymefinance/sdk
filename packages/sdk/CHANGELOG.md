@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.4
+
+### Patch Changes
+
+- [#341](https://github.com/enzymefinance/sdk/pull/341) [`700ec3f`](https://github.com/enzymefinance/sdk/commit/700ec3f048829113186f4b5af767a4f911b37d85) Thanks [@iherger](https://github.com/iherger)! - Remaining functions for Shares Wrapper
+
 ## 0.6.3
 
 ### Patch Changes
