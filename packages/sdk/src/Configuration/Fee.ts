@@ -13,12 +13,6 @@ export {
   type SettleContinuousFeesParams,
 } from "../_internal/FeeManager.js";
 
-export type SetRecipientParams = {
-  comptrollerProxy: Address;
-  fee: Address;
-  recipient: Address;
-};
-
 export function getRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
