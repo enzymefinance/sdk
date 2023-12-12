@@ -12,6 +12,13 @@ export const DepositMode = {
   Request: 1,
 } as const;
 
+export type RedemptionWindowConfig = {
+  firstWindowStart: bigint;
+  duration: number;
+  frequency: number;
+  relativeSharesCap: bigint;
+};
+
 export function deploy(args: {
   sharesWrapperFactory: Address;
   vaultProxy: Address;
@@ -21,12 +28,7 @@ export function deploy(args: {
   useRedemptionApproval: boolean;
   useTransferApproval: boolean;
   depositMode: DepositMode;
-  windowConfig: {
-    firstWindowStart: bigint;
-    duration: number;
-    frequency: number;
-    relativeSharesCap: bigint;
-  };
+  windowConfig: RedemptionWindowConfig;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperFactory,
@@ -206,6 +208,42 @@ export function redeemFromQueue(args: {
     functionName: "redeemFromQueue",
     address: args.sharesWrapper,
     args: [args.startIndex, args.lastIndex],
+  });
+}
+
+export function setDepositMode(args: {
+  sharesWrapper: Address;
+  depositMode: DepositMode;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "setDepositMode",
+    address: args.sharesWrapper,
+    args: [args.depositMode],
+  });
+}
+
+export function setRedemptionWindowConfig(args: {
+  sharesWrapper: Address;
+  windowConfig: RedemptionWindowConfig;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "setRedemptionWindowConfig",
+    address: args.sharesWrapper,
+    args: [args.windowConfig],
+  });
+}
+
+export function setRedemptionAsset(args: {
+  sharesWrapper: Address;
+  asset: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
+    functionName: "setRedemptionAsset",
+    address: args.sharesWrapper,
+    args: [args.asset],
   });
 }
 
