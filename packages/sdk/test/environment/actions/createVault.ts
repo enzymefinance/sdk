@@ -1,8 +1,8 @@
 import { LifeCycle } from "@enzymefinance/sdk";
 import { TestEnvironment } from "@enzymefinance/sdk/test";
-import { Address, Chain, Hex } from "viem";
+import type { Address, Hex } from "viem";
 
-export async function createVault<TChain extends Chain | undefined = Chain>({
+export async function createVault({
   environment,
   vaultOwner,
   vaultName = "Test Vault",
@@ -12,7 +12,7 @@ export async function createVault<TChain extends Chain | undefined = Chain>({
   policyManagerConfigData = "0x",
   denominationAsset = environment.constants.weth,
 }: {
-  environment: TestEnvironment<TChain>;
+  environment: TestEnvironment;
   vaultOwner: Address;
   vaultName?: string;
   vaultSymbol?: string;

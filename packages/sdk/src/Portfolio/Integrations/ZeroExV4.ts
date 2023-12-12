@@ -1,13 +1,4 @@
-import {
-  type Address,
-  Chain,
-  type Hex,
-  PublicClient,
-  Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-  parseAbi,
-} from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Assertion, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -369,8 +360,8 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-export async function isAllowedMaker<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function isAllowedMaker(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     zeroExV4Adapter: Address;
     who: Address;

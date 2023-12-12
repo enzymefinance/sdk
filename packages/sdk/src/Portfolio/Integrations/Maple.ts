@@ -1,13 +1,4 @@
-import {
-  type Address,
-  Chain,
-  type Hex,
-  PublicClient,
-  Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-  parseAbi,
-} from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -197,8 +188,8 @@ export function claimRewardsV1Decode(encoded: Hex): ClaimRewardsV1Args {
 // EXTERNAL READ FUNCTIONS - MAPLE POOL
 //--------------------------------------------------------------------------------------------
 
-export async function getMaxDeposit<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getMaxDeposit(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
     receiver: Address;
@@ -212,8 +203,8 @@ export async function getMaxDeposit<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getTotalAssets<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getTotalAssets(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -225,8 +216,8 @@ export async function getTotalAssets<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getUnrealizedLosses<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getUnrealizedLosses(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -238,8 +229,8 @@ export async function getUnrealizedLosses<TChain extends Chain | undefined = Cha
   });
 }
 
-export async function getSharesConvertedToExitAssets<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getSharesConvertedToExitAssets(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
     shares: bigint;
@@ -257,8 +248,8 @@ export async function getSharesConvertedToExitAssets<TChain extends Chain | unde
 // EXTERNAL READ FUNCTIONS - POOL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getWithdrawalManager<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getWithdrawalManager(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     poolManager: Address;
   }>,
@@ -274,8 +265,8 @@ export async function getWithdrawalManager<TChain extends Chain | undefined = Ch
 // EXTERNAL READ FUNCTIONS - WITHDRAWAL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getLockedShares<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getLockedShares(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;
@@ -289,8 +280,8 @@ export async function getLockedShares<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getCurrentCycleId<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getCurrentCycleId(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
   }>,
@@ -302,8 +293,8 @@ export async function getCurrentCycleId<TChain extends Chain | undefined = Chain
   });
 }
 
-export async function getWindowAtId<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getWindowAtId(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     cycleId: bigint;
@@ -319,8 +310,8 @@ export async function getWindowAtId<TChain extends Chain | undefined = Chain>(
   return { windowStart, windowEnd };
 }
 
-export async function getExitCycleId<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getExitCycleId(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;
@@ -334,8 +325,8 @@ export async function getExitCycleId<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getRedemptionPreview<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getRedemptionPreview(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;

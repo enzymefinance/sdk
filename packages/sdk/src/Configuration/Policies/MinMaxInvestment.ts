@@ -1,14 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import {
-  type Address,
-  Chain,
-  type Hex,
-  type PublicClient,
-  Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-  maxUint256,
-} from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, maxUint256 } from "viem";
 import { Viem } from "../../Utils.js";
 
 const settingsEncoding = [
@@ -75,8 +66,8 @@ export function decodeSettings(settings: Hex): Settings {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export function getSettings<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getSettings(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     minMaxInvestmentPolicy: Address;

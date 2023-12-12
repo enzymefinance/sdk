@@ -16,7 +16,6 @@ import type {
   ReadContractReturnType,
   SimulateContractParameters,
   SimulateContractReturnType,
-  Transport,
 } from "viem";
 import { readContract as viemReadContract, simulateContract as viemSimulateContract } from "viem/actions";
 
@@ -27,32 +26,25 @@ export type PopulatedTransactionParams<TAbi extends Abi, TFunctionName extends s
 > &
   GetValue<TAbi, TFunctionName, bigint>;
 
-export type PopulatedTransactionSimulateParams<
-  TChain extends Chain | undefined = Chain,
-  TChainOverride extends Chain | undefined = Chain,
-> = {
-  chain?: TChainOverride;
+export type PopulatedTransactionSimulateParams = {
+  chain?: Chain;
   dataSuffix?: Hex;
-  // TODO: Why is this not required by viem already? It's required for `estimateContractGas` ...
   account: Account | Address;
-} & Omit<CallParameters<TChainOverride extends Chain ? TChainOverride : TChain>, "batch" | "to" | "data" | "value">;
+} & Omit<CallParameters, "batch" | "to" | "data" | "value">;
 
-export type PopulatedTransactionEstimateParams<
-  TChain extends Chain | undefined = Chain,
-  TChainOverride extends Chain | undefined = Chain,
-> = {
-  chain?: TChainOverride;
+export type PopulatedTransactionEstimateParams = {
+  chain?: Chain;
   dataSuffix?: Hex;
-} & Omit<EstimateGasParameters<TChain>, "data" | "to" | "value">;
+} & Omit<EstimateGasParameters, "data" | "to" | "value">;
 
 export class PopulatedTransaction<TAbi extends Abi, TFunctionName extends string> {
   constructor(public readonly params: PopulatedTransactionParams<TAbi, TFunctionName>) {}
 
-  async simulate<TChain extends Chain | undefined = Chain, TChainOverride extends Chain | undefined = Chain>(
-    client: PublicClient<Transport, TChain>,
-    args: PopulatedTransactionSimulateParams<TChain, TChainOverride>,
-  ): Promise<SimulateContractReturnType<TAbi, TFunctionName, TChain, TChainOverride>> {
-    return client.simulateContract<TAbi, TFunctionName, TChainOverride>({
+  async simulate(
+    client: PublicClient,
+    args: PopulatedTransactionSimulateParams,
+  ): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
+    return client.simulateContract({
       ...args,
       abi: this.params.abi,
       functionName: this.params.functionName,
@@ -62,11 +54,11 @@ export class PopulatedTransaction<TAbi extends Abi, TFunctionName extends string
     } as any);
   }
 
-  async estimate<TChain extends Chain | undefined = Chain, TChainOverride extends Chain | undefined = Chain>(
-    client: PublicClient<Transport, TChain>,
-    args: PopulatedTransactionEstimateParams<TChain, TChainOverride>,
+  async estimate(
+    client: PublicClient,
+    args: PopulatedTransactionEstimateParams,
   ): Promise<EstimateContractGasReturnType> {
-    return client.estimateContractGas<TChain, TAbi, TFunctionName>({
+    return client.estimateContractGas({
       ...args,
       abi: this.params.abi,
       functionName: this.params.functionName,
@@ -93,12 +85,8 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<
-  TChain extends Chain | undefined = Chain,
-  TAbi extends Abi = Abi,
-  TFunctionName extends string = string,
->(
-  client: PublicClient<Transport, TChain>,
+export function readContract<TAbi extends Abi = Abi, TFunctionName extends string = string>(
+  client: PublicClient,
   args: ContractCallParameters,
   params: ReadContractParameters<TAbi, TFunctionName>,
 ): Promise<ReadContractReturnType<TAbi, TFunctionName>> {
@@ -111,20 +99,16 @@ export function readContract<
   );
 }
 
-export function simulateContract<
-  TChain extends Chain | undefined = Chain,
-  TAbi extends Abi = Abi,
-  TFunctionName extends string = string,
->(
-  client: PublicClient<Transport, TChain>,
+export function simulateContract<TAbi extends Abi = Abi, TFunctionName extends string = string>(
+  client: PublicClient,
   args: ContractCallParameters,
-  params: SimulateContractParameters<TAbi, TFunctionName, TChain>,
-): Promise<SimulateContractReturnType<TAbi, TFunctionName, TChain>> {
+  params: SimulateContractParameters<TAbi, TFunctionName>,
+): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
   return viemSimulateContract(
     client,
     Object.assign({}, params, {
       ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
       ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
-    }) as SimulateContractParameters<TAbi, TFunctionName, TChain>,
+    }) as SimulateContractParameters<TAbi, TFunctionName>,
   );
 }

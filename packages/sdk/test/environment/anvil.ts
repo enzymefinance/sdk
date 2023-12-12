@@ -6,7 +6,6 @@ import {
   type Chain,
   ExtractChainFormatterReturnType,
   Hash,
-  HttpTransport,
   PublicClient,
   SimulateContractReturnType,
   TestClient,
@@ -23,43 +22,41 @@ import type { Constants } from "./mainnet.js";
 
 const poolId = Number(process.env.VITEST_POOL_ID ?? 1);
 
-export type TestEnvironment<TChain extends Chain | undefined = Chain> = {
-  send: TestSend<TChain>;
-  anvil: TestClient<"anvil", HttpTransport, TChain>;
-  client: PublicClient<HttpTransport, TChain>;
-  chain: TChain;
+export type TestEnvironment = {
+  send: TestSend;
+  anvil: TestClient<"anvil">;
+  client: PublicClient;
+  chain: Chain;
   constants: Constants;
 };
 
-export type TestSend<TChain extends Chain | undefined = Chain> = <TFunctionName extends string, TAbi extends Abi>(
-  params: TestSendParams<TChain, TAbi, TFunctionName>,
-) => Promise<TestSendReturnType<TChain, TAbi, TFunctionName>>;
+export type TestSend = <TFunctionName extends string, TAbi extends Abi>(
+  params: TestSendParams<TAbi, TFunctionName>,
+) => Promise<TestSendReturnType<TAbi, TFunctionName>>;
 
 export type TestSendParams<
-  TChain extends Chain | undefined = Chain,
   TAbi extends Abi = Abi,
   TFunctionName extends string = string,
-> = Utils.Viem.PopulatedTransactionSimulateParams<TChain> & {
+> = Utils.Viem.PopulatedTransactionSimulateParams & {
   transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
 };
 
 export type TestSendReturnType<
-  TChain extends Chain | undefined = Chain,
   TAbi extends Abi = Abi,
   TFunctionName extends string = string,
-> = SimulateContractReturnType<TAbi, TFunctionName, TChain> & {
+> = SimulateContractReturnType<TAbi, TFunctionName> & {
   hash: Hash;
-  receipt: ExtractChainFormatterReturnType<TChain, "transactionReceipt", TransactionReceipt>;
+  receipt: ExtractChainFormatterReturnType<Chain, "transactionReceipt", TransactionReceipt>;
 };
 
-export function createSetup<TChain extends Chain>({
+export function createSetup({
   chain,
   constants,
   proxyFamily,
   forkUrl,
   forkBlockNumber: defaultForkBlockNumber,
 }: {
-  chain: TChain;
+  chain: Chain;
   constants: Constants;
   proxyFamily: number;
   forkBlockNumber: bigint;
@@ -71,7 +68,7 @@ export function createSetup<TChain extends Chain>({
   }: {
     resetHook?: "beforeAll" | "beforeEach";
     forkBlockNumber?: bigint;
-  } = {}): TestEnvironment<TChain> => {
+  } = {}): TestEnvironment => {
     const proxyId = proxyFamily + poolId;
     const transport = http(`http://127.0.0.1:8545/${proxyId}`, {
       timeout: 150_000,
@@ -98,9 +95,9 @@ export function createSetup<TChain extends Chain>({
     const send = async <TAbi extends Abi, TFunctionName extends string>({
       transaction,
       ...params
-    }: Utils.Viem.PopulatedTransactionSimulateParams<TChain> & {
+    }: Utils.Viem.PopulatedTransactionSimulateParams & {
       transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
-    }): Promise<TestSendReturnType<TChain, TAbi, TFunctionName>> => {
+    }): Promise<TestSendReturnType<TAbi, TFunctionName>> => {
       const { request, result } = await transaction.simulate(client, params);
 
       // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.

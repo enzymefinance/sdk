@@ -1,13 +1,4 @@
-import {
-  type Address,
-  Chain,
-  type Hex,
-  PublicClient,
-  Transport,
-  decodeAbiParameters,
-  encodeAbiParameters,
-  parseAbi,
-} from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -101,8 +92,8 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function convertToAssets<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function convertToAssets(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     erc4626Vault: Address;
     sharesAmount: bigint;
@@ -116,8 +107,8 @@ export async function convertToAssets<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function convertToShares<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function convertToShares(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     erc4626Vault: Address;
     assetAmount: bigint;
@@ -135,8 +126,8 @@ export async function convertToShares<TChain extends Chain | undefined = Chain>(
 // EXTERNAL READ FUNCTIONS - MAKER
 //--------------------------------------------------------------------------------------------
 
-export async function getMakerDsr<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getMakerDsr(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -152,8 +143,8 @@ export async function getMakerDsr<TChain extends Chain | undefined = Chain>(
 // EXTERNAL READ FUNCTIONS - MORPHO
 //--------------------------------------------------------------------------------------------
 
-export async function getMorphoPoolToken<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getMorphoPoolToken(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,

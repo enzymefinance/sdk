@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { Address, Chain, PublicClient, Transport } from "viem";
+import { Address, PublicClient } from "viem";
 import { Viem } from "../Utils.js";
 
 export {
@@ -13,8 +13,8 @@ export {
   type SettleContinuousFeesParams,
 } from "../_internal/FeeManager.js";
 
-export function getRecipient<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getRecipient(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     fee: Address;
@@ -28,8 +28,8 @@ export function getRecipient<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export function getProtocolFeeRate<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function getProtocolFeeRate(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -43,8 +43,8 @@ export function getProtocolFeeRate<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getAccruedProtocolFee<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getAccruedProtocolFee(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -60,8 +60,8 @@ export async function getAccruedProtocolFee<TChain extends Chain | undefined = C
   return result;
 }
 
-export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export function doesAutoProtocolFeeSharesBuyback(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -73,8 +73,8 @@ export function doesAutoProtocolFeeSharesBuyback<TChain extends Chain | undefine
   });
 }
 
-export async function getMlnValueAndBurnAmountForSharesBuyback<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getMlnValueAndBurnAmountForSharesBuyback(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     denominationAsset: Address;
     buybackSharesAmount: bigint;

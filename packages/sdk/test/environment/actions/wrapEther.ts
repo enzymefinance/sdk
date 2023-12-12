@@ -1,13 +1,13 @@
 import { Utils } from "@enzymefinance/sdk";
 import { TestEnvironment } from "@enzymefinance/sdk/test";
-import { type Address, Chain, parseAbi } from "viem";
+import { type Address, parseAbi } from "viem";
 
-export async function wrapEther<TChain extends Chain | undefined = Chain>({
+export async function wrapEther({
   account,
   amount,
   environment,
 }: {
-  environment: TestEnvironment<TChain>;
+  environment: TestEnvironment;
   account: Address;
   amount: bigint;
 }) {

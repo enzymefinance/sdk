@@ -1,4 +1,4 @@
-import { type Address, Chain, type Hex, PublicClient, Transport, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -156,8 +156,8 @@ const cometRewardsAbi = [
   },
 ] as const;
 
-export async function getUtilization<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getUtilization(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -169,8 +169,8 @@ export async function getUtilization<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getSupplyRate<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getSupplyRate(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
     utilization: bigint;
@@ -184,8 +184,8 @@ export async function getSupplyRate<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getTotalSupply<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getTotalSupply(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -197,8 +197,8 @@ export async function getTotalSupply<TChain extends Chain | undefined = Chain>(
   });
 }
 
-export async function getBaseTrackingSupplySpeed<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getBaseTrackingSupplySpeed(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -210,8 +210,8 @@ export async function getBaseTrackingSupplySpeed<TChain extends Chain | undefine
   });
 }
 
-export async function getRewardOwed<TChain extends Chain | undefined = Chain>(
-  client: PublicClient<Transport, TChain>,
+export async function getRewardOwed(
+  client: PublicClient,
   args: Viem.ContractCallParameters<{
     cometRewards: Address;
     asset: Address;
