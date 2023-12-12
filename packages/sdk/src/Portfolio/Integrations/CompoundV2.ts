@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -238,6 +238,22 @@ export function getCTokenFromBorrowedAsset(
     functionName: "getCTokenFromBorrowedAsset",
     address: args.externalPositionProxy,
     args: [args.borrowedAsset],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export function claimCompFromCompoundV2Comptroller(args: {
+  compoundV2Comptroller: Address;
+  vaultProxy: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: parseAbi(["function claimComp(address)"]),
+    functionName: "claimComp",
+    address: args.compoundV2Comptroller,
+    args: [args.vaultProxy],
   });
 }
 
