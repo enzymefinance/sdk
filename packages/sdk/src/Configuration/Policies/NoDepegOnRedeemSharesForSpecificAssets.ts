@@ -1,18 +1,23 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Assertion } from "../../Utils.js";
 
 const settingsEncoding = [
   {
-    type: "address[]",
-    name: "assets",
-  },
-  {
-    type: "address[]",
-    name: "referenceAssets",
-  },
-  {
-    type: "uint16[]",
-    name: "deviationTolerancesInBps",
+    components: [
+      {
+        name: "asset",
+        type: "address",
+      },
+      {
+        name: "referenceAsset",
+        type: "address",
+      },
+      {
+        name: "deviationToleranceInBps",
+        type: "uint16",
+      },
+    ],
+    name: "assetConfigs_",
+    type: "tuple[]",
   },
 ] as const;
 
@@ -39,17 +44,7 @@ export type Settings = {
  * @returns The encoded settings.
  */
 export function encodeSettings(args: Settings): Hex {
-  const assets: Address[] = [];
-  const referenceAssets: Address[] = [];
-  const deviationTolerancesInBps: number[] = [];
-
-  for (const value of args.assetConfigs) {
-    assets.push(value.asset);
-    referenceAssets.push(value.referenceAsset);
-    deviationTolerancesInBps.push(value.deviationToleranceInBps);
-  }
-
-  return encodeAbiParameters(settingsEncoding, [assets, referenceAssets, deviationTolerancesInBps]);
+  return encodeAbiParameters(settingsEncoding, [args.assetConfigs]);
 }
 
 /**
@@ -57,20 +52,8 @@ export function encodeSettings(args: Settings): Hex {
  *
  * @returns The decoded settings.
  */
-export function decodeSettings(encoded: Hex): Settings {
-  const [assets, referenceAssets, deviationTolerancesInBps] = decodeAbiParameters(settingsEncoding, encoded);
+export function decodeSettings(encoded: Hex): Settings["assetConfigs"] {
+  const [assetConfigs] = decodeAbiParameters(settingsEncoding, encoded);
 
-  return {
-    assetConfigs: assets.map((asset, i) => {
-      const referenceAsset = referenceAssets[i];
-      const deviationToleranceInBps = deviationTolerancesInBps[i];
-      Assertion.invariant(referenceAsset !== undefined, "Expected referenceAssets and assets to have the same length");
-      Assertion.invariant(
-        deviationToleranceInBps !== undefined,
-        "Expected deviationToleranceInBpss and assets to have the same length",
-      );
-
-      return { asset, referenceAsset, deviationToleranceInBps };
-    }),
-  };
+  return assetConfigs;
 }
