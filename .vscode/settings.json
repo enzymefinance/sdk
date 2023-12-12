@@ -19,7 +19,7 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports.biome": true
+    "source.organizeImports.biome": "explicit"
   },
   "editor.quickSuggestions": {
     "other": true,
@@ -33,7 +33,7 @@
   "editor.tabCompletion": "off",
   "editor.suggest.localityBonus": true,
   "editor.suggestSelection": "recentlyUsed",
-  "editor.wordBasedSuggestions": true,
+  "editor.wordBasedSuggestions": "matchingDocuments",
   "editor.parameterHints.enabled": true,
   "files.insertFinalNewline": true
 }
