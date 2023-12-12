@@ -3,8 +3,20 @@ import { type Address, type PublicClient } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
-// OWNERSHIP
+// TRANSACTIONS
 //--------------------------------------------------------------------------------------------
+
+export type SetFreelyTransferableSharesParams = {
+  vaultProxy: Address;
+};
+
+export function setFreelyTransferableShares(args: SetFreelyTransferableSharesParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setFreelyTransferableShares",
+    address: args.vaultProxy,
+  });
+}
 
 export type SetNominatedOwnerParams = {
   /**
@@ -53,6 +65,34 @@ export function claimOwnership(args: ClaimOwnershipParams) {
     abi: Abis.IVaultLib,
     functionName: "claimOwnership",
     address: args.vaultProxy,
+  });
+}
+
+export type SetNameParams = {
+  vaultProxy: Address;
+  name: string;
+};
+
+export function setName(args: SetNameParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setName",
+    address: args.vaultProxy,
+    args: [args.name],
+  });
+}
+
+export type SetSymbolParams = {
+  vaultProxy: Address;
+  symbol: string;
+};
+
+export function setSymbol(args: SetSymbolParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setSymbol",
+    address: args.vaultProxy,
+    args: [args.symbol],
   });
 }
 
