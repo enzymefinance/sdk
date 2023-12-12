@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.3
+
+### Patch Changes
+
+- [#339](https://github.com/enzymefinance/sdk/pull/339) [`2d0b662`](https://github.com/enzymefinance/sdk/commit/2d0b662d100fd918b5a095c7921ed3075de5102a) Thanks [@iherger](https://github.com/iherger)! - Add various transactions
+
 ## 0.6.2
 
 ### Patch Changes
