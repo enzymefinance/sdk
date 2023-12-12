@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.5
+
+### Patch Changes
+
+- [#343](https://github.com/enzymefinance/sdk/pull/343) [`6eef2f7`](https://github.com/enzymefinance/sdk/commit/6eef2f7cb3dc7a85f72aee0cb94e79120345711a) Thanks [@iherger](https://github.com/iherger)! - Shares splitter functions and other
+
 ## 0.6.4
 
 ### Patch Changes
