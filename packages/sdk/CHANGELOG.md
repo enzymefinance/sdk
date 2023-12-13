@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.12
+
+### Patch Changes
+
+- [#357](https://github.com/enzymefinance/sdk/pull/357) [`4b4c95e`](https://github.com/enzymefinance/sdk/commit/4b4c95e7ff53c9f8c31c383ae0d09fc00ce80d72) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Change ep make use type
+
 ## 0.6.11
 
 ### Patch Changes
