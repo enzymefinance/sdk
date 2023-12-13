@@ -54,6 +54,8 @@ export function stakeDecode(encoded: Hex): StakeArgs {
 // CLAIM FEES
 //--------------------------------------------------------------------------------------------
 
+export const claimFees = ExternalPositionManager.makeUse(Action.ClaimFees, claimFeesEncode);
+
 const claimFeesEncoding = [
   {
     type: "address",
