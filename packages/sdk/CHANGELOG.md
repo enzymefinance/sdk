@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.6
+
+### Patch Changes
+
+- [#345](https://github.com/enzymefinance/sdk/pull/345) [`0fd834c`](https://github.com/enzymefinance/sdk/commit/0fd834cd26af141d50854111b00a6f64cf7ffdea) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add StakeWise external contract calls and update EP calls
+
 ## 0.6.5
 
 ### Patch Changes
