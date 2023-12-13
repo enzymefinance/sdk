@@ -1,14 +1,14 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { callExtension } from "./Extensions.js";
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   CallOnIntegration: 0n,
   AddTrackedAssets: 1n,
   RemoveTrackedAssets: 2n,
 } as const;
 
-export type Selector = typeof Selector[keyof typeof Selector];
+export type Selector = (typeof Selector)[keyof typeof Selector];
 export const Selector = {
   ClaimRewards: "0xb9dfbacc", // claimRewards(address,bytes,bytes)
   Lend: "0x099f7515", // lend(address,bytes,bytes)

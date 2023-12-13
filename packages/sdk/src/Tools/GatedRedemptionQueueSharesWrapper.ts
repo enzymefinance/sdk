@@ -6,7 +6,7 @@ import { Viem } from "../Utils.js";
 // TRANSACTIONS
 //--------------------------------------------------------------------------------------------
 
-export type DepositMode = typeof DepositMode[keyof typeof DepositMode];
+export type DepositMode = (typeof DepositMode)[keyof typeof DepositMode];
 export const DepositMode = {
   Direct: 0,
   Request: 1,

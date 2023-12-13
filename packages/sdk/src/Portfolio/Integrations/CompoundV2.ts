@@ -86,7 +86,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // EXTERNAL POSITION
 //--------------------------------------------------------------------------------------------
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   AddCollateral: 0n,
   RemoveCollateral: 1n,

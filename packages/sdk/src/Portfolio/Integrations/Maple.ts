@@ -2,7 +2,7 @@ import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiPar
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = typeof Action[keyof typeof Action];
+export type Action = (typeof Action)[keyof typeof Action];
 export const Action = {
   // Lower action ids are deprecated, and we don't support them
   ClaimRewardsV1: 8n,
