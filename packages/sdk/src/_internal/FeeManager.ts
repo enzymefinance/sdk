@@ -2,7 +2,7 @@ import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from
 import { Assertion } from "../Utils.js";
 import { callExtension } from "./Extensions.js";
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   SettleContinuousFees: 0n,
   PayoutOutstandingFees: 1n,

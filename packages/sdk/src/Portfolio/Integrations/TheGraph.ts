@@ -2,7 +2,7 @@ import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiPar
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   Delegate: 0n,
   Undelegate: 1n,

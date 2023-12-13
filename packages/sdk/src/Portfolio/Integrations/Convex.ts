@@ -88,7 +88,7 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
 // EXTERNAL POSITION
 //--------------------------------------------------------------------------------------------
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   Lock: 0n,
   Relock: 1n,

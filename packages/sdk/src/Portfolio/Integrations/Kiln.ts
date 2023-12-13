@@ -2,7 +2,7 @@ import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiPar
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   Stake: 0n,
   ClaimFees: 1n,
@@ -75,7 +75,7 @@ export type ClaimFeesArgs = {
   claimFeeType: ClaimType;
 };
 
-export type ClaimType = (typeof ClaimType)[keyof typeof ClaimType];
+export type ClaimType = typeof ClaimType[keyof typeof ClaimType];
 export const ClaimType = {
   ExecutionLayer: 0,
   ConsensusLayer: 1,

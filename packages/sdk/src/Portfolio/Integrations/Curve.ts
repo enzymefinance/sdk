@@ -220,7 +220,7 @@ const redeemEncoding = [
   },
 ] as const;
 
-export type RedeemType = (typeof RedeemType)[keyof typeof RedeemType];
+export type RedeemType = typeof RedeemType[keyof typeof RedeemType];
 export const RedeemType = {
   Standard: 0,
   OneCoin: 1,

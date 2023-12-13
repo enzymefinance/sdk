@@ -2,7 +2,7 @@ import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from
 import type { Types } from "../Utils.js";
 import { type PopulatedExtensionCall, callExtension } from "./Extensions.js";
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   CreateExternalPosition: 0n,
   CallOnExternalPosition: 1n,

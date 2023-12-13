@@ -187,7 +187,7 @@ const takeOrderEncoding = [
   },
 ] as const;
 
-export type OrderType = (typeof OrderType)[keyof typeof OrderType];
+export type OrderType = typeof OrderType[keyof typeof OrderType];
 export const OrderType = {
   Limit: 0,
   Rfq: 1,
@@ -233,7 +233,7 @@ export type OtcOrder = {
   expiryAndNonce: bigint;
 };
 
-export type SignatureType = (typeof SignatureType)[keyof typeof SignatureType];
+export type SignatureType = typeof SignatureType[keyof typeof SignatureType];
 export const SignatureType = {
   Illegal: 0,
   Invalid: 1,

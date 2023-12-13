@@ -2,7 +2,7 @@ import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiPar
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
-export type Action = (typeof Action)[keyof typeof Action];
+export type Action = typeof Action[keyof typeof Action];
 export const Action = {
   Stake: 0n,
   Redeem: 1n,
@@ -135,7 +135,7 @@ const claimExitedAssetsEncoding = [
   },
   {
     name: "timestamp",
-    type: "uint256"
+    type: "uint256",
   },
 ] as const;
 
@@ -146,7 +146,11 @@ export type ClaimExitedAssetsArgs = {
 };
 
 export function claimExitedAssetsEncode(args: ClaimExitedAssetsArgs): Hex {
-  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVaultAddress, args.positionTicket, args.timestamp]);
+  return encodeAbiParameters(claimExitedAssetsEncoding, [
+    args.stakeWiseVaultAddress,
+    args.positionTicket,
+    args.timestamp,
+  ]);
 }
 
 export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
@@ -155,7 +159,7 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
   return {
     stakeWiseVaultAddress,
     positionTicket,
-    timestamp
+    timestamp,
   };
 }
 
@@ -222,12 +226,11 @@ export async function getClaimExitedAssetsPreview(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi(["function calculateExitedAssets(address _receiver, uint256 _positionTicket, uint256 _timestamp, uint256 _exitQueueIndex) view returns (uint256 leftShares_, uint256 claimedShares_, uint256 claimedAssets_)"]),
+    abi: parseAbi([
+      "function calculateExitedAssets(address _receiver, uint256 _positionTicket, uint256 _timestamp, uint256 _exitQueueIndex) view returns (uint256 leftShares_, uint256 claimedShares_, uint256 claimedAssets_)",
+    ]),
     functionName: "calculateExitedAssets",
     address: args.stakeWiseVaultAddress,
     args: [args.receiver, args.positionTicket, args.timestamp, args.exitQueueIndex],
   });
-
 }
-
-
