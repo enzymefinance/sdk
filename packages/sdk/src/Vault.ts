@@ -1,6 +1,104 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient } from "viem";
+import { Viem } from "./Utils.js";
+
+//--------------------------------------------------------------------------------------------
+// TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export type SetFreelyTransferableSharesParams = {
+  vaultProxy: Address;
+};
+
+export function setFreelyTransferableShares(args: SetFreelyTransferableSharesParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setFreelyTransferableShares",
+    address: args.vaultProxy,
+  });
+}
+
+export type SetNominatedOwnerParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+  /**
+   * The address of the next owner.
+   */
+  nextNominatedOwner: Address;
+};
+
+export function setNominatedOwner(args: SetNominatedOwnerParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setNominatedOwner",
+    args: [args.nextNominatedOwner],
+    address: args.vaultProxy,
+  });
+}
+
+export type RemoveNominatedOwnerParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+};
+
+export function removeNominatedOwner(args: RemoveNominatedOwnerParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "removeNominatedOwner",
+    address: args.vaultProxy,
+  });
+}
+
+export type ClaimOwnershipParams = {
+  /**
+   * The address of the vault's `VaultProxy` contract.
+   */
+  vaultProxy: Address;
+};
+
+export function claimOwnership(args: ClaimOwnershipParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "claimOwnership",
+    address: args.vaultProxy,
+  });
+}
+
+export type SetNameParams = {
+  vaultProxy: Address;
+  name: string;
+};
+
+export function setName(args: SetNameParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setName",
+    address: args.vaultProxy,
+    args: [args.name],
+  });
+}
+
+export type SetSymbolParams = {
+  vaultProxy: Address;
+  symbol: string;
+};
+
+export function setSymbol(args: SetSymbolParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "setSymbol",
+    address: args.vaultProxy,
+    args: [args.symbol],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
 
 export function getName(
   client: PublicClient,
@@ -80,19 +178,6 @@ export function getComptrollerProxy(
   });
 }
 
-export function getActiveExternalPositions(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    vaultProxy: Address;
-  }>,
-) {
-  return client.readContract({
-    abi: Abis.IVaultLib,
-    functionName: "getActiveExternalPositions",
-    address: args.vaultProxy,
-  });
-}
-
 export function getPolicyManager(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -116,5 +201,46 @@ export function getFeeManager(
     abi: Abis.IComptrollerLib,
     functionName: "getFeeManager",
     address: args.comptrollerProxy,
+  });
+}
+
+export function sharesAreFreelyTransferable(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IVaultLib,
+    functionName: "sharesAreFreelyTransferable",
+    address: args.vaultProxy,
+  });
+}
+
+export function addAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "addAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
+  });
+}
+
+export function removeAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: Address[];
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "removeAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
   });
 }

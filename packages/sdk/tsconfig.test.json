@@ -1,10 +1,16 @@
 {
   "extends": "../../tsconfig.base.json",
-  "include": ["src/**/*.ts", "test/**/*.ts"],
-  "references": [{ "path": "../abis" }],
+  "include": [
+    "test",
+  ],
+  "references": [
+    {
+      "path": "tsconfig.src.json"
+    },
+  ],
   "compilerOptions": {
-    "tsBuildInfoFile": "build/tsbuildinfo/test.tsbuildinfo",
-    "rootDir": ".",
+    "tsBuildInfoFile": ".tsbuildinfo/test.tsbuildinfo",
+    "rootDir": "test",
     "noEmit": true
   }
 }

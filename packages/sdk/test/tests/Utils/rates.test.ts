@@ -53,14 +53,14 @@ test("convertScaledPerSecondRateToRate should work correctly", () => {
 test("convertRateToScaledPerSecondRate should work correctly", () => {
   expect(
     Rates.convertRateToScaledPerSecondRate({
-      perAnnumRateInBps: Conversion.toBps(0.123),
+      perAnnumRate: Conversion.toWei(0.123),
       adjustInflation: true,
     }),
   ).toMatchInlineSnapshot("1000000004159007240185733350n");
 
   expect(
     Rates.convertRateToScaledPerSecondRate({
-      perAnnumRateInBps: Conversion.toBps(0.123),
+      perAnnumRate: Conversion.toWei(0.123),
       adjustInflation: false,
     }),
   ).toMatchInlineSnapshot("1000000003675934670872217630n");

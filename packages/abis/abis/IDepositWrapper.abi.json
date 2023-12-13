@@ -2,6 +2,16 @@
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_addressListRegistryAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_allowedExchangesListId",
+        "type": "uint256"
+      },
+      {
         "internalType": "contract IWETH",
         "name": "_wrappedNativeAsset",
         "type": "address"

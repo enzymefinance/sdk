@@ -26,13 +26,24 @@ export const IStakingWrapper = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
+        internalType: "address",
+        name: "_for",
+        type: "address",
       },
     ],
-    name: "deposit",
-    outputs: [],
+    name: "claimRewardsForWithoutCheckpoint",
+    outputs: [
+      {
+        internalType: "address[]",
+        name: "rewardTokens_",
+        type: "address[]",
+      },
+      {
+        internalType: "uint256[]",
+        name: "claimedAmounts_",
+        type: "uint256[]",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -182,29 +193,13 @@ export const IStakingWrapper = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-      {
         internalType: "bool",
-        name: "_claimRewards",
+        name: "_isPaused",
         type: "bool",
       },
     ],
-    name: "withdraw",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "rewardTokens_",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "claimedAmounts_",
-        type: "uint256[]",
-      },
-    ],
+    name: "togglePause",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -219,11 +214,6 @@ export const IStakingWrapper = [
         internalType: "uint256",
         name: "_amount",
         type: "uint256",
-      },
-      {
-        internalType: "bool",
-        name: "_claimRewardsToHolder",
-        type: "bool",
       },
     ],
     name: "withdrawTo",
@@ -248,13 +238,26 @@ export const IStakingWrapper = [
         name: "_amount",
         type: "uint256",
       },
-      {
-        internalType: "bool",
-        name: "_claimRewardsToHolder",
-        type: "bool",
-      },
     ],
     name: "withdrawToOnBehalf",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_amount",
+        type: "uint256",
+      },
+    ],
+    name: "withdrawToWithoutCheckpoint",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

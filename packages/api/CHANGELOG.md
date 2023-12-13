@@ -1,5 +1,29 @@
 # @enzymefinance/api
 
+## 0.2.0
+
+### Minor Changes
+
+- [`4fc7693`](https://github.com/enzymefinance/sdk/commit/4fc7693dd15fb23fa58a979b6395be672286b1ee) Thanks [@fubhy](https://github.com/fubhy)! - Upgraded dependencies
+
+## 0.1.2
+
+### Patch Changes
+
+- [`5c51178`](https://github.com/enzymefinance/sdk/commit/5c5117848128340e327c1bbcf25b405fe840ee4a) Thanks [@fubhy](https://github.com/fubhy)! - Publishing packages
+
+## 0.1.1
+
+### Patch Changes
+
+- [`152c87f`](https://github.com/enzymefinance/sdk/commit/152c87f496b01eda8640ebbd1bc33f9e56b34a90) Thanks [@fubhy](https://github.com/fubhy)! - Use peer dependencies
+
+## 0.1.0
+
+### Minor Changes
+
+- [`6d3e6fe`](https://github.com/enzymefinance/sdk/commit/6d3e6fed4314b26598b4793cbe51f9205efc7002) Thanks [@fubhy](https://github.com/fubhy)! - Publish build changes
+
 ## 0.0.12
 
 ### Patch Changes

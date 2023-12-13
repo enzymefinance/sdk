@@ -1,0 +1,52 @@
+import * as Abis from "@enzymefinance/abis";
+import type { Address, PublicClient } from "viem";
+import { Viem } from "../Utils.js";
+
+//--------------------------------------------------------------------------------------------
+// TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export function deploy(args: {
+  sharesSplitterFactory: Address;
+  addresses: Address[];
+  percentages: bigint[];
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.ISharesSplitterFactory,
+    functionName: "deploy",
+    address: args.sharesSplitterFactory,
+    args: [args.addresses, args.percentages],
+  });
+}
+
+export function claimToken(args: {
+  sharesSplitter: Address;
+  vaultProxy: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.ISharesSplitterLib,
+    functionName: "claimToken",
+    address: args.sharesSplitter,
+    args: [args.vaultProxy],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getClaimableTokenBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    splitter: Address;
+    token: Address;
+    user: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.ISharesSplitterLib,
+    address: args.splitter,
+    functionName: "getTokenBalClaimableForUser",
+    args: [args.user, args.token],
+  });
+}

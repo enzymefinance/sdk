@@ -1,9 +1,13 @@
 import { type PartialMessage, Timestamp } from "@bufbuild/protobuf";
-import { Currency, Deployment, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
+import { createQueryService, useTransport } from "@connectrpc/connect-query";
+import { Currency, Deployment, EnzymeService, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart, Card, Title } from "@tremor/react";
-import { enzyme } from "../client.js";
 import { Spinner } from "./Spinner.js";
+
+const enzyme = createQueryService({
+  service: EnzymeService,
+});
 
 // Start of day today and a year ago.
 const to = new Date(new Date().setUTCHours(0, 0, 0, 0));
@@ -19,8 +23,9 @@ const options: PartialMessage<GetVaultTimeSeriesRequest> = {
 };
 
 export function VaultPerformance({ address }: { address: string }) {
+  const transport = useTransport();
   const timeseries = useQuery({
-    ...enzyme.getVaultTimeSeries.useQuery({ ...options, address }),
+    ...enzyme.getVaultTimeSeries.createUseQueryOptions({ ...options, address }, { transport }),
     select: (data) => {
       return data.items.map((item) => ({
         ...item,

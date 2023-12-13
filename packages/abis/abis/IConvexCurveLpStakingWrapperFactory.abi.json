@@ -8,17 +8,7 @@
       },
       {
         "internalType": "address",
-        "name": "_convexBooster",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_crvToken",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_cvxToken",
+        "name": "_implementation",
         "type": "address"
       }
     ],
@@ -31,33 +21,21 @@
       {
         "indexed": false,
         "internalType": "address",
-        "name": "nextCanonicalLib",
+        "name": "implementation",
         "type": "address"
       }
     ],
-    "name": "CanonicalLibSet",
+    "name": "ImplementationSet",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "caller",
-        "type": "address"
-      },
-      {
         "indexed": false,
         "internalType": "address",
         "name": "proxy",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "bytes",
-        "name": "constructData",
-        "type": "bytes"
       }
     ],
     "name": "ProxyDeployed",
@@ -105,38 +83,6 @@
       }
     ],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_constructData",
-        "type": "bytes"
-      }
-    ],
-    "name": "deployProxy",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "proxy_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getCanonicalLib",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "canonicalLib_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -191,6 +137,19 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "implementation",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address[]",
@@ -207,11 +166,11 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_nextCanonicalLib",
+        "name": "_nextImplementation",
         "type": "address"
       }
     ],
-    "name": "setCanonicalLib",
+    "name": "setImplementation",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

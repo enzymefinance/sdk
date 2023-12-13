@@ -1,4 +1,4 @@
-import { createGrpcTransport } from "@bufbuild/connect-node";
+import { createConnectTransport } from "@connectrpc/connect-web";
 import { Currency, Deployment, createClient, withTokenAuth } from "@enzymefinance/api";
 import type { GrpcTransportOptions } from "./types.js";
 
@@ -13,7 +13,7 @@ if (address === undefined || !/^0x[0-9a-fA-F]{40}$/.test(address)) {
   throw new Error(`Expected address, got "${address}"`);
 }
 
-const transport = createGrpcTransport(
+const transport = createConnectTransport(
   withTokenAuth<GrpcTransportOptions>(token, {
     baseUrl: "https://api.enzyme.finance",
     httpVersion: "2",

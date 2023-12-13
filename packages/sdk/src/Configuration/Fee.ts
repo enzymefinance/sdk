@@ -1,0 +1,29 @@
+import * as Abis from "@enzymefinance/abis";
+import { Address, PublicClient } from "viem";
+import { Viem } from "../Utils.js";
+
+export {
+  Action,
+  encodeSettings,
+  decodeSettings,
+  type SettingsArgs,
+  payoutOutstandingFees,
+  type PayoutOutstandingFeesParams,
+  settleContinuousFees,
+  type SettleContinuousFeesParams,
+} from "../_internal/FeeManager.js";
+
+export function getRecipient(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    comptrollerProxy: Address;
+    fee: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IFee,
+    functionName: "getRecipientForFund",
+    args: [args.comptrollerProxy],
+    address: args.fee,
+  });
+}

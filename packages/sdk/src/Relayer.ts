@@ -1,6 +1,26 @@
 import * as Abis from "@enzymefinance/abis";
-import { Viem } from "@enzymefinance/sdk/Utils";
 import { type Address, type PublicClient, isAddressEqual, zeroAddress } from "viem";
+import { Viem } from "./Utils.js";
+
+//--------------------------------------------------------------------------------------------
+// TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export type DeployGasRelayPaymasterParams = {
+  comptrollerProxy: Address;
+};
+
+export function deployGasRelayPaymaster(args: DeployGasRelayPaymasterParams) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "deployGasRelayPaymaster",
+    address: args.comptrollerProxy,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
 
 export async function isRelayerEnabled(
   client: PublicClient,
@@ -17,15 +37,28 @@ export async function isRelayerEnabled(
   return !isAddressEqual(address, zeroAddress);
 }
 
-export function getRelayerBalance(
+export async function getGasRelayPaymaster(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: Abis.IGasRelayPaymasterLib,
+    abi: Abis.IComptrollerLib,
     address: args.comptrollerProxy,
+    functionName: "getGasRelayPaymaster",
+  });
+}
+
+export function getRelayerBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    gasRelayPaymaster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IGasRelayPaymasterLib,
+    address: args.gasRelayPaymaster,
     functionName: "getRelayHubDeposit",
   });
 }

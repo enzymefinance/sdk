@@ -13,27 +13,6 @@ jobs:
     uses: ./.github/workflows/reusable-verify.yaml
     secrets: inherit
 
-  snapshot:
-    needs: verify
-    name: Snapshot
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
-
-      - name: Publish snapshots
-        uses: seek-oss/changesets-snapshot@v0
-        with:
-          pre-publish: pnpm run build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
   changesets:
     name: Changesets
     runs-on: ubuntu-latest
@@ -49,7 +28,7 @@ jobs:
       - name: Manage changesets
         uses: changesets/action@v1
         with:
-          publish: pnpm run release
+          publish: pnpm release
           commit: 'chore: publish package(s)'
           title: 'chore: publish package(s)'
         env:
