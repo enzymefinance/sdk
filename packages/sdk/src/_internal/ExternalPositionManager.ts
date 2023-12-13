@@ -29,7 +29,7 @@ export type UseParams<TArgs> = {
   callArgs: TArgs;
 };
 
-export function makeUse(action: bigint): (args: UseParams<never>) => PopulatedExtensionCall;
+export function makeUse(action: bigint): (args: Omit<UseParams<never>, "callArgs">) => PopulatedExtensionCall;
 export function makeUse<TArgs>(
   action: bigint,
   encoder: (args: TArgs) => Hex,
