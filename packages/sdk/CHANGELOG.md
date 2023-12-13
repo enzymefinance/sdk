@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.9
+
+### Patch Changes
+
+- [#350](https://github.com/enzymefinance/sdk/pull/350) [`16479fc`](https://github.com/enzymefinance/sdk/commit/16479fcd9baeb564919348543cc01dfd3cbc0369) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add close trove to liquity
+
 ## 0.6.8
 
 ### Patch Changes
