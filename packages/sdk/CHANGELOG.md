@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.7
+
+### Patch Changes
+
+- [#347](https://github.com/enzymefinance/sdk/pull/347) [`f79e80d`](https://github.com/enzymefinance/sdk/commit/f79e80d01c45a92e125cb82a0819d6812ad5aba6) Thanks [@iherger](https://github.com/iherger)! - Add functions for gas relayer
+
 ## 0.6.6
 
 ### Patch Changes
