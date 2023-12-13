@@ -146,11 +146,7 @@ export type ClaimExitedAssetsArgs = {
 };
 
 export function claimExitedAssetsEncode(args: ClaimExitedAssetsArgs): Hex {
-  return encodeAbiParameters(claimExitedAssetsEncoding, [
-    args.stakeWiseVault,
-    args.positionTicket,
-    args.timestamp,
-  ]);
+  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVault, args.positionTicket, args.timestamp]);
 }
 
 export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
