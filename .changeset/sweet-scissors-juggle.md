@@ -2,4 +2,4 @@
 "@enzymefinance/sdk": patch
 ---
 
-Add convex and unpermissioned wrapper tools
+Add unpermissioned actions wrapper tools
