@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type PublicClient, isAddressEqual, zeroAddress } from "viem";
+import { type Address, type PublicClient, isAddressEqual, parseAbi, zeroAddress } from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -60,5 +60,33 @@ export function getRelayerBalance(
     abi: Abis.IGasRelayPaymasterLib,
     address: args.gasRelayPaymaster,
     functionName: "getRelayHubDeposit",
+  });
+}
+
+export function getTrustedForwarder(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    gasRelayPaymaster: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.IGasRelayPaymasterLib,
+    address: args.gasRelayPaymaster,
+    functionName: "trustedForwarder",
+  });
+}
+
+export function getNonce(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    trustedForwarder: Address;
+    sender: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function getNonce(address sender) view returns (uint256)"]),
+    address: args.trustedForwarder,
+    functionName: "getNonce",
+    args: [args.sender],
   });
 }
