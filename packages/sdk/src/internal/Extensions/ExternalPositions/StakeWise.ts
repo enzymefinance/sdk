@@ -132,22 +132,28 @@ const claimExitedAssetsEncoding = [
     name: "positionTicket",
     type: "uint256",
   },
+  {
+    name: "timestamp",
+    type: "uint256"
+  },
 ] as const;
 
 export type ClaimExitedAssetsArgs = {
   positionTicket: bigint;
   stakeWiseVaultAddress: Address;
+  timestamp: bigint;
 };
 
 export function claimExitedAssetsEncode(args: ClaimExitedAssetsArgs): Hex {
-  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVaultAddress, args.positionTicket]);
+  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVaultAddress, args.positionTicket, args.timestamp]);
 }
 
 export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
-  const [stakeWiseVaultAddress, positionTicket] = decodeAbiParameters(claimExitedAssetsEncoding, encoded);
+  const [stakeWiseVaultAddress, positionTicket, timestamp] = decodeAbiParameters(claimExitedAssetsEncoding, encoded);
 
   return {
     stakeWiseVaultAddress,
     positionTicket,
+    timestamp
   };
 }
