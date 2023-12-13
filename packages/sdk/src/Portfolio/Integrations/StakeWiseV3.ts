@@ -1,5 +1,4 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
-import { getBalanceOf } from "../../Asset.js";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -32,19 +31,19 @@ const stakeEncoding = [
 ] as const;
 
 export type StakeArgs = {
-  stakeWiseVaultAddress: Address;
+  stakeWiseVault: Address;
   assetAmount: bigint;
 };
 
 export function stakeEncode(args: StakeArgs): Hex {
-  return encodeAbiParameters(stakeEncoding, [args.stakeWiseVaultAddress, args.assetAmount]);
+  return encodeAbiParameters(stakeEncoding, [args.stakeWiseVault, args.assetAmount]);
 }
 
 export function stakeDecode(encoded: Hex): StakeArgs {
-  const [stakeWiseVaultAddress, assetAmount] = decodeAbiParameters(stakeEncoding, encoded);
+  const [stakeWiseVault, assetAmount] = decodeAbiParameters(stakeEncoding, encoded);
 
   return {
-    stakeWiseVaultAddress,
+    stakeWiseVault,
     assetAmount,
   };
 }
@@ -67,19 +66,19 @@ const redeemEncoding = [
 ] as const;
 
 export type RedeemArgs = {
-  stakeWiseVaultAddress: Address;
+  stakeWiseVault: Address;
   sharesAmount: bigint;
 };
 
 export function redeemEncode(args: RedeemArgs): Hex {
-  return encodeAbiParameters(redeemEncoding, [args.stakeWiseVaultAddress, args.sharesAmount]);
+  return encodeAbiParameters(redeemEncoding, [args.stakeWiseVault, args.sharesAmount]);
 }
 
 export function claimFeesDecode(encoded: Hex): RedeemArgs {
-  const [stakeWiseVaultAddress, sharesAmount] = decodeAbiParameters(redeemEncoding, encoded);
+  const [stakeWiseVault, sharesAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
   return {
-    stakeWiseVaultAddress,
+    stakeWiseVault,
     sharesAmount,
   };
 }
@@ -103,18 +102,18 @@ const enterExitQueueEncoding = [
 
 export type EnterExitQueueArgs = {
   sharesAmount: bigint;
-  stakeWiseVaultAddress: Address;
+  stakeWiseVault: Address;
 };
 
 export function enterExitQueueEncode(args: EnterExitQueueArgs): Hex {
-  return encodeAbiParameters(enterExitQueueEncoding, [args.stakeWiseVaultAddress, args.sharesAmount]);
+  return encodeAbiParameters(enterExitQueueEncoding, [args.stakeWiseVault, args.sharesAmount]);
 }
 
 export function enterExitQueueDecode(encoded: Hex): EnterExitQueueArgs {
-  const [stakeWiseVaultAddress, sharesAmount] = decodeAbiParameters(enterExitQueueEncoding, encoded);
+  const [stakeWiseVault, sharesAmount] = decodeAbiParameters(enterExitQueueEncoding, encoded);
 
   return {
-    stakeWiseVaultAddress,
+    stakeWiseVault,
     sharesAmount,
   };
 }
@@ -134,23 +133,29 @@ const claimExitedAssetsEncoding = [
     name: "positionTicket",
     type: "uint256",
   },
+  {
+    name: "timestamp",
+    type: "uint256",
+  },
 ] as const;
 
 export type ClaimExitedAssetsArgs = {
   positionTicket: bigint;
-  stakeWiseVaultAddress: Address;
+  stakeWiseVault: Address;
+  timestamp: bigint;
 };
 
 export function claimExitedAssetsEncode(args: ClaimExitedAssetsArgs): Hex {
-  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVaultAddress, args.positionTicket]);
+  return encodeAbiParameters(claimExitedAssetsEncoding, [args.stakeWiseVault, args.positionTicket, args.timestamp]);
 }
 
 export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
-  const [stakeWiseVaultAddress, positionTicket] = decodeAbiParameters(claimExitedAssetsEncoding, encoded);
+  const [stakeWiseVault, positionTicket, timestamp] = decodeAbiParameters(claimExitedAssetsEncoding, encoded);
 
   return {
-    stakeWiseVaultAddress,
+    stakeWiseVault,
     positionTicket,
+    timestamp,
   };
 }
 
@@ -158,19 +163,70 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
+export async function getVaultSharesBalance(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    account: Address;
+    stakeWiseVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function getShares(address _account) view returns (uint256 shares_)"]),
+    functionName: "getShares",
+    address: args.stakeWiseVault,
+    args: [args.account],
+  });
+}
+
 export async function getStakedEthBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     account: Address;
-    stakeWiseVaultAddress: Address;
+    stakeWiseVault: Address;
   }>,
 ) {
-  const sharesBalance = await getBalanceOf(client, { asset: args.stakeWiseVaultAddress, owner: args.account });
+  const sharesBalance = await getVaultSharesBalance(client, args);
 
   return Viem.readContract(client, args, {
     abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
     functionName: "convertToAssets",
-    address: args.stakeWiseVaultAddress,
+    address: args.stakeWiseVault,
     args: [sharesBalance],
+  });
+}
+
+export async function getStakePreview(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    account: Address;
+    stakeWiseVault: Address;
+    assetAmount: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToShares(uint256 _assets) view returns (uint256 shares_)"]),
+    functionName: "convertToShares",
+    address: args.stakeWiseVault,
+    args: [args.assetAmount],
+  });
+}
+
+export async function getClaimExitedAssetsPreview(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    exitQueueIndex: bigint;
+    positionTicket: bigint;
+    stakeWiseVault: Address;
+    receiver: Address;
+    timestamp: bigint;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi([
+      "function calculateExitedAssets(address _receiver, uint256 _positionTicket, uint256 _timestamp, uint256 _exitQueueIndex) view returns (uint256 leftShares_, uint256 claimedShares_, uint256 claimedAssets_)",
+    ]),
+    functionName: "calculateExitedAssets",
+    address: args.stakeWiseVault,
+    args: [args.receiver, args.positionTicket, args.timestamp, args.exitQueueIndex],
   });
 }
