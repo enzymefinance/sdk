@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.8
+
+### Patch Changes
+
+- [#349](https://github.com/enzymefinance/sdk/pull/349) [`8a61339`](https://github.com/enzymefinance/sdk/commit/8a61339cae35955f9cbcc8ff3475f0d1227664d7) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add unpermissioned actions wrapper tools
+
 ## 0.6.7
 
 ### Patch Changes
