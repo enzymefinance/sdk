@@ -256,7 +256,7 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
 // CLOSE TROVE
 //--------------------------------------------------------------------------------------------
 
-export const closeTrove = ExternalPositionManager.makeUse(Action.CloseTrove, () => "0x");
+export const closeTrove = ExternalPositionManager.makeUse(Action.CloseTrove);
 
 //--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS - TROVE MANAGER
