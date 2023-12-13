@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.10
+
+### Patch Changes
+
+- [#353](https://github.com/enzymefinance/sdk/pull/353) [`6736159`](https://github.com/enzymefinance/sdk/commit/673615951d3aa748b6800fe9f687b2c0a468a695) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Kiln add claim fees action
+
 ## 0.6.9
 
 ### Patch Changes
