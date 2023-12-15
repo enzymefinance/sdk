@@ -30,11 +30,11 @@
   },
   "peerDependencies": {
     "decimal.js": "^10.4.3",
-    "viem": "^1.19.11"
+    "viem": "^1.20.0"
   },
   "devDependencies": {
-    "@viem/anvil": "^0.0.6",
+    "@viem/anvil": "^0.0.7",
     "decimal.js": "^10.4.3",
-    "viem": "^1.19.11"
+    "viem": "^1.20.0"
   }
 }
