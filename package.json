@@ -30,10 +30,8 @@
     "vitest": "^1.0.4"
   },
   "pnpm": {
-    "overrides": {
-      "@enzymefinance/api": "workspace:^",
-      "@enzymefinance/abis": "workspace:^",
-      "@enzymefinance/sdk": "workspace:^"
+    "patchedDependencies": {
+      "@changesets/assemble-release-plan@6.0.0": "patches/@changesets__assemble-release-plan@6.0.0.patch"
     }
   }
 }

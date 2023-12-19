@@ -4,10 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@enzymefinance/api': workspace:^
-  '@enzymefinance/abis': workspace:^
-  '@enzymefinance/sdk': workspace:^
+patchedDependencies:
+  '@changesets/assemble-release-plan@6.0.0':
+    hash: efefrufcathrfopd2z6l62idva
+    path: patches/@changesets__assemble-release-plan@6.0.0.patch
 
 importers:
 
@@ -680,7 +680,7 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@changesets/assemble-release-plan@6.0.0:
+  /@changesets/assemble-release-plan@6.0.0(patch_hash=efefrufcathrfopd2z6l62idva):
     resolution: {integrity: sha512-4QG7NuisAjisbW4hkLCmGW2lRYdPrKzro+fCtZaILX+3zdUELSvYjpL4GTv0E4aM9Mef3PuIQp89VmHJ4y2bfw==}
     dependencies:
       '@babel/runtime': 7.23.5
@@ -690,6 +690,7 @@ packages:
       '@manypkg/get-packages': 1.1.3
       semver: 7.5.4
     dev: true
+    patched: true
 
   /@changesets/changelog-git@0.2.0:
     resolution: {integrity: sha512-bHOx97iFI4OClIT35Lok3sJAwM31VbUM++gnMBV16fdbtBhgYu4dxsphBF/0AZZsyAHMrnM0yFcj5gZM1py6uQ==}
@@ -713,7 +714,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.5
       '@changesets/apply-release-plan': 7.0.0
-      '@changesets/assemble-release-plan': 6.0.0
+      '@changesets/assemble-release-plan': 6.0.0(patch_hash=efefrufcathrfopd2z6l62idva)
       '@changesets/changelog-git': 0.2.0
       '@changesets/config': 3.0.0
       '@changesets/errors': 0.2.0
@@ -786,7 +787,7 @@ packages:
     resolution: {integrity: sha512-9L9xCUeD/Tb6L/oKmpm8nyzsOzhdNBBbt/ZNcjynbHC07WW4E1eX8NMGC5g5SbM5z/V+MOrYsJ4lRW41GCbg3w==}
     dependencies:
       '@babel/runtime': 7.23.5
-      '@changesets/assemble-release-plan': 6.0.0
+      '@changesets/assemble-release-plan': 6.0.0(patch_hash=efefrufcathrfopd2z6l62idva)
       '@changesets/config': 3.0.0
       '@changesets/pre': 2.0.0
       '@changesets/read': 0.6.0
