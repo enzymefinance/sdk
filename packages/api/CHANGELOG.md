@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.3.0
+
+### Minor Changes
+
+- [`1839737`](https://github.com/enzymefinance/sdk/commit/18397373cea3664330bf5621731c3785e9a9dcda) Thanks [@fubhy](https://github.com/fubhy)! - Updated dependencies
+
 ## 0.2.0
 
 ### Minor Changes
