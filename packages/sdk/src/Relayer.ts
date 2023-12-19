@@ -83,14 +83,22 @@ export const relayRequestTypes = {
 // TRANSACTIONS
 //--------------------------------------------------------------------------------------------
 
-export type DeployGasRelayPaymasterParams = {
+export function deployGasRelayPaymaster(args: {
   comptrollerProxy: Address;
-};
-
-export function deployGasRelayPaymaster(args: DeployGasRelayPaymasterParams) {
+}) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IComptrollerLib,
     functionName: "deployGasRelayPaymaster",
+    address: args.comptrollerProxy,
+  });
+}
+
+export function shutdownGasRelayPaymaster(args: {
+  comptrollerProxy: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "shutdownGasRelayPaymaster",
     address: args.comptrollerProxy,
   });
 }
