@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.6.13
+
+### Patch Changes
+
+- [#359](https://github.com/enzymefinance/sdk/pull/359) [`6952a60`](https://github.com/enzymefinance/sdk/commit/6952a6067517e0c6467d7feceb774b1230017503) Thanks [@iherger](https://github.com/iherger)! - Add function to shutdown gas relayer
+
 ## 0.6.12
 
 ### Patch Changes
