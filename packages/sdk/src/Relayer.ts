@@ -93,6 +93,16 @@ export function deployGasRelayPaymaster(args: {
   });
 }
 
+export function depositToGasRelayPaymaster(args: {
+  comptrollerProxy: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IComptrollerLib,
+    functionName: "depositToGasRelayPaymaster",
+    address: args.comptrollerProxy,
+  });
+}
+
 export function shutdownGasRelayPaymaster(args: {
   comptrollerProxy: Address;
 }) {
