@@ -25,16 +25,15 @@
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
-  "dependencies": {
-    "@enzymefinance/abis": "workspace:*"
-  },
   "peerDependencies": {
+    "@enzymefinance/abis": "workspace:^",
     "decimal.js": "^10.4.3",
     "viem": "^1.20.0"
   },
   "devDependencies": {
+    "@enzymefinance/abis": "workspace:^",
     "@viem/anvil": "^0.0.7",
     "decimal.js": "^10.4.3",
-    "viem": "^1.20.0"
+    "viem": "^1.20.2"
   }
 }

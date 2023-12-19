@@ -10,10 +10,10 @@
     "@bufbuild/protobuf": "^1.6.0",
     "@connectrpc/connect-node": "^1.2.0",
     "@connectrpc/connect-web": "^1.2.0",
-    "@enzymefinance/api": "workspace:*"
+    "@enzymefinance/api": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.5",
     "tsx": "^4.6.2",
     "typescript": "^5.3.3"
   }
