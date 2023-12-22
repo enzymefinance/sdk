@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.1
+
+### Patch Changes
+
+- [#362](https://github.com/enzymefinance/sdk/pull/362) [`1a32dcb`](https://github.com/enzymefinance/sdk/commit/1a32dcb54baf8705b29b50ef91a0d89be8abb499) Thanks [@iherger](https://github.com/iherger)! - Remove unicode nulls for maker symbol/name
+
 ## 0.7.0
 
 ### Minor Changes
