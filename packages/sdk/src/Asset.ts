@@ -63,7 +63,7 @@ export async function getName(
         address: args.asset,
       });
 
-      return hexToString(name);
+      return hexToString(name).replace(/(?:\u{0000})*$/, "");
     }
 
     throw error;
@@ -93,7 +93,7 @@ export async function getSymbol(
         address: args.asset,
       });
 
-      return hexToString(symbol);
+      return hexToString(symbol).replace(/(?:\u{0000})*$/, "");
     }
 
     throw error;
