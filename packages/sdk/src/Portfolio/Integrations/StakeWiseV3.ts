@@ -74,7 +74,7 @@ export function redeemEncode(args: RedeemArgs): Hex {
   return encodeAbiParameters(redeemEncoding, [args.stakeWiseVault, args.sharesAmount]);
 }
 
-export function claimFeesDecode(encoded: Hex): RedeemArgs {
+export function redeemDecode(encoded: Hex): RedeemArgs {
   const [stakeWiseVault, sharesAmount] = decodeAbiParameters(redeemEncoding, encoded);
 
   return {
