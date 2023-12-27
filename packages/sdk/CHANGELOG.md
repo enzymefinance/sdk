@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.2
+
+### Patch Changes
+
+- [#364](https://github.com/enzymefinance/sdk/pull/364) [`0a82c7e`](https://github.com/enzymefinance/sdk/commit/0a82c7e9ee1058e4ada8451fbe1c617044344440) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Adjust naming of redeemDecode
+
 ## 0.7.1
 
 ### Patch Changes
