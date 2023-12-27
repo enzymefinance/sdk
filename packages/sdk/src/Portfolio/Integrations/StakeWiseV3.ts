@@ -22,7 +22,7 @@ export const createAndStake = ExternalPositionManager.makeCreateAndUse(Action.St
 const stakeEncoding = [
   {
     type: "address",
-    name: "stakeWiseVaultAddress",
+    name: "stakeWiseVault",
   },
   {
     name: "assetAmount",
@@ -57,7 +57,7 @@ export const redeem = ExternalPositionManager.makeUse(Action.Redeem, redeemEncod
 const redeemEncoding = [
   {
     type: "address",
-    name: "stakeWiseVaultAddress",
+    name: "stakeWiseVault",
   },
   {
     name: "shareAmount",
@@ -92,7 +92,7 @@ export const enterExitQueue = ExternalPositionManager.makeUse(Action.EnterExitQu
 const enterExitQueueEncoding = [
   {
     type: "address",
-    name: "stakeWiseVaultAddress",
+    name: "stakeWiseVault",
   },
   {
     name: "sharesAmount",
@@ -127,7 +127,7 @@ export const claimExitedAssets = ExternalPositionManager.makeUse(Action.ClaimExi
 const claimExitedAssetsEncoding = [
   {
     type: "address",
-    name: "stakeWiseVaultAddress",
+    name: "stakeWiseVault",
   },
   {
     name: "positionTicket",
