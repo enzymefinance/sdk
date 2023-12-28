@@ -1,4 +1,4 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 import type { Types } from "../Utils.js";
 import { type PopulatedExtensionCall, callExtension } from "./Extensions.js";
 
@@ -86,7 +86,7 @@ export function makeCreateAndUse<TArgs>(action: bigint, encoder?: (args: TArgs) 
       callArgs: callEncode({
         actionId: action,
         actionArgs: encoded,
-        externalPositionProxy: "0x",
+        externalPositionProxy: zeroAddress,
       }),
     });
   };
