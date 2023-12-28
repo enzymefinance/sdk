@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.3
+
+### Patch Changes
+
+- [#366](https://github.com/enzymefinance/sdk/pull/366) [`9f09c41`](https://github.com/enzymefinance/sdk/commit/9f09c410fa4771db5c4b9ad414e4843d444d4149) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix zeroAddress encoding in ExternalPositionManager
+
 ## 0.7.2
 
 ### Patch Changes
