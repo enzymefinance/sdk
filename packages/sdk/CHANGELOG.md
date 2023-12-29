@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.4
+
+### Patch Changes
+
+- [#368](https://github.com/enzymefinance/sdk/pull/368) [`dbab17b`](https://github.com/enzymefinance/sdk/commit/dbab17b0bdf691102fb2b12e2ee87b1ad36e2ff4) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add StakeWise external calls
+
 ## 0.7.3
 
 ### Patch Changes
