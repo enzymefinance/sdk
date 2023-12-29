@@ -239,9 +239,7 @@ export async function getExitQueueIndex(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi([
-      "function getExitQueueIndex(uint256 _positionTicket) view returns (int256 exitQueueIndex_)",
-    ]),
+    abi: parseAbi(["function getExitQueueIndex(uint256 _positionTicket) view returns (int256 exitQueueIndex_)"]),
     functionName: "getExitQueueIndex",
     address: args.stakeWiseVault,
     args: [args.positionTicket],
@@ -256,9 +254,7 @@ export async function isHarvestRequired(
   }>,
 ) {
   return Viem.readContract(client, args, {
-    abi: parseAbi([
-      "function isHarvestRequired(address _vault) view returns (bool harvestRequired_)",
-    ]),
+    abi: parseAbi(["function isHarvestRequired(address _vault) view returns (bool harvestRequired_)"]),
     functionName: "isHarvestRequired",
     address: args.keeperRewards,
     args: [args.stakeWiseVault],
