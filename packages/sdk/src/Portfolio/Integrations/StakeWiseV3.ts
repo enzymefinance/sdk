@@ -230,3 +230,37 @@ export async function getClaimExitedAssetsPreview(
     args: [args.receiver, args.positionTicket, args.timestamp, args.exitQueueIndex],
   });
 }
+
+export async function getExitQueueIndex(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    positionTicket: bigint;
+    stakeWiseVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi([
+      "function getExitQueueIndex(uint256 _positionTicket) view returns (int256 exitQueueIndex_)",
+    ]),
+    functionName: "getExitQueueIndex",
+    address: args.stakeWiseVault,
+    args: [args.positionTicket],
+  });
+}
+
+export async function isHarvestRequired(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    keeperRewards: Address;
+    stakeWiseVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi([
+      "function isHarvestRequired(address _vault) view returns (bool harvestRequired_)",
+    ]),
+    functionName: "isHarvestRequired",
+    address: args.keeperRewards,
+    args: [args.stakeWiseVault],
+  });
+}
