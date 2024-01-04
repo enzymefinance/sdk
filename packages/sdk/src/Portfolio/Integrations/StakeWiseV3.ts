@@ -246,6 +246,21 @@ export async function getExitQueueIndex(
   });
 }
 
+export async function isCollateralized(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    keeperRewards: Address;
+    stakeWiseVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function isCollateralized(address _vault) view returns (bool isCollateralized_)"]),
+    functionName: "isCollateralized",
+    address: args.keeperRewards,
+    args: [args.stakeWiseVault]
+  });
+}
+
 export async function isHarvestRequired(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
