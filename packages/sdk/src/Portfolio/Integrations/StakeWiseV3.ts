@@ -257,7 +257,7 @@ export async function isCollateralized(
     abi: parseAbi(["function isCollateralized(address _vault) view returns (bool isCollateralized_)"]),
     functionName: "isCollateralized",
     address: args.keeperRewards,
-    args: [args.stakeWiseVault]
+    args: [args.stakeWiseVault],
   });
 }
 
