@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.5
+
+### Patch Changes
+
+- [#370](https://github.com/enzymefinance/sdk/pull/370) [`78bfe98`](https://github.com/enzymefinance/sdk/commit/78bfe98f0d541fdaaaaf865ce62e2e25cc3c8761) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add isCollateralized method to external calls
+
 ## 0.7.4
 
 ### Patch Changes
