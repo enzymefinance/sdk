@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.6
+
+### Patch Changes
+
+- [#372](https://github.com/enzymefinance/sdk/pull/372) [`c81904b`](https://github.com/enzymefinance/sdk/commit/c81904b51429ee52220e81bef7a3116c31ab2d44) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add convertToAssets external call for StakeWise
+
 ## 0.7.5
 
 ### Patch Changes
