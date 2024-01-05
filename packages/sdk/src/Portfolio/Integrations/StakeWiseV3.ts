@@ -163,6 +163,21 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
+export async function convertSharesToAssets(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    sharesAmount: bigint;
+    stakeWiseVault: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
+    functionName: "convertToAssets",
+    address: args.stakeWiseVault,
+    args: [args.sharesAmount],
+  });
+}
+
 export async function getVaultSharesBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
@@ -186,13 +201,7 @@ export async function getStakedEthBalance(
   }>,
 ) {
   const sharesBalance = await getVaultSharesBalance(client, args);
-
-  return Viem.readContract(client, args, {
-    abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
-    functionName: "convertToAssets",
-    address: args.stakeWiseVault,
-    args: [sharesBalance],
-  });
+  return convertSharesToAssets(client, { sharesAmount: sharesBalance, stakeWiseVault: args.stakeWiseVault });
 }
 
 export async function getStakePreview(
