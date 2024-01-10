@@ -1,6 +1,14 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, ContractFunctionExecutionError, type PublicClient, hexToString, parseAbi } from "viem";
+import {
+  type Address,
+  ContractFunctionExecutionError,
+  type PublicClient,
+  bytesToString,
+  hexToBytes,
+  parseAbi,
+} from "viem";
 import { Viem } from "./Utils.js";
+import { removeTrailingZeros } from "./Utils/bytes.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS
@@ -63,7 +71,9 @@ export async function getName(
         address: args.asset,
       });
 
-      return hexToString(name).replace(/(?:\u{0000})*$/, "");
+      const bytes = hexToBytes(name);
+
+      return bytesToString(removeTrailingZeros(bytes));
     }
 
     throw error;
@@ -93,7 +103,9 @@ export async function getSymbol(
         address: args.asset,
       });
 
-      return hexToString(symbol).replace(/(?:\u{0000})*$/, "");
+      const bytes = hexToBytes(symbol);
+
+      return bytesToString(removeTrailingZeros(bytes));
     }
 
     throw error;

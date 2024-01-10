@@ -8,13 +8,13 @@
   },
   "dependencies": {
     "@bufbuild/protobuf": "^1.6.0",
-    "@connectrpc/connect-node": "^1.2.0",
-    "@connectrpc/connect-web": "^1.2.0",
-    "@enzymefinance/api": "workspace:^"
+    "@connectrpc/connect-node": "^1.3.0",
+    "@connectrpc/connect-web": "^1.3.0",
+    "@enzymefinance/api": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.10.5",
-    "tsx": "^4.6.2",
+    "@types/node": "^20.10.8",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3"
   }
 }
