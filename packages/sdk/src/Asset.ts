@@ -8,6 +8,7 @@ import {
   parseAbi,
 } from "viem";
 import { Viem } from "./Utils.js";
+import { removeTrailingZeros } from "./Utils/bytes.js";
 
 //--------------------------------------------------------------------------------------------
 // TRANSACTIONS
@@ -70,18 +71,9 @@ export async function getName(
         address: args.asset,
       });
 
-      const bytesName = hexToBytes(name);
+      const bytes = hexToBytes(name);
 
-      // remove trailing zero bytes
-      let length = bytesName.length - 1;
-      for (let i = length; i >= 0; i--) {
-        if (bytesName[i] !== 0) {
-          break;
-        }
-        length = i;
-      }
-
-      return bytesToString(bytesName.length !== length ? bytesName.slice(0, length) : bytesName);
+      return bytesToString(removeTrailingZeros(bytes));
     }
 
     throw error;
@@ -111,18 +103,9 @@ export async function getSymbol(
         address: args.asset,
       });
 
-      const bytesSymbol = hexToBytes(symbol);
+      const bytes = hexToBytes(symbol);
 
-      // remove trailing zero bytes
-      let length = bytesSymbol.length - 1;
-      for (let i = length; i >= 0; i--) {
-        if (bytesSymbol[i] !== 0) {
-          break;
-        }
-        length = i;
-      }
-
-      return bytesToString(bytesSymbol.length !== length ? bytesSymbol.slice(0, length) : bytesSymbol);
+      return bytesToString(removeTrailingZeros(bytes));
     }
 
     throw error;

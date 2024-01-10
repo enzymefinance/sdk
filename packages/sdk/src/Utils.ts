@@ -1,6 +1,7 @@
 export * as Address from "./Utils/address.js";
 export * as Assertion from "./Utils/assertion.js";
 export * as BI from "./Utils/bigint.js";
+export * as Bytes from "./Utils/bytes.js";
 export * as Constants from "./Utils/constants.js";
 export * as Conversion from "./Utils/conversion.js";
 export * as Rates from "./Utils/rates.js";
