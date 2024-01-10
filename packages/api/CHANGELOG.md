@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.3.1
+
+### Patch Changes
+
+- [#374](https://github.com/enzymefinance/sdk/pull/374) [`df06bfc`](https://github.com/enzymefinance/sdk/commit/df06bfc477bcf397c769e5ea58a7640fba34604d) Thanks [@iherger](https://github.com/iherger)! - MKR name and symbol fix
+
 ## 0.3.0
 
 ### Minor Changes
