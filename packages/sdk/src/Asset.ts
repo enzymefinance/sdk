@@ -1,5 +1,12 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, ContractFunctionExecutionError, type PublicClient, hexToString, parseAbi } from "viem";
+import {
+  type Address,
+  ContractFunctionExecutionError,
+  type PublicClient,
+  bytesToString,
+  hexToBytes,
+  parseAbi,
+} from "viem";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -63,7 +70,18 @@ export async function getName(
         address: args.asset,
       });
 
-      return hexToString(name).replace(/(?:\u{0000})*$/, "");
+      const bytesName = hexToBytes(name);
+
+      // remove trailing zero bytes
+      let length = bytesName.length - 1;
+      for (let i = length; i >= 0; i--) {
+        if (bytesName[i] !== 0) {
+          break;
+        }
+        length = i;
+      }
+
+      return bytesToString(bytesName.length !== length ? bytesName.slice(0, length) : bytesName);
     }
 
     throw error;
@@ -93,7 +111,18 @@ export async function getSymbol(
         address: args.asset,
       });
 
-      return hexToString(symbol).replace(/(?:\u{0000})*$/, "");
+      const bytesSymbol = hexToBytes(symbol);
+
+      // remove trailing zero bytes
+      let length = bytesSymbol.length - 1;
+      for (let i = length; i >= 0; i--) {
+        if (bytesSymbol[i] !== 0) {
+          break;
+        }
+        length = i;
+      }
+
+      return bytesToString(bytesSymbol.length !== length ? bytesSymbol.slice(0, length) : bytesSymbol);
     }
 
     throw error;

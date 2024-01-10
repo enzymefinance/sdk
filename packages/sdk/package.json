@@ -26,14 +26,14 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "peerDependencies": {
-    "@enzymefinance/abis": "workspace:^",
+    "@enzymefinance/abis": "workspace:*",
     "decimal.js": "^10.4.3",
     "viem": "^1.20.0"
   },
   "devDependencies": {
-    "@enzymefinance/abis": "workspace:^",
+    "@enzymefinance/abis": "workspace:*",
     "@viem/anvil": "^0.0.7",
     "decimal.js": "^10.4.3",
-    "viem": "^1.20.2"
+    "viem": "^1.21.4"
   }
 }
