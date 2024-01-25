@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.8
+
+### Patch Changes
+
+- [#376](https://github.com/enzymefinance/sdk/pull/376) [`2473ff0`](https://github.com/enzymefinance/sdk/commit/2473ff0e59843e1df1154d24f4cf9a4b952f0714) Thanks [@iherger](https://github.com/iherger)! - Add priceless asset bypass functions
+
 ## 0.7.7
 
 ### Patch Changes
