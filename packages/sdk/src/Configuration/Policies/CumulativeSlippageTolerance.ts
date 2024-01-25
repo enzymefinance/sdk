@@ -107,31 +107,3 @@ export async function getCurrentCumulativeSlippage(
     configuredTolerance,
   };
 }
-
-export function getPricelessAssetBypassTimeLimit(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    cumulativeSlippageTolerancePolicy: Address;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: Abis.ICumulativeSlippageTolerancePolicy,
-    functionName: "getPricelessAssetBypassTimeLimit",
-    address: args.cumulativeSlippageTolerancePolicy,
-  });
-}
-
-getPricelessAssetBypassTimelock;
-
-export function getPricelessAssetBypassTimelock(
-  client: PublicClient,
-  args: Viem.ContractCallParameters<{
-    cumulativeSlippageTolerancePolicy: Address;
-  }>,
-) {
-  return Viem.readContract(client, args, {
-    abi: Abis.ICumulativeSlippageTolerancePolicy,
-    functionName: "getPricelessAssetBypassTimelock",
-    address: args.cumulativeSlippageTolerancePolicy,
-  });
-}
