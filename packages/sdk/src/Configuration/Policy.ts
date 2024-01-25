@@ -37,6 +37,10 @@ export function getIdentifier(
   });
 }
 
+//--------------------------------------------------------------------------------------------
+// METHODS FOR POLICIES THAT USE ADDRESS LISTS
+//--------------------------------------------------------------------------------------------
+
 const getListIdsForFundAbi = {
   inputs: [
     {
@@ -69,5 +73,35 @@ export function getListIds(
     functionName: "getListIdsForFund",
     args: [args.comptrollerProxy],
     address: args.policyContract,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
+// METHODS FOR POLICIES THAT USE PRICELESS ASSET BYPASS
+//--------------------------------------------------------------------------------------------
+
+export function getPricelessAssetBypassTimeLimit(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    policy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.ICumulativeSlippageTolerancePolicy,
+    functionName: "getPricelessAssetBypassTimeLimit",
+    address: args.policy,
+  });
+}
+
+export function getPricelessAssetBypassTimelock(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    policy: Address;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: Abis.ICumulativeSlippageTolerancePolicy,
+    functionName: "getPricelessAssetBypassTimelock",
+    address: args.policy,
   });
 }
