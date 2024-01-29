@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.9
+
+### Patch Changes
+
+- [#378](https://github.com/enzymefinance/sdk/pull/378) [`0f3a059`](https://github.com/enzymefinance/sdk/commit/0f3a05922ea26c4b85e6fbd53bdc815442be6ced) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add uniswap v3 get pool
+
 ## 0.7.8
 
 ### Patch Changes
