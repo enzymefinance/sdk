@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -526,4 +526,21 @@ export async function getPendingFees(
   });
 
   return { pendingFees0, pendingFees1 };
+}
+
+export function getPool(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    factory: Address;
+    tokenA: Address;
+    tokenB: Address;
+    fee: number;
+  }>,
+) {
+  return Viem.readContract(client, args, {
+    abi: parseAbi(["function getPool(address,address,uint24) view returns (address)"]),
+    functionName: "getPool",
+    address: args.factory,
+    args: [args.tokenA, args.tokenB, args.fee],
+  });
 }
