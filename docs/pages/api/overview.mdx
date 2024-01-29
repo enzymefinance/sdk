@@ -1,1 +1,16 @@
 # Enzyme API - Overview
+
+The Enzyme API is a gRPC API.
+
+## Quick Start
+
+Using curl:
+
+```bash
+curl -X POST \
+-H "content-type: application/json" \
+-H "authorization: Bearer <API_TOKEN>" \
+-H "connect-protocol-version: 1" \
+-d '{"address": "0x1b83ba4527c837d462d5b78d65a097dabae5ea89"}' \
+https://api.enzyme.finance/enzyme.enzyme.v1.EnzymeService/GetVault
+```
