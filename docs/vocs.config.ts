@@ -1,12 +1,12 @@
 import { defineConfig } from "vocs";
 
 export default defineConfig({
-  title: "Enzyme API/SDK",
-  rootDir: "src",
+  title: "Enzyme Finance",
+  rootDir: ".",
   sidebar: [
     {
       text: "Overview",
-      link: "/",
+      link: "/overview",
     },
     {
       text: "Getting Started",
