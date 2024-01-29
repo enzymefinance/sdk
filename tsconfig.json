@@ -3,6 +3,7 @@
   "references": [
     { "path": "./packages/sdk" },
     { "path": "./packages/abis" },
-    { "path": "./packages/api" }
+    { "path": "./packages/api" },
+    { "path": "./docs" }
   ]
 }
