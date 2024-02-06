@@ -20,6 +20,22 @@ export default defineConfig({
           text: "Overview",
           link: "/api/overview",
         },
+        {
+          text: "Vault",
+          link: "/api/vault",
+        },
+        {
+          text: "Depositor",
+          link: "/api/depositor",
+        },
+        {
+          text: "Manager",
+          link: "/api/manager",
+        },
+        {
+          text: "Network",
+          link: "/api/network",
+        },
       ],
     },
     {
@@ -29,6 +45,19 @@ export default defineConfig({
         {
           text: "Overview",
           link: "/sdk/overview",
+        },
+        {
+          text: "Depositor Actions",
+          items: [
+            {
+              text: "Deposit",
+              link: "/sdk/depositor/deposit",
+            },
+            {
+              text: "Withdraw",
+              link: "/sdk/depositor/withdraw",
+            },
+          ],
         },
       ],
     },
