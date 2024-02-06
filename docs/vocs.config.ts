@@ -9,10 +9,6 @@ export default defineConfig({
       link: "/overview",
     },
     {
-      text: "Getting Started",
-      link: "/getting-started",
-    },
-    {
       text: "API",
       collapsed: false,
       items: [

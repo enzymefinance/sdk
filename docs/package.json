@@ -8,8 +8,10 @@
     "preview": "vocs preview"
   },
   "dependencies": {
+    "@enzymefinance/sdk": "workspace:^",
     "react": "latest",
     "react-dom": "latest",
+    "viem": "^1.21.4",
     "vocs": "latest"
   }
 }
