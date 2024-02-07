@@ -17,20 +17,25 @@ export default defineConfig({
           link: "/api/overview",
         },
         {
-          text: "Vault",
-          link: "/api/vault",
-        },
-        {
-          text: "Depositor",
-          link: "/api/depositor",
-        },
-        {
-          text: "Manager",
-          link: "/api/manager",
-        },
-        {
-          text: "Network",
-          link: "/api/network",
+          text: "Endpoints",
+          items: [
+            {
+              text: "Vault",
+              link: "/api/endpoints/vault",
+            },
+            {
+              text: "Depositor",
+              link: "/api/endpoints/depositor",
+            },
+            {
+              text: "Manager",
+              link: "/api/endpoints/manager",
+            },
+            {
+              text: "Network",
+              link: "/api/endpoints/network",
+            },
+          ],
         },
       ],
     },
@@ -41,6 +46,10 @@ export default defineConfig({
         {
           text: "Overview",
           link: "/sdk/overview",
+        },
+        {
+          text: "Contract Addresses",
+          link: "/sdk/contract-addresses",
         },
         {
           text: "Depositor Actions",

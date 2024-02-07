@@ -1,1 +1,61 @@
 # Deposit into an Enzyme vault
+
+Depositing into an Enzyme vault is a two step process:
+1. Approve the ComptrollerProxy of the vault to spend a certain amount of denomination asset tokens
+2. Send a deposit transaction to the ComptrollerProxy.
+
+## 1. Approve spending
+
+```ts 
+import { Asset } from "@enzymefinance/sdk";
+import { encodeFunctionData, parseUnits } from "viem";
+
+const denominationAsset = "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270";
+const comptrollerProxy = "0x4a8207bffcd7e92aa32df2efb9505e9b403b93ea"; 
+
+const approve = Asset.approve({ 
+    asset: denominationAsset, 
+    amount: parseUnits("1", 18), 
+    spender: comptrollerProxy
+});
+
+await walletClient.sendTransaction({
+    to: approve.params.address,
+    data: encodeFunctionData(approve.params)
+})
+```
+
+## 2. Deposit
+
+Depositing the approved amount into the vault.
+
+```ts
+import { Depositor } from "@enzymefinance/sdk";
+
+const denominationAsset = "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270";
+const comptrollerProxy = "0x4a8207bffcd7e92aa32df2efb9505e9b403b93ea"; 
+const depositor = "0xb5680c97357e455dcdc11646bd8c8876e2cc2bb7";
+
+const deposit = Depositor.deposit({
+    comptrollerProxy,
+    amount: parseUnits("1", 18),
+    depositor,
+    minSharesQuantity: 1n;
+})
+```
+
+For simplicity, we have set `minSharesQuantity` to 1 wei shares. For security reasons, we should set it to a more realistic amount. 
+
+The expected number of shares for a given deposit can be obtained with the `getExpectedSharesForDeposit` function, and then allowing for some slippage (e.g. 1%).
+
+```ts
+import { Depositor } from "@enzymefinance/sdk";
+
+const expectedNumberOfShares = Depositor.getExpectedSharesForDeposit({
+    comptrollerProxy,
+    amount: parseUnits("1", 18),
+    depositor,
+});
+
+const minSharesQuantity = expectedNumberOfShares * 99 / 100;
+```

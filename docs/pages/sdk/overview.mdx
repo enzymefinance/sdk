@@ -22,7 +22,7 @@ yarn add @enzymefinance/sdk viem@1
 
 Create a public client (see also the [Public Client](https://viem.sh/docs/client/public)) to be able to make on-chain calls.
 
-```ts twoslash
+```ts 
 import { createPublicClient, http } from "viem";
 import { polygon } from "viem/chains";
 
@@ -34,7 +34,7 @@ const publicClient = createPublicClient({  // [!code focus]
 
 Create a wallet client (see also [Wallet Client](https://viem.sh/docs/clients/wallet)) to be able to send transactions.
 
-```ts twoslash
+```ts 
 // @noErrors
 import { createWalletClient, http } from "viem";
 import { polygon } from "viem/chains";
@@ -52,7 +52,7 @@ const walletClient = createWalletClient({ // [!code focus]
 
 Use the public client to make on-chain calls.
 
-```ts twoslash
+```ts 
 import { createPublicClient, http } from "viem";
 import { polygon } from "viem/chains";
 import { Vault } from "@enzymefinance/sdk";
@@ -67,9 +67,9 @@ const name = await Vault.getName(client, {  // [!code focus]
 }); // [!code focus]
 ```
 
-Use the wallet client to send a transaction
+Use the wallet client to send a transaction.
 
-```ts twoslash
+```ts 
 // @noErrors
 import { createWalletClient, http, Hex, encodeFunctionData } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
