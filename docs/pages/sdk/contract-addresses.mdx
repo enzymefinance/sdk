@@ -1,0 +1,23 @@
+# Contract Addresses
+
+In order to use the Enzyme SDK, you will need addresses of certain contracts (depending on the interaction).
+
+## General Addresses
+
+Addresses for the Enzyme deployments are available here:
+
+- [Ethereum](https://docs.enzyme.finance/developers/contracts/mainnet)
+- [Polygon](https://docs.enzyme.finance/developers/contracts/polygon)
+
+
+## Vault-Specific Addresses
+
+To interact with a specific vault, you will need two contract addresses that define the vault:
+
+- **VaultProxy**:  this is the main unchangable smart contract for a vault. You can best find the address of the VaultProxy in the URL of the Enzyme app.
+- **ComptrollerProxy**: this is the secondary, changable smart contract for a vault. 
+  It is different for each release and for each reconfiguration within a release. 
+  You can best find it by going to the VaultProxy in the network explorer, and then call the `getAccessor` function. 
+ Alternatively, you can obtain it from the `GetVault` endpoint with the Enzyme API.
+
+Since both the VaultProxy and the ComptrollerProxy are proxy contracts, you might need to use the "Is this a proxy?" function in the network explorer.

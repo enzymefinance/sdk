@@ -1,0 +1,36 @@
+# Enzyme API - Overview
+
+The Enzyme API is a gRPC API.
+
+In order to use the Enzyme API, you will need an API key. API keys can be generated within the Enzyme App, https://app.enzyme.finance/account/api-tokens
+
+The Enzyme API gathers information from various datasources:
+- Enzyme Subgraphs
+- On-chain data
+- Various off-chain datasources managed by Enzyme Finance (e.g. vault descriptions and vault performance data)
+
+## Quick Start
+
+Enzyme provides an API client package [@enzymefinance/api](https://www.npmjs.com/package/@enzymefinance/api) which you can import into your JavaScript/TypeScript project. The client package runs both in the browser and in a node.js environment.
+
+```bash
+pnpm add @enzymefinance/api
+```
+
+Client packages for other languages can be downloaded directly from the Buf Schema Registry at https://buf.build/avantgardefinance/enzyme/assets/main
+
+We have built two simple examples on how to use the Enzyme client packages to get you started:
+
+- Example browser usage: https://github.com/enzymefinance/sdk/tree/main/examples/example-api-web
+- Example node usage: https://github.com/enzymefinance/sdk/tree/main/examples/example-api-node
+
+If you cannot make use of the API client package, you can also send standard HTTP requests. A sample request looks as follows:
+
+```bash
+curl -X POST \
+-H "content-type: application/json" \
+-H "authorization: Bearer <API_TOKEN>" \
+-H "connect-protocol-version: 1" \
+-d '{"address": "0x1b83ba4527c837d462d5b78d65a097dabae5ea89"}' \
+https://api.enzyme.finance/enzyme.enzyme.v1.EnzymeService/GetVault
+```
