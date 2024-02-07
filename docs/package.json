@@ -13,5 +13,8 @@
     "react-dom": "latest",
     "viem": "^1.21.4",
     "vocs": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.8"
   }
 }

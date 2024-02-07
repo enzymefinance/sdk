@@ -9,44 +9,94 @@ To use the Enzyme SDK, add [@enzymefinance/sdk]() to your TypeScript project:
 :::code-group
 
 ```bash [pnpm]
-pnpm add @enzymefinance/sdk viem
+pnpm add @enzymefinance/sdk viem@1
 ```
 
 ```bash [yarn]
-yarn add @enzymefinance/sdk viem
+yarn add @enzymefinance/sdk viem@1
 ```
 
 :::
 
 ### 1. Set up Viem
 
-Create a public client (see the [viem documentation](https://viem.sh/docs/getting-started) for more details).
+Create a public client (see also the [Public Client](https://viem.sh/docs/client/public)) to be able to make on-chain calls.
 
 ```ts twoslash
 import { createPublicClient, http } from "viem";
-import { mainnet } from "viem/chains";
+import { polygon } from "viem/chains";
 
-const client = createPublicClient({ // [!code focus]
-  chain: mainnet, // [!code focus]
+const publicClient = createPublicClient({  // [!code focus]
+  chain: polygon, // [!code focus]
+  transport: http(), // [!code focus]
+}); // [!code focus]
+```
+
+Create a wallet client (see also [Wallet Client](https://viem.sh/docs/clients/wallet)) to be able to send transactions.
+
+```ts twoslash
+// @noErrors
+import { createWalletClient, http } from "viem";
+import { polygon } from "viem/chains";
+
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex); // [!code focus]
+
+const walletClient = createWalletClient({ // [!code focus]
+  account, // [!code focus]
+  chain: polygon, // [!code focus]
   transport: http(), // [!code focus]
 }); // [!code focus]
 ```
 
 ### 2. Use the Enzyme SDK
 
-Use the public client to load on-chain data with the SDK.
+Use the public client to make on-chain calls.
 
 ```ts twoslash
 import { createPublicClient, http } from "viem";
-import { mainnet } from "viem/chains";
-import { Vault } from "@enzymefinance/sdk"
+import { polygon } from "viem/chains";
+import { Vault } from "@enzymefinance/sdk";
 
-const client = createPublicClient({ 
-  chain: mainnet, 
-  transport: http(), 
-}); 
+const client = createPublicClient({
+  chain: polygon,
+  transport: http(),
+});
 
-const name = await Vault.getName(client, { // [!code focus]
-  vaultProxy: "0x1ce8aafb51e79f6bdc0ef2ebd6fd34b00620f6db" // [!code focus]
+const name = await Vault.getName(client, {  // [!code focus]
+  vaultProxy: "0xbdf7a07fdbd44aa00eeeb55e655c43fccb932ab2", // [!code focus]
 }); // [!code focus]
+```
+
+Use the wallet client to send a transaction
+
+```ts twoslash
+// @noErrors
+import { createWalletClient, http, Hex, encodeFunctionData } from "viem";
+import { privateKeyToAccount } from "viem/accounts";
+import { polygon } from "viem/chains";
+import { Portfolio } from "@enzymefinance/sdk"; // [!code focus]
+
+const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
+
+const comptrollerProxy = "0x4a8207bffcd7e92aa32df2efb9505e9b403b93ea";
+const integrationManager = "0x92fcde09790671cf085864182b9670c77da0884b";
+
+const walletClient = createWalletClient({
+  account,
+  chain: polygon,
+  transport: http(),
+});
+
+const transaction = Portfolio.removeTracketAssets({  // [!code focus]
+  removeAssets: ["0x1a13f4ca1d028320a707d99520abfefca3998b7f"], // [!code focus]
+  comptrollerProxy, // [!code focus]
+  integrationManager, // [!code focus]
+});
+
+const transactionResult = await walletClient.sendTransaction({ // [!code focus]
+  to: transaction.params.address,// [!code focus]
+  data: encodeFunctionData(transaction.params),// [!code focus]
+});// [!code focus]
+
+console.log("transaction hash: ", transactionResult);
 ```
