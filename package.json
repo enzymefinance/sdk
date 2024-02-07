@@ -9,7 +9,7 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --build tsconfig.json",
-    "documentation": "pnpm run --filter @enzymefinance/api-sdk-documentation dev",
+    "documentation": "pnpm run --filter @enzymefinance/docs dev",
     "format": "biome format --write . && biome check --apply-unsafe .",
     "lint": "biome check ."
   },
