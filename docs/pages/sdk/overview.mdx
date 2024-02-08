@@ -35,7 +35,6 @@ const publicClient = createPublicClient({  // [!code focus]
 Create a wallet client (see also [Wallet Client](https://viem.sh/docs/clients/wallet)) to be able to send transactions.
 
 ```ts 
-// @noErrors
 import { createWalletClient, http } from "viem";
 import { polygon } from "viem/chains";
 
@@ -53,50 +52,27 @@ const walletClient = createWalletClient({ // [!code focus]
 Use the public client to make on-chain calls.
 
 ```ts 
-import { createPublicClient, http } from "viem";
-import { polygon } from "viem/chains";
-import { Vault } from "@enzymefinance/sdk";
+import { Vault } from "@enzymefinance/sdk"; 
 
-const client = createPublicClient({
-  chain: polygon,
-  transport: http(),
-});
-
-const name = await Vault.getName(client, {  // [!code focus]
-  vaultProxy: "0xbdf7a07fdbd44aa00eeeb55e655c43fccb932ab2", // [!code focus]
+const name = await Vault.getName(publicClient, {  // [!code focus]
+  vaultProxy, // [!code focus]
 }); // [!code focus]
 ```
 
-Use the wallet client to send a transaction.
+Use the wallet client to send a transaction. The Enzyme SDK provides properly typed functions for 
+all transaction within the Enzyme protocol.
 
 ```ts 
-// @noErrors
-import { createWalletClient, http, Hex, encodeFunctionData } from "viem";
-import { privateKeyToAccount } from "viem/accounts";
-import { polygon } from "viem/chains";
-import { Portfolio } from "@enzymefinance/sdk"; // [!code focus]
-
-const account = privateKeyToAccount(process.env.PRIVATE_KEY as Hex);
-
-const comptrollerProxy = "0x4a8207bffcd7e92aa32df2efb9505e9b403b93ea";
-const integrationManager = "0x92fcde09790671cf085864182b9670c77da0884b";
-
-const walletClient = createWalletClient({
-  account,
-  chain: polygon,
-  transport: http(),
-});
+import { Portfolio } from "@enzymefinance/sdk";
 
 const transaction = Portfolio.removeTracketAssets({  // [!code focus]
   removeAssets: ["0x1a13f4ca1d028320a707d99520abfefca3998b7f"], // [!code focus]
   comptrollerProxy, // [!code focus]
   integrationManager, // [!code focus]
-});
+}); // [!code focus]
 
-const transactionResult = await walletClient.sendTransaction({ // [!code focus]
-  to: transaction.params.address,// [!code focus]
-  data: encodeFunctionData(transaction.params),// [!code focus]
-});// [!code focus]
+const transactionResult = // [!code focus]
+  await walletClient.sendTransaction(transaction.params); // [!code focus]
 
 console.log("transaction hash: ", transactionResult);
 ```

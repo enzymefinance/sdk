@@ -52,6 +52,19 @@ export default defineConfig({
           link: "/sdk/contract-addresses",
         },
         {
+          text: "Vault Lifecycle",
+          items: [
+            {
+              text: "Create",
+              link: "/sdk/vault-lifecycle/create-new",
+            },
+            {
+              text: "Reconfigure",
+              link: "/sdk/vault-lifecycle/reconfigure",
+            },
+          ],
+        },
+        {
           text: "Depositor Actions",
           items: [
             {
@@ -59,8 +72,8 @@ export default defineConfig({
               link: "/sdk/depositor/deposit",
             },
             {
-              text: "Withdraw",
-              link: "/sdk/depositor/withdraw",
+              text: "Redeem",
+              link: "/sdk/depositor/redeem",
             },
           ],
         },

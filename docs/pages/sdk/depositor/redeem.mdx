@@ -1,0 +1,60 @@
+# Reedem Shares
+
+There are two kind of redemptions:
+- Specific Assets Redemptions: the depositor receives the value of their shares in one or several assets
+- In-kind redemptions: the depositor receives a slice of all assets in the vault
+
+## Specific Assets Redemption
+
+```ts
+import { Depositor } from "@enzymefinance/sdk";
+
+const redemption = Depositor.redeemSharesForSpecificAssets({
+    comptrollerProxy,
+    recipient,
+    sharesQuantity,
+    payoutAssets,
+    payoutPercentages,
+});
+
+await walletClient.sendTransaction(redemption.params);
+```
+
+| Parameter | Description |
+| ----------- | ----------- |
+| `comptrollerProxy` | Address of comptrollerProxy |
+| `recipient` | Address of the recipient of the redemption. Typically, this is the depositor. |
+| `sharesQuantity` | Number of shares (18 decimals) |
+| `payoutAssets` | List of asset addresses |
+| `payoutPercentages` | List of payout percentages (in bps) |
+
+
+## In-Kind Redemption
+
+
+```ts
+import { Depositor } from "@enzymefinance/sdk";
+
+const redemption = Depositor.redeemSharesInKind({
+    comptrollerProxy,
+    recipient,
+    sharesQuantity,
+    additionalAssets,
+    assetsToSkip,
+});
+
+await walletClient.sendTransaction(redemption.params);
+```
+
+| Parameter | Description |
+| ----------- | ----------- |
+| `comptrollerProxy` | Address of comptrollerProxy |
+| `recipient` | Address of the recipient of the redemption. Typically, this is the depositor. |
+| `sharesQuantity` | Number of shares (18 decimals) |
+| `additionalAssets` | List of additional asset addresses (i.e. assets that the vault owns, but that are not tracked by the vault)|
+| `assetsToSkip` | List of assets to skip (e.g. because they cannot be transferred) |
+
+:::warning
+In-kind redemptions should only be used for vaults without external positions. External positions cannot be split up, 
+and depositors will therefore not receive their pro-rate share of an external position.
+:::
