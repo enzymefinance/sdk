@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.7.10
+
+### Patch Changes
+
+- [#383](https://github.com/enzymefinance/sdk/pull/383) [`73f678c`](https://github.com/enzymefinance/sdk/commit/73f678cf925b51387ef718ec8a2443ea67d80213) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Swell external call
+
 ## 0.7.9
 
 ### Patch Changes
