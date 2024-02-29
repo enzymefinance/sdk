@@ -3,6 +3,7 @@ import { defineConfig } from "vocs";
 export default defineConfig({
   title: "Enzyme Finance",
   rootDir: ".",
+  basePath: "/sdk",
   sidebar: [
     {
       text: "Overview",
