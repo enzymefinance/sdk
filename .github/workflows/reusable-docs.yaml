@@ -8,10 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v3
+      - name: Clone repository
+        uses: actions/checkout@v4
       - name: Install dependencies
-        uses: ./.github/actions/setup
-      - run: pnpm run --filter docs build
+        uses: ./.github/actions/install-dependencies
+      - name: Build documentation
+        run: pnpm run --filter docs build
       - name: Upload pages artifact
         if: github.repository_owner == 'enzymefinance' && github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v2
@@ -31,5 +33,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy pages artifact
         uses: actions/deploy-pages@v2
