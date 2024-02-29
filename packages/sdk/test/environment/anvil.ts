@@ -31,20 +31,32 @@ export type TestEnvironment = {
   constants: Constants;
 };
 
-export type TestSend = <TFunctionName extends string, TAbi extends Abi>(
+export type TestSend = <
+  TAbi extends Abi,
+  TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+    TAbi,
+    "payable" | "nonpayable"
+  >,
+>(
   params: TestSendParams<TAbi, TFunctionName>,
 ) => Promise<TestSendReturnType<TAbi, TFunctionName>>;
 
 export type TestSendParams<
   TAbi extends Abi = Abi,
-  TFunctionName extends string = string,
+  TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+    TAbi,
+    "payable" | "nonpayable"
+  >,
 > = Utils.Viem.PopulatedTransactionSimulateParams & {
   transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
 };
 
 export type TestSendReturnType<
   TAbi extends Abi = Abi,
-  TFunctionName extends string = string,
+  TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+    TAbi,
+    "payable" | "nonpayable"
+  >,
 > = SimulateContractReturnType<TAbi, TFunctionName> & {
   hash: Hash;
   receipt: ExtractChainFormatterReturnType<Chain, "transactionReceipt", TransactionReceipt>;
@@ -106,6 +118,10 @@ export function createSetup({
       transaction: Utils.Viem.PopulatedTransaction<TAbi, TFunctionName>;
     }): Promise<TestSendReturnType<TAbi, TFunctionName>> => {
       const { request, result } = await transaction.simulate(client, params);
+
+      if (request.account === undefined) {
+        throw new Error("Account is required for sending transactions.");
+      }
 
       // We simply pretend that the simulation is always correct. This is not going to work outside of a pristine, isolated, test environment.
       const hash = await anvil.sendUnsignedTransaction({
