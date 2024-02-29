@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as Curve from "./Curve.js";
@@ -281,7 +282,8 @@ export async function convertCrvToCvx(
     amount: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: [cvxMiningAbi],
     address: args.cvxMining,
     functionName: "ConvertCrvToCvx",
@@ -356,7 +358,8 @@ export async function getVoteLockedBalances(
     positionAddress: Address;
   }>,
 ) {
-  const [total, unlockable, locked, balancesData] = await Viem.readContract(client, args, {
+  const [total, unlockable, locked, balancesData] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxLockerV2Abi,
     address: args.voteLockedConvexToken,
     functionName: "lockedBalances",
@@ -384,7 +387,8 @@ export async function getClaimableRewards(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxLockerV2Abi,
     address: args.voteLockedConvexToken,
     functionName: "claimableRewards",
@@ -400,7 +404,8 @@ export async function getUserLocks(
     lockNumber: bigint;
   }>,
 ) {
-  const [amount, boosted, unlockTime] = await Viem.readContract(client, args, {
+  const [amount, boosted, unlockTime] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxLockerV2Abi,
     address: args.voteLockedConvexToken,
     functionName: "userLocks",
@@ -476,7 +481,8 @@ export async function getPoolInfo(
     pid: bigint;
   }>,
 ) {
-  const [lptoken, token, gauge, crvRewards, stash, shutdown] = await Viem.readContract(client, args, {
+  const [lptoken, token, gauge, crvRewards, stash, shutdown] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: boosterAbi,
     functionName: "poolInfo",
     address: args.booster,
@@ -492,7 +498,8 @@ export async function getLockIncentive(
     booster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: boosterAbi,
     functionName: "lockIncentive",
     address: args.booster,
@@ -505,7 +512,8 @@ export async function getStakerIncentive(
     booster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: boosterAbi,
     functionName: "stakerIncentive",
     address: args.booster,
@@ -518,7 +526,8 @@ export async function getEarmarkIncentive(
     booster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: boosterAbi,
     functionName: "earmarkIncentive",
     address: args.booster,
@@ -531,7 +540,8 @@ export async function getPlatformFee(
     booster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: boosterAbi,
     functionName: "platformFee",
     address: args.booster,
@@ -574,7 +584,8 @@ export async function getRewards(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxCrvRewards,
     functionName: "rewards",
     address: args.cvxCrvRewards,
@@ -589,7 +600,8 @@ export async function getExtraRewardsLength(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxCrvRewards,
     functionName: "extraRewardsLength",
     address: args.cvxCrvRewards,
@@ -603,7 +615,8 @@ export async function getExtraRewards(
     id: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cvxCrvRewards,
     functionName: "extraRewards",
     address: args.cvxCrvRewards,
@@ -622,7 +635,8 @@ export async function getExtraRewardsRewards(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function rewards(address user) view returns (uint256)"]),
     functionName: "rewards",
     address: args.cvxCrvExtraRewards,
@@ -636,7 +650,8 @@ export async function getExtraRewardsRewardToken(
     cvxCrvExtraRewards: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function rewardToken() view returns (address)"]),
     functionName: "rewardToken",
     address: args.cvxCrvExtraRewards,
@@ -656,7 +671,8 @@ export async function getEstimateRewards(
 ) {
   const {
     result: [rewardTokens, claimedAmounts],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IConvexCurveLpStakingWrapperLib,
     functionName: "claimRewardsFor",
     address: args.stakingWrapper,

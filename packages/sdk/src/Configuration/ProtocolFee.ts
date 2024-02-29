@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { Address, PublicClient } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -45,7 +46,8 @@ export function getProtocolFeeRate(
     protocolFeeTracker: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IProtocolFeeTracker,
     functionName: "getFeeBpsForVault",
     address: args.protocolFeeTracker,
@@ -60,7 +62,8 @@ export async function getAccruedProtocolFee(
     protocolFeeTracker: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IProtocolFeeTracker,
     functionName: "payFee",
     address: args.protocolFeeTracker,
@@ -76,7 +79,8 @@ export function doesAutoProtocolFeeSharesBuyback(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "doesAutoProtocolFeeSharesBuyback",
     address: args.comptrollerProxy,
@@ -95,12 +99,14 @@ export async function getMlnValueAndBurnAmountForSharesBuyback(
   }>,
 ) {
   const [sharesSupply, { result: gav }] = await Promise.all([
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IVaultLib,
       functionName: "totalSupply",
       address: args.vaultProxy,
     }),
-    Viem.simulateContract(client, args, {
+    simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IComptrollerLib,
       functionName: "calcGav",
       address: args.comptrollerProxy,
@@ -109,7 +115,8 @@ export async function getMlnValueAndBurnAmountForSharesBuyback(
 
   const denominationValue = (gav * args.buybackSharesAmount) / sharesSupply;
 
-  const { result: mlnValueOfBuyback } = await Viem.simulateContract(client, args, {
+  const { result: mlnValueOfBuyback } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IValueInterpreter,
     functionName: "calcCanonicalAssetValue",
     address: args.valueInterpreter,

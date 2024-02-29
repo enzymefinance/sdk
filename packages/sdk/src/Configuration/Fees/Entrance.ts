@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import { readContract } from "viem/actions";
 import { type Types, Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -104,7 +105,8 @@ export async function getRate(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IEntranceRateBurnFee,
     functionName: "getRateForFund",
     args: [args.comptrollerProxy],

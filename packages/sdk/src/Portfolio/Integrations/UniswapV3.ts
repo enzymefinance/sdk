@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -419,7 +420,8 @@ export async function getSlot0(
     observationCardinalityNext,
     feeProtocol,
     unlocked,
-  ] = await Viem.readContract(client, args, {
+  ] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: v3PoolAbi,
     functionName: "slot0",
     address: args.pool,
@@ -442,7 +444,8 @@ export function getLiquidity(
     pool: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: v3PoolAbi,
     functionName: "liquidity",
     address: args.pool,
@@ -518,7 +521,8 @@ export async function getPendingFees(
 ) {
   const {
     result: [pendingFees0, pendingFees1],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: nonFungiblePositionManagerAbi,
     functionName: "collect",
     address: args.nonFungiblePositionManager,
@@ -537,7 +541,8 @@ export function getPool(
     fee: number;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getPool(address,address,uint24) view returns (address)"]),
     functionName: "getPool",
     address: args.factory,

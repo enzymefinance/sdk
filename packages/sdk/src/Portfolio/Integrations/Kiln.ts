@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -170,7 +171,8 @@ export async function getCLFeeRecipient(
     validatorPublicKey: Hex;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getCLFeeRecipient(bytes calldata _publicKey) external view returns (address)"]),
     functionName: "getCLFeeRecipient",
     address: args.kilnStaking,
@@ -185,7 +187,8 @@ export async function getELFeeRecipient(
     validatorPublicKey: Hex;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getELFeeRecipient(bytes calldata _publicKey) external view returns (address)"]),
     functionName: "getELFeeRecipient",
     address: args.kilnStaking,
@@ -199,7 +202,8 @@ export async function getGlobalFee(
     kilnStaking: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getGlobalFee() external view returns (uint256 globalFee_)"]),
     functionName: "getGlobalFee",
     address: args.kilnStaking,

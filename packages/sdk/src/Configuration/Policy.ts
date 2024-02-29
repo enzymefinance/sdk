@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { readContract } from "viem/actions";
 import { getEnabledPolicies } from "../Configuration.js";
 import { Viem } from "../Utils.js";
 
@@ -30,7 +31,8 @@ export function getIdentifier(
     policy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IPolicy,
     functionName: "identifier",
     address: args.policy,
@@ -68,7 +70,8 @@ export function getListIds(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: [getListIdsForFundAbi],
     functionName: "getListIdsForFund",
     args: [args.comptrollerProxy],
@@ -86,7 +89,8 @@ export function getPricelessAssetBypassTimeLimit(
     policy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.ICumulativeSlippageTolerancePolicy,
     functionName: "getPricelessAssetBypassTimeLimit",
     address: args.policy,
@@ -99,7 +103,8 @@ export function getPricelessAssetBypassTimelock(
     policy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.ICumulativeSlippageTolerancePolicy,
     functionName: "getPricelessAssetBypassTimelock",
     address: args.policy,

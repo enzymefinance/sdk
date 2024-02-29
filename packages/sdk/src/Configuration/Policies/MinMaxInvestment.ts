@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, maxUint256 } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
 const settingsEncoding = [
@@ -73,7 +74,8 @@ export function getSettings(
     minMaxInvestmentPolicy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IMinMaxInvestmentPolicy,
     functionName: "getFundSettings",
     args: [args.comptrollerProxy],

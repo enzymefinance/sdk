@@ -7,6 +7,7 @@ import {
   parseAbi,
   parseAbiParameters,
 } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Types, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -338,7 +339,8 @@ export async function getMinterRewards(
     gauge: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: minterAbi,
     functionName: "mint",
     address: args.minter,
@@ -374,7 +376,8 @@ export async function getClaimableRewards(
     rewardToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: gaugeAbi,
     functionName: "claimable_reward",
     address: args.gauge,
@@ -411,7 +414,8 @@ export async function queryBatchSwap(
     funds: BatchSwapFunds;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi([
       "function queryBatchSwap(uint8 kind, (bytes32 poolId, uint256 assetInIndex, uint256 assetOutIndex, uint256 amount, bytes userData)[] memory swaps, address[] memory assets, (address sender, bool fromInternalBalance, address payable recipient, bool toInternalBalance) memory funds) external view returns (int256[] memory assetDeltas)",
     ]),

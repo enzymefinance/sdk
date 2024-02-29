@@ -1,4 +1,5 @@
 import { Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -126,7 +127,8 @@ export function getLastCheckpointIndex(
     lidoWithdrawalsQueue: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: lidoWithdrawalsQueueAbi,
     functionName: "getLastCheckpointIndex",
     address: args.lidoWithdrawalsQueue,
@@ -142,7 +144,8 @@ export function findCheckpointHints(
     lastIndex: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: lidoWithdrawalsQueueAbi,
     functionName: "findCheckpointHints",
     address: args.lidoWithdrawalsQueue,
@@ -157,7 +160,8 @@ export async function getWithdrawalStatus(
     requestIds: ReadonlyArray<bigint>;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: lidoWithdrawalsQueueAbi,
     functionName: "getWithdrawalStatus",
     address: args.lidoWithdrawalsQueue,

@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -330,7 +331,8 @@ export async function getPool(
     poolAddressProvider: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: poolAddressProviderAbi,
     functionName: "getPool",
     address: args.poolAddressProvider,
@@ -367,7 +369,8 @@ export async function getEModeCategoryData(
     categoryId: number;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: poolAbi,
     functionName: "getEModeCategoryData",
     address: args.pool,

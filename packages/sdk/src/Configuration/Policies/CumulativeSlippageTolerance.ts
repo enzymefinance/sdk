@@ -1,6 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { multicall } from "viem/contract";
+import { multicall, readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
 const settingsEncoding = [
@@ -51,7 +51,8 @@ export function getInfo(
     cumulativeSlippageTolerancePolicy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.ICumulativeSlippageTolerancePolicy,
     functionName: "getPolicyInfoForFund",
     args: [args.comptrollerProxy],

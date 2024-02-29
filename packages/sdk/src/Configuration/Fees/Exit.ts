@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -113,7 +114,8 @@ export async function getInKindRate(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExitRateBurnFee,
     functionName: "getInKindRateForFund",
     args: [args.comptrollerProxy],
@@ -128,7 +130,8 @@ export async function getSpecificAssetsRate(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExitRateBurnFee,
     functionName: "getSpecificAssetsRateForFund",
     args: [args.comptrollerProxy],

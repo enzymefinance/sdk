@@ -28,12 +28,12 @@
   "peerDependencies": {
     "@enzymefinance/abis": "workspace:*",
     "decimal.js": "^10.4.3",
-    "viem": "^1.20.0"
+    "viem": "^2.7.16"
   },
   "devDependencies": {
     "@enzymefinance/abis": "workspace:*",
     "@viem/anvil": "^0.0.7",
     "decimal.js": "^10.4.3",
-    "viem": "^1.21.4"
+    "viem": "^2.7.16"
   }
 }

@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, type PublicClient } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";
 import { Assertion } from "./Utils.js";
@@ -14,7 +15,8 @@ export function getSharesActionTimelock(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     address: args.comptrollerProxy,
     functionName: "getSharesActionTimelock",
@@ -28,7 +30,8 @@ export function getLastSharesBoughtTimestamp(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "getLastSharesBoughtTimestampForAccount",
     address: args.comptrollerProxy,
@@ -44,7 +47,8 @@ export async function getExpectedSharesForDeposit(
     depositor: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "buyShares",
     address: args.comptrollerProxy,
@@ -87,7 +91,8 @@ export async function getSpecificAssetsRedemptionExpectedAmounts(
   client: PublicClient,
   args: Viem.ContractCallParameters<RedeemSharesForSpecificAssetsParams>,
 ) {
-  const { result: payoutAmounts } = await Viem.simulateContract(client, args, {
+  const { result: payoutAmounts } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "redeemSharesForSpecificAssets",
     address: args.comptrollerProxy,
@@ -153,7 +158,8 @@ export async function getExpectedSharesForNativeTokenDeposit(
   client: PublicClient,
   args: Viem.ContractCallParameters<NativeDepositArgs & { depositor: Address }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IDepositWrapper,
     address: args.depositWrapper,
     functionName: "exchangeEthAndBuyShares",
@@ -207,7 +213,8 @@ export async function getExpectedSharesForSharesWrapperDeposit(
     }
   >,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
     functionName: "deposit",
     address: args.sharesWrapper,
@@ -301,7 +308,8 @@ export async function isAllowedDepositor(
     return true;
   }
 
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IAllowedDepositRecipientsPolicy,
     functionName: "passesRule",
     address: args.allowedDepositRecipientsPolicy,

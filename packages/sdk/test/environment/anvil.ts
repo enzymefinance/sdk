@@ -4,6 +4,7 @@ import {
   http,
   Abi,
   type Chain,
+  ContractFunctionName,
   ExtractChainFormatterReturnType,
   Hash,
   PublicClient,
@@ -92,7 +93,13 @@ export function createSetup({
       transport,
     });
 
-    const send = async <TAbi extends Abi, TFunctionName extends string>({
+    const send = async <
+      TAbi extends Abi,
+      TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+        TAbi,
+        "payable" | "nonpayable"
+      >,
+    >({
       transaction,
       ...params
     }: Utils.Viem.PopulatedTransactionSimulateParams & {

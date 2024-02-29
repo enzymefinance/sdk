@@ -1,4 +1,5 @@
 import type { Address, PublicClient } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
 // delegates are only for ethereum
@@ -62,25 +63,29 @@ export async function getDelegatees(
   const votingPowerType = 0;
 
   const [compDelegatee, uniDelegatee, aaveDelegatee, stkaaveDelegatee] = await Promise.all([
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: [tokenDaoDelegatesAbi],
       functionName: "delegates",
       address: COMP,
       args: [args.vaultProxy],
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: [tokenDaoDelegatesAbi],
       functionName: "delegates",
       address: UNI,
       args: [args.vaultProxy],
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: [tokenDaoDelegateeByTypeAbi],
       functionName: "getDelegateeByType",
       address: AAVE,
       args: [args.vaultProxy, votingPowerType],
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: [tokenDaoDelegateeByTypeAbi],
       functionName: "getDelegateeByType",
       address: STKAAVE,

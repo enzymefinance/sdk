@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -162,7 +163,8 @@ export async function getUtilization(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cometAbi,
     functionName: "getUtilization",
     address: args.asset,
@@ -176,7 +178,8 @@ export async function getSupplyRate(
     utilization: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cometAbi,
     functionName: "getSupplyRate",
     address: args.asset,
@@ -190,7 +193,8 @@ export async function getTotalSupply(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cometAbi,
     functionName: "totalSupply",
     address: args.asset,
@@ -203,7 +207,8 @@ export async function getBaseTrackingSupplySpeed(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cometAbi,
     functionName: "baseTrackingSupplySpeed",
     address: args.asset,
@@ -218,7 +223,8 @@ export async function getRewardOwed(
     user: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cometRewardsAbi,
     functionName: "getRewardOwed",
     address: args.cometRewards,

@@ -11,6 +11,7 @@ import {
   parseEther,
   parseUnits,
 } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Constants, Rates, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -608,7 +609,8 @@ export async function getBestPrice(
     weth: Address;
   }>,
 ) {
-  const curveSwaps = await Viem.readContract(client, args, {
+  const curveSwaps = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: [curveRegistryAbi],
     functionName: "get_address",
     address: CURVE_REGISTRY,
@@ -628,26 +630,25 @@ export async function getBestPrice(
   const amount = amountReceived;
   const price = amount / args.quantity;
 
-  let poolName;
   try {
     // not all pools support this method, this is why we need to catch the error
-    poolName = await client.readContract({
+    const poolName = await client.readContract({
       abi: [erc20Abi],
       address: bestPool,
       functionName: "name",
     });
+
+    return {
+      amount,
+      poolName,
+      pool: bestPool,
+      price,
+    };
   } catch (error) {
     if (!(error instanceof ContractFunctionExecutionError)) {
       throw error;
     }
   }
-
-  return {
-    amount,
-    poolName,
-    pool: bestPool,
-    price,
-  };
 }
 
 const calcWithdrawOneCoinAbi = {
@@ -673,7 +674,8 @@ export async function isSingleAssetRedemptionAllowed(
   const tokenIndex = 0n;
 
   try {
-    await Viem.readContract(client, args, {
+    await readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: [calcWithdrawOneCoinAbi],
       functionName: "calc_withdraw_one_coin",
       address: args.pool,
@@ -701,7 +703,8 @@ export async function getExpectedGaugeTokens(
     `function calc_token_amount(uint256[${args.tokenAmounts.length}] _amounts, bool _is_deposit) returns (uint256)`,
   ] as const);
 
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi,
     functionName: "calc_token_amount",
     address: args.curvePool,
@@ -754,12 +757,13 @@ export async function getExpectedWithdrawalTokens(
   }>,
 ) {
   let singleTokenAllowed = true;
-  let expectedSingleToken;
+  let expectedSingleToken: bigint | undefined;
 
   // Some curve pools don't allow to withdraw single token.
   // We try to determine here which ones allows that.
   try {
-    expectedSingleToken = await Viem.readContract(client, args, {
+    expectedSingleToken = await readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: curvePoolAbi,
       functionName: "calc_withdraw_one_coin",
       address: args.curvePool,
@@ -777,7 +781,8 @@ export async function getExpectedWithdrawalTokens(
   // Curve pools has different balances interface, some of them expect input as uint256, and some int128.
   // We try to determine here which one is the particular curve pool.
   try {
-    await Viem.readContract(client, args, {
+    await readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: parseAbi([balancesUint256Signature]),
       functionName: "balances",
       address: args.curvePool,
@@ -805,7 +810,8 @@ export async function getExpectedWithdrawalTokens(
   // Withdrawing in all assets (in "equal amounts")
   const denormalizedBalances = await Promise.all(
     Array.from({ length: numberOfCoins }, (_, index) => {
-      return Viem.readContract(client, args, {
+      return readContract(client, {
+        ...Viem.extractBlockParameters(args),
         abi: parseAbi([
           isBalancesUint256 ? balancesUint256Signature : "function balances(int128 i) view returns(uint256)",
         ]),
@@ -825,7 +831,8 @@ export async function getExpectedWithdrawalTokens(
     return balance * parseUnits("1", decimalsDelta);
   });
 
-  const lpTokenSupply = await Viem.readContract(client, args, {
+  const lpTokenSupply = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: lpTokenAbi,
     functionName: "totalSupply",
     address: args.lpToken,
@@ -860,7 +867,8 @@ export async function getClaimableTokens(
     user: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function claimable_tokens(address addr) nonpayable returns (uint256)"]),
     functionName: "claimable_tokens",
     address: args.curveGauge,
@@ -882,7 +890,8 @@ export async function isAllowedToMintFor(
     adapter: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function allowed_to_mint_for(address args0, address arg1) payable returns (bool)"]),
     functionName: "allowed_to_mint_for",
     address: args.curveMinter,

@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { Address, PublicClient } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
 export {
@@ -20,7 +21,8 @@ export function getRecipient(
     fee: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFee,
     functionName: "getRecipientForFund",
     args: [args.comptrollerProxy],

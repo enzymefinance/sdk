@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -291,7 +292,8 @@ export async function getRewardsBalance(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: aaveIncentivesControllerAbi,
     functionName: "getRewardsBalance",
     address: args.aaveIncentivesController,
@@ -306,7 +308,8 @@ export async function getUserUnclaimedRewards(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: aaveIncentivesControllerAbi,
     functionName: "getUserUnclaimedRewards",
     address: args.aaveIncentivesController,

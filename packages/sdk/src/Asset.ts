@@ -7,6 +7,7 @@ import {
   hexToBytes,
   parseAbi,
 } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 import { removeTrailingZeros } from "./Utils/bytes.js";
 
@@ -55,7 +56,8 @@ export async function getName(
   }>,
 ) {
   try {
-    const name = await Viem.readContract(client, args, {
+    const name = await readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: parseAbi(["function name() view returns (string)"]),
       functionName: "name",
       address: args.asset,
@@ -65,7 +67,8 @@ export async function getName(
   } catch (error) {
     if (error instanceof ContractFunctionExecutionError) {
       // TODO: Once `viem` exports the `SliceOutOfBoundsError` class, we should use that here too (`error.cause`).
-      const name = await Viem.readContract(client, args, {
+      const name = await readContract(client, {
+        ...Viem.extractBlockParameters(args),
         abi: parseAbi(["function name() view returns (bytes32)"]),
         functionName: "name",
         address: args.asset,
@@ -87,7 +90,8 @@ export async function getSymbol(
   }>,
 ) {
   try {
-    const symbol = await Viem.readContract(client, args, {
+    const symbol = await readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: parseAbi(["function symbol() view returns (string)"]),
       functionName: "symbol",
       address: args.asset,
@@ -97,7 +101,8 @@ export async function getSymbol(
   } catch (error) {
     if (error instanceof ContractFunctionExecutionError) {
       // TODO: Once `viem` exports the `SliceOutOfBoundsError` class, we should use that here too (`error.cause`).
-      const symbol = await Viem.readContract(client, args, {
+      const symbol = await readContract(client, {
+        ...Viem.extractBlockParameters(args),
         abi: parseAbi(["function symbol() view returns (bytes32)"]),
         functionName: "symbol",
         address: args.asset,
@@ -119,7 +124,8 @@ export function getBalanceOf(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function balanceOf(address account) view returns (uint256)"]),
     functionName: "balanceOf",
     address: args.asset,
@@ -154,7 +160,8 @@ export function getAllowance(
     spender: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function allowance(address, address) view returns (uint256)"]),
     functionName: "allowance",
     address: args.asset,
@@ -168,7 +175,8 @@ export function getDecimals(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function decimals() view returns (uint)"]),
     functionName: "decimals",
     address: args.asset,
@@ -181,7 +189,8 @@ export function getTotalSupply(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function totalSupply() view returns (uint)"]),
     functionName: "totalSupply",
     address: args.asset,
@@ -197,7 +206,8 @@ export async function getCanonicalValue(
     amount: bigint;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IValueInterpreter,
     functionName: "calcCanonicalAssetValue",
     address: args.valueInterpreter,
