@@ -526,7 +526,14 @@ export async function getPendingFees(
     abi: nonFungiblePositionManagerAbi,
     functionName: "collect",
     address: args.nonFungiblePositionManager,
-    args: [args.params],
+    args: [
+      {
+        amount0Max: args.params.amount0Max,
+        amount1Max: args.params.amount1Max,
+        recipient: args.params.recipient,
+        tokenId: args.params.tokenId,
+      },
+    ],
   });
 
   return { pendingFees0, pendingFees1 };
