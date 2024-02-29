@@ -1,0 +1,61 @@
+# Reconfigure a Vault
+
+A vault can be reconfigured within a given release. During a reconfiguration, fees and/or policies can be added and/or removed.
+
+Vault reconfiguration is a two-step process:
+1. Create a reconfiguration request
+2. Execute the reconfiguration (after a waiting period of 7 days)
+
+## 1. Create a Reconfiguration request
+
+
+```ts
+import { LifeCycle } from "@enzymefinance/sdk";
+
+const reconfiguration = LifeCycle.createReconfigurationRequest({
+    vaultProxy,
+    denominationAsset,
+    sharesActionTimelockInSeconds,
+    feeManagerConfigData,
+    policyManagerConfigData,
+});
+
+await walletClient.sendTransaction(reconfiguration.params);
+```
+
+| Parameter | Description |
+| ----------- | ----------- |
+| `vaultProxy` | Address of the vaultProxy |
+
+The remaining reconfiguration request parameters are identical to the [parameters used to create a new vault](/sdk/vault-lifecycle/create-new).
+
+
+## 2. Execute the Reconfiguration
+
+A reconfiguration request can be executed after a waiting period of 7 days.
+
+```ts
+import { LifeCycle } from "@enzymefinance/sdk";
+
+const execute = LifeCyle.executeReconfiguration({
+    fundDeployer,
+    vaultProxy
+});
+
+await walletClient.sendTransaction(execute.params);
+```
+
+## Cancel Reconfiguration
+
+In case needed, a reconfiguration can also be cancelled.
+
+```ts
+import { LifeCycle } from "@enzymefinance/sdk";
+
+const cancel = LifeCyle.cancelReconfiguration({
+    fundDeployer,
+    vaultProxy
+});
+
+await walletClient.sendTransaction(cancel.params);
+```

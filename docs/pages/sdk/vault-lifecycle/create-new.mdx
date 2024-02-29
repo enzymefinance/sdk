@@ -1,0 +1,94 @@
+# Create a New Vault
+
+When you create a new vault, you need to set the configuration of the vault. Most parameters are straight-forward.  
+
+For more details on the various configuration options, see [Setup and Configure Your Vault](https://docs.enzyme.finance/managers/setup)
+
+```ts
+import { LifeCycle } from "@enzymefinance/sdk";
+
+const create = LifeCycle.createVault({
+    fundDeployer,
+    owner,
+    name,
+    symbol,
+    denominationAsset,
+    sharesActionTimelockInSeconds,
+    feeManagerConfigData,
+    policyManagerConfigData,
+});
+
+await walletClient.sendTransaction(create.params);
+
+```
+
+| Parameter | Description |
+| ----------- | ----------- |
+| `fundDeployer` | Address of the current FundDeployer contract (see [Contract Addresses](/sdk/contract-addresses.mdx)) |
+| `owner` | Address of the vault owner. This usually is the same address as the sender of the transaction, however, it can also be different. |
+| `name` | The name of the vault |
+| `symbol` | The symbol of the vault |
+| `denominationAsset` | Address of the denomination asset |
+| `sharesActionTimelockInSeconds` | Timelock for redemptions (in seconds) |
+| `feeManagerConfigData` | Fee configuration of the vault (see below) |
+| `policyManagerConfigData` | Policy configuration of the vault (see below) |
+
+
+## Policy configuration
+
+A vault can use policies if desired. Policies typically have configuration parameters. 
+For the addresses of the individual policies, see [Contract Addresses](/sdk/contract-addresses.mdx).
+
+```ts
+import { Policy, Policies } from "@enzymefinance/sdk";
+
+const policy1Config = Policies.MinMaxInvestment.encodeSettings({
+    minInvestmentAmount,
+    maxInvestmentAmount
+});
+
+const policy2Config =
+    Policies.CumulativeSlippageTolerance.encodeSettings({
+        slippageTolerance
+    }
+);
+
+const feeManagerConfigData = Policy.encodeSettings([
+    {
+        address: minMaxInvestmentPolicyAddress,
+        settings: policy1Config
+    },
+    {
+        address: cumulativeSlippageTolerancePolicyAddress,
+        settings: policy2Config
+    },
+]);
+```
+
+## Fee configuration
+
+A vault can use fees if desired. Fees typically have configuration parameters. 
+For the addresses of the individual fees, see [Contract Addresses](/sdk/contract-addresses.mdx).
+
+```ts
+import { Fee, Fees } from "@enzymefinance/sdk";
+
+const fee1Config = Fees.Management.encodeSettings({
+    perAnnumRate,
+});
+
+const fee2Config = Fees.Performance.encodeSettings({
+    rateInBps
+});
+
+const feeManagerConfigData = Fee.encodeSettings([
+    {
+        address: managementFeeAddress,
+        settings: fee1Config
+    },
+    {
+        address: performanceFeeAddress,
+        settings: fee2Config
+    },
+]);
+```
