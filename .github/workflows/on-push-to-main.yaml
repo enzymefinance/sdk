@@ -13,11 +13,16 @@ jobs:
     uses: ./.github/workflows/reusable-verify.yaml
     secrets: inherit
 
+  docs:
+    name: Documentation
+    uses: ./.github/workflows/reusable-docs.yaml
+    secrets: inherit
+
   changesets:
     name: Changesets
+    if: github.repository_owner == 'enzymefinance'
     runs-on: ubuntu-latest
     timeout-minutes: 5
-
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
