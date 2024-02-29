@@ -13,3 +13,8 @@ jobs:
     name: Verify
     uses: ./.github/workflows/reusable-verify.yaml
     secrets: inherit
+
+  docs:
+    name: Documentation
+    uses: ./.github/workflows/reusable-docs.yaml
+    secrets: inherit

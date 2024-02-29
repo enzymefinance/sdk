@@ -1,0 +1,37 @@
+name: Documentation
+on:
+  workflow_call:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build documentation
+        run: pnpm run --filter docs build
+      - name: Upload pages artifact
+        if: github.repository_owner == 'enzymefinance' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs/dist
+
+  deploy:
+    name: Deploy
+    if: github.repository_owner == 'enzymefinance' && github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy pages artifact
+        uses: actions/deploy-pages@v2

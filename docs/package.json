@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@enzymefinance/sdk": "workspace:^",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "viem": "^2.7.16",
     "vocs": "1.0.0-alpha.41"
   },
