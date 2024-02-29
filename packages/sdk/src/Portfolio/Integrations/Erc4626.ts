@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -99,7 +100,8 @@ export async function convertToAssets(
     sharesAmount: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function convertToAssets(uint256 sharesAmount) view returns (uint256 assetAmount)"]),
     functionName: "convertToAssets",
     address: args.erc4626Vault,
@@ -114,7 +116,8 @@ export async function convertToShares(
     assetAmount: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function convertToShares(uint256 assetAmount) view returns (uint256 sharesAmount)"]),
     functionName: "convertToShares",
     address: args.erc4626Vault,
@@ -132,7 +135,8 @@ export async function getMakerDsr(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function dsr() view returns (uint256 dsr_)"]),
     functionName: "dsr",
     address: args.asset,
@@ -149,7 +153,8 @@ export async function getMorphoPoolToken(
     asset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function poolToken() view returns (address poolToken_)"]),
     functionName: "poolToken",
     address: args.asset,

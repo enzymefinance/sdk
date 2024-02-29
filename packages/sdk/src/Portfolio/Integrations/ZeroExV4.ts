@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -367,7 +368,8 @@ export async function isAllowedMaker(
     who: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function isAllowedMaker(address who) public view returns (bool isAllowedMaker)"]),
     functionName: "isAllowedMaker",
     address: args.zeroExV4Adapter,

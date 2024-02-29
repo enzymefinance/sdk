@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, Hex, PublicClient } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import * as Assets from "./Asset.js";
 import { Assertion, Viem } from "./Utils.js";
 export * as Integrations from "./Portfolio/Integrations.js";
@@ -104,7 +105,8 @@ export function getTrackedAssets(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "getTrackedAssets",
     address: args.vaultProxy,
@@ -122,7 +124,8 @@ export function isActiveExternalPosition(
     externalPosition: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     address: args.vaultProxy,
     functionName: "isActiveExternalPosition",
@@ -164,7 +167,8 @@ export function getActiveExternalPositions(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "getActiveExternalPositions",
     address: args.vaultProxy,
@@ -179,7 +183,8 @@ export async function getExternalPositionManagedAssets(
 ) {
   const {
     result: [assets, amounts],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExternalPosition,
     functionName: "getManagedAssets",
     address: args.externalPosition,
@@ -204,7 +209,8 @@ export async function getExternalPositionDebtAssets(
 ) {
   const {
     result: [assets, amounts],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExternalPosition,
     functionName: "getDebtAssets",
     address: args.externalPosition,
@@ -244,7 +250,8 @@ export function getExternalPositionType(
     externalPosition: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExternalPositionProxy,
     functionName: "getExternalPositionType",
     address: args.externalPosition,
@@ -258,7 +265,8 @@ export function getTypeLabel(
     typeId: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IExternalPositionFactory,
     functionName: "getLabelForPositionType",
     address: args.externalPositionFactory,

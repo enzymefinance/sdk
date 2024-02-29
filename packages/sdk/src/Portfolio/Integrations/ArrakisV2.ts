@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -115,7 +116,8 @@ export async function getMintAmounts(
     amount1Max: bigint;
   }>,
 ) {
-  const [amount0, amount1, mintAmount] = await Viem.readContract(client, args, {
+  const [amount0, amount1, mintAmount] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: resolverAbi,
     functionName: "getMintAmounts",
     address: args.resolver,
@@ -149,7 +151,8 @@ export async function totalUnderlying(
     arrakisVault: Address;
   }>,
 ) {
-  const [amount0, amount1] = await Viem.readContract(client, args, {
+  const [amount0, amount1] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: helperAbi,
     functionName: "totalUnderlying",
     address: args.helper,
@@ -221,7 +224,8 @@ export async function burn(
 ) {
   const {
     result: [amount0, amount1],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: vaultAbi,
     functionName: "burn",
     address: args.arrakisVault,
@@ -242,12 +246,14 @@ export async function inits(
   }>,
 ) {
   const [init0, init1] = await Promise.all([
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: vaultAbi,
       functionName: "init0",
       address: args.arrakisVault,
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: vaultAbi,
       functionName: "init1",
       address: args.arrakisVault,
@@ -266,7 +272,8 @@ export async function numberOfRanges(
     arrakisVault: Address;
   }>,
 ) {
-  const ranges = await Viem.readContract(client, args, {
+  const ranges = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: vaultAbi,
     functionName: "getRanges",
     address: args.arrakisVault,

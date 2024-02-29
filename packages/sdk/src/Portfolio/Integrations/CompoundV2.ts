@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -233,7 +234,8 @@ export function getCTokenFromBorrowedAsset(
     borrowedAsset: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.ICompoundDebtPositionLib,
     functionName: "getCTokenFromBorrowedAsset",
     address: args.externalPositionProxy,
@@ -361,7 +363,8 @@ export function getBorrowRatePerBlock(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "borrowRatePerBlock",
     address: args.cToken,
@@ -374,7 +377,8 @@ export function getSupplyRatePerBlock(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "supplyRatePerBlock",
     address: args.cToken,
@@ -387,7 +391,8 @@ export function getTotalSupply(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "totalSupply",
     address: args.cToken,
@@ -400,7 +405,8 @@ export function getTotalBorrows(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "totalBorrows",
     address: args.cToken,
@@ -413,7 +419,8 @@ export function getExchangeRateStored(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "exchangeRateStored",
     address: args.cToken,
@@ -427,7 +434,8 @@ export function getBalanceOf(
     account: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: cTokenAbi,
     functionName: "balanceOf",
     address: args.cToken,
@@ -442,7 +450,8 @@ export function getCompSupplySpeeds(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: compoundComptrollerAbi,
     functionName: "compSupplySpeeds",
     address: args.compoundComptroller,
@@ -457,7 +466,8 @@ export function getCompBorrowSpeeds(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: compoundComptrollerAbi,
     functionName: "compBorrowSpeeds",
     address: args.compoundComptroller,
@@ -472,7 +482,8 @@ export async function getMarkets(
     cToken: Address;
   }>,
 ) {
-  const [isListed, collateralFactorMantissa, isComped] = await Viem.readContract(client, args, {
+  const [isListed, collateralFactorMantissa, isComped] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: compoundComptrollerAbi,
     functionName: "markets",
     address: args.compoundComptroller,
@@ -489,7 +500,8 @@ export function getMintGuardianPaused(
     cToken: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: compoundComptrollerAbi,
     functionName: "_mintGuardianPaused",
     address: args.compoundComptroller,

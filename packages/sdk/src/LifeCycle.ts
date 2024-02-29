@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, Hex, PublicClient } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -101,7 +102,8 @@ export function hasMigrationRequest(
     dispatcher: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IDispatcher,
     functionName: "hasMigrationRequest",
     address: args.dispatcher,
@@ -116,7 +118,8 @@ export function hasExecutableMigrationRequest(
     dispatcher: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IDispatcher,
     address: args.dispatcher,
     functionName: "hasExecutableMigrationRequest",
@@ -131,7 +134,8 @@ export function getRemainingMigrationRequestTimelock(
     dispatcher: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IDispatcher,
     functionName: "getTimelockRemainingForMigrationRequest",
     address: args.dispatcher,
@@ -146,16 +150,13 @@ export async function getMigrationRequestDetails(
     dispatcher: Address;
   }>,
 ) {
-  const [nextFundDeployer, nextVaultAccessor, nextVaultLib, executableTimestamp] = await Viem.readContract(
-    client,
-    args,
-    {
-      abi: Abis.IDispatcher,
-      functionName: "getMigrationRequestDetailsForVaultProxy",
-      address: args.dispatcher,
-      args: [args.vault],
-    },
-  );
+  const [nextFundDeployer, nextVaultAccessor, nextVaultLib, executableTimestamp] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: Abis.IDispatcher,
+    functionName: "getMigrationRequestDetailsForVaultProxy",
+    address: args.dispatcher,
+    args: [args.vault],
+  });
 
   return {
     nextFundDeployer,
@@ -228,7 +229,8 @@ export function hasReconfigurationRequest(
     fundDeployer: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundDeployer,
     functionName: "hasReconfigurationRequest",
     address: args.fundDeployer,
@@ -243,7 +245,8 @@ export function getReconfigurationRequestDetails(
     fundDeployer: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundDeployer,
     functionName: "getReconfigurationRequestForVaultProxy",
     address: args.fundDeployer,

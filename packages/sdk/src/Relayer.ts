@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, Hex, type PublicClient, encodeFunctionData, isAddressEqual, parseAbi, zeroAddress } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
 const relayHubAbi = [
@@ -123,7 +124,8 @@ export async function isRelayerEnabled(
     comptrollerProxy: Address;
   }>,
 ) {
-  const address = await Viem.readContract(client, args, {
+  const address = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     address: args.comptrollerProxy,
     functionName: "getGasRelayPaymaster",
@@ -138,7 +140,8 @@ export async function getGasRelayPaymaster(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     address: args.comptrollerProxy,
     functionName: "getGasRelayPaymaster",
@@ -151,7 +154,8 @@ export function getRelayerBalance(
     gasRelayPaymaster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IGasRelayPaymasterLib,
     address: args.gasRelayPaymaster,
     functionName: "getRelayHubDeposit",
@@ -164,7 +168,8 @@ export function getTrustedForwarder(
     gasRelayPaymaster: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IGasRelayPaymasterLib,
     address: args.gasRelayPaymaster,
     functionName: "trustedForwarder",
@@ -178,7 +183,8 @@ export function getNonce(
     sender: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getNonce(address sender) view returns (uint256)"]),
     address: args.trustedForwarder,
     functionName: "getNonce",

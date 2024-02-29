@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import type { Address, PublicClient } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -43,7 +44,8 @@ export function getClaimableTokenBalance(
     user: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.ISharesSplitterLib,
     address: args.splitter,
     functionName: "getTokenBalClaimableForUser",

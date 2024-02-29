@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -170,7 +171,8 @@ export async function convertSharesToAssets(
     stakeWiseVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function convertToAssets(uint256 _shares) view returns (uint256 assets_)"]),
     functionName: "convertToAssets",
     address: args.stakeWiseVault,
@@ -185,7 +187,8 @@ export async function getVaultSharesBalance(
     stakeWiseVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getShares(address _account) view returns (uint256 shares_)"]),
     functionName: "getShares",
     address: args.stakeWiseVault,
@@ -212,7 +215,8 @@ export async function getStakePreview(
     assetAmount: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function convertToShares(uint256 _assets) view returns (uint256 shares_)"]),
     functionName: "convertToShares",
     address: args.stakeWiseVault,
@@ -230,7 +234,8 @@ export async function getClaimExitedAssetsPreview(
     timestamp: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi([
       "function calculateExitedAssets(address _receiver, uint256 _positionTicket, uint256 _timestamp, uint256 _exitQueueIndex) view returns (uint256 leftShares_, uint256 claimedShares_, uint256 claimedAssets_)",
     ]),
@@ -247,7 +252,8 @@ export async function getExitQueueIndex(
     stakeWiseVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getExitQueueIndex(uint256 _positionTicket) view returns (int256 exitQueueIndex_)"]),
     functionName: "getExitQueueIndex",
     address: args.stakeWiseVault,
@@ -262,7 +268,8 @@ export async function isCollateralized(
     stakeWiseVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function isCollateralized(address _vault) view returns (bool isCollateralized_)"]),
     functionName: "isCollateralized",
     address: args.keeperRewards,
@@ -277,7 +284,8 @@ export async function isHarvestRequired(
     stakeWiseVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function isHarvestRequired(address _vault) view returns (bool harvestRequired_)"]),
     functionName: "isHarvestRequired",
     address: args.keeperRewards,

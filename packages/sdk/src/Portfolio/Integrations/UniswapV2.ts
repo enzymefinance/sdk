@@ -8,6 +8,7 @@ import {
   encodeAbiParameters,
   isAddressEqual,
 } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Assertion, BI, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -232,17 +233,20 @@ export async function getLendRate(
   const amountADesired = args.amount;
 
   const [[reserve0, reserve1], token0, poolTokenTotalSupply] = await Promise.all([
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: uniswapV2PoolAbi,
       functionName: "getReserves",
       address: args.poolToken,
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: uniswapV2PoolAbi,
       functionName: "token0",
       address: args.poolToken,
     }),
-    Viem.readContract(client, args, {
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: uniswapV2PoolAbi,
       functionName: "totalSupply",
       address: args.poolToken,
@@ -273,7 +277,8 @@ export async function getPairData(
     token1: Address;
   }>,
 ) {
-  const pairAddress = await Viem.readContract(client, args, {
+  const pairAddress = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: uniswapV2FactoryAbi,
     functionName: "getPair",
     address: UNISWAP_V2_FACTORY,
@@ -316,7 +321,8 @@ export async function getSwapRedeemRate(
     // but otherwise it will fail.
     const {
       result: [underlyings, underlyingAmounts],
-    } = await Viem.simulateContract(client, args, {
+    } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IUniswapV2PoolPriceFeed,
       functionName: "calcUnderlyingValues",
       address: args.uniswapV2PoolPriceFeedAddress,

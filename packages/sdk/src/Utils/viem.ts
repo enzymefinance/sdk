@@ -6,25 +6,23 @@ import type {
   BlockTag,
   CallParameters,
   Chain,
-  ContractFunctionConfig,
+  ContractFunctionName,
+  ContractFunctionParameters,
   EstimateContractGasReturnType,
   EstimateGasParameters,
   GetValue,
   Hex,
   PublicClient,
-  ReadContractParameters,
-  ReadContractReturnType,
-  SimulateContractParameters,
   SimulateContractReturnType,
 } from "viem";
-import { readContract as viemReadContract, simulateContract as viemSimulateContract } from "viem/actions";
 
-export type PopulatedTransactionParams<TAbi extends Abi, TFunctionName extends string> = ContractFunctionConfig<
-  TAbi,
-  TFunctionName,
-  "payable" | "nonpayable"
-> &
-  GetValue<TAbi, TFunctionName, bigint>;
+export type PopulatedTransactionParams<
+  TAbi extends Abi,
+  TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+    TAbi,
+    "payable" | "nonpayable"
+  >,
+> = ContractFunctionParameters<TAbi, "payable" | "nonpayable", TFunctionName> & GetValue<TAbi, TFunctionName, bigint>;
 
 export type PopulatedTransactionSimulateParams = {
   chain?: Chain;
@@ -37,7 +35,13 @@ export type PopulatedTransactionEstimateParams = {
   dataSuffix?: Hex;
 } & Omit<EstimateGasParameters, "data" | "to" | "value">;
 
-export class PopulatedTransaction<TAbi extends Abi, TFunctionName extends string> {
+export class PopulatedTransaction<
+  TAbi extends Abi,
+  TFunctionName extends ContractFunctionName<TAbi, "payable" | "nonpayable"> = ContractFunctionName<
+    TAbi,
+    "payable" | "nonpayable"
+  >,
+> {
   constructor(public readonly params: PopulatedTransactionParams<TAbi, TFunctionName>) {}
 
   async simulate(
@@ -85,30 +89,19 @@ export type ContractCallParameters<
       }
   );
 
-export function readContract<TAbi extends Abi = Abi, TFunctionName extends string = string>(
-  client: PublicClient,
-  args: ContractCallParameters,
-  params: ReadContractParameters<TAbi, TFunctionName>,
-): Promise<ReadContractReturnType<TAbi, TFunctionName>> {
-  return viemReadContract(
-    client,
-    Object.assign({}, params, {
-      ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
-      ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
-    }) as ReadContractParameters<TAbi, TFunctionName>,
-  );
-}
+export type BlockParameters =
+  | {
+      blockTag?: BlockTag;
+      blockNumber?: never;
+    }
+  | {
+      blockNumber?: BlockNumber;
+      blockTag?: never;
+    };
 
-export function simulateContract<TAbi extends Abi = Abi, TFunctionName extends string = string>(
-  client: PublicClient,
-  args: ContractCallParameters,
-  params: SimulateContractParameters<TAbi, TFunctionName>,
-): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
-  return viemSimulateContract(
-    client,
-    Object.assign({}, params, {
-      ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
-      ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
-    }) as SimulateContractParameters<TAbi, TFunctionName>,
-  );
+export function extractBlockParameters(args: BlockParameters): BlockParameters {
+  return {
+    ...(args.blockNumber !== undefined ? { blockNumber: args.blockNumber } : {}),
+    ...(args.blockTag !== undefined ? { blockTag: args.blockTag } : {}),
+  } as BlockParameters;
 }

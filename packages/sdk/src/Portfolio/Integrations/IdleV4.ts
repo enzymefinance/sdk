@@ -9,6 +9,7 @@ import {
   parseAbi,
   parseUnits,
 } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -139,7 +140,8 @@ export async function getRate(
   try {
     const {
       result: [underlyings, amounts],
-    } = await Viem.simulateContract(client, args, {
+    } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IIdlePriceFeed,
       functionName: "calcUnderlyingValues",
       address: args.priceFeed,
@@ -178,7 +180,8 @@ export async function getGovTokensAmounts(
     tokensOwner: Address;
   }>,
 ) {
-  const amounts = await Viem.readContract(client, args, {
+  const amounts = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getGovTokensAmounts(address _usr) view returns (uint256[] _amounts)"]),
     functionName: "getGovTokensAmounts",
     address: args.pool,
@@ -189,7 +192,8 @@ export async function getGovTokensAmounts(
 
   const tokensAmounts = await Promise.all(
     amounts.map(async (amount, index) => {
-      const token = await Viem.readContract(client, args, {
+      const token = await readContract(client, {
+        ...Viem.extractBlockParameters(args),
         abi: govTokensAbi,
         functionName: "govTokens",
         address: args.pool,
@@ -218,7 +222,8 @@ export function getSpeeds(
     idlePool: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function idleSpeeds(address) view returns (uint256)"]),
     functionName: "idleSpeeds",
     address: args.idleController,

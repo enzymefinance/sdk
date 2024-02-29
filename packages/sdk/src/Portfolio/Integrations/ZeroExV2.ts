@@ -1,4 +1,5 @@
 import { Address, PublicClient, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
 export async function getZeroExV2Exchange(
@@ -7,7 +8,8 @@ export async function getZeroExV2Exchange(
     zeroExV2Adapter: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getZeroExV2Exchange() public view returns (address zeroExV2Exchange)"]),
     functionName: "getZeroExV2Exchange",
     address: args.zeroExV2Adapter,
@@ -21,7 +23,8 @@ export async function isAllowedMaker(
     who: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function isAllowedMaker(address who) public view returns (bool isAllowedMaker)"]),
     functionName: "isAllowedMaker",
     address: args.zeroExV2Adapter,

@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
+import { simulateContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
 export async function getNav(
@@ -11,7 +12,8 @@ export async function getNav(
 ) {
   const {
     result: [asset, value],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcNav",
     address: args.valueCalculator,
@@ -29,7 +31,8 @@ export async function getNavInAsset(
     valueCalculator: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcNavInAsset",
     address: args.valueCalculator,
@@ -48,7 +51,8 @@ export async function getGav(
 ) {
   const {
     result: [asset, value],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcGav",
     address: args.valueCalculator,
@@ -66,7 +70,8 @@ export async function getGavInAsset(
     valueCalculator: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcGavInAsset",
     address: args.valueCalculator,
@@ -85,7 +90,8 @@ export async function getSharePrice(
 ) {
   const {
     result: [asset, value],
-  } = await Viem.simulateContract(client, args, {
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcNetShareValue",
     address: args.valueCalculator,
@@ -103,7 +109,8 @@ export async function getSharePriceInAsset(
     valueCalculator: Address;
   }>,
 ) {
-  const { result } = await Viem.simulateContract(client, args, {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFundValueCalculatorRouter,
     functionName: "calcNetShareValueInAsset",
     address: args.valueCalculator,
@@ -123,7 +130,8 @@ export async function getCanonicalAssetValue(
   }>,
 ) {
   try {
-    const { result } = await Viem.simulateContract(client, args, {
+    const { result } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IValueInterpreter,
       functionName: "calcCanonicalAssetValue",
       address: args.valueInterpreter,
@@ -151,7 +159,8 @@ export async function calcCanonicalAssetsTotalValue(
   }>,
 ) {
   try {
-    const { result } = await Viem.simulateContract(client, args, {
+    const { result } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IValueInterpreter,
       functionName: "calcCanonicalAssetsTotalValue",
       address: args.valueInterpreter,

@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -105,7 +106,8 @@ export async function pricePerShare(
     yearnVault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function pricePerShare() view returns (uint256 price_)"]),
     functionName: "pricePerShare",
     address: args.yearnVault,

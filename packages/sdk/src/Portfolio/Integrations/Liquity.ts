@@ -1,4 +1,5 @@
 import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -343,7 +344,8 @@ export async function getTrove(
     debtPosition: Address;
   }>,
 ) {
-  const [debt, collateral, stake, status, arrayIndex] = await Viem.readContract(client, args, {
+  const [debt, collateral, stake, status, arrayIndex] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: troveManagerAbi,
     functionName: "Troves",
     address: args.troveManager,
@@ -365,7 +367,8 @@ export async function getLusdGasCompensation(
     troveManager: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: troveManagerAbi,
     functionName: "LUSD_GAS_COMPENSATION",
     address: args.troveManager,
@@ -379,7 +382,8 @@ export async function getBorrowingFeeWithDecay(
     lusdAmount: bigint;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: troveManagerAbi,
     functionName: "getBorrowingFeeWithDecay",
     address: args.troveManager,
@@ -447,7 +451,8 @@ export function getSortedTrovesSize(
     sortedTroves: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: sortedTrovesAbi,
     functionName: "getSize",
     address: args.sortedTroves,
@@ -463,7 +468,8 @@ export async function findInsertPosition(
     nextId: Address;
   }>,
 ) {
-  const [upperHint, lowerHint] = await Viem.readContract(client, args, {
+  const [upperHint, lowerHint] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: sortedTrovesAbi,
     functionName: "findInsertPosition",
     address: args.sortedTroves,
@@ -528,7 +534,8 @@ export async function getApproxHint(
     inputRandomSeed: bigint;
   }>,
 ) {
-  const [hintAddress, diff, latestRandomSeed] = await Viem.readContract(client, args, {
+  const [hintAddress, diff, latestRandomSeed] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: hintHelpersAbi,
     functionName: "getApproxHint",
     address: args.hintHelpers,

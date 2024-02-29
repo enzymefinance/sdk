@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { Address, PublicClient, isAddressEqual } from "viem";
+import { readContract, simulateContract } from "viem/actions";
 import { getInfo } from "./Configuration/Fees/Performance.js";
 import { Viem } from "./Utils.js";
 
@@ -16,7 +17,8 @@ export async function getEnabledFees(
     feeManager: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IFeeManager,
     functionName: "getEnabledFeesForFund",
     args: [args.comptrollerProxy],
@@ -35,7 +37,8 @@ export async function getAccruedContinuousFees(
     vaultProxy: Address;
   }>,
 ) {
-  const continuousFees = await Viem.readContract(client, args, {
+  const continuousFees = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IUnpermissionedActionsWrapper,
     functionName: "getContinuousFeesForFund",
     address: args.unpermissionedActionsWrapper,
@@ -50,7 +53,8 @@ export async function getAccruedContinuousFees(
   if (hasManagementFee) {
     const {
       result: [_, __, sharesDue],
-    } = await Viem.simulateContract(client, args, {
+    } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IManagementFee,
       functionName: "settle",
       address: args.managementFee,
@@ -65,7 +69,8 @@ export async function getAccruedContinuousFees(
   let highWaterMark: bigint | undefined;
 
   if (hasPerformanceFee) {
-    const { result: gav } = await Viem.simulateContract(client, args, {
+    const { result: gav } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IComptrollerLib,
       functionName: "calcGav",
       address: args.comptrollerProxy,
@@ -73,7 +78,8 @@ export async function getAccruedContinuousFees(
 
     const {
       result: [_, __, sharesDue],
-    } = await Viem.simulateContract(client, args, {
+    } = await simulateContract(client, {
+      ...Viem.extractBlockParameters(args),
       abi: Abis.IPerformanceFee,
       functionName: "settle",
       address: args.performanceFee,
@@ -106,7 +112,8 @@ export async function getEnabledPolicies(
     policyManager: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IPolicyManager,
     functionName: "getEnabledPoliciesForFund",
     address: args.policyManager,

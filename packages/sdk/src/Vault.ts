@@ -1,5 +1,6 @@
 import * as Abis from "@enzymefinance/abis";
 import { type Address, type PublicClient } from "viem";
+import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
 //--------------------------------------------------------------------------------------------
@@ -106,7 +107,8 @@ export function getName(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "name",
     address: args.vaultProxy,
@@ -119,7 +121,8 @@ export function getSymbol(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "symbol",
     address: args.vaultProxy,
@@ -132,7 +135,8 @@ export function getOwner(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "getOwner",
     address: args.vaultProxy,
@@ -145,7 +149,8 @@ export function getNominatedOwner(
     vault: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "getNominatedOwner",
     address: args.vault,
@@ -158,7 +163,8 @@ export function getDenominationAsset(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "getDenominationAsset",
     address: args.comptrollerProxy,
@@ -171,7 +177,8 @@ export function getComptrollerProxy(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "getAccessor",
     address: args.vaultProxy,
@@ -184,7 +191,8 @@ export function getPolicyManager(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "getPolicyManager",
     address: args.comptrollerProxy,
@@ -197,7 +205,8 @@ export function getFeeManager(
     comptrollerProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IComptrollerLib,
     functionName: "getFeeManager",
     address: args.comptrollerProxy,
@@ -210,7 +219,8 @@ export function sharesAreFreelyTransferable(
     vaultProxy: Address;
   }>,
 ) {
-  return Viem.readContract(client, args, {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
     functionName: "sharesAreFreelyTransferable",
     address: args.vaultProxy,
