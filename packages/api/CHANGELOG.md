@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.4.0
+
+### Minor Changes
+
+- [#385](https://github.com/enzymefinance/sdk/pull/385) [`c6940c8`](https://github.com/enzymefinance/sdk/commit/c6940c8090a8c03bdd5e7b7ac94ced0676182723) Thanks [@fubhy](https://github.com/fubhy)! - Updated viem version
+
 ## 0.3.1
 
 ### Patch Changes
