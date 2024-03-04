@@ -266,7 +266,7 @@ export function redeemEncode(args: RedeemArgs): Hex {
 }
 
 export function isValidRedeemType(value: number): value is RedeemType {
-  return !Object.values(RedeemType).includes(value as RedeemType);
+  return Object.values(RedeemType).includes(value as RedeemType);
 }
 
 export function redeemDecode(encoded: Hex): RedeemArgs {
@@ -527,7 +527,7 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
     decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
 
-  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
+  Assertion.invariant(isValidRedeemType(redeemType), `Invalid redeem type ${redeemType}`);
 
   switch (redeemType) {
     case RedeemType.Standard: {
