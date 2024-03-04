@@ -96,9 +96,7 @@ export function isValidClaimType(value: number): value is ClaimType {
 export function claimFeesDecode(encoded: Hex): ClaimFeesArgs {
   const [stakingContract, publicKeys, claimFeeType] = decodeAbiParameters(claimFeesEncoding, encoded);
 
-  if (!isValidClaimType(claimFeeType)) {
-    Assertion.invariant(false, "Invalid claim fee type");
-  }
+  Assertion.invariant(isValidClaimType(claimFeeType), `Invalid claim fee type ${claimFeeType}`);
 
   return {
     stakingContract,

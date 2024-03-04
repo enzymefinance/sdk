@@ -299,9 +299,7 @@ export function isValidSignatureType(value: number): value is SignatureType {
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [encodedZeroExOrderArgs, takerAssetFillAmount, orderType] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  if (!isValidOrderType(orderType)) {
-    Assertion.invariant(false, "Invalid order type");
-  }
+  Assertion.invariant(isValidOrderType(orderType), `Invalid order type ${orderType}`);
 
   switch (orderType) {
     case OrderType.Limit: {

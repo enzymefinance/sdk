@@ -310,9 +310,7 @@ export function isValidSwapKind(kind: number): kind is SwapKind {
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [kind, swaps, assets, limits, stakingTokens] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  if (!isValidSwapKind(kind)) {
-    Assertion.invariant(false, "Invalid swap kind");
-  }
+  Assertion.invariant(isValidSwapKind(kind), `Invalid swap kind ${kind}`);
 
   return { kind, swaps, assets, limits, stakingTokens };
 }
