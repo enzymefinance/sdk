@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.1
+
+### Patch Changes
+
+- [#388](https://github.com/enzymefinance/sdk/pull/388) [`75660b3`](https://github.com/enzymefinance/sdk/commit/75660b3b7734224fbfb7c8dce58d63c1869af249) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix curve redeem type check
+
 ## 0.8.0
 
 ### Minor Changes
