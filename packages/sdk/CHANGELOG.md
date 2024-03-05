@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.2
+
+### Patch Changes
+
+- [#390](https://github.com/enzymefinance/sdk/pull/390) [`b5e6bd1`](https://github.com/enzymefinance/sdk/commit/b5e6bd1b634924d76280a7572ecccc30799547ce) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add composable stable v5 pool for balancer
+
 ## 0.8.1
 
 ### Patch Changes
