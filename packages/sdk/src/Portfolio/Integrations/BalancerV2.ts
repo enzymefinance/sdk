@@ -582,17 +582,17 @@ export function stablePoolsUserDataTokenInForExactBptOut({
 }
 
 //--------------------------------------------------------------------------------------------
-// COMPOSABLE STABLE POOLS - V5
+// COMPOSABLE STABLE POOLS
 //--------------------------------------------------------------------------------------------
 
-export enum ComposableStableV5PoolJoinKind {
+export enum ComposableStablePoolJoinKind {
   INIT = 0,
   EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
   TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
   ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
 }
 
-export enum ComposableStableV5PoolExitKind {
+export enum ComposableStablePoolExitKind {
   EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
   BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
   EXACT_BPT_IN_FOR_ALL_TOKENS_OUT = 2,
@@ -600,7 +600,7 @@ export enum ComposableStableV5PoolExitKind {
 
 // joins
 
-export function composableStableV5PoolsUserDataExactTokensInForBptOut({
+export function composableStablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
@@ -608,7 +608,7 @@ export function composableStableV5PoolsUserDataExactTokensInForBptOut({
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
-    ComposableStableV5PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    ComposableStablePoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
     amountsIn,
     bptOut,
   ]);
@@ -616,7 +616,7 @@ export function composableStableV5PoolsUserDataExactTokensInForBptOut({
 
 // exits
 
-export function composableStableV5PoolsUserDataExactBptInForOneTokenOut({
+export function composableStablePoolsUserDataExactBptInForOneTokenOut({
   bptAmountIn,
   tokenIndex,
 }: {
@@ -624,19 +624,19 @@ export function composableStableV5PoolsUserDataExactBptInForOneTokenOut({
   tokenIndex: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
-    ComposableStableV5PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    ComposableStablePoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
     bptAmountIn,
     tokenIndex,
   ]);
 }
 
-export function composableStableV5PoolsUserDataExactBptInForTokensOut({
+export function composableStablePoolsUserDataExactBptInForTokensOut({
   bptAmountIn,
 }: {
   bptAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
-    ComposableStableV5PoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
+    ComposableStablePoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
     bptAmountIn,
   ]);
 }
