@@ -11,6 +11,7 @@ export const Action = {
   Borrow: 3n,
   RepayBorrow: 4n,
   CloseTrove: 5n,
+  ClaimCollateral: 6n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -258,6 +259,12 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
 //--------------------------------------------------------------------------------------------
 
 export const closeTrove = ExternalPositionManager.makeUse(Action.CloseTrove);
+
+//--------------------------------------------------------------------------------------------
+// CLOSE TROVE
+//--------------------------------------------------------------------------------------------
+
+export const claimCollateral = ExternalPositionManager.makeUse(Action.ClaimCollateral);
 
 //--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS - TROVE MANAGER
