@@ -4,7 +4,6 @@ import {
   PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
-  parseAbi,
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
@@ -384,8 +383,138 @@ export async function getClaimableRewards(
 }
 
 //--------------------------------------------------------------------------------------------
-// EXTERNAL READ FUNCTIONS - BALANCER VAULT
+// EXTERNAL READ FUNCTIONS - BALANCER QUERIES
 //--------------------------------------------------------------------------------------------
+
+const balancerQueriesAbi = [
+  {
+    inputs: [{ internalType: "contract IVault", name: "_vault", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [
+      { internalType: "enum IVault.SwapKind", name: "kind", type: "uint8" },
+      {
+        components: [
+          { internalType: "bytes32", name: "poolId", type: "bytes32" },
+          { internalType: "uint256", name: "assetInIndex", type: "uint256" },
+          { internalType: "uint256", name: "assetOutIndex", type: "uint256" },
+          { internalType: "uint256", name: "amount", type: "uint256" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+        ],
+        internalType: "struct IVault.BatchSwapStep[]",
+        name: "swaps",
+        type: "tuple[]",
+      },
+      { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+      {
+        components: [
+          { internalType: "address", name: "sender", type: "address" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+          { internalType: "address payable", name: "recipient", type: "address" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.FundManagement",
+        name: "funds",
+        type: "tuple",
+      },
+    ],
+    name: "queryBatchSwap",
+    outputs: [{ internalType: "int256[]", name: "assetDeltas", type: "int256[]" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "poolId", type: "bytes32" },
+      { internalType: "address", name: "sender", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
+      {
+        components: [
+          { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+          { internalType: "uint256[]", name: "minAmountsOut", type: "uint256[]" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.ExitPoolRequest",
+        name: "request",
+        type: "tuple",
+      },
+    ],
+    name: "queryExit",
+    outputs: [
+      { internalType: "uint256", name: "bptIn", type: "uint256" },
+      { internalType: "uint256[]", name: "amountsOut", type: "uint256[]" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "poolId", type: "bytes32" },
+      { internalType: "address", name: "sender", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
+      {
+        components: [
+          { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+          { internalType: "uint256[]", name: "maxAmountsIn", type: "uint256[]" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.JoinPoolRequest",
+        name: "request",
+        type: "tuple",
+      },
+    ],
+    name: "queryJoin",
+    outputs: [
+      { internalType: "uint256", name: "bptOut", type: "uint256" },
+      { internalType: "uint256[]", name: "amountsIn", type: "uint256[]" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        components: [
+          { internalType: "bytes32", name: "poolId", type: "bytes32" },
+          { internalType: "enum IVault.SwapKind", name: "kind", type: "uint8" },
+          { internalType: "contract IAsset", name: "assetIn", type: "address" },
+          { internalType: "contract IAsset", name: "assetOut", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+        ],
+        internalType: "struct IVault.SingleSwap",
+        name: "singleSwap",
+        type: "tuple",
+      },
+      {
+        components: [
+          { internalType: "address", name: "sender", type: "address" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+          { internalType: "address payable", name: "recipient", type: "address" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.FundManagement",
+        name: "funds",
+        type: "tuple",
+      },
+    ],
+    name: "querySwap",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "vault",
+    outputs: [{ internalType: "contract IVault", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
 
 export interface BatchSwapStep {
   poolId: Hex;
@@ -405,22 +534,98 @@ export interface BatchSwapFunds {
 export async function queryBatchSwap(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    balancerVault: Address;
+    balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
     swaps: BatchSwapStep[];
     assets: Address[];
     funds: BatchSwapFunds;
   }>,
 ) {
-  return readContract(client, {
+  const { result } = await simulateContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: parseAbi([
-      "function queryBatchSwap(uint8 kind, (bytes32 poolId, uint256 assetInIndex, uint256 assetOutIndex, uint256 amount, bytes userData)[] memory swaps, address[] memory assets, (address sender, bool fromInternalBalance, address payable recipient, bool toInternalBalance) memory funds) external view returns (int256[] memory assetDeltas)",
-    ]),
+    abi: balancerQueriesAbi,
     functionName: "queryBatchSwap",
-    address: args.balancerVault,
-    args: [args.kind, args.swaps, args.assets, args.funds],
+    address: args.balancerQueries,
+    args: [
+      args.kind,
+      args.swaps.map((swap) => ({
+        poolId: swap.poolId,
+        assetInIndex: swap.assetInIndex,
+        assetOutIndex: swap.assetOutIndex,
+        amount: swap.amount,
+        userData: swap.userData,
+      })),
+      args.assets,
+      {
+        sender: args.funds.sender,
+        fromInternalBalance: args.funds.fromInternalBalance,
+        recipient: args.funds.recipient,
+        toInternalBalance: args.funds.toInternalBalance,
+      },
+    ],
   });
+
+  return result;
+}
+
+export async function queryExit(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    balancerQueries: Address;
+    poolId: Hex;
+    sender: Address;
+    recipient: Address;
+    request: {
+      assets: Address[];
+      minAmountsOut: bigint[];
+      userData: Hex;
+      toInternalBalance: boolean;
+    };
+  }>,
+) {
+  const {
+    result: [bptIn, amountsOut],
+  } = await simulateContract(client, {
+    address: args.balancerQueries,
+    abi: balancerQueriesAbi,
+    functionName: "queryExit",
+    args: [args.poolId, args.sender, args.recipient, args.request],
+  });
+
+  return {
+    bptIn,
+    amountsOut,
+  };
+}
+
+export async function queryJoin(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    balancerQueries: Address;
+    poolId: Hex;
+    sender: Address;
+    recipient: Address;
+    request: {
+      assets: Address[];
+      maxAmountsIn: bigint[];
+      userData: Hex;
+      fromInternalBalance: boolean;
+    };
+  }>,
+) {
+  const {
+    result: [bptOut, amountsIn],
+  } = await simulateContract(client, {
+    address: args.balancerQueries,
+    abi: balancerQueriesAbi,
+    functionName: "queryJoin",
+    args: [args.poolId, args.sender, args.recipient, args.request],
+  });
+
+  return {
+    bptOut,
+    amountsIn,
+  };
 }
 
 //--------------------------------------------------------------------------------------------
