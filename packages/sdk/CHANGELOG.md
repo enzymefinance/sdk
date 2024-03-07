@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.8.3
+
+### Patch Changes
+
+- [#395](https://github.com/enzymefinance/sdk/pull/395) [`f6a77f6`](https://github.com/enzymefinance/sdk/commit/f6a77f6218972520d4bf9de83c3b87eaa96abe81) Thanks [@iherger](https://github.com/iherger)! - Liquity claim collateral
+
+- [#394](https://github.com/enzymefinance/sdk/pull/394) [`4a46af3`](https://github.com/enzymefinance/sdk/commit/4a46af332c9cc92ca489a032d412e42a22a3eaf4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add balancer queries
+
 ## 0.8.2
 
 ### Patch Changes
