@@ -551,3 +551,27 @@ export async function getApproxHint(
 
   return { hintAddress, diff, latestRandomSeed };
 }
+
+export function getSurplusPoolCollaterall(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    collSurplusPool: Address;
+    account: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: [
+      {
+        inputs: [{ internalType: "address", name: "_account", type: "address" }],
+        name: "getCollateral",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    functionName: "getCollateral",
+    address: args.collSurplusPool,
+    args: [args.account],
+  });
+}
