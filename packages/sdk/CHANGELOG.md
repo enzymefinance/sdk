@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.4
+
+### Patch Changes
+
+- [#397](https://github.com/enzymefinance/sdk/pull/397) [`128fed7`](https://github.com/enzymefinance/sdk/commit/128fed792626ab2d1c3f6d7eedb393fca9916e33) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Get surplus pool collateral
+
 ## 0.8.3
 
 ### Patch Changes
