@@ -1,22 +1,22 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "bytes",
         "name": "_constructData",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       },
       {
-        "internalType": "address",
         "name": "_lib",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "stateMutability": "payable",
-    "type": "fallback"
+    "type": "fallback",
+    "stateMutability": "payable"
   }
 ]

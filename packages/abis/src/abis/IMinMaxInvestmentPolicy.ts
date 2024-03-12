@@ -1,223 +1,223 @@
 export const IMinMaxInvestmentPolicy = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_policyManager",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "activateForFund",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "minInvestmentAmount",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "maxInvestmentAmount",
-        type: "uint256",
-      },
-    ],
-    name: "FundSettingsSet",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "activateForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "addFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "canDisable",
+    inputs: [],
     outputs: [
       {
-        internalType: "bool",
         name: "canDisable_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getFundSettings",
     outputs: [
       {
-        components: [
-          {
-            internalType: "uint256",
-            name: "minInvestmentAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "maxInvestmentAmount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct MinMaxInvestmentPolicy.FundSettings",
         name: "fundSettings_",
         type: "tuple",
+        internalType: "struct MinMaxInvestmentPolicy.FundSettings",
+        components: [
+          {
+            name: "minInvestmentAmount",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "maxInvestmentAmount",
+            type: "uint256",
+            internalType: "uint256",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPolicyManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "policyManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "identifier",
+    inputs: [],
     outputs: [
       {
-        internalType: "string",
         name: "identifier_",
         type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementedHooks",
+    inputs: [],
     outputs: [
       {
-        internalType: "enum IPolicyManager.PolicyHook[]",
         name: "implementedHooks_",
         type: "uint8[]",
+        internalType: "enum IPolicyManager.PolicyHook[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "passesRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_investmentAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "passesRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "updateFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "validateRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IPolicyManager.PolicyHook",
         name: "",
         type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
       },
       {
-        internalType: "bytes",
         name: "_encodedArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "validateRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "FundSettingsSet",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "minInvestmentAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "maxInvestmentAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

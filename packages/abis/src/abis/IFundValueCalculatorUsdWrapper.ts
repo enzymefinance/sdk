@@ -1,180 +1,180 @@
 export const IFundValueCalculatorUsdWrapper = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundValueCalculatorRouter",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_ethUsdAggregator",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_staleRateThreshold",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "calcGav",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcGav",
     outputs: [
       {
-        internalType: "uint256",
         name: "gav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcGrossShareValue",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcGrossShareValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "grossShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcNav",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcNav",
     outputs: [
       {
-        internalType: "uint256",
         name: "nav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcNetShareValue",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcNetShareValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "netShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcNetValueForSharesHolder",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_sharesHolder",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcNetValueForSharesHolder",
     outputs: [
       {
-        internalType: "uint256",
         name: "netValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getEthUsdAggregatorContract",
+    inputs: [],
     outputs: [
       {
-        internalType: "contract IChainlinkAggregatorFundValueCalculatorUsdWrapper",
         name: "ethUsdAggregatorContract_",
         type: "address",
+        internalType: "contract IChainlinkAggregatorFundValueCalculatorUsdWrapper",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundValueCalculatorRouter",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundValueCalculatorRouter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getStaleRateThreshold",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "staleRateThreshold_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

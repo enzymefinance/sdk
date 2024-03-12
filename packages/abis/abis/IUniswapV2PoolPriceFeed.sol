@@ -1,15 +1,15 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IUniswapV2PoolPriceFeed {
-    event PoolTokenAdded(address indexed poolToken, address token0, address token1);
-
     struct PoolTokenInfo {
         address token0;
         address token1;
         uint8 token0Decimals;
         uint8 token1Decimals;
     }
+
+    event PoolTokenAdded(address indexed poolToken, address token0, address token1);
 
     function addPoolTokens(address[] memory _poolTokens) external;
     function calcUnderlyingValues(address _derivative, uint256 _derivativeAmount)

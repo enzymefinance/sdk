@@ -1,10 +1,30 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IGatedRedemptionQueueSharesWrapperLib {
+    type DepositMode is uint8;
+
+    struct DepositRequest {
+        uint64 index;
+        uint128 assetAmount;
+    }
+
+    struct RedemptionRequest {
+        uint64 index;
+        uint64 lastRedeemed;
+        uint128 sharesPending;
+    }
+
+    struct RedemptionWindowConfig {
+        uint64 firstWindowStart;
+        uint32 frequency;
+        uint32 duration;
+        uint64 relativeSharesCap;
+    }
+
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event DepositApproval(address indexed user, address indexed asset, uint256 amount);
-    event DepositModeSet(uint8 mode);
+    event DepositModeSet(DepositMode mode);
     event DepositRequestAdded(address indexed user, address indexed depositAsset, uint256 depositAssetAmount);
     event DepositRequestRemoved(address indexed user, address indexed depositAsset);
     event Deposited(
@@ -31,23 +51,7 @@ interface IGatedRedemptionQueueSharesWrapperLib {
     event UseRedemptionApprovalsSet(bool useApprovals);
     event UseTransferApprovalsSet(bool useApprovals);
 
-    struct DepositRequest {
-        uint64 index;
-        uint128 assetAmount;
-    }
-
-    struct RedemptionRequest {
-        uint64 index;
-        uint64 lastRedeemed;
-        uint128 sharesPending;
-    }
-
-    struct RedemptionWindowConfig {
-        uint64 firstWindowStart;
-        uint32 frequency;
-        uint32 duration;
-        uint64 relativeSharesCap;
-    }
+    receive() external payable;
 
     function addManagers(address[] memory _managers) external;
     function allowance(address owner, address spender) external view returns (uint256);
@@ -71,7 +75,7 @@ interface IGatedRedemptionQueueSharesWrapperLib {
         returns (uint256[] memory userSharesReceived_);
     function forceTransfer(address _sender, address _recipient) external returns (uint256 amount_);
     function getDepositApproval(address _user, address _asset) external view returns (uint256 amount_);
-    function getDepositMode() external view returns (uint8 mode_);
+    function getDepositMode() external view returns (DepositMode mode_);
     function getDepositQueueUserRequest(address _depositAsset, address _user)
         external
         view
@@ -101,7 +105,7 @@ interface IGatedRedemptionQueueSharesWrapperLib {
         bool _useDepositApprovals,
         bool _useRedemptionApprovals,
         bool _useTransferApprovals,
-        uint8 _depositMode,
+        DepositMode _depositMode,
         RedemptionWindowConfig memory _windowConfig
     ) external;
     function isManager(address _user) external view returns (bool isManager_);
@@ -116,7 +120,7 @@ interface IGatedRedemptionQueueSharesWrapperLib {
     function requestRedeem(uint256 _sharesAmount) external;
     function setDepositApprovals(address[] memory _users, address[] memory _assets, uint256[] memory _amounts)
         external;
-    function setDepositMode(uint8 _mode) external;
+    function setDepositMode(DepositMode _mode) external;
     function setRedemptionApprovals(address[] memory _users, uint256[] memory _amounts) external;
     function setRedemptionAsset(address _nextRedemptionAsset) external;
     function setRedemptionWindowConfig(RedemptionWindowConfig memory _nextWindowConfig) external;

@@ -1,194 +1,194 @@
 export const IAaveDebtPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_aaveDataProvider",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_aaveLendingPoolAddressProvider",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_aaveIncentivesController",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "assetIsBorrowed",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "BorrowedAssetAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "BorrowedAssetRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "CollateralAssetAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "CollateralAssetRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "assetIsBorrowed",
     outputs: [
       {
-        internalType: "bool",
         name: "isBorrowed_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "assetIsCollateral",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "assetIsCollateral",
     outputs: [
       {
-        internalType: "bool",
         name: "isCollateral_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getDebtTokenForBorrowedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_borrowedAsset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getDebtTokenForBorrowedAsset",
     outputs: [
       {
-        internalType: "address",
         name: "debtToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "BorrowedAssetAdded",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "BorrowedAssetRemoved",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "CollateralAssetAdded",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "CollateralAssetRemoved",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

@@ -1,125 +1,125 @@
 export const ICompoundDebtPositionParser = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_compoundPriceFeed",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_compToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_valueInterpreter",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCompToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "compToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCompoundPriceFeed",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "compoundPriceFeed_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getValueInterpreter",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "valueInterpreter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseAssetsForAction",
     inputs: [
       {
-        internalType: "address",
         name: "_externalPosition",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_actionId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_encodedActionArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseAssetsForAction",
     outputs: [
       {
-        internalType: "address[]",
         name: "assetsToTransfer_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amountsToTransfer_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "assetsToReceive_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseInitArgs",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseInitArgs",
     outputs: [
       {
-        internalType: "bytes",
         name: "initArgs_",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

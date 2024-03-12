@@ -1,63 +1,63 @@
 export const IMigrationHookHandler = [
   {
+    type: "function",
+    name: "invokeMigrationInCancelHook",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_prevFundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextVaultAccessor",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextVaultLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "invokeMigrationInCancelHook",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "invokeMigrationOutHook",
     inputs: [
       {
-        internalType: "enum IMigrationHookHandler.MigrationOutHook",
         name: "_hook",
         type: "uint8",
+        internalType: "enum IMigrationHookHandler.MigrationOutHook",
       },
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextFundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextVaultAccessor",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextVaultLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "invokeMigrationOutHook",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

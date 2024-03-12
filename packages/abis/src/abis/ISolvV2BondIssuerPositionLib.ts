@@ -1,153 +1,153 @@
 export const ISolvV2BondIssuerPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_initialBondOfferingMarket",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "voucher",
-        type: "address",
-      },
-    ],
-    name: "IssuedVoucherAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "voucher",
-        type: "address",
-      },
-    ],
-    name: "IssuedVoucherRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint24",
-        name: "offerId",
-        type: "uint24",
-      },
-    ],
-    name: "OfferAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint24",
-        name: "offerId",
-        type: "uint24",
-      },
-    ],
-    name: "OfferRemoved",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getIssuedVouchers",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "vouchers_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOffers",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint24[]",
         name: "offers_",
         type: "uint24[]",
+        internalType: "uint24[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "IssuedVoucherAdded",
+    inputs: [
+      {
+        name: "voucher",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "IssuedVoucherRemoved",
+    inputs: [
+      {
+        name: "voucher",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "OfferAdded",
+    inputs: [
+      {
+        name: "offerId",
+        type: "uint24",
+        indexed: true,
+        internalType: "uint24",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "OfferRemoved",
+    inputs: [
+      {
+        name: "offerId",
+        type: "uint24",
+        indexed: true,
+        internalType: "uint24",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

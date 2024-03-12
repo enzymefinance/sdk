@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IArbitraryTokenPhasedSharesWrapperLib {
+    type State is uint8;
+
     event AllowedDepositorListIdSet(uint256 listId);
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Deposited(address indexed user, uint256 amount);
@@ -17,7 +19,7 @@ interface IArbitraryTokenPhasedSharesWrapperLib {
     event ManagerSet(address manager);
     event ProtocolFeePaid(address token, uint256 amount);
     event ProtocolFeeStarted();
-    event StateSet(uint8 state);
+    event StateSet(State state);
     event TotalDepositMaxSet(uint256 totalDepositMax);
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Withdrawn(address indexed user, uint256 amount, address[] claimedAssets, uint256[] claimedAssetAmounts);
@@ -38,7 +40,7 @@ interface IArbitraryTokenPhasedSharesWrapperLib {
     function getManager() external view returns (address manager_);
     function getProtocolFeeStart() external view returns (uint256 protocolFeeStart_);
     function getRedeemedAssets() external view returns (address[] memory redeemedAssets_);
-    function getState() external view returns (uint8 state_);
+    function getState() external view returns (State state_);
     function getTotalDepositMax() external view returns (uint256 totalDepositMax_);
     function getTransfersAllowed() external view returns (bool transfersAllowed_);
     function getVaultProxy() external view returns (address vaultProxy_);

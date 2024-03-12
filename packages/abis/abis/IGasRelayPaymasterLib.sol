@@ -1,11 +1,7 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IGasRelayPaymasterLib {
-    event Deposited(uint256 amount);
-    event TransactionRelayed(address indexed authorizer, bytes4 invokedSelector, bool successful);
-    event Withdrawn(uint256 amount);
-
     struct ForwardRequest {
         address from;
         address to;
@@ -38,6 +34,10 @@ interface IGasRelayPaymasterLib {
         ForwardRequest request;
         RelayData relayData;
     }
+
+    event Deposited(uint256 amount);
+    event TransactionRelayed(address indexed authorizer, bytes4 invokedSelector, bool successful);
+    event Withdrawn(uint256 amount);
 
     function deposit() external;
     function getGasAndDataLimits() external view returns (GasAndDataLimits memory limits_);

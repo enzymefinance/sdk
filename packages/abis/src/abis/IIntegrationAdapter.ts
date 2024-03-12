@@ -1,51 +1,51 @@
 export const IIntegrationAdapter = [
   {
+    type: "function",
+    name: "parseAssetsForAction",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes4",
         name: "_selector",
         type: "bytes4",
+        internalType: "bytes4",
       },
       {
-        internalType: "bytes",
         name: "_encodedCallArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseAssetsForAction",
     outputs: [
       {
-        internalType: "enum IIntegrationManager.SpendAssetsHandleType",
         name: "spendAssetsHandleType_",
         type: "uint8",
+        internalType: "enum IIntegrationManager.SpendAssetsHandleType",
       },
       {
-        internalType: "address[]",
         name: "spendAssets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "spendAssetAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "incomingAssets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "minIncomingAssetAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

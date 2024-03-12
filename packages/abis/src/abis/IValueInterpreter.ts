@@ -1,495 +1,495 @@
 export const IValueInterpreter = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_chainlinkStaleRateThreshold",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addDerivatives",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "priceFeed",
-        type: "address",
-      },
-    ],
-    name: "DerivativeAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-    ],
-    name: "DerivativeRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "prevEthUsdAggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "nextEthUsdAggregator",
-        type: "address",
-      },
-    ],
-    name: "EthUsdAggregatorSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "primitive",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "aggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
-        name: "rateAsset",
-        type: "uint8",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "unit",
-        type: "uint256",
-      },
-    ],
-    name: "PrimitiveAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "primitive",
-        type: "address",
-      },
-    ],
-    name: "PrimitiveRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address[]",
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_priceFeeds",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addPrimitives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_primitives",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_aggregators",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
         name: "_rateAssets",
         type: "uint8[]",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
       },
     ],
-    name: "addPrimitives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcCanonicalAssetValue",
     inputs: [
       {
-        internalType: "address",
         name: "_baseAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_amount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_quoteAsset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcCanonicalAssetValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "value_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcCanonicalAssetsTotalValue",
     inputs: [
       {
-        internalType: "address[]",
         name: "_baseAssets",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "_amounts",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address",
         name: "_quoteAsset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcCanonicalAssetsTotalValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "value_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getAggregatorForPrimitive",
     inputs: [
       {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getAggregatorForPrimitive",
     outputs: [
       {
-        internalType: "address",
         name: "aggregator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getEthUsdAggregator",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "ethUsdAggregator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getPriceFeedForDerivative",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getPriceFeedForDerivative",
     outputs: [
       {
-        internalType: "address",
         name: "priceFeed_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getRateAssetForPrimitive",
     inputs: [
       {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getRateAssetForPrimitive",
     outputs: [
       {
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset_",
         type: "uint8",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getStaleRateThreshold",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "staleRateThreshold_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getUnitForPrimitive",
     inputs: [
       {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getUnitForPrimitive",
     outputs: [
       {
-        internalType: "uint256",
         name: "unit_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_asset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "isSupportedAsset",
+    inputs: [
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_asset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "isSupportedDerivativeAsset",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "isSupported_",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedPrimitiveAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedPrimitiveAsset",
     inputs: [
       {
-        internalType: "address[]",
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "isSupported_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "removeDerivatives",
+    inputs: [
+      {
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removeDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removePrimitives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_primitives",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removePrimitives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setEthUsdAggregator",
     inputs: [
       {
-        internalType: "address",
         name: "_nextEthUsdAggregator",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setEthUsdAggregator",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateDerivatives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_priceFeeds",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "updateDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updatePrimitives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_primitives",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_aggregators",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
         name: "_rateAssets",
         type: "uint8[]",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset[]",
       },
     ],
-    name: "updatePrimitives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "DerivativeAdded",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "priceFeed",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DerivativeRemoved",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "EthUsdAggregatorSet",
+    inputs: [
+      {
+        name: "prevEthUsdAggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "nextEthUsdAggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PrimitiveAdded",
+    inputs: [
+      {
+        name: "primitive",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "aggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "rateAsset",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
+      },
+      {
+        name: "unit",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PrimitiveRemoved",
+    inputs: [
+      {
+        name: "primitive",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

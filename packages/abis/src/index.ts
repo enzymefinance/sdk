@@ -98,7 +98,6 @@ export { IMinAssetBalancesPostRedemptionPolicy } from "./abis/IMinAssetBalancesP
 export { IMinMaxInvestmentPolicy } from "./abis/IMinMaxInvestmentPolicy.js";
 export { IMinSharesSupplyFee } from "./abis/IMinSharesSupplyFee.js";
 export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./abis/INoDepegOnRedeemSharesForSpecificAssetsPolicy.js";
-export { INotionalV3PositionLib } from "./abis/INotionalV3PositionLib.js";
 export { IOnlyRemoveDustExternalPositionPolicy } from "./abis/IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js";
 export { IParaSwapV5Adapter } from "./abis/IParaSwapV5Adapter.js";

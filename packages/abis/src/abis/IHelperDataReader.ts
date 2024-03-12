@@ -1,534 +1,534 @@
 export const IHelperDataReader = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "contract IFundValueCalculatorRouter",
         name: "_fundValueCalculatorRouter",
         type: "address",
+        internalType: "contract IFundValueCalculatorRouter",
       },
       {
-        internalType: "contract IExternalPositionFactory",
         name: "_externalPositionFactory",
         type: "address",
+        internalType: "contract IExternalPositionFactory",
       },
       {
-        internalType: "contract IPolicyManagerExtended",
         name: "_policyManager",
         type: "address",
+        internalType: "contract IPolicyManagerExtended",
       },
       {
-        internalType: "contract IFeeManagerExtended",
         name: "_feeManager",
         type: "address",
+        internalType: "contract IFeeManagerExtended",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "getVaultActiveExternalPositionsDetails",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultActiveExternalPositionsDetails",
     outputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultActiveExternalPositionsDetailsDecoded",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultActiveExternalPositionsDetailsDecoded",
     outputs: [
       {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct HelperDataReader.ExternalPositionDetails[]",
         components: [
           {
-            internalType: "string",
             name: "label",
             type: "string",
+            internalType: "string",
           },
           {
-            internalType: "address",
             name: "id",
             type: "address",
+            internalType: "address",
           },
           {
-            internalType: "uint256",
             name: "typeId",
             type: "uint256",
+            internalType: "uint256",
           },
           {
-            components: [
-              {
-                internalType: "address",
-                name: "asset",
-                type: "address",
-              },
-              {
-                internalType: "uint256",
-                name: "amount",
-                type: "uint256",
-              },
-            ],
-            internalType: "struct HelperDataReader.AssetAmount[]",
             name: "debtAssetsAmounts",
             type: "tuple[]",
-          },
-          {
+            internalType: "struct HelperDataReader.AssetAmount[]",
             components: [
               {
-                internalType: "address",
                 name: "asset",
                 type: "address",
+                internalType: "address",
               },
               {
-                internalType: "uint256",
                 name: "amount",
                 type: "uint256",
+                internalType: "uint256",
               },
             ],
-            internalType: "struct HelperDataReader.AssetAmount[]",
+          },
+          {
             name: "managedAssetsAmounts",
             type: "tuple[]",
-          },
-        ],
-        internalType: "struct HelperDataReader.ExternalPositionDetails[]",
-        name: "",
-        type: "tuple[]",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
-    name: "getVaultDetails",
-    outputs: [
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
-    name: "getVaultDetailsDecoded",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "string",
-            name: "name",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "symbol",
-            type: "string",
-          },
-          {
-            internalType: "uint256",
-            name: "totalSupply",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "denominationAsset",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "netShareValue",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "grossAssetValue",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "owner",
-            type: "address",
-          },
-          {
-            internalType: "bool",
-            name: "hasInvalidAum",
-            type: "bool",
-          },
-        ],
-        internalType: "struct HelperDataReader.VaultDetails",
-        name: "",
-        type: "tuple",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
-    name: "getVaultDetailsExtended",
-    outputs: [
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
-    name: "getVaultDetailsExtendedDecoded",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "string",
-            name: "name",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "symbol",
-            type: "string",
-          },
-          {
-            internalType: "uint256",
-            name: "totalSupply",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "denominationAsset",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "netShareValue",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "grossAssetValue",
-            type: "uint256",
-          },
-          {
-            internalType: "address",
-            name: "owner",
-            type: "address",
-          },
-          {
-            internalType: "bool",
-            name: "hasInvalidAum",
-            type: "bool",
-          },
-          {
+            internalType: "struct HelperDataReader.AssetAmount[]",
             components: [
               {
-                internalType: "address",
                 name: "asset",
                 type: "address",
+                internalType: "address",
               },
               {
-                internalType: "uint256",
                 name: "amount",
                 type: "uint256",
-              },
-            ],
-            internalType: "struct HelperDataReader.AssetAmount[]",
-            name: "trackedAssetsAmounts",
-            type: "tuple[]",
-          },
-          {
-            components: [
-              {
-                internalType: "string",
-                name: "label",
-                type: "string",
-              },
-              {
-                internalType: "address",
-                name: "id",
-                type: "address",
-              },
-              {
                 internalType: "uint256",
-                name: "typeId",
-                type: "uint256",
-              },
-              {
-                components: [
-                  {
-                    internalType: "address",
-                    name: "asset",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "amount",
-                    type: "uint256",
-                  },
-                ],
-                internalType: "struct HelperDataReader.AssetAmount[]",
-                name: "debtAssetsAmounts",
-                type: "tuple[]",
-              },
-              {
-                components: [
-                  {
-                    internalType: "address",
-                    name: "asset",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "amount",
-                    type: "uint256",
-                  },
-                ],
-                internalType: "struct HelperDataReader.AssetAmount[]",
-                name: "managedAssetsAmounts",
-                type: "tuple[]",
               },
             ],
-            internalType: "struct HelperDataReader.ExternalPositionDetails[]",
-            name: "activeExternalPositionsDetails",
-            type: "tuple[]",
-          },
-          {
-            components: [
-              {
-                internalType: "string",
-                name: "identifier",
-                type: "string",
-              },
-              {
-                internalType: "address",
-                name: "id",
-                type: "address",
-              },
-            ],
-            internalType: "struct HelperDataReader.PolicyDetails[]",
-            name: "policiesDetails",
-            type: "tuple[]",
-          },
-          {
-            components: [
-              {
-                internalType: "address",
-                name: "recipientForFund",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "id",
-                type: "address",
-              },
-            ],
-            internalType: "struct HelperDataReader.FeeDetails[]",
-            name: "feesDetails",
-            type: "tuple[]",
           },
         ],
-        internalType: "struct HelperDataReader.VaultDetailsExtended",
-        name: "",
-        type: "tuple",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultDetails",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultFeesDetails",
     outputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultDetailsDecoded",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "tuple",
+        internalType: "struct HelperDataReader.VaultDetails",
+        components: [
+          {
+            name: "name",
+            type: "string",
+            internalType: "string",
+          },
+          {
+            name: "symbol",
+            type: "string",
+            internalType: "string",
+          },
+          {
+            name: "totalSupply",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "denominationAsset",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "netShareValue",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "grossAssetValue",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "owner",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "hasInvalidAum",
+            type: "bool",
+            internalType: "bool",
+          },
+        ],
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultDetailsExtended",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultDetailsExtendedDecoded",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "tuple",
+        internalType: "struct HelperDataReader.VaultDetailsExtended",
+        components: [
+          {
+            name: "name",
+            type: "string",
+            internalType: "string",
+          },
+          {
+            name: "symbol",
+            type: "string",
+            internalType: "string",
+          },
+          {
+            name: "totalSupply",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "denominationAsset",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "netShareValue",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "grossAssetValue",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "owner",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "hasInvalidAum",
+            type: "bool",
+            internalType: "bool",
+          },
+          {
+            name: "trackedAssetsAmounts",
+            type: "tuple[]",
+            internalType: "struct HelperDataReader.AssetAmount[]",
+            components: [
+              {
+                name: "asset",
+                type: "address",
+                internalType: "address",
+              },
+              {
+                name: "amount",
+                type: "uint256",
+                internalType: "uint256",
+              },
+            ],
+          },
+          {
+            name: "activeExternalPositionsDetails",
+            type: "tuple[]",
+            internalType: "struct HelperDataReader.ExternalPositionDetails[]",
+            components: [
+              {
+                name: "label",
+                type: "string",
+                internalType: "string",
+              },
+              {
+                name: "id",
+                type: "address",
+                internalType: "address",
+              },
+              {
+                name: "typeId",
+                type: "uint256",
+                internalType: "uint256",
+              },
+              {
+                name: "debtAssetsAmounts",
+                type: "tuple[]",
+                internalType: "struct HelperDataReader.AssetAmount[]",
+                components: [
+                  {
+                    name: "asset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "amount",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
+                ],
+              },
+              {
+                name: "managedAssetsAmounts",
+                type: "tuple[]",
+                internalType: "struct HelperDataReader.AssetAmount[]",
+                components: [
+                  {
+                    name: "asset",
+                    type: "address",
+                    internalType: "address",
+                  },
+                  {
+                    name: "amount",
+                    type: "uint256",
+                    internalType: "uint256",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "policiesDetails",
+            type: "tuple[]",
+            internalType: "struct HelperDataReader.PolicyDetails[]",
+            components: [
+              {
+                name: "identifier",
+                type: "string",
+                internalType: "string",
+              },
+              {
+                name: "id",
+                type: "address",
+                internalType: "address",
+              },
+            ],
+          },
+          {
+            name: "feesDetails",
+            type: "tuple[]",
+            internalType: "struct HelperDataReader.FeeDetails[]",
+            components: [
+              {
+                name: "recipientForFund",
+                type: "address",
+                internalType: "address",
+              },
+              {
+                name: "id",
+                type: "address",
+                internalType: "address",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultFeesDetails",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultFeesDetailsDecoded",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultFeesDetailsDecoded",
     outputs: [
       {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct HelperDataReader.FeeDetails[]",
         components: [
           {
-            internalType: "address",
             name: "recipientForFund",
             type: "address",
+            internalType: "address",
           },
           {
-            internalType: "address",
             name: "id",
             type: "address",
+            internalType: "address",
           },
         ],
-        internalType: "struct HelperDataReader.FeeDetails[]",
-        name: "",
-        type: "tuple[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultPoliciesDetails",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultPoliciesDetails",
     outputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultPoliciesDetailsDecoded",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultPoliciesDetailsDecoded",
     outputs: [
       {
+        name: "",
+        type: "tuple[]",
+        internalType: "struct HelperDataReader.PolicyDetails[]",
         components: [
           {
-            internalType: "string",
             name: "identifier",
             type: "string",
+            internalType: "string",
           },
           {
-            internalType: "address",
             name: "id",
             type: "address",
+            internalType: "address",
           },
         ],
-        internalType: "struct HelperDataReader.PolicyDetails[]",
-        name: "",
-        type: "tuple[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultTrackedAssetsAmounts",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultTrackedAssetsAmounts",
     outputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getVaultTrackedAssetsAmountsDecoded",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getVaultTrackedAssetsAmountsDecoded",
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "asset",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct HelperDataReader.AssetAmount[]",
         name: "",
         type: "tuple[]",
+        internalType: "struct HelperDataReader.AssetAmount[]",
+        components: [
+          {
+            name: "asset",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "amount",
+            type: "uint256",
+            internalType: "uint256",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

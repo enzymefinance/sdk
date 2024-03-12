@@ -1,7 +1,14 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IFundDeployer {
+    type MigrationOutHook is uint8;
+
+    struct ReconfigurationRequest {
+        address nextComptrollerProxy;
+        uint256 executableTimestamp;
+    }
+
     event BuySharesOnBehalfCallerDeregistered(address caller);
     event BuySharesOnBehalfCallerRegistered(address caller);
     event ComptrollerLibSet(address comptrollerLib);
@@ -27,11 +34,6 @@ interface IFundDeployer {
     event VaultCallDeregistered(address indexed contractAddress, bytes4 selector, bytes32 dataHash);
     event VaultCallRegistered(address indexed contractAddress, bytes4 selector, bytes32 dataHash);
     event VaultLibSet(address vaultLib);
-
-    struct ReconfigurationRequest {
-        address nextComptrollerProxy;
-        uint256 executableTimestamp;
-    }
 
     function cancelMigration(address _vaultProxy, bool _bypassPrevReleaseFailure) external;
     function cancelReconfiguration(address _vaultProxy) external;
@@ -83,7 +85,7 @@ interface IFundDeployer {
     function getVaultLib() external view returns (address vaultLib_);
     function hasReconfigurationRequest(address _vaultProxy) external view returns (bool hasReconfigurationRequest_);
     function invokeMigrationInCancelHook(address, address, address _nextComptrollerProxy, address) external;
-    function invokeMigrationOutHook(uint8 _hook, address _vaultProxy, address, address, address) external;
+    function invokeMigrationOutHook(MigrationOutHook _hook, address _vaultProxy, address, address, address) external;
     function isAllowedBuySharesOnBehalfCaller(address _who) external view returns (bool isAllowed_);
     function isAllowedVaultCall(address _contract, bytes4 _selector, bytes32 _dataHash)
         external

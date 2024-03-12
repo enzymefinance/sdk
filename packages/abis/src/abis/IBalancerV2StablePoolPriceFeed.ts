@@ -1,256 +1,256 @@
 export const IBalancerV2StablePoolPriceFeed = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_balancerVault",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address[]",
         name: "_poolFactories",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addPoolFactories",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "invariantProxyAsset",
-        type: "address",
-      },
-    ],
-    name: "PoolAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "poolFactory",
-        type: "address",
-      },
-    ],
-    name: "PoolFactoryAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "poolFactory",
-        type: "address",
-      },
-    ],
-    name: "PoolFactoryRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-    ],
-    name: "PoolRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address[]",
         name: "_poolFactories",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addPoolFactories",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addPools",
     inputs: [
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_invariantProxyAssets",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addPools",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcUnderlyingValues",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_derivativeAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcUnderlyingValues",
     outputs: [
       {
-        internalType: "address[]",
         name: "underlyings_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "underlyingAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPoolFactories",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "factories_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getPoolInfo",
     inputs: [
       {
-        internalType: "address",
         name: "_pool",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getPoolInfo",
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "invariantProxyAsset",
-            type: "address",
-          },
-          {
-            internalType: "uint8",
-            name: "invariantProxyAssetDecimals",
-            type: "uint8",
-          },
-        ],
-        internalType: "struct BalancerV2StablePoolPriceFeed.PoolInfo",
         name: "poolInfo_",
         type: "tuple",
+        internalType: "struct BalancerV2StablePoolPriceFeed.PoolInfo",
+        components: [
+          {
+            name: "invariantProxyAsset",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "invariantProxyAssetDecimals",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removePoolFactories",
     inputs: [
       {
-        internalType: "address[]",
         name: "_poolFactories",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removePoolFactories",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removePools",
     inputs: [
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removePools",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "PoolAdded",
+    inputs: [
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "invariantProxyAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PoolFactoryAdded",
+    inputs: [
+      {
+        name: "poolFactory",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PoolFactoryRemoved",
+    inputs: [
+      {
+        name: "poolFactory",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PoolRemoved",
+    inputs: [
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

@@ -1,239 +1,239 @@
 export const IAllowedExternalPositionTypesPerManagerPolicy = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_policyManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_uintListRegistry",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256[]",
-        name: "listIds",
-        type: "uint256[]",
-      },
-    ],
-    name: "ListsSetForFundAndUser",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "BYPASS_FLAG",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "activateForFund",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "activateForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "addFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "canDisable",
+    inputs: [],
     outputs: [
       {
-        internalType: "bool",
         name: "canDisable_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getListIdsForFundAndUser",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_user",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getListIdsForFundAndUser",
     outputs: [
       {
-        internalType: "uint256[]",
         name: "listIds_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPolicyManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "policyManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "identifier",
+    inputs: [],
     outputs: [
       {
-        internalType: "string",
         name: "identifier_",
         type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementedHooks",
+    inputs: [],
     outputs: [
       {
-        internalType: "enum IPolicyManager.PolicyHook[]",
         name: "implementedHooks_",
         type: "uint8[]",
+        internalType: "enum IPolicyManager.PolicyHook[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "passesRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_caller",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_externalPositionTypeId",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "passesRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "updateFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "validateRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IPolicyManager.PolicyHook",
         name: "_hook",
         type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
       },
       {
-        internalType: "bytes",
         name: "_encodedArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "validateRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ListsSetForFundAndUser",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "listIds",
+        type: "uint256[]",
+        indexed: false,
+        internalType: "uint256[]",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

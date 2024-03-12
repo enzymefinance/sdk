@@ -1,223 +1,223 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_policyManager",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minInvestmentAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "maxInvestmentAmount",
-        "type": "uint256"
-      }
-    ],
-    "name": "FundSettingsSet",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "type": "function",
     "name": "activateForFund",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "addFundSettings",
+    "inputs": [
+      {
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bytes",
         "name": "_encodedSettings",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "addFundSettings",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "canDisable",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "bool",
         "name": "canDisable_",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "pure"
   },
   {
+    "type": "function",
+    "name": "getFundSettings",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "getFundSettings",
     "outputs": [
       {
+        "name": "fundSettings_",
+        "type": "tuple",
+        "internalType": "struct MinMaxInvestmentPolicy.FundSettings",
         "components": [
           {
-            "internalType": "uint256",
             "name": "minInvestmentAmount",
-            "type": "uint256"
+            "type": "uint256",
+            "internalType": "uint256"
           },
           {
-            "internalType": "uint256",
             "name": "maxInvestmentAmount",
-            "type": "uint256"
+            "type": "uint256",
+            "internalType": "uint256"
           }
-        ],
-        "internalType": "struct MinMaxInvestmentPolicy.FundSettings",
-        "name": "fundSettings_",
-        "type": "tuple"
+        ]
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getPolicyManager",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address",
         "name": "policyManager_",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "identifier",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "identifier_",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
     "inputs": [],
+    "outputs": [
+      {
+        "name": "identifier_",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
     "name": "implementedHooks",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "enum IPolicyManager.PolicyHook[]",
         "name": "implementedHooks_",
-        "type": "uint8[]"
+        "type": "uint8[]",
+        "internalType": "enum IPolicyManager.PolicyHook[]"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "pure"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_investmentAmount",
-        "type": "uint256"
-      }
-    ],
+    "type": "function",
     "name": "passesRule",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "isValid_",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bytes",
-        "name": "_encodedSettings",
-        "type": "bytes"
+        "name": "_investmentAmount",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
+    "outputs": [
+      {
+        "name": "isValid_",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "updateFundSettings",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "enum IPolicyManager.PolicyHook",
-        "name": "",
-        "type": "uint8"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_encodedArgs",
-        "type": "bytes"
+        "name": "_encodedSettings",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "validateRule",
+    "inputs": [
+      {
+        "name": "_comptrollerProxy",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "enum IPolicyManager.PolicyHook"
+      },
+      {
+        "name": "_encodedArgs",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
     "outputs": [
       {
-        "internalType": "bool",
         "name": "isValid_",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "FundSettingsSet",
+    "inputs": [
+      {
+        "name": "comptrollerProxy",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "minInvestmentAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "maxInvestmentAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
   }
 ]

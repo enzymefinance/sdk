@@ -1,147 +1,147 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_dispacher",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [],
-    "name": "MigrationAllowed",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "poolTokenV1",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "poolTokenV2",
-        "type": "address"
-      }
-    ],
-    "name": "PoolMapped",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [],
-    "name": "SnapshotsFrozen",
-    "type": "event"
-  },
-  {
-    "inputs": [],
+    "type": "function",
     "name": "allowMigration",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "freezeSnapshots",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
+    "type": "function",
+    "name": "freezeSnapshots",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getPoolTokenV2FromPoolTokenV1",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_poolTokenV1",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "getPoolTokenV2FromPoolTokenV1",
     "outputs": [
       {
-        "internalType": "address",
         "name": "poolTokenV2_",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "mapPools",
     "inputs": [
       {
-        "internalType": "address[]",
         "name": "_poolTokensV1",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "address[]",
         "name": "_poolTokensV2",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "name": "mapPools",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address[]",
-        "name": "_proxies",
-        "type": "address[]"
-      }
-    ],
+    "type": "function",
     "name": "migrateExternalPositions",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "migrationIsAllowed",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "allowed_",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address[]",
         "name": "_proxies",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "name": "snapshotExternalPositions",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
+    "type": "function",
+    "name": "migrationIsAllowed",
     "inputs": [],
-    "name": "snapshotsAreAllowed",
     "outputs": [
       {
-        "internalType": "bool",
         "name": "allowed_",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "snapshotExternalPositions",
+    "inputs": [
+      {
+        "name": "_proxies",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "snapshotsAreAllowed",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "allowed_",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "event",
+    "name": "MigrationAllowed",
+    "inputs": [],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "PoolMapped",
+    "inputs": [
+      {
+        "name": "poolTokenV1",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "poolTokenV2",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SnapshotsFrozen",
+    "inputs": [],
+    "anonymous": false
   }
 ]

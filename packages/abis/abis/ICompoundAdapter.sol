@@ -1,7 +1,11 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface ICompoundAdapter {
+    type SpendAssetsHandleType is uint8;
+
+    receive() external payable;
+
     function CLAIM_REWARDS_SELECTOR() external view returns (bytes4);
     function LEND_AND_STAKE_SELECTOR() external view returns (bytes4);
     function LEND_SELECTOR() external view returns (bytes4);
@@ -20,7 +24,7 @@ interface ICompoundAdapter {
         external
         view
         returns (
-            uint8 spendAssetsHandleType_,
+            SpendAssetsHandleType spendAssetsHandleType_,
             address[] memory spendAssets_,
             uint256[] memory spendAssetAmounts_,
             address[] memory incomingAssets_,

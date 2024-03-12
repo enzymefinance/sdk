@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IOnlyRemoveDustExternalPositionPolicy {
+    type PolicyHook is uint8;
+
     event DustToleranceInWethSet(uint256 nextDustToleranceInWeth);
     event PricelessAssetBypassed(address indexed comptrollerProxy, address indexed asset);
     event PricelessAssetTimelockStarted(address indexed comptrollerProxy, address indexed asset);
@@ -26,11 +28,11 @@ interface IOnlyRemoveDustExternalPositionPolicy {
     function getPricelessAssetBypassValueInterpreter() external view returns (address valueInterpreter_);
     function getPricelessAssetBypassWethToken() external view returns (address wethToken_);
     function identifier() external pure returns (string memory identifier_);
-    function implementedHooks() external pure returns (uint8[] memory implementedHooks_);
+    function implementedHooks() external pure returns (PolicyHook[] memory implementedHooks_);
     function setDustToleranceInWeth(uint256 _nextDustToleranceInWeth) external;
     function startAssetBypassTimelock(address _asset) external;
     function updateFundSettings(address, bytes memory) external;
-    function validateRule(address _comptrollerProxy, uint8, bytes memory _encodedArgs)
+    function validateRule(address _comptrollerProxy, PolicyHook, bytes memory _encodedArgs)
         external
         returns (bool isValid_);
 }

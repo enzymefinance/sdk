@@ -1,187 +1,187 @@
 export const IYearnVaultV2PriceFeed = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_yearnVaultV2Registry",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addDerivatives",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "underlying",
-        type: "address",
-      },
-    ],
-    name: "DerivativeAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-    ],
-    name: "DerivativeRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address[]",
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_underlyings",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcUnderlyingValues",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_derivativeAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcUnderlyingValues",
     outputs: [
       {
-        internalType: "address[]",
         name: "underlyings_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "underlyingAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getUnderlyingForDerivative",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getUnderlyingForDerivative",
     outputs: [
       {
-        internalType: "address",
         name: "underlying_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getYearnVaultV2Registry",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "yearnVaultV2Registry_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removeDerivatives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removeDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "DerivativeAdded",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "underlying",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DerivativeRemoved",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

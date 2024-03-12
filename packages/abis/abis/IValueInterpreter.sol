@@ -1,15 +1,17 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IValueInterpreter {
+    type RateAsset is uint8;
+
     event DerivativeAdded(address indexed derivative, address priceFeed);
     event DerivativeRemoved(address indexed derivative);
     event EthUsdAggregatorSet(address prevEthUsdAggregator, address nextEthUsdAggregator);
-    event PrimitiveAdded(address indexed primitive, address aggregator, uint8 rateAsset, uint256 unit);
+    event PrimitiveAdded(address indexed primitive, address aggregator, RateAsset rateAsset, uint256 unit);
     event PrimitiveRemoved(address indexed primitive);
 
     function addDerivatives(address[] memory _derivatives, address[] memory _priceFeeds) external;
-    function addPrimitives(address[] memory _primitives, address[] memory _aggregators, uint8[] memory _rateAssets)
+    function addPrimitives(address[] memory _primitives, address[] memory _aggregators, RateAsset[] memory _rateAssets)
         external;
     function calcCanonicalAssetValue(address _baseAsset, uint256 _amount, address _quoteAsset)
         external
@@ -22,7 +24,7 @@ interface IValueInterpreter {
     function getFundDeployer() external view returns (address fundDeployer_);
     function getOwner() external view returns (address owner_);
     function getPriceFeedForDerivative(address _derivative) external view returns (address priceFeed_);
-    function getRateAssetForPrimitive(address _primitive) external view returns (uint8 rateAsset_);
+    function getRateAssetForPrimitive(address _primitive) external view returns (RateAsset rateAsset_);
     function getStaleRateThreshold() external view returns (uint256 staleRateThreshold_);
     function getUnitForPrimitive(address _primitive) external view returns (uint256 unit_);
     function getWethToken() external view returns (address wethToken_);
@@ -33,6 +35,9 @@ interface IValueInterpreter {
     function removePrimitives(address[] memory _primitives) external;
     function setEthUsdAggregator(address _nextEthUsdAggregator) external;
     function updateDerivatives(address[] memory _derivatives, address[] memory _priceFeeds) external;
-    function updatePrimitives(address[] memory _primitives, address[] memory _aggregators, uint8[] memory _rateAssets)
-        external;
+    function updatePrimitives(
+        address[] memory _primitives,
+        address[] memory _aggregators,
+        RateAsset[] memory _rateAssets
+    ) external;
 }

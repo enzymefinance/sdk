@@ -1,19 +1,19 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface ICurvePriceFeed {
+    struct PoolInfo {
+        address invariantProxyAsset;
+        uint8 invariantProxyAssetDecimals;
+        uint88 lastValidatedVirtualPrice;
+    }
+
     event CurvePoolOwnerSet(address poolOwner);
     event DerivativeAdded(address indexed derivative, address indexed pool);
     event DerivativeRemoved(address indexed derivative);
     event InvariantProxyAssetForPoolSet(address indexed pool, address indexed invariantProxyAsset);
     event PoolRemoved(address indexed pool);
     event ValidatedVirtualPriceForPoolUpdated(address indexed pool, uint256 virtualPrice);
-
-    struct PoolInfo {
-        address invariantProxyAsset;
-        uint8 invariantProxyAssetDecimals;
-        uint88 lastValidatedVirtualPrice;
-    }
 
     function addGaugeTokens(address[] memory _gaugeTokens, address[] memory _pools) external;
     function addGaugeTokensWithoutValidation(address[] memory _gaugeTokens, address[] memory _pools) external;

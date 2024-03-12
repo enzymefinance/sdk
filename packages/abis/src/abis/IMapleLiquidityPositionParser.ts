@@ -1,81 +1,81 @@
 export const IMapleLiquidityPositionParser = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_mapleV2Globals",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_mapleV1MplRewardsFactory",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "parseAssetsForAction",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_actionId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_encodedActionArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseAssetsForAction",
     outputs: [
       {
-        internalType: "address[]",
         name: "assetsToTransfer_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amountsToTransfer_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "assetsToReceive_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseInitArgs",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseInitArgs",
     outputs: [
       {
-        internalType: "bytes",
         name: "initArgs_",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

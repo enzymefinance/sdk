@@ -1,63 +1,63 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_feeManager",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_comptrollerProxy",
-        "type": "address"
-      }
-    ],
+    "type": "function",
     "name": "getContinuousFeesForFund",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "continuousFees_",
-        "type": "address[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getFeeManager",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "feeManager_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "continuousFees_",
+        "type": "address[]",
+        "internalType": "address[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getFeeManager",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "feeManager_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "invokeContinuousFeeHookAndPayoutSharesOutstandingForFund",
+    "inputs": [
+      {
+        "name": "_comptrollerProxy",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address[]",
         "name": "_fees",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "name": "invokeContinuousFeeHookAndPayoutSharesOutstandingForFund",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   }
 ]

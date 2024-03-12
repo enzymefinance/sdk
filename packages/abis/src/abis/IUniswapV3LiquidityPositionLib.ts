@@ -1,207 +1,207 @@
 export const IUniswapV3LiquidityPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_nonFungibleTokenManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_valueInterpreter",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "NFTPositionAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "tokenId",
-        type: "uint256",
-      },
-    ],
-    name: "NFTPositionRemoved",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getNftIds",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256[]",
         name: "nftIds_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getNonFungibleTokenManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "nonFungibleTokenManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_nftId",
-        type: "uint256",
-      },
-    ],
+    type: "function",
     name: "getPairForNft",
+    inputs: [
+      {
+        name: "_nftId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
-        internalType: "address",
         name: "token0_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "token1_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "_nftId",
-        type: "uint256",
-      },
-    ],
+    type: "function",
     name: "getToken0ForNft",
-    outputs: [
-      {
-        internalType: "address",
-        name: "token0_",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "uint256",
         name: "_nftId",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getToken1ForNft",
     outputs: [
       {
-        internalType: "address",
-        name: "token1_",
+        name: "token0_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
-    name: "getValueInterpreter",
+    type: "function",
+    name: "getToken1ForNft",
+    inputs: [
+      {
+        name: "_nftId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
     outputs: [
       {
+        name: "token1_",
+        type: "address",
         internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getValueInterpreter",
+    inputs: [],
+    outputs: [
+      {
         name: "valueInterpreter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "NFTPositionAdded",
+    inputs: [
+      {
+        name: "tokenId",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "NFTPositionRemoved",
+    inputs: [
+      {
+        name: "tokenId",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

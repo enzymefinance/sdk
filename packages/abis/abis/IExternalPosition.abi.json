@@ -1,64 +1,64 @@
 [
   {
-    "inputs": [],
+    "type": "function",
     "name": "getDebtAssets",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "getManagedAssets",
     "outputs": [
       {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
+        "name": "assets_",
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
-        "name": "",
-        "type": "uint256[]"
+        "name": "amounts_",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
+    "type": "function",
+    "name": "getManagedAssets",
+    "inputs": [],
+    "outputs": [
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
+        "name": "assets_",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "amounts_",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
+        "name": "_data",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "receiveCallFromVault",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "receiveCallFromVault",
+    "inputs": [
+      {
+        "name": "_data",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
   }
 ]

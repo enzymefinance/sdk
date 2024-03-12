@@ -1,177 +1,177 @@
 [
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "to",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "MlnTokenBalanceWithdrawn",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "nextProtocolFeeReserveLib",
-        "type": "address"
-      }
-    ],
-    "name": "ProtocolFeeReserveLibSet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "vaultProxy",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "sharesAmount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "mlnValue",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "mlnBurned",
-        "type": "uint256"
-      }
-    ],
-    "name": "SharesBoughtBack",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_sharesAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_mlnValue",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "type": "function",
     "name": "buyBackSharesViaTrustedVaultProxy",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "mlnAmountToBurn_",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_contract",
-        "type": "address"
+        "name": "_sharesAmount",
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "bytes",
-        "name": "_callData",
-        "type": "bytes"
+        "name": "_mlnValue",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
+    "outputs": [
+      {
+        "name": "mlnAmountToBurn_",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "callOnContract",
+    "inputs": [
+      {
+        "name": "_contract",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_callData",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getDispatcher",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address",
         "name": "dispatcher_",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getProtocolFeeReserveLib",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "protocolFeeReserveLib_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_dispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
-    "name": "proxiableUUID",
     "outputs": [
       {
-        "internalType": "bytes32",
-        "name": "uuid_",
-        "type": "bytes32"
+        "name": "protocolFeeReserveLib_",
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "init",
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_nextProtocolFeeReserveLib",
-        "type": "address"
+        "name": "_dispatcher",
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "setProtocolFeeReserveLib",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "proxiableUUID",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "uuid_",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "setProtocolFeeReserveLib",
+    "inputs": [
+      {
+        "name": "_nextProtocolFeeReserveLib",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "MlnTokenBalanceWithdrawn",
+    "inputs": [
+      {
+        "name": "to",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProtocolFeeReserveLibSet",
+    "inputs": [
+      {
+        "name": "nextProtocolFeeReserveLib",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "SharesBoughtBack",
+    "inputs": [
+      {
+        "name": "vaultProxy",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "sharesAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "mlnValue",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "mlnBurned",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
   }
 ]

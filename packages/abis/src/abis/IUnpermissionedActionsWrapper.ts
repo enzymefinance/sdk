@@ -1,63 +1,63 @@
 export const IUnpermissionedActionsWrapper = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_feeManager",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "getContinuousFeesForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getContinuousFeesForFund",
     outputs: [
       {
-        internalType: "address[]",
         name: "continuousFees_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFeeManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "feeManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "invokeContinuousFeeHookAndPayoutSharesOutstandingForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address[]",
         name: "_fees",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "invokeContinuousFeeHookAndPayoutSharesOutstandingForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;
