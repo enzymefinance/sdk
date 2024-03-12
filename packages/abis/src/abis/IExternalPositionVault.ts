@@ -1,21 +1,21 @@
 export const IExternalPositionVault = [
   {
+    type: "function",
+    name: "getExternalPositionLibForType",
     inputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getExternalPositionLibForType",
     outputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

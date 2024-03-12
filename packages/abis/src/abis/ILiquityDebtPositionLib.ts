@@ -1,90 +1,90 @@
 export const ILiquityDebtPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_liquityBorrowerOperations",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_liquityTroveManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_lusd",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_weth",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "assets_",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "amounts_",
-        type: "uint256[]",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
-    name: "getManagedAssets",
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getManagedAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

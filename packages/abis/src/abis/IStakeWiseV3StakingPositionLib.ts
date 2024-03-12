@@ -1,206 +1,206 @@
 export const IStakeWiseV3StakingPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_referrer",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "stakeWiseVaultAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "positionTicket",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "sharesAmount",
-        type: "uint256",
-      },
-    ],
-    name: "ExitRequestAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "stakeWiseVaultAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "positionTicket",
-        type: "uint256",
-      },
-    ],
-    name: "ExitRequestRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "stakeWiseVaultAddress",
-        type: "address",
-      },
-    ],
-    name: "VaultTokenAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "stakeWiseVaultAddress",
-        type: "address",
-      },
-    ],
-    name: "VaultTokenRemoved",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "WETH_TOKEN",
+    inputs: [],
     outputs: [
       {
-        internalType: "contract IWETH",
         name: "",
         type: "address",
+        internalType: "contract IWETH",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getExitRequests",
+    inputs: [],
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "stakeWiseVaultAddress",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "positionTicket",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "sharesAmount",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct StakeWiseV3StakingPositionLibBase1.ExitRequest[]",
         name: "exitRequests_",
         type: "tuple[]",
+        internalType: "struct StakeWiseV3StakingPositionLibBase1.ExitRequest[]",
+        components: [
+          {
+            name: "stakeWiseVaultAddress",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "positionTicket",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "sharesAmount",
+            type: "uint256",
+            internalType: "uint256",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getStakeWiseVaultTokens",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "stakeWiseVaultTokens_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ExitRequestAdded",
+    inputs: [
+      {
+        name: "stakeWiseVaultAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "positionTicket",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "sharesAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ExitRequestRemoved",
+    inputs: [
+      {
+        name: "stakeWiseVaultAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "positionTicket",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VaultTokenAdded",
+    inputs: [
+      {
+        name: "stakeWiseVaultAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VaultTokenRemoved",
+    inputs: [
+      {
+        name: "stakeWiseVaultAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

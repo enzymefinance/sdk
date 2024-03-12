@@ -1,219 +1,219 @@
 export const IManualValueOracleLib = [
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "description",
-        type: "bytes32",
-      },
-    ],
-    name: "Initialized",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "nominatedOwner",
-        type: "address",
-      },
-    ],
-    name: "NominatedOwnerSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-    ],
-    name: "OwnerSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "updater",
-        type: "address",
-      },
-    ],
-    name: "UpdaterSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "int256",
-        name: "value",
-        type: "int256",
-      },
-    ],
-    name: "ValueUpdated",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "claimOwnership",
+    inputs: [],
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getLastUpdated",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "lastUpdated_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getNominatedOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "nominatedOwner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getUpdater",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "updater_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getValue",
+    inputs: [],
     outputs: [
       {
-        internalType: "int256",
         name: "value_",
         type: "int256",
+        internalType: "int256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getValueWithTimestamp",
+    inputs: [],
     outputs: [
       {
-        internalType: "int256",
         name: "value_",
         type: "int256",
+        internalType: "int256",
       },
       {
-        internalType: "uint256",
         name: "lastUpdated_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "address",
         name: "_owner",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_updater",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes32",
         name: "_description",
         type: "bytes32",
+        internalType: "bytes32",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setNominatedOwner",
     inputs: [
       {
-        internalType: "address",
         name: "_nextNominatedOwner",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setNominatedOwner",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setUpdater",
     inputs: [
       {
-        internalType: "address",
         name: "_nextUpdater",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setUpdater",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateValue",
     inputs: [
       {
-        internalType: "int192",
         name: "_nextValue",
         type: "int192",
+        internalType: "int192",
       },
     ],
-    name: "updateValue",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "Initialized",
+    inputs: [
+      {
+        name: "description",
+        type: "bytes32",
+        indexed: false,
+        internalType: "bytes32",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "NominatedOwnerSet",
+    inputs: [
+      {
+        name: "nominatedOwner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "OwnerSet",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UpdaterSet",
+    inputs: [
+      {
+        name: "updater",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ValueUpdated",
+    inputs: [
+      {
+        name: "value",
+        type: "int256",
+        indexed: false,
+        internalType: "int256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

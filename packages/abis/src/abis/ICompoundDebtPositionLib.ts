@@ -1,238 +1,238 @@
 export const ICompoundDebtPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_compoundComptroller",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_compToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_weth",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "assetIsCollateral",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "AssetBorrowed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "BorrowedAssetRepaid",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "CollateralAssetAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "CollateralAssetRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "assetIsCollateral",
     outputs: [
       {
-        internalType: "bool",
         name: "isCollateral",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getCTokenFromBorrowedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_borrowedAsset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getCTokenFromBorrowedAsset",
     outputs: [
       {
-        internalType: "address",
         name: "cToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCompToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "compToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCompoundComptroller",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "compoundComptroller_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "AssetBorrowed",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "BorrowedAssetRepaid",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "CollateralAssetAdded",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "CollateralAssetRemoved",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

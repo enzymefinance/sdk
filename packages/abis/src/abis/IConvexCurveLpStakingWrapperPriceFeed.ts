@@ -1,61 +1,61 @@
 export const IConvexCurveLpStakingWrapperPriceFeed = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_wrapperFactory",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "calcUnderlyingValues",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_derivativeAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcUnderlyingValues",
     outputs: [
       {
-        internalType: "address[]",
         name: "underlyings_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "underlyingAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

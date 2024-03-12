@@ -1,22 +1,22 @@
 export const IArbitraryTokenPhasedSharesWrapperProxy = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "bytes",
         name: "_constructData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "address",
         name: "_lib",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    stateMutability: "payable",
     type: "fallback",
+    stateMutability: "payable",
   },
 ] as const;

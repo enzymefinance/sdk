@@ -1,253 +1,253 @@
 export const ISharesSplitterLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_globalConfigProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_initializer",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "claimToken",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "percentage",
-        type: "uint256",
-      },
-    ],
-    name: "SplitPercentageSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "TokenClaimed",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_token",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "claimToken",
     outputs: [
       {
-        internalType: "uint256",
         name: "claimedAmount_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "claimTokenAmountTo",
     inputs: [
       {
-        internalType: "address",
         name: "_token",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_amount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_to",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "claimTokenAmountTo",
     outputs: [
       {
-        internalType: "uint256",
         name: "claimedAmount_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getSplitPercentageForUser",
     inputs: [
       {
-        internalType: "address",
         name: "_user",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getSplitPercentageForUser",
     outputs: [
       {
-        internalType: "uint256",
         name: "splitPercentage_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getTokenBalClaimableForUser",
     inputs: [
       {
-        internalType: "address",
         name: "_user",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_token",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getTokenBalClaimableForUser",
     outputs: [
       {
-        internalType: "uint256",
         name: "balClaimable_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getTokenBalClaimedForUser",
     inputs: [
       {
-        internalType: "address",
         name: "_user",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_token",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getTokenBalClaimedForUser",
     outputs: [
       {
-        internalType: "uint256",
         name: "balClaimed_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getTotalTokenBalClaimed",
     inputs: [
       {
-        internalType: "address",
         name: "_token",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getTotalTokenBalClaimed",
     outputs: [
       {
-        internalType: "uint256",
         name: "totalBalClaimed_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "address[]",
         name: "_users",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "_splitPercentages",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "redeemShares",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_amount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_redeemContract",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes4",
         name: "_redeemSelector",
         type: "bytes4",
+        internalType: "bytes4",
       },
       {
-        internalType: "bytes",
         name: "_redeemData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "redeemShares",
     outputs: [
       {
-        internalType: "uint256",
         name: "sharesRedeemed_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "SplitPercentageSet",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "percentage",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TokenClaimed",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "token",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

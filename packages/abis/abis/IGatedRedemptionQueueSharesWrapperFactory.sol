@@ -1,9 +1,8 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IGatedRedemptionQueueSharesWrapperFactory {
-    event ImplementationSet(address implementation);
-    event ProxyDeployed(address indexed caller, address proxy);
+    type DepositMode is uint8;
 
     struct RedemptionWindowConfig {
         uint64 firstWindowStart;
@@ -12,6 +11,9 @@ interface IGatedRedemptionQueueSharesWrapperFactory {
         uint64 relativeSharesCap;
     }
 
+    event ImplementationSet(address implementation);
+    event ProxyDeployed(address indexed caller, address proxy);
+
     function deploy(
         address _vaultProxy,
         address[] memory _managers,
@@ -19,7 +21,7 @@ interface IGatedRedemptionQueueSharesWrapperFactory {
         bool _useDepositApprovals,
         bool _useRedemptionApprovals,
         bool _useTransferApprovals,
-        uint8 _depositMode,
+        DepositMode _depositMode,
         RedemptionWindowConfig memory _windowConfig
     ) external returns (address wrapperProxy_);
     function implementation() external view returns (address);

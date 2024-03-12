@@ -1,107 +1,107 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_stakeWiseV3VaultsRegistryAddress",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
         "name": "_wethAddress",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "STAKEWISE_V3_VAULT_REGISTRY",
-    "outputs": [
-      {
-        "internalType": "contract IStakeWiseV3VaultsRegistry",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "contract IStakeWiseV3VaultsRegistry"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "WETH_ADDRESS",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address",
         "name": "",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_actionId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_encodedActionArgs",
-        "type": "bytes"
-      }
-    ],
+    "type": "function",
     "name": "parseAssetsForAction",
-    "outputs": [
-      {
-        "internalType": "address[]",
-        "name": "assetsToTransfer_",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "amountsToTransfer_",
-        "type": "uint256[]"
-      },
-      {
-        "internalType": "address[]",
-        "name": "assetsToReceive_",
-        "type": "address[]"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
         "name": "",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
+        "name": "_actionId",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_encodedActionArgs",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "parseInitArgs",
     "outputs": [
       {
-        "internalType": "bytes",
-        "name": "initArgs_",
-        "type": "bytes"
+        "name": "assetsToTransfer_",
+        "type": "address[]",
+        "internalType": "address[]"
+      },
+      {
+        "name": "amountsToTransfer_",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "assetsToReceive_",
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "parseInitArgs",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "initArgs_",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "stateMutability": "pure"
   }
 ]

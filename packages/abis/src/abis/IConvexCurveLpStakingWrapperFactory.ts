@@ -1,191 +1,191 @@
 export const IConvexCurveLpStakingWrapperFactory = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_implementation",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "deploy",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "implementation",
-        type: "address",
-      },
-    ],
-    name: "ImplementationSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "proxy",
-        type: "address",
-      },
-    ],
-    name: "ProxyDeployed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "pid",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "wrapperProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "curveLpToken",
-        type: "address",
-      },
-    ],
-    name: "WrapperDeployed",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
         name: "_pid",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "deploy",
     outputs: [
       {
-        internalType: "address",
         name: "wrapperProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getCurveLpTokenForWrapper",
     inputs: [
       {
-        internalType: "address",
         name: "_wrapper",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getCurveLpTokenForWrapper",
     outputs: [
       {
-        internalType: "address",
         name: "lpToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getWrapperForConvexPool",
     inputs: [
       {
-        internalType: "uint256",
         name: "_pid",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getWrapperForConvexPool",
     outputs: [
       {
-        internalType: "address",
         name: "wrapper_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementation",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "pauseWrappers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_wrappers",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "pauseWrappers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setImplementation",
     inputs: [
       {
-        internalType: "address",
         name: "_nextImplementation",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setImplementation",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "unpauseWrappers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_wrappers",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "unpauseWrappers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ImplementationSet",
+    inputs: [
+      {
+        name: "implementation",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProxyDeployed",
+    inputs: [
+      {
+        name: "proxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "WrapperDeployed",
+    inputs: [
+      {
+        name: "pid",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "wrapperProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "curveLpToken",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

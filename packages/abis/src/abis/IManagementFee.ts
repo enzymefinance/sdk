@@ -1,360 +1,360 @@
 export const IManagementFee = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_feeManager",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "activateForFund",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-    ],
-    name: "ActivatedForMigratedFund",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint128",
-        name: "scaledPerSecondRate",
-        type: "uint128",
-      },
-    ],
-    name: "FundSettingsAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "recipient",
-        type: "address",
-      },
-    ],
-    name: "RecipientSetForFund",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "sharesQuantity",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "secondsSinceSettlement",
-        type: "uint256",
-      },
-    ],
-    name: "Settled",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "activateForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_settingsData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "addFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getFeeInfoForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getFeeInfoForFund",
     outputs: [
       {
-        components: [
-          {
-            internalType: "uint128",
-            name: "scaledPerSecondRate",
-            type: "uint128",
-          },
-          {
-            internalType: "uint128",
-            name: "lastSettled",
-            type: "uint128",
-          },
-        ],
-        internalType: "struct ManagementFee.FeeInfo",
         name: "feeInfo_",
         type: "tuple",
+        internalType: "struct ManagementFee.FeeInfo",
+        components: [
+          {
+            name: "scaledPerSecondRate",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "lastSettled",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFeeManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "feeManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getRecipientForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getRecipientForFund",
     outputs: [
       {
-        internalType: "address",
         name: "recipient_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "payout",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "payout",
     outputs: [
       {
-        internalType: "bool",
         name: "",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setRecipientForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_recipient",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setRecipientForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "settle",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IFeeManager.FeeHook",
         name: "",
         type: "uint8",
+        internalType: "enum IFeeManager.FeeHook",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "settle",
     outputs: [
       {
-        internalType: "enum IFeeManager.SettlementType",
         name: "settlementType_",
         type: "uint8",
+        internalType: "enum IFeeManager.SettlementType",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "sharesDue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "settlesOnHook",
     inputs: [
       {
-        internalType: "enum IFeeManager.FeeHook",
         name: "_hook",
         type: "uint8",
+        internalType: "enum IFeeManager.FeeHook",
       },
     ],
-    name: "settlesOnHook",
     outputs: [
       {
-        internalType: "bool",
         name: "settles_",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "bool",
         name: "usesGav_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "update",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IFeeManager.FeeHook",
         name: "",
         type: "uint8",
+        internalType: "enum IFeeManager.FeeHook",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "update",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updatesOnHook",
     inputs: [
       {
-        internalType: "enum IFeeManager.FeeHook",
         name: "",
         type: "uint8",
+        internalType: "enum IFeeManager.FeeHook",
       },
     ],
-    name: "updatesOnHook",
     outputs: [
       {
-        internalType: "bool",
         name: "updates_",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "bool",
         name: "usesGav_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ActivatedForMigratedFund",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "FundSettingsAdded",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "scaledPerSecondRate",
+        type: "uint128",
+        indexed: false,
+        internalType: "uint128",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RecipientSetForFund",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "recipient",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Settled",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesQuantity",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "secondsSinceSettlement",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

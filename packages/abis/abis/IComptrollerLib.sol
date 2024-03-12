@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IComptrollerLib {
+    type VaultAction is uint8;
+
     event AutoProtocolFeeSharesBuybackSet(bool autoProtocolFeeSharesBuyback);
     event BuyBackMaxProtocolFeeSharesFailed(
         bytes indexed failureReturnData, uint256 sharesAmount, uint256 buybackValueInMln, uint256 gav
@@ -59,7 +61,7 @@ interface IComptrollerLib {
     function getVaultProxy() external view returns (address vaultProxy_);
     function getWethToken() external view returns (address wethToken_);
     function init(address _denominationAsset, uint256 _sharesActionTimelock) external;
-    function permissionedVaultAction(uint8 _action, bytes memory _actionData) external;
+    function permissionedVaultAction(VaultAction _action, bytes memory _actionData) external;
     function preTransferSharesHook(address _sender, address _recipient, uint256 _amount) external;
     function preTransferSharesHookFreelyTransferable(address _sender) external view;
     function pullWethForGasRelayer(uint256 _amount) external;

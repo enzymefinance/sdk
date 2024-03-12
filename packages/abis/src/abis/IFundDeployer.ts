@@ -1,1011 +1,1011 @@
 export const IFundDeployer = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_gasRelayPaymasterFactory",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "cancelMigration",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-    ],
-    name: "BuySharesOnBehalfCallerDeregistered",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-    ],
-    name: "BuySharesOnBehalfCallerRegistered",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "comptrollerLib",
-        type: "address",
-      },
-    ],
-    name: "ComptrollerLibSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "denominationAsset",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "sharesActionTimelock",
-        type: "uint256",
-      },
-    ],
-    name: "ComptrollerProxyDeployed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextDeactivateFeeManagerGasLimit",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextPayProtocolFeeGasLimit",
-        type: "uint256",
-      },
-    ],
-    name: "GasLimitsForDestructCallSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-    ],
-    name: "MigrationRequestCreated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-    ],
-    name: "NewFundCreated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "protocolFeeTracker",
-        type: "address",
-      },
-    ],
-    name: "ProtocolFeeTrackerSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "nextComptrollerProxy",
-        type: "address",
-      },
-    ],
-    name: "ReconfigurationRequestCancelled",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "executableTimestamp",
-        type: "uint256",
-      },
-    ],
-    name: "ReconfigurationRequestCreated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "prevComptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "nextComptrollerProxy",
-        type: "address",
-      },
-    ],
-    name: "ReconfigurationRequestExecuted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextTimelock",
-        type: "uint256",
-      },
-    ],
-    name: "ReconfigurationTimelockSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [],
-    name: "ReleaseIsLive",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "contractAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "bytes4",
-        name: "selector",
-        type: "bytes4",
-      },
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "dataHash",
-        type: "bytes32",
-      },
-    ],
-    name: "VaultCallDeregistered",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "contractAddress",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "bytes4",
-        name: "selector",
-        type: "bytes4",
-      },
-      {
-        indexed: false,
-        internalType: "bytes32",
-        name: "dataHash",
-        type: "bytes32",
-      },
-    ],
-    name: "VaultCallRegistered",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "vaultLib",
-        type: "address",
-      },
-    ],
-    name: "VaultLibSet",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bool",
         name: "_bypassPrevReleaseFailure",
         type: "bool",
+        internalType: "bool",
       },
     ],
-    name: "cancelMigration",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "cancelReconfiguration",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "createMigrationRequest",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_denominationAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_sharesActionTimelock",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_feeManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "_policyManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bool",
         name: "_bypassPrevReleaseFailure",
         type: "bool",
+        internalType: "bool",
       },
     ],
-    name: "createMigrationRequest",
     outputs: [
       {
-        internalType: "address",
         name: "comptrollerProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "createNewFund",
     inputs: [
       {
-        internalType: "address",
         name: "_fundOwner",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "string",
         name: "_fundName",
         type: "string",
+        internalType: "string",
       },
       {
-        internalType: "string",
         name: "_fundSymbol",
         type: "string",
+        internalType: "string",
       },
       {
-        internalType: "address",
         name: "_denominationAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_sharesActionTimelock",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_feeManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "_policyManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "createNewFund",
     outputs: [
       {
-        internalType: "address",
         name: "comptrollerProxy_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "vaultProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "createReconfigurationRequest",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_denominationAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_sharesActionTimelock",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_feeManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "_policyManagerConfigData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "createReconfigurationRequest",
     outputs: [
       {
-        internalType: "address",
         name: "comptrollerProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "deregisterBuySharesOnBehalfCallers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_callers",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "deregisterBuySharesOnBehalfCallers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "deregisterVaultCalls",
     inputs: [
       {
-        internalType: "address[]",
         name: "_contracts",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "bytes4[]",
         name: "_selectors",
         type: "bytes4[]",
+        internalType: "bytes4[]",
       },
       {
-        internalType: "bytes32[]",
         name: "_dataHashes",
         type: "bytes32[]",
+        internalType: "bytes32[]",
       },
     ],
-    name: "deregisterVaultCalls",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "executeMigration",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bool",
         name: "_bypassPrevReleaseFailure",
         type: "bool",
+        internalType: "bool",
       },
     ],
-    name: "executeMigration",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "executeReconfiguration",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "executeReconfiguration",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getComptrollerLib",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "comptrollerLib_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCreator",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "creator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDispatcher",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "dispatcher_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getGasLimitsForDestructCall",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "deactivateFeeManagerGasLimit_",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "payProtocolFeeGasLimit_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getGasRelayPaymasterFactory",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "gasRelayPaymasterFactory_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getGasRelayTrustedForwarder",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "trustedForwarder_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getProtocolFeeTracker",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "protocolFeeTracker_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getReconfigurationRequestForVaultProxy",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getReconfigurationRequestForVaultProxy",
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "nextComptrollerProxy",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "executableTimestamp",
-            type: "uint256",
-          },
-        ],
-        internalType: "struct IFundDeployer.ReconfigurationRequest",
         name: "reconfigurationRequest_",
         type: "tuple",
+        internalType: "struct IFundDeployer.ReconfigurationRequest",
+        components: [
+          {
+            name: "nextComptrollerProxy",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "executableTimestamp",
+            type: "uint256",
+            internalType: "uint256",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getReconfigurationTimelock",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "reconfigurationTimelock_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getVaultLib",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "vaultLib_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "hasReconfigurationRequest",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "hasReconfigurationRequest",
     outputs: [
       {
-        internalType: "bool",
         name: "hasReconfigurationRequest_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "invokeMigrationInCancelHook",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_nextComptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "invokeMigrationInCancelHook",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "invokeMigrationOutHook",
     inputs: [
       {
-        internalType: "enum IMigrationHookHandler.MigrationOutHook",
         name: "_hook",
         type: "uint8",
+        internalType: "enum IMigrationHookHandler.MigrationOutHook",
       },
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "invokeMigrationOutHook",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isAllowedBuySharesOnBehalfCaller",
     inputs: [
       {
-        internalType: "address",
         name: "_who",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isAllowedBuySharesOnBehalfCaller",
     outputs: [
       {
-        internalType: "bool",
         name: "isAllowed_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_contract",
-        type: "address",
-      },
-      {
-        internalType: "bytes4",
-        name: "_selector",
-        type: "bytes4",
-      },
-      {
-        internalType: "bytes32",
-        name: "_dataHash",
-        type: "bytes32",
-      },
-    ],
+    type: "function",
     name: "isAllowedVaultCall",
+    inputs: [
+      {
+        name: "_contract",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_selector",
+        type: "bytes4",
+        internalType: "bytes4",
+      },
+      {
+        name: "_dataHash",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
     outputs: [
       {
-        internalType: "bool",
         name: "isAllowed_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isRegisteredVaultCall",
     inputs: [
       {
-        internalType: "address",
         name: "_contract",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes4",
         name: "_selector",
         type: "bytes4",
+        internalType: "bytes4",
       },
       {
-        internalType: "bytes32",
         name: "_dataHash",
         type: "bytes32",
+        internalType: "bytes32",
       },
     ],
-    name: "isRegisteredVaultCall",
     outputs: [
       {
-        internalType: "bool",
         name: "isRegistered_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "registerBuySharesOnBehalfCallers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_callers",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "registerBuySharesOnBehalfCallers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "registerVaultCalls",
     inputs: [
       {
-        internalType: "address[]",
         name: "_contracts",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "bytes4[]",
         name: "_selectors",
         type: "bytes4[]",
+        internalType: "bytes4[]",
       },
       {
-        internalType: "bytes32[]",
         name: "_dataHashes",
         type: "bytes32[]",
+        internalType: "bytes32[]",
       },
     ],
-    name: "registerVaultCalls",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "releaseIsLive",
+    inputs: [],
     outputs: [
       {
-        internalType: "bool",
         name: "isLive_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setComptrollerLib",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setComptrollerLib",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setGasLimitsForDestructCall",
     inputs: [
       {
-        internalType: "uint32",
         name: "_nextDeactivateFeeManagerGasLimit",
         type: "uint32",
+        internalType: "uint32",
       },
       {
-        internalType: "uint32",
         name: "_nextPayProtocolFeeGasLimit",
         type: "uint32",
+        internalType: "uint32",
       },
     ],
-    name: "setGasLimitsForDestructCall",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setProtocolFeeTracker",
     inputs: [
       {
-        internalType: "address",
         name: "_protocolFeeTracker",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setProtocolFeeTracker",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setReconfigurationTimelock",
     inputs: [
       {
-        internalType: "uint256",
         name: "_nextTimelock",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "setReconfigurationTimelock",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "setReleaseLive",
+    inputs: [],
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setVaultLib",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setVaultLib",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "BuySharesOnBehalfCallerDeregistered",
+    inputs: [
+      {
+        name: "caller",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "BuySharesOnBehalfCallerRegistered",
+    inputs: [
+      {
+        name: "caller",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ComptrollerLibSet",
+    inputs: [
+      {
+        name: "comptrollerLib",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ComptrollerProxyDeployed",
+    inputs: [
+      {
+        name: "creator",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "denominationAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesActionTimelock",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "GasLimitsForDestructCallSet",
+    inputs: [
+      {
+        name: "nextDeactivateFeeManagerGasLimit",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "nextPayProtocolFeeGasLimit",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "MigrationRequestCreated",
+    inputs: [
+      {
+        name: "creator",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "NewFundCreated",
+    inputs: [
+      {
+        name: "creator",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProtocolFeeTrackerSet",
+    inputs: [
+      {
+        name: "protocolFeeTracker",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ReconfigurationRequestCancelled",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "nextComptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ReconfigurationRequestCreated",
+    inputs: [
+      {
+        name: "creator",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "executableTimestamp",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ReconfigurationRequestExecuted",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "prevComptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "nextComptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ReconfigurationTimelockSet",
+    inputs: [
+      {
+        name: "nextTimelock",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ReleaseIsLive",
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VaultCallDeregistered",
+    inputs: [
+      {
+        name: "contractAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "selector",
+        type: "bytes4",
+        indexed: false,
+        internalType: "bytes4",
+      },
+      {
+        name: "dataHash",
+        type: "bytes32",
+        indexed: false,
+        internalType: "bytes32",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VaultCallRegistered",
+    inputs: [
+      {
+        name: "contractAddress",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "selector",
+        type: "bytes4",
+        indexed: false,
+        internalType: "bytes4",
+      },
+      {
+        name: "dataHash",
+        type: "bytes32",
+        indexed: false,
+        internalType: "bytes32",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VaultLibSet",
+    inputs: [
+      {
+        name: "vaultLib",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

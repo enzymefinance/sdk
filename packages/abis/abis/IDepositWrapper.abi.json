@@ -1,125 +1,125 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_addressListRegistryAddress",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "uint256",
         "name": "_allowedExchangesListId",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "contract IWETH",
         "name": "_wrappedNativeAsset",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract IWETH"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "contract IComptroller",
-        "name": "_comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_minSharesQuantity",
-        "type": "uint256"
-      },
-      {
-        "internalType": "contract ERC20",
-        "name": "_inputAsset",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_maxInputAssetAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "_exchange",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_exchangeApproveTarget",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_exchangeData",
-        "type": "bytes"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_exchangeMinReceived",
-        "type": "uint256"
-      }
-    ],
+    "type": "receive",
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
     "name": "exchangeErc20AndBuyShares",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "sharesReceived_",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "contract IComptroller",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract IComptroller"
       },
       {
-        "internalType": "uint256",
         "name": "_minSharesQuantity",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "address",
+        "name": "_inputAsset",
+        "type": "address",
+        "internalType": "contract ERC20"
+      },
+      {
+        "name": "_maxInputAssetAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
         "name": "_exchange",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
         "name": "_exchangeApproveTarget",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bytes",
         "name": "_exchangeData",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       },
       {
-        "internalType": "uint256",
         "name": "_exchangeMinReceived",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "name": "exchangeEthAndBuyShares",
     "outputs": [
       {
-        "internalType": "uint256",
         "name": "sharesReceived_",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "stateMutability": "payable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "stateMutability": "payable",
-    "type": "receive"
+    "type": "function",
+    "name": "exchangeEthAndBuyShares",
+    "inputs": [
+      {
+        "name": "_comptrollerProxy",
+        "type": "address",
+        "internalType": "contract IComptroller"
+      },
+      {
+        "name": "_minSharesQuantity",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_exchange",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_exchangeApproveTarget",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_exchangeData",
+        "type": "bytes",
+        "internalType": "bytes"
+      },
+      {
+        "name": "_exchangeMinReceived",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sharesReceived_",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "payable"
   }
 ]

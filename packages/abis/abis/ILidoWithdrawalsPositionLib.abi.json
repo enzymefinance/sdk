@@ -1,137 +1,137 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "contract ILidoWithdrawalQueue",
         "name": "_withdrawalQueue",
-        "type": "address"
+        "type": "address",
+        "internalType": "contract ILidoWithdrawalQueue"
       },
       {
-        "internalType": "address",
         "name": "_stethAddress",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "RequestAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "id",
-        "type": "uint256"
-      }
-    ],
-    "name": "RequestRemoved",
-    "type": "event"
-  },
-  {
-    "inputs": [],
+    "type": "function",
     "name": "getDebtAssets",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "assets_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
         "name": "amounts_",
-        "type": "uint256[]"
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "pure"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getManagedAssets",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "assets_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
         "name": "amounts_",
-        "type": "uint256[]"
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getRequests",
+    "inputs": [],
     "outputs": [
       {
+        "name": "requests_",
+        "type": "tuple[]",
+        "internalType": "struct LidoWithdrawalsPositionLibBase1.Request[]",
         "components": [
           {
-            "internalType": "uint128",
             "name": "amount",
-            "type": "uint128"
+            "type": "uint128",
+            "internalType": "uint128"
           },
           {
-            "internalType": "uint128",
             "name": "id",
-            "type": "uint128"
+            "type": "uint128",
+            "internalType": "uint128"
           }
-        ],
-        "internalType": "struct LidoWithdrawalsPositionLibBase1.Request[]",
-        "name": "requests_",
-        "type": "tuple[]"
+        ]
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
+    "type": "function",
     "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "bytes",
-        "name": "_actionData",
-        "type": "bytes"
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "receiveCallFromVault",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "receiveCallFromVault",
+    "inputs": [
+      {
+        "name": "_actionData",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "RequestAdded",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RequestRemoved",
+    "inputs": [
+      {
+        "name": "id",
+        "type": "uint256",
+        "indexed": true,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
   }
 ]

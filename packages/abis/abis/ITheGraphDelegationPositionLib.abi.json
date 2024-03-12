@@ -1,157 +1,157 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_stakingProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
         "name": "_grtToken",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "indexer",
-        "type": "address"
-      }
-    ],
-    "name": "IndexerAdded",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "indexer",
-        "type": "address"
-      }
-    ],
-    "name": "IndexerRemoved",
-    "type": "event"
-  },
-  {
-    "inputs": [],
+    "type": "function",
     "name": "getDebtAssets",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "assets_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
         "name": "amounts_",
-        "type": "uint256[]"
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_indexer",
-        "type": "address"
-      }
-    ],
+    "type": "function",
     "name": "getDelegationGrtValue",
+    "inputs": [
+      {
+        "name": "_indexer",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
     "outputs": [
       {
-        "internalType": "uint256",
         "name": "grtValue_",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getIndexers",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "getManagedAssets",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "assets_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
         "name": "amounts_",
-        "type": "uint256[]"
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
+    "type": "function",
     "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_indexer",
-        "type": "address"
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "isDelegatorTo",
+    "inputs": [
+      {
+        "name": "_indexer",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
     "outputs": [
       {
-        "internalType": "bool",
         "name": "isDelegator_",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "receiveCallFromVault",
     "inputs": [
       {
-        "internalType": "bytes",
         "name": "_actionData",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "receiveCallFromVault",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "IndexerAdded",
+    "inputs": [
+      {
+        "name": "indexer",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "IndexerRemoved",
+    "inputs": [
+      {
+        "name": "indexer",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
   }
 ]

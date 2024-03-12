@@ -1,8 +1,12 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IPolicyManager {
-    event PolicyDisabledOnHookForFund(address indexed comptrollerProxy, address indexed policy, uint8 indexed hook);
+    type PolicyHook is uint8;
+
+    event PolicyDisabledOnHookForFund(
+        address indexed comptrollerProxy, address indexed policy, PolicyHook indexed hook
+    );
     event PolicyEnabledForFund(address indexed comptrollerProxy, address indexed policy, bytes settingsData);
     event ValidatedVaultProxySetForFund(address indexed comptrollerProxy, address indexed vaultProxy);
 
@@ -14,7 +18,7 @@ interface IPolicyManager {
         external
         view
         returns (address[] memory enabledPolicies_);
-    function getEnabledPoliciesOnHookForFund(address _comptrollerProxy, uint8 _hook)
+    function getEnabledPoliciesOnHookForFund(address _comptrollerProxy, PolicyHook _hook)
         external
         view
         returns (address[] memory enabledPolicies_);
@@ -23,7 +27,7 @@ interface IPolicyManager {
     function getGasRelayTrustedForwarder() external view returns (address trustedForwarder_);
     function getOwner() external view returns (address owner_);
     function getVaultProxyForFund(address _comptrollerProxy) external view returns (address vaultProxy_);
-    function policyIsEnabledOnHookForFund(address _comptrollerProxy, uint8 _hook, address _policy)
+    function policyIsEnabledOnHookForFund(address _comptrollerProxy, PolicyHook _hook, address _policy)
         external
         view
         returns (bool isEnabled_);
@@ -31,5 +35,5 @@ interface IPolicyManager {
     function setConfigForFund(address _comptrollerProxy, address _vaultProxy, bytes memory _configData) external;
     function updatePolicySettingsForFund(address _comptrollerProxy, address _policy, bytes memory _settingsData)
         external;
-    function validatePolicies(address _comptrollerProxy, uint8 _hook, bytes memory _validationData) external;
+    function validatePolicies(address _comptrollerProxy, PolicyHook _hook, bytes memory _validationData) external;
 }

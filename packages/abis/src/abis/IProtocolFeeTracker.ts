@@ -1,279 +1,279 @@
 export const IProtocolFeeTracker = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextFeeBpsDefault",
-        type: "uint256",
-      },
-    ],
-    name: "FeeBpsDefaultSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextFeeBpsOverride",
-        type: "uint256",
-      },
-    ],
-    name: "FeeBpsOverrideSetForVault",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "sharesAmount",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "secondsPaid",
-        type: "uint256",
-      },
-    ],
-    name: "FeePaidForVault",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-    ],
-    name: "InitializedForVault",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "prevTimestamp",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextTimestamp",
-        type: "uint256",
-      },
-    ],
-    name: "LastPaidSetForVault",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getFeeBpsDefault",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "feeBpsDefault_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getFeeBpsForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getFeeBpsForVault",
     outputs: [
       {
-        internalType: "uint256",
         name: "feeBps_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getFeeBpsOverrideForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getFeeBpsOverrideForVault",
     outputs: [
       {
-        internalType: "uint256",
         name: "feeBpsOverride_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getLastPaidForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getLastPaidForVault",
     outputs: [
       {
-        internalType: "uint256",
         name: "lastPaid_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "initializeForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "initializeForVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "payFee",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "sharesDue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setFeeBpsDefault",
     inputs: [
       {
-        internalType: "uint256",
         name: "_nextFeeBpsDefault",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "setFeeBpsDefault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setFeeBpsOverrideForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_nextFeeBpsOverride",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "setFeeBpsOverrideForVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setLastPaidForVault",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_nextTimestamp",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "setLastPaidForVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "FeeBpsDefaultSet",
+    inputs: [
+      {
+        name: "nextFeeBpsDefault",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "FeeBpsOverrideSetForVault",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "nextFeeBpsOverride",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "FeePaidForVault",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "secondsPaid",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "InitializedForVault",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "LastPaidSetForVault",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "prevTimestamp",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "nextTimestamp",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

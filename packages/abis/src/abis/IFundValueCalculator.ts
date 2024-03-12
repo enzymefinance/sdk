@@ -1,331 +1,331 @@
 export const IFundValueCalculator = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_feeManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_protocolFeeTracker",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_valueInterpreter",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcGav",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "address",
         name: "denominationAsset_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "gav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_quoteAsset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcGavInAsset",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_quoteAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "uint256",
         name: "gav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcGrossShareValue",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "address",
         name: "denominationAsset_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "grossShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_quoteAsset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcGrossShareValueInAsset",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_quoteAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "uint256",
         name: "grossShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcNav",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "address",
         name: "denominationAsset_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "nav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_quoteAsset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcNavInAsset",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_quoteAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "uint256",
         name: "nav_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcNetShareValue",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
     outputs: [
       {
-        internalType: "address",
         name: "denominationAsset_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "netShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_quoteAsset",
-        type: "address",
-      },
-    ],
+    type: "function",
     name: "calcNetShareValueInAsset",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "netShareValue_",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
-      },
-      {
         internalType: "address",
-        name: "_sharesHolder",
-        type: "address",
-      },
-    ],
-    name: "calcNetValueForSharesHolder",
-    outputs: [
-      {
-        internalType: "address",
-        name: "denominationAsset_",
-        type: "address",
       },
       {
-        internalType: "uint256",
-        name: "netValue_",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "_sharesHolder",
-        type: "address",
-      },
-      {
-        internalType: "address",
         name: "_quoteAsset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcNetValueForSharesHolderInAsset",
     outputs: [
       {
-        internalType: "uint256",
-        name: "netValue_",
+        name: "netShareValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "calcNetValueForSharesHolder",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_sharesHolder",
+        type: "address",
+        internalType: "address",
       },
     ],
-    name: "calcProtocolFeeDueForFund",
     outputs: [
       {
+        name: "denominationAsset_",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "netValue_",
+        type: "uint256",
         internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcNetValueForSharesHolderInAsset",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_sharesHolder",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_quoteAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "netValue_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcProtocolFeeDueForFund",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
         name: "sharesDue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFeeManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "feeManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getProtocolFeeTracker",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "protocolFeeTracker_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getValueInterpreter",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "valueInterpreter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

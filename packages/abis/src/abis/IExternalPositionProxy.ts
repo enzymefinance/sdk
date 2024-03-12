@@ -1,75 +1,75 @@
 export const IExternalPositionProxy = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_typeId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_constructLib",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_constructData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    stateMutability: "payable",
     type: "fallback",
+    stateMutability: "payable",
   },
   {
-    inputs: [],
+    type: "receive",
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
     name: "getExternalPositionType",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "externalPositionType_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getVaultProxy",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "vaultProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_data",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    stateMutability: "payable",
-    type: "receive",
   },
 ] as const;

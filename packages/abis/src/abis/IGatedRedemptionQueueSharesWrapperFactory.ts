@@ -1,152 +1,152 @@
 export const IGatedRedemptionQueueSharesWrapperFactory = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_implementation",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "deploy",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "implementation",
-        type: "address",
-      },
-    ],
-    name: "ImplementationSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "proxy",
-        type: "address",
-      },
-    ],
-    name: "ProxyDeployed",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address[]",
         name: "_managers",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address",
         name: "_redemptionAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bool",
         name: "_useDepositApprovals",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "bool",
         name: "_useRedemptionApprovals",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "bool",
         name: "_useTransferApprovals",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
         name: "_depositMode",
         type: "uint8",
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
       },
       {
-        components: [
-          {
-            internalType: "uint64",
-            name: "firstWindowStart",
-            type: "uint64",
-          },
-          {
-            internalType: "uint32",
-            name: "frequency",
-            type: "uint32",
-          },
-          {
-            internalType: "uint32",
-            name: "duration",
-            type: "uint32",
-          },
-          {
-            internalType: "uint64",
-            name: "relativeSharesCap",
-            type: "uint64",
-          },
-        ],
-        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         name: "_windowConfig",
         type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        components: [
+          {
+            name: "firstWindowStart",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "frequency",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "duration",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "relativeSharesCap",
+            type: "uint64",
+            internalType: "uint64",
+          },
+        ],
       },
     ],
-    name: "deploy",
     outputs: [
       {
-        internalType: "address",
         name: "wrapperProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementation",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setImplementation",
     inputs: [
       {
-        internalType: "address",
         name: "_nextImplementation",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setImplementation",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ImplementationSet",
+    inputs: [
+      {
+        name: "implementation",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProxyDeployed",
+    inputs: [
+      {
+        name: "caller",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "proxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

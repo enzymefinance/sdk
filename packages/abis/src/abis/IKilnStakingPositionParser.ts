@@ -1,138 +1,138 @@
 export const IKilnStakingPositionParser = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_addressListRegistry",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_stakingContractsListId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_weth",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [],
+    type: "function",
     name: "ADDRESS_LIST_REGISTRY_CONTRACT",
+    inputs: [],
     outputs: [
       {
+        name: "",
+        type: "address",
         internalType: "contract IAddressListRegistry",
-        name: "",
-        type: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "ETH_AMOUNT_PER_NODE",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "STAKING_CONTRACTS_LIST_ID",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "WETH_TOKEN",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseAssetsForAction",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_actionId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "_encodedActionArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseAssetsForAction",
     outputs: [
       {
-        internalType: "address[]",
         name: "assetsToTransfer_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amountsToTransfer_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "assetsToReceive_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseInitArgs",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseInitArgs",
     outputs: [
       {
-        internalType: "bytes",
         name: "initArgs_",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
 ] as const;

@@ -1,127 +1,127 @@
 export const IGasRelayPaymasterFactory = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_paymasterLib",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "deployProxy",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "nextCanonicalLib",
-        type: "address",
-      },
-    ],
-    name: "CanonicalLibSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "proxy",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "bytes",
-        name: "constructData",
-        type: "bytes",
-      },
-    ],
-    name: "ProxyDeployed",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "bytes",
         name: "_constructData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "deployProxy",
     outputs: [
       {
-        internalType: "address",
         name: "proxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCanonicalLib",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "canonicalLib_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDispatcher",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "dispatcher_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setCanonicalLib",
     inputs: [
       {
-        internalType: "address",
         name: "_nextCanonicalLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setCanonicalLib",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "CanonicalLibSet",
+    inputs: [
+      {
+        name: "nextCanonicalLib",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProxyDeployed",
+    inputs: [
+      {
+        name: "caller",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "proxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "constructData",
+        type: "bytes",
+        indexed: false,
+        internalType: "bytes",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

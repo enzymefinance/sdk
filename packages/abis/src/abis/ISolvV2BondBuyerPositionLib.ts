@@ -1,177 +1,177 @@
 export const ISolvV2BondBuyerPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_initialBondOfferingMarket",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "voucher",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint32",
-        name: "tokenId",
-        type: "uint32",
-      },
-    ],
-    name: "VoucherTokenIdAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "voucher",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint32",
-        name: "tokenId",
-        type: "uint32",
-      },
-    ],
-    name: "VoucherTokenIdRemoved",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getVoucherTokenIds",
+    inputs: [],
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "voucher",
-            type: "address",
-          },
-          {
-            internalType: "uint32",
-            name: "tokenId",
-            type: "uint32",
-          },
-        ],
-        internalType: "struct SolvV2BondBuyerPositionLibBase1.VoucherTokenId[]",
         name: "voucherTokenIds_",
         type: "tuple[]",
+        internalType: "struct SolvV2BondBuyerPositionLibBase1.VoucherTokenId[]",
+        components: [
+          {
+            name: "voucher",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "tokenId",
+            type: "uint32",
+            internalType: "uint32",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "onVNFTReceived",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "onVNFTReceived",
     outputs: [
       {
-        internalType: "bytes4",
         name: "selector_",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "VoucherTokenIdAdded",
+    inputs: [
+      {
+        name: "voucher",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "tokenId",
+        type: "uint32",
+        indexed: true,
+        internalType: "uint32",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "VoucherTokenIdRemoved",
+    inputs: [
+      {
+        name: "voucher",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "tokenId",
+        type: "uint32",
+        indexed: true,
+        internalType: "uint32",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

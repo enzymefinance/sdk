@@ -1,212 +1,212 @@
 [
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "loan",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "oracle",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint32",
-        "name": "stalenessThreshold",
-        "type": "uint32"
-      }
-    ],
-    "name": "OracleSetForLoan",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_totalBorrowed",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_totalRepaid",
-        "type": "uint256"
-      }
-    ],
+    "type": "function",
     "name": "calcFaceValue",
+    "inputs": [
+      {
+        "name": "_totalBorrowed",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_totalRepaid",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
     "outputs": [
       {
-        "internalType": "uint256",
         "name": "faceValue_",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_configData",
-        "type": "bytes"
-      }
-    ],
+    "type": "function",
     "name": "configure",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_loan",
-        "type": "address"
+        "name": "_configData",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "getOracleInfoForLoan",
+    "inputs": [
+      {
+        "name": "_loan",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
     "outputs": [
       {
+        "name": "oracleInfo_",
+        "type": "tuple",
+        "internalType": "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
         "components": [
           {
-            "internalType": "address",
             "name": "oracle",
-            "type": "address"
+            "type": "address",
+            "internalType": "address"
           },
           {
-            "internalType": "uint32",
             "name": "stalenessThreshold",
-            "type": "uint32"
+            "type": "uint32",
+            "internalType": "uint32"
           }
-        ],
-        "internalType": "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
-        "name": "oracleInfo_",
-        "type": "tuple"
+        ]
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
+    "type": "function",
     "name": "preBorrow",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "uint256",
         "name": "",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "uint256",
         "name": "",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "preClose",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "uint256",
         "name": "",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "uint256",
         "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_repayableLoanAssetAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address[]",
-        "name": "",
-        "type": "address[]"
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "preReconcile",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "repayAmount_",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "_totalBorrowed",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_prevTotalRepaid",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_repayAmountInput",
-        "type": "uint256"
-      }
-    ],
-    "name": "preRepay",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "repayAmount_",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
         "name": "",
-        "type": "bytes"
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_repayableLoanAssetAmount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
+    "outputs": [
+      {
+        "name": "repayAmount_",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "preRepay",
+    "inputs": [
+      {
+        "name": "_totalBorrowed",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_prevTotalRepaid",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_repayAmountInput",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "repayAmount_",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "receiveCallFromLoan",
+    "inputs": [
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "OracleSetForLoan",
+    "inputs": [
+      {
+        "name": "loan",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "oracle",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "stalenessThreshold",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      }
+    ],
+    "anonymous": false
   }
 ]

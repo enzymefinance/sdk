@@ -1,213 +1,213 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_fundDeployerV4",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "nextGlobalConfigLib",
-        "type": "address"
-      }
-    ],
-    "name": "GlobalConfigLibSet",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_vaultProxy",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_depositAsset",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_depositAssetAmount",
-        "type": "uint256"
-      }
-    ],
+    "type": "function",
     "name": "formatDepositCall",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "target_",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "payload_",
-        "type": "bytes"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
         "name": "_vaultProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
-        "name": "_recipient",
-        "type": "address"
+        "name": "_depositAsset",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "_amountIsShares",
-        "type": "bool"
+        "name": "_depositAssetAmount",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
+    "outputs": [
+      {
+        "name": "target_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "payload_",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "formatSingleAssetRedemptionCall",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "target_",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "payload_",
-        "type": "bytes"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getDispatcher",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "dispatcher_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getGlobalConfigLib",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "globalConfigLib_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_dispatcher",
-        "type": "address"
-      }
-    ],
-    "name": "init",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "_vaultProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
-        "name": "_recipientToValidate",
-        "type": "address"
+        "name": "_recipient",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "uint256",
-        "name": "_sharesAmountToValidate",
-        "type": "uint256"
+        "name": "_asset",
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
-        "name": "_redeemContract",
-        "type": "address"
+        "name": "_amount",
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "bytes4",
-        "name": "_redeemSelector",
-        "type": "bytes4"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_redeemData",
-        "type": "bytes"
+        "name": "_amountIsShares",
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "name": "isValidRedeemSharesCall",
     "outputs": [
       {
-        "internalType": "bool",
-        "name": "isValid_",
-        "type": "bool"
+        "name": "target_",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "payload_",
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "getDispatcher",
     "inputs": [],
-    "name": "proxiableUUID",
     "outputs": [
       {
-        "internalType": "bytes32",
-        "name": "uuid_",
-        "type": "bytes32"
+        "name": "dispatcher_",
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "getGlobalConfigLib",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "globalConfigLib_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "init",
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_nextGlobalConfigLib",
-        "type": "address"
+        "name": "_dispatcher",
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "setGlobalConfigLib",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "isValidRedeemSharesCall",
+    "inputs": [
+      {
+        "name": "_vaultProxy",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_recipientToValidate",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_sharesAmountToValidate",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "_redeemContract",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_redeemSelector",
+        "type": "bytes4",
+        "internalType": "bytes4"
+      },
+      {
+        "name": "_redeemData",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "isValid_",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "proxiableUUID",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "uuid_",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "setGlobalConfigLib",
+    "inputs": [
+      {
+        "name": "_nextGlobalConfigLib",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "GlobalConfigLibSet",
+    "inputs": [
+      {
+        "name": "nextGlobalConfigLib",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
   }
 ]

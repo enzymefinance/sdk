@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IUniswapV2LiquidityAdapter {
+    type SpendAssetsHandleType is uint8;
+
     function CLAIM_REWARDS_SELECTOR() external view returns (bytes4);
     function LEND_AND_STAKE_SELECTOR() external view returns (bytes4);
     function LEND_SELECTOR() external view returns (bytes4);
@@ -19,7 +21,7 @@ interface IUniswapV2LiquidityAdapter {
         external
         view
         returns (
-            uint8 spendAssetsHandleType_,
+            SpendAssetsHandleType spendAssetsHandleType_,
             address[] memory spendAssets_,
             uint256[] memory spendAssetAmounts_,
             address[] memory incomingAssets_,

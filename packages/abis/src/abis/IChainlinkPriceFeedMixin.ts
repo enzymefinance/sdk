@@ -1,177 +1,177 @@
 export const IChainlinkPriceFeedMixin = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_staleRateThreshold",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "getAggregatorForPrimitive",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "prevEthUsdAggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "nextEthUsdAggregator",
-        type: "address",
-      },
-    ],
-    name: "EthUsdAggregatorSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "primitive",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "aggregator",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
-        name: "rateAsset",
-        type: "uint8",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "unit",
-        type: "uint256",
-      },
-    ],
-    name: "PrimitiveAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "primitive",
-        type: "address",
-      },
-    ],
-    name: "PrimitiveRemoved",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getAggregatorForPrimitive",
     outputs: [
       {
-        internalType: "address",
         name: "aggregator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getEthUsdAggregator",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "ethUsdAggregator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getRateAssetForPrimitive",
     inputs: [
       {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getRateAssetForPrimitive",
     outputs: [
       {
-        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
         name: "rateAsset_",
         type: "uint8",
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getStaleRateThreshold",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "staleRateThreshold_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getUnitForPrimitive",
     inputs: [
       {
-        internalType: "address",
         name: "_primitive",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getUnitForPrimitive",
     outputs: [
       {
-        internalType: "uint256",
         name: "unit_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "EthUsdAggregatorSet",
+    inputs: [
+      {
+        name: "prevEthUsdAggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "nextEthUsdAggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PrimitiveAdded",
+    inputs: [
+      {
+        name: "primitive",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "aggregator",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "rateAsset",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum IChainlinkPriceFeedMixin.RateAsset",
+      },
+      {
+        name: "unit",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PrimitiveRemoved",
+    inputs: [
+      {
+        name: "primitive",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

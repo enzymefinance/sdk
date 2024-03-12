@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IMigrationHookHandler {
+    type MigrationOutHook is uint8;
+
     function invokeMigrationInCancelHook(
         address _vaultProxy,
         address _prevFundDeployer,
@@ -9,7 +11,7 @@ interface IMigrationHookHandler {
         address _nextVaultLib
     ) external;
     function invokeMigrationOutHook(
-        uint8 _hook,
+        MigrationOutHook _hook,
         address _vaultProxy,
         address _nextFundDeployer,
         address _nextVaultAccessor,

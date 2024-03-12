@@ -1,520 +1,520 @@
 export const IAddressListRegistry = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addToList",
     inputs: [
       {
-        indexed: true,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "item",
-        type: "address",
-      },
-    ],
-    name: "ItemAddedToList",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "item",
-        type: "address",
-      },
-    ],
-    name: "ItemRemovedFromList",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "description",
-        type: "string",
-      },
-    ],
-    name: "ListAttested",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "creator",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "owner",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "enum IAddressListRegistry.UpdateType",
-        name: "updateType",
-        type: "uint8",
-      },
-    ],
-    name: "ListCreated",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "nextOwner",
-        type: "address",
-      },
-    ],
-    name: "ListOwnerSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "id",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "enum IAddressListRegistry.UpdateType",
-        name: "prevUpdateType",
-        type: "uint8",
-      },
-      {
-        indexed: true,
-        internalType: "enum IAddressListRegistry.UpdateType",
-        name: "nextUpdateType",
-        type: "uint8",
-      },
-    ],
-    name: "ListUpdateTypeSet",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addToList",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "areAllInAllLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "areAllInAllLists",
     outputs: [
       {
-        internalType: "bool",
         name: "areAllInAllLists_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "areAllInList",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "areAllInList",
     outputs: [
       {
-        internalType: "bool",
         name: "areAllInList_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "areAllInSomeOfLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "areAllInSomeOfLists",
     outputs: [
       {
-        internalType: "bool",
         name: "areAllInSomeOfLists_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "areAllNotInAnyOfLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "areAllNotInAnyOfLists",
     outputs: [
       {
-        internalType: "bool",
         name: "areAllNotInAnyOfLists_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "areAllNotInList",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "areAllNotInList",
     outputs: [
       {
-        internalType: "bool",
         name: "areAllNotInList_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "attestLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "string[]",
         name: "_descriptions",
         type: "string[]",
+        internalType: "string[]",
       },
     ],
-    name: "attestLists",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "createList",
     inputs: [
       {
-        internalType: "address",
         name: "_owner",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IAddressListRegistry.UpdateType",
         name: "_updateType",
         type: "uint8",
+        internalType: "enum IAddressListRegistry.UpdateType",
       },
       {
-        internalType: "address[]",
         name: "_initialItems",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "createList",
     outputs: [
       {
-        internalType: "uint256",
         name: "id_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDispatcher",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "dispatcher_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getListCount",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "count_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getListOwner",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getListOwner",
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getListUpdateType",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getListUpdateType",
     outputs: [
       {
-        internalType: "enum IAddressListRegistry.UpdateType",
         name: "updateType_",
         type: "uint8",
+        internalType: "enum IAddressListRegistry.UpdateType",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isInAllLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address",
         name: "_item",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isInAllLists",
     outputs: [
       {
-        internalType: "bool",
         name: "isInAllLists_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isInList",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_item",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isInList",
     outputs: [
       {
-        internalType: "bool",
         name: "isInList_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isInSomeOfLists",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_ids",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address",
         name: "_item",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isInSomeOfLists",
     outputs: [
       {
-        internalType: "bool",
         name: "isInSomeOfLists_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removeFromList",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removeFromList",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setListOwner",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_nextOwner",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setListOwner",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setListUpdateType",
     inputs: [
       {
-        internalType: "uint256",
         name: "_id",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "enum IAddressListRegistry.UpdateType",
         name: "_nextUpdateType",
         type: "uint8",
+        internalType: "enum IAddressListRegistry.UpdateType",
       },
     ],
-    name: "setListUpdateType",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ItemAddedToList",
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "item",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ItemRemovedFromList",
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "item",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ListAttested",
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "description",
+        type: "string",
+        indexed: false,
+        internalType: "string",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ListCreated",
+    inputs: [
+      {
+        name: "creator",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "id",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "updateType",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum IAddressListRegistry.UpdateType",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ListOwnerSet",
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "nextOwner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ListUpdateTypeSet",
+    inputs: [
+      {
+        name: "id",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "prevUpdateType",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum IAddressListRegistry.UpdateType",
+      },
+      {
+        name: "nextUpdateType",
+        type: "uint8",
+        indexed: true,
+        internalType: "enum IAddressListRegistry.UpdateType",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

@@ -1,157 +1,157 @@
 export const ITheGraphDelegationPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_stakingProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_grtToken",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "indexer",
-        type: "address",
-      },
-    ],
-    name: "IndexerAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "indexer",
-        type: "address",
-      },
-    ],
-    name: "IndexerRemoved",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getDelegationGrtValue",
     inputs: [
       {
-        internalType: "address",
         name: "_indexer",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getDelegationGrtValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "grtValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getIndexers",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getManagedAssets",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isDelegatorTo",
     inputs: [
       {
-        internalType: "address",
         name: "_indexer",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isDelegatorTo",
     outputs: [
       {
-        internalType: "bool",
         name: "isDelegator_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "IndexerAdded",
+    inputs: [
+      {
+        name: "indexer",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "IndexerRemoved",
+    inputs: [
+      {
+        name: "indexer",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

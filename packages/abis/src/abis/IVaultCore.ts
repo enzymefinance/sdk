@@ -1,54 +1,54 @@
 export const IVaultCore = [
   {
-    inputs: [],
+    type: "function",
     name: "getAccessor",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "accessor_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCreator",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "creator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getMigrator",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "migrator_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

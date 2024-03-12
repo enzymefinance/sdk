@@ -1,17 +1,17 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IStakeWiseV3StakingPositionLib {
-    event ExitRequestAdded(address indexed stakeWiseVaultAddress, uint256 positionTicket, uint256 sharesAmount);
-    event ExitRequestRemoved(address indexed stakeWiseVaultAddress, uint256 positionTicket);
-    event VaultTokenAdded(address indexed stakeWiseVaultAddress);
-    event VaultTokenRemoved(address indexed stakeWiseVaultAddress);
-
     struct ExitRequest {
         address stakeWiseVaultAddress;
         uint256 positionTicket;
         uint256 sharesAmount;
     }
+
+    event ExitRequestAdded(address indexed stakeWiseVaultAddress, uint256 positionTicket, uint256 sharesAmount);
+    event ExitRequestRemoved(address indexed stakeWiseVaultAddress, uint256 positionTicket);
+    event VaultTokenAdded(address indexed stakeWiseVaultAddress);
+    event VaultTokenRemoved(address indexed stakeWiseVaultAddress);
 
     function WETH_TOKEN() external view returns (address);
     function getDebtAssets() external pure returns (address[] memory assets_, uint256[] memory amounts_);

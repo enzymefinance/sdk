@@ -1,56 +1,56 @@
 export const ISharesSplitterFactory = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_globalConfigProxy",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "deploy",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "caller",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "proxy",
-        type: "address",
-      },
-    ],
-    name: "ProxyDeployed",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address[]",
         name: "_users",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "_splitPercentages",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
-    name: "deploy",
     outputs: [
       {
-        internalType: "address",
         name: "sharesSplitter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "ProxyDeployed",
+    inputs: [
+      {
+        name: "caller",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "proxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

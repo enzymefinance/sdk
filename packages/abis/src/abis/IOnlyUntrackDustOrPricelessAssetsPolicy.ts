@@ -1,384 +1,384 @@
 export const IOnlyUntrackDustOrPricelessAssetsPolicy = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_policyManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_valueInterpreter",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_pricelessAssetBypassTimelock",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "_pricelessAssetBypassTimeLimit",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "activateForFund",
     inputs: [
       {
-        indexed: false,
-        internalType: "uint256",
-        name: "nextDustToleranceInWeth",
-        type: "uint256",
-      },
-    ],
-    name: "DustToleranceInWethSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "PricelessAssetBypassed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "comptrollerProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "asset",
-        type: "address",
-      },
-    ],
-    name: "PricelessAssetTimelockStarted",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "activateForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "addFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "assetIsBypassableForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "assetIsBypassableForFund",
     outputs: [
       {
-        internalType: "bool",
         name: "isBypassable_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "canDisable",
+    inputs: [],
     outputs: [
       {
-        internalType: "bool",
         name: "canDisable_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getAssetBypassWindowStartForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getAssetBypassWindowStartForFund",
     outputs: [
       {
-        internalType: "uint256",
         name: "windowStart_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDustToleranceInWeth",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "dustToleranceInWeth_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPolicyManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "policyManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPricelessAssetBypassTimeLimit",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "timeLimit_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPricelessAssetBypassTimelock",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "timelock_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPricelessAssetBypassValueInterpreter",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "valueInterpreter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPricelessAssetBypassWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "identifier",
+    inputs: [],
     outputs: [
       {
-        internalType: "string",
         name: "identifier_",
         type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementedHooks",
+    inputs: [],
     outputs: [
       {
-        internalType: "enum IPolicyManager.PolicyHook[]",
         name: "implementedHooks_",
         type: "uint8[]",
+        internalType: "enum IPolicyManager.PolicyHook[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setDustToleranceInWeth",
     inputs: [
       {
-        internalType: "uint256",
         name: "_nextDustToleranceInWeth",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "setDustToleranceInWeth",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "startAssetBypassTimelock",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "startAssetBypassTimelock",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "updateFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "validateRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IPolicyManager.PolicyHook",
         name: "",
         type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
       },
       {
-        internalType: "bytes",
         name: "_encodedArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "validateRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "DustToleranceInWethSet",
+    inputs: [
+      {
+        name: "nextDustToleranceInWeth",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PricelessAssetBypassed",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PricelessAssetTimelockStarted",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

@@ -1,36 +1,36 @@
 export const ICompoundV3CTokenListOwner = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_addressListRegistry",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "string",
         name: "_listDescription",
         type: "string",
+        internalType: "string",
       },
       {
-        internalType: "address",
         name: "_compoundV3Configurator",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "function",
+    name: "addValidatedItemsToList",
     inputs: [
       {
-        internalType: "address[]",
         name: "_items",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addValidatedItemsToList",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

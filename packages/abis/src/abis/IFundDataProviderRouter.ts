@@ -1,88 +1,88 @@
 export const IFundDataProviderRouter = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundValueCalculatorRouter",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_wethToken",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundValueCalculatorRouter",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundValueCalculatorRouter_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getFundValueMetrics",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getFundValueMetrics",
     outputs: [
       {
-        internalType: "uint256",
         name: "timestamp_",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "sharesSupply_",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "gavInEth_",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bool",
         name: "gavIsValid_",
         type: "bool",
+        internalType: "bool",
       },
       {
-        internalType: "uint256",
         name: "navInEth_",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bool",
         name: "navIsValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getWethToken",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "wethToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

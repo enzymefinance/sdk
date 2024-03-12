@@ -1,224 +1,224 @@
 export const IMapleLiquidityPositionLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_mapleV1ToV2PoolMapper",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "lendingPoolV1",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "value",
-        type: "uint256",
-      },
-    ],
-    name: "PoolTokenV1PreMigrationValueSnapshotted",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "lendingPool",
-        type: "address",
-      },
-    ],
-    name: "UsedLendingPoolAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "lendingPool",
-        type: "address",
-      },
-    ],
-    name: "UsedLendingPoolRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "lendingPoolV2",
-        type: "address",
-      },
-    ],
-    name: "UsedLendingPoolV2Added",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "lendingPoolV2",
-        type: "address",
-      },
-    ],
-    name: "UsedLendingPoolV2Removed",
-    type: "event",
-  },
-  {
-    inputs: [],
+    type: "function",
     name: "getDebtAssets",
-    outputs: [
-      {
-        internalType: "address[]",
-        name: "assets_",
-        type: "address[]",
-      },
-      {
-        internalType: "uint256[]",
-        name: "amounts_",
-        type: "uint256[]",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [],
-    name: "getManagedAssets",
     outputs: [
       {
-        internalType: "address[]",
         name: "assets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "amounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getManagedAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getPreMigrationValueSnapshotOfPoolTokenV1",
     inputs: [
       {
-        internalType: "address",
         name: "_poolV1",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getPreMigrationValueSnapshotOfPoolTokenV1",
     outputs: [
       {
-        internalType: "uint256",
         name: "valueSnapshot_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getUsedLendingPoolsV1",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "poolsV1_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getUsedLendingPoolsV2",
+    inputs: [],
     outputs: [
       {
-        internalType: "address[]",
         name: "poolsV2_",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isUsedLendingPoolV2",
     inputs: [
       {
-        internalType: "address",
         name: "_poolV2",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isUsedLendingPoolV2",
     outputs: [
       {
-        internalType: "bool",
         name: "isUsed_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "migratePoolsV1ToV2",
+    inputs: [],
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromVault",
     inputs: [
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromVault",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "snapshotPoolTokenV1BalanceValues",
+    inputs: [],
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "PoolTokenV1PreMigrationValueSnapshotted",
+    inputs: [
+      {
+        name: "lendingPoolV1",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UsedLendingPoolAdded",
+    inputs: [
+      {
+        name: "lendingPool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UsedLendingPoolRemoved",
+    inputs: [
+      {
+        name: "lendingPool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UsedLendingPoolV2Added",
+    inputs: [
+      {
+        name: "lendingPoolV2",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UsedLendingPoolV2Removed",
+    inputs: [
+      {
+        name: "lendingPoolV2",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

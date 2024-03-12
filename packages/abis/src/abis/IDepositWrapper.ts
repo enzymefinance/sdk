@@ -1,125 +1,125 @@
 export const IDepositWrapper = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_addressListRegistryAddress",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_allowedExchangesListId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "contract IWETH",
         name: "_wrappedNativeAsset",
         type: "address",
+        internalType: "contract IWETH",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
+    type: "receive",
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "exchangeErc20AndBuyShares",
     inputs: [
       {
-        internalType: "contract IComptroller",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "contract IComptroller",
       },
       {
-        internalType: "uint256",
         name: "_minSharesQuantity",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "contract ERC20",
         name: "_inputAsset",
         type: "address",
+        internalType: "contract ERC20",
       },
       {
-        internalType: "uint256",
         name: "_maxInputAssetAmount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_exchange",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_exchangeApproveTarget",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_exchangeData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "uint256",
         name: "_exchangeMinReceived",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "exchangeErc20AndBuyShares",
     outputs: [
       {
-        internalType: "uint256",
         name: "sharesReceived_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "exchangeEthAndBuyShares",
     inputs: [
       {
-        internalType: "contract IComptroller",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "contract IComptroller",
       },
       {
-        internalType: "uint256",
         name: "_minSharesQuantity",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_exchange",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_exchangeApproveTarget",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_exchangeData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "uint256",
         name: "_exchangeMinReceived",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "exchangeEthAndBuyShares",
     outputs: [
       {
-        internalType: "uint256",
         name: "sharesReceived_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "payable",
-    type: "function",
-  },
-  {
-    stateMutability: "payable",
-    type: "receive",
   },
 ] as const;

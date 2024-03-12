@@ -1,282 +1,282 @@
 export const IExternalPositionFactory = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "addNewPositionTypes",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "vaultProxy",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "typeId",
-        type: "uint256",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "constructLib",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "bytes",
-        name: "constructData",
-        type: "bytes",
-      },
-    ],
-    name: "PositionDeployed",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "positionDeployer",
-        type: "address",
-      },
-    ],
-    name: "PositionDeployerAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "positionDeployer",
-        type: "address",
-      },
-    ],
-    name: "PositionDeployerRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "typeId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "label",
-        type: "string",
-      },
-    ],
-    name: "PositionTypeAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "typeId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "label",
-        type: "string",
-      },
-    ],
-    name: "PositionTypeLabelUpdated",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "string[]",
         name: "_labels",
         type: "string[]",
+        internalType: "string[]",
       },
     ],
-    name: "addNewPositionTypes",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addPositionDeployers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_accounts",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addPositionDeployers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "deploy",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_typeId",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_constructLib",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_constructData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "deploy",
     outputs: [
       {
-        internalType: "address",
         name: "externalPositionProxy_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDispatcher",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "dispatcher_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getLabelForPositionType",
     inputs: [
       {
-        internalType: "uint256",
         name: "_typeId",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "getLabelForPositionType",
     outputs: [
       {
-        internalType: "string",
         name: "label_",
         type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getPositionTypeCounter",
+    inputs: [],
     outputs: [
       {
-        internalType: "uint256",
         name: "positionTypeCounter_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isExternalPositionProxy",
     inputs: [
       {
-        internalType: "address",
         name: "_account",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isExternalPositionProxy",
     outputs: [
       {
-        internalType: "bool",
         name: "isExternalPositionProxy_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isPositionDeployer",
     inputs: [
       {
-        internalType: "address",
         name: "_account",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isPositionDeployer",
     outputs: [
       {
-        internalType: "bool",
         name: "isPositionDeployer_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removePositionDeployers",
     inputs: [
       {
-        internalType: "address[]",
         name: "_accounts",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removePositionDeployers",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updatePositionTypeLabels",
     inputs: [
       {
-        internalType: "uint256[]",
         name: "_typeIds",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "string[]",
         name: "_labels",
         type: "string[]",
+        internalType: "string[]",
       },
     ],
-    name: "updatePositionTypeLabels",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "PositionDeployed",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "typeId",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "constructLib",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "constructData",
+        type: "bytes",
+        indexed: false,
+        internalType: "bytes",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PositionDeployerAdded",
+    inputs: [
+      {
+        name: "positionDeployer",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PositionDeployerRemoved",
+    inputs: [
+      {
+        name: "positionDeployer",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PositionTypeAdded",
+    inputs: [
+      {
+        name: "typeId",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "label",
+        type: "string",
+        indexed: false,
+        internalType: "string",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PositionTypeLabelUpdated",
+    inputs: [
+      {
+        name: "typeId",
+        type: "uint256",
+        indexed: true,
+        internalType: "uint256",
+      },
+      {
+        name: "label",
+        type: "string",
+        indexed: false,
+        internalType: "string",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

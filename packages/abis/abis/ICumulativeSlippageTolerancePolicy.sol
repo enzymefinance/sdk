@@ -1,17 +1,19 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface ICumulativeSlippageTolerancePolicy {
-    event CumulativeSlippageUpdatedForFund(address indexed comptrollerProxy, uint256 nextCumulativeSlippage);
-    event FundSettingsSet(address indexed comptrollerProxy, uint256 tolerance);
-    event PricelessAssetBypassed(address indexed comptrollerProxy, address indexed asset);
-    event PricelessAssetTimelockStarted(address indexed comptrollerProxy, address indexed asset);
+    type PolicyHook is uint8;
 
     struct PolicyInfo {
         uint64 tolerance;
         uint64 cumulativeSlippage;
         uint128 lastSlippageTimestamp;
     }
+
+    event CumulativeSlippageUpdatedForFund(address indexed comptrollerProxy, uint256 nextCumulativeSlippage);
+    event FundSettingsSet(address indexed comptrollerProxy, uint256 tolerance);
+    event PricelessAssetBypassed(address indexed comptrollerProxy, address indexed asset);
+    event PricelessAssetTimelockStarted(address indexed comptrollerProxy, address indexed asset);
 
     function activateForFund(address) external;
     function addFundSettings(address _comptrollerProxy, bytes memory _encodedSettings) external;
@@ -34,10 +36,10 @@ interface ICumulativeSlippageTolerancePolicy {
     function getPricelessAssetBypassWethToken() external view returns (address wethToken_);
     function getTolerancePeriodDuration() external view returns (uint256 tolerancePeriodDuration_);
     function identifier() external pure returns (string memory identifier_);
-    function implementedHooks() external pure returns (uint8[] memory implementedHooks_);
+    function implementedHooks() external pure returns (PolicyHook[] memory implementedHooks_);
     function startAssetBypassTimelock(address _asset) external;
     function updateFundSettings(address, bytes memory) external;
-    function validateRule(address _comptrollerProxy, uint8, bytes memory _encodedArgs)
+    function validateRule(address _comptrollerProxy, PolicyHook, bytes memory _encodedArgs)
         external
         returns (bool isValid_);
 }

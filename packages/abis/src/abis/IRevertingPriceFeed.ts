@@ -1,50 +1,50 @@
 export const IRevertingPriceFeed = [
   {
+    type: "function",
+    name: "calcUnderlyingValues",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcUnderlyingValues",
     outputs: [
       {
-        internalType: "address[]",
         name: "",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
 ] as const;

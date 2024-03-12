@@ -1,213 +1,213 @@
 export const IGlobalConfigLib = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployerV4",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    anonymous: false,
+    type: "function",
+    name: "formatDepositCall",
     inputs: [
       {
-        indexed: false,
-        internalType: "address",
-        name: "nextGlobalConfigLib",
-        type: "address",
-      },
-    ],
-    name: "GlobalConfigLibSet",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_depositAsset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_depositAssetAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "formatDepositCall",
     outputs: [
       {
-        internalType: "address",
         name: "target_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "payload_",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "formatSingleAssetRedemptionCall",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_recipient",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_amount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "bool",
         name: "_amountIsShares",
         type: "bool",
+        internalType: "bool",
       },
     ],
-    name: "formatSingleAssetRedemptionCall",
     outputs: [
       {
-        internalType: "address",
         name: "target_",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "payload_",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getDispatcher",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "dispatcher_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getGlobalConfigLib",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "globalConfigLib_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "init",
     inputs: [
       {
-        internalType: "address",
         name: "_dispatcher",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "init",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isValidRedeemSharesCall",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_recipientToValidate",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_sharesAmountToValidate",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address",
         name: "_redeemContract",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes4",
         name: "_redeemSelector",
         type: "bytes4",
+        internalType: "bytes4",
       },
       {
-        internalType: "bytes",
         name: "_redeemData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "isValidRedeemSharesCall",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "proxiableUUID",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes32",
         name: "uuid_",
         type: "bytes32",
+        internalType: "bytes32",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setGlobalConfigLib",
     inputs: [
       {
-        internalType: "address",
         name: "_nextGlobalConfigLib",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setGlobalConfigLib",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "GlobalConfigLibSet",
+    inputs: [
+      {
+        name: "nextGlobalConfigLib",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

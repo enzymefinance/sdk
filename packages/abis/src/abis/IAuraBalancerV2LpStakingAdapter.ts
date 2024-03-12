@@ -1,340 +1,340 @@
 export const IAuraBalancerV2LpStakingAdapter = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_integrationManager",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_balancerVault",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_stakingWrapperFactory",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "nonpayable",
-    type: "constructor",
   },
   {
-    inputs: [],
+    type: "function",
     name: "CLAIM_REWARDS_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "LEND_AND_STAKE_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "LEND_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "REDEEM_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "STAKE_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "TAKE_MULTIPLE_ORDERS_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "TAKE_ORDER_SELECTOR",
+    inputs: [],
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "UNSTAKE_AND_REDEEM_SELECTOR",
-    outputs: [
-      {
-        internalType: "bytes4",
-        name: "",
-        type: "bytes4",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [],
-    name: "UNSTAKE_SELECTOR",
     outputs: [
       {
-        internalType: "bytes4",
         name: "",
         type: "bytes4",
+        internalType: "bytes4",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "UNSTAKE_SELECTOR",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "bytes4",
+        internalType: "bytes4",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "claimRewards",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "claimRewards",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getIntegrationManager",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "integrationManager_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "lendAndStake",
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "lendAndStake",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "parseAssetsForAction",
     inputs: [
       {
-        internalType: "address",
         name: "",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes4",
         name: "_selector",
         type: "bytes4",
+        internalType: "bytes4",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "parseAssetsForAction",
     outputs: [
       {
-        internalType: "enum IIntegrationManager.SpendAssetsHandleType",
         name: "spendAssetsHandleType_",
         type: "uint8",
+        internalType: "enum IIntegrationManager.SpendAssetsHandleType",
       },
       {
-        internalType: "address[]",
         name: "spendAssets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "spendAssetAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
       {
-        internalType: "address[]",
         name: "incomingAssets_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "minIncomingAssetAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_vaultProxy",
-        type: "address",
-      },
-      {
-        internalType: "bytes",
-        name: "_actionData",
-        type: "bytes",
-      },
-      {
-        internalType: "bytes",
-        name: "",
-        type: "bytes",
-      },
-    ],
+    type: "function",
     name: "stake",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "takeOrder",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "unstake",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address",
         name: "_vaultProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_actionData",
         type: "bytes",
+        internalType: "bytes",
       },
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "unstakeAndRedeem",
     outputs: [],
     stateMutability: "nonpayable",
+  },
+  {
     type: "function",
+    name: "unstakeAndRedeem",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_actionData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
   },
 ] as const;

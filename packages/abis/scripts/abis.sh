@@ -6,6 +6,7 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
+# Set the protocol directory.
 artifacts=$1
 
 # Check if the argument is a directory that exists.
@@ -15,12 +16,82 @@ if [ ! -d "$artifacts" ]; then
 fi
 
 # Find the root of the package.
-root=$(dirname $(dirname $(realpath $0)))
+cwd=$(dirname $(realpath $0))
+root=$(dirname $cwd)
 
-# Copy the abi & interface files to the abis directory.
-mkdir -p $root/abis
-cp $artifacts/*.abi.json $artifacts/*.sol $root/abis
+# The target directory to store the interfaces and abis.
+target=$root/abis
 
+# The file containing the interfaces to generate.
+registry=$cwd/artifacts.txt
+
+# The pragma to use when generating the interfaces.
+pragma=">=0.6.0 <0.9.0"
+
+# Remove all existing interfaces and abis (from the immediate directory only).
+rm -rf $target
+mkdir -p $target
+
+echo "Generating interfaces ..."
+
+# Read interfaces.txt line by line and use `cast interface` to generate the interfaces.
+while read -r line; do
+  # Skip empty lines and lines starting with `#`.
+  if [[ -z "$line" || "$line" == \#* ]]; then
+    continue
+  fi
+  
+  # The line format is `output: input`.
+  output="$(echo $line | cut -d ':' -f1 | xargs)"
+  input="$(echo $line | cut -d ':' -f2 | xargs)"
+  if [[ -z "$output" || -z "$input" ]]; then
+    echo "Invalid line format in $registry ($line)"
+    exit 1;
+  fi
+  
+  # Extract the output name of the interface from the output path.
+  name="$(basename $output | cut -d '.' -f1)"
+  if [[ -z "$name" ]]; then
+    echo "Invalid output $output in $registry"
+    exit 1
+  fi
+  
+  # Prepend the interfaces directory to the output path and check the file extension.
+  output="$target/$output"
+  if [[ ! "$input" == *.abi.json ]]; then
+    echo "Invalid extension for interface source $input"
+    exit 1
+  fi
+  
+  # If the input is a path, use it directly. Otherwise, try to find the file in the artifacts directory.
+  if echo "$input" | grep -q "/"; then
+    path="$input"
+  else
+    path="$(find $artifacts -type f -name $input | head -n 1)"
+  fi
+  
+  # Check if the source file was found. If not, try alternative files based on a pattern (e.g. `Dispatcher.*.abi.json` instead of `Dispatcher.abi.json`).
+  if [[ -z "$path" || ! -f "$path" ]]; then
+    alternative="$(find $artifacts -type f -name "$(basename $input .abi.json).*.abi.json" | sort -Vr | head -n 1)"
+    if [[ -z "$alternative" || ! -f "$alternative" ]]; then
+      echo "Failed to locate source file for $input"
+      exit 1
+    else
+      path="$alternative"
+    fi
+  fi
+  
+  # Create the parent directory.
+  mkdir -p "$(dirname $output)"
+  
+  # Generate the interface using `cast interface`.
+  cast interface "$path" -o "$output" -n "$name" --pragma "$pragma"
+  
+  # Copy the abi file to the interfaces directory.
+  cp "$path" "$(dirname $output)/$name.abi.json"
+done < "$registry"
+
+# Create typescript files for each abi file.
 abis=$(find $root/abis -type f -name "*.abi.json" -print0 | sort -z | xargs -r0)
 
 # Delete previously generated files.

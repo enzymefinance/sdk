@@ -1,212 +1,212 @@
 export const IArbitraryLoanTotalNominalDeltaOracleModule = [
   {
-    anonymous: false,
+    type: "function",
+    name: "calcFaceValue",
     inputs: [
       {
-        indexed: true,
-        internalType: "address",
-        name: "loan",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "oracle",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint32",
-        name: "stalenessThreshold",
-        type: "uint32",
-      },
-    ],
-    name: "OracleSetForLoan",
-    type: "event",
-  },
-  {
-    inputs: [
-      {
-        internalType: "uint256",
         name: "_totalBorrowed",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "_totalRepaid",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcFaceValue",
     outputs: [
       {
-        internalType: "uint256",
         name: "faceValue_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "configure",
     inputs: [
       {
-        internalType: "bytes",
         name: "_configData",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "configure",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getOracleInfoForLoan",
     inputs: [
       {
-        internalType: "address",
         name: "_loan",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getOracleInfoForLoan",
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "oracle",
-            type: "address",
-          },
-          {
-            internalType: "uint32",
-            name: "stalenessThreshold",
-            type: "uint32",
-          },
-        ],
-        internalType: "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
         name: "oracleInfo_",
         type: "tuple",
+        internalType: "struct ArbitraryLoanTotalNominalDeltaOracleModule.OracleInfo",
+        components: [
+          {
+            name: "oracle",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "stalenessThreshold",
+            type: "uint32",
+            internalType: "uint32",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
+    type: "function",
     name: "preBorrow",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "preClose",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "preClose",
     inputs: [
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "",
         type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "preReconcile",
+    inputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
       },
       {
+        name: "",
+        type: "uint256",
         internalType: "uint256",
+      },
+      {
         name: "_repayableLoanAssetAmount",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "address[]",
         name: "",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "preReconcile",
     outputs: [
       {
-        internalType: "uint256",
         name: "repayAmount_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "preRepay",
     inputs: [
       {
-        internalType: "uint256",
         name: "_totalBorrowed",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "_prevTotalRepaid",
         type: "uint256",
+        internalType: "uint256",
       },
       {
-        internalType: "uint256",
         name: "_repayAmountInput",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "preRepay",
     outputs: [
       {
-        internalType: "uint256",
         name: "repayAmount_",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "receiveCallFromLoan",
     inputs: [
       {
-        internalType: "bytes",
         name: "",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "receiveCallFromLoan",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "OracleSetForLoan",
+    inputs: [
+      {
+        name: "loan",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "oracle",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "stalenessThreshold",
+        type: "uint32",
+        indexed: false,
+        internalType: "uint32",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

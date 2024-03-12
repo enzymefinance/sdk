@@ -1,152 +1,152 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_dispatcher",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address",
         "name": "_implementation",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
+    "type": "function",
+    "name": "deploy",
     "inputs": [
       {
-        "indexed": false,
-        "internalType": "address",
-        "name": "implementation",
-        "type": "address"
-      }
-    ],
-    "name": "ImplementationSet",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "caller",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "proxy",
-        "type": "address"
-      }
-    ],
-    "name": "ProxyDeployed",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "_vaultProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "address[]",
         "name": "_managers",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "address",
         "name": "_redemptionAsset",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bool",
         "name": "_useDepositApprovals",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       },
       {
-        "internalType": "bool",
         "name": "_useRedemptionApprovals",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       },
       {
-        "internalType": "bool",
         "name": "_useTransferApprovals",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       },
       {
-        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
         "name": "_depositMode",
-        "type": "uint8"
+        "type": "uint8",
+        "internalType": "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode"
       },
       {
+        "name": "_windowConfig",
+        "type": "tuple",
+        "internalType": "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
         "components": [
           {
-            "internalType": "uint64",
             "name": "firstWindowStart",
-            "type": "uint64"
+            "type": "uint64",
+            "internalType": "uint64"
           },
           {
-            "internalType": "uint32",
             "name": "frequency",
-            "type": "uint32"
+            "type": "uint32",
+            "internalType": "uint32"
           },
           {
-            "internalType": "uint32",
             "name": "duration",
-            "type": "uint32"
+            "type": "uint32",
+            "internalType": "uint32"
           },
           {
-            "internalType": "uint64",
             "name": "relativeSharesCap",
-            "type": "uint64"
+            "type": "uint64",
+            "internalType": "uint64"
           }
-        ],
-        "internalType": "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
-        "name": "_windowConfig",
-        "type": "tuple"
+        ]
       }
     ],
-    "name": "deploy",
     "outputs": [
       {
-        "internalType": "address",
         "name": "wrapperProxy_",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "implementation",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "address",
         "name": "",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "stateMutability": "view"
   },
   {
+    "type": "function",
+    "name": "setImplementation",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_nextImplementation",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "setImplementation",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "ImplementationSet",
+    "inputs": [
+      {
+        "name": "implementation",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "ProxyDeployed",
+    "inputs": [
+      {
+        "name": "caller",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "proxy",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
   }
 ]

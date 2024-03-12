@@ -1,119 +1,119 @@
 export const IPolicy = [
   {
+    type: "function",
+    name: "activateForFund",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "activateForFund",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "addFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "canDisable",
+    inputs: [],
     outputs: [
       {
-        internalType: "bool",
         name: "canDisable_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "identifier",
+    inputs: [],
     outputs: [
       {
-        internalType: "string",
         name: "identifier_",
         type: "string",
+        internalType: "string",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "implementedHooks",
+    inputs: [],
     outputs: [
       {
-        internalType: "enum IPolicyManager.PolicyHook[]",
         name: "implementedHooks_",
         type: "uint8[]",
+        internalType: "enum IPolicyManager.PolicyHook[]",
       },
     ],
     stateMutability: "pure",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updateFundSettings",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "bytes",
         name: "_encodedSettings",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "updateFundSettings",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "validateRule",
     inputs: [
       {
-        internalType: "address",
         name: "_comptrollerProxy",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "enum IPolicyManager.PolicyHook",
         name: "_hook",
         type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
       },
       {
-        internalType: "bytes",
         name: "_encodedArgs",
         type: "bytes",
+        internalType: "bytes",
       },
     ],
-    name: "validateRule",
     outputs: [
       {
-        internalType: "bool",
         name: "isValid_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
 ] as const;

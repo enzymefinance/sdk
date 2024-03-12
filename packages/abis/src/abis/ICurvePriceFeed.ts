@@ -1,449 +1,449 @@
 export const ICurvePriceFeed = [
   {
+    type: "constructor",
     inputs: [
       {
-        internalType: "address",
         name: "_fundDeployer",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_addressProvider",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "address",
         name: "_poolOwner",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_virtualPriceDeviationThreshold",
         type: "uint256",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "poolOwner",
-        type: "address",
-      },
-    ],
-    name: "CurvePoolOwnerSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-    ],
-    name: "DerivativeAdded",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "derivative",
-        type: "address",
-      },
-    ],
-    name: "DerivativeRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "invariantProxyAsset",
-        type: "address",
-      },
-    ],
-    name: "InvariantProxyAssetForPoolSet",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-    ],
-    name: "PoolRemoved",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "pool",
-        type: "address",
-      },
-      {
-        indexed: false,
         internalType: "uint256",
-        name: "virtualPrice",
-        type: "uint256",
       },
     ],
-    name: "ValidatedVirtualPriceForPoolUpdated",
-    type: "event",
+    stateMutability: "nonpayable",
   },
   {
-    inputs: [
-      {
-        internalType: "address[]",
-        name: "_gaugeTokens",
-        type: "address[]",
-      },
-      {
-        internalType: "address[]",
-        name: "_pools",
-        type: "address[]",
-      },
-    ],
+    type: "function",
     name: "addGaugeTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address[]",
         name: "_gaugeTokens",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "addGaugeTokensWithoutValidation",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address[]",
-        name: "_pools",
-        type: "address[]",
-      },
-      {
-        internalType: "address[]",
-        name: "_invariantProxyAssets",
-        type: "address[]",
-      },
-      {
-        internalType: "bool[]",
-        name: "_reentrantVirtualPrices",
-        type: "bool[]",
-      },
-      {
-        internalType: "address[]",
-        name: "_lpTokens",
-        type: "address[]",
-      },
-      {
-        internalType: "address[]",
         name: "_gaugeTokens",
         type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_pools",
+        type: "address[]",
+        internalType: "address[]",
       },
     ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
     name: "addPools",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
     inputs: [
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_invariantProxyAssets",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "bool[]",
         name: "_reentrantVirtualPrices",
         type: "bool[]",
+        internalType: "bool[]",
       },
       {
-        internalType: "address[]",
         name: "_lpTokens",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_gaugeTokens",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "addPoolsWithoutValidation",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "addPoolsWithoutValidation",
     inputs: [
       {
-        internalType: "address",
+        name: "_pools",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_invariantProxyAssets",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_reentrantVirtualPrices",
+        type: "bool[]",
+        internalType: "bool[]",
+      },
+      {
+        name: "_lpTokens",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_gaugeTokens",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcUnderlyingValues",
+    inputs: [
+      {
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
       {
-        internalType: "uint256",
         name: "_derivativeAmount",
         type: "uint256",
+        internalType: "uint256",
       },
     ],
-    name: "calcUnderlyingValues",
     outputs: [
       {
-        internalType: "address[]",
         name: "underlyings_",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "uint256[]",
         name: "underlyingAmounts_",
         type: "uint256[]",
+        internalType: "uint256[]",
       },
     ],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getCurvePoolOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "poolOwner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getFundDeployer",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "fundDeployer_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getLpTokenForPool",
     inputs: [
       {
-        internalType: "address",
         name: "_pool",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getLpTokenForPool",
     outputs: [
       {
-        internalType: "address",
         name: "lpToken_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
-    inputs: [],
+    type: "function",
     name: "getOwner",
+    inputs: [],
     outputs: [
       {
-        internalType: "address",
         name: "owner_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getPoolForDerivative",
     inputs: [
       {
-        internalType: "address",
         name: "_derivative",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getPoolForDerivative",
     outputs: [
       {
-        internalType: "address",
         name: "pool_",
         type: "address",
+        internalType: "address",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "getPoolInfo",
     inputs: [
       {
-        internalType: "address",
         name: "_pool",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "getPoolInfo",
     outputs: [
       {
-        components: [
-          {
-            internalType: "address",
-            name: "invariantProxyAsset",
-            type: "address",
-          },
-          {
-            internalType: "uint8",
-            name: "invariantProxyAssetDecimals",
-            type: "uint8",
-          },
-          {
-            internalType: "uint88",
-            name: "lastValidatedVirtualPrice",
-            type: "uint88",
-          },
-        ],
-        internalType: "struct CurvePriceFeed.PoolInfo",
         name: "poolInfo_",
         type: "tuple",
+        internalType: "struct CurvePriceFeed.PoolInfo",
+        components: [
+          {
+            name: "invariantProxyAsset",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "invariantProxyAssetDecimals",
+            type: "uint8",
+            internalType: "uint8",
+          },
+          {
+            name: "lastValidatedVirtualPrice",
+            type: "uint88",
+            internalType: "uint88",
+          },
+        ],
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "isSupportedAsset",
     inputs: [
       {
-        internalType: "address",
         name: "_asset",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "isSupportedAsset",
     outputs: [
       {
-        internalType: "bool",
         name: "isSupported_",
         type: "bool",
+        internalType: "bool",
       },
     ],
     stateMutability: "view",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removeDerivatives",
     inputs: [
       {
-        internalType: "address[]",
         name: "_derivatives",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removeDerivatives",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "removePools",
     inputs: [
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
     ],
-    name: "removePools",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "setCurvePoolOwner",
     inputs: [
       {
-        internalType: "address",
         name: "_nextPoolOwner",
         type: "address",
+        internalType: "address",
       },
     ],
-    name: "setCurvePoolOwner",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
   },
   {
+    type: "function",
+    name: "updatePoolInfo",
     inputs: [
       {
-        internalType: "address[]",
         name: "_pools",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "address[]",
         name: "_invariantProxyAssets",
         type: "address[]",
+        internalType: "address[]",
       },
       {
-        internalType: "bool[]",
         name: "_reentrantVirtualPrices",
         type: "bool[]",
+        internalType: "bool[]",
       },
     ],
-    name: "updatePoolInfo",
     outputs: [],
     stateMutability: "nonpayable",
-    type: "function",
+  },
+  {
+    type: "event",
+    name: "CurvePoolOwnerSet",
+    inputs: [
+      {
+        name: "poolOwner",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DerivativeAdded",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DerivativeRemoved",
+    inputs: [
+      {
+        name: "derivative",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "InvariantProxyAssetForPoolSet",
+    inputs: [
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "invariantProxyAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PoolRemoved",
+    inputs: [
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ValidatedVirtualPriceForPoolUpdated",
+    inputs: [
+      {
+        name: "pool",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "virtualPrice",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
   },
 ] as const;

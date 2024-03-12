@@ -1,13 +1,13 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IHelperDataReaderRouter {
-    event HelperDataReaderUpdated(address indexed fundDeployer, HelperDataReaderInfo HelperDataReader);
-
     struct HelperDataReaderInfo {
         address helperDataReader;
         uint8 version;
     }
+
+    event HelperDataReaderUpdated(address indexed fundDeployer, HelperDataReaderInfo HelperDataReader);
 
     function getDispatcher() external view returns (address dispatcher_);
     function getHelperDataReaderForVault(address _vaultProxy) external view returns (HelperDataReaderInfo memory);

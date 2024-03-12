@@ -1,12 +1,15 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IFeeManager {
+    type FeeHook is uint8;
+    type SettlementType is uint8;
+
     event FeeEnabledForFund(address indexed comptrollerProxy, address indexed fee, bytes settingsData);
     event FeeSettledForFund(
         address indexed comptrollerProxy,
         address indexed fee,
-        uint8 indexed settlementType,
+        SettlementType indexed settlementType,
         address payer,
         address payee,
         uint256 sharesDue
@@ -26,7 +29,7 @@ interface IFeeManager {
     function getFundDeployer() external view returns (address fundDeployer_);
     function getOwner() external view returns (address owner_);
     function getVaultProxyForFund(address _comptrollerProxy) external view returns (address vaultProxy_);
-    function invokeHook(uint8 _hook, bytes memory _settlementData, uint256 _gav) external;
+    function invokeHook(FeeHook _hook, bytes memory _settlementData, uint256 _gav) external;
     function receiveCallFromComptroller(address, uint256 _actionId, bytes memory _callArgs) external;
     function setConfigForFund(address _comptrollerProxy, address _vaultProxy, bytes memory _configData) external;
 }
