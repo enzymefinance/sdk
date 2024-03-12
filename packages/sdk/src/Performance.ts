@@ -153,8 +153,8 @@ export async function calcCanonicalAssetsTotalValue(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
-    baseAssets: Address[];
-    amounts: bigint[];
+    baseAssets: ReadonlyArray<Address>;
+    amounts: ReadonlyArray<bigint>;
     quoteAsset: Address;
   }>,
 ) {

@@ -288,7 +288,7 @@ export async function getRewardsBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
-    assets: Address[];
+    assets: ReadonlyArray<Address>;
     user: Address;
   }>,
 ) {

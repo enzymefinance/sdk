@@ -137,7 +137,7 @@ export async function getBalancesOf(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     owner: Address;
-    assets: Address[];
+    assets: ReadonlyArray<Address>;
   }>,
 ) {
   return Promise.all(

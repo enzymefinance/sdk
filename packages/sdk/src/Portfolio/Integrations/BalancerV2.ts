@@ -536,8 +536,8 @@ export async function queryBatchSwap(
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
-    swaps: BatchSwapStep[];
-    assets: Address[];
+    swaps: ReadonlyArray<BatchSwapStep>;
+    assets: ReadonlyArray<Address>;
     funds: BatchSwapFunds;
   }>,
 ) {
@@ -576,8 +576,8 @@ export async function queryExit(
     sender: Address;
     recipient: Address;
     request: {
-      assets: Address[];
-      minAmountsOut: bigint[];
+      assets: ReadonlyArray<Address>;
+      minAmountsOut: ReadonlyArray<bigint>;
       userData: Hex;
       toInternalBalance: boolean;
     };
@@ -606,8 +606,8 @@ export async function queryJoin(
     sender: Address;
     recipient: Address;
     request: {
-      assets: Address[];
-      maxAmountsIn: bigint[];
+      assets: ReadonlyArray<Address>;
+      maxAmountsIn: ReadonlyArray<bigint>;
       userData: Hex;
       fromInternalBalance: boolean;
     };
@@ -653,7 +653,7 @@ export function weightedPoolsUserDataBptInForExactTokensOut({
   amountsOut,
   maxBPTAmountIn,
 }: {
-  amountsOut: bigint[];
+  amountsOut: ReadonlyArray<bigint>;
   maxBPTAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
@@ -690,7 +690,7 @@ export function weightedPoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -760,7 +760,7 @@ export function stablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -807,7 +807,7 @@ export function composableStablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
