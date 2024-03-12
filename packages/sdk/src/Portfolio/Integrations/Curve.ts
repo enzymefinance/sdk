@@ -314,7 +314,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 
 export type StandardRedeemArgs = {
   redeemType: typeof RedeemType.Standard;
-  orderedMinIncomingAssetAmounts: readonly bigint[];
+  orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>;
 };
 
 export type OneCoinRedeemArgs = {
@@ -326,7 +326,7 @@ export type OneCoinRedeemArgs = {
 const standardRedeemEncoding = parseAbiParameters("uint256[]");
 const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
 
-export function standardRedeemEncode(orderedMinIncomingAssetAmounts: readonly bigint[]): Hex {
+export function standardRedeemEncode(orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>): Hex {
   return encodeAbiParameters(standardRedeemEncoding, [orderedMinIncomingAssetAmounts]);
 }
 
@@ -695,7 +695,7 @@ export async function getExpectedGaugeTokens(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
-    tokenAmounts: bigint[];
+    tokenAmounts: ReadonlyArray<bigint>;
     isDeposit: boolean;
   }>,
 ) {
@@ -750,7 +750,7 @@ export async function getExpectedWithdrawalTokens(
   args: Viem.ContractCallParameters<{
     curvePool: Address;
     singleTokenIndex: bigint;
-    underlyingAssetsDecimals: number[];
+    underlyingAssetsDecimals: ReadonlyArray<number>;
     lpToken: Address;
     lpTokenAmount: bigint;
     equalProportion: boolean;

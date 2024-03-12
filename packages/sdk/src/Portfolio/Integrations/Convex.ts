@@ -695,7 +695,7 @@ export async function getEstimateRewards(
 export async function getAllEstimateRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    stakingWrappers: Address[];
+    stakingWrappers: ReadonlyArray<Address>;
     beneficiary: Address;
   }>,
 ) {
