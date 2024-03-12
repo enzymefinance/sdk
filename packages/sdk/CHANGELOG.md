@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.5
+
+### Patch Changes
+
+- [#399](https://github.com/enzymefinance/sdk/pull/399) [`3e9a022`](https://github.com/enzymefinance/sdk/commit/3e9a0226b0efce9f445d1c7bc903c64d0fa5b9b0) Thanks [@fubhy](https://github.com/fubhy)! - Use `ReadonlyArray` where applicable
+
 ## 0.8.4
 
 ### Patch Changes
