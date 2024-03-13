@@ -1,5 +1,13 @@
 # @enzymefinance/abis
 
+## 0.4.1
+
+### Patch Changes
+
+- [#401](https://github.com/enzymefinance/sdk/pull/401) [`5d9f020`](https://github.com/enzymefinance/sdk/commit/5d9f020a90fc80d7be5fc6e7904c3933ff3fe872) Thanks [@fubhy](https://github.com/fubhy)! - Updated generated abis
+
+- [`0495455`](https://github.com/enzymefinance/sdk/commit/04954551b93f992fdbfe03fc71ee69c04a8a41cb) Thanks [@fubhy](https://github.com/fubhy)! - Added ABI for SharePriceThrottleMultiCallAccount
+
 ## 0.4.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.8.6
+
+### Patch Changes
+
+- [#403](https://github.com/enzymefinance/sdk/pull/403) [`de4b463`](https://github.com/enzymefinance/sdk/commit/de4b4636c21fd4c2e81aa82a4f7d7789bff9b2d0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add comp accrued
+
+- Updated dependencies [[`5d9f020`](https://github.com/enzymefinance/sdk/commit/5d9f020a90fc80d7be5fc6e7904c3933ff3fe872), [`0495455`](https://github.com/enzymefinance/sdk/commit/04954551b93f992fdbfe03fc71ee69c04a8a41cb)]:
+  - @enzymefinance/abis@0.4.1
+
 ## 0.8.5
 
 ### Patch Changes
