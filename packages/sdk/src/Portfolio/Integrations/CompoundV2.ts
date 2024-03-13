@@ -349,6 +349,15 @@ const compoundComptrollerAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    constant: true,
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "compAccrued",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export interface Market {
@@ -505,5 +514,21 @@ export function getMintGuardianPaused(
     abi: compoundComptrollerAbi,
     functionName: "_mintGuardianPaused",
     address: args.compoundComptroller,
+  });
+}
+
+export function getCompAccrued(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    compoundComptroller: Address;
+    account: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: compoundComptrollerAbi,
+    functionName: "compAccrued",
+    address: args.compoundComptroller,
+    args: [args.account],
   });
 }
