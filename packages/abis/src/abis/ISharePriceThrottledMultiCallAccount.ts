@@ -1,0 +1,117 @@
+export const ISharePriceThrottledMultiCallAccount = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_signer",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_fundValueCalculatorRouter",
+        type: "address",
+        internalType: "contract IFundValueCalculator",
+      },
+      {
+        name: "_vaultProxyAddress",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_lossTolerance",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_lossTolerancePeriodDuration",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "executeCalls",
+    inputs: [
+      {
+        name: "_calls",
+        type: "tuple[]",
+        internalType: "struct IMultiCallAccount.Call[]",
+        components: [
+          {
+            name: "target",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "data",
+            type: "bytes",
+            internalType: "bytes",
+          },
+        ],
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getThrottle",
+    inputs: [],
+    outputs: [
+      {
+        name: "throttle_",
+        type: "tuple",
+        internalType: "struct ISharePriceThrottledMultiCallAccount.Throttle",
+        components: [
+          {
+            name: "cumulativeLoss",
+            type: "uint192",
+            internalType: "uint192",
+          },
+          {
+            name: "lastLossTimestamp",
+            type: "uint64",
+            internalType: "uint64",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "event",
+    name: "ThrottleUpdated",
+    inputs: [
+      {
+        name: "nextCumulativeLoss",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "error",
+    name: "ExceedsOneHundredPercent",
+    inputs: [],
+  },
+  {
+    type: "error",
+    name: "ToleranceExceeded",
+    inputs: [
+      {
+        name: "cumulativeLoss",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+  },
+  {
+    type: "error",
+    name: "Unauthorized",
+    inputs: [],
+  },
+] as const;

@@ -107,6 +107,7 @@ export { IPolicyManager } from "./abis/IPolicyManager.js";
 export { IProtocolFeeReserveLib } from "./abis/IProtocolFeeReserveLib.js";
 export { IProtocolFeeTracker } from "./abis/IProtocolFeeTracker.js";
 export { IRevertingPriceFeed } from "./abis/IRevertingPriceFeed.js";
+export { ISharePriceThrottledMultiCallAccount } from "./abis/ISharePriceThrottledMultiCallAccount.js";
 export { ISharesSplitterFactory } from "./abis/ISharesSplitterFactory.js";
 export { ISharesSplitterLib } from "./abis/ISharesSplitterLib.js";
 export { ISolvV2BondBuyerPositionLib } from "./abis/ISolvV2BondBuyerPositionLib.js";
