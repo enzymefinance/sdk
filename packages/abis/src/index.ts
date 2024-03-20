@@ -110,6 +110,8 @@ export { IRevertingPriceFeed } from "./abis/IRevertingPriceFeed.js";
 export { ISharePriceThrottledMultiCallAccount } from "./abis/ISharePriceThrottledMultiCallAccount.js";
 export { ISharesSplitterFactory } from "./abis/ISharesSplitterFactory.js";
 export { ISharesSplitterLib } from "./abis/ISharesSplitterLib.js";
+export { ISingleAssetRedemptionQueueFactory } from "./abis/ISingleAssetRedemptionQueueFactory.js";
+export { ISingleAssetRedemptionQueueLib } from "./abis/ISingleAssetRedemptionQueueLib.js";
 export { ISolvV2BondBuyerPositionLib } from "./abis/ISolvV2BondBuyerPositionLib.js";
 export { ISolvV2BondBuyerPositionParser } from "./abis/ISolvV2BondBuyerPositionParser.js";
 export { ISolvV2BondIssuerPositionLib } from "./abis/ISolvV2BondIssuerPositionLib.js";
