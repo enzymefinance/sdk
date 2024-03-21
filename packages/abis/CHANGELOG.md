@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.2
+
+### Patch Changes
+
+- [#405](https://github.com/enzymefinance/sdk/pull/405) [`8414507`](https://github.com/enzymefinance/sdk/commit/8414507288f505da58de24bdcf052de551976970) Thanks [@iherger](https://github.com/iherger)! - Add SingleAssetRedemptionQueue
+
 ## 0.4.1
 
 ### Patch Changes
