@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.8
+
+### Patch Changes
+
+- [#407](https://github.com/enzymefinance/sdk/pull/407) [`fc6937e`](https://github.com/enzymefinance/sdk/commit/fc6937e0bc1fdbb4ca5c03da6e2eb98bf4049617) Thanks [@iherger](https://github.com/iherger)! - Arbitrary loan encoding
+
 ## 0.8.7
 
 ### Patch Changes
