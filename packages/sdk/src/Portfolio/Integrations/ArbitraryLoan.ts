@@ -67,7 +67,7 @@ export function configureLoanEncode(args: ConfigureLoanArgs): Hex {
     args.amount,
     args.accountingModule,
     args.accountingModuleConfigData,
-    stringToHex(args.description),
+    stringToHex(args.description, { size: 32 }),
   ]);
 }
 
