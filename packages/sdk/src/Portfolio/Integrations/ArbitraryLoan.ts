@@ -99,7 +99,7 @@ export const updateBorrowableAmount = ExternalPositionManager.makeUse(
 const updateBorrowableAmountEncoding = [
   {
     name: "amountDelta",
-    type: "uint256",
+    type: "int256",
   },
 ] as const;
 
