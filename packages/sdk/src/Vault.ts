@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type PublicClient } from "viem";
+import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
@@ -230,7 +230,7 @@ export function sharesAreFreelyTransferable(
 export function addAssetManagers(
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    managers: ReadonlyArray<Address>;
+    managers: readonly Address[];
   }>,
 ) {
   return new Viem.PopulatedTransaction({
@@ -244,7 +244,7 @@ export function addAssetManagers(
 export function removeAssetManagers(
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    managers: ReadonlyArray<Address>;
+    managers: readonly Address[];
   }>,
 ) {
   return new Viem.PopulatedTransaction({

@@ -98,7 +98,7 @@ export function setRecipient(args: SetRecipientParams) {
 // READ - BOTH TYPES
 //--------------------------------------------------------------------------------------------
 
-export async function getRate(
+export function getRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     entranceRateFee: Address;

@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -84,7 +84,7 @@ const claimRewardsEncoding = [
 ] as const;
 
 export type ClaimRewardsArgs = {
-  cTokens: ReadonlyArray<Address>;
+  cTokens: readonly Address[];
 };
 
 export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {

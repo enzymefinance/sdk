@@ -164,28 +164,28 @@ export type Adapter = {
   adapter: Address;
   percent: bigint;
   networkFee: bigint;
-  route: ReadonlyArray<Route>;
+  route: readonly Route[];
 };
 
 export type Path = {
   to: Address;
   totalNetworkFee: bigint;
-  adapters: ReadonlyArray<Adapter>;
+  adapters: readonly Adapter[];
 };
 
 export type MegaSwapData = ReadonlyArray<{
   fromAmountPercent: bigint;
-  path: ReadonlyArray<Path>;
+  path: readonly Path[];
 }>;
 
-export type MultiSwapData = ReadonlyArray<Path>;
+export type MultiSwapData = readonly Path[];
 
 export type SimpleSwapData = {
   incomingAsset: Address;
-  callees: ReadonlyArray<Address>;
+  callees: readonly Address[];
   exchangeData: Hex;
-  startIndexes: ReadonlyArray<bigint>;
-  values: ReadonlyArray<bigint>;
+  startIndexes: readonly bigint[];
+  values: readonly bigint[];
 };
 
 export type SwapType = (typeof SwapType)[keyof typeof SwapType];
@@ -323,7 +323,7 @@ const takeMultipleOrdersEncoding = [
 
 export type TakeMultipleOrdersArgs = {
   allowOrdersToFail: boolean;
-  orders: ReadonlyArray<TakeOrderArgs>;
+  orders: readonly TakeOrderArgs[];
 };
 
 export function takeMultipleOrdersEncode(args: TakeMultipleOrdersArgs): Hex {

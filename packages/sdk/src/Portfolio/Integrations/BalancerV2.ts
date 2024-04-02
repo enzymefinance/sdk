@@ -1,13 +1,13 @@
 import {
   type Address,
   type Hex,
-  PublicClient,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Assertion, Types, Viem } from "../../Utils.js";
+import { Assertion, type Types, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -60,11 +60,11 @@ const lendEncoding = [
 export type LendArgs = {
   poolId: Hex;
   bptAmount: bigint;
-  usedTokens: ReadonlyArray<Address>;
-  usedTokenAmounts: ReadonlyArray<bigint>;
+  usedTokens: readonly Address[];
+  usedTokenAmounts: readonly bigint[];
   request: {
-    assets: ReadonlyArray<Address>;
-    limits: ReadonlyArray<bigint>;
+    assets: readonly Address[];
+    limits: readonly bigint[];
     userData: Hex;
     useInternalBalance: boolean;
   };
@@ -293,9 +293,9 @@ export type TakeOrderArgs = {
     amount: bigint;
     userData: Hex;
   }>;
-  assets: ReadonlyArray<Address>;
-  limits: ReadonlyArray<bigint>;
-  stakingTokens: ReadonlyArray<Address>;
+  assets: readonly Address[];
+  limits: readonly bigint[];
+  stakingTokens: readonly Address[];
 };
 
 export function takeOrderEncode(args: TakeOrderArgs): Hex {
@@ -536,8 +536,8 @@ export async function queryBatchSwap(
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
-    swaps: ReadonlyArray<BatchSwapStep>;
-    assets: ReadonlyArray<Address>;
+    swaps: readonly BatchSwapStep[];
+    assets: readonly Address[];
     funds: BatchSwapFunds;
   }>,
 ) {
@@ -576,8 +576,8 @@ export async function queryExit(
     sender: Address;
     recipient: Address;
     request: {
-      assets: ReadonlyArray<Address>;
-      minAmountsOut: ReadonlyArray<bigint>;
+      assets: readonly Address[];
+      minAmountsOut: readonly bigint[];
       userData: Hex;
       toInternalBalance: boolean;
     };
@@ -606,8 +606,8 @@ export async function queryJoin(
     sender: Address;
     recipient: Address;
     request: {
-      assets: ReadonlyArray<Address>;
-      maxAmountsIn: ReadonlyArray<bigint>;
+      assets: readonly Address[];
+      maxAmountsIn: readonly bigint[];
       userData: Hex;
       fromInternalBalance: boolean;
     };
@@ -653,7 +653,7 @@ export function weightedPoolsUserDataBptInForExactTokensOut({
   amountsOut,
   maxBPTAmountIn,
 }: {
-  amountsOut: ReadonlyArray<bigint>;
+  amountsOut: readonly bigint[];
   maxBPTAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
@@ -690,7 +690,7 @@ export function weightedPoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: ReadonlyArray<bigint>;
+  amountsIn: readonly bigint[];
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -760,7 +760,7 @@ export function stablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: ReadonlyArray<bigint>;
+  amountsIn: readonly bigint[];
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -807,7 +807,7 @@ export function composableStablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: ReadonlyArray<bigint>;
+  amountsIn: readonly bigint[];
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [

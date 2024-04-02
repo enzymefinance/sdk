@@ -19,13 +19,17 @@
     "rules": {
       "all": true,
       "suspicious": {
-        "noExplicitAny": "off"
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off"
+      },
+      "style": {
+        "noDefaultExport": "off",
+        "noParameterProperties": "off",
+        "useNamingConvention": "off",
+        "useShorthandArrayType": "off"
       },
       "nursery": {
         "useImportRestrictions": "off"
-      },
-      "style": {
-        "useShorthandArrayType": "off"
       },
       "complexity": {
         "noBannedTypes": "off"

@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -196,14 +196,14 @@ const claimVotingRewardsEncoding = [
 ] as const;
 
 export type ClaimVotingRewardsArgs = {
-  allTokensToTransfer: ReadonlyArray<Address>;
+  allTokensToTransfer: readonly Address[];
   claimLockerRewards: boolean;
-  extraRewardTokens: ReadonlyArray<Address>;
+  extraRewardTokens: readonly Address[];
   votiumClaims: ReadonlyArray<{
     token: Address;
     index: bigint;
     amount: bigint;
-    merkleProof: ReadonlyArray<Hex>;
+    merkleProof: readonly Hex[];
   }>;
   unstakeCvxCrv: boolean;
 };
@@ -695,7 +695,7 @@ export async function getEstimateRewards(
 export async function getAllEstimateRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    stakingWrappers: ReadonlyArray<Address>;
+    stakingWrappers: readonly Address[];
     beneficiary: Address;
   }>,
 ) {

@@ -133,11 +133,11 @@ export function getBalanceOf(
   });
 }
 
-export async function getBalancesOf(
+export function getBalancesOf(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     owner: Address;
-    assets: ReadonlyArray<Address>;
+    assets: readonly Address[];
   }>,
 ) {
   return Promise.all(

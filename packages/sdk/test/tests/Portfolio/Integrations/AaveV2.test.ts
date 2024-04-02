@@ -1,6 +1,6 @@
 import { Portfolio, Utils } from "@enzymefinance/sdk";
 import { TestActions, TestSetup } from "@enzymefinance/sdk/test";
-import { Address } from "viem";
+import type { Address } from "viem";
 import { test } from "vitest";
 
 const environment = TestSetup.mainnet();

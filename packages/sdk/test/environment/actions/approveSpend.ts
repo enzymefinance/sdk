@@ -1,5 +1,5 @@
 import { Utils } from "@enzymefinance/sdk";
-import { type TestEnvironment } from "@enzymefinance/sdk/test";
+import type { TestEnvironment } from "@enzymefinance/sdk/test";
 import { type Address, parseAbi } from "viem";
 
 export async function approveSpend({

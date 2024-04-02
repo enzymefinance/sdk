@@ -23,10 +23,10 @@ const newAddressListArgsEncoding = [
 ] as const;
 
 export interface AddressListRegistryPolicySettings {
-  existingListIds: ReadonlyArray<bigint>;
+  existingListIds: readonly bigint[];
   newListsArgs: ReadonlyArray<{
     updateType: bigint;
-    initialItems: ReadonlyArray<Address>;
+    initialItems: readonly Address[];
   }>;
 }
 

@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient } from "viem";
+import type { Address, Hex, PublicClient } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";
@@ -83,8 +83,8 @@ export type RedeemSharesForSpecificAssetsParams = {
   comptrollerProxy: Address;
   recipient: Address;
   sharesQuantity: bigint;
-  payoutAssets: ReadonlyArray<Address>;
-  payoutPercentages: ReadonlyArray<bigint>;
+  payoutAssets: readonly Address[];
+  payoutPercentages: readonly bigint[];
 };
 
 export async function getSpecificAssetsRedemptionExpectedAmounts(
@@ -128,8 +128,8 @@ export function redeemSharesInKind(
     comptrollerProxy: Address;
     recipient: Address;
     sharesQuantity: bigint;
-    additionalAssets: ReadonlyArray<Address>;
-    assetsToSkip: ReadonlyArray<Address>;
+    additionalAssets: readonly Address[];
+    assetsToSkip: readonly Address[];
   }>,
 ) {
   return new Viem.PopulatedTransaction({

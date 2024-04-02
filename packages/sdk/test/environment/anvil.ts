@@ -1,17 +1,17 @@
-import { Utils } from "@enzymefinance/sdk";
+import type { Utils } from "@enzymefinance/sdk";
 import { fetchLogs } from "@viem/anvil";
 import {
   http,
-  Abi,
+  type Abi,
   type Chain,
-  ContractFunctionName,
-  ExtractChainFormatterReturnType,
-  Hash,
-  PublicClient,
-  SimulateContractReturnType,
-  TestClient,
-  TransactionReceipt,
-  WriteContractParameters,
+  type ContractFunctionName,
+  type ExtractChainFormatterReturnType,
+  type Hash,
+  type PublicClient,
+  type SimulateContractReturnType,
+  type TestClient,
+  type TransactionReceipt,
+  type WriteContractParameters,
   createPublicClient,
   createTestClient,
 } from "viem";
@@ -169,7 +169,6 @@ export function createSetup({
             error.message += "\n\nAnvil log output\n=======================================\n";
             error.message += `\n${logs.join("\n")}`;
           } else {
-            console.log(...logs);
           }
         } catch {}
       });

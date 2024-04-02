@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const tremor = path.dirname(require.resolve("@tremor/react/package.json"));
 
 module.exports = {

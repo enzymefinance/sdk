@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -74,7 +74,7 @@ const claimFeesEncoding = [
 
 export type ClaimFeesArgs = {
   stakingContract: Address;
-  publicKeys: ReadonlyArray<Hex>;
+  publicKeys: readonly Hex[];
   claimFeeType: ClaimType;
 };
 

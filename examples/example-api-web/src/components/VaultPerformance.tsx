@@ -1,6 +1,6 @@
 import { type PartialMessage, Timestamp } from "@bufbuild/protobuf";
 import { createQueryService, useTransport } from "@connectrpc/connect-query";
-import { Currency, Deployment, EnzymeService, GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
+import { Currency, Deployment, EnzymeService, type GetVaultTimeSeriesRequest, Resolution } from "@enzymefinance/api";
 import { useQuery } from "@tanstack/react-query";
 import { AreaChart, Card, Title } from "@tremor/react";
 import { Spinner } from "./Spinner.js";

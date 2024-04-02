@@ -139,7 +139,7 @@ const addTrackedAssetsEncoding = [
 ] as const;
 
 export type AddTracketAssetsArgs = {
-  addAssets: ReadonlyArray<Address>;
+  addAssets: readonly Address[];
 };
 
 export function addTrackedAssetsEncode(args: AddTracketAssetsArgs): Hex {
@@ -166,7 +166,7 @@ export type AddTracketAssetsParams = {
   /**
    * The adapter call parameters (e.g. trade parameters).
    */
-  addAssets: ReadonlyArray<Address>;
+  addAssets: readonly Address[];
 };
 
 export function addTrackedAssets(args: AddTracketAssetsParams) {
@@ -192,7 +192,7 @@ const removeTracketAssetsEncoding = [
 ] as const;
 
 export type RemoveTrackedAssetsArgs = {
-  removeAssets: ReadonlyArray<Address>;
+  removeAssets: readonly Address[];
 };
 
 export function removeTrackedAssetsEncode(args: RemoveTrackedAssetsArgs): Hex {
@@ -219,7 +219,7 @@ export type RemoveTrackedAssetsParams = {
   /**
    * The adapter call parameters (e.g. trade parameters).
    */
-  removeAssets: ReadonlyArray<Address>;
+  removeAssets: readonly Address[];
 };
 
 export function removeTracketAssets(args: RemoveTrackedAssetsParams) {

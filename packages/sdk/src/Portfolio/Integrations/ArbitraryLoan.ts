@@ -143,7 +143,7 @@ const reconcileEncoding = [
 ] as const;
 
 export type ReconcileArgs = {
-  extraAssetsToSweep: ReadonlyArray<Address>;
+  extraAssetsToSweep: readonly Address[];
 };
 
 export function reconcileEncode(args: ReconcileArgs): Hex {
@@ -172,7 +172,7 @@ const closeLoanEncoding = [
 ] as const;
 
 export type CloseLoanArgs = {
-  extraAssetsToSweep: ReadonlyArray<Address>;
+  extraAssetsToSweep: readonly Address[];
 };
 
 export function closeLoanEncode(args: CloseLoanArgs): Hex {

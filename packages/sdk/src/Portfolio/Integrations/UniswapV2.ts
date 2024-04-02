@@ -3,7 +3,7 @@ import {
   type Address,
   ContractFunctionExecutionError,
   type Hex,
-  PublicClient,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -34,7 +34,7 @@ const takeOrderEncoding = [
 ] as const;
 
 export type TakeOrderArgs = {
-  path: ReadonlyArray<Address>;
+  path: readonly Address[];
   outgoingAssetAmount: bigint;
   minIncomingAssetAmount: bigint;
 };

@@ -2,7 +2,7 @@ import {
   type Address,
   ContractFunctionExecutionError,
   type Hex,
-  PublicClient,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -104,7 +104,7 @@ const lendEncoding = [
 
 export type LendArgs = {
   pool: Address;
-  orderedOutgoingAssetAmounts: ReadonlyArray<bigint>;
+  orderedOutgoingAssetAmounts: readonly bigint[];
   minIncomingLpTokenAmount: bigint;
   useUnderlyings: boolean;
 };
@@ -163,7 +163,7 @@ const lendAndStakeEncoding = [
 
 export type LendAndStakeArgs = {
   pool: Address;
-  orderedOutgoingAssetAmounts: ReadonlyArray<bigint>;
+  orderedOutgoingAssetAmounts: readonly bigint[];
   incomingStakingToken: Address;
   minIncomingStakingTokenAmount: bigint;
   useUnderlyings: boolean;
@@ -314,7 +314,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 
 export type StandardRedeemArgs = {
   redeemType: typeof RedeemType.Standard;
-  orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>;
+  orderedMinIncomingAssetAmounts: readonly bigint[];
 };
 
 export type OneCoinRedeemArgs = {
@@ -326,7 +326,7 @@ export type OneCoinRedeemArgs = {
 const standardRedeemEncoding = parseAbiParameters("uint256[]");
 const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
 
-export function standardRedeemEncode(orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>): Hex {
+export function standardRedeemEncode(orderedMinIncomingAssetAmounts: readonly bigint[]): Hex {
   return encodeAbiParameters(standardRedeemEncoding, [orderedMinIncomingAssetAmounts]);
 }
 
@@ -695,7 +695,7 @@ export async function getExpectedGaugeTokens(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
-    tokenAmounts: ReadonlyArray<bigint>;
+    tokenAmounts: readonly bigint[];
     isDeposit: boolean;
   }>,
 ) {
@@ -750,7 +750,7 @@ export async function getExpectedWithdrawalTokens(
   args: Viem.ContractCallParameters<{
     curvePool: Address;
     singleTokenIndex: bigint;
-    underlyingAssetsDecimals: ReadonlyArray<number>;
+    underlyingAssetsDecimals: readonly number[];
     lpToken: Address;
     lpTokenAmount: bigint;
     equalProportion: boolean;

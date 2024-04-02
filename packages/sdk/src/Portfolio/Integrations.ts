@@ -15,6 +15,7 @@ export * as Liquity from "./Integrations/Liquity.js";
 export * as Maple from "./Integrations/Maple.js";
 export * as OneInchV5 from "./Integrations/OneInchV5.js";
 export * as ParaSwapV5 from "./Integrations/ParaSwapV5.js";
+export * as PendleV2 from "./Integrations/PendleV2.js";
 export * as StakeWiseV3 from "./Integrations/StakeWiseV3.js";
 export * as Swell from "./Integrations/Swell.js";
 export * as TheGraph from "./Integrations/TheGraph.js";

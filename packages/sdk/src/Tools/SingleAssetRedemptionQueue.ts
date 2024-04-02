@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { Address, PublicClient } from "viem";
+import type { Address, PublicClient } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -12,7 +12,7 @@ export function deployProxy(args: {
   vaultProxy: Address;
   redemptionAsset: Address;
   bypassableSharesThreshold: bigint;
-  managers: ReadonlyArray<Address>;
+  managers: readonly Address[];
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISingleAssetRedemptionQueueFactory,
@@ -57,7 +57,7 @@ export function withdrawRequest(args: {
 export function redeemFromQueue(args: {
   redemptionQueue: Address;
   endId: bigint;
-  idsToBypass: ReadonlyArray<bigint>;
+  idsToBypass: readonly bigint[];
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISingleAssetRedemptionQueueLib,
@@ -73,7 +73,7 @@ export function redeemFromQueue(args: {
 
 export function addManagers(args: {
   redemptionQueue: Address;
-  managers: ReadonlyArray<Address>;
+  managers: readonly Address[];
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISingleAssetRedemptionQueueLib,
@@ -85,7 +85,7 @@ export function addManagers(args: {
 
 export function removeManagers(args: {
   redemptionQueue: Address;
-  managers: ReadonlyArray<Address>;
+  managers: readonly Address[];
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISingleAssetRedemptionQueueLib,

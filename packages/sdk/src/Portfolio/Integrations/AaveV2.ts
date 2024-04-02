@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -108,8 +108,8 @@ const addCollateralEncoding = [
 ] as const;
 
 export type AddCollateralArgs = {
-  aTokens: ReadonlyArray<Address>;
-  amounts: ReadonlyArray<bigint>;
+  aTokens: readonly Address[];
+  amounts: readonly bigint[];
 };
 
 export function addCollateralEncode(args: AddCollateralArgs): Hex {
@@ -143,8 +143,8 @@ const removeCollateralEncoding = [
 ] as const;
 
 export type RemoveCollateralArgs = {
-  aTokens: ReadonlyArray<Address>;
-  amounts: ReadonlyArray<bigint>;
+  aTokens: readonly Address[];
+  amounts: readonly bigint[];
 };
 
 export function removeCollateralEncode(args: RemoveCollateralArgs): Hex {
@@ -179,8 +179,8 @@ const borrowEncoding = [
 ] as const;
 
 export type BorrowArgs = {
-  underlyingTokens: ReadonlyArray<Address>;
-  amounts: ReadonlyArray<bigint>;
+  underlyingTokens: readonly Address[];
+  amounts: readonly bigint[];
 };
 
 export function borrowEncode(args: BorrowArgs): Hex {
@@ -214,8 +214,8 @@ const repayBorrowEncoding = [
 ] as const;
 
 export type RepayBorrowArgs = {
-  underlyingTokens: ReadonlyArray<Address>;
-  amounts: ReadonlyArray<bigint>;
+  underlyingTokens: readonly Address[];
+  amounts: readonly bigint[];
 };
 
 export function repayBorrowEncode(args: RepayBorrowArgs): Hex {
@@ -245,7 +245,7 @@ const claimRewardsEncoding = [
 ] as const;
 
 export type ClaimRewardsArgs = {
-  rewardTokens: ReadonlyArray<Address>;
+  rewardTokens: readonly Address[];
 };
 
 export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
@@ -288,7 +288,7 @@ export async function getRewardsBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
-    assets: ReadonlyArray<Address>;
+    assets: readonly Address[];
     user: Address;
   }>,
 ) {

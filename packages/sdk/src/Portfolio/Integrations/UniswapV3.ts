@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -30,8 +30,8 @@ const takeOrderEncoding = [
 ] as const;
 
 export type TakeOrderArgs = {
-  pathAddresses: ReadonlyArray<Address>;
-  pathFees: ReadonlyArray<number>;
+  pathAddresses: readonly Address[];
+  pathFees: readonly number[];
   outgoingAssetAmount: bigint;
   minIncomingAssetAmount: bigint;
 };

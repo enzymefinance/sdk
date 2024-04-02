@@ -1,4 +1,4 @@
-import { Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -29,7 +29,7 @@ const requestWithdrawalsEncoding = [
 ] as const;
 
 export type RequestWithdrawalsArgs = {
-  amounts: ReadonlyArray<bigint>;
+  amounts: readonly bigint[];
 };
 
 export function requestWithdrawalsEncode(args: RequestWithdrawalsArgs): Hex {
@@ -60,8 +60,8 @@ const claimWithdrawalsEncoding = [
 ] as const;
 
 export type ClaimWithdrawalsArgs = {
-  requestIds: ReadonlyArray<bigint>;
-  hints: ReadonlyArray<bigint>;
+  requestIds: readonly bigint[];
+  hints: readonly bigint[];
 };
 
 export function claimWithdrawalsEncode(args: ClaimWithdrawalsArgs): Hex {
@@ -139,7 +139,7 @@ export function findCheckpointHints(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
-    requestIds: ReadonlyArray<bigint>;
+    requestIds: readonly bigint[];
     firstIndex: bigint;
     lastIndex: bigint;
   }>,
@@ -157,7 +157,7 @@ export async function getWithdrawalStatus(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
-    requestIds: ReadonlyArray<bigint>;
+    requestIds: readonly bigint[];
   }>,
 ) {
   return readContract(client, {

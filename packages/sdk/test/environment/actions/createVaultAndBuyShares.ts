@@ -1,5 +1,5 @@
-import { TestActions, TestEnvironment } from "@enzymefinance/sdk/test";
-import { Address, Hex } from "viem";
+import { TestActions, type TestEnvironment } from "@enzymefinance/sdk/test";
+import type { Address, Hex } from "viem";
 
 export async function createVaultAndBuyShares({
   environment,

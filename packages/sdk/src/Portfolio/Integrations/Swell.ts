@@ -1,4 +1,4 @@
-import { type Address, PublicClient, parseAbi } from "viem";
+import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
