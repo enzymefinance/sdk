@@ -32,8 +32,8 @@
   },
   "devDependencies": {
     "@enzymefinance/abis": "workspace:*",
-    "@viem/anvil": "^0.0.7",
+    "@viem/anvil": "^0.0.9",
     "decimal.js": "^10.4.3",
-    "viem": "^2.7.16"
+    "viem": "^2.9.6"
   }
 }
