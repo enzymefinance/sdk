@@ -23,6 +23,11 @@ export const IPendleV2PositionLib = [
         internalType: "uint256",
       },
       {
+        name: "_pendleSyTokensListId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
         name: "_pendlePtOracleAddress",
         type: "address",
         internalType: "address",
