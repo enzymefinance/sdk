@@ -189,7 +189,7 @@ export function claimRewardsV1Decode(encoded: Hex): ClaimRewardsV1Args {
 // EXTERNAL READ FUNCTIONS - MAPLE POOL
 //--------------------------------------------------------------------------------------------
 
-export async function getMaxDeposit(
+export function getMaxDeposit(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -205,7 +205,7 @@ export async function getMaxDeposit(
   });
 }
 
-export async function getTotalAssets(
+export function getTotalAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -219,7 +219,7 @@ export async function getTotalAssets(
   });
 }
 
-export async function getUnrealizedLosses(
+export function getUnrealizedLosses(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -233,7 +233,7 @@ export async function getUnrealizedLosses(
   });
 }
 
-export async function getSharesConvertedToExitAssets(
+export function getSharesConvertedToExitAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;
@@ -253,7 +253,7 @@ export async function getSharesConvertedToExitAssets(
 // EXTERNAL READ FUNCTIONS - POOL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getWithdrawalManager(
+export function getWithdrawalManager(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     poolManager: Address;
@@ -271,7 +271,7 @@ export async function getWithdrawalManager(
 // EXTERNAL READ FUNCTIONS - WITHDRAWAL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getLockedShares(
+export function getLockedShares(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
@@ -287,7 +287,7 @@ export async function getLockedShares(
   });
 }
 
-export async function getCurrentCycleId(
+export function getCurrentCycleId(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
@@ -319,7 +319,7 @@ export async function getWindowAtId(
   return { windowStart, windowEnd };
 }
 
-export async function getExitCycleId(
+export function getExitCycleId(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;

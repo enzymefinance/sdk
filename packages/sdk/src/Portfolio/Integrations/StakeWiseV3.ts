@@ -164,7 +164,7 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function convertSharesToAssets(
+export function convertSharesToAssets(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sharesAmount: bigint;
@@ -180,7 +180,7 @@ export async function convertSharesToAssets(
   });
 }
 
-export async function getVaultSharesBalance(
+export function getVaultSharesBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     account: Address;
@@ -207,7 +207,7 @@ export async function getStakedEthBalance(
   return convertSharesToAssets(client, { sharesAmount: sharesBalance, stakeWiseVault: args.stakeWiseVault });
 }
 
-export async function getStakePreview(
+export function getStakePreview(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     account: Address;
@@ -224,7 +224,7 @@ export async function getStakePreview(
   });
 }
 
-export async function getClaimExitedAssetsPreview(
+export function getClaimExitedAssetsPreview(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     exitQueueIndex: bigint;
@@ -245,7 +245,7 @@ export async function getClaimExitedAssetsPreview(
   });
 }
 
-export async function getExitQueueIndex(
+export function getExitQueueIndex(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     positionTicket: bigint;
@@ -261,7 +261,7 @@ export async function getExitQueueIndex(
   });
 }
 
-export async function isCollateralized(
+export function isCollateralized(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     keeperRewards: Address;
@@ -277,7 +277,7 @@ export async function isCollateralized(
   });
 }
 
-export async function isHarvestRequired(
+export function isHarvestRequired(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     keeperRewards: Address;

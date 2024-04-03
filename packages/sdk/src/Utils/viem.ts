@@ -44,7 +44,7 @@ export class PopulatedTransaction<
 > {
   constructor(public readonly params: PopulatedTransactionParams<TAbi, TFunctionName>) {}
 
-  async simulate(
+  simulate(
     client: PublicClient,
     args: PopulatedTransactionSimulateParams,
   ): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
@@ -58,10 +58,7 @@ export class PopulatedTransaction<
     } as any);
   }
 
-  async estimate(
-    client: PublicClient,
-    args: PopulatedTransactionEstimateParams,
-  ): Promise<EstimateContractGasReturnType> {
+  estimate(client: PublicClient, args: PopulatedTransactionEstimateParams): Promise<EstimateContractGasReturnType> {
     return client.estimateContractGas({
       ...args,
       abi: this.params.abi,

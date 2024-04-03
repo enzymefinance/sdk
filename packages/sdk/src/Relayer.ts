@@ -142,7 +142,7 @@ export async function isRelayerEnabled(
   return !isAddressEqual(address, zeroAddress);
 }
 
-export async function getGasRelayPaymaster(
+export function getGasRelayPaymaster(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;

@@ -368,7 +368,7 @@ export async function getTrove(
   };
 }
 
-export async function getLusdGasCompensation(
+export function getLusdGasCompensation(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
@@ -382,7 +382,7 @@ export async function getLusdGasCompensation(
   });
 }
 
-export async function getBorrowingFeeWithDecay(
+export function getBorrowingFeeWithDecay(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     troveManager: Address;

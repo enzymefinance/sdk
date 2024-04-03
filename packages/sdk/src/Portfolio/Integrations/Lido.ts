@@ -153,7 +153,7 @@ export function findCheckpointHints(
   });
 }
 
-export async function getWithdrawalStatus(
+export function getWithdrawalStatus(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;

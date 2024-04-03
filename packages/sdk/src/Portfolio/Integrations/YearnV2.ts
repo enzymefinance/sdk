@@ -100,7 +100,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function pricePerShare(
+export function pricePerShare(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     yearnVault: Address;

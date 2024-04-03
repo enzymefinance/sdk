@@ -235,3 +235,94 @@ export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
     minLpOut,
   };
 }
+
+//--------------------------------------------------------------------------------------------
+// REMOVE LIQUIDITY
+//--------------------------------------------------------------------------------------------
+
+export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, addLiquidityEncode);
+
+const removeLiquidityEncoding = [
+  {
+    name: "market",
+    type: "address",
+  },
+  {
+    name: "withdrawalTokenAddress",
+    type: "address",
+  },
+  {
+    name: "withdrawalAmount",
+    type: "uint256",
+  },
+  {
+    name: "minSyOut",
+    type: "uint256",
+  },
+  {
+    name: "minIncomingAmount",
+    type: "uint256",
+  },
+] as const;
+
+export type RemoveLiquidityArgs = {
+  market: Address;
+  withdrawalTokenAddress: Address;
+  withdrawalAmount: bigint;
+  minSyOut: bigint;
+  minIncomingAmount: bigint;
+};
+
+export function removeLiquidityEncode(args: RemoveLiquidityArgs): Hex {
+  return encodeAbiParameters(removeLiquidityEncoding, [
+    args.market,
+    args.withdrawalTokenAddress,
+    args.withdrawalAmount,
+    args.minSyOut,
+    args.minIncomingAmount,
+  ]);
+}
+
+export function removeLiquidityDecode(encoded: Hex): RemoveLiquidityArgs {
+  const [market, withdrawalTokenAddress, withdrawalAmount, minSyOut, minIncomingAmount] = decodeAbiParameters(
+    removeLiquidityEncoding,
+    encoded,
+  );
+
+  return {
+    market,
+    withdrawalTokenAddress,
+    withdrawalAmount,
+    minSyOut,
+    minIncomingAmount,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, addLiquidityEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "marketAddresses",
+    type: "address[]",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  marketAddresses: readonly Address[];
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.marketAddresses]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [marketAddresses] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    marketAddresses,
+  };
+}

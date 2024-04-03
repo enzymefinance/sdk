@@ -162,7 +162,7 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getCLFeeRecipient(
+export function getCLFeeRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -178,7 +178,7 @@ export async function getCLFeeRecipient(
   });
 }
 
-export async function getELFeeRecipient(
+export function getELFeeRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -194,7 +194,7 @@ export async function getELFeeRecipient(
   });
 }
 
-export async function getGlobalFee(
+export function getGlobalFee(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;

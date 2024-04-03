@@ -365,7 +365,7 @@ const gaugeAbi = [
   },
 ] as const;
 
-export async function getClaimableRewards(
+export function getClaimableRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     gauge: Address;

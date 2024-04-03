@@ -359,7 +359,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-export async function isAllowedMaker(
+export function isAllowedMaker(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     zeroExV4Adapter: Address;

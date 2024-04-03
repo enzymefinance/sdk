@@ -157,7 +157,7 @@ const cometRewardsAbi = [
   },
 ] as const;
 
-export async function getUtilization(
+export function getUtilization(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -171,7 +171,7 @@ export async function getUtilization(
   });
 }
 
-export async function getSupplyRate(
+export function getSupplyRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -187,7 +187,7 @@ export async function getSupplyRate(
   });
 }
 
-export async function getTotalSupply(
+export function getTotalSupply(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;
@@ -201,7 +201,7 @@ export async function getTotalSupply(
   });
 }
 
-export async function getBaseTrackingSupplySpeed(
+export function getBaseTrackingSupplySpeed(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     asset: Address;

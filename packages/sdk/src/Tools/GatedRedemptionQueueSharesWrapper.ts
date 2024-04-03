@@ -283,7 +283,7 @@ export function getRedemptionQueueUsers(
   });
 }
 
-export async function getRedemptionQueueUsersLength(
+export function getRedemptionQueueUsersLength(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;

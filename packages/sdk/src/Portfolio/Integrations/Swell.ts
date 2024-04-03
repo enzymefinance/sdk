@@ -6,7 +6,7 @@ import { Viem } from "../../Utils.js";
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function ethToSwETHRate(
+export function ethToSwETHRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     swethAddress: Address;

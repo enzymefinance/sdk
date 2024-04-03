@@ -284,7 +284,7 @@ const aaveIncentivesControllerAbi = [
   },
 ] as const;
 
-export async function getRewardsBalance(
+export function getRewardsBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
@@ -301,7 +301,7 @@ export async function getRewardsBalance(
   });
 }
 
-export async function getUserUnclaimedRewards(
+export function getUserUnclaimedRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
