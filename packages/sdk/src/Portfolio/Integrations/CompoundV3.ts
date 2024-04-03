@@ -84,7 +84,7 @@ const claimRewardsEncoding = [
 ] as const;
 
 export type ClaimRewardsArgs = {
-  cTokens: readonly Address[];
+  cTokens: ReadonlyArray<Address>;
 };
 
 export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {

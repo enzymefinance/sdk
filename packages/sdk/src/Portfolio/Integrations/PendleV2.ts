@@ -312,7 +312,7 @@ const claimRewardsEncoding = [
 ] as const;
 
 export type ClaimRewardsArgs = {
-  marketAddresses: readonly Address[];
+  marketAddresses: ReadonlyArray<Address>;
 };
 
 export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {

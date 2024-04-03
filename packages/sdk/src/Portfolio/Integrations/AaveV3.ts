@@ -113,8 +113,8 @@ const addCollateralEncoding = [
 ] as const;
 
 export type AddCollateralArgs = {
-  aTokens: readonly Address[];
-  amounts: readonly bigint[];
+  aTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
   fromUnderlying: boolean;
 };
 
@@ -154,8 +154,8 @@ const removeCollateralEncoding = [
 ] as const;
 
 export type RemoveCollateralArgs = {
-  aTokens: readonly Address[];
-  amounts: readonly bigint[];
+  aTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
   toUnderlying: boolean;
 };
 
@@ -192,8 +192,8 @@ const borrowEncoding = [
 ] as const;
 
 export type BorrowArgs = {
-  underlyingTokens: readonly Address[];
-  amounts: readonly bigint[];
+  underlyingTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function borrowEncode(args: BorrowArgs): Hex {
@@ -227,8 +227,8 @@ const repayBorrowEncoding = [
 ] as const;
 
 export type RepayBorrowArgs = {
-  underlyingTokens: readonly Address[];
-  amounts: readonly bigint[];
+  underlyingTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function repayBorrowEncode(args: RepayBorrowArgs): Hex {

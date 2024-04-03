@@ -38,7 +38,7 @@ const payoutOutstandingFeesEncoding = [
 ] as const;
 
 export type PayoutOutstandingFeesArgs = {
-  removeAssets: readonly Address[];
+  removeAssets: ReadonlyArray<Address>;
 };
 
 export function encodePayoutOutstandingFees(args: PayoutOutstandingFeesArgs): Hex {
@@ -56,7 +56,7 @@ export function decodePayoutOutstandingFees(encoded: Hex): PayoutOutstandingFees
 export type PayoutOutstandingFeesParams = {
   comptrollerProxy: Address;
   feeManager: Address;
-  feeContracts: readonly Address[];
+  feeContracts: ReadonlyArray<Address>;
 };
 
 export function payoutOutstandingFees(args: PayoutOutstandingFeesParams) {
@@ -104,7 +104,7 @@ export type SettingsArgs = {
  *
  * @returns The encoded fee settings.
  */
-export function encodeSettings(fees: readonly SettingsArgs[]): Hex {
+export function encodeSettings(fees: ReadonlyArray<SettingsArgs>): Hex {
   const addresses = fees.map(({ address }) => address);
   const settings = fees.map(({ settings }) => settings);
 
@@ -116,7 +116,7 @@ export function encodeSettings(fees: readonly SettingsArgs[]): Hex {
  *
  * @returns The decoded fee settings.
  */
-export function decodeSettings(encoded: Hex): readonly SettingsArgs[] {
+export function decodeSettings(encoded: Hex): ReadonlyArray<SettingsArgs> {
   const [addresses, settings] = decodeAbiParameters(settingsEncoding, encoded);
   Assertion.invariant(
     addresses.length === settings.length,

@@ -124,8 +124,8 @@ export const createAndAddCollateral = ExternalPositionManager.makeCreateAndUse(
 );
 
 export type AddCollateralArgs = {
-  cTokens: readonly Address[];
-  amounts: readonly bigint[];
+  cTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function addCollateralEncode(args: AddCollateralArgs): Hex {
@@ -170,9 +170,9 @@ export const borrow = ExternalPositionManager.makeUse(Action.Borrow, borrowEncod
 export const createAndBorrow = ExternalPositionManager.makeCreateAndUse(Action.Borrow, borrowEncode);
 
 export type BorrowArgs = {
-  cTokens: readonly Address[];
-  amounts: readonly bigint[];
-  underlyingTokens: readonly Address[];
+  cTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
+  underlyingTokens: ReadonlyArray<Address>;
 };
 
 const dataEncoding = [{ name: "cTokens", type: "address[]" }] as const;

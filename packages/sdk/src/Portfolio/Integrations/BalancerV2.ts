@@ -60,11 +60,11 @@ const lendEncoding = [
 export type LendArgs = {
   poolId: Hex;
   bptAmount: bigint;
-  usedTokens: readonly Address[];
-  usedTokenAmounts: readonly bigint[];
+  usedTokens: ReadonlyArray<Address>;
+  usedTokenAmounts: ReadonlyArray<bigint>;
   request: {
-    assets: readonly Address[];
-    limits: readonly bigint[];
+    assets: ReadonlyArray<Address>;
+    limits: ReadonlyArray<bigint>;
     userData: Hex;
     useInternalBalance: boolean;
   };
@@ -293,9 +293,9 @@ export type TakeOrderArgs = {
     amount: bigint;
     userData: Hex;
   }>;
-  assets: readonly Address[];
-  limits: readonly bigint[];
-  stakingTokens: readonly Address[];
+  assets: ReadonlyArray<Address>;
+  limits: ReadonlyArray<bigint>;
+  stakingTokens: ReadonlyArray<Address>;
 };
 
 export function takeOrderEncode(args: TakeOrderArgs): Hex {
@@ -536,8 +536,8 @@ export async function queryBatchSwap(
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
-    swaps: readonly BatchSwapStep[];
-    assets: readonly Address[];
+    swaps: ReadonlyArray<BatchSwapStep>;
+    assets: ReadonlyArray<Address>;
     funds: BatchSwapFunds;
   }>,
 ) {
@@ -576,8 +576,8 @@ export async function queryExit(
     sender: Address;
     recipient: Address;
     request: {
-      assets: readonly Address[];
-      minAmountsOut: readonly bigint[];
+      assets: ReadonlyArray<Address>;
+      minAmountsOut: ReadonlyArray<bigint>;
       userData: Hex;
       toInternalBalance: boolean;
     };
@@ -606,8 +606,8 @@ export async function queryJoin(
     sender: Address;
     recipient: Address;
     request: {
-      assets: readonly Address[];
-      maxAmountsIn: readonly bigint[];
+      assets: ReadonlyArray<Address>;
+      maxAmountsIn: ReadonlyArray<bigint>;
       userData: Hex;
       fromInternalBalance: boolean;
     };
@@ -653,7 +653,7 @@ export function weightedPoolsUserDataBptInForExactTokensOut({
   amountsOut,
   maxBPTAmountIn,
 }: {
-  amountsOut: readonly bigint[];
+  amountsOut: ReadonlyArray<bigint>;
   maxBPTAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
@@ -690,7 +690,7 @@ export function weightedPoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: readonly bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -760,7 +760,7 @@ export function stablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: readonly bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -807,7 +807,7 @@ export function composableStablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: readonly bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [

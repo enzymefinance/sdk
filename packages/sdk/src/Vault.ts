@@ -230,7 +230,7 @@ export function sharesAreFreelyTransferable(
 export function addAssetManagers(
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    managers: readonly Address[];
+    managers: ReadonlyArray<Address>;
   }>,
 ) {
   return new Viem.PopulatedTransaction({
@@ -244,7 +244,7 @@ export function addAssetManagers(
 export function removeAssetManagers(
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    managers: readonly Address[];
+    managers: ReadonlyArray<Address>;
   }>,
 ) {
   return new Viem.PopulatedTransaction({

@@ -74,7 +74,7 @@ const claimFeesEncoding = [
 
 export type ClaimFeesArgs = {
   stakingContract: Address;
-  publicKeys: readonly Hex[];
+  publicKeys: ReadonlyArray<Hex>;
   claimFeeType: ClaimType;
 };
 

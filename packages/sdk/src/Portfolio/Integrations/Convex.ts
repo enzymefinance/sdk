@@ -196,14 +196,14 @@ const claimVotingRewardsEncoding = [
 ] as const;
 
 export type ClaimVotingRewardsArgs = {
-  allTokensToTransfer: readonly Address[];
+  allTokensToTransfer: ReadonlyArray<Address>;
   claimLockerRewards: boolean;
-  extraRewardTokens: readonly Address[];
+  extraRewardTokens: ReadonlyArray<Address>;
   votiumClaims: ReadonlyArray<{
     token: Address;
     index: bigint;
     amount: bigint;
-    merkleProof: readonly Hex[];
+    merkleProof: ReadonlyArray<Hex>;
   }>;
   unstakeCvxCrv: boolean;
 };
@@ -679,7 +679,7 @@ export async function getEstimateRewards(
     args: [args.beneficiary],
   });
 
-  const tokenRewards: { rewardToken: Address; claimedAmount: bigint }[] = [];
+  const tokenRewards: Array<{ rewardToken: Address; claimedAmount: bigint }> = [];
   for (let i = 0; i < rewardTokens.length; i++) {
     const rewardToken = rewardTokens[i];
     const claimedAmount = claimedAmounts[i];
@@ -695,7 +695,7 @@ export async function getEstimateRewards(
 export function getAllEstimateRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    stakingWrappers: readonly Address[];
+    stakingWrappers: ReadonlyArray<Address>;
     beneficiary: Address;
   }>,
 ) {

@@ -30,8 +30,8 @@ const takeOrderEncoding = [
 ] as const;
 
 export type TakeOrderArgs = {
-  pathAddresses: readonly Address[];
-  pathFees: readonly number[];
+  pathAddresses: ReadonlyArray<Address>;
+  pathFees: ReadonlyArray<number>;
   outgoingAssetAmount: bigint;
   minIncomingAssetAmount: bigint;
 };

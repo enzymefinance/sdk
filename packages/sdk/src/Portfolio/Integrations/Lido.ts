@@ -29,7 +29,7 @@ const requestWithdrawalsEncoding = [
 ] as const;
 
 export type RequestWithdrawalsArgs = {
-  amounts: readonly bigint[];
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function requestWithdrawalsEncode(args: RequestWithdrawalsArgs): Hex {
@@ -60,8 +60,8 @@ const claimWithdrawalsEncoding = [
 ] as const;
 
 export type ClaimWithdrawalsArgs = {
-  requestIds: readonly bigint[];
-  hints: readonly bigint[];
+  requestIds: ReadonlyArray<bigint>;
+  hints: ReadonlyArray<bigint>;
 };
 
 export function claimWithdrawalsEncode(args: ClaimWithdrawalsArgs): Hex {
@@ -139,7 +139,7 @@ export function findCheckpointHints(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
-    requestIds: readonly bigint[];
+    requestIds: ReadonlyArray<bigint>;
     firstIndex: bigint;
     lastIndex: bigint;
   }>,
@@ -157,7 +157,7 @@ export function getWithdrawalStatus(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;
-    requestIds: readonly bigint[];
+    requestIds: ReadonlyArray<bigint>;
   }>,
 ) {
   return readContract(client, {

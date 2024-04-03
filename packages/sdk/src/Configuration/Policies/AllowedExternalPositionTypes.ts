@@ -11,7 +11,7 @@ export type Settings = {
   /**
    * The external position types that should be allowed.
    */
-  externalPositionTypeIds: readonly bigint[];
+  externalPositionTypeIds: ReadonlyArray<bigint>;
 };
 
 /**

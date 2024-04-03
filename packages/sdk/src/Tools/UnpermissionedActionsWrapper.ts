@@ -5,7 +5,7 @@ import { Viem } from "../Utils.js";
 export function invokeContinuousFeeHookAndPayoutSharesOutstandingForFund(args: {
   unpermissionedActionsWrapper: Address;
   comptrollerProxy: Address;
-  fees: readonly Address[];
+  fees: ReadonlyArray<Address>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IUnpermissionedActionsWrapper,

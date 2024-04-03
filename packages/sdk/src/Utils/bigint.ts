@@ -1,4 +1,4 @@
-export function min(first: bigint, ...rest: bigint[]) {
+export function min(first: bigint, ...rest: Array<bigint>) {
   let min = first;
   for (const value of rest) {
     if (value < min) {
@@ -9,7 +9,7 @@ export function min(first: bigint, ...rest: bigint[]) {
   return min;
 }
 
-export function max(first: bigint, ...rest: bigint[]) {
+export function max(first: bigint, ...rest: Array<bigint>) {
   let max = first;
   for (const value of rest) {
     if (value > max) {

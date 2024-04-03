@@ -83,8 +83,8 @@ export type RedeemSharesForSpecificAssetsParams = {
   comptrollerProxy: Address;
   recipient: Address;
   sharesQuantity: bigint;
-  payoutAssets: readonly Address[];
-  payoutPercentages: readonly bigint[];
+  payoutAssets: ReadonlyArray<Address>;
+  payoutPercentages: ReadonlyArray<bigint>;
 };
 
 export async function getSpecificAssetsRedemptionExpectedAmounts(
@@ -128,8 +128,8 @@ export function redeemSharesInKind(
     comptrollerProxy: Address;
     recipient: Address;
     sharesQuantity: bigint;
-    additionalAssets: readonly Address[];
-    assetsToSkip: readonly Address[];
+    additionalAssets: ReadonlyArray<Address>;
+    assetsToSkip: ReadonlyArray<Address>;
   }>,
 ) {
   return new Viem.PopulatedTransaction({

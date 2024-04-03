@@ -9,8 +9,8 @@ import { Viem } from "../Utils.js";
 
 export function deploy(args: {
   sharesSplitterFactory: Address;
-  addresses: readonly Address[];
-  percentages: readonly bigint[];
+  addresses: ReadonlyArray<Address>;
+  percentages: ReadonlyArray<bigint>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISharesSplitterFactory,

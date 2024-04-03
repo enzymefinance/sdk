@@ -29,7 +29,7 @@ export function createTokenAuthInterceptor(token: string): Interceptor {
 }
 
 export interface TransportOptions {
-  interceptors?: Interceptor[];
+  interceptors?: Array<Interceptor>;
 }
 
 /**

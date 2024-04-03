@@ -108,8 +108,8 @@ const addCollateralEncoding = [
 ] as const;
 
 export type AddCollateralArgs = {
-  aTokens: readonly Address[];
-  amounts: readonly bigint[];
+  aTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function addCollateralEncode(args: AddCollateralArgs): Hex {
@@ -143,8 +143,8 @@ const removeCollateralEncoding = [
 ] as const;
 
 export type RemoveCollateralArgs = {
-  aTokens: readonly Address[];
-  amounts: readonly bigint[];
+  aTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function removeCollateralEncode(args: RemoveCollateralArgs): Hex {
@@ -179,8 +179,8 @@ const borrowEncoding = [
 ] as const;
 
 export type BorrowArgs = {
-  underlyingTokens: readonly Address[];
-  amounts: readonly bigint[];
+  underlyingTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function borrowEncode(args: BorrowArgs): Hex {
@@ -214,8 +214,8 @@ const repayBorrowEncoding = [
 ] as const;
 
 export type RepayBorrowArgs = {
-  underlyingTokens: readonly Address[];
-  amounts: readonly bigint[];
+  underlyingTokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 };
 
 export function repayBorrowEncode(args: RepayBorrowArgs): Hex {
@@ -245,7 +245,7 @@ const claimRewardsEncoding = [
 ] as const;
 
 export type ClaimRewardsArgs = {
-  rewardTokens: readonly Address[];
+  rewardTokens: ReadonlyArray<Address>;
 };
 
 export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
@@ -288,7 +288,7 @@ export function getRewardsBalance(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
-    assets: readonly Address[];
+    assets: ReadonlyArray<Address>;
     user: Address;
   }>,
 ) {

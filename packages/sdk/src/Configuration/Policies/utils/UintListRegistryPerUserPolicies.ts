@@ -17,8 +17,8 @@ const settingsEncoding = [
 ] as const;
 
 export interface UintListRegistryPerUserPolicySettings {
-  users: readonly Address[];
-  listsData: readonly UintListRegistryPolicySettings[];
+  users: ReadonlyArray<Address>;
+  listsData: ReadonlyArray<UintListRegistryPolicySettings>;
 }
 
 export function encodeUintListRegistryPerUserPolicySettings({

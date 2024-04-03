@@ -26,7 +26,12 @@
         "noDefaultExport": "off",
         "noParameterProperties": "off",
         "useNamingConvention": "off",
-        "useShorthandArrayType": "off"
+        "useShorthandArrayType": "off",
+        "useConsistentArrayType": {
+          "options": {
+            "syntax": "generic"
+          }
+        }
       },
       "nursery": {
         "useImportRestrictions": "off"

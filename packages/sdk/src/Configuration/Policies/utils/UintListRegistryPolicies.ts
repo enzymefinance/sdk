@@ -23,10 +23,10 @@ const newUintListArgsEncoding = [
 ] as const;
 
 export interface UintListRegistryPolicySettings {
-  existingListIds: readonly bigint[];
+  existingListIds: ReadonlyArray<bigint>;
   newListsArgs: ReadonlyArray<{
     updateType: bigint;
-    initialItems: readonly bigint[];
+    initialItems: ReadonlyArray<bigint>;
   }>;
 }
 
