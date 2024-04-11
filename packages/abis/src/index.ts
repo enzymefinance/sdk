@@ -101,6 +101,7 @@ export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./abis/INoDepegOn
 export { IOnlyRemoveDustExternalPositionPolicy } from "./abis/IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js";
 export { IParaSwapV5Adapter } from "./abis/IParaSwapV5Adapter.js";
+export { IPendleMarketsRegistry } from "./abis/IPendleMarketsRegistry.js";
 export { IPendleV2PositionLib } from "./abis/IPendleV2PositionLib.js";
 export { IPendleV2PositionParser } from "./abis/IPendleV2PositionParser.js";
 export { IPerformanceFee } from "./abis/IPerformanceFee.js";

@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
+import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = (typeof Action)[keyof typeof Action];
@@ -325,4 +327,36 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
   return {
     marketAddresses,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function readTokensForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function readTokens() external view returns (address,address,address)"]),
+    functionName: "readTokens",
+    address: args.pendleMarket,
+  });
+}
+
+export function getRewardTokensForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getRewardTokens() external view returns (address[] memory rewardsTokens_)"]),
+    functionName: "getRewardTokens",
+    address: args.pendleMarket,
+  });
 }

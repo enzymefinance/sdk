@@ -54,7 +54,7 @@ export const IPendleV2PositionParser = [
     name: "parseInitArgs",
     inputs: [
       {
-        name: "",
+        name: "_vaultProxy",
         type: "address",
         internalType: "address",
       },
@@ -66,7 +66,7 @@ export const IPendleV2PositionParser = [
     ],
     outputs: [
       {
-        name: "",
+        name: "data_",
         type: "bytes",
         internalType: "bytes",
       },

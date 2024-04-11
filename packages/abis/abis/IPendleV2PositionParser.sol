@@ -10,5 +10,5 @@ interface IPendleV2PositionParser {
             uint256[] memory amountsToTransfer_,
             address[] memory assetsToReceive_
         );
-    function parseInitArgs(address, bytes memory) external pure returns (bytes memory);
+    function parseInitArgs(address _vaultProxy, bytes memory) external pure returns (bytes memory data_);
 }

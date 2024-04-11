@@ -10,7 +10,6 @@ interface IPendleV2PositionLib {
 
     event LpTokenAdded(address indexed lpToken);
     event LpTokenRemoved(address indexed lpToken);
-    event OracleDurationForMarketAdded(address indexed market, uint32 indexed pricingDuration);
     event PrincipalTokenAdded(address indexed principalToken, address indexed market);
     event PrincipalTokenRemoved(address indexed principalToken);
 
@@ -21,11 +20,7 @@ interface IPendleV2PositionLib {
         external
         view
         returns (address marketAddress_);
-    function getOraclePricingDurationForMarket(address _marketAddress)
-        external
-        view
-        returns (uint32 pricingDuration_);
     function getPrincipalTokens() external view returns (address[] memory principalTokenAddresses_);
-    function init(bytes memory) external;
+    function init(bytes memory _data) external;
     function receiveCallFromVault(bytes memory _actionData) external;
 }
