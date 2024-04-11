@@ -333,18 +333,20 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export function readTokensForMarket(
+export async function readTokensForMarket(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pendleMarket: Address;
   }>,
 ) {
-  return readContract(client, {
+  const [sy, pt, yt] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function readTokens() external view returns (address,address,address)"]),
     functionName: "readTokens",
     address: args.pendleMarket,
   });
+
+  return { sy, pt, yt };
 }
 
 export function getRewardTokensForMarket(
