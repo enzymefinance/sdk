@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.3
+
+### Patch Changes
+
+- [#411](https://github.com/enzymefinance/sdk/pull/411) [`7a6790d`](https://github.com/enzymefinance/sdk/commit/7a6790deb860f85e4fd65315bb5396607018ea32) Thanks [@iherger](https://github.com/iherger)! - Pendle V2
+
 ## 0.4.2
 
 ### Patch Changes
