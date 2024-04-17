@@ -1,4 +1,4 @@
-import { type Chain } from "viem";
+import type { Chain } from "viem";
 import { localhost, mainnet } from "viem/chains";
 import { createSetup } from "./anvil.js";
 

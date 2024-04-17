@@ -3,7 +3,7 @@ import {
   type Address,
   ContractFunctionExecutionError,
   type Hex,
-  PublicClient,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,

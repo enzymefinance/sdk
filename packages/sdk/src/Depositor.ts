@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient } from "viem";
+import type { Address, Hex, PublicClient } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";

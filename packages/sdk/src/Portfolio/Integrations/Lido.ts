@@ -1,4 +1,4 @@
-import { Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -153,7 +153,7 @@ export function findCheckpointHints(
   });
 }
 
-export async function getWithdrawalStatus(
+export function getWithdrawalStatus(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     lidoWithdrawalsQueue: Address;

@@ -1,13 +1,13 @@
 import {
   type Address,
   type Hex,
-  PublicClient,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Assertion, Types, Viem } from "../../Utils.js";
+import { Assertion, type Types, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -365,7 +365,7 @@ const gaugeAbi = [
   },
 ] as const;
 
-export async function getClaimableRewards(
+export function getClaimableRewards(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     gauge: Address;

@@ -1,5 +1,5 @@
 import { LifeCycle } from "@enzymefinance/sdk";
-import { TestEnvironment } from "@enzymefinance/sdk/test";
+import type { TestEnvironment } from "@enzymefinance/sdk/test";
 import type { Address, Hex } from "viem";
 
 export async function createVault({

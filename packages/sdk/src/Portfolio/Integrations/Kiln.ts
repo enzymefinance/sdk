@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -162,7 +162,7 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function getCLFeeRecipient(
+export function getCLFeeRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -178,7 +178,7 @@ export async function getCLFeeRecipient(
   });
 }
 
-export async function getELFeeRecipient(
+export function getELFeeRecipient(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
@@ -194,7 +194,7 @@ export async function getELFeeRecipient(
   });
 }
 
-export async function getGlobalFee(
+export function getGlobalFee(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;

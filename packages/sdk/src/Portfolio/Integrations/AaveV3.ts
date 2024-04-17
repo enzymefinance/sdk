@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -325,7 +325,7 @@ const poolAddressProviderAbi = [
   },
 ] as const;
 
-export async function getPool(
+export function getPool(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     poolAddressProvider: Address;
@@ -362,7 +362,7 @@ const poolAbi = [
   },
 ] as const;
 
-export async function getEModeCategoryData(
+export function getEModeCategoryData(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pool: Address;

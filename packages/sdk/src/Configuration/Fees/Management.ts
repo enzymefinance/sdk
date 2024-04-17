@@ -99,7 +99,7 @@ export function setRecipient(args: SetRecipientParams) {
 // READ
 //--------------------------------------------------------------------------------------------
 
-export async function getInfo(
+export function getInfo(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;

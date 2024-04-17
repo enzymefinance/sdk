@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -368,7 +368,7 @@ export async function getTrove(
   };
 }
 
-export async function getLusdGasCompensation(
+export function getLusdGasCompensation(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
@@ -382,7 +382,7 @@ export async function getLusdGasCompensation(
   });
 }
 
-export async function getBorrowingFeeWithDecay(
+export function getBorrowingFeeWithDecay(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     troveManager: Address;

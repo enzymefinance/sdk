@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -359,7 +359,7 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-export async function isAllowedMaker(
+export function isAllowedMaker(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     zeroExV4Adapter: Address;

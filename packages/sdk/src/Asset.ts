@@ -133,7 +133,7 @@ export function getBalanceOf(
   });
 }
 
-export async function getBalancesOf(
+export function getBalancesOf(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     owner: Address;

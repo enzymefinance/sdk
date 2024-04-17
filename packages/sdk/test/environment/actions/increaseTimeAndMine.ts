@@ -1,4 +1,4 @@
-import { TestEnvironment } from "@enzymefinance/sdk/test";
+import type { TestEnvironment } from "@enzymefinance/sdk/test";
 
 export async function increaseTimeAndMine({
   environment,
