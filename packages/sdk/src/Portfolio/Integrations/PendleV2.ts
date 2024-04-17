@@ -1,5 +1,5 @@
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
-import { readContract } from "viem/actions";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -361,4 +361,58 @@ export function getRewardTokensForMarket(
     functionName: "getRewardTokens",
     address: args.pendleMarket,
   });
+}
+
+export async function simulateRedeemRewardsForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+    user: Address;
+  }>,
+) {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function redeemRewards(address _user) external returns (uint256[] memory rewardAmounts_)"]),
+    functionName: "redeemRewards",
+    address: args.pendleMarket,
+    args: [args.user],
+  });
+
+  return result;
+}
+
+export async function getRewardsForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+    user: Address;
+  }>,
+) {
+  const [rewardTokens, rewardAmounts] = await Promise.all([
+    getRewardTokensForMarket(client, args),
+    simulateRedeemRewardsForMarket(client, args),
+  ]);
+
+  return rewardTokens.map((token, index) => ({ token, amount: rewardAmounts[index] }));
+}
+
+export async function gerOracleState(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  const [increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi([
+      "function getOracleState(address market, uint32 duration) external view returns (bool increaseCardinalityRequired, uint16 cardinalityRequired, bool oldestObservationSatisfied)",
+    ]),
+    functionName: "getOracleState",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+
+  return { increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied };
 }
