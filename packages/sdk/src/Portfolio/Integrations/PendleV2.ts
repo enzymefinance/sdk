@@ -396,7 +396,7 @@ export async function getRewardsForMarket(
   return rewardTokens.map((token, index) => ({ token, amount: rewardAmounts[index] }));
 }
 
-export async function gerOracleState(
+export async function getOracleState(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     pendlePtLpOracle: Address;
