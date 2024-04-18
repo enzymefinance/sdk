@@ -420,31 +420,27 @@ export async function getOracleState(
 export function getSyTokensIn(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    pendlePtLpOracle: Address;
-    pendleMarket: Address;
-    duration: number;
+    syToken: Address;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getTokensIn() external view returns (address[] memory tokensIn)"]),
     functionName: "getTokensIn",
-    address: args.pendlePtLpOracle,
+    address: args.syToken,
   });
 }
 
 export function getSyTokensOut(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
-    pendlePtLpOracle: Address;
-    pendleMarket: Address;
-    duration: number;
+    syToken: Address;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: parseAbi(["function getTokensOut() external view returns (address[] memory tokensOut)"]),
     functionName: "getTokensOut",
-    address: args.pendlePtLpOracle,
+    address: args.syToken,
   });
 }
