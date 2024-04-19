@@ -26,16 +26,8 @@ export const createAndBuyPrincipleToken = ExternalPositionManager.makeCreateAndU
 
 const buyPrincipleTokenEncoding = [
   {
-    name: "principalTokenAddress",
-    type: "address",
-  },
-  {
     name: "market",
     type: "address",
-  },
-  {
-    name: "pricingDuration",
-    type: "uint32",
   },
   {
     name: "depositTokenAddress",
@@ -57,6 +49,10 @@ const buyPrincipleTokenEncoding = [
     name: "guessPtOut",
     type: "tuple",
   },
+  {
+    name: "minPtOut",
+    type: "uint256",
+  },
 ] as const;
 
 type ApproxParams = {
@@ -68,36 +64,35 @@ type ApproxParams = {
 };
 
 export type BuyPrincipleTokenArgs = {
-  principalTokenAddress: Address;
   market: Address;
-  pricingDuration: number;
   depositTokenAddress: Address;
   depositAmount: bigint;
   guessPtOut: ApproxParams;
+  minPtOut: bigint;
 };
 
 export function buyPrincipleTokenEncode(args: BuyPrincipleTokenArgs): Hex {
   return encodeAbiParameters(buyPrincipleTokenEncoding, [
-    args.principalTokenAddress,
     args.market,
-    args.pricingDuration,
     args.depositTokenAddress,
     args.depositAmount,
     args.guessPtOut,
+    args.minPtOut,
   ]);
 }
 
 export function buyPrincipleTokenDecode(encoded: Hex): BuyPrincipleTokenArgs {
-  const [principalTokenAddress, market, pricingDuration, depositTokenAddress, depositAmount, guessPtOut] =
-    decodeAbiParameters(buyPrincipleTokenEncoding, encoded);
+  const [market, depositTokenAddress, depositAmount, guessPtOut, minPtOut] = decodeAbiParameters(
+    buyPrincipleTokenEncoding,
+    encoded,
+  );
 
   return {
-    principalTokenAddress,
     market,
-    pricingDuration,
     depositTokenAddress,
     depositAmount,
     guessPtOut,
+    minPtOut,
   };
 }
 
@@ -108,10 +103,6 @@ export function buyPrincipleTokenDecode(encoded: Hex): BuyPrincipleTokenArgs {
 export const sellPrincipleToken = ExternalPositionManager.makeUse(Action.SellPrincipalToken, sellPrincipleTokenEncode);
 
 const sellPrincipleTokenEncoding = [
-  {
-    name: "principalTokenAddress",
-    type: "address",
-  },
   {
     name: "market",
     type: "address",
@@ -131,7 +122,6 @@ const sellPrincipleTokenEncoding = [
 ] as const;
 
 export type SellPrincipleTokenArgs = {
-  principleTokenAddress: Address;
   market: Address;
   withdrawalTokenAddress: Address;
   withdrawalAmount: bigint;
@@ -140,7 +130,6 @@ export type SellPrincipleTokenArgs = {
 
 export function sellPrincipleTokenEncode(args: SellPrincipleTokenArgs): Hex {
   return encodeAbiParameters(sellPrincipleTokenEncoding, [
-    args.principleTokenAddress,
     args.market,
     args.withdrawalTokenAddress,
     args.withdrawalAmount,
@@ -149,11 +138,12 @@ export function sellPrincipleTokenEncode(args: SellPrincipleTokenArgs): Hex {
 }
 
 export function sellPrincipleTokenDecode(encoded: Hex): SellPrincipleTokenArgs {
-  const [principleTokenAddress, market, withdrawalTokenAddress, withdrawalAmount, minIncomingAmount] =
-    decodeAbiParameters(sellPrincipleTokenEncoding, encoded);
+  const [market, withdrawalTokenAddress, withdrawalAmount, minIncomingAmount] = decodeAbiParameters(
+    sellPrincipleTokenEncoding,
+    encoded,
+  );
 
   return {
-    principleTokenAddress,
     market,
     withdrawalTokenAddress,
     withdrawalAmount,
@@ -172,10 +162,6 @@ const addLiquidityEncoding = [
   {
     name: "market",
     type: "address",
-  },
-  {
-    name: "pricingDuration",
-    type: "uint32",
   },
   {
     name: "depositTokenAddress",
@@ -205,7 +191,6 @@ const addLiquidityEncoding = [
 
 export type AddLiquidityArgs = {
   market: Address;
-  pricingDuration: number;
   depositTokenAddress: Address;
   depositAmount: bigint;
   guessPtReceived: ApproxParams;
@@ -215,7 +200,6 @@ export type AddLiquidityArgs = {
 export function addLiquidityEncode(args: AddLiquidityArgs): Hex {
   return encodeAbiParameters(addLiquidityEncoding, [
     args.market,
-    args.pricingDuration,
     args.depositTokenAddress,
     args.depositAmount,
     args.guessPtReceived,
@@ -224,14 +208,13 @@ export function addLiquidityEncode(args: AddLiquidityArgs): Hex {
 }
 
 export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
-  const [market, pricingDuration, depositTokenAddress, depositAmount, guessPtReceived, minLpOut] = decodeAbiParameters(
+  const [market, depositTokenAddress, depositAmount, guessPtReceived, minLpOut] = decodeAbiParameters(
     addLiquidityEncoding,
     encoded,
   );
 
   return {
     market,
-    pricingDuration,
     depositTokenAddress,
     depositAmount,
     guessPtReceived,
