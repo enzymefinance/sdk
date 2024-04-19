@@ -166,6 +166,7 @@ export function sellPrincipleTokenDecode(encoded: Hex): SellPrincipleTokenArgs {
 //--------------------------------------------------------------------------------------------
 
 export const addLiquidity = ExternalPositionManager.makeUse(Action.AddLiquidity, addLiquidityEncode);
+export const createAndAddLiquidity = ExternalPositionManager.makeCreateAndUse(Action.AddLiquidity, addLiquidityEncode);
 
 const addLiquidityEncoding = [
   {
