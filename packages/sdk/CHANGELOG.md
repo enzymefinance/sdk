@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.8.12
+
+### Patch Changes
+
+- [#417](https://github.com/enzymefinance/sdk/pull/417) [`0b52071`](https://github.com/enzymefinance/sdk/commit/0b520712c8456ac70e45cceece6e7b2c85816eaf) Thanks [@iherger](https://github.com/iherger)! - Update pnpm
+
+- Updated dependencies [[`0b52071`](https://github.com/enzymefinance/sdk/commit/0b520712c8456ac70e45cceece6e7b2c85816eaf)]:
+  - @enzymefinance/abis@0.4.5
+
 ## 0.8.11
 
 ### Patch Changes
