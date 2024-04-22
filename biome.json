@@ -19,10 +19,12 @@
     "rules": {
       "all": true,
       "suspicious": {
+        "noEmptyBlockStatements": "off",
         "noExplicitAny": "off",
         "noArrayIndexKey": "off"
       },
       "style": {
+        "useFilenamingConvention": "off",
         "noDefaultExport": "off",
         "noParameterProperties": "off",
         "useNamingConvention": "off",
@@ -37,6 +39,7 @@
         "useImportRestrictions": "off"
       },
       "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
         "noBannedTypes": "off"
       }
     }
