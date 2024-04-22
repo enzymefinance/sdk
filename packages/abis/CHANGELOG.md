@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.4
+
+### Patch Changes
+
+- [#414](https://github.com/enzymefinance/sdk/pull/414) [`79612b1`](https://github.com/enzymefinance/sdk/commit/79612b110daef369a2b99cb48125547656b88b37) Thanks [@iherger](https://github.com/iherger)! - Add AllowedRedeemersForSpecificAssetsPolicy
+
 ## 0.4.3
 
 ### Patch Changes
