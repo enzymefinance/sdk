@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
