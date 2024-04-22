@@ -1,7 +1,7 @@
 {
   "name": "root",
   "private": true,
-  "packageManager": "pnpm@9.0.5",
+  "packageManager": "pnpm@8.12.1",
   "scripts": {
     "codegen": "pnpm run --recursive codegen",
     "build": "tsc --build tsconfig.build.json && pnpm run --recursive --filter \"./packages/*\" build",
@@ -15,20 +15,20 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
-    "@babel/core": "^7.24.3",
+    "@babel/core": "^7.24.4",
     "@babel/plugin-transform-export-namespace-from": "^7.24.1",
     "@babel/plugin-transform-modules-commonjs": "^7.24.1",
-    "@biomejs/biome": "^1.6.3",
+    "@biomejs/biome": "^1.7.0",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.1",
     "@effect/build-utils": "^0.7.6",
-    "@types/node": "^20.12.2",
+    "@types/node": "^20.12.7",
     "@types/web": "^0.0.142",
     "babel-plugin-annotate-pure-calls": "^0.4.0",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.7",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.10",
     "vite-tsconfig-paths": "^4.3.2",
-    "vitest": "^1.4.0"
+    "vitest": "^1.5.0"
   },
   "pnpm": {
     "patchedDependencies": {
