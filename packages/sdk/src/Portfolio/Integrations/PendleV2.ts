@@ -288,7 +288,7 @@ export function removeLiquidityDecode(encoded: Hex): RemoveLiquidityArgs {
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, addLiquidityEncode);
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
