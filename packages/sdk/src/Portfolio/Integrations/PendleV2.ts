@@ -401,6 +401,40 @@ export async function getOracleState(
   return { increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied };
 }
 
+export function getLpToAssetRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getLpToAssetRate(address market, uint32 duration) external view returns (uint256)"]),
+    functionName: "getLpToAssetRate",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+}
+
+export function getPtToAssetRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getPtToAssetRate(address market, uint32 duration) external view returns (uint256)"]),
+    functionName: "getPtToAssetRate",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+}
+
 export function getSyTokensIn(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
