@@ -1,4 +1,6 @@
-import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
+import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = (typeof Action)[keyof typeof Action];
@@ -220,4 +222,198 @@ export function repayDecode(encoded: Hex): RepayArgs {
     marketId,
     repayAmount,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+const morphoBlueAbi = [
+  {
+    type: "function",
+    name: "idToMarketParams",
+    inputs: [
+      {
+        name: "_id",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
+    outputs: [
+      {
+        name: "marketParams_",
+        type: "tuple",
+        internalType: "struct IMorphoBlue.MarketParams",
+        components: [
+          {
+            name: "loanToken",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "collateralToken",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "oracle",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "irm",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "lltv",
+            type: "uint256",
+            internalType: "uint256",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "market",
+    inputs: [
+      {
+        name: "_id",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
+    outputs: [
+      {
+        name: "market_",
+        type: "tuple",
+        internalType: "struct IMorphoBlue.Market",
+        components: [
+          {
+            name: "totalSupplyAssets",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "totalSupplyShares",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "totalBorrowAssets",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "totalBorrowShares",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "lastUpdate",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "fee",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "position",
+    inputs: [
+      {
+        name: "_id",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "position_",
+        type: "tuple",
+        internalType: "struct IMorphoBlue.Position",
+        components: [
+          {
+            name: "supplyShares",
+            type: "uint256",
+            internalType: "uint256",
+          },
+          {
+            name: "borrowShares",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "collateral",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+] as const;
+
+export function getMarketParamsFromId(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    morphoBlue: Address;
+    marketId: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: morphoBlueAbi,
+    functionName: "idToMarketParams",
+    address: args.morphoBlue,
+    args: [args.marketId],
+  });
+}
+
+export function getMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    morphoBlue: Address;
+    marketId: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: morphoBlueAbi,
+    functionName: "market",
+    address: args.morphoBlue,
+    args: [args.marketId],
+  });
+}
+
+export function getPosition(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    morphoBlue: Address;
+    marketId: Address;
+    user: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: morphoBlueAbi,
+    functionName: "position",
+    address: args.morphoBlue,
+    args: [args.marketId, args.user],
+  });
 }
