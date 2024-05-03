@@ -401,6 +401,19 @@ export async function getOracleState(
   return { increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied };
 }
 
+export async function isDurationValid(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  const oracleState = await getOracleState(client, args);
+
+  return oracleState.increaseCardinalityRequired === false && oracleState.oldestObservationSatisfied === true;
+}
+
 export function getLpToAssetRate(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
