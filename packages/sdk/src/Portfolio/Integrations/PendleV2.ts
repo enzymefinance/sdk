@@ -1,5 +1,5 @@
 import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
-import { readContract } from "viem/actions";
+import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
@@ -26,16 +26,8 @@ export const createAndBuyPrincipleToken = ExternalPositionManager.makeCreateAndU
 
 const buyPrincipleTokenEncoding = [
   {
-    name: "principalTokenAddress",
-    type: "address",
-  },
-  {
     name: "market",
     type: "address",
-  },
-  {
-    name: "pricingDuration",
-    type: "uint32",
   },
   {
     name: "depositTokenAddress",
@@ -57,6 +49,10 @@ const buyPrincipleTokenEncoding = [
     name: "guessPtOut",
     type: "tuple",
   },
+  {
+    name: "minPtOut",
+    type: "uint256",
+  },
 ] as const;
 
 type ApproxParams = {
@@ -68,36 +64,35 @@ type ApproxParams = {
 };
 
 export type BuyPrincipleTokenArgs = {
-  principalTokenAddress: Address;
   market: Address;
-  pricingDuration: number;
   depositTokenAddress: Address;
   depositAmount: bigint;
   guessPtOut: ApproxParams;
+  minPtOut: bigint;
 };
 
 export function buyPrincipleTokenEncode(args: BuyPrincipleTokenArgs): Hex {
   return encodeAbiParameters(buyPrincipleTokenEncoding, [
-    args.principalTokenAddress,
     args.market,
-    args.pricingDuration,
     args.depositTokenAddress,
     args.depositAmount,
     args.guessPtOut,
+    args.minPtOut,
   ]);
 }
 
 export function buyPrincipleTokenDecode(encoded: Hex): BuyPrincipleTokenArgs {
-  const [principalTokenAddress, market, pricingDuration, depositTokenAddress, depositAmount, guessPtOut] =
-    decodeAbiParameters(buyPrincipleTokenEncoding, encoded);
+  const [market, depositTokenAddress, depositAmount, guessPtOut, minPtOut] = decodeAbiParameters(
+    buyPrincipleTokenEncoding,
+    encoded,
+  );
 
   return {
-    principalTokenAddress,
     market,
-    pricingDuration,
     depositTokenAddress,
     depositAmount,
     guessPtOut,
+    minPtOut,
   };
 }
 
@@ -108,10 +103,6 @@ export function buyPrincipleTokenDecode(encoded: Hex): BuyPrincipleTokenArgs {
 export const sellPrincipleToken = ExternalPositionManager.makeUse(Action.SellPrincipalToken, sellPrincipleTokenEncode);
 
 const sellPrincipleTokenEncoding = [
-  {
-    name: "principalTokenAddress",
-    type: "address",
-  },
   {
     name: "market",
     type: "address",
@@ -131,7 +122,6 @@ const sellPrincipleTokenEncoding = [
 ] as const;
 
 export type SellPrincipleTokenArgs = {
-  principleTokenAddress: Address;
   market: Address;
   withdrawalTokenAddress: Address;
   withdrawalAmount: bigint;
@@ -140,7 +130,6 @@ export type SellPrincipleTokenArgs = {
 
 export function sellPrincipleTokenEncode(args: SellPrincipleTokenArgs): Hex {
   return encodeAbiParameters(sellPrincipleTokenEncoding, [
-    args.principleTokenAddress,
     args.market,
     args.withdrawalTokenAddress,
     args.withdrawalAmount,
@@ -149,11 +138,12 @@ export function sellPrincipleTokenEncode(args: SellPrincipleTokenArgs): Hex {
 }
 
 export function sellPrincipleTokenDecode(encoded: Hex): SellPrincipleTokenArgs {
-  const [principleTokenAddress, market, withdrawalTokenAddress, withdrawalAmount, minIncomingAmount] =
-    decodeAbiParameters(sellPrincipleTokenEncoding, encoded);
+  const [market, withdrawalTokenAddress, withdrawalAmount, minIncomingAmount] = decodeAbiParameters(
+    sellPrincipleTokenEncoding,
+    encoded,
+  );
 
   return {
-    principleTokenAddress,
     market,
     withdrawalTokenAddress,
     withdrawalAmount,
@@ -166,15 +156,12 @@ export function sellPrincipleTokenDecode(encoded: Hex): SellPrincipleTokenArgs {
 //--------------------------------------------------------------------------------------------
 
 export const addLiquidity = ExternalPositionManager.makeUse(Action.AddLiquidity, addLiquidityEncode);
+export const createAndAddLiquidity = ExternalPositionManager.makeCreateAndUse(Action.AddLiquidity, addLiquidityEncode);
 
 const addLiquidityEncoding = [
   {
     name: "market",
     type: "address",
-  },
-  {
-    name: "pricingDuration",
-    type: "uint32",
   },
   {
     name: "depositTokenAddress",
@@ -204,7 +191,6 @@ const addLiquidityEncoding = [
 
 export type AddLiquidityArgs = {
   market: Address;
-  pricingDuration: number;
   depositTokenAddress: Address;
   depositAmount: bigint;
   guessPtReceived: ApproxParams;
@@ -214,7 +200,6 @@ export type AddLiquidityArgs = {
 export function addLiquidityEncode(args: AddLiquidityArgs): Hex {
   return encodeAbiParameters(addLiquidityEncoding, [
     args.market,
-    args.pricingDuration,
     args.depositTokenAddress,
     args.depositAmount,
     args.guessPtReceived,
@@ -223,14 +208,13 @@ export function addLiquidityEncode(args: AddLiquidityArgs): Hex {
 }
 
 export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
-  const [market, pricingDuration, depositTokenAddress, depositAmount, guessPtReceived, minLpOut] = decodeAbiParameters(
+  const [market, depositTokenAddress, depositAmount, guessPtReceived, minLpOut] = decodeAbiParameters(
     addLiquidityEncoding,
     encoded,
   );
 
   return {
     market,
-    pricingDuration,
     depositTokenAddress,
     depositAmount,
     guessPtReceived,
@@ -242,7 +226,7 @@ export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
 // REMOVE LIQUIDITY
 //--------------------------------------------------------------------------------------------
 
-export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, addLiquidityEncode);
+export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, removeLiquidityEncode);
 
 const removeLiquidityEncoding = [
   {
@@ -304,7 +288,7 @@ export function removeLiquidityDecode(encoded: Hex): RemoveLiquidityArgs {
 // CLAIM REWARDS
 //--------------------------------------------------------------------------------------------
 
-export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, addLiquidityEncode);
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
 
 const claimRewardsEncoding = [
   {
@@ -360,5 +344,134 @@ export function getRewardTokensForMarket(
     abi: parseAbi(["function getRewardTokens() external view returns (address[] memory rewardsTokens_)"]),
     functionName: "getRewardTokens",
     address: args.pendleMarket,
+  });
+}
+
+export async function simulateRedeemRewardsForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+    user: Address;
+  }>,
+) {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function redeemRewards(address _user) external returns (uint256[] memory rewardAmounts_)"]),
+    functionName: "redeemRewards",
+    address: args.pendleMarket,
+    args: [args.user],
+  });
+
+  return result;
+}
+
+export async function getRewardsForMarket(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendleMarket: Address;
+    user: Address;
+  }>,
+) {
+  const [rewardTokens, rewardAmounts] = await Promise.all([
+    getRewardTokensForMarket(client, args),
+    simulateRedeemRewardsForMarket(client, args),
+  ]);
+
+  return rewardTokens.map((token, index) => ({ token, amount: rewardAmounts[index] }));
+}
+
+export async function getOracleState(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  const [increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi([
+      "function getOracleState(address market, uint32 duration) external view returns (bool increaseCardinalityRequired, uint16 cardinalityRequired, bool oldestObservationSatisfied)",
+    ]),
+    functionName: "getOracleState",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+
+  return { increaseCardinalityRequired, cardinalityRequired, oldestObservationSatisfied };
+}
+
+export async function isDurationValid(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  const oracleState = await getOracleState(client, args);
+
+  return oracleState.increaseCardinalityRequired === false && oracleState.oldestObservationSatisfied === true;
+}
+
+export function getLpToAssetRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getLpToAssetRate(address market, uint32 duration) external view returns (uint256)"]),
+    functionName: "getLpToAssetRate",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+}
+
+export function getPtToAssetRate(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    pendlePtLpOracle: Address;
+    pendleMarket: Address;
+    duration: number;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getPtToAssetRate(address market, uint32 duration) external view returns (uint256)"]),
+    functionName: "getPtToAssetRate",
+    address: args.pendlePtLpOracle,
+    args: [args.pendleMarket, args.duration],
+  });
+}
+
+export function getSyTokensIn(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    syToken: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getTokensIn() external view returns (address[] memory tokensIn)"]),
+    functionName: "getTokensIn",
+    address: args.syToken,
+  });
+}
+
+export function getSyTokensOut(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    syToken: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function getTokensOut() external view returns (address[] memory tokensOut)"]),
+    functionName: "getTokensOut",
+    address: args.syToken,
   });
 }
