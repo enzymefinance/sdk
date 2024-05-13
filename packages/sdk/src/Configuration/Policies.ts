@@ -6,6 +6,7 @@ export * as AllowedDepositRecipients from "./Policies/AllowedDepositRecipients.j
 export * as AllowedExternalPositionTypes from "./Policies/AllowedExternalPositionTypes.js";
 export * as AllowedExternalPositionTypesPerManager from "./Policies/AllowedExternalPositionTypesPerManager.js";
 export * as AllowedSharesTransferRecipients from "./Policies/AllowedSharesTransferRecipients.js";
+export * as AllowedRedeemersForSpecificAssets from "./Policies/AllowedRedeemersForSpecificAssets.js";
 export * as CumulativeSlippageTolerance from "./Policies/CumulativeSlippageTolerance.js";
 export * as MinAssetBalancesPostRedemption from "./Policies/MinAssetBalancesPostRedemption.js";
 export * as MinMaxInvestment from "./Policies/MinMaxInvestment.js";
