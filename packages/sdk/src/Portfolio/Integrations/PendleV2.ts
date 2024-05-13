@@ -226,7 +226,7 @@ export function addLiquidityDecode(encoded: Hex): AddLiquidityArgs {
 // REMOVE LIQUIDITY
 //--------------------------------------------------------------------------------------------
 
-export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, addLiquidityEncode);
+export const removeLiquidity = ExternalPositionManager.makeUse(Action.RemoveLiquidity, removeLiquidityEncode);
 
 const removeLiquidityEncoding = [
   {
