@@ -14,6 +14,7 @@ export { IAllowedAssetsForRedemptionPolicy } from "./abis/IAllowedAssetsForRedem
 export { IAllowedDepositRecipientsPolicy } from "./abis/IAllowedDepositRecipientsPolicy.js";
 export { IAllowedExternalPositionTypesPerManagerPolicy } from "./abis/IAllowedExternalPositionTypesPerManagerPolicy.js";
 export { IAllowedExternalPositionTypesPolicy } from "./abis/IAllowedExternalPositionTypesPolicy.js";
+export { IAllowedRedeemersForSpecificAssetsPolicy } from "./abis/IAllowedRedeemersForSpecificAssetsPolicy.js";
 export { IAllowedSharesTransferRecipientsPolicy } from "./abis/IAllowedSharesTransferRecipientsPolicy.js";
 export { IArbitraryLoanPositionLib } from "./abis/IArbitraryLoanPositionLib.js";
 export { IArbitraryLoanPositionParser } from "./abis/IArbitraryLoanPositionParser.js";
