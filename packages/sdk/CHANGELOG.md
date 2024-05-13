@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.13
+
+### Patch Changes
+
+- [#413](https://github.com/enzymefinance/sdk/pull/413) [`52fbbb6`](https://github.com/enzymefinance/sdk/commit/52fbbb62cc99033cd63330eba58a066c40affa4b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more helpers for pendle
+
 ## 0.8.12
 
 ### Patch Changes
