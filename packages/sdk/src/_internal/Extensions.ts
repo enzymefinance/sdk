@@ -32,7 +32,7 @@ export function callExtension(args: CallOnExtensionParams): PopulatedExtensionCa
   });
 }
 
-export function decodeCallOnExtension(data: Hex) {
+export function callOnExtensionDecode(data: Hex) {
   const {
     args: [extension, actionId, callArgs],
   } = decodeFunctionData({
