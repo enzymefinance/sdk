@@ -287,7 +287,7 @@ export function sharesWrapperCancelRequestRedeem(
 }
 
 //--------------------------------------------------------------------------------------------
-// SHARES WRAPPER REDEMPTION
+// SINGLE ASSET REDEMPTION QUEUE
 //--------------------------------------------------------------------------------------------
 
 export function redemptionQueueRequestRedeem(
@@ -304,7 +304,7 @@ export function redemptionQueueRequestRedeem(
   });
 }
 
-export function redemptionQueueCancelRequestRedeem(
+export function redemptionQueueWithdrawRequest(
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
     requestId: bigint;
