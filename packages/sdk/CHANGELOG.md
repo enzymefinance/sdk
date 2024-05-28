@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.14
+
+### Patch Changes
+
+- [#423](https://github.com/enzymefinance/sdk/pull/423) [`e83ae0a`](https://github.com/enzymefinance/sdk/commit/e83ae0abd0dc67b4fe68d7bbe1f23711630a1797) Thanks [@iherger](https://github.com/iherger)! - Improve SingleAssetRedemptionQueue
+
 ## 0.8.13
 
 ### Patch Changes
