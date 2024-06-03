@@ -39,27 +39,29 @@ const placeOrderEncoding = [
 ] as const;
 
 export type PlaceOrderArgs = {
-  instrumentId: bigint;
+  instrumentId: number;
   isBuyOrder: boolean;
   quantityToSell: bigint;
   limitAmountToGet: bigint;
 };
 
 export function placeOrderEncode(args: PlaceOrderArgs): Hex {
-  return encodeAbiParameters(placeOrderEncoding, [args.instrumentId, args.isBuyOrder, args.limitAmountToGet, args.quantityToSell]);
+  return encodeAbiParameters(placeOrderEncoding, [
+    args.instrumentId,
+    args.isBuyOrder,
+    args.limitAmountToGet,
+    args.quantityToSell,
+  ]);
 }
 
 export function placeOrderDecode(encoded: Hex): PlaceOrderArgs {
-  const [    instrumentId,
-    isBuyOrder,
-    limitAmountToGet,
-    quantityToSell] = decodeAbiParameters(placeOrderEncoding, encoded);
+  const [instrumentId, isBuyOrder, limitAmountToGet, quantityToSell] = decodeAbiParameters(placeOrderEncoding, encoded);
 
   return {
     instrumentId,
     isBuyOrder,
     limitAmountToGet,
-    quantityToSell
+    quantityToSell,
   };
 }
 
@@ -97,12 +99,12 @@ const refundOrderEncoding = [
 ] as const;
 
 export type RefundOrderArgs = {
-   orderId: bigint;
-   instrumentId: bigint;
-   isBuyOrder: boolean;
-   quantityToSell: bigint;
-   limitAmountToGet: bigint;
-   timestamp: bigint;
+  orderId: bigint;
+  instrumentId: number;
+  isBuyOrder: boolean;
+  quantityToSell: bigint;
+  limitAmountToGet: bigint;
+  timestamp: bigint;
 };
 
 export function refundOrderEncode(args: RefundOrderArgs): Hex {
@@ -112,16 +114,15 @@ export function refundOrderEncode(args: RefundOrderArgs): Hex {
     args.isBuyOrder,
     args.quantityToSell,
     args.limitAmountToGet,
-    args.timestamp]);
+    args.timestamp,
+  ]);
 }
 
 export function refundOrderDecode(encoded: Hex): RefundOrderArgs {
-  const [    orderId,
-    instrumentId,
-    isBuyOrder,
-    quantityToSell,
-    limitAmountToGet,
-    timestamp] = decodeAbiParameters(refundOrderEncoding, encoded);
+  const [orderId, instrumentId, isBuyOrder, quantityToSell, limitAmountToGet, timestamp] = decodeAbiParameters(
+    refundOrderEncoding,
+    encoded,
+  );
 
   return {
     orderId,
@@ -129,7 +130,7 @@ export function refundOrderDecode(encoded: Hex): RefundOrderArgs {
     isBuyOrder,
     quantityToSell,
     limitAmountToGet,
-    timestamp
+    timestamp,
   };
 }
 
@@ -147,7 +148,7 @@ const sweepEncoding = [
 ] as const;
 
 export type SweepArgs = {
-  orderIds: bigint[];
+  orderIds: Array<bigint>;
 };
 
 export function sweepEncode(args: SweepArgs): Hex {
@@ -158,7 +159,7 @@ export function sweepDecode(encoded: Hex): SweepArgs {
   const [orderIds] = decodeAbiParameters(sweepEncoding, encoded);
 
   return {
-    orderIds,
+    orderIds: orderIds as bigint[],
   };
 }
 
@@ -170,15 +171,17 @@ export function getInstrument(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aliceOrderManagerAddress: Address;
-    instrumentId: bigint;
+    instrumentId: number;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: parseAbi(["function getInstrument(uint16 _instrumentId, bool _mustBeActive) view returns (uint16 id, bool enabled, address base, address quote)"]),
+    abi: parseAbi([
+      "function getInstrument(uint16 _instrumentId, bool _mustBeActive) view returns (uint16 id_, bool enabled_, address base_, address quote_)",
+    ]),
     functionName: "getInstrument",
     address: args.aliceOrderManagerAddress,
-    args: [args.instrumentId],
+    args: [args.instrumentId, false],
   });
 }
 
