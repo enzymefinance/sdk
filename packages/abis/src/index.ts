@@ -98,6 +98,8 @@ export { IMigrationHookHandler } from "./abis/IMigrationHookHandler.js";
 export { IMinAssetBalancesPostRedemptionPolicy } from "./abis/IMinAssetBalancesPostRedemptionPolicy.js";
 export { IMinMaxInvestmentPolicy } from "./abis/IMinMaxInvestmentPolicy.js";
 export { IMinSharesSupplyFee } from "./abis/IMinSharesSupplyFee.js";
+export { IMorphoBluePositionLib } from "./abis/IMorphoBluePositionLib.js";
+export { IMorphoBluePositionParser } from "./abis/IMorphoBluePositionParser.js";
 export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./abis/INoDepegOnRedeemSharesForSpecificAssetsPolicy.js";
 export { IOnlyRemoveDustExternalPositionPolicy } from "./abis/IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./abis/IOnlyUntrackDustOrPricelessAssetsPolicy.js";
