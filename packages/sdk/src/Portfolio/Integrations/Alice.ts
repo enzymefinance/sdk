@@ -159,7 +159,7 @@ export function sweepDecode(encoded: Hex): SweepArgs {
   const [orderIds] = decodeAbiParameters(sweepEncoding, encoded);
 
   return {
-    orderIds: orderIds as bigint[],
+    orderIds: [...orderIds],
   };
 }
 
@@ -167,22 +167,25 @@ export function sweepDecode(encoded: Hex): SweepArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export function getInstrument(
+export async function getInstrument(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     aliceOrderManagerAddress: Address;
     instrumentId: number;
+    mustBeActive: boolean;
   }>,
 ) {
-  return readContract(client, {
+  const [id, enabled, baseAssetAddress, quoteAssetAddress] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: parseAbi([
       "function getInstrument(uint16 _instrumentId, bool _mustBeActive) view returns (uint16 id_, bool enabled_, address base_, address quote_)",
     ]),
     functionName: "getInstrument",
     address: args.aliceOrderManagerAddress,
-    args: [args.instrumentId, false],
+    args: [args.instrumentId, args.mustBeActive],
   });
+
+  return {id, enabled, baseAssetAddress, quoteAssetAddress};
 }
 
 export function getOrderHash(
