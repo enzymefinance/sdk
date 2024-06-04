@@ -185,7 +185,7 @@ export async function getInstrument(
     args: [args.instrumentId, args.mustBeActive],
   });
 
-  return {id, enabled, baseAssetAddress, quoteAssetAddress};
+  return { id, enabled, baseAssetAddress, quoteAssetAddress };
 }
 
 export function getOrderHash(
