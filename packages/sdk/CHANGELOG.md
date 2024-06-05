@@ -1,5 +1,17 @@
 # @enzymefinance/sdk
 
+## 0.8.15
+
+### Patch Changes
+
+- [#425](https://github.com/enzymefinance/sdk/pull/425) [`172280c`](https://github.com/enzymefinance/sdk/commit/172280c729234fb406e15d685c31267dcf7d96b8) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice to Integrations
+
+## 0.8.14
+
+### Patch Changes
+
+- [#423](https://github.com/enzymefinance/sdk/pull/423) [`e83ae0a`](https://github.com/enzymefinance/sdk/commit/e83ae0abd0dc67b4fe68d7bbe1f23711630a1797) Thanks [@iherger](https://github.com/iherger)! - Improve SingleAssetRedemptionQueue
+
 ## 0.8.13
 
 ### Patch Changes

@@ -119,6 +119,16 @@ export function setRedemptionAsset(args: {
   });
 }
 
+export function shutdown(args: {
+  redemptionQueue: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.ISingleAssetRedemptionQueueLib,
+    functionName: "shutdown",
+    address: args.redemptionQueue,
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
