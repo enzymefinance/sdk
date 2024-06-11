@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, decodeFunctionData } from "viem";
+import type { Address, Hex } from "viem";
 import { Viem } from "../Utils.js";
 
 export type CallOnExtensionParams = {
