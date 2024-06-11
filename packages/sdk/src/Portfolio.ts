@@ -43,8 +43,6 @@ export {
   type RemoveTrackedAssetsArgs,
 } from "./_internal/IntegrationManager.js";
 
-export { callOnExtensionDecode } from "./_internal/Extensions.js";
-
 export type VaultCallOnContractParams = {
   comptrollerProxy: Address;
   contract: Address;
