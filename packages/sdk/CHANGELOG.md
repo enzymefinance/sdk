@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.16
+
+### Patch Changes
+
+- [#422](https://github.com/enzymefinance/sdk/pull/422) [`394a88c`](https://github.com/enzymefinance/sdk/commit/394a88c091230da1468de92b83c9618f9e4e4d0a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add three on third helpers
+
 ## 0.8.15
 
 ### Patch Changes
