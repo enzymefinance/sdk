@@ -17,7 +17,6 @@ export const create = ExternalPositionManager.createOnly;
 //--------------------------------------------------------------------------------------------
 
 export const placeOrder = ExternalPositionManager.makeUse(Action.PlaceOrder, placeOrderEncode);
-export const createAndPlaceOrder = ExternalPositionManager.makeCreateAndUse(Action.PlaceOrder, placeOrderEncode);
 
 const placeOrderEncoding = [
   {
