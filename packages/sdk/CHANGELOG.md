@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.17
+
+### Patch Changes
+
+- [#429](https://github.com/enzymefinance/sdk/pull/429) [`3e9ecf8`](https://github.com/enzymefinance/sdk/commit/3e9ecf81d9f7d5f2dc6931f12ba409fd67d9217f) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice whitelist check
+
 ## 0.8.16
 
 ### Patch Changes
