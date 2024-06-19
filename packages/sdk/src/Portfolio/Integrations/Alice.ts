@@ -17,7 +17,6 @@ export const create = ExternalPositionManager.createOnly;
 //--------------------------------------------------------------------------------------------
 
 export const placeOrder = ExternalPositionManager.makeUse(Action.PlaceOrder, placeOrderEncode);
-export const createAndPlaceOrder = ExternalPositionManager.makeCreateAndUse(Action.PlaceOrder, placeOrderEncode);
 
 const placeOrderEncoding = [
   {
@@ -201,5 +200,28 @@ export function getOrderHash(
     functionName: "getOrderHash",
     address: args.aliceOrderManagerAddress,
     args: [args.orderId],
+  });
+}
+
+export async function isAddressWhitelisted(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    aliceOrderManagerAddress: Address;
+    addressToCheck: Address;
+  }>,
+) {
+  const whitelistContractAddress = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function whitelistContract() view returns (address)"]),
+    functionName: "whitelistContract",
+    address: args.aliceOrderManagerAddress,
+  });
+
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function verifyWhitelistedUser(address addressToCheck) view returns (bool)"]),
+    functionName: "verifyWhitelistedUser",
+    address: whitelistContractAddress,
+    args: [args.addressToCheck],
   });
 }
