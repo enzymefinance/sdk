@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.18
+
+### Patch Changes
+
+- [#431](https://github.com/enzymefinance/sdk/pull/431) [`b212547`](https://github.com/enzymefinance/sdk/commit/b21254785df41cedb8ca82de2569f6ee9dcb1152) Thanks [@iherger](https://github.com/iherger)! - Add Multicall3 tool
+
 ## 0.8.17
 
 ### Patch Changes
