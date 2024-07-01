@@ -171,7 +171,7 @@ export async function getExpectedSharesForNativeTokenDeposit(
       args.exchangeData,
       args.minInvestmentAmount,
     ],
-    value: args.amount as any,
+    value: args.amount,
     account: args.depositor,
   });
 
@@ -195,6 +195,59 @@ export function depositNativeToken(args: NativeDepositArgs & { minSharesQuantity
   });
 }
 
+interface ERC20DepositArgs {
+  depositWrapper: Address;
+  comptrollerProxy: Address;
+  inputAsset: Address;
+  maxInputAssetAmount: bigint;
+  exchange: Address;
+  exchangeApproveTarget: Address;
+  exchangeData: Hex;
+  exchangeMinReceived: bigint;
+}
+
+export async function getExpectedSharesForERC20Deposit(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<ERC20DepositArgs & { depositor: Address }>,
+) {
+  const { result } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: Abis.IDepositWrapper,
+    address: args.depositWrapper,
+    functionName: "exchangeErc20AndBuyShares",
+    args: [
+      args.comptrollerProxy,
+      1n,
+      args.inputAsset,
+      args.maxInputAssetAmount,
+      args.exchange,
+      args.exchangeApproveTarget,
+      args.exchangeData,
+      args.exchangeMinReceived,
+    ],
+    account: args.depositor,
+  });
+
+  return result;
+}
+
+export function depositERC20(args: ERC20DepositArgs & { minSharesQuantity: bigint }) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IDepositWrapper,
+    address: args.depositWrapper,
+    functionName: "exchangeErc20AndBuyShares",
+    args: [
+      args.comptrollerProxy,
+      args.minSharesQuantity,
+      args.inputAsset,
+      args.maxInputAssetAmount,
+      args.exchange,
+      args.exchangeApproveTarget,
+      args.exchangeData,
+      args.exchangeMinReceived,
+    ],
+  });
+}
 //--------------------------------------------------------------------------------------------
 // SHARES WRAPPER DEPOSIT
 //--------------------------------------------------------------------------------------------
