@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.19
+
+### Patch Changes
+
+- [#433](https://github.com/enzymefinance/sdk/pull/433) [`d5340e9`](https://github.com/enzymefinance/sdk/commit/d5340e9ba8d5595e332dcd3d12ef5b20c66a294a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add deposit erc20 to deposit wrapper
+
 ## 0.8.18
 
 ### Patch Changes
