@@ -32,5 +32,13 @@
     "vitest": "^0.34.0",
     "viem": "^2.7.16",
     "zod": "^3.22.2"
+  },
+  "effect": {
+    "generateExports": {
+      "generateExports": {
+        "include": ["*.ts", "assets/*.ts", "deployments/*.ts"]
+      }
+    },
+    "publicModules": ["assets/*.ts", "deployments/*.ts", "*.ts"]
   }
 }

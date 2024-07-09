@@ -1,9 +1,9 @@
 import { getAddress } from "viem";
 import { expect, suite, test } from "vitest";
-import { Version } from "./contracts.js";
-import { getEnvironment } from "./deployments/all.js";
-import { Environment } from "./environment.js";
-import { AssetType, Deployment, Network, networks } from "./index.js";
+import { Version } from "../src/contracts.js";
+import { getEnvironment } from "../src/deployments/all.js";
+import { Environment } from "../src/environment.js";
+import { AssetType, Deployment, Network, networks } from "../src/index.js";
 
 suite("Environment", () => {
   const environment = getEnvironment(Deployment.ETHEREUM);
