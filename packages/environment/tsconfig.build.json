@@ -2,7 +2,7 @@
   "extends": "./tsconfig.src.json",
   "references": [
     {
-      "path": "../environment"
+      "path": "../sdk"
     }
   ],
   "compilerOptions": {
