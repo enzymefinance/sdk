@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.2
+
+### Patch Changes
+
+- [#440](https://github.com/enzymefinance/sdk/pull/440) [`eb86f5b`](https://github.com/enzymefinance/sdk/commit/eb86f5b178eb73d807c055459312fce68dc94488) Thanks [@iherger](https://github.com/iherger)! - Array types
+
 ## 5.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.4.2
+
+### Patch Changes
+
+- [`28c6153`](https://github.com/enzymefinance/sdk/commit/28c6153de12ca3fa32ab8c5e0598aa252e44160a) Thanks [@fubhy](https://github.com/fubhy)! - Codegen
+
 ## 0.4.1
 
 ### Patch Changes
