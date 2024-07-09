@@ -249,7 +249,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     return asset as NarrowByType<Asset, TAssetType>;
   }
 
-  public getAssets<TAssetTypes extends ReadonlyArray<AssetType>>(filter?: {
+  public getAssets<TAssetTypes extends Array<AssetType>>(filter?: {
     registered?: boolean;
     types?: TAssetTypes;
   }) {
