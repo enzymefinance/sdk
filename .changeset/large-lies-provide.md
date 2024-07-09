@@ -1,5 +1,0 @@
----
-"@enzymefinance/api": patch
----
-
-Codegen
