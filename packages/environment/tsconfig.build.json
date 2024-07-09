@@ -1,10 +1,5 @@
 {
   "extends": "./tsconfig.src.json",
-  "references": [
-    {
-      "path": "../environment"
-    }
-  ],
   "compilerOptions": {
     "tsBuildInfoFile": ".tsbuildinfo/build.tsbuildinfo",
     "outDir": "build/esm",
