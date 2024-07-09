@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.3
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+- Updated dependencies [[`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4)]:
+  - @enzymefinance/sdk@0.8.21
+
 ## 5.0.2
 
 ### Patch Changes
