@@ -184,17 +184,16 @@ importers:
     publishDirectory: dist
 
   packages/environment:
-    dependencies:
+    devDependencies:
       '@enzymefinance/sdk':
         specifier: workspace:*
         version: link:../sdk/dist
-      viem:
-        specifier: ^2.7.16
-        version: 2.9.6(typescript@5.4.3)(zod@3.23.0)
-    devDependencies:
       p-throttle:
         specifier: ^6.1.0
         version: 6.1.0
+      viem:
+        specifier: ^2.7.16
+        version: 2.9.6(typescript@5.4.3)(zod@3.23.0)
       vitest:
         specifier: ^0.34.0
         version: 0.34.6
