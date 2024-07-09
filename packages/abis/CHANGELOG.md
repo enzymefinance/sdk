@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.6
+
+### Patch Changes
+
+- [#435](https://github.com/enzymefinance/sdk/pull/435) [`85c3f61`](https://github.com/enzymefinance/sdk/commit/85c3f611cca5fbdd12186c76be9d8fd39f205f00) Thanks [@iherger](https://github.com/iherger)! - Updated generated exports
+
 ## 0.4.5
 
 ### Patch Changes
