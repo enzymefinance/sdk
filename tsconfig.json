@@ -1,9 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
   "references": [
-    { "path": "./packages/sdk" },
     { "path": "./packages/abis" },
     { "path": "./packages/api" },
+    { "path": "./packages/environment" },
+    { "path": "./packages/sdk" },
     { "path": "./docs" }
   ]
 }

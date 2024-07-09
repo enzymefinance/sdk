@@ -1,7 +1,7 @@
 {
-  "name": "@enzymefinance/abis",
+  "name": "@enzymefinance/environment",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "0.4.5",
+  "version": "4.0.30",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -10,19 +10,32 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/enzymefinance/enzyme-sdk.git",
-    "directory": "packages/abis"
+    "directory": "packages/environment"
   },
-  "author": "Sebastian Lorenz <fubhy@fubhy.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/enzymefinance/enzyme-sdk/issues"
-  },
-  "homepage": "https://github.com/enzymefinance/enzyme-sdk",
   "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "dotenv -- vitest",
     "build": "pnpm build-esm && pnpm build-cjs && pnpm build-annotate && build-utils pack-v2",
     "build-prepare": "build-utils prepare-v2",
     "build-esm": "tsc -b tsconfig.build.json",
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
+  },
+  "peerDependencies": {
+    "@enzymefinance/sdk": "workspace:*",
+    "viem": "^2.7.16"
+  },
+  "devDependencies": {
+    "@enzymefinance/sdk": "workspace:*",
+    "p-throttle": "^6.1.0",
+    "vitest": "^0.34.0",
+    "viem": "^2.7.16",
+    "zod": "^3.22.2"
+  },
+  "effect": {
+    "generateExports": {
+      "include": ["*.ts", "assets/*.ts", "deployments/*.ts"]
+    }
   }
 }
