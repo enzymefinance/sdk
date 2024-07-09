@@ -274,7 +274,7 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   /**
    * Asset list bound to this deployment.
    */
-  readonly assets: ReadonlyArray<AssetDefinition>;
+  readonly assets: Array<AssetDefinition>;
   /**
    * Deployment specific tokens.
    */

@@ -26,7 +26,7 @@ interface AssetBase {
   /**
    * List of release slugs the asset is registered on.
    */
-  readonly releases: ReadonlyArray<Release>;
+  readonly releases: Array<Release>;
   /**
    * The network the asset is deployed on.
    */
@@ -220,7 +220,7 @@ export interface BalancerPoolAsset extends AssetBase {
   /**
    * Staking options.
    */
-  readonly staking: ReadonlyArray<BalancerStaking>;
+  readonly staking: Array<BalancerStaking>;
   /**
    * Balancer Pool type.
    */
@@ -228,7 +228,7 @@ export interface BalancerPoolAsset extends AssetBase {
   /**
    * Underlying Assets.
    */
-  readonly underlyings: ReadonlyArray<Address>;
+  readonly underlyings: Array<Address>;
 
   /**
    * Pool id.
@@ -253,7 +253,7 @@ export interface BalancerPoolGaugeAsset extends AssetBase {
   /**
    * Underlying Assets.
    */
-  readonly underlyings: ReadonlyArray<Address>;
+  readonly underlyings: Array<Address>;
 }
 
 export enum CurvePoolTemplate {
@@ -287,7 +287,7 @@ export interface CurvePoolLpAsset extends AssetBase {
   /**
    * Staking options.
    */
-  readonly staking: ReadonlyArray<CurveStaking>;
+  readonly staking: Array<CurveStaking>;
   /**
    * Curve Pool template. See: https://github.com/curvefi/curve-contract/tree/master/contracts/pool-templates
    */
@@ -295,7 +295,7 @@ export interface CurvePoolLpAsset extends AssetBase {
   /**
    * Underlying Assets.
    */
-  readonly underlyings: ReadonlyArray<Address>;
+  readonly underlyings: Array<Address>;
 }
 
 export interface CurvePoolGaugeAsset extends AssetBase {
@@ -319,7 +319,7 @@ export interface CurvePoolGaugeAsset extends AssetBase {
   /**
    * Underlying Assets.
    */
-  readonly underlyings: ReadonlyArray<Address>;
+  readonly underlyings: Array<Address>;
 }
 
 export function defineAssetList<TNetwork extends Network>(
