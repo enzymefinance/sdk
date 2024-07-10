@@ -1,3 +1,4 @@
+import { AssetType, type PrimitiveAsset } from "./assets.js";
 import type { Address } from "./types.js";
 
 export enum Network {
@@ -62,9 +63,8 @@ export function isSupportedNetwork(value: any): value is Network {
 
 export interface NetworkDefinition<TNetwork extends Network = Network> {
   readonly currency: {
-    readonly name: string;
-    readonly symbol: string;
     readonly wrapper: Address;
+    readonly nativeToken: PrimitiveAsset;
   };
   readonly explorer: {
     readonly label: string;
@@ -94,9 +94,17 @@ export const networkBySlug: {
 
 const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
   currency: {
-    name: "Ether",
-    symbol: "ETH",
     wrapper: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+    nativeToken: {
+      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+      type: AssetType.PRIMITIVE,
+      releases: [],
+      network: Network.ARBITRUM,
+      registered: false,
+    },
   },
   explorer: {
     label: "Arbiscan",
@@ -110,9 +118,17 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
 
 const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   currency: {
-    name: "Ether",
-    symbol: "ETH",
     wrapper: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    nativeToken: {
+      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+      type: AssetType.PRIMITIVE,
+      releases: [],
+      network: Network.ETHEREUM,
+      registered: false,
+    },
   },
   explorer: {
     label: "Etherscan",
@@ -126,9 +142,17 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
 
 const polygon: NetworkDefinition<Network.POLYGON> = {
   currency: {
-    name: "Matic",
-    symbol: "MATIC",
     wrapper: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+    nativeToken: {
+      id: "0x0000000000000000000000000000000000001010",
+      name: "Matic",
+      symbol: "MATIC",
+      decimals: 18,
+      type: AssetType.PRIMITIVE,
+      releases: [],
+      network: Network.POLYGON,
+      registered: false,
+    },
   },
   explorer: {
     label: "Polygonscan",
