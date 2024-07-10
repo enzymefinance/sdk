@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/abis",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/enzymefinance/enzyme-sdk",
   "scripts": {
-    "build": "pnpm build-esm && pnpm build-cjs && pnpm build-annotate && build-utils pack-v2",
+    "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
     "build-prepare": "build-utils prepare-v2",
     "build-esm": "tsc -b tsconfig.build.json",
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
-    "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
+    "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps"
   }
 }

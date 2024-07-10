@@ -1,5 +1,11 @@
 # @enzymefinance/api
 
+## 0.4.3
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
 ## 0.4.2
 
 ### Patch Changes
