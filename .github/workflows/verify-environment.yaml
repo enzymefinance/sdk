@@ -1,0 +1,10 @@
+name: Manual Verify Environment
+on: workflow_dispatch
+
+jobs:
+  verify_environment:
+    name: Verify Environment
+    uses: ./.github/workflows/reusable-verify-environment.yaml
+    secrets: inherit
+    with:
+      environment: staging
