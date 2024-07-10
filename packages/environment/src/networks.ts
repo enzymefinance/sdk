@@ -1,27 +1,32 @@
-import { AssetType, type PrimitiveAsset } from "./assets.js";
 import type { Address } from "./types.js";
 
 export enum Network {
+  ARBITRUM = 42161,
   ETHEREUM = 1,
   POLYGON = 137,
 }
 
 export enum NetworkSlug {
+  ARBITRUM = "arbitrum",
   ETHEREUM = "ethereum",
   POLYGON = "polygon",
 }
 
-export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ETHEREUM
-  ? NetworkSlug.ETHEREUM
-  : TNetwork extends Network.POLYGON
-    ? NetworkSlug.POLYGON
-    : never;
+export type SlugByNetwork<TNetwork extends Network> = TNetwork extends Network.ARBITRUM
+  ? NetworkSlug.ARBITRUM
+  : TNetwork extends Network.ETHEREUM
+    ? NetworkSlug.ETHEREUM
+    : TNetwork extends Network.POLYGON
+      ? NetworkSlug.POLYGON
+      : never;
 
-export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ETHEREUM
-  ? Network.ETHEREUM
-  : TNetworkSlug extends NetworkSlug.POLYGON
-    ? Network.POLYGON
-    : never;
+export type NetworkBySlug<TNetworkSlug extends NetworkSlug> = TNetworkSlug extends NetworkSlug.ARBITRUM
+  ? Network.ARBITRUM
+  : TNetworkSlug extends NetworkSlug.ETHEREUM
+    ? Network.ETHEREUM
+    : TNetworkSlug extends NetworkSlug.POLYGON
+      ? Network.POLYGON
+      : never;
 
 export function getNetwork<TNetwork extends Network = Network>(network: TNetwork): NetworkDefinition<TNetwork>;
 export function getNetwork<TNetworkSlug extends NetworkSlug = NetworkSlug>(
@@ -57,8 +62,9 @@ export function isSupportedNetwork(value: any): value is Network {
 
 export interface NetworkDefinition<TNetwork extends Network = Network> {
   readonly currency: {
+    readonly name: string;
+    readonly symbol: string;
     readonly wrapper: Address;
-    readonly nativeToken: PrimitiveAsset;
   };
   readonly explorer: {
     readonly label: string;
@@ -73,6 +79,7 @@ export interface NetworkDefinition<TNetwork extends Network = Network> {
 export const slugByNetwork: {
   readonly [TNetwork in Network]: SlugByNetwork<TNetwork>;
 } = {
+  [Network.ARBITRUM]: NetworkSlug.ARBITRUM,
   [Network.ETHEREUM]: NetworkSlug.ETHEREUM,
   [Network.POLYGON]: NetworkSlug.POLYGON,
 };
@@ -80,23 +87,32 @@ export const slugByNetwork: {
 export const networkBySlug: {
   readonly [TNetworkSlug in NetworkSlug]: NetworkBySlug<TNetworkSlug>;
 } = {
+  [NetworkSlug.ARBITRUM]: Network.ARBITRUM,
   [NetworkSlug.ETHEREUM]: Network.ETHEREUM,
   [NetworkSlug.POLYGON]: Network.POLYGON,
 };
 
+const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
+  currency: {
+    name: "Ether",
+    symbol: "ETH",
+    wrapper: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+  },
+  explorer: {
+    label: "Arbiscan",
+    url: "https://arbiscan.io/",
+  },
+  id: Network.ARBITRUM,
+  label: "Arbitrum",
+  rpc: "https://arb1.arbitrum.io/rpc",
+  slug: NetworkSlug.ARBITRUM,
+};
+
 const mainnet: NetworkDefinition<Network.ETHEREUM> = {
   currency: {
+    name: "Ether",
+    symbol: "ETH",
     wrapper: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    nativeToken: {
-      id: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-      name: "Ether",
-      symbol: "ETH",
-      decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
-      network: Network.ETHEREUM,
-      registered: false,
-    },
   },
   explorer: {
     label: "Etherscan",
@@ -110,17 +126,9 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
 
 const polygon: NetworkDefinition<Network.POLYGON> = {
   currency: {
+    name: "Matic",
+    symbol: "MATIC",
     wrapper: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-    nativeToken: {
-      id: "0x0000000000000000000000000000000000001010",
-      name: "Matic",
-      symbol: "MATIC",
-      decimals: 18,
-      type: AssetType.PRIMITIVE,
-      releases: [],
-      network: Network.POLYGON,
-      registered: false,
-    },
   },
   explorer: {
     label: "Polygonscan",
@@ -135,6 +143,7 @@ const polygon: NetworkDefinition<Network.POLYGON> = {
 export const networks: {
   readonly [TNetwork in Network]: NetworkDefinition<TNetwork>;
 } = {
+  [Network.ARBITRUM]: arbitrum,
   [Network.ETHEREUM]: mainnet,
   [Network.POLYGON]: polygon,
 };
