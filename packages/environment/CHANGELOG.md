@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.4
+
+### Patch Changes
+
+- [#444](https://github.com/enzymefinance/sdk/pull/444) [`298a90d`](https://github.com/enzymefinance/sdk/commit/298a90d6240503c4c81115ff73e9b0162afeb6ea) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice environment addresses
+
 ## 5.0.3
 
 ### Patch Changes
