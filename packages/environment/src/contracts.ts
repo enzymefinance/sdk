@@ -43,6 +43,8 @@ export interface SuluContracts extends CommonContracts {
   readonly AaveV3Adapter: Address;
   readonly AaveV3ATokenListOwner: Address;
   readonly AddressListRegistry: Address;
+  readonly AlicePositionLib: Address;
+  readonly AlicePositionParser: Address;
   readonly AllowedAdapterIncomingAssetsPolicy: Address;
   readonly AllowedAdaptersPerManagerPolicy: Address;
   readonly AllowedAdaptersPolicy: Address;

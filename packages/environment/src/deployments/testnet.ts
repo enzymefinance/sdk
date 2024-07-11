@@ -33,6 +33,8 @@ export default defineDeployment<Deployment.TESTNET>({
         AaveV3DebtPositionLib: "0x82e3bfbcc070d63c25bc882ba61afdd710ac6657",
         AaveV3DebtPositionParser: "0x2735655ea27071ac0928f5a8695c03722c3642cc",
         AddressListRegistry: "0x477a4e56eabc94a871744d4f1d59e045fd53c1ef",
+        AlicePositionLib: "0x0000000000000000000000000000000000000000",
+        AlicePositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0x390be32d5864fda0295d0e5f413d411eabd7c4ce",
         AllowedAdaptersPerManagerPolicy: "0xd63909b856ab759aff30eb52651e366d2625d1de",
         AllowedAdaptersPolicy: "0x35cf5a1fe0254f863c9f6c0cd5c2128ee61baf58",
