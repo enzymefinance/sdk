@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/environment",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -35,7 +35,11 @@
   },
   "effect": {
     "generateExports": {
-      "include": ["*.ts", "assets/*.ts", "deployments/*.ts"]
+      "include": [
+        "*.ts",
+        "assets/*.ts",
+        "deployments/*.ts"
+      ]
     }
   }
 }
