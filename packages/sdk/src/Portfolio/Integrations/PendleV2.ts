@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -318,7 +318,7 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 //--------------------------------------------------------------------------------------------
 
 export async function readTokensForMarket(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendleMarket: Address;
   }>,
@@ -334,7 +334,7 @@ export async function readTokensForMarket(
 }
 
 export function getRewardTokensForMarket(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendleMarket: Address;
   }>,
@@ -348,7 +348,7 @@ export function getRewardTokensForMarket(
 }
 
 export async function simulateRedeemRewardsForMarket(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendleMarket: Address;
     user: Address;
@@ -366,7 +366,7 @@ export async function simulateRedeemRewardsForMarket(
 }
 
 export async function getRewardsForMarket(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendleMarket: Address;
     user: Address;
@@ -381,7 +381,7 @@ export async function getRewardsForMarket(
 }
 
 export async function getOracleState(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendlePtLpOracle: Address;
     pendleMarket: Address;
@@ -402,7 +402,7 @@ export async function getOracleState(
 }
 
 export async function isDurationValid(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendlePtLpOracle: Address;
     pendleMarket: Address;
@@ -415,7 +415,7 @@ export async function isDurationValid(
 }
 
 export function getLpToAssetRate(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendlePtLpOracle: Address;
     pendleMarket: Address;
@@ -432,7 +432,7 @@ export function getLpToAssetRate(
 }
 
 export function getPtToAssetRate(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pendlePtLpOracle: Address;
     pendleMarket: Address;
@@ -449,7 +449,7 @@ export function getPtToAssetRate(
 }
 
 export function getSyTokensIn(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     syToken: Address;
   }>,
@@ -463,7 +463,7 @@ export function getSyTokensIn(
 }
 
 export function getSyTokensOut(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     syToken: Address;
   }>,

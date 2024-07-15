@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type PublicClient, isAddressEqual } from "viem";
+import { type Address, type Client, isAddressEqual } from "viem";
 import { readContract } from "viem/actions";
 import { getEnabledPolicies } from "../Configuration.js";
 import { Viem } from "../Utils.js";
@@ -14,7 +14,7 @@ export {
 } from "../_internal/PolicyManager.js";
 
 export async function isEnabled(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     policy: Address;
     policyManager: Address;
@@ -26,7 +26,7 @@ export async function isEnabled(
 }
 
 export function getIdentifier(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     policy: Address;
   }>,
@@ -64,7 +64,7 @@ const getListIdsForFundAbi = {
 } as const;
 
 export function getListIds(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     policyContract: Address;
     comptrollerProxy: Address;
@@ -84,7 +84,7 @@ export function getListIds(
 //--------------------------------------------------------------------------------------------
 
 export function getPricelessAssetBypassTimeLimit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     policy: Address;
   }>,
@@ -98,7 +98,7 @@ export function getPricelessAssetBypassTimeLimit(
 }
 
 export function getPricelessAssetBypassTimelock(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     policy: Address;
   }>,

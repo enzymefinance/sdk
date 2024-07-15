@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -345,7 +345,7 @@ const troveManagerAbi = [
 ] as const;
 
 export async function getTrove(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
     debtPosition: Address;
@@ -369,7 +369,7 @@ export async function getTrove(
 }
 
 export function getLusdGasCompensation(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
   }>,
@@ -383,7 +383,7 @@ export function getLusdGasCompensation(
 }
 
 export function getBorrowingFeeWithDecay(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
     lusdAmount: bigint;
@@ -453,7 +453,7 @@ const sortedTrovesAbi = [
 ] as const;
 
 export function getSortedTrovesSize(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
   }>,
@@ -467,7 +467,7 @@ export function getSortedTrovesSize(
 }
 
 export async function findInsertPosition(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
     nicr: bigint;
@@ -533,7 +533,7 @@ const hintHelpersAbi = [
 ] as const;
 
 export async function getApproxHint(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     hintHelpers: Address;
     nicr: bigint;
@@ -553,7 +553,7 @@ export async function getApproxHint(
 }
 
 export function getSurplusPoolCollaterall(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     collSurplusPool: Address;
     account: Address;
