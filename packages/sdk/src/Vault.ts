@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
@@ -102,7 +102,7 @@ export function setSymbol(args: SetSymbolParams) {
 //--------------------------------------------------------------------------------------------
 
 export function getName(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -116,7 +116,7 @@ export function getName(
 }
 
 export function getSymbol(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -130,7 +130,7 @@ export function getSymbol(
 }
 
 export function getOwner(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -144,7 +144,7 @@ export function getOwner(
 }
 
 export function getNominatedOwner(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vault: Address;
   }>,
@@ -158,7 +158,7 @@ export function getNominatedOwner(
 }
 
 export function getDenominationAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -172,7 +172,7 @@ export function getDenominationAsset(
 }
 
 export function getComptrollerProxy(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -186,7 +186,7 @@ export function getComptrollerProxy(
 }
 
 export function getPolicyManager(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -200,7 +200,7 @@ export function getPolicyManager(
 }
 
 export function getFeeManager(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -214,7 +214,7 @@ export function getFeeManager(
 }
 
 export function sharesAreFreelyTransferable(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,

@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, zeroAddress } from "viem";
 import { readContract } from "viem/actions";
 import { Rates, Viem } from "../../Utils.js";
 
@@ -100,7 +100,7 @@ export function setRecipient(args: SetRecipientParams) {
 //--------------------------------------------------------------------------------------------
 
 export function getInfo(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     managementFee: Address;

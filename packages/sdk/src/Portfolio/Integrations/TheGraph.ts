@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -123,7 +123,7 @@ export function withdrawDecode(encoded: Hex): WithdrawArgs {
 //--------------------------------------------------------------------------------------------
 
 export async function getDelegationPool(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
     indexer: Address;
@@ -143,7 +143,7 @@ export async function getDelegationPool(
 }
 
 export function getDelegationTaxPercentage(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     stakingContract: Address;
   }>,
@@ -157,7 +157,7 @@ export function getDelegationTaxPercentage(
 }
 
 export function getCurrentEpoch(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     epochManager: Address;
   }>,

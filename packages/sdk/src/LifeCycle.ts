@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Hex, PublicClient } from "viem";
+import type { Address, Client, Hex } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
@@ -96,7 +96,7 @@ export function executeMigration(args: ExecuteMigrationParams) {
 }
 
 export function hasMigrationRequest(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -112,7 +112,7 @@ export function hasMigrationRequest(
 }
 
 export function hasExecutableMigrationRequest(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -128,7 +128,7 @@ export function hasExecutableMigrationRequest(
 }
 
 export function getRemainingMigrationRequestTimelock(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     dispatcher: Address;
@@ -144,7 +144,7 @@ export function getRemainingMigrationRequestTimelock(
 }
 
 export async function getMigrationRequestDetails(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vault: Address;
     dispatcher: Address;
@@ -223,7 +223,7 @@ export function executeReconfiguration(args: ExecuteReconfigurationParams) {
 }
 
 export function hasReconfigurationRequest(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;
@@ -239,7 +239,7 @@ export function hasReconfigurationRequest(
 }
 
 export function getReconfigurationRequestDetails(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     fundDeployer: Address;

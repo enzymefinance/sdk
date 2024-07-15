@@ -1,9 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
 import {
   type Address,
+  type Client,
   ContractFunctionExecutionError,
   type Hex,
-  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -223,7 +223,7 @@ const uniswapV2FactoryAbi = [
 ] as const;
 
 export async function getLendRate(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     amount: bigint;
@@ -271,7 +271,7 @@ export async function getLendRate(
 }
 
 export async function getPairData(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     token0: Address;
     token1: Address;
@@ -285,7 +285,7 @@ export async function getPairData(
     args: [args.token0, args.token1],
   });
 
-  const [reserve0, reserve1] = await client.readContract({
+  const [reserve0, reserve1] = await readContract(client, {
     abi: uniswapV2PoolAbi,
     functionName: "getReserves",
     address: pairAddress,
@@ -305,7 +305,7 @@ export async function getPairData(
 }
 
 export async function getSwapRedeemRate(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     poolValue: {
       token: Address;
@@ -339,12 +339,12 @@ export async function getSwapRedeemRate(
   } catch (error) {
     if (error instanceof ContractFunctionExecutionError) {
       const [poolTokensSupply, [reserve0, reserve1]] = await Promise.all([
-        client.readContract({
+        readContract(client, {
           abi: uniswapV2PoolAbi,
           functionName: "totalSupply",
           address: args.poolValue.token,
         }),
-        client.readContract({
+        readContract(client, {
           abi: uniswapV2PoolAbi,
           functionName: "getReserves",
           address: args.poolValue.token,

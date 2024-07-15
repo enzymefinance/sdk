@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Hex, PublicClient } from "viem";
+import type { Address, Client, Hex } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { isEnabled } from "./Configuration/Policy.js";
 import { Viem } from "./Utils.js";
@@ -10,7 +10,7 @@ import { Assertion } from "./Utils.js";
 //--------------------------------------------------------------------------------------------
 
 export function getSharesActionTimelock(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -24,7 +24,7 @@ export function getSharesActionTimelock(
 }
 
 export function getLastSharesBoughtTimestamp(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     depositor: Address;
     comptrollerProxy: Address;
@@ -40,7 +40,7 @@ export function getLastSharesBoughtTimestamp(
 }
 
 export async function getExpectedSharesForDeposit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     amount: bigint;
@@ -88,7 +88,7 @@ export type RedeemSharesForSpecificAssetsParams = {
 };
 
 export async function getSpecificAssetsRedemptionExpectedAmounts(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<RedeemSharesForSpecificAssetsParams>,
 ) {
   const { result: payoutAmounts } = await simulateContract(client, {
@@ -155,7 +155,7 @@ interface NativeDepositArgs {
 }
 
 export async function getExpectedSharesForNativeTokenDeposit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<NativeDepositArgs & { depositor: Address }>,
 ) {
   const { result } = await simulateContract(client, {
@@ -207,7 +207,7 @@ interface ERC20DepositArgs {
 }
 
 export async function getExpectedSharesForERC20Deposit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<ERC20DepositArgs & { depositor: Address }>,
 ) {
   const { result } = await simulateContract(client, {
@@ -259,7 +259,7 @@ export type SharesWrapperDepositBaseParams = {
 };
 
 export async function getExpectedSharesForSharesWrapperDeposit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<
     SharesWrapperDepositBaseParams & {
       depositor: Address;
@@ -376,7 +376,7 @@ export function redemptionQueueWithdrawRequest(
 //--------------------------------------------------------------------------------------------
 
 export async function isAllowedDepositor(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     allowedDepositRecipientsPolicy: Address;
     comptrollerProxy: Address;

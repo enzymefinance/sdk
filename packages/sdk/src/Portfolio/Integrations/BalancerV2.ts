@@ -1,7 +1,7 @@
 import {
   type Address,
+  type Client,
   type Hex,
-  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   parseAbiParameters,
@@ -329,7 +329,7 @@ const minterAbi = [
 ] as const;
 
 export async function getMinterRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     minter: Address;
     beneficiary: Address;
@@ -366,7 +366,7 @@ const gaugeAbi = [
 ] as const;
 
 export function getClaimableRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     gauge: Address;
     user: Address;
@@ -532,7 +532,7 @@ export interface BatchSwapFunds {
 }
 
 export async function queryBatchSwap(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
@@ -569,7 +569,7 @@ export async function queryBatchSwap(
 }
 
 export async function queryExit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     poolId: Hex;
@@ -599,7 +599,7 @@ export async function queryExit(
 }
 
 export async function queryJoin(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     poolId: Hex;
