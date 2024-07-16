@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.7
+
+### Patch Changes
+
+- [#450](https://github.com/enzymefinance/sdk/pull/450) [`78cf343`](https://github.com/enzymefinance/sdk/commit/78cf343bfcb1c2f4018481f6d35540c11ac4fa8d) Thanks [@iherger](https://github.com/iherger)! - Remove Alice protocol
+
 ## 5.0.6
 
 ### Patch Changes
