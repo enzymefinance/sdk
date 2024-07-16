@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.22
+
+### Patch Changes
+
+- [#446](https://github.com/enzymefinance/sdk/pull/446) [`a39a6a4`](https://github.com/enzymefinance/sdk/commit/a39a6a4340256a4548e7a863efb1cc215ea18b27) Thanks [@fubhy](https://github.com/fubhy)! - Use base client instead of public client
+
 ## 0.8.21
 
 ### Patch Changes

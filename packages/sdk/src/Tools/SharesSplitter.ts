@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -37,7 +37,7 @@ export function claimToken(args: {
 //--------------------------------------------------------------------------------------------
 
 export function getClaimableTokenBalance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     splitter: Address;
     token: Address;

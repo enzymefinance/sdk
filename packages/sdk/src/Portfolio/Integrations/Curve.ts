@@ -1,8 +1,8 @@
 import {
   type Address,
+  type Client,
   ContractFunctionExecutionError,
   type Hex,
-  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -601,7 +601,7 @@ const erc20Abi = {
 const swapId = 2n; // id won't change, for swaps it will be always the same id in the registry
 
 export async function getBestPrice(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     incoming: Address;
     outgoing: Address;
@@ -620,7 +620,7 @@ export async function getBestPrice(
   const curveOutgoing = isAddressEqual(args.outgoing, args.weth) ? Constants.ETH_ADDRESS : args.outgoing;
   const curveIncoming = isAddressEqual(args.incoming, args.weth) ? Constants.ETH_ADDRESS : args.incoming;
 
-  const [bestPool, amountReceived] = await client.readContract({
+  const [bestPool, amountReceived] = await readContract(client, {
     abi: [curveSwapsAbi],
     address: curveSwaps,
     functionName: "get_best_rate",
@@ -632,7 +632,7 @@ export async function getBestPrice(
 
   try {
     // not all pools support this method, this is why we need to catch the error
-    const poolName = await client.readContract({
+    const poolName = await readContract(client, {
       abi: [erc20Abi],
       address: bestPool,
       functionName: "name",
@@ -665,7 +665,7 @@ const calcWithdrawOneCoinAbi = {
 } as const;
 
 export async function isSingleAssetRedemptionAllowed(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -692,7 +692,7 @@ export async function isSingleAssetRedemptionAllowed(
 }
 
 export async function getExpectedGaugeTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
     tokenAmounts: ReadonlyArray<bigint>;
@@ -746,7 +746,7 @@ const lpTokenAbi = [
 const balancesUint256Signature = "function balances(uint256 i) view returns(uint256)" as const;
 
 export async function getExpectedWithdrawalTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
     singleTokenIndex: bigint;
@@ -861,7 +861,7 @@ export async function getExpectedWithdrawalTokens(
 //--------------------------------------------------------------------------------------------
 
 export async function getClaimableTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curveGauge: Address;
     user: Address;
@@ -883,7 +883,7 @@ export async function getClaimableTokens(
 //--------------------------------------------------------------------------------------------
 
 export async function isAllowedToMintFor(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curveMinter: Address;
     vault: Address;

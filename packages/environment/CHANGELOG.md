@@ -1,5 +1,32 @@
 # @enzymefinance/environment
 
+## 5.0.7
+
+### Patch Changes
+
+- [#450](https://github.com/enzymefinance/sdk/pull/450) [`78cf343`](https://github.com/enzymefinance/sdk/commit/78cf343bfcb1c2f4018481f6d35540c11ac4fa8d) Thanks [@iherger](https://github.com/iherger)! - Remove Alice protocol
+
+## 5.0.6
+
+### Patch Changes
+
+- [#448](https://github.com/enzymefinance/sdk/pull/448) [`d8bea9e`](https://github.com/enzymefinance/sdk/commit/d8bea9e88f36b4d03a67531603fd26bef346cc1b) Thanks [@iherger](https://github.com/iherger)! - Remove eETH
+
+## 5.0.5
+
+### Patch Changes
+
+- [#446](https://github.com/enzymefinance/sdk/pull/446) [`a39a6a4`](https://github.com/enzymefinance/sdk/commit/a39a6a4340256a4548e7a863efb1cc215ea18b27) Thanks [@fubhy](https://github.com/fubhy)! - Use base client instead of public client
+
+- Updated dependencies [[`a39a6a4`](https://github.com/enzymefinance/sdk/commit/a39a6a4340256a4548e7a863efb1cc215ea18b27)]:
+  - @enzymefinance/sdk@0.8.22
+
+## 5.0.4
+
+### Patch Changes
+
+- [#444](https://github.com/enzymefinance/sdk/pull/444) [`298a90d`](https://github.com/enzymefinance/sdk/commit/298a90d6240503c4c81115ff73e9b0162afeb6ea) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice environment addresses
+
 ## 5.0.3
 
 ### Patch Changes

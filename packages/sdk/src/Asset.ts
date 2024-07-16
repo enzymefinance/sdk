@@ -1,12 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import {
-  type Address,
-  ContractFunctionExecutionError,
-  type PublicClient,
-  bytesToString,
-  hexToBytes,
-  parseAbi,
-} from "viem";
+import { type Address, type Client, ContractFunctionExecutionError, bytesToString, hexToBytes, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 import { removeTrailingZeros } from "./Utils/bytes.js";
@@ -35,7 +28,7 @@ export function approve(args: ApproveParams) {
 //--------------------------------------------------------------------------------------------
 
 export async function getInfo(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -50,7 +43,7 @@ export async function getInfo(
 }
 
 export async function getName(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -84,7 +77,7 @@ export async function getName(
 }
 
 export async function getSymbol(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -118,7 +111,7 @@ export async function getSymbol(
 }
 
 export function getBalanceOf(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     owner: Address;
     asset: Address;
@@ -134,7 +127,7 @@ export function getBalanceOf(
 }
 
 export function getBalancesOf(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     owner: Address;
     assets: ReadonlyArray<Address>;
@@ -153,7 +146,7 @@ export function getBalancesOf(
 }
 
 export function getAllowance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     owner: Address;
@@ -170,7 +163,7 @@ export function getAllowance(
 }
 
 export function getDecimals(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -184,7 +177,7 @@ export function getDecimals(
 }
 
 export function getTotalSupply(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -198,7 +191,7 @@ export function getTotalSupply(
 }
 
 export async function getCanonicalValue(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
     baseAsset: Address;
