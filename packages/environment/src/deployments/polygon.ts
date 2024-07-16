@@ -196,7 +196,7 @@ export default defineDeployment<Deployment.POLYGON>({
         TermFinanceV1LendingPositionParser: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionLib: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionParser: "0x0000000000000000000000000000000000000000",
-        ThreeOneThirdAdapter: "0x3f37a346394e81c30c11cea6de53e3005b0c5159",
+        ThreeOneThirdAdapter: "0x908c0c476c0dc8f7b6d6b6aa34f0349a714380b8",
         UintListRegistry: "0x6ddd871c1607348ebb5be250f882255390166519",
         UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
