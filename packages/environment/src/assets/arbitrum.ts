@@ -26,7 +26,7 @@ export default defineAssetList(Network.ARBITRUM, [
     id: "0x2bcc6d6cdbbdc0a4071e48bb3b969b06b3330c07",
     name: "Wrapped SOL",
     releases: [sulu],
-    symbol: "WSOL",
+    symbol: "SOL",
     type: AssetType.PRIMITIVE,
   },
   {
