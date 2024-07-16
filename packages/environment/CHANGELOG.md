@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.6
+
+### Patch Changes
+
+- [#448](https://github.com/enzymefinance/sdk/pull/448) [`d8bea9e`](https://github.com/enzymefinance/sdk/commit/d8bea9e88f36b4d03a67531603fd26bef346cc1b) Thanks [@iherger](https://github.com/iherger)! - Remove eETH
+
 ## 5.0.5
 
 ### Patch Changes
