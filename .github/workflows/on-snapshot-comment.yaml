@@ -35,26 +35,26 @@ jobs:
 
       - name: Initial comment
         id: comment
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
             **Alright @${{ github.actor }}, I'm working on the snapshot!**
-            
+
             You can follow the progress [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
 
       - name: Checkout default branch
         uses: actions/checkout@v4
-  
+
       - name: Checkout pull request branch
         run: gh pr checkout ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get current branch name
-        id: branch  
+        id: branch
         run: echo "branch=$(git branch --show-current)" >> $GITHUB_OUTPUT
 
       - name: Retrieve changeset entries
@@ -75,7 +75,7 @@ jobs:
 
       - name: Build snapshot
         run: pnpm build
- 
+
       - name: Set registry config
         run: pnpm config set --location project "//registry.npmjs.org/:_authToken" "${{ secrets.NPM_TOKEN }}"
 
@@ -107,7 +107,7 @@ jobs:
 
       - name: Update comment (failure)
         if: failure()
-        uses: peter-evans/create-or-update-comment@v3
+        uses: peter-evans/create-or-update-comment@v4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -115,5 +115,5 @@ jobs:
           edit-mode: replace
           body: |
             **Sorry @${{ github.actor }}, I failed to publish the snapshot!**
-            
+
             You can review the build log [here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).
