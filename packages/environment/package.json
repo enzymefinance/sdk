@@ -35,11 +35,7 @@
   },
   "effect": {
     "generateExports": {
-      "include": [
-        "*.ts",
-        "assets/*.ts",
-        "deployments/*.ts"
-      ]
+      "include": ["*.ts", "assets/*.ts", "deployments/*.ts"]
     }
   }
 }
