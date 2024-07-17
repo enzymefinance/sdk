@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -167,7 +167,7 @@ export function sweepDecode(encoded: Hex): SweepArgs {
 //--------------------------------------------------------------------------------------------
 
 export async function getInstrument(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     aliceOrderManagerAddress: Address;
     instrumentId: number;
@@ -188,7 +188,7 @@ export async function getInstrument(
 }
 
 export function getOrderHash(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     aliceOrderManagerAddress: Address;
     orderId: bigint;
@@ -204,7 +204,7 @@ export function getOrderHash(
 }
 
 export async function isAddressWhitelisted(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     aliceOrderManagerAddress: Address;
     addressToCheck: Address;

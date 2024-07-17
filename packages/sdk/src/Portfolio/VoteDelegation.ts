@@ -1,4 +1,4 @@
-import type { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -54,7 +54,7 @@ const tokenDaoDelegateeByTypeAbi = {
 } as const;
 
 export async function getDelegatees(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,

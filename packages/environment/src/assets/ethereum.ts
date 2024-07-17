@@ -898,7 +898,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
     name: "ether.fi ETH",
-    releases: [sulu],
+    releases: [],
     symbol: "eETH",
     type: AssetType.PRIMITIVE,
   },
