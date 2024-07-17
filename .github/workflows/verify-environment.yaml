@@ -6,5 +6,3 @@ jobs:
     name: Verify Environment
     uses: ./.github/workflows/reusable-verify-environment.yaml
     secrets: inherit
-    with:
-      environment: staging
