@@ -1,18 +1,12 @@
 name: Verify Environment
 on:
   workflow_call:
-    inputs:
-      environment:
-        description: "The environment to run in"
-        required: true
-        type: string
 
 jobs:
    verify_environment:
     name: Test ${{ matrix.app }} ${{ matrix.release }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    environment: ${{ inputs.environment }}
     strategy:
       fail-fast: false
       matrix:
