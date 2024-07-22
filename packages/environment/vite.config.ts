@@ -1,4 +1,3 @@
-import * as path from "node:path";
 import aliases from "vite-tsconfig-paths";
 import { defineProject } from "vitest/config";
 
