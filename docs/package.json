@@ -16,6 +16,6 @@
     "vocs": "1.0.0-alpha.45"
   },
   "devDependencies": {
-    "@types/node": "^20.12.2"
+    "@types/node": "^20.14.11"
   }
 }

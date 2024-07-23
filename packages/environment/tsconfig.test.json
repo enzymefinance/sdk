@@ -7,6 +7,9 @@
     {
       "path": "tsconfig.src.json"
     },
+    {
+      "path": "../sdk/tsconfig.src.json"
+    },
   ],
   "compilerOptions": {
     "tsBuildInfoFile": ".tsbuildinfo/test.tsbuildinfo",
