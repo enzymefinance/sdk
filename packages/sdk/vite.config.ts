@@ -6,6 +6,7 @@ export default defineProject({
   envDir: "./",
   plugins: [aliases({ projects: ["./tsconfig.json"] })],
   test: {
+    include: ["test/**/*.test.ts"],
     testTimeout: 200_000,
     globalSetup: [path.join(__dirname, "test/setup/global.ts")],
   },

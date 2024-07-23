@@ -5,6 +5,7 @@ export default defineProject({
   envDir: "./",
   plugins: [aliases({ projects: ["./tsconfig.json"] })],
   test: {
+    include: ["test/**/*.test.ts"],
     testTimeout: 200_000,
   },
 });
