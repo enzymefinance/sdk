@@ -18,6 +18,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Dump secrets
-        run: echo $SECRET
-        env:
-          SECRET: ${{ secrets.TEST }}
+        run: echo ${{ secrets.TEST }}
