@@ -1,6 +1,7 @@
 import pThrottle from "p-throttle";
 import type { Address, Asset } from "../../src/index.js";
 import { Network, networks } from "../../src/index.js";
+import { toAddress } from "../../src/utils.js";
 
 const throttle = pThrottle({
   limit: Number.parseInt(process.env.VITE_COINGECKO_MINUTE_RATE || "30"), // Demo rate
@@ -32,7 +33,7 @@ export async function getCoingeckoPrices(network: Network, assets: ReadonlyArray
           return carry;
         }
 
-        carry[address.toLowerCase()] = price.usd;
+        carry[toAddress(address.toLowerCase())] = price.usd;
 
         return carry;
       }, {});
