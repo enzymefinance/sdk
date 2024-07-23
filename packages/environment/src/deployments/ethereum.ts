@@ -209,7 +209,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         TermFinanceV1LendingPositionParser: "0xa95c7bab91692df52255b8ad50c5ed2bcc9064ad",
         TheGraphDelegationPositionLib: "0x6fff66d55698a601e91989c44349da8a2a9a7848",
         TheGraphDelegationPositionParser: "0x2226d7687109d6b6a0882f8eef2b4a4c90dc677e",
-        ThreeOneThirdAdapter: "0x3f37a346394e81c30c11cea6de53e3005b0c5159",
+        ThreeOneThirdAdapter: "0x908c0c476c0dc8f7b6d6b6aa34f0349a714380b8",
         UintListRegistry: "0x6ffd6fc068e7b365af18da4fdc39d3289159407b",
         UniswapV2ExchangeAdapter: "0x8c36435a653041bfd65515cc82502663c1ce6f0e",
         UniswapV2LiquidityAdapter: "0xf78130afeda6d9df3394b34d36239aec7fae48d9",

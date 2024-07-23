@@ -1,7 +1,11 @@
-import { defineConfig } from "vitest/config";
+import aliases from "vite-tsconfig-paths";
+import { defineProject } from "vitest/config";
 
-export default defineConfig({
+export default defineProject({
+  envDir: "../../",
+  plugins: [aliases({ projects: ["./tsconfig.json"] })],
   test: {
-    testTimeout: 30000, // 30s
+    include: ["test/**/*.test.ts"],
+    testTimeout: 200_000,
   },
 });
