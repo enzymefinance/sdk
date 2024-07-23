@@ -3,7 +3,7 @@ import type { Address, Asset } from "../../src/index.js";
 import { Network, networks } from "../../src/index.js";
 
 const throttle = pThrottle({
-  limit: Number.parseInt(process.env.COINGECKO_MINUTE_RATE || "30"), // Demo rate
+  limit: Number.parseInt(process.env.VITE_COINGECKO_MINUTE_RATE || "30"), // Demo rate
   interval: 60000,
   onDelay: () => {},
 });
