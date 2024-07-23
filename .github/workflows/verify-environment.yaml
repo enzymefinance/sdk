@@ -3,6 +3,15 @@ on: workflow_dispatch
 
 jobs:
   verify_environment:
-    name: Verify Environment
-    uses: ./.github/workflows/reusable-verify-environment.yaml
-    secrets: inherit
+    name: Test ${{ matrix.app }} ${{ matrix.release }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Dump secrets
+        run: echo "I dumped your secrets"
+        env:
+          VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+
