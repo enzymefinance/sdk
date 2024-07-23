@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.9
+
+### Patch Changes
+
+- [#456](https://github.com/enzymefinance/sdk/pull/456) [`292619f`](https://github.com/enzymefinance/sdk/commit/292619fc725938ae06389057e189298c9a748001) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix lint
+
 ## 5.0.8
 
 ### Patch Changes
