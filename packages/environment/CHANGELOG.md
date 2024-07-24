@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.8
+
+### Patch Changes
+
+- [#453](https://github.com/enzymefinance/sdk/pull/453) [`f6b3673`](https://github.com/enzymefinance/sdk/commit/f6b36732cc3d7f1bff593da1dfe544b358c8087e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update three one third adapter
+
 ## 5.0.7
 
 ### Patch Changes

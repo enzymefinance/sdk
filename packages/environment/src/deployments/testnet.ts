@@ -144,7 +144,7 @@ export default defineDeployment<Deployment.TESTNET>({
         TermFinanceV1LendingPositionParser: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionLib: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionParser: "0x0000000000000000000000000000000000000000",
-        ThreeOneThirdAdapter: "0x8d865fad9caf2e777610876951b8cbd76a1573a1",
+        ThreeOneThirdAdapter: "0x1112a89180fc465b648866b98f0e54237b07eaee",
         UintListRegistry: "0xe296ea33a38108580dcae364239fb0c50c53591b",
         UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
