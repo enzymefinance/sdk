@@ -2,6 +2,7 @@ import assets from "../assets/polygon.js";
 import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, Kind, Status, defineDeployment } from "../releases.js";
+import { subgraphs } from "../subgraphs.js";
 import polygonDeployment from "./polygon.js";
 
 export default defineDeployment<Deployment.TESTNET>({
@@ -171,27 +172,5 @@ export default defineDeployment<Deployment.TESTNET>({
     },
   },
   slug: Deployment.TESTNET,
-  subgraphs: {
-    assets: {
-      slug: "asset-universe-testnet",
-      id: "H7KYtV4eVas2Py83UE1596DPkQNRRNGiPqSbN1AbKMaX",
-    },
-    balances: {
-      slug: "vault-balances-testnet",
-      id: "86aJM6X5DB5vrCVapuFWufVKPBtVYmxygzxsLctRhc3r",
-    },
-    core: {
-      slug: "enzyme-core-testnet",
-      id: "98iFcdDw1g5akWxbTFqcs2TsUaJhVDNxPTgH8P2WBUao",
-      devVersion: "redemption-queue-v10",
-    },
-    shares: {
-      slug: "vault-shares-testnet",
-      id: "EPZTMtyWpwckXczAry12HddRpssBjKjtrhWB1ZGK9bLt",
-    },
-    vaults: {
-      slug: "vault-lineage-testnet",
-      id: "BPhRz8C6rUcb3PXWpWFYCH2zjudLg76HjAeDtcNEWCNV",
-    },
-  },
+  subgraphs: subgraphs.testnet,
 });

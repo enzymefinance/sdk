@@ -2,6 +2,7 @@ import assets from "../assets/polygon.js";
 import { Version } from "../contracts.js";
 import { Network } from "../networks.js";
 import { Deployment, Kind, Status, defineDeployment } from "../releases.js";
+import { subgraphs } from "../subgraphs.js";
 
 export default defineDeployment<Deployment.POLYGON>({
   address: "0x2e25271297537b8124b8f883a92ffd95c4032733",
@@ -223,15 +224,5 @@ export default defineDeployment<Deployment.POLYGON>({
     },
   },
   slug: Deployment.POLYGON,
-  subgraphs: {
-    assets: { slug: "asset-universe-polygon", id: "6gfWidQ9TBcHLyUPuL343dw8LpvXW7sALPPHpcZi7SKz" },
-    balances: { slug: "vault-balances-polygon", id: "tLbAAASbNgTZuqkVdPMs8RJBXLs9WZS7758t1maT86C" },
-    core: {
-      slug: "enzyme-core-polygon",
-      id: "GCAHDyqvZBLMwqdb9U7AqWAN4t4TSwR3aXMHDoUUFuRV",
-      devVersion: "version/latest",
-    },
-    shares: { slug: "vault-shares-polygon", id: "7Tahv9dmeKKcF2SUeHU3ZN4X52y8KGwPo5UaFidJb1hr" },
-    vaults: { slug: "vault-lineage-polygon", id: "hQMwVerKMpt8ChLU33jhZ4GLmcP8q2fBhJzw4JRFq4q" },
-  },
+  subgraphs: subgraphs.polygon,
 });
