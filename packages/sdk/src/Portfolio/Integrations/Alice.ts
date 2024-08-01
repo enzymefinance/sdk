@@ -54,7 +54,7 @@ export function placeOrderEncode(args: PlaceOrderArgs): Hex {
 }
 
 export function placeOrderDecode(encoded: Hex): PlaceOrderArgs {
-  const [instrumentId, isBuyOrder,  quantityToSell, limitAmountToGet] = decodeAbiParameters(placeOrderEncoding, encoded);
+  const [instrumentId, isBuyOrder, quantityToSell, limitAmountToGet] = decodeAbiParameters(placeOrderEncoding, encoded);
 
   return {
     instrumentId,
