@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.23
+
+### Patch Changes
+
+- [#464](https://github.com/enzymefinance/sdk/pull/464) [`d5b7be7`](https://github.com/enzymefinance/sdk/commit/d5b7be7e3666a108ad4fc53b04f91de122f2e638) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix alice arg ordering
+
 ## 0.8.22
 
 ### Patch Changes
