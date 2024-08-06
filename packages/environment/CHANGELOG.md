@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.11
+
+### Patch Changes
+
+- [#466](https://github.com/enzymefinance/sdk/pull/466) [`8c1b149`](https://github.com/enzymefinance/sdk/commit/8c1b1498452c6507b4639420fd90f14524285d39) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add dinero to env
+
 ## 5.0.10
 
 ### Patch Changes
