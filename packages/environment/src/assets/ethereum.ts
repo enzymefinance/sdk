@@ -4922,4 +4922,12 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ZUN",
     type: AssetType.PRIMITIVE,
   },
+  {
+    decimals: 18,
+    id: "0x6df0e641fc9847c0c6fde39be6253045440c14d3",
+    name: "Dinero Governance Token",
+    releases: [],
+    symbol: "DINERO",
+    type: AssetType.PRIMITIVE,
+  },
 ]);
