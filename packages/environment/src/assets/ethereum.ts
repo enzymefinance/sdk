@@ -777,6 +777,14 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
+    id: "0x30d20208d987713f46dfd34ef128bb16c404d10f",
+    name: "Stader",
+    releases: [sulu],
+    symbol: "SD",
+    type: AssetType.PRIMITIVE,
+  },
+  {
+    decimals: 18,
     id: "0x3155ba85d5f96b2d030a4966af206230e46849cb",
     name: "THORChain ETH.RUNE",
     releases: [],
