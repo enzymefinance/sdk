@@ -13,6 +13,7 @@ import {
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Constants, Rates, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -265,17 +266,13 @@ export function redeemEncode(args: RedeemArgs): Hex {
   }
 }
 
-export function isValidRedeemType(value: number): value is RedeemType {
-  return Object.values(RedeemType).includes(value as RedeemType);
-}
-
 export function redeemDecode(encoded: Hex): RedeemArgs {
   const [pool, outgoingLpTokenAmount, useUnderlyings, redeemType, incomingAssetsData] = decodeAbiParameters(
     redeemEncoding,
     encoded,
   );
 
-  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
+  assertEnumType(RedeemType, redeemType);
 
   switch (redeemType) {
     case RedeemType.Standard: {
@@ -527,7 +524,7 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
     decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
 
-  Assertion.invariant(isValidRedeemType(redeemType), `Invalid redeem type ${redeemType}`);
+  assertEnumType(RedeemType, redeemType);
 
   switch (redeemType) {
     case RedeemType.Standard: {
