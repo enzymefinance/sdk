@@ -159,6 +159,8 @@ export default defineDeployment<Deployment.ETHEREUM>({
         GenericAdapter: "0x0000000000000000000000000000000000000000",
         GlobalConfigLib: "0x6682e70860d48a039f52daccda917250349a3fb3",
         GlobalConfigProxy: "0x5611df74a77efd198de5fc7f83a482dcfe0c7a7a",
+        GMXV2LeverageTradingPositionLib: "0x0000000000000000000000000000000000000000",
+        GMXV2LeverageTradingPositionParser: "0x0000000000000000000000000000000000000000",
         IdleAdapter: "0x474c8d4a0e53b7235c6f8fc27c9b6406a32dd0b1",
         IdlePriceFeed: "0x8ddf1f3f0c13e099378b2b6f73cdb8f61526ed6f",
         IntegrationManager: "0x31329024f1a3e4a4b3336e0b1dfa74cc3fec633e",
