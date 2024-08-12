@@ -228,3 +228,132 @@ export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
     autoCancel,
   };
 }
+
+//--------------------------------------------------------------------------------------------
+// CANCEL ORDER
+//--------------------------------------------------------------------------------------------
+
+export const cancelOrder = ExternalPositionManager.makeUse(Action.CancelOrder, cancelOrderEncode);
+
+const cancelOrderEncoding = [
+  {
+    name: "key",
+    type: "bytes32",
+  },
+  {
+    name: "exchangeRouter",
+    type: "address",
+  },
+] as const;
+
+export type CancelOrderArgs = {
+  key: Hex;
+  exchangeRouter: Address;
+};
+
+export function cancelOrderEncode(args: CancelOrderArgs): Hex {
+  return encodeAbiParameters(cancelOrderEncoding, [args.key, args.exchangeRouter]);
+}
+
+export function cancelOrderDecode(encoded: Hex): CancelOrderArgs {
+  const [key, exchangeRouter] = decodeAbiParameters(cancelOrderEncoding, encoded);
+
+  return {
+    key,
+    exchangeRouter,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM FUNDING FEES
+//--------------------------------------------------------------------------------------------
+
+export const claimFundingFees = ExternalPositionManager.makeUse(Action.ClaimFundingFees, claimFundingFeesEncode);
+
+const claimFundingFeesEncoding = [
+  {
+    name: "markets",
+    type: "address[]",
+  },
+  {
+    name: "tokens",
+    type: "address[]",
+  },
+  {
+    name: "exchangeRouter",
+    type: "address",
+  },
+] as const;
+
+export type ClaimFundingFeesArgs = {
+  markets: ReadonlyArray<Address>;
+  tokens: ReadonlyArray<Address>;
+  exchangeRouter: Address;
+};
+
+export function claimFundingFeesEncode(args: ClaimFundingFeesArgs): Hex {
+  return encodeAbiParameters(claimFundingFeesEncoding, [args.markets, args.tokens, args.exchangeRouter]);
+}
+
+export function claimFundingFeesDecode(encoded: Hex): ClaimFundingFeesArgs {
+  const [markets, tokens, exchangeRouter] = decodeAbiParameters(claimFundingFeesEncoding, encoded);
+
+  return {
+    markets,
+    tokens,
+    exchangeRouter,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM COLLATERAL
+//--------------------------------------------------------------------------------------------
+
+export const claimCollateral = ExternalPositionManager.makeUse(Action.ClaimCollateral, claimCollateralEncode);
+
+const claimCollateralEncoding = [
+  {
+    name: "markets",
+    type: "address[]",
+  },
+  {
+    name: "tokens",
+    type: "address[]",
+  },
+  {
+    name: "timeKeys",
+    type: "uint256[]",
+  },
+  {
+    name: "exchangeRouter",
+    type: "address",
+  },
+] as const;
+
+export type ClaimCollateralArgs = {
+  markets: ReadonlyArray<Address>;
+  tokens: ReadonlyArray<Address>;
+  timeKeys: ReadonlyArray<bigint>;
+  exchangeRouter: Address;
+};
+
+export function claimCollateralEncode(args: ClaimCollateralArgs): Hex {
+  return encodeAbiParameters(claimCollateralEncoding, [args.markets, args.tokens, args.timeKeys, args.exchangeRouter]);
+}
+
+export function claimCollateralDecode(encoded: Hex): ClaimCollateralArgs {
+  const [markets, tokens, timeKeys, exchangeRouter] = decodeAbiParameters(claimCollateralEncoding, encoded);
+
+  return {
+    markets,
+    tokens,
+    timeKeys,
+    exchangeRouter,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// SWEEP
+//--------------------------------------------------------------------------------------------
+
+export const sweep = ExternalPositionManager.makeUse(Action.Sweep);
