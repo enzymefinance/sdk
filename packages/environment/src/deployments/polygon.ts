@@ -146,6 +146,8 @@ export default defineDeployment<Deployment.POLYGON>({
         GenericAdapter: "0x0000000000000000000000000000000000000000",
         GlobalConfigLib: "0xcbbd50255cf49797badb28ce625a4ea217c67a64",
         GlobalConfigProxy: "0x905448cb27f51d9a663fb18d57d76c49d19be837",
+        GMXV2LeverageTradingPositionLib: "0x0000000000000000000000000000000000000000",
+        GMXV2LeverageTradingPositionParser: "0x0000000000000000000000000000000000000000",
         IdleAdapter: "0x5d2135fa26a6202f2d39fdba61bcf53bb04b8434",
         IdlePriceFeed: "0x99a8fea8d89efb5dcbd201688d6d62ae78740a58",
         IntegrationManager: "0x92fcde09790671cf085864182b9670c77da0884b",
