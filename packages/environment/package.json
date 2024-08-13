@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
-    "dotenv-cli": "^7.4.2",
     "p-throttle": "^6.1.0",
     "viem": "^2.7.16",
     "vitest": "^0.34.0",
@@ -36,7 +35,11 @@
   },
   "effect": {
     "generateExports": {
-      "include": ["*.ts", "assets/*.ts", "deployments/*.ts"]
+      "include": [
+        "*.ts",
+        "assets/*.ts",
+        "deployments/*.ts"
+      ]
     }
   }
 }
