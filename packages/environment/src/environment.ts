@@ -168,6 +168,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
         grt: this.getAssetAs(this.deployment.namedTokens.grt, AssetType.PRIMITIVE),
         mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),
         nativeTokenWrapper: this.getAssetAs(this.network.currency.wrapper, AssetType.PRIMITIVE),
+        usdt: this.getAssetAs(this.deployment.namedTokens.usdt, AssetType.PRIMITIVE),
         weth: this.getAssetAs(this.deployment.namedTokens.weth, AssetType.PRIMITIVE),
       };
 

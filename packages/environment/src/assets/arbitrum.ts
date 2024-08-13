@@ -47,6 +47,14 @@ export default defineAssetList(Network.ARBITRUM, [
   },
   {
     decimals: 18,
+    id: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    name: "Tether USD",
+    releases: [],
+    symbol: "USDT",
+    type: AssetType.PRIMITIVE,
+  },
+  {
+    decimals: 18,
     id: "0x1debd73e752beaf79865fd6446b0c970eae7732f",
     name: "Coinbase Wrapped Staked ETH",
     releases: [sulu],
