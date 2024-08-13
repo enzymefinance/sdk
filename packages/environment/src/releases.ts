@@ -145,7 +145,12 @@ export type DeploymentNamedTokens<TDeployment extends Deployment> = TDeployment 
         : never;
 
 export interface DeploymentNamedTokensAssetsArbitrum {
+  readonly bal: PrimitiveAsset;
+  readonly comp: PrimitiveAsset;
+  readonly crv: PrimitiveAsset;
+  readonly cvx: PrimitiveAsset;
   readonly dai: PrimitiveAsset;
+  readonly grt: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
   readonly nativeTokenWrapper: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
