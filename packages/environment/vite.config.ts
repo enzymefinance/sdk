@@ -1,11 +1,6 @@
-import aliases from "vite-tsconfig-paths";
-import { defineProject } from "vitest/config";
+import { type UserConfigExport, mergeConfig } from "vitest/config";
+import shared from "../../vitest.shared.js";
 
-export default defineProject({
-  envDir: "../../",
-  plugins: [aliases({ projects: ["./tsconfig.json"] })],
-  test: {
-    include: ["test/**/*.test.ts"],
-    testTimeout: 200_000,
-  },
-});
+const config: UserConfigExport = {};
+
+export default mergeConfig(shared, config);
