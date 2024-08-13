@@ -56,6 +56,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
   },
   label: "Arbitrum",
   namedTokens: {
+    dai: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
     mln: "0x8f5c1a99b1df736ad685006cb6adca7b7ae4b514",
     weth: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
   },

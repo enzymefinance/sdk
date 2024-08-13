@@ -80,6 +80,7 @@ export enum Kind {
 }
 
 export interface DeploymentNamedTokensArbitrum {
+  readonly dai: Address;
   readonly mln: Address;
   readonly weth: Address;
 }
@@ -139,7 +140,9 @@ export type DeploymentNamedTokens<TDeployment extends Deployment> = TDeployment 
         : never;
 
 export interface DeploymentNamedTokensAssetsArbitrum {
+  readonly dai: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
+  readonly nativeTokenWrapper: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
 }
 

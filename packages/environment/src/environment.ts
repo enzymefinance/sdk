@@ -160,6 +160,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
 
     if (Environment.isDeploymentArbitrum(this)) {
       const namedTokens = {
+        dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
         mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),
         nativeTokenWrapper: this.getAssetAs(this.network.currency.wrapper, AssetType.PRIMITIVE),
         weth: this.getAssetAs(this.deployment.namedTokens.weth, AssetType.PRIMITIVE),
