@@ -898,7 +898,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
     name: "ether.fi ETH",
-    releases: [],
+    releases: [sulu],
     symbol: "eETH",
     type: AssetType.PRIMITIVE,
   },
@@ -4920,6 +4920,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Zunami Token",
     releases: [],
     symbol: "ZUN",
+    type: AssetType.PRIMITIVE,
+  },
+  {
+    decimals: 18,
+    id: "0x6df0e641fc9847c0c6fde39be6253045440c14d3",
+    name: "Dinero Governance Token",
+    releases: [],
+    symbol: "DINERO",
     type: AssetType.PRIMITIVE,
   },
 ]);
