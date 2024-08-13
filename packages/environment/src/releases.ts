@@ -80,7 +80,12 @@ export enum Kind {
 }
 
 export interface DeploymentNamedTokensArbitrum {
+  readonly bal: Address;
+  readonly comp: Address;
+  readonly crv: Address;
+  readonly cvx: Address;
   readonly dai: Address;
+  readonly grt: Address;
   readonly mln: Address;
   readonly weth: Address;
 }
