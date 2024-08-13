@@ -17,9 +17,6 @@ const config: UserConfig = {
   },
   test: {
     testTimeout: 200_000,
-    sequence: {
-      concurrent: true,
-    },
     include: ["test/**/*.test.ts"],
     alias: {
       ...alias("abis"),
