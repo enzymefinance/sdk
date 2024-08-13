@@ -139,31 +139,7 @@ export type DeploymentNamedTokens<TDeployment extends Deployment> = TDeployment 
         : never;
 
 export interface DeploymentNamedTokensAssetsArbitrum {
-  readonly aave: PrimitiveAsset;
-  readonly bal: PrimitiveAsset;
-  readonly ceth: CompoundV2Asset;
-  readonly comp: PrimitiveAsset;
-  readonly crv: PrimitiveAsset;
-  readonly cvx: PrimitiveAsset;
-  readonly dai: PrimitiveAsset;
-  readonly diva: PrimitiveAsset;
-  readonly grt: PrimitiveAsset;
-  readonly idle: PrimitiveAsset;
-  readonly lusd: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
-  readonly mpl: PrimitiveAsset;
-  readonly nativeTokenWrapper: PrimitiveAsset;
-  readonly paxg: PrimitiveAsset;
-  readonly ptkn_mln: PrimitiveAsset;
-  readonly sthoundeth: PrimitiveAsset;
-  readonly stkaave: PrimitiveAsset;
-  readonly steth: PrimitiveAsset;
-  readonly stusd: ERC4626Asset;
-  readonly sweth: PrimitiveAsset;
-  readonly uni: PrimitiveAsset;
-  readonly usda: PrimitiveAsset;
-  readonly usdc: PrimitiveAsset;
-  readonly usdt: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
 }
 

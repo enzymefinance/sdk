@@ -4,7 +4,7 @@ import { Network } from "../networks.js";
 import { Deployment, Kind, Status, defineDeployment } from "../releases.js";
 
 export default defineDeployment<Deployment.ARBITRUM>({
-  address: "0x0000000000000000000000000000000000000000",
+  address: "0x8da28441a4c594fd2fac72726c1412d8cf9e4a19",
   assets,
   externalContracts: {
     aaveV2IncentivesController: "0x0000000000000000000000000000000000000000",
