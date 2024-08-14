@@ -1,4 +1,12 @@
-import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, maxUint256 } from "viem";
+import {
+  type Address,
+  type Client,
+  type Hex,
+  decodeAbiParameters,
+  encodeAbiParameters,
+  keccak256,
+  maxUint256,
+} from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import { assertEnumType } from "../../Utils/assertion.js";
@@ -3073,6 +3081,23 @@ export function getMarkets(
   });
 }
 
+export function getMarket(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    market: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getMarket",
+    address: args.reader,
+    args: [args.dataStore, args.market],
+  });
+}
+
 export function getOraclePrice(
   client: Client,
   args: Viem.ContractCallParameters<{
@@ -3141,58 +3166,127 @@ export function getOraclePrice(
   });
 }
 
-export async function getAllMarketsInfo(
+const dataStoreAbi = [
+  {
+    type: "function",
+    name: "getBytes32ValuesAt",
+    inputs: [
+      {
+        name: "_setKey",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+      {
+        name: "_start",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_end",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "values_",
+        type: "bytes32[]",
+        internalType: "bytes32[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getUint",
+    inputs: [
+      {
+        name: "_key",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
+    outputs: [
+      {
+        name: "value_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+] as const;
+
+export function encodeKey(values: ReadonlyArray<string>) {
+  return keccak256(
+    encodeAbiParameters(
+      values.map(() => ({ type: "string" })),
+      [...values],
+    ),
+  );
+}
+
+export async function getAccountPositionInfoList(
   client: Client,
   args: Viem.ContractCallParameters<{
     reader: Address;
     dataStore: Address;
+    account: Address;
     chainlinkOracle: Address;
+    referralStorage: Address;
+    uiFeeReceiver: Address;
+    start: bigint;
+    end: bigint;
   }>,
 ) {
-  const markets = await getMarkets(client, {
-    ...args,
-    start: 0n,
-    end: maxUint256,
-  });
+  const [positionsKeys, positions] = await Promise.all([
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: dataStoreAbi,
+      functionName: "getBytes32ValuesAt",
+      address: args.dataStore,
+      args: [encodeKey(["ACCOUNT_POSITION_LIST", args.account]), args.start, args.end],
+    }),
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: readerAbi,
+      functionName: "getAccountPositions",
+      address: args.reader,
+      args: [args.dataStore, args.account, args.start, args.end],
+    }),
+  ]);
+
+  const marketInfos = await Promise.all(
+    positions.map((position) =>
+      getMarket(client, {
+        market: position.addresses.market,
+        reader: args.reader,
+        dataStore: args.dataStore,
+      }),
+    ),
+  );
 
   const marketPrices = await Promise.all(
-    markets.map(async (market) => {
+    marketInfos.map(async (marketInfo) => {
       const [indexTokenPrice, longTokenPrice, shortTokenPrice] = await Promise.all([
-        getOraclePrice(client, {
-          ...args,
-          token: market.indexToken,
-        }),
-        getOraclePrice(client, {
-          ...args,
-          token: market.longToken,
-        }),
-        getOraclePrice(client, {
-          ...args,
-          token: market.shortToken,
-        }),
+        getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.indexToken }),
+        getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.longToken }),
+        getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.shortToken }),
       ]);
 
       return {
-        indexTokenPrice: {
-          min: indexTokenPrice.min,
-          max: indexTokenPrice.max,
-        },
-        longTokenPrice: {
-          min: longTokenPrice.min,
-          max: longTokenPrice.max,
-        },
-        shortTokenPrice: {
-          min: shortTokenPrice.min,
-          max: shortTokenPrice.max,
-        },
+        indexTokenPrice,
+        longTokenPrice,
+        shortTokenPrice,
       };
     }),
   );
 
-  return getMarketInfoList(client, {
-    ...args,
-    marketPricesList: marketPrices,
-    start: 0n,
-    end: maxUint256,
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getAccountPositionInfoList",
+    address: args.reader,
+    args: [args.dataStore, args.referralStorage, positionsKeys, marketPrices, args.uiFeeReceiver],
   });
 }
