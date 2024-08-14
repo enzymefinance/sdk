@@ -14,8 +14,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "typecheck": "tsc --noEmit",
-    "test": "vitest",
     "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
     "build-prepare": "build-utils prepare-v2",
     "build-esm": "tsc -b tsconfig.build.json",

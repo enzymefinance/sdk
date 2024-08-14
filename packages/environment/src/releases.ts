@@ -11,18 +11,21 @@ export enum Status {
 }
 
 export enum Deployment {
+  ARBITRUM = "arbitrum",
   ETHEREUM = "ethereum",
   POLYGON = "polygon",
   TESTNET = "testnet",
 }
 
-export type DeploymentNetwork<TDeployment extends Deployment> = TDeployment extends Deployment.ETHEREUM
-  ? Network.ETHEREUM
-  : TDeployment extends Deployment.POLYGON
-    ? Network.POLYGON
-    : TDeployment extends Deployment.TESTNET
+export type DeploymentNetwork<TDeployment extends Deployment> = TDeployment extends Deployment.ARBITRUM
+  ? Network.ARBITRUM
+  : TDeployment extends Deployment.ETHEREUM
+    ? Network.ETHEREUM
+    : TDeployment extends Deployment.POLYGON
       ? Network.POLYGON
-      : never;
+      : TDeployment extends Deployment.TESTNET
+        ? Network.POLYGON
+        : never;
 
 export function isDeployment(value: any): value is Deployment {
   return typeof value === "string" && Object.values<any>(Deployment).includes(value);
@@ -76,6 +79,18 @@ export enum Kind {
   LIVE = "live",
 }
 
+export interface DeploymentNamedTokensArbitrum {
+  readonly bal: Address;
+  readonly comp: Address;
+  readonly crv: Address;
+  readonly cvx: Address;
+  readonly dai: Address;
+  readonly grt: Address;
+  readonly mln: Address;
+  readonly usdt: Address;
+  readonly weth: Address;
+}
+
 export interface DeploymentNamedTokensEthereum {
   readonly aave: Address;
   readonly bal: Address;
@@ -120,13 +135,28 @@ export interface DeploymentNamedTokensPolygon {
   readonly weth: Address;
 }
 
-export type DeploymentNamedTokens<TDeployment extends Deployment> = TDeployment extends Deployment.ETHEREUM
-  ? DeploymentNamedTokensEthereum
-  : TDeployment extends Deployment.POLYGON
-    ? DeploymentNamedTokensPolygon
-    : TDeployment extends Deployment.TESTNET
+export type DeploymentNamedTokens<TDeployment extends Deployment> = TDeployment extends Deployment.ARBITRUM
+  ? DeploymentNamedTokensArbitrum
+  : TDeployment extends Deployment.ETHEREUM
+    ? DeploymentNamedTokensEthereum
+    : TDeployment extends Deployment.POLYGON
       ? DeploymentNamedTokensPolygon
-      : never;
+      : TDeployment extends Deployment.TESTNET
+        ? DeploymentNamedTokensPolygon
+        : never;
+
+export interface DeploymentNamedTokensAssetsArbitrum {
+  readonly bal: PrimitiveAsset;
+  readonly comp: PrimitiveAsset;
+  readonly crv: PrimitiveAsset;
+  readonly cvx: PrimitiveAsset;
+  readonly dai: PrimitiveAsset;
+  readonly grt: PrimitiveAsset;
+  readonly mln: PrimitiveAsset;
+  readonly nativeTokenWrapper: PrimitiveAsset;
+  readonly usdt: PrimitiveAsset;
+  readonly weth: PrimitiveAsset;
+}
 
 export interface DeploymentNamedTokensAssetsEthereum {
   readonly aave: PrimitiveAsset;
@@ -174,13 +204,15 @@ export interface DeploymentNamedTokensAssetsPolygon {
   readonly weth: PrimitiveAsset;
 }
 
-export type DeploymentNamedAssetsTokens<TDeployment extends Deployment> = TDeployment extends Deployment.ETHEREUM
-  ? DeploymentNamedTokensAssetsEthereum
-  : TDeployment extends Deployment.POLYGON
-    ? DeploymentNamedTokensAssetsPolygon
-    : TDeployment extends Deployment.TESTNET
+export type DeploymentNamedAssetsTokens<TDeployment extends Deployment> = TDeployment extends Deployment.ARBITRUM
+  ? DeploymentNamedTokensAssetsArbitrum
+  : TDeployment extends Deployment.ETHEREUM
+    ? DeploymentNamedTokensAssetsEthereum
+    : TDeployment extends Deployment.POLYGON
       ? DeploymentNamedTokensAssetsPolygon
-      : never;
+      : TDeployment extends Deployment.TESTNET
+        ? DeploymentNamedTokensAssetsPolygon
+        : never;
 
 export interface SubgraphMapping {
   readonly core: { slug: string; id: string; devVersion: string };
@@ -301,6 +333,9 @@ export type Release = {
 }[Deployment];
 
 export const releases = {
+  [Deployment.ARBITRUM]: {
+    [Version.SULU]: `${Deployment.ARBITRUM}.${Version.SULU}`,
+  },
   [Deployment.ETHEREUM]: {
     [Version.SULU]: `${Deployment.ETHEREUM}.${Version.SULU}`,
     [Version.ENCORE]: `${Deployment.ETHEREUM}.${Version.ENCORE}`,
