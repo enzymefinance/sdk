@@ -1,13 +1,12 @@
 import { IGMXV2LeverageTradingPositionLib } from "@enzymefinance/abis";
 import {
-  AbiParameter,
   type Address,
   type Client,
   type Hex,
   decodeAbiParameters,
   encodeAbiParameters,
+  isAddressEqual,
   keccak256,
-  maxUint256,
 } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
@@ -3421,7 +3420,7 @@ export async function getExternalPositionClaimableCollateral(
       const claimableFactor =
         claimableFactorForTime > claimableFactorForAccount ? claimableFactorForTime : claimableFactorForAccount;
 
-      const adjustedClaimableAmount = (claimableCollateral * claimableFactor) / 10n ** 30n;
+      const adjustedClaimableAmount = (claimableCollateral * claimableFactor) / 10n ** 30n; // 30 is the float precision in the GMX
 
       const amountToBeClaimed = adjustedClaimableAmount - claimedCollateral;
 
@@ -3433,4 +3432,84 @@ export async function getExternalPositionClaimableCollateral(
       };
     }),
   );
+}
+
+export async function getExternalPositionFundingFees(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    externalPosition: Address;
+  }>,
+) {
+  const trackedMarkets = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IGMXV2LeverageTradingPositionLib,
+    functionName: "getTrackedMarkets",
+    address: args.externalPosition,
+  });
+
+  const marketInfos = await Promise.all(
+    trackedMarkets.map((market) =>
+      getMarket(client, {
+        market,
+        reader: args.reader,
+        dataStore: args.dataStore,
+      }),
+    ),
+  );
+
+  const fundingFees = await Promise.all(
+    marketInfos.map(async (marketInfo) => {
+      const [longTokenFundingFees, shortTokenFundingFees] = await Promise.all([
+        readContract(client, {
+          ...Viem.extractBlockParameters(args),
+          abi: dataStoreAbi,
+          functionName: "getUint",
+          address: args.dataStore,
+          args: [
+            keccak256(
+              encodeAbiParameters(
+                [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "address" }],
+                ["CLAIMABLE_FUNDING_AMOUNT", marketInfo.marketToken, marketInfo.longToken, args.externalPosition],
+              ),
+            ),
+          ],
+        }),
+        isAddressEqual(marketInfo.longToken, marketInfo.shortToken)
+          ? undefined
+          : readContract(client, {
+              ...Viem.extractBlockParameters(args),
+              abi: dataStoreAbi,
+              functionName: "getUint",
+              address: args.dataStore,
+              args: [
+                keccak256(
+                  encodeAbiParameters(
+                    [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "address" }],
+                    ["CLAIMABLE_FUNDING_AMOUNT", marketInfo.marketToken, marketInfo.longToken, args.externalPosition],
+                  ),
+                ),
+              ],
+            }),
+      ]);
+
+      return [
+        ...(longTokenFundingFees > 0
+          ? [{ market: marketInfo.marketToken, token: marketInfo.longToken, amountToBeClaimed: longTokenFundingFees }]
+          : []),
+        ...(shortTokenFundingFees !== undefined && shortTokenFundingFees > 0
+          ? [
+              {
+                market: marketInfo.marketToken,
+                token: marketInfo.shortToken,
+                amountToBeClaimed: shortTokenFundingFees,
+              },
+            ]
+          : []),
+      ];
+    }),
+  );
+
+  return fundingFees.flat();
 }
