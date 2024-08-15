@@ -1,4 +1,6 @@
+import { IGMXV2LeverageTradingPositionLib } from "@enzymefinance/abis";
 import {
+  AbiParameter,
   type Address,
   type Client,
   type Hex,
@@ -3217,15 +3219,6 @@ const dataStoreAbi = [
   },
 ] as const;
 
-export function encodeKey(values: ReadonlyArray<string>) {
-  return keccak256(
-    encodeAbiParameters(
-      values.map(() => ({ type: "string" })),
-      [...values],
-    ),
-  );
-}
-
 export async function getAccountPositionInfoList(
   client: Client,
   args: Viem.ContractCallParameters<{
@@ -3245,7 +3238,13 @@ export async function getAccountPositionInfoList(
       abi: dataStoreAbi,
       functionName: "getBytes32ValuesAt",
       address: args.dataStore,
-      args: [encodeKey(["ACCOUNT_POSITION_LIST", args.account]), args.start, args.end],
+      args: [
+        keccak256(
+          encodeAbiParameters([{ type: "string" }, { type: "address" }], ["ACCOUNT_POSITION_LIST", args.account]),
+        ),
+        args.start,
+        args.end,
+      ],
     }),
     readContract(client, {
       ...Viem.extractBlockParameters(args),
@@ -3289,4 +3288,149 @@ export async function getAccountPositionInfoList(
     address: args.reader,
     args: [args.dataStore, args.referralStorage, positionsKeys, marketPrices, args.uiFeeReceiver],
   });
+}
+
+export function getAccountOrders(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    account: Address;
+    start: bigint;
+    end: bigint;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getAccountOrders",
+    address: args.reader,
+    args: [args.dataStore, args.account, args.start, args.end],
+  });
+}
+
+export async function getExternalPositionClaimableCollateral(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    positionKey: string;
+    chainlinkOracle: Address;
+    externalPosition: Address;
+  }>,
+) {
+  const claimableCollateralKeys = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IGMXV2LeverageTradingPositionLib,
+    functionName: "getClaimableCollateralKeys",
+    address: args.externalPosition,
+  });
+
+  const claimableCollateralInfos = await Promise.all(
+    claimableCollateralKeys.map((claimableCollateralKey) =>
+      readContract(client, {
+        ...Viem.extractBlockParameters(args),
+        abi: IGMXV2LeverageTradingPositionLib,
+        functionName: "getClaimableCollateralKeyToClaimableCollateralInfo",
+        address: args.externalPosition,
+        args: [claimableCollateralKey],
+      }),
+    ),
+  );
+
+  return Promise.all(
+    claimableCollateralInfos.map(async ({ market, token, timeKey }) => {
+      const [claimableCollateral, claimedCollateral, claimableFactorForTime, claimableFactorForAccount] =
+        await Promise.all([
+          readContract(client, {
+            ...Viem.extractBlockParameters(args),
+            abi: dataStoreAbi,
+            functionName: "getUint",
+            address: args.dataStore,
+            args: [
+              keccak256(
+                encodeAbiParameters(
+                  [
+                    { type: "string" },
+                    { type: "address" },
+                    { type: "address" },
+                    { type: "uint256" },
+                    { type: "address" },
+                  ],
+                  ["CLAIMABLE_COLLATERAL_AMOUNT_DATA_STORE_KEY", market, token, timeKey, args.externalPosition],
+                ),
+              ),
+            ],
+          }),
+          readContract(client, {
+            ...Viem.extractBlockParameters(args),
+            abi: dataStoreAbi,
+            functionName: "getUint",
+            address: args.dataStore,
+            args: [
+              keccak256(
+                encodeAbiParameters(
+                  [
+                    { type: "string" },
+                    { type: "address" },
+                    { type: "address" },
+                    { type: "uint256" },
+                    { type: "address" },
+                  ],
+                  ["CLAIMED_COLLATERAL_AMOUNT_DATA_STORE_KEY", market, token, timeKey, args.externalPosition],
+                ),
+              ),
+            ],
+          }),
+          readContract(client, {
+            ...Viem.extractBlockParameters(args),
+            abi: dataStoreAbi,
+            functionName: "getUint",
+            address: args.dataStore,
+            args: [
+              keccak256(
+                encodeAbiParameters(
+                  [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "uint256" }],
+                  ["CLAIMABLE_COLLATERAL_FACTOR", market, token, timeKey],
+                ),
+              ),
+            ],
+          }),
+          readContract(client, {
+            ...Viem.extractBlockParameters(args),
+            abi: dataStoreAbi,
+            functionName: "getUint",
+            address: args.dataStore,
+            args: [
+              keccak256(
+                encodeAbiParameters(
+                  [
+                    { type: "string" },
+                    { type: "address" },
+                    { type: "address" },
+                    { type: "uint256" },
+                    { type: "address" },
+                  ],
+                  ["CLAIMABLE_COLLATERAL_FACTOR", market, token, timeKey, args.externalPosition],
+                ),
+              ),
+            ],
+          }),
+        ]);
+
+      const claimableFactor =
+        claimableFactorForTime > claimableFactorForAccount ? claimableFactorForTime : claimableFactorForAccount;
+
+      const adjustedClaimableAmount = (claimableCollateral * claimableFactor) / 10n ** 30n;
+
+      const amountToBeClaimed = adjustedClaimableAmount - claimedCollateral;
+
+      return {
+        market,
+        token,
+        timeKey,
+        amountToBeClaimed,
+      };
+    }),
+  );
 }
