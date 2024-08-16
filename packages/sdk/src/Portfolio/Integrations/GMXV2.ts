@@ -3273,6 +3273,7 @@ export async function getAccountPositionInfoList(
       ]);
 
       return {
+        marketInfo,
         indexTokenPrice,
         longTokenPrice,
         shortTokenPrice,
@@ -3280,13 +3281,18 @@ export async function getAccountPositionInfoList(
     }),
   );
 
-  return readContract(client, {
+  const accountPositionInfoList = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: readerAbi,
     functionName: "getAccountPositionInfoList",
     address: args.reader,
     args: [args.dataStore, args.referralStorage, positionsKeys, marketPrices, args.uiFeeReceiver],
   });
+
+  return {
+    marketPrices,
+    accountPositionInfoList,
+  };
 }
 
 export function getAccountOrders(
@@ -3313,7 +3319,6 @@ export async function getExternalPositionClaimableCollateral(
   args: Viem.ContractCallParameters<{
     reader: Address;
     dataStore: Address;
-    positionKey: string;
     chainlinkOracle: Address;
     externalPosition: Address;
   }>,
