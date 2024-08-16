@@ -3239,7 +3239,10 @@ export async function getAccountPositionInfoList(
       address: args.dataStore,
       args: [
         keccak256(
-          encodeAbiParameters([{ type: "string" }, { type: "address" }], ["ACCOUNT_POSITION_LIST", args.account]),
+          encodeAbiParameters(
+            [{ type: "bytes32" }, { type: "address" }],
+            [encodeKey("ACCOUNT_POSITION_LIST"), args.account],
+          ),
         ),
         args.start,
         args.end,
@@ -3355,13 +3358,19 @@ export async function getExternalPositionClaimableCollateral(
               keccak256(
                 encodeAbiParameters(
                   [
-                    { type: "string" },
+                    { type: "bytes32" },
                     { type: "address" },
                     { type: "address" },
                     { type: "uint256" },
                     { type: "address" },
                   ],
-                  ["CLAIMABLE_COLLATERAL_AMOUNT_DATA_STORE_KEY", market, token, timeKey, args.externalPosition],
+                  [
+                    encodeKey("CLAIMABLE_COLLATERAL_AMOUNT_DATA_STORE_KEY"),
+                    market,
+                    token,
+                    timeKey,
+                    args.externalPosition,
+                  ],
                 ),
               ),
             ],
@@ -3375,13 +3384,19 @@ export async function getExternalPositionClaimableCollateral(
               keccak256(
                 encodeAbiParameters(
                   [
-                    { type: "string" },
+                    { type: "bytes32" },
                     { type: "address" },
                     { type: "address" },
                     { type: "uint256" },
                     { type: "address" },
                   ],
-                  ["CLAIMED_COLLATERAL_AMOUNT_DATA_STORE_KEY", market, token, timeKey, args.externalPosition],
+                  [
+                    encodeKey("CLAIMED_COLLATERAL_AMOUNT_DATA_STORE_KEY"),
+                    market,
+                    token,
+                    timeKey,
+                    args.externalPosition,
+                  ],
                 ),
               ),
             ],
@@ -3394,8 +3409,8 @@ export async function getExternalPositionClaimableCollateral(
             args: [
               keccak256(
                 encodeAbiParameters(
-                  [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "uint256" }],
-                  ["CLAIMABLE_COLLATERAL_FACTOR", market, token, timeKey],
+                  [{ type: "bytes32" }, { type: "address" }, { type: "address" }, { type: "uint256" }],
+                  [encodeKey("CLAIMABLE_COLLATERAL_FACTOR"), market, token, timeKey],
                 ),
               ),
             ],
@@ -3409,13 +3424,13 @@ export async function getExternalPositionClaimableCollateral(
               keccak256(
                 encodeAbiParameters(
                   [
-                    { type: "string" },
+                    { type: "bytes32" },
                     { type: "address" },
                     { type: "address" },
                     { type: "uint256" },
                     { type: "address" },
                   ],
-                  ["CLAIMABLE_COLLATERAL_FACTOR", market, token, timeKey, args.externalPosition],
+                  [encodeKey("CLAIMABLE_COLLATERAL_FACTOR"), market, token, timeKey, args.externalPosition],
                 ),
               ),
             ],
@@ -3475,8 +3490,13 @@ export async function getExternalPositionFundingFees(
           args: [
             keccak256(
               encodeAbiParameters(
-                [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "address" }],
-                ["CLAIMABLE_FUNDING_AMOUNT", marketInfo.marketToken, marketInfo.longToken, args.externalPosition],
+                [{ type: "bytes32" }, { type: "address" }, { type: "address" }, { type: "address" }],
+                [
+                  encodeKey("CLAIMABLE_FUNDING_AMOUNT"),
+                  marketInfo.marketToken,
+                  marketInfo.longToken,
+                  args.externalPosition,
+                ],
               ),
             ),
           ],
@@ -3491,8 +3511,13 @@ export async function getExternalPositionFundingFees(
               args: [
                 keccak256(
                   encodeAbiParameters(
-                    [{ type: "string" }, { type: "address" }, { type: "address" }, { type: "address" }],
-                    ["CLAIMABLE_FUNDING_AMOUNT", marketInfo.marketToken, marketInfo.longToken, args.externalPosition],
+                    [{ type: "bytes32" }, { type: "address" }, { type: "address" }, { type: "address" }],
+                    [
+                      encodeKey("CLAIMABLE_FUNDING_AMOUNT"),
+                      marketInfo.marketToken,
+                      marketInfo.longToken,
+                      args.externalPosition,
+                    ],
                   ),
                 ),
               ],
@@ -3517,4 +3542,69 @@ export async function getExternalPositionFundingFees(
   );
 
   return fundingFees.flat();
+}
+
+export function getMinCollateralUsd(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [keccak256(encodeAbiParameters([{ type: "bytes32" }], [encodeKey("MIN_COLLATERAL_USD")]))],
+  });
+}
+
+export function getMinCollateralFactor(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+    market: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [
+      keccak256(
+        encodeAbiParameters(
+          [{ type: "bytes32" }, { type: "address" }],
+          [encodeKey("MIN_COLLATERAL_FACTOR"), args.market],
+        ),
+      ),
+    ],
+  });
+}
+
+export function getMaxPositionImpactFactorForLiquidationsKey(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+    market: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [
+      keccak256(
+        encodeAbiParameters(
+          [{ type: "bytes32" }, { type: "address" }],
+          [encodeKey("MAX_POSITION_IMPACT_FACTOR_FOR_LIQUIDATIONS"), args.market],
+        ),
+      ),
+    ],
+  });
+}
+
+export function encodeKey(key: string) {
+  return keccak256(encodeAbiParameters([{ type: "string" }], [key]));
 }
