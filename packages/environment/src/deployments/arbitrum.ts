@@ -142,6 +142,8 @@ export default defineDeployment<Deployment.ARBITRUM>({
         GenericAdapter: "0x0000000000000000000000000000000000000000",
         GlobalConfigLib: "0x211e54a2f1e83cabc9d1211a1df0759b7193201a",
         GlobalConfigProxy: "0xf9315b421904eadf2f8fce776958c147ee9bc880",
+        GMXV2LeverageTradingPositionLib: "0x0000000000000000000000000000000000000000",
+        GMXV2LeverageTradingPositionParser: "0x0000000000000000000000000000000000000000",
         IdleAdapter: "0x0000000000000000000000000000000000000000",
         IdlePriceFeed: "0x0000000000000000000000000000000000000000",
         IntegrationManager: "0x55df97aca98c2a708721f28ea1ca42a2be7ff934",
