@@ -19,6 +19,9 @@ jobs:
     name: Documentation
     uses: ./.github/workflows/reusable-docs.yaml
     secrets: inherit
+    permissions:
+      pages: write
+      id-token: write
 
   changesets:
     name: Changesets
