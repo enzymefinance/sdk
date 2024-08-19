@@ -249,7 +249,7 @@ export interface ExternalContractsMapping {
   readonly curveChildLiquidityGaugeFactory: Address;
   readonly curveRegistry: Address;
   readonly kilnStaking: Address;
-  readonly LidoWithdrawalsQueue: Address;
+  readonly lidoWithdrawalsQueue: Address;
   readonly liquityHintHelpers: Address;
   readonly liquitySortedTroves: Address;
   readonly liquityTroveManager: Address;
@@ -269,6 +269,11 @@ export interface ExternalContractsMapping {
   readonly makerMCDPotAddress: Address;
   readonly zeroExV4Exchange: Address;
   readonly pendlePtLpOracle: Address;
+  readonly gmxV2ExchangeRouter: Address;
+  readonly gmxV2ChainlinkPriceFeed: Address;
+  readonly gmxV2DataStore: Address;
+  readonly gmxV2Reader: Address;
+  readonly gmxV2ReferralStorage: Address;
 }
 
 export interface DeploymentDefinition<TDeployment extends Deployment> {
