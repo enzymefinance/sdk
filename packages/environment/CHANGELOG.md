@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.12
+
+### Patch Changes
+
+- [#443](https://github.com/enzymefinance/sdk/pull/443) [`109c44a`](https://github.com/enzymefinance/sdk/commit/109c44a6d12be88b4e080fb08af29f9fd7ce4b25) Thanks [@iherger](https://github.com/iherger)! - Add Arbitrum deployment
+
 ## 5.0.11
 
 ### Patch Changes

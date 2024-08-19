@@ -8,6 +8,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   verify:
     name: Verify
@@ -18,3 +20,18 @@ jobs:
     name: Documentation
     uses: ./.github/workflows/reusable-docs.yaml
     secrets: inherit
+
+  snapshot:
+    name: Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: verify
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Run build
+        run: pnpm build
+      - name: Create snapshot
+        run: pnpx pkg-pr-new@0.0.17 publish --pnpm --comment=off ./packages/*
