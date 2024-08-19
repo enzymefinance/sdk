@@ -3298,7 +3298,7 @@ export async function getAccountPositionInfoList(
   };
 }
 
-export function getAccountOrders(
+export async function getAccountOrders(
   client: Client,
   args: Viem.ContractCallParameters<{
     reader: Address;
@@ -3308,13 +3308,36 @@ export function getAccountOrders(
     end: bigint;
   }>,
 ) {
-  return readContract(client, {
-    ...Viem.extractBlockParameters(args),
-    abi: readerAbi,
-    functionName: "getAccountOrders",
-    address: args.reader,
-    args: [args.dataStore, args.account, args.start, args.end],
-  });
+  const [orderKeys, accountOrders] = await Promise.all([
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: dataStoreAbi,
+      functionName: "getBytes32ValuesAt",
+      address: args.dataStore,
+      args: [
+        keccak256(
+          encodeAbiParameters(
+            [{ type: "bytes32" }, { type: "address" }],
+            [encodeKey("ACCOUNT_ORDER_LIST"), args.account],
+          ),
+        ),
+        args.start,
+        args.end,
+      ],
+    }),
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: readerAbi,
+      functionName: "getAccountOrders",
+      address: args.reader,
+      args: [args.dataStore, args.account, args.start, args.end],
+    }),
+  ]);
+
+  return accountOrders.map((order, i) => ({
+    ...order,
+    orderKey: orderKeys[i],
+  }));
 }
 
 export async function getExternalPositionClaimableCollateral(
@@ -3582,7 +3605,7 @@ export function getMinCollateralFactor(
   });
 }
 
-export function getMaxPositionImpactFactorForLiquidationsKey(
+export function getMaxPositionImpactFactorForLiquidations(
   client: Client,
   args: Viem.ContractCallParameters<{
     dataStore: Address;
