@@ -1,4 +1,5 @@
 import { AssetType, type PrimitiveAsset } from "./assets.js";
+import { PriceFeedType } from "./price-feeds.js";
 import type { Address } from "./types.js";
 
 export enum Network {
@@ -104,6 +105,9 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
       releases: [],
       network: Network.ARBITRUM,
       registered: false,
+      priceFeed: {
+        type: PriceFeedType.NATIVE_TOKEN,
+      },
     },
   },
   explorer: {
@@ -128,6 +132,9 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
       releases: [],
       network: Network.ETHEREUM,
       registered: false,
+      priceFeed: {
+        type: PriceFeedType.NATIVE_TOKEN,
+      },
     },
   },
   explorer: {
@@ -152,6 +159,9 @@ const polygon: NetworkDefinition<Network.POLYGON> = {
       releases: [],
       network: Network.POLYGON,
       registered: false,
+      priceFeed: {
+        type: PriceFeedType.NATIVE_TOKEN,
+      },
     },
   },
   explorer: {
