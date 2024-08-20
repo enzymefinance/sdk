@@ -30,7 +30,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x3886ba987236181d98f2401c507fb8bea7871df2",
+      aggregrator: "0x3886ba987236181d98f2401c507fb8bea7871df2",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -54,7 +54,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      aggregrator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -117,7 +117,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      aggregrator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -131,7 +131,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      aggregrator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -162,7 +162,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      aggregrator: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
       rateAsset: RateAsset.USD,
     },
   },
@@ -176,7 +176,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      address: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      aggregrator: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
       rateAsset: RateAsset.USD,
     },
   },
