@@ -1,6 +1,8 @@
 name: Manual Verify Environment
 on: workflow_dispatch
 
+permissions: {}
+
 jobs:
   verify_environment:
     name: Verify Environment
