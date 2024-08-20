@@ -82,3 +82,35 @@ export function getAggregatorForPrimitive(
     args: [args.asset],
   });
 }
+
+export function getRateAssetForPrimitive(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    valueInterpreter: Address;
+    asset: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IValueInterpreter,
+    functionName: "getRateAssetForPrimitive",
+    address: args.valueInterpreter,
+    args: [args.asset],
+  });
+}
+
+export function getPriceFeedForDerivative(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    valueInterpreter: Address;
+    asset: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IValueInterpreter,
+    functionName: "getPriceFeedForDerivative",
+    address: args.valueInterpreter,
+    args: [args.asset],
+  });
+}

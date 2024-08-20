@@ -1,6 +1,5 @@
 import { Protocol } from "@enzymefinance/sdk";
 import { expect, suite, test } from "vitest";
-import { AssetType } from "../../src/assets.js";
 import { PriceFeedType, derivativePriceFeeds, primitivePriceFeeds } from "../../src/price-feeds.js";
 import { toAddress } from "../../src/utils.js";
 import { getClient } from "../utils/client.js";
@@ -8,7 +7,7 @@ import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const assets = environment.getAssets({ types: [AssetType.PRIMITIVE] });
+const assets = environment.getAssets();
 
 const valueInterpreter = environment.getContract("ValueInterpreter");
 
@@ -36,9 +35,17 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
   test("has the correct price feed address", async () => {
     if (primitivePriceFeeds.includes(asset.priceFeed.type)) {
-      const aggregator = await Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id });
+      const [aggregator, rateAsset] = await Promise.all([
+        Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
+        Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
+      ]);
 
       expect(toAddress(aggregator)).toBe(asset.priceFeed.address);
+      expect(rateAsset).toBe(asset.priceFeed.rateAsset);
+    } else if (derivativePriceFeeds.includes(asset.priceFeed.type)) {
+      const priceFeed = await Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id });
+
+      expect(toAddress(priceFeed)).toBe(asset.priceFeed.address);
     }
   });
 });

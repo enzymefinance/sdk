@@ -106,7 +106,7 @@ const arbitrum: NetworkDefinition<Network.ARBITRUM> = {
       network: Network.ARBITRUM,
       registered: false,
       priceFeed: {
-        type: PriceFeedType.NATIVE_TOKEN,
+        type: PriceFeedType.NONE,
       },
     },
   },
@@ -133,7 +133,7 @@ const mainnet: NetworkDefinition<Network.ETHEREUM> = {
       network: Network.ETHEREUM,
       registered: false,
       priceFeed: {
-        type: PriceFeedType.NATIVE_TOKEN,
+        type: PriceFeedType.NONE,
       },
     },
   },
@@ -160,7 +160,7 @@ const polygon: NetworkDefinition<Network.POLYGON> = {
       network: Network.POLYGON,
       registered: false,
       priceFeed: {
-        type: PriceFeedType.NATIVE_TOKEN,
+        type: PriceFeedType.NONE,
       },
     },
   },

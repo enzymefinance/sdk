@@ -1,6 +1,5 @@
 export enum PriceFeedType {
   NONE = "NONE",
-  NATIVE_TOKEN = "NATIVE_TOKEN",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
@@ -35,3 +34,8 @@ export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_WSTETH,
   PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
 ];
+
+export enum RateAsset {
+  ETH = 0,
+  USD = 1,
+}

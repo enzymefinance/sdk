@@ -1,5 +1,5 @@
 import type { Network } from "./networks.js";
-import type { PriceFeedType } from "./price-feeds.js";
+import type { PriceFeedType, RateAsset } from "./price-feeds.js";
 import type { Release } from "./releases.js";
 import type { Address, Hex, NarrowByType } from "./types.js";
 
@@ -40,6 +40,7 @@ interface AssetBase {
   readonly priceFeed: {
     readonly type: PriceFeedType;
     readonly address?: Address;
+    readonly rateAsset?: RateAsset;
   };
 }
 

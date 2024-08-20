@@ -8,7 +8,7 @@ import {
   defineAssetList,
 } from "../assets.js";
 import { Network } from "../networks.js";
-import { PriceFeedType } from "../price-feeds.js";
+import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
 
 //---------------------------------------------------------------------------------------------
@@ -31,6 +31,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       address: "0x3886ba987236181d98f2401c507fb8bea7871df2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -54,6 +55,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       address: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -66,7 +68,8 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     underlying: "0x0000206329b97db379d5e1bf586bbdb969c63274",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
   {
@@ -79,6 +82,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
     },
   },
   {
@@ -112,7 +116,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      address: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -124,7 +130,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      address: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -140,7 +148,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x028171bca77440897b824ca71d1c56cac55b68a3", "0x6c5024cd4f8a59110119c56f8933403a539555eb"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -152,7 +161,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      address: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -164,7 +175,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      address: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -251,7 +264,8 @@ export default defineAssetList(Network.ETHEREUM, [
     ],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
     },
   },
   {
@@ -267,7 +281,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -298,7 +313,8 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xfe18be6b3bd88a2d2a7f928d00292e7a9963cfc6",
     ],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
