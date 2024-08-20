@@ -20,12 +20,14 @@ jobs:
     name: Documentation
     uses: ./.github/workflows/reusable-docs.yaml
     secrets: inherit
+    permissions:
+      pages: write
+      id-token: write
 
   snapshot:
     name: Snapshot
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    needs: verify
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
