@@ -13,10 +13,17 @@ const assets = environment.getAssets();
 const valueInterpreter = environment.getContract("ValueInterpreter");
 
 suite.each(assets)("$symbol ($name): $id", (asset) => {
-  test.skip("is correctly registered or not-registered", async () => {
+  test("is correctly registered or not-registered", async () => {
     await expect(Protocol.isSupportedAsset(client, { valueInterpreter, asset: asset.id })).resolves.toBe(
       asset.registered,
     );
+
+    if (asset.registered === false) {
+      expect(asset.priceFeed.type).toBe(PriceFeedType.NONE);
+    }
+    // else {
+    //   expect(asset.priceFeed.type).not.toBe(PriceFeedType.NONE);
+    // }
   });
 
   test.skipIf(asset.registered === false && asset.priceFeed.type === PriceFeedType.NONE)(
@@ -39,7 +46,18 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
     switch (priceFeedType) {
       // TODO: check Chainlink / Redstone details
-      case PriceFeedType.PRIMITIVE_CHAINLINK:
+      case PriceFeedType.PRIMITIVE_CHAINLINK: {
+        const [aggregator, rateAsset] = await Promise.all([
+          Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
+          Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
+        ]);
+
+        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregrator);
+        expect(rateAsset).toBe(asset.priceFeed.rateAsset);
+        // expect(description.substring(description.length - 3)).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
+
+        break;
+      }
       case PriceFeedType.PRIMITIVE_REDSTONE: {
         const [aggregator, rateAsset] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
@@ -48,6 +66,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
         expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregrator);
         expect(rateAsset).toBe(asset.priceFeed.rateAsset);
+        // expect(description).toBe("Redstone Price Feed");
 
         break;
       }
@@ -69,6 +88,13 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const priceFeed = await Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id });
 
         expect(toAddress(priceFeed)).toBe(asset.priceFeed.address);
+
+        const isSupportedAssetForDerivativePriceFeed = await Protocol.isSupportedAssetForDerivativePriceFeed(client, {
+          derivativePriceFeed: priceFeed,
+          asset: asset.id,
+        });
+
+        expect(isSupportedAssetForDerivativePriceFeed).toBe(true);
 
         break;
       }
