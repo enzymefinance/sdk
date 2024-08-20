@@ -1,5 +1,6 @@
 import { AssetType, defineAssetList } from "../assets.js";
 import { Network } from "../networks.js";
+import { PriceFeedType } from "../price-feeds.js";
 import { releases } from "../releases.js";
 
 const { sulu } = releases.arbitrum;
@@ -12,6 +13,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -20,6 +24,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "COMP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -28,6 +35,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -36,6 +46,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "CVX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -44,6 +57,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "GRT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -52,6 +68,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [],
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -60,6 +79,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "cbETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -68,6 +90,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "ezETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 9,
@@ -76,6 +101,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "SOL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -84,6 +112,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "WBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -92,6 +123,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "RDNT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -100,6 +134,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "weETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -108,6 +145,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -116,6 +156,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "WAVAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -124,6 +167,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -132,6 +178,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -140,6 +189,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -148,6 +200,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "ARB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -156,6 +211,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "WBNB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -164,6 +222,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "OP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -172,6 +233,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "USDC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -180,6 +244,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "AAVE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -188,6 +255,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "swETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -196,6 +266,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "DAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -204,6 +277,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "rETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -212,6 +288,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "LINK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -220,6 +299,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "UNI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -228,6 +310,9 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "GMX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -236,5 +321,8 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
 ]);

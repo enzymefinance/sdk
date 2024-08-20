@@ -7,6 +7,7 @@ import {
   defineAssetList,
 } from "../assets.js";
 import { Network } from "../networks.js";
+import { PriceFeedType } from "../price-feeds.js";
 import { releases } from "../releases.js";
 
 const { testnet, polygon } = releases;
@@ -19,6 +20,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "RAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -37,6 +41,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -54,6 +61,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -67,6 +77,9 @@ export default defineAssetList(Network.POLYGON, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x7ceb23fd6bc0add59e62ac25578270cff1b9f619", "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -75,6 +88,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -84,6 +100,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolwstETH",
     type: AssetType.AAVE_V3,
     underlying: "0x03b54a6e9a984069379fae1a4fc4dbae93b3bccd",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -101,6 +120,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -117,6 +139,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -136,6 +161,9 @@ export default defineAssetList(Network.POLYGON, [
       "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -154,6 +182,9 @@ export default defineAssetList(Network.POLYGON, [
       "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -162,6 +193,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "stMATIC",
     type: AssetType.PRIMITIVE,
     releases: [polygon.sulu, testnet.sulu],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -171,6 +205,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolSTMATIC",
     type: AssetType.AAVE_V3,
     underlying: "0x3a58a54c066fdc0f2d55fc9c89f0415c92ebf3c4",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -180,6 +217,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amGHST",
     type: AssetType.AAVE_V2,
     underlying: "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -189,6 +229,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolGHST",
     type: AssetType.AAVE_V3,
     underlying: "0x385eeac5cb85a38a9a07a70c73e0a3271cfb54a7",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -197,6 +240,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "SUSHI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -206,6 +252,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amLINK",
     type: AssetType.AAVE_V2,
     underlying: "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -215,6 +264,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolLINK",
     type: AssetType.AAVE_V3,
     underlying: "0x53e0bca35ec356bd5dddfebbd1fc0fd03fabad39",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -223,6 +275,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "WMATIC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -231,6 +286,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "FRAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -239,6 +297,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -247,6 +308,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu],
     symbol: "EURe",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -256,6 +320,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amUSDC",
     type: AssetType.AAVE_V2,
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -265,6 +332,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolUSDC",
     type: AssetType.AAVE_V3,
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -273,6 +343,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "FXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -281,6 +354,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "WBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -289,6 +365,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "KNC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -298,6 +377,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amAAVE",
     type: AssetType.AAVE_V2,
     underlying: "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -307,6 +389,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolAAVE",
     type: AssetType.AAVE_V3,
     underlying: "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -315,6 +400,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -324,6 +412,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amSUSHI",
     type: AssetType.AAVE_V2,
     underlying: "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -333,6 +424,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolSUSHI",
     type: AssetType.AAVE_V3,
     underlying: "0x0b3f868e0be5597d5db7feb59e1cadbb0fdda50a",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -341,6 +435,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "LUNA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -349,6 +446,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "USDC.e",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -358,6 +458,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amDAI",
     type: AssetType.AAVE_V2,
     underlying: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -367,6 +470,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolDAI",
     type: AssetType.AAVE_V3,
     underlying: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -376,6 +482,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amWETH",
     type: AssetType.AAVE_V2,
     underlying: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -385,6 +494,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolWETH",
     type: AssetType.AAVE_V3,
     underlying: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -393,6 +505,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu],
     symbol: "GNS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -401,6 +516,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "PICKLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -409,6 +527,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "UMA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -417,6 +538,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "WXTZ",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -425,6 +549,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "GHST",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -433,6 +560,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "LPT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -441,6 +571,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "ALPHA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -449,6 +582,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "BNB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -457,6 +593,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "BAT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -465,6 +604,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu],
     symbol: "USDC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -474,6 +616,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amCRV",
     type: AssetType.AAVE_V2,
     underlying: "0x172370d5cd63279efa6d502dab29171933a610af",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -483,6 +628,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolCRV",
     type: AssetType.AAVE_V3,
     underlying: "0x172370d5cd63279efa6d502dab29171933a610af",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -491,6 +639,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "FXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -499,6 +650,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "NEXO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -507,6 +661,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "CVX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -515,6 +672,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "FRAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -523,6 +683,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "SNX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -531,6 +694,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "LINK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -539,6 +705,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "ZRX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -548,6 +717,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amWBTC",
     type: AssetType.AAVE_V2,
     underlying: "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -557,6 +729,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolWBTC",
     type: AssetType.AAVE_V3,
     underlying: "0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -565,6 +740,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "GRT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -574,6 +752,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amUSDT",
     type: AssetType.AAVE_V2,
     underlying: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -583,6 +764,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolUSDT",
     type: AssetType.AAVE_V3,
     underlying: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -591,6 +775,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "xSUSHI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -599,6 +786,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "MKR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -607,6 +797,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -615,6 +808,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "ENJ",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -624,6 +820,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amDPI",
     type: AssetType.AAVE_V2,
     underlying: "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -633,6 +832,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolDPI",
     type: AssetType.AAVE_V3,
     underlying: "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -641,6 +843,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "QUICK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -649,6 +854,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "COMP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -657,6 +865,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -666,6 +877,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amWMATIC",
     type: AssetType.AAVE_V2,
     underlying: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -675,6 +889,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolWMATIC",
     type: AssetType.AAVE_V3,
     underlying: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -683,6 +900,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "DAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -691,6 +911,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "FTT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -699,6 +922,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "ALCX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -707,6 +933,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -715,6 +944,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "1INCH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -723,6 +955,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "BOND",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -731,6 +966,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "MANA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -739,6 +977,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -747,6 +988,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "UNI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -755,6 +999,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "SAND",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -763,6 +1010,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -771,6 +1021,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "BNT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -780,6 +1033,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "amBAL",
     type: AssetType.AAVE_V2,
     underlying: "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -789,6 +1045,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolBAL",
     type: AssetType.AAVE_V3,
     underlying: "0x9a71012b13ca4d3d0cdc72a177df3ef03b0e76a3",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -797,6 +1056,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "AAVE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 4,
@@ -805,6 +1067,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "CEL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -813,6 +1078,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "YFI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -821,6 +1089,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "BUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -829,6 +1100,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "TOKE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -837,6 +1111,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "DODO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -845,6 +1122,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "GNO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -853,6 +1133,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu],
     symbol: "PAXG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -861,6 +1144,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "EURT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -869,6 +1155,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "TUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -877,6 +1166,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "PAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -894,6 +1186,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x1a13f4ca1d028320a707d99520abfefca3998b7f",
       "0x60d55f02a771d515e077c9c2403a1ef324885cec",
     ],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -911,6 +1206,9 @@ export default defineAssetList(Network.POLYGON, [
       "0x1a13f4ca1d028320a707d99520abfefca3998b7f",
       "0x60d55f02a771d515e077c9c2403a1ef324885cec",
     ],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -924,6 +1222,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x45c32fa6df82ead1e2ef74d17b76547eddfaff89", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -937,6 +1238,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x45c32fa6df82ead1e2ef74d17b76547eddfaff89", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -950,6 +1254,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xa3fa99a148fa48d14ed51d610c367c61876997f1", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -963,6 +1270,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xa3fa99a148fa48d14ed51d610c367c61876997f1", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -976,6 +1286,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x2e1ad108ff1d8c782fcbbb89aad783ac49586756", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -989,6 +1302,9 @@ export default defineAssetList(Network.POLYGON, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x2e1ad108ff1d8c782fcbbb89aad783ac49586756", "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -997,6 +1313,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [],
     symbol: "miMATIC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1006,6 +1325,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolMIMATIC",
     type: AssetType.AAVE_V3,
     underlying: "0xa3fa99a148fa48d14ed51d610c367c61876997f1",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1015,6 +1337,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "idleDAIYield",
     type: AssetType.IDLE,
     underlying: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1023,6 +1348,9 @@ export default defineAssetList(Network.POLYGON, [
     releases: [polygon.sulu, testnet.sulu],
     symbol: "MaticX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1032,6 +1360,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "aPolMATICX",
     type: AssetType.AAVE_V3,
     underlying: "0xfa68fb4628dff1028cfec22b4162fccd0d45efb6",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1041,6 +1372,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "idleWETHYield",
     type: AssetType.IDLE,
     underlying: "0x7ceb23fd6bc0add59e62ac25578270cff1b9f619",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1050,6 +1384,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "idleUSDCYield",
     type: AssetType.IDLE,
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -1059,6 +1396,9 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "cUSDCv3",
     type: AssetType.COMPOUND_V3,
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     id: "0x4954abbaa3637f19c7594aa248bf5a2b5f98f093",
@@ -1067,5 +1407,8 @@ export default defineAssetList(Network.POLYGON, [
     symbol: "DUSD-USDC-BPT-gauge",
     type: AssetType.PRIMITIVE,
     decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
 ]);

@@ -1,4 +1,5 @@
 import type { Network } from "./networks.js";
+import type { PriceFeedType } from "./price-feeds.js";
 import type { Release } from "./releases.js";
 import type { Address, Hex, NarrowByType } from "./types.js";
 
@@ -35,6 +36,11 @@ interface AssetBase {
    * Whether the asset is registered on the current release.
    */
   readonly registered: boolean;
+
+  readonly priceFeed: {
+    readonly type: PriceFeedType;
+    readonly address?: Address;
+  };
 }
 
 export type AssetDefinitionInput = {
