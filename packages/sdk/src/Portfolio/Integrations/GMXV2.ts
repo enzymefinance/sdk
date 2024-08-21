@@ -198,6 +198,10 @@ const updateOrderEncoding = [
     type: "address",
   },
   {
+    name: "executionFeeIncrease",
+    type: "uint256",
+  },
+  {
     name: "autoCancel",
     type: "bool",
   },
@@ -210,6 +214,7 @@ export type UpdateOrderArgs = {
   acceptablePrice: bigint;
   minOutputAmount: bigint;
   exchangeRouter: Address;
+  executionFeeIncrease: bigint;
   autoCancel: boolean;
 };
 
@@ -221,13 +226,22 @@ export function updateOrderEncode(args: UpdateOrderArgs): Hex {
     args.triggerPrice,
     args.minOutputAmount,
     args.exchangeRouter,
+    args.executionFeeIncrease,
     args.autoCancel,
   ]);
 }
 
 export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
-  const [key, sizeDeltaUsd, acceptablePrice, triggerPrice, minOutputAmount, exchangeRouter, autoCancel] =
-    decodeAbiParameters(updateOrderEncoding, encoded);
+  const [
+    key,
+    sizeDeltaUsd,
+    acceptablePrice,
+    triggerPrice,
+    minOutputAmount,
+    exchangeRouter,
+    executionFeeIncrease,
+    autoCancel,
+  ] = decodeAbiParameters(updateOrderEncoding, encoded);
 
   return {
     key,
@@ -236,6 +250,7 @@ export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
     acceptablePrice,
     minOutputAmount,
     exchangeRouter,
+    executionFeeIncrease,
     autoCancel,
   };
 }
@@ -3624,6 +3639,69 @@ export function getMaxPositionImpactFactorForLiquidations(
           [encodeKey("MAX_POSITION_IMPACT_FACTOR_FOR_LIQUIDATIONS"), args.market],
         ),
       ),
+    ],
+  });
+}
+
+export function getIncreaseOrderGasLimit(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [encodeKey("INCREASE_ORDER_GAS_LIMIT")],
+  });
+}
+
+export function getDecreaseOrderGasLimit(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [encodeKey("DECREASE_ORDER_GAS_LIMIT")],
+  });
+}
+
+export function getExecutionPrice(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    market: Address;
+    indexTokenPrice: {
+      min: bigint;
+      max: bigint;
+    };
+    positionSizeInUsd: bigint;
+    positionSizeInTokens: bigint;
+    sizeDeltaUsd: bigint;
+    isLong: boolean;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getExecutionPrice",
+    address: args.reader,
+    args: [
+      args.dataStore,
+      args.market,
+      args.indexTokenPrice,
+      args.positionSizeInUsd,
+      args.positionSizeInTokens,
+      args.sizeDeltaUsd,
+      args.isLong,
     ],
   });
 }
