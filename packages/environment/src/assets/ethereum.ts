@@ -955,7 +955,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xfae103dc9cf190ed75350761e95403b7b8afa6c0"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1119,7 +1120,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1180,7 +1182,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1670,7 +1673,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1686,7 +1690,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xeb4c2781e4eba804ce9a9803c67d0893436bb27d", "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1802,7 +1807,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x056fd409e1d7a124bd7017459dfea2f387b6d5cd", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1818,7 +1824,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x674c6ad92fd080e4004b2312b45f796a192d27a0", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1986,7 +1993,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -2298,7 +2306,8 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xdac17f958d2ee523a2206206994597c13d831ec7",
     ],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -2545,7 +2554,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_WSTETH,
+      type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
       address: "0x86533352bdd201c89f184f7ebbfebea3e31c8bb3",
     },
   },
@@ -2611,7 +2620,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5d3a536e4d6dbd6114cc1ead35777bab948e3643", "0x39aa39c021dfbae8fac545936693ac917d5e7563"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -2998,7 +3008,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x1c48f86ae57291f7686349f12601910bd8d470bb", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -3182,7 +3193,8 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xdac17f958d2ee523a2206206994597c13d831ec7",
     ],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -3412,7 +3424,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -3688,7 +3701,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0316eb71485b0ab14103307bf65a021042c6d380", "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -3729,7 +3743,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -4170,7 +4185,8 @@ export default defineAssetList(Network.ETHEREUM, [
       "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
     ],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -4462,7 +4478,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x056fd409e1d7a124bd7017459dfea2f387b6d5cd", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -4613,7 +4630,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -4898,7 +4916,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x57ab1ec28d129707052df4df418d58a2d46d5f51", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5006,7 +5025,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5035,7 +5055,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5348,7 +5369,8 @@ export default defineAssetList(Network.ETHEREUM, [
       "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
     ],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5604,7 +5626,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5666,7 +5689,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -5971,7 +5995,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0xba100000625a3754423978a60c9317c58a424e3d", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6065,7 +6090,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6080,7 +6106,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6108,7 +6135,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6123,7 +6151,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6197,7 +6226,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6212,7 +6242,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6240,7 +6271,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6255,7 +6287,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6283,7 +6316,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
     },
   },
   {
@@ -6345,7 +6379,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
     },
   },
   {
@@ -6360,7 +6395,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6418,7 +6454,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0xae78736cd615f374d3085123a210448e74fc6393", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
     },
   },
   {
@@ -6433,7 +6470,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0xae78736cd615f374d3085123a210448e74fc6393", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
     },
   },
   {
@@ -6511,7 +6549,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.COMPOUND_V3,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -6533,18 +6573,6 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "eUSD",
     type: AssetType.PRIMITIVE,
-    priceFeed: {
-      type: PriceFeedType.NONE,
-    },
-  },
-  {
-    decimals: 6,
-    id: "0xc3d688b66703497daa19211eedff47f25384cdc3",
-    name: "Compound USDC",
-    releases: [sulu],
-    symbol: "cUSDCv3",
-    type: AssetType.COMPOUND_V3,
-    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
       type: PriceFeedType.NONE,
     },

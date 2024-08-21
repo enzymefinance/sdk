@@ -37,7 +37,6 @@ export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_ERC4626,
   PriceFeedType.DERIVATIVE_ETHERFI,
   PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
-  PriceFeedType.DERIVATIVE_REVERTING,
   PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
   PriceFeedType.DERIVATIVE_WSTETH,
   PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
@@ -63,7 +62,6 @@ export type PriceFeed =
   | DerivativeERC4626PriceFeed
   | DerivativeEtherfiPriceFeed
   | DerivativePeggedDerivativesPriceFeed
-  | DerivativeRevertingPriceFeed
   | DerivativeUniswapV2PoolPriceFeed
   | DerivativeWstethPriceFeed
   | DerivativeYearnVaultV2PriceFeed;
@@ -136,11 +134,6 @@ export interface DerivativeEtherfiPriceFeed {
 
 export interface DerivativePeggedDerivativesPriceFeed {
   type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES;
-  address: Address;
-}
-
-export interface DerivativeRevertingPriceFeed {
-  type: PriceFeedType.DERIVATIVE_REVERTING;
   address: Address;
 }
 
