@@ -10,7 +10,7 @@ import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const assets = environment.getAssets({ types: [AssetType.AAVE_V2, AssetType.AAVE_V3] });
+const assets = environment.getAssets({ types: [AssetType.YEARN_VAULT_V2] });
 
 const valueInterpreter = environment.getContract("ValueInterpreter");
 
