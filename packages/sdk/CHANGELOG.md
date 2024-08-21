@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.24
+
+### Patch Changes
+
+- [#474](https://github.com/enzymefinance/sdk/pull/474) [`a9682bc`](https://github.com/enzymefinance/sdk/commit/a9682bc6a6ab5004760839d01e8c0c01ee58e162) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update sweep encoding to use a tuple"
+
 ## 0.8.23
 
 ### Patch Changes
