@@ -3092,7 +3092,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xc11a2312987f6adb5d1abfa89d488e8b806b699e",
+      aggregator: "0xc11a2312987f6adb5d1abfa89d488e8b806b699e",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -3145,7 +3145,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregrator: "0xb99d174ed06c83588af997c8859f93e83dd4733f",
+      aggregator: "0xb99d174ed06c83588af997c8859f93e83dd4733f",
       rateAsset: RateAsset.USD,
     },
   },
@@ -3309,7 +3309,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xf387707bc4df894607a93f83d58a835cacd370f1",
+      aggregator: "0xf387707bc4df894607a93f83d58a835cacd370f1",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -3382,7 +3382,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      aggregator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -3916,7 +3916,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xcbfb161cb44267390c7b9303e1b08af75ffabd71",
+      aggregator: "0xcbfb161cb44267390c7b9303e1b08af75ffabd71",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -5289,7 +5289,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xefcdda24cfe185621c7271d1f260c5be5d4ebcf2",
+      aggregator: "0xefcdda24cfe185621c7271d1f260c5be5d4ebcf2",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -5324,7 +5324,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0x189281321b51575d2fe5ce6b94642d4362f24013",
+      aggregator: "0x189281321b51575d2fe5ce6b94642d4362f24013",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -5546,7 +5546,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0x114e286b85aacd4032a8b399cd288944fc5b7a90",
+      aggregator: "0x114e286b85aacd4032a8b399cd288944fc5b7a90",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -5897,7 +5897,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregrator: "0xbc5fbcf58ceaea19d523abc76515b9aefb5cfd58",
+      aggregator: "0xbc5fbcf58ceaea19d523abc76515b9aefb5cfd58",
       rateAsset: RateAsset.USD,
     },
   },
@@ -6408,7 +6408,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xca289456c31392074a804a7db0aac918fb36cf36",
+      aggregator: "0xca289456c31392074a804a7db0aac918fb36cf36",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -6732,7 +6732,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregrator: "0xc7e813d31de68c012caf8ea1df323fdac97e2fd0",
+      aggregator: "0xc7e813d31de68c012caf8ea1df323fdac97e2fd0",
       rateAsset: RateAsset.ETH,
     },
   },

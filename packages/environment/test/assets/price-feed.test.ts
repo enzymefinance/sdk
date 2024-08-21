@@ -68,11 +68,11 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const [aggregator, rateAsset, description, decimals] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
           Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregrator }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregrator }),
+          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
+          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregrator);
+        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
         expect(rateAsset).toBe(asset.priceFeed.rateAsset);
         expect(description).toBe("Redstone Price Feed");
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
@@ -84,10 +84,10 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const [aggregator, rateAsset, decimals] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
           Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregrator }),
+          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregrator);
+        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
         expect(rateAsset).toBe(asset.priceFeed.rateAsset);
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
 

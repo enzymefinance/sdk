@@ -82,13 +82,13 @@ export interface PrimitiveChainlinkPriceFeed {
 
 export interface PrimitiveRedstonePriceFeed {
   type: PriceFeedType.PRIMITIVE_REDSTONE;
-  aggregrator: Address;
+  aggregator: Address;
   rateAsset: RateAsset;
 }
 
 export interface PrimitiveNonStandardPrecisionPriceFeed {
   type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
-  aggregrator: Address;
+  aggregator: Address;
   rateAsset: RateAsset;
 }
 
