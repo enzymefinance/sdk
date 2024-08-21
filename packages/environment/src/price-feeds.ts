@@ -76,7 +76,7 @@ export interface WethPriceFeed {
 
 export interface PrimitiveChainlinkPriceFeed {
   type: PriceFeedType.PRIMITIVE_CHAINLINK;
-  aggregrator: Address;
+  aggregator: Address;
   rateAsset: RateAsset;
 }
 

@@ -1,7 +1,6 @@
 import { Protocol } from "@enzymefinance/sdk";
 import { expect, suite, test } from "vitest";
 import { Assertion } from "../../../sdk/src/Utils.js";
-import { AssetType } from "../../src/assets.js";
 import { Environment } from "../../src/environment.js";
 import { PriceFeedType, derivativePriceFeeds, primitivePriceFeeds } from "../../src/price-feeds.js";
 import { toAddress } from "../../src/utils.js";
@@ -54,11 +53,11 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const [aggregator, rateAsset, description, decimals] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
           Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregrator }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregrator }),
+          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
+          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregrator);
+        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
         expect(rateAsset).toBe(asset.priceFeed.rateAsset);
         expect(description.substring(description.length - 3)).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
