@@ -630,7 +630,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x86392dc19c0b719886221c78ab11eb8cf5c52812",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -957,7 +959,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -969,7 +973,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1321,7 +1327,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1409,7 +1417,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1421,7 +1431,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1542,7 +1554,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
     },
   },
   {
@@ -1709,7 +1722,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "APE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xc7de7f4d4c9c991ff62a07d18b3e31e349833a18",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1720,7 +1735,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "stkAAVE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1744,7 +1761,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "FTM",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x2de7e4a9488488e0058b95854cc2f7955b35dc9b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1755,7 +1774,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "CVX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xd962fc30a72a84ce50161031391756bf2876af5d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1842,7 +1863,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "LINK",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1854,7 +1877,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x7c5d4f8345e66f68099581db340cd65b078c41f4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1911,7 +1936,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "sUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x8e0b7e6062272b5ef4524250bfff8e5bd3497757",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -1971,7 +1998,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "LDO",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x4e844125952d32acdf339be976c98e22f6f318db",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2057,7 +2086,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "LUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x3d7ae7e594f2f2091ad8798313450130d0aba3a0",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2069,7 +2100,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x3d7ae7e594f2f2091ad8798313450130d0aba3a0",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2203,7 +2236,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "DAI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2214,7 +2249,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SUSHI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xe572cef69f43c2e488b33924af04bdace19079cf",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2321,7 +2358,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2446,7 +2485,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MATIC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x7bac85a8a13a4bcd8abb3eb7d6b4d632c5a57676",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2480,7 +2521,8 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_WSTETH,
+      address: "0x50da4957032c8fc5f94ec8d5ec8bfce84f9c9311",
     },
   },
   {
@@ -2492,7 +2534,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.DERIVATIVE_WSTETH,
+      address: "0x86533352bdd201c89f184f7ebbfebea3e31c8bb3",
     },
   },
   {
@@ -2503,7 +2546,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "AAVE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2612,7 +2657,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "FRAX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2750,7 +2797,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SXP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xfb0cfd6c19e25db4a08d8a204a387cea48cc138f",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2762,7 +2811,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2774,7 +2825,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2796,7 +2849,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "USDP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x09023c0da49aaf8fc3fa3adf34c6a7016d38d5e3",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2901,7 +2956,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SHIB",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x8dd1cd88f43af196ae478e91b9f5e4ac69a97c61",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -2986,7 +3043,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MIM",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x7a364e8770418566e3eb2001a96116e6138eb32f",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -3009,7 +3068,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "apxETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xc11a2312987f6adb5d1abfa89d488e8b806b699e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3073,7 +3134,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MKR",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3085,7 +3148,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3117,7 +3182,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3129,7 +3196,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3141,7 +3210,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x514910771af9ca656af840dff83e8264ecf986ca",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3153,7 +3224,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x514910771af9ca656af840dff83e8264ecf986ca",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3187,7 +3260,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "USDC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3209,7 +3284,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xf387707bc4df894607a93f83d58a835cacd370f1",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3279,7 +3356,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ETHx",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3378,7 +3457,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x82a44d92d6c329826dc557c5e1be6ebec5d5feb9",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3450,7 +3531,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x24d9ab51950f3d62e9144fdc2f3135daa6ce8d1b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3485,7 +3568,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "stETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x86392dc19c0b719886221c78ab11eb8cf5c52812",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3496,7 +3581,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "rETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x536218f9e9eb48863970252233c8f271f554c2d0",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3519,7 +3606,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xae78736cd615f374d3085123a210448e74fc6393",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x536218f9e9eb48863970252233c8f271f554c2d0",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3673,7 +3762,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ARB",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x31697852a68433dbcc2ff612c516d69e3d9bd08f",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -3766,7 +3857,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xd6aa3d25116d8da79ea0246c4826eb951872e02e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3778,7 +3871,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xd6aa3d25116d8da79ea0246c4826eb951872e02e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3789,7 +3884,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "osETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xcbfb161cb44267390c7b9303e1b08af75ffabd71",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3800,7 +3897,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3868,7 +3967,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "PERP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x3b41d5571468904d4e53b6a8d93a6bac43f02dc9",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3891,7 +3992,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3903,7 +4006,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3914,7 +4019,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cbETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xf017fcb346a1885194689ba23eff2fe6fa5c483b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3926,7 +4033,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xf017fcb346a1885194689ba23eff2fe6fa5c483b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3937,7 +4046,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "COMP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x1b39ee86ec5979ba5c322b826b3ecb8c79991699",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3948,7 +4059,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SNX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x79291a9d692df95334b1a0b3b4ae6bc606782f8c",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3960,7 +4073,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x79291a9d692df95334b1a0b3b4ae6bc606782f8c",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -3971,7 +4086,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "WETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.WETH,
     },
   },
   {
@@ -4005,7 +4120,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ENS",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x5c00128d4d1c2f4f652c267d7bcdd7ac99c16e16",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -4119,7 +4236,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4409,7 +4528,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x853d955acef822db058eb8505911ed77f175b99e",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4447,7 +4568,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "CRV",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4563,7 +4686,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4620,7 +4745,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "KNCL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4642,7 +4769,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "KNC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -4869,7 +4998,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xdaea8386611a157b08829ed4997a8a62b557014c",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5011,7 +5142,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ENJ",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x24d9ab51950f3d62e9144fdc2f3135daa6ce8d1b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5115,7 +5248,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "swETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xefcdda24cfe185621c7271d1f260c5be5d4ebcf2",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5148,7 +5283,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "rswETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0x189281321b51575d2fe5ce6b94642d4362f24013",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5236,7 +5373,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5248,7 +5387,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
     },
   },
   // TODO: order assets below by id
@@ -5260,7 +5401,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "IMX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0xbaebefc1d023c0feccc047bff42e75f15ff213e6",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -5360,7 +5503,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "pufETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0x114e286b85aacd4032a8b399cd288944fc5b7a90",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5562,7 +5707,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "FXS",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x6ebc52c8c1089be9eb3945c4350b68b8e4c2233f",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -5705,7 +5852,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "USDe",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregrator: "0xbc5fbcf58ceaea19d523abc76515b9aefb5cfd58",
+      rateAsset: RateAsset.USD,
     },
   },
 
@@ -5728,7 +5877,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SOL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x4ffc43a60e009b551865a93d232e33fce9f01507",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -5964,7 +6115,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregrator: "0x4e844125952d32acdf339be976c98e22f6f318db",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -6048,17 +6201,6 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Enzyme Staked: Balancer 50wstETH-LDO Aura Deposit",
     releases: [],
     symbol: "stkaura50wstETH-50LDO",
-    type: AssetType.PRIMITIVE,
-    priceFeed: {
-      type: PriceFeedType.NONE,
-    },
-  },
-  {
-    decimals: 18,
-    id: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
-    name: "Wrapped liquid staked Ether 2.0",
-    releases: [sulu],
-    symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
@@ -6209,7 +6351,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "weETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xca289456c31392074a804a7db0aac918fb36cf36",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -6539,7 +6683,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ezETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregrator: "0xc7e813d31de68c012caf8ea1df323fdac97e2fd0",
+      rateAsset: RateAsset.ETH,
     },
   },
   {

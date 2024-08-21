@@ -2,8 +2,10 @@ import type { Address } from "viem";
 
 export enum PriceFeedType {
   NONE = "NONE",
+  WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
+  PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
   DERIVATIVE_BALANCER_V2_GAUGE_TOKEN = "DERIVATIVE_BALANCER_V2_GAUGE_TOKEN",
   DERIVATIVE_BALANCER_V2_STABLE_POOL = "DERIVATIVE_BALANCER_V2_STABLE_POOL",
@@ -19,7 +21,11 @@ export enum PriceFeedType {
   DERIVATIVE_YEARN_VAULT_V2 = "DERIVATIVE_YEARN_VAULT_V2",
 }
 
-export const primitivePriceFeeds = [PriceFeedType.PRIMITIVE_CHAINLINK, PriceFeedType.PRIMITIVE_REDSTONE];
+export const primitivePriceFeeds = [
+  PriceFeedType.PRIMITIVE_CHAINLINK,
+  PriceFeedType.PRIMITIVE_REDSTONE,
+  PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+];
 
 export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_ARRAKIS_V2,
@@ -44,8 +50,10 @@ export enum RateAsset {
 
 export type PriceFeed =
   | NoPriceFeed
+  | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
   | PrimitiveRedstonePriceFeed
+  | PrimitiveNonStandardPrecisionPriceFeed
   | DerivativeArrakisV2PriceFeed
   | DerivativeBalancerV2GaugeTokenPriceFeed
   | DerivativeBalancerV2StablePoolPriceFeed
@@ -64,6 +72,10 @@ export interface NoPriceFeed {
   type: PriceFeedType.NONE;
 }
 
+export interface WethPriceFeed {
+  type: PriceFeedType.WETH;
+}
+
 export interface PrimitiveChainlinkPriceFeed {
   type: PriceFeedType.PRIMITIVE_CHAINLINK;
   aggregrator: Address;
@@ -72,6 +84,12 @@ export interface PrimitiveChainlinkPriceFeed {
 
 export interface PrimitiveRedstonePriceFeed {
   type: PriceFeedType.PRIMITIVE_REDSTONE;
+  aggregrator: Address;
+  rateAsset: RateAsset;
+}
+
+export interface PrimitiveNonStandardPrecisionPriceFeed {
+  type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
   aggregrator: Address;
   rateAsset: RateAsset;
 }

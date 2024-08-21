@@ -13,3 +13,12 @@ export function aggregatorDescription(
     address: args.aggregator,
   });
 }
+
+export function aggregatorDecimals(client: PublicClient, args: Viem.ContractCallParameters<{ aggregator: Address }>) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function decimals() external view returns (uint8 decimals_)"]),
+    functionName: "decimals",
+    address: args.aggregator,
+  });
+}
