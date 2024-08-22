@@ -141,7 +141,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         EntranceRateDirectFee: "0xfb8df7d5e320020cd8047226b81cf6d68f3e3c19",
         ERC4626Adapter: "0x64fa106dd89f21d6e687eebe9384637f7d54f707",
         ERC4626PriceFeed: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
-        EtherFiEthPriceFeed: "0x139250e96dc00f0a1451fcb736052f6627d17be9",
+        EtherFiEthPriceFeed: "0x31103db5639ad1d5351b83409fdf7e575e26774b",
         ExitRateBurnFee: "0x06b13918e988d1314da1a9da4c0cde5fe994364a",
         ExitRateDirectFee: "0x3a09d11c20aa1ad38c77b4f426901d3427f73fbe",
         ExternalPositionFactory: "0x0aacb782205dde9eff4862ace9849dce1ca3409f",

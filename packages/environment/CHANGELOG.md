@@ -1,5 +1,21 @@
 # @enzymefinance/environment
 
+## 5.0.14
+
+### Patch Changes
+
+- [#473](https://github.com/enzymefinance/sdk/pull/473) [`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e) Thanks [@iherger](https://github.com/iherger)! - Add price feed details for assets
+
+- Updated dependencies [[`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e)]:
+  - @enzymefinance/sdk@0.8.25
+
+## 5.0.13
+
+### Patch Changes
+
+- Updated dependencies [[`a9682bc`](https://github.com/enzymefinance/sdk/commit/a9682bc6a6ab5004760839d01e8c0c01ee58e162)]:
+  - @enzymefinance/sdk@0.8.24
+
 ## 5.0.12
 
 ### Patch Changes
