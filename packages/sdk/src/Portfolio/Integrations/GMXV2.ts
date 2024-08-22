@@ -3309,7 +3309,10 @@ export async function getAccountPositionInfoList(
 
   return {
     marketPrices,
-    accountPositionInfoList,
+    accountPositionInfoList: accountPositionInfoList.map((accountPositionInfo, i) => ({
+      ...accountPositionInfo,
+      positionKey: positionsKeys[i],
+    })),
   };
 }
 
@@ -3712,7 +3715,6 @@ export async function getPositionInfo(
     reader: Address;
     positionKey: Hex;
     dataStore: Address;
-    account: Address;
     chainlinkOracle: Address;
     referralStorage: Address;
     uiFeeReceiver: Address;
@@ -3742,7 +3744,6 @@ export async function getPositionInfo(
   });
 
   return {
-    marketInfo,
     marketPrices,
     positionInfo,
   };
