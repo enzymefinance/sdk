@@ -15,7 +15,7 @@ const assets = environment.getAssets();
 const valueInterpreter = environment.getContract("ValueInterpreter");
 
 suite.each(assets)("$symbol ($name): $id", (asset) => {
-  test.skip("is correctly registered", async () => {
+  test("is correctly registered", async () => {
     await expect(Protocol.isSupportedAsset(client, { valueInterpreter, asset: asset.id })).resolves.toBe(
       asset.registered,
     );
@@ -85,7 +85,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
     }
   });
 
-  test.skip("has the correct price feed details", async () => {
+  test("has the correct price feed details", async () => {
     const priceFeedType = asset.priceFeed.type;
 
     switch (priceFeedType) {
