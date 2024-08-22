@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.16
+
+### Patch Changes
+
+- [#479](https://github.com/enzymefinance/sdk/pull/479) [`c5a9565`](https://github.com/enzymefinance/sdk/commit/c5a956598dc970a1a0422ad53989d4e182198384) Thanks [@iherger](https://github.com/iherger)! - More Arbitrum contract addresses
+
 ## 5.0.15
 
 ### Patch Changes
