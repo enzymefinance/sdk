@@ -3706,6 +3706,48 @@ export function getExecutionPrice(
   });
 }
 
+export async function getPositionInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    positionKey: Hex;
+    dataStore: Address;
+    account: Address;
+    chainlinkOracle: Address;
+    referralStorage: Address;
+    uiFeeReceiver: Address;
+    market: Address;
+  }>,
+) {
+  const marketInfo = await getMarket(client, args);
+
+  const [indexTokenPrice, longTokenPrice, shortTokenPrice] = await Promise.all([
+    getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.indexToken }),
+    getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.longToken }),
+    getOraclePrice(client, { chainlinkOracle: args.chainlinkOracle, token: marketInfo.shortToken }),
+  ]);
+
+  const marketPrices = {
+    indexTokenPrice,
+    longTokenPrice,
+    shortTokenPrice,
+  };
+
+  const positionInfo = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getPositionInfo",
+    address: args.reader,
+    args: [args.dataStore, args.referralStorage, args.positionKey, marketPrices, 0n, args.uiFeeReceiver, true],
+  });
+
+  return {
+    marketInfo,
+    marketPrices,
+    positionInfo,
+  };
+}
+
 export function encodeKey(key: string) {
   return keccak256(encodeAbiParameters([{ type: "string" }], [key]));
 }
