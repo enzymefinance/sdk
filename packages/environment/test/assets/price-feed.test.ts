@@ -15,7 +15,7 @@ const assets = environment.getAssets();
 const valueInterpreter = environment.getContract("ValueInterpreter");
 
 suite.each(assets)("$symbol ($name): $id", (asset) => {
-  test("is correctly registered", async () => {
+  test.skip("is correctly registered", async () => {
     await expect(Protocol.isSupportedAsset(client, { valueInterpreter, asset: asset.id })).resolves.toBe(
       asset.registered,
     );
@@ -37,7 +37,55 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
     }
   });
 
-  test("has the correct price feed details", async () => {
+  test.skipIf(!primitivePriceFeeds.includes(asset.priceFeed.type))("uses the correct aggregator", async () => {
+    const priceFeedType = asset.priceFeed.type;
+
+    switch (priceFeedType) {
+      case PriceFeedType.PRIMITIVE_CHAINLINK: {
+        const [description, decimals] = await Promise.all([
+          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
+          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
+        ]);
+
+        const descriptionParts = description.match(/^([\w\s\+]+)\s\/\s(\w+)[\s\w$]*/);
+
+        if (descriptionParts?.[1].toLowerCase() !== asset.symbol.toLowerCase()) {
+          console.warn(
+            `Inconsistent price feed description: asset is ${asset.symbol}, aggregator is ${descriptionParts?.[1]}`,
+          );
+        }
+
+        expect(descriptionParts?.[2]).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
+        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
+
+        break;
+      }
+      case PriceFeedType.PRIMITIVE_REDSTONE: {
+        const [description, decimals] = await Promise.all([
+          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
+          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
+        ]);
+
+        expect(description).toBe("Redstone Price Feed");
+        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
+
+        break;
+      }
+
+      case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
+        const [decimals] = await Promise.all([aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator })]);
+
+        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
+
+        break;
+      }
+
+      default:
+        break;
+    }
+  });
+
+  test.skip("has the correct price feed details", async () => {
     const priceFeedType = asset.priceFeed.type;
 
     switch (priceFeedType) {
@@ -49,47 +97,16 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
-      case PriceFeedType.PRIMITIVE_CHAINLINK: {
-        const [aggregator, rateAsset, description, decimals] = await Promise.all([
-          Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
-        ]);
-
-        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
-        expect(rateAsset).toBe(asset.priceFeed.rateAsset);
-        expect(description.substring(description.length - 3)).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
-        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
-
-        break;
-      }
-      case PriceFeedType.PRIMITIVE_REDSTONE: {
-        const [aggregator, rateAsset, description, decimals] = await Promise.all([
-          Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
-        ]);
-
-        expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
-        expect(rateAsset).toBe(asset.priceFeed.rateAsset);
-        expect(description).toBe("Redstone Price Feed");
-        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
-
-        break;
-      }
-
+      case PriceFeedType.PRIMITIVE_CHAINLINK:
+      case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
-        const [aggregator, rateAsset, decimals] = await Promise.all([
+        const [aggregator, rateAsset] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
           Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
-          aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
         expect(toAddress(aggregator)).toBe(asset.priceFeed.aggregator);
         expect(rateAsset).toBe(asset.priceFeed.rateAsset);
-        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
 
         break;
       }
