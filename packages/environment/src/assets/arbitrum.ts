@@ -20,14 +20,6 @@ export default defineAssetList(Network.ARBITRUM, [
     },
   },
   {
-    decimals: 8,
-    id: "0x050c24dbf1eec17babe5fc585f06116a259cc77a",
-    name: "dlcBTC",
-    releases: [sulu],
-    symbol: "DLCBTC",
-    type: AssetType.PRIMITIVE,
-  },
-  {
     decimals: 18,
     id: "0x354a6da3fcde098f8389cad84b0182725c6c91de",
     name: "Compound",
