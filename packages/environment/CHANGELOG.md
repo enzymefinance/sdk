@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 5.0.15
+
+### Patch Changes
+
+- [#477](https://github.com/enzymefinance/sdk/pull/477) [`69969be`](https://github.com/enzymefinance/sdk/commit/69969be9e81083a5e8454cce910f4894be3d9649) Thanks [@iherger](https://github.com/iherger)! - Fix price feed test
+
+- [#471](https://github.com/enzymefinance/sdk/pull/471) [`c5b6456`](https://github.com/enzymefinance/sdk/commit/c5b6456a1c9a598e1c8bc963863b54ab8233aac7) Thanks [@ignacio-rsg](https://github.com/ignacio-rsg)! - Update asset registrations on Ethereum
+
 ## 5.0.14
 
 ### Patch Changes
