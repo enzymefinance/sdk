@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.25
+
+### Patch Changes
+
+- [#473](https://github.com/enzymefinance/sdk/pull/473) [`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e) Thanks [@iherger](https://github.com/iherger)! - Add price feed details for assets
+
 ## 0.8.24
 
 ### Patch Changes
