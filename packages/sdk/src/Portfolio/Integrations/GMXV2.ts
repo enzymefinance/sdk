@@ -5,6 +5,7 @@ import {
   type Hex,
   decodeAbiParameters,
   encodeAbiParameters,
+  formatUnits,
   isAddressEqual,
   keccak256,
 } from "viem";
@@ -3747,6 +3748,10 @@ export async function getPositionInfo(
     marketPrices,
     positionInfo,
   };
+}
+
+export function formatUsd(value: bigint) {
+  return Number(formatUnits(value, 30));
 }
 
 export function encodeKey(key: string) {
