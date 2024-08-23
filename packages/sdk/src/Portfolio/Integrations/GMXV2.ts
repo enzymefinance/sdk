@@ -8,6 +8,7 @@ import {
   formatUnits,
   isAddressEqual,
   keccak256,
+  parseUnits,
 } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
@@ -3750,8 +3751,14 @@ export async function getPositionInfo(
   };
 }
 
+export const usdDecimals = 30;
+
 export function formatUsd(value: bigint) {
-  return Number(formatUnits(value, 30));
+  return Number(formatUnits(value, usdDecimals));
+}
+
+export function parseUsd(value: number) {
+  return parseUnits(value.toString(), usdDecimals);
 }
 
 export function encodeKey(key: string) {
