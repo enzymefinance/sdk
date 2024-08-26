@@ -1,7 +1,6 @@
-import { defineConfig } from "vitest/config";
+import { type UserConfigExport, mergeConfig } from "vitest/config";
+import shared from "../../vitest.shared.js";
 
-export default defineConfig({
-  test: {
-    testTimeout: 30000, // 30s
-  },
-});
+const config: UserConfigExport = {};
+
+export default mergeConfig(shared, config);

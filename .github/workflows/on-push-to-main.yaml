@@ -7,6 +7,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   verify:
     name: Verify
@@ -17,19 +19,24 @@ jobs:
     name: Documentation
     uses: ./.github/workflows/reusable-docs.yaml
     secrets: inherit
+    permissions:
+      pages: write
+      id-token: write
 
   changesets:
     name: Changesets
     if: github.repository_owner == 'enzymefinance'
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
-
       - name: Manage changesets
         uses: changesets/action@v1
         with:

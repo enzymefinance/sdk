@@ -9,6 +9,7 @@ import { getNetwork } from "./networks.js";
 import type {
   DeploymentDefinition,
   DeploymentNamedAssetsTokens,
+  DeploymentNamedTokensAssetsArbitrum,
   DeploymentNamedTokensAssetsEthereum,
   DeploymentNamedTokensAssetsPolygon,
   DeploymentNetwork,
@@ -117,6 +118,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
       environment.deployment.slug === deployment;
   }
 
+  public static isDeploymentArbitrum = Environment.createIsDeployment(Deployment.ARBITRUM);
   public static isDeploymentEthereum = Environment.createIsDeployment(Deployment.ETHEREUM);
   public static isDeploymentPolygon = Environment.createIsDeployment(Deployment.POLYGON);
   public static isDeploymentTestnet = Environment.createIsDeployment(Deployment.TESTNET);
@@ -156,7 +158,22 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
       };
     }
 
-    if (Environment.isDeploymentEthereum(this)) {
+    if (Environment.isDeploymentArbitrum(this)) {
+      const namedTokens = {
+        bal: this.getAssetAs(this.deployment.namedTokens.bal, AssetType.PRIMITIVE),
+        comp: this.getAssetAs(this.deployment.namedTokens.comp, AssetType.PRIMITIVE),
+        crv: this.getAssetAs(this.deployment.namedTokens.crv, AssetType.PRIMITIVE),
+        cvx: this.getAssetAs(this.deployment.namedTokens.cvx, AssetType.PRIMITIVE),
+        dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
+        grt: this.getAssetAs(this.deployment.namedTokens.grt, AssetType.PRIMITIVE),
+        mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),
+        nativeTokenWrapper: this.getAssetAs(this.network.currency.wrapper, AssetType.PRIMITIVE),
+        usdt: this.getAssetAs(this.deployment.namedTokens.usdt, AssetType.PRIMITIVE),
+        weth: this.getAssetAs(this.deployment.namedTokens.weth, AssetType.PRIMITIVE),
+      };
+
+      this.namedTokens = namedTokens as DeploymentNamedAssetsTokens<TDeployment> & DeploymentNamedTokensAssetsArbitrum;
+    } else if (Environment.isDeploymentEthereum(this)) {
       const namedTokens = {
         aave: this.getAssetAs(this.deployment.namedTokens.aave, AssetType.PRIMITIVE),
         bal: this.getAssetAs(this.deployment.namedTokens.bal, AssetType.PRIMITIVE),
@@ -249,10 +266,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     return asset as NarrowByType<Asset, TAssetType>;
   }
 
-  public getAssets<TAssetTypes extends Array<AssetType>>(filter?: {
-    registered?: boolean;
-    types?: TAssetTypes;
-  }) {
+  public getAssets<TAssetTypes extends Array<AssetType>>(filter?: { registered?: boolean; types?: TAssetTypes }) {
     const { types, registered } = filter ?? {};
 
     let assets = Object.values(this.assets);

@@ -8,6 +8,7 @@ import {
   defineAssetList,
 } from "../assets.js";
 import { Network } from "../networks.js";
+import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
 
 //---------------------------------------------------------------------------------------------
@@ -24,9 +25,14 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x0000000000085d4780b73119b644ae5ecd22b376",
     name: "TrueUSD",
-    releases: [sulu],
+    releases: [],
     symbol: "TUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3886ba987236181d98f2401c507fb8bea7871df2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -35,6 +41,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "LON",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -43,6 +52,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "USDA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     symbol: "stUSD",
@@ -53,6 +67,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0x0000206329b97db379d5e1bf586bbdb969c63274",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     decimals: 18,
@@ -62,6 +80,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -70,6 +92,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore],
     symbol: "UFT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -78,6 +103,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ORN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -87,6 +115,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aDAI",
     type: AssetType.AAVE_V2,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -96,6 +129,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthDAI",
     type: AssetType.AAVE_V3,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -109,6 +147,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.AAVE,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x028171bca77440897b824ca71d1c56cac55b68a3", "0x6c5024cd4f8a59110119c56f8933403a539555eb"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -118,6 +160,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aWETH",
     type: AssetType.AAVE_V2,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -127,6 +174,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthWETH",
     type: AssetType.AAVE_V3,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -135,6 +187,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "HBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -143,6 +198,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sRUNE",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -151,6 +209,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BOND",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -159,6 +220,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore],
     symbol: "RAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -167,6 +231,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "UMA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 2,
@@ -175,6 +242,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -193,6 +263,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
+    },
   },
   {
     decimals: 18,
@@ -206,6 +280,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -214,6 +292,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CHAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -231,6 +312,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
       "0xfe18be6b3bd88a2d2a7f928d00292e7a9963cfc6",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -239,6 +324,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "SPELL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8c110b94c5f1d347facf5e1e938ab2db60e3c9a8",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -247,6 +337,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "MIR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -255,6 +348,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "STAKE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -263,6 +359,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "YFI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7c5d4f8345e66f68099581db340cd65b078c41f4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -271,6 +372,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore, phoenix],
     symbol: "wNXM",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -280,6 +384,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -288,6 +396,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BAT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -296,6 +407,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "MANA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x82a44d92d6c329826dc557c5e1be6ebec5d5feb9",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -304,6 +420,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sCHF",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -312,6 +431,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iREN",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -320,6 +442,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "1INCH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x72afaecf99c9d9c8215ff44c77b94b99c28741e8",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -329,6 +456,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0f5d2fb29fb7d3cfee444a200298f468908cc942", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 8,
@@ -337,6 +468,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore, phoenix],
     symbol: "wDGLD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -346,6 +480,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x584bc13c7d411c00c01a62e8019472de68768430", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -354,6 +491,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -362,6 +504,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iDEFI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -371,6 +516,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cREP",
     type: AssetType.COMPOUND_V2,
     underlying: "0x1985365e9f78359a9b6ad760e32412f4a445e862",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -380,6 +528,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xec67005c4e498ec7f55e092bd1d35cbc47c91892"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -388,6 +540,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sDOT",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -396,6 +551,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iAAVE",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -404,6 +562,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "NMR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -417,6 +578,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -425,6 +590,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxLUSDFRAXBP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -438,6 +606,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.BASE,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xdb25f211ab05b1c97d595516f45794528a807ad8", "0xd71ecff9342a5ced620049e616c5035f1db98620"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -446,6 +617,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "REP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -455,6 +629,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aSTETH",
     type: AssetType.AAVE_V2,
     underlying: "0xae7ab96520de3a18e5e111b5eaab095312d7fe84",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x86392dc19c0b719886221c78ab11eb8cf5c52812",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -464,6 +643,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvDAI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -472,6 +654,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "USDK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -480,6 +665,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BNT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -488,6 +676,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "UNI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd6aa3d25116d8da79ea0246c4826eb951872e02e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -496,6 +689,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcDAI+cUSDC+USDT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -504,6 +700,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "REPv2",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     symbol: "maWBTC",
@@ -514,6 +713,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "maWETH",
@@ -524,6 +727,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "maDAI",
@@ -534,6 +741,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "maUSDC",
@@ -544,6 +755,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "maUSDT",
@@ -554,6 +769,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "maCRV",
@@ -564,6 +783,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "ma3WETH",
@@ -574,6 +797,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     symbol: "sDAI",
@@ -584,6 +811,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
   },
   {
     decimals: 18,
@@ -592,6 +823,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sETC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -600,6 +834,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "WBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -608,6 +847,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxLUSD3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -616,6 +858,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sFTSE",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -625,6 +870,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0d438f3b5175bebc262bf23753c1e53d03432bde", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -634,6 +882,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvCurve-EURS",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x194ebd173f6cdace046c53eacce9b953f28411d1",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -651,6 +902,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xfae103dc9cf190ed75350761e95403b7b8afa6c0",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -659,6 +914,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sXAU",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -668,6 +926,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x111111111117dc0aa78b770fa6a738034120c302", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -676,6 +938,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iXRP",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -689,6 +954,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xfae103dc9cf190ed75350761e95403b7b8afa6c0"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -698,6 +967,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aBAL",
     type: AssetType.AAVE_V2,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -707,6 +981,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthBAL",
     type: AssetType.AAVE_V3,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -716,6 +995,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleUSDTSafe",
     type: AssetType.IDLE,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -724,6 +1006,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcrvRenWSBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -732,6 +1017,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iLINK",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -740,6 +1028,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sXTZ",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -748,6 +1039,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "TOKE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -757,6 +1051,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -766,6 +1064,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -774,6 +1076,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sUNI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -790,6 +1095,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RUNE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -798,6 +1106,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxusdn3CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -816,6 +1127,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -824,6 +1139,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RSR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -832,6 +1150,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CTX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -840,6 +1161,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iCEX",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -849,6 +1173,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleUSDCSafe",
     type: AssetType.IDLE,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -856,12 +1183,16 @@ export default defineAssetList(Network.ETHEREUM, [
     ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: TUSDFRAXBP",
     pool: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
-    releases: [sulu],
+    releases: [],
     staking: [{ token: "0xf865fdd6a5f307f398a94dc40687995cfaa77bc9", type: CurveStakingType.GAUGE }],
     symbol: "TUSDFRAXBP3CRV-f",
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -870,6 +1201,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x58921ac140522867bf50b9e009599da0ca4a2379",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -878,11 +1214,15 @@ export default defineAssetList(Network.ETHEREUM, [
     ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi TUSD3CRV-f Gauge Deposit",
     pool: "0xecd5e75afb02efa118af914515d6521aabd189f1",
-    releases: [sulu],
+    releases: [],
     symbol: "TUSD3CRV-f-gauge",
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 8,
@@ -892,6 +1232,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cUNI",
     type: AssetType.COMPOUND_V2,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -901,14 +1245,21 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aSNX",
     type: AssetType.AAVE_V2,
     underlying: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
     id: "0x35fa164735182de50811e8e2e824cfb9b6118ac2",
     name: "ether.fi ETH",
-    releases: [],
+    releases: [sulu],
     symbol: "eETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ETHERFI,
+      address: "0x31103db5639ad1d5351b83409fdf7e575e26774b",
+    },
   },
   {
     decimals: 18,
@@ -917,6 +1268,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iUNI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -925,6 +1279,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sBCH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -933,6 +1290,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvx3Crv",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -941,6 +1301,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "SAND",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x35e3f7e558c04ce7eee1629258ecbba03b36ec56",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -954,6 +1319,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 8,
@@ -963,6 +1332,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cUSDC",
     type: AssetType.COMPOUND_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -972,6 +1345,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aKNC",
     type: AssetType.AAVE_V2,
     underlying: "0xdd974d5c2e2928dea5f71b9825b8b646686bd200",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -981,6 +1359,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvCurve-Aave",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xfd2a8fa60abd58efe3eee34dd494cd491dc14900",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -989,6 +1371,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxgusd3CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -998,6 +1383,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvUSDT",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -1011,6 +1400,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1020,6 +1413,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xd533a949740bb3306d119cc777fa900ba034cd52"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -1028,6 +1425,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxhCRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -1037,6 +1437,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aUSDT",
     type: AssetType.AAVE_V2,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 6,
@@ -1046,6 +1451,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthUSDT",
     type: AssetType.AAVE_V3,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1054,6 +1464,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GHST",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1062,6 +1475,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxalUSDFRAXB3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1071,6 +1487,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x1f573d6fb3f13d689ff844b4ce37794d79a7ff1c", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1080,6 +1499,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleDAIYield",
     type: AssetType.IDLE,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1088,6 +1510,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxSUSDFRAXBP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1096,6 +1521,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "REN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1104,6 +1532,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "GHO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3f12643d3f6f874d39c2a4c9f2cd6f2dbac877fc",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -1112,6 +1545,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxTUSD3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1121,6 +1557,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -1134,6 +1574,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1143,6 +1587,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdfe66b14d37c77f4e9b180ceb433d1b164f0281d"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1151,6 +1598,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OXT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1164,6 +1614,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x028171bca77440897b824ca71d1c56cac55b68a3", "0x6c5024cd4f8a59110119c56f8933403a539555eb"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1172,6 +1626,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "COVER",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1180,6 +1637,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iDOT",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1193,6 +1653,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1201,6 +1664,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CTSI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1214,6 +1680,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1227,6 +1697,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.BASE,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xeb4c2781e4eba804ce9a9803c67d0893436bb27d", "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1235,6 +1709,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iXMR",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -1244,6 +1721,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cSUSHI",
     type: AssetType.COMPOUND_V2,
     underlying: "0x6b3595068778dd592e39a122f4f5a5cf09c90fe2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 8,
@@ -1252,6 +1733,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "TRU",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1260,6 +1744,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "APE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xc7de7f4d4c9c991ff62a07d18b3e31e349833a18",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1268,6 +1757,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "stkAAVE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -1277,6 +1771,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cETH",
     type: AssetType.COMPOUND_V2,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -1285,6 +1783,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "FTM",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x2de7e4a9488488e0058b95854cc2f7955b35dc9b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1293,6 +1796,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "CVX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd962fc30a72a84ce50161031391756bf2876af5d",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -1306,6 +1814,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x056fd409e1d7a124bd7017459dfea2f387b6d5cd", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1319,6 +1831,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x674c6ad92fd080e4004b2312b45f796a192d27a0", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1327,6 +1843,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore],
     symbol: "CELR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1335,6 +1854,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [encore, phoenix],
     symbol: "BUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1343,6 +1865,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "NU",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1351,6 +1876,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "FTT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1359,6 +1887,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "LINK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1368,6 +1901,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aYFI",
     type: AssetType.AAVE_V2,
     underlying: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7c5d4f8345e66f68099581db340cd65b078c41f4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1377,6 +1915,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1386,6 +1927,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleUSDCYield",
     type: AssetType.IDLE,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1394,6 +1938,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sXMR",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1402,6 +1949,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BZRX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1410,6 +1960,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "sUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8e0b7e6062272b5ef4524250bfff8e5bd3497757",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1418,6 +1973,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "HEGIC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1426,6 +1984,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iYFI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1439,6 +2000,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1447,6 +2012,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sNFLX",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1455,6 +2023,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "LDO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x4e844125952d32acdf339be976c98e22f6f318db",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1468,6 +2041,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xdf574c24545e5ffecb9a659c229253d4111d87e1", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1476,6 +2052,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "WFLOW",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1485,6 +2064,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleRAIYield",
     type: AssetType.IDLE,
     underlying: "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -1494,6 +2076,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cDAI",
     type: AssetType.COMPOUND_V2,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -1502,6 +2088,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sETH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -1511,6 +2100,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvUSDC",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1519,6 +2111,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "LUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3d7ae7e594f2f2091ad8798313450130d0aba3a0",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -1528,6 +2125,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthLUSD",
     type: AssetType.AAVE_V3,
     underlying: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3d7ae7e594f2f2091ad8798313450130d0aba3a0",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 9,
@@ -1536,6 +2138,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RLC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1544,6 +2149,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sBNB",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1552,6 +2160,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iCOMP",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1560,6 +2171,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "cxADA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 9,
@@ -1568,6 +2182,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OHM",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1577,6 +2194,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvLINK",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x514910771af9ca656af840dff83e8264ecf986ca",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -1585,6 +2206,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "USDN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1593,6 +2217,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ibETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1602,6 +2229,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aFEI",
     type: AssetType.AAVE_V2,
     underlying: "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1610,6 +2240,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "MASK",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1618,6 +2251,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sXAG",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1626,6 +2262,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "DAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1634,6 +2275,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "SUSHI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xe572cef69f43c2e488b33924af04bdace19079cf",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1647,6 +2293,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x03ab458634910aad20ef5f1c8ee96f1d6ac54919", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1664,6 +2313,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
       "0xdac17f958d2ee523a2206206994597c13d831ec7",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1673,6 +2326,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aSUSD",
     type: AssetType.AAVE_V2,
     underlying: "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1682,6 +2338,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0258f474786ddfd37abce6df6bbb1dd5dfc4434a", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -1691,6 +2350,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cBAT",
     type: AssetType.COMPOUND_V2,
     underlying: "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1699,6 +2361,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sOIL",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1708,6 +2373,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x607f4c5bb672230e8672085532f7e901544a7375", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1717,6 +2385,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aDPI",
     type: AssetType.AAVE_V2,
     underlying: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1726,6 +2399,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aMANA",
     type: AssetType.AAVE_V2,
     underlying: "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -1735,6 +2411,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cCOMP",
     type: AssetType.COMPOUND_V2,
     underlying: "0xc00e94cb662c3520282e6f5717214004a7f26888",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -1748,6 +2428,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1761,6 +2445,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1769,6 +2457,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sAAPL",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1777,6 +2468,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sNIKKEI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1785,6 +2479,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxBUSDFRAXBP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1793,6 +2490,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iLTC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1801,6 +2501,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxTUSDFRAXBP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1809,6 +2512,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "MATIC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7bac85a8a13a4bcd8abb3eb7d6b4d632c5a57676",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 6,
@@ -1818,6 +2526,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvUSDT",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1826,6 +2537,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxGUSDFRAXBP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1834,6 +2548,10 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_WSTETH,
+      address: "0x50da4957032c8fc5f94ec8d5ec8bfce84f9c9311",
+    },
   },
   {
     decimals: 18,
@@ -1843,6 +2561,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthwstETH",
     type: AssetType.AAVE_V3,
     underlying: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
+      address: "0x86533352bdd201c89f184f7ebbfebea3e31c8bb3",
+    },
   },
   {
     decimals: 18,
@@ -1851,6 +2573,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "AAVE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -1860,6 +2587,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cYFI",
     type: AssetType.COMPOUND_V2,
     underlying: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -1869,6 +2600,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xed91879919b71bb6905f23af0a68d231ecf87b14"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1877,6 +2611,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OGN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1890,6 +2627,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.YEARN,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5d3a536e4d6dbd6114cc1ead35777bab948e3643", "0x39aa39c021dfbae8fac545936693ac917d5e7563"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -1909,6 +2650,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xfae103dc9cf190ed75350761e95403b7b8afa6c0",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
+    },
   },
   {
     decimals: 18,
@@ -1917,6 +2662,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "DIA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1926,6 +2674,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x4688a8b1f292fdab17e9a90c8bc379dc1dbd8713", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1934,6 +2685,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "FRAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -1943,6 +2699,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvRAI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1951,6 +2710,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "IDLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1960,6 +2722,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xbbbbca6a901c926f240b89eacb641d8aec7aeafd", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1968,6 +2733,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sEOS",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1977,6 +2745,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x04fa0d235c4abf4bcf4787af4cf447de572ef828", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1985,6 +2756,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxhusd3CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -1994,6 +2768,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x221657776846890989a759ba2973e427dff5c9bb", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2002,6 +2779,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iADA",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2010,6 +2790,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxsaCRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2019,6 +2802,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x408e41876cccdc0f92210600ef50372656052a38", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2028,14 +2814,22 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleWBTCYield",
     type: AssetType.IDLE,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
     id: "0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9",
     name: "Swipe",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "SXP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xfb0cfd6c19e25db4a08d8a204a387cea48cc138f",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2045,6 +2839,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aCRV",
     type: AssetType.AAVE_V2,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2054,6 +2853,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthCRV",
     type: AssetType.AAVE_V3,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2062,6 +2866,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iXTZ",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2070,6 +2877,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "USDP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x09023c0da49aaf8fc3fa3adf34c6a7016d38d5e3",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2083,6 +2895,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2091,6 +2906,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxBUSD3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2100,6 +2918,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2113,6 +2934,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.BASE,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xdb25f211ab05b1c97d595516f45794528a807ad8", "0xd71ecff9342a5ced620049e616c5035f1db98620"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2121,6 +2945,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sTSLA",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2129,6 +2956,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "FEI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2142,6 +2972,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -2150,6 +2984,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "SHIB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8dd1cd88f43af196ae478e91b9f5e4ac69a97c61",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -2159,6 +2998,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cMKR",
     type: AssetType.COMPOUND_V2,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -2172,6 +3015,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x1c48f86ae57291f7686349f12601910bd8d470bb", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -2180,6 +3027,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcrvRenWBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2188,6 +3038,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sGBP",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2197,6 +3050,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvCurve-sETH",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -2205,6 +3062,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sYFI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2213,6 +3073,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "MIM",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7a364e8770418566e3eb2001a96116e6138eb32f",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2222,6 +3087,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x4575f41308ec1483f3d399aa9a2826d74da13deb", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2230,6 +3098,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "apxETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xc11a2312987f6adb5d1abfa89d488e8b806b699e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2243,6 +3116,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -2251,6 +3128,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sAMZN",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2260,6 +3140,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xa117000000f279d81a1d3cc75430faa017fa5a2e", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2268,6 +3151,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "sUSDe",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xb99d174ed06c83588af997c8859f93e83dd4733f",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2276,6 +3164,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "MKR",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2285,6 +3178,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthMKR",
     type: AssetType.AAVE_V3,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2302,6 +3200,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0x39aa39c021dfbae8fac545936693ac917d5e7563",
       "0xdac17f958d2ee523a2206206994597c13d831ec7",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 8,
@@ -2311,6 +3213,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aWBTC",
     type: AssetType.AAVE_V2,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -2320,6 +3227,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthWBTC",
     type: AssetType.AAVE_V3,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2329,6 +3241,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aLINK",
     type: AssetType.AAVE_V2,
     underlying: "0x514910771af9ca656af840dff83e8264ecf986ca",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2338,6 +3255,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthLINK",
     type: AssetType.AAVE_V3,
     underlying: "0x514910771af9ca656af840dff83e8264ecf986ca",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdc530d9457755926550b59e8eccdae7624181557",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2347,6 +3269,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -2355,6 +3280,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CRO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -2363,6 +3291,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "USDC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2371,6 +3304,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ANT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2379,6 +3315,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xf387707bc4df894607a93f83d58a835cacd370f1",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2388,6 +3329,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleDAISafe",
     type: AssetType.IDLE,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2396,6 +3340,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ALPHA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2405,6 +3352,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x514910771af9ca656af840dff83e8264ecf986ca", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2414,6 +3365,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvWETH",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -2422,6 +3377,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sXRP",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2430,6 +3388,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "ETHx",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 6,
@@ -2439,6 +3402,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvUSDC",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -2448,6 +3415,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aBUSD",
     type: AssetType.AAVE_V2,
     underlying: "0x4fabb145d64652a948d72533023f6e7a623c7c53",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2461,6 +3431,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0x5e74c9036fb86bd7ecdcb084a0673efc32ea31cb"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -2470,6 +3444,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x6b175474e89094c44da98b954eedeac495271d0f", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2478,6 +3456,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "UST",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2486,6 +3467,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iOIL",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2495,6 +3479,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvsUSD",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2504,6 +3491,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aMANA",
     type: AssetType.AAVE_V2,
     underlying: "0x0f5d2fb29fb7d3cfee444a200298f468908cc942",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x82a44d92d6c329826dc557c5e1be6ebec5d5feb9",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -2513,6 +3505,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvWBTC",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -2522,6 +3518,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xba100000625a3754423978a60c9317c58a424e3d", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2530,6 +3530,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iETH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 4,
@@ -2538,15 +3541,22 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CEL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
     id: "0xac317d14738a454ff20b191ba3504aa97173045b",
     name: "Uniswap SXP/ETH Pool",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2556,6 +3566,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aENJ",
     type: AssetType.AAVE_V2,
     underlying: "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x24d9ab51950f3d62e9144fdc2f3135daa6ce8d1b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2564,6 +3579,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ADX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2573,6 +3591,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x6b175474e89094c44da98b954eedeac495271d0f", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2581,6 +3603,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "stETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x86392dc19c0b719886221c78ab11eb8cf5c52812",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2589,6 +3616,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "rETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x536218f9e9eb48863970252233c8f271f554c2d0",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2597,6 +3629,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RPL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2606,6 +3641,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthrETH",
     type: AssetType.AAVE_V3,
     underlying: "0xae78736cd615f374d3085123a210448e74fc6393",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x536218f9e9eb48863970252233c8f271f554c2d0",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2619,6 +3659,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2627,6 +3670,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcrvPlain3andSUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2635,6 +3681,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxalUSD3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2643,6 +3692,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iBNB",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2656,6 +3708,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0316eb71485b0ab14103307bf65a021042c6d380", "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -2665,6 +3721,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x6b175474e89094c44da98b954eedeac495271d0f", "0xdac17f958d2ee523a2206206994597c13d831ec7"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2674,6 +3734,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleFEIYield",
     type: AssetType.IDLE,
     underlying: "0x956f47f50a910163d8bf957cf5846d573e7f87ca",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2687,6 +3750,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xbc6da0fe9ad5f3b0d58160288917aa56653660e9", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 8,
@@ -2696,6 +3763,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cZRX",
     type: AssetType.COMPOUND_V2,
     underlying: "0xe41d2489571d322189246dafa5ebde1f4699f498",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2705,6 +3775,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2714,6 +3787,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2722,6 +3799,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "ARB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x31697852a68433dbcc2ff612c516d69e3d9bd08f",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2731,6 +3813,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x0d8775f648430679a709e98d2b0cb6250d2887ef", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2739,6 +3824,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "SFI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2747,6 +3835,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxusdk3CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2756,6 +3847,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x1776e1f26f98b1a5df9cd347953a26dd3cb46671", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2765,6 +3859,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yv1INCH",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x111111111117dc0aa78b770fa6a738034120c302",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -2773,6 +3871,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BNB",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2782,6 +3883,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x56d811088235f11c8920698a204a5010a788f4b3", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2791,6 +3895,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aUNI",
     type: AssetType.AAVE_V2,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd6aa3d25116d8da79ea0246c4826eb951872e02e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2800,6 +3909,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthUNI",
     type: AssetType.AAVE_V3,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd6aa3d25116d8da79ea0246c4826eb951872e02e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2808,6 +3922,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "osETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xcbfb161cb44267390c7b9303e1b08af75ffabd71",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2816,6 +3935,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2824,6 +3948,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BAND",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2832,6 +3959,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "AXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2841,6 +3971,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -2849,6 +3983,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "LRC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2857,6 +3994,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sLINK",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2865,6 +4005,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "PERP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3b41d5571468904d4e53b6a8d93a6bac43f02dc9",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2873,6 +4018,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "alUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -2882,6 +4030,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aUSDC",
     type: AssetType.AAVE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 6,
@@ -2891,6 +4044,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthUSDC",
     type: AssetType.AAVE_V3,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2899,6 +4057,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "cbETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xf017fcb346a1885194689ba23eff2fe6fa5c483b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2908,6 +4071,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthcbETH",
     type: AssetType.AAVE_V3,
     underlying: "0xbe9895146f7af43049ca1c1ae358b0541ea49704",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xf017fcb346a1885194689ba23eff2fe6fa5c483b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2916,6 +4084,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "COMP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x1b39ee86ec5979ba5c322b826b3ecb8c79991699",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2924,6 +4097,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "SNX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x79291a9d692df95334b1a0b3b4ae6bc606782f8c",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2933,6 +4111,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthSNX",
     type: AssetType.AAVE_V3,
     underlying: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x79291a9d692df95334b1a0b3b4ae6bc606782f8c",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -2941,6 +4124,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.WETH,
+    },
   },
   {
     decimals: 8,
@@ -2950,6 +4136,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cWBTC",
     type: AssetType.COMPOUND_V2,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2958,6 +4147,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sLTC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2966,6 +4158,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "ENS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x5c00128d4d1c2f4f652c267d7bcdd7ac99c16e16",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -2974,6 +4171,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcDAI+cUSDC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -2992,6 +4192,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xdac17f958d2ee523a2206206994597c13d831ec7",
       "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3001,6 +4205,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleTUSDYield",
     type: AssetType.IDLE,
     underlying: "0x0000000000085d4780b73119b644ae5ecd22b376",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3010,6 +4217,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3018,6 +4229,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iTRX",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -3026,6 +4240,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "EURT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3034,6 +4251,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sGOOG",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3043,6 +4263,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xe41d2489571d322189246dafa5ebde1f4699f498"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3052,6 +4275,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aMKR",
     type: AssetType.AAVE_V2,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x24551a8fb2a7211a25a17b1481f043a8a8adc7f2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3061,6 +4289,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleWETHYield",
     type: AssetType.IDLE,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3077,6 +4308,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -3085,6 +4320,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "GRT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x17d054ecac33d91f7340645341efb5de9009f1c1",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3094,6 +4334,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aRAI",
     type: AssetType.AAVE_V2,
     underlying: "0x03ab458634910aad20ef5f1c8ee96f1d6ac54919",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3102,6 +4345,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iDASH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3111,6 +4357,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aREN",
     type: AssetType.AAVE_V2,
     underlying: "0x408e41876cccdc0f92210600ef50372656052a38",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3119,6 +4368,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxFRAX3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -3128,6 +4380,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cWBTC",
     type: AssetType.COMPOUND_V2,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -3136,6 +4392,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "s1INCH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3145,6 +4404,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x8207c1ffc5b6804f6024322ccf34f29c3541ae26", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3154,6 +4416,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x6b3595068778dd592e39a122f4f5a5cf09c90fe2", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3167,6 +4433,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3176,6 +4446,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc00e94cb662c3520282e6f5717214004a7f26888", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3184,6 +4458,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OMG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3192,6 +4469,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RGT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3205,6 +4485,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x056fd409e1d7a124bd7017459dfea2f387b6d5cd", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3213,6 +4497,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sAAVE",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3221,6 +4508,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sREN",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3230,6 +4520,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xade00c28244d5ce17d72e40330b1c318cd12b7c3", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 2,
@@ -3239,6 +4532,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aGUSD",
     type: AssetType.AAVE_V2,
     underlying: "0x056fd409e1d7a124bd7017459dfea2f387b6d5cd",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3247,6 +4543,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sCRV",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3256,6 +4555,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x1f9840a85d5af5bf1d1762f925bdaddc4201f984", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3265,6 +4568,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aFRAX",
     type: AssetType.AAVE_V2,
     underlying: "0x853d955acef822db058eb8505911ed77f175b99e",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3278,6 +4586,9 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x4fabb145d64652a948d72533023f6e7a623c7c53", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3286,6 +4597,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iETC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3294,6 +4608,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8a12be339b0cd1829b91adc01977caa5e9ac121e",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3302,6 +4621,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iBTC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3315,6 +4637,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x853d955acef822db058eb8505911ed77f175b99e", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3332,6 +4658,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xbcca60bb61934080951369a648fb03df4f96263c",
       "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3340,6 +4670,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sEUR",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3353,6 +4686,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x99d8a9c45b2eca8864373a26d1459e3dff1e17f3", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3366,6 +4703,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x056fd409e1d7a124bd7017459dfea2f387b6d5cd", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3375,6 +4716,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvDAI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 6,
@@ -3383,6 +4728,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3391,6 +4741,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxa3CRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3400,6 +4753,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvYFI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 2,
@@ -3408,6 +4765,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "EURS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3417,6 +4777,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvCurve-stETH",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x06325440d014e39736583c165c2963ba99faf14e",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -3425,6 +4789,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "KNCL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3433,6 +4802,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3441,6 +4813,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore],
     symbol: "KNC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x656c0544ef4c98a6a98491833a89204abb045d6b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -3449,6 +4826,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "HUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3458,6 +4838,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aZRX",
     type: AssetType.AAVE_V2,
     underlying: "0xe41d2489571d322189246dafa5ebde1f4699f498",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3467,6 +4850,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3475,6 +4862,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3483,6 +4873,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxMIM-3LP3CRV-f",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3492,6 +4885,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvYFI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3500,6 +4896,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sDEFI",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3508,6 +4907,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "INJ",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3521,6 +4923,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x57ab1ec28d129707052df4df418d58a2d46d5f51", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3529,6 +4935,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxeCRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3537,6 +4946,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sADA",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3545,6 +4957,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ZRX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3554,6 +4969,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xf629cbd94d3791c9250152bd8dfbdf380e2a3b9c"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 8,
@@ -3563,6 +4982,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cAAVE",
     type: AssetType.COMPOUND_V2,
     underlying: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -3571,6 +4994,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sCEX",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3579,6 +5005,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sCOMP",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -3587,6 +5016,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "renBTC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3594,12 +5026,16 @@ export default defineAssetList(Network.ETHEREUM, [
     ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: TrueUSD",
     pool: "0xecd5e75afb02efa118af914515d6521aabd189f1",
-    releases: [sulu],
+    releases: [],
     staking: [{ token: "0x359fd5d6417ae3d8d6497d9b2e7a890798262ba4", type: CurveStakingType.GAUGE }],
     symbol: "TUSD3CRV-f",
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3608,6 +5044,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdaea8386611a157b08829ed4997a8a62b557014c",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3621,6 +5062,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x5f98805a4e8be255a32880fdec7f6728c6568ba0", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3629,6 +5074,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "DMG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3638,6 +5086,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvSNX",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0xc011a73ee8576fb46f5e1c5751ca3b9fe0af2a6f",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3646,6 +5097,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sTRX",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3655,6 +5109,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleUSDTYield",
     type: AssetType.IDLE,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3664,6 +5121,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xba11d00c5f74255f56a5e366f4f77f5a186d7f55", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3672,6 +5132,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sAUD",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3681,6 +5144,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xdd974d5c2e2928dea5f71b9825b8b646686bd200"],
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3689,6 +5155,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iEOS",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3697,6 +5166,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sFB",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3706,6 +5178,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "idleSUSDYield",
     type: AssetType.IDLE,
     underlying: "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3714,6 +5189,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu, encore, phoenix],
     symbol: "ENJ",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x24d9ab51950f3d62e9144fdc2f3135daa6ce8d1b",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 8,
@@ -3723,6 +5203,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cUSDT",
     type: AssetType.COMPOUND_V2,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_COMPOUND,
+      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+    },
   },
   {
     decimals: 18,
@@ -3731,6 +5215,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sJPY",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3744,6 +5231,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x57ab1ec28d129707052df4df418d58a2d46d5f51", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3752,6 +5243,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "iBCH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3761,6 +5255,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x57ab1ec28d129707052df4df418d58a2d46d5f51", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
+      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+    },
   },
   {
     decimals: 18,
@@ -3769,11 +5267,15 @@ export default defineAssetList(Network.ETHEREUM, [
     ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi TUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
-    releases: [sulu],
+    releases: [],
     symbol: "TUSDFRAXBP3CRV-f-gauge",
     template: CurvePoolTemplate.META,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3782,6 +5284,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "cxDOGE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3790,6 +5295,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "swETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xefcdda24cfe185621c7271d1f260c5be5d4ebcf2",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3798,6 +5308,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxsteCRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3806,6 +5319,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkcvxcrvFRAX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3814,6 +5330,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "rswETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x189281321b51575d2fe5ce6b94642d4362f24013",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3823,6 +5344,10 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "yvUNI",
     type: AssetType.YEARN_VAULT_V2,
     underlying: "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
+      address: "0x3982e1cc26b99310747df54f445063745c54a324",
+    },
   },
   {
     decimals: 18,
@@ -3831,6 +5356,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "RARI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3848,6 +5376,10 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xbcca60bb61934080951369a648fb03df4f96263c",
       "0x3ed3b47dd13ec9a98b44e6204a523e766b225811",
     ],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -3856,6 +5388,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sBTC",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3864,6 +5399,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sDASH",
     type: AssetType.SYNTHETIX,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3872,6 +5410,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "AMP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3881,6 +5422,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aAAVE",
     type: AssetType.AAVE_V2,
     underlying: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3890,6 +5436,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthAAVE",
     type: AssetType.AAVE_V3,
     underlying: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
+      rateAsset: RateAsset.ETH,
+    },
   },
   // TODO: order assets below by id
   {
@@ -3899,6 +5450,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "IMX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xbaebefc1d023c0feccc047bff42e75f15ff213e6",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -3909,6 +5465,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     rewardsContract: "0x7869d7a3b074b5fa484dc04798e254c9c06a5e90",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3919,6 +5478,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     rewardsContract: "0x7c57bf654bc16b0c9080f4f75ff62876f50b8259",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3929,6 +5491,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     rewardsContract: "0x0a76c7913c94f2af16958fbdf9b4cf0bbdb159d8",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3937,6 +5502,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BIT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3947,6 +5515,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     rewardsContract: "0x0000000000000000000000000000000000000000",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3957,6 +5528,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     rewardsContract: "0x5e804b9a61b3e5bf2718ea249deb13366129b7de",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3967,6 +5541,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.MAPLE_V1,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     rewardsContract: "0xd0123f5220a36e9ec6082d83b4a11f92aa48ccd0",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -3975,6 +5552,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "pufETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x114e286b85aacd4032a8b399cd288944fc5b7a90",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -3983,6 +5565,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ILV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -3993,6 +5578,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MPL-ocUSDC1",
     type: AssetType.MAPLE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -4003,6 +5591,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MPL-mcUSDC2",
     type: AssetType.MAPLE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4013,6 +5604,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MPL-mcWETH1",
     type: AssetType.MAPLE_V2,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -4023,6 +5617,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MPL-ibUSDC1",
     type: AssetType.MAPLE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4036,6 +5633,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 6,
@@ -4046,6 +5647,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "MPL-mcUSDC1",
     type: AssetType.MAPLE_V2,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4054,6 +5658,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "MPL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4062,6 +5669,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "cvxCRV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4070,6 +5680,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "cvxFXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4083,6 +5696,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -4096,6 +5713,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2", "0xae7ab96520de3a18e5e111b5eaab095312d7fe84"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -4104,6 +5725,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GNO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4112,6 +5736,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GEIST",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4120,6 +5747,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ALCX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4128,6 +5758,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "FXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6ebc52c8c1089be9eb3945c4350b68b8e4c2233f",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -4136,6 +5771,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "MTA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4144,6 +5782,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "TRIBE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4152,6 +5793,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ANGLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4160,6 +5804,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "FLX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4168,6 +5815,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "T",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4176,6 +5826,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GRO",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4184,6 +5837,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "INV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4192,6 +5848,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "LFT",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4200,6 +5859,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "LYRA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4208,6 +5870,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "JPEG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4216,6 +5881,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "STG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4224,6 +5892,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "PTKN_MLN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4232,6 +5903,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "USDe",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xbc5fbcf58ceaea19d523abc76515b9aefb5cfd58",
+      rateAsset: RateAsset.USD,
+    },
   },
 
   {
@@ -4241,6 +5917,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "PAXG",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 9,
@@ -4249,6 +5928,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "SOL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x4ffc43a60e009b551865a93d232e33fce9f01507",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -4257,6 +5941,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "LQTY",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4265,6 +5952,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OCEAN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4273,6 +5963,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "FIDU",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4281,6 +5974,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "APEFI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4289,6 +5985,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "USDD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4303,6 +6002,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0xba100000625a3754423978a60c9317c58a424e3d", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4321,6 +6024,9 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     ],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4337,6 +6043,9 @@ export default defineAssetList(Network.ETHEREUM, [
       "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     ],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4356,6 +6065,9 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x6810e776880c02933d47db1b9fc05908e5386b96", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4368,6 +6080,9 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0x6810e776880c02933d47db1b9fc05908e5386b96", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4382,6 +6097,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4394,6 +6113,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0x2260fac5e5542a773aa44fbcfedf7c193bc2c599", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4402,6 +6125,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkauraB-50WBTC-50WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4416,6 +6142,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4428,6 +6158,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4437,6 +6171,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "aEthLDO",
     type: AssetType.AAVE_V3,
     underlying: "0x5a98fcbea516cf06857215779fd812ca3bef1b32",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x4e844125952d32acdf339be976c98e22f6f318db",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -4445,6 +6184,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkauraB-50USDC-50WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4459,6 +6201,9 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4471,6 +6216,9 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4485,6 +6233,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4497,6 +6249,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0xf1665e19bc105be4edd3739f88315cc699cc5b65",
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4505,14 +6261,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkaura50wstETH-50LDO",
     type: AssetType.PRIMITIVE,
-  },
-  {
-    decimals: 18,
-    id: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
-    name: "Wrapped liquid staked Ether 2.0",
-    releases: [sulu],
-    symbol: "wstETH",
-    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4527,6 +6278,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4539,6 +6294,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0x5a98fcbea516cf06857215779fd812ca3bef1b32", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4547,6 +6306,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkauraB-80LDO-20WETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4561,6 +6323,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
+      address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+    },
   },
   {
     decimals: 18,
@@ -4575,6 +6341,9 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.WEIGHTED,
     underlyings: ["0x333a4823466879eef910a04d473505da62142069", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4588,6 +6357,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xfae103dc9cf190ed75350761e95403b7b8afa6c0"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -4596,6 +6369,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "NATION",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4610,6 +6386,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.META_STABLE,
     underlyings: ["0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+    },
   },
   {
     decimals: 18,
@@ -4622,6 +6402,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4630,6 +6414,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "weETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xca289456c31392074a804a7db0aac918fb36cf36",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -4638,6 +6427,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkauraB-stETH-STABLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4651,6 +6443,10 @@ export default defineAssetList(Network.ETHEREUM, [
     template: CurvePoolTemplate.ETH,
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_CURVE,
+      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+    },
   },
   {
     decimals: 18,
@@ -4665,6 +6461,10 @@ export default defineAssetList(Network.ETHEREUM, [
     poolType: BalancerPoolType.META_STABLE,
     underlyings: ["0xae78736cd615f374d3085123a210448e74fc6393", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
+      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+    },
   },
   {
     decimals: 18,
@@ -4677,6 +6477,10 @@ export default defineAssetList(Network.ETHEREUM, [
     gaugeFactory: "0x4e7bbd911cf1efa442bc1b2e9ea01ffe785412ec",
     underlyings: ["0xae78736cd615f374d3085123a210448e74fc6393", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     type: AssetType.BALANCER_POOL_GAUGE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
+      address: "0x312ce4bde393ff246b27c890b97ade37fedaa348",
+    },
   },
   {
     decimals: 18,
@@ -4685,6 +6489,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "stkauraB-rETH-STABLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4693,6 +6500,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CLEV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4701,6 +6511,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "AURA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4709,6 +6522,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "CNC",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4717,6 +6533,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "veBAL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4725,6 +6544,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "auraBAL",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -4734,6 +6556,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cUSDCv3",
     type: AssetType.COMPOUND_V3,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -4743,6 +6570,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cWETHv3",
     type: AssetType.COMPOUND_V3,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4751,15 +6581,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "eUSD",
     type: AssetType.PRIMITIVE,
-  },
-  {
-    decimals: 6,
-    id: "0xc3d688b66703497daa19211eedff47f25384cdc3",
-    name: "Compound USDC",
-    releases: [sulu],
-    symbol: "cUSDCv3",
-    type: AssetType.COMPOUND_V3,
-    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4769,6 +6593,11 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "cWETHv3",
     type: AssetType.COMPOUND_V3,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419",
+      rateAsset: RateAsset.USD,
+    },
   },
   {
     decimals: 18,
@@ -4777,6 +6606,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "sdFXS",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4785,6 +6617,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "eCFX",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4793,6 +6628,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "OGV",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4801,6 +6639,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "wBETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4809,6 +6650,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "MET",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4817,6 +6661,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "GRAI",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4825,6 +6672,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "DIVA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4833,6 +6683,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "PRISMA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4841,6 +6694,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "cvxPrisma",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4849,6 +6705,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "xETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 6,
@@ -4857,6 +6716,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "PYUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4865,6 +6727,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "mkUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4873,6 +6738,11 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "ezETH",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xc7e813d31de68c012caf8ea1df323fdac97e2fd0",
+      rateAsset: RateAsset.ETH,
+    },
   },
   {
     decimals: 18,
@@ -4881,6 +6751,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "crvUSD",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4889,6 +6762,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "BTRFLY",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4897,6 +6773,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "FXN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 8,
@@ -4905,6 +6784,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "TXJP",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4913,6 +6795,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ZETA",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4921,6 +6806,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "PENDLE",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
   {
     decimals: 18,
@@ -4929,5 +6817,19 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [],
     symbol: "ZUN",
     type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x6df0e641fc9847c0c6fde39be6253045440c14d3",
+    name: "Dinero Governance Token",
+    releases: [],
+    symbol: "DINERO",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
   },
 ]);
