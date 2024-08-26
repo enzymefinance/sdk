@@ -249,7 +249,7 @@ export interface ExternalContractsMapping {
   readonly curveChildLiquidityGaugeFactory: Address;
   readonly curveRegistry: Address;
   readonly kilnStaking: Address;
-  readonly LidoWithdrawalsQueue: Address;
+  readonly lidoWithdrawalsQueue: Address;
   readonly liquityHintHelpers: Address;
   readonly liquitySortedTroves: Address;
   readonly liquityTroveManager: Address;
