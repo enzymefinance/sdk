@@ -1,3 +1,4 @@
+import { Protocol } from "@enzymefinance/sdk";
 import { formatEther } from "viem";
 import { beforeAll, expect, suite, test } from "vitest";
 import type { Address } from "../../src/index.js";
@@ -5,7 +6,6 @@ import { AssetType, Environment } from "../../src/index.js";
 import { getClient } from "../utils/client.js";
 import { getCoingeckoPrices } from "../utils/coingecko.js";
 import { calcNormalizedAssetValue } from "../utils/contracts/AssetValueCalculator.js";
-import { isSupportedAsset } from "../utils/contracts/PriceFeed.js";
 import { environment } from "../utils/fixtures.js";
 
 const assets = environment.getAssets();
@@ -21,8 +21,8 @@ async function isRegistered(asset: Address) {
     const a = environment.getContract("ChainlinkPriceFeed");
     const b = environment.getContract("AggregatedDerivativePriceFeed");
     const results = await Promise.all([
-      isSupportedAsset(client, { priceFeed: a, asset }),
-      isSupportedAsset(client, { priceFeed: b, asset }),
+      Protocol.isSupportedAsset(client, { valueInterpreter: a, asset }),
+      Protocol.isSupportedAsset(client, { valueInterpreter: b, asset }),
     ]);
 
     return results.includes(true);
@@ -30,7 +30,7 @@ async function isRegistered(asset: Address) {
 
   const c = environment.getContract("ValueInterpreter");
 
-  return isSupportedAsset(client, { priceFeed: c, asset });
+  return Protocol.isSupportedAsset(client, { valueInterpreter: c, asset });
 }
 
 let prices: Record<Address, number | undefined> = {};

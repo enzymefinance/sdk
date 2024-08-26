@@ -1,5 +1,43 @@
 # @enzymefinance/environment
 
+## 5.0.17
+
+### Patch Changes
+
+- [`24a47b8`](https://github.com/enzymefinance/sdk/commit/24a47b85114310f5dee3c56c01cfd080056338a8) Thanks [@fubhy](https://github.com/fubhy)! - Added arbitrum addresses
+
+- [#482](https://github.com/enzymefinance/sdk/pull/482) [`783e0ec`](https://github.com/enzymefinance/sdk/commit/783e0ec6e666ca551810ff233a3b76a8140627ac) Thanks [@iherger](https://github.com/iherger)! - Add more arbitrum contract addresses
+
+## 5.0.16
+
+### Patch Changes
+
+- [#479](https://github.com/enzymefinance/sdk/pull/479) [`c5a9565`](https://github.com/enzymefinance/sdk/commit/c5a956598dc970a1a0422ad53989d4e182198384) Thanks [@iherger](https://github.com/iherger)! - More Arbitrum contract addresses
+
+## 5.0.15
+
+### Patch Changes
+
+- [#477](https://github.com/enzymefinance/sdk/pull/477) [`69969be`](https://github.com/enzymefinance/sdk/commit/69969be9e81083a5e8454cce910f4894be3d9649) Thanks [@iherger](https://github.com/iherger)! - Fix price feed test
+
+- [#471](https://github.com/enzymefinance/sdk/pull/471) [`c5b6456`](https://github.com/enzymefinance/sdk/commit/c5b6456a1c9a598e1c8bc963863b54ab8233aac7) Thanks [@ignacio-rsg](https://github.com/ignacio-rsg)! - Update asset registrations on Ethereum
+
+## 5.0.14
+
+### Patch Changes
+
+- [#473](https://github.com/enzymefinance/sdk/pull/473) [`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e) Thanks [@iherger](https://github.com/iherger)! - Add price feed details for assets
+
+- Updated dependencies [[`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e)]:
+  - @enzymefinance/sdk@0.8.25
+
+## 5.0.13
+
+### Patch Changes
+
+- Updated dependencies [[`a9682bc`](https://github.com/enzymefinance/sdk/commit/a9682bc6a6ab5004760839d01e8c0c01ee58e162)]:
+  - @enzymefinance/sdk@0.8.24
+
 ## 5.0.12
 
 ### Patch Changes

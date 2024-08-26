@@ -47,7 +47,7 @@ export default defineDeployment<Deployment.POLYGON>({
     zeroExExchangeProxy: "0x0000000000000000000000000000000000000000",
     theGraphEpochManagerProxy: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x0000000000000000000000000000000000000000",
-    multicall: "0x11ce4b23bd875d7f5c6a31084f55fde1e9a87507",
+    multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     makerMCDPotAddress: "0x0000000000000000000000000000000000000000",
     zeroExV4Exchange: "0xdef1c0ded9bec7f1a1670819833240f027b25eff",
   },

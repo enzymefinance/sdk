@@ -1,5 +1,17 @@
 # @enzymefinance/sdk
 
+## 0.8.25
+
+### Patch Changes
+
+- [#473](https://github.com/enzymefinance/sdk/pull/473) [`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e) Thanks [@iherger](https://github.com/iherger)! - Add price feed details for assets
+
+## 0.8.24
+
+### Patch Changes
+
+- [#474](https://github.com/enzymefinance/sdk/pull/474) [`a9682bc`](https://github.com/enzymefinance/sdk/commit/a9682bc6a6ab5004760839d01e8c0c01ee58e162) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update sweep encoding to use a tuple"
+
 ## 0.8.23
 
 ### Patch Changes

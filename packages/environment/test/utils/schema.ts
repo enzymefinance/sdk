@@ -11,6 +11,7 @@ import {
   CurveStakingType,
   Network,
 } from "../../src/index.js";
+import { PriceFeedType } from "../../src/price-feeds.js";
 
 const address = z.string().regex(/^0x[0-9a-f]{40}$/) as z.Schema<Address>;
 
@@ -21,6 +22,11 @@ export const CommonAssetSchema = z.object({
   network: z.nativeEnum(Network),
   symbol: z.string(),
   type: z.nativeEnum(AssetType),
+  priceFeed: z
+    .object({
+      type: z.nativeEnum(PriceFeedType),
+    })
+    .optional(),
 });
 
 export const SynthetixSchema = CommonAssetSchema.extend({

@@ -141,24 +141,29 @@ export const sweep = ExternalPositionManager.makeUse(Action.Sweep, sweepEncode);
 
 const sweepEncoding = [
   {
-    type: "uint256[]",
-    name: "orderIds",
+    type: "tuple",
+    components: [
+      {
+        type: "uint256[]",
+        name: "orderIds",
+      },
+    ],
   },
 ] as const;
 
 export type SweepArgs = {
-  orderIds: Array<bigint>;
+  orderIds: ReadonlyArray<bigint>;
 };
 
 export function sweepEncode(args: SweepArgs): Hex {
-  return encodeAbiParameters(sweepEncoding, [args.orderIds]);
+  return encodeAbiParameters(sweepEncoding, [{ orderIds: args.orderIds }]);
 }
 
 export function sweepDecode(encoded: Hex): SweepArgs {
-  const [orderIds] = decodeAbiParameters(sweepEncoding, encoded);
+  const [{ orderIds }] = decodeAbiParameters(sweepEncoding, encoded);
 
   return {
-    orderIds: [...orderIds],
+    orderIds,
   };
 }
 
