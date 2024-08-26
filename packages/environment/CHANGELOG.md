@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 5.0.17
+
+### Patch Changes
+
+- [`24a47b8`](https://github.com/enzymefinance/sdk/commit/24a47b85114310f5dee3c56c01cfd080056338a8) Thanks [@fubhy](https://github.com/fubhy)! - Added arbitrum addresses
+
+- [#482](https://github.com/enzymefinance/sdk/pull/482) [`783e0ec`](https://github.com/enzymefinance/sdk/commit/783e0ec6e666ca551810ff233a3b76a8140627ac) Thanks [@iherger](https://github.com/iherger)! - Add more arbitrum contract addresses
+
 ## 5.0.16
 
 ### Patch Changes
