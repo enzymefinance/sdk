@@ -3081,6 +3081,28 @@ export function getMarketInfoList(
   });
 }
 
+export function getMarketInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    reader: Address;
+    dataStore: Address;
+    marketPrices: {
+      indexTokenPrice: Price;
+      longTokenPrice: Price;
+      shortTokenPrice: Price;
+    };
+    market: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: readerAbi,
+    functionName: "getMarketInfo",
+    address: args.reader,
+    args: [args.dataStore, args.marketPrices, args.market],
+  });
+}
+
 export function getMarkets(
   client: Client,
   args: Viem.ContractCallParameters<{
