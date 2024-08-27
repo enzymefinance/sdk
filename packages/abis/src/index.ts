@@ -53,6 +53,7 @@ export { ICurveLiquidityAdapter } from "./ICurveLiquidityAdapter.js";
 export { ICurvePriceFeed } from "./ICurvePriceFeed.js";
 export { IDepositWrapper } from "./IDepositWrapper.js";
 export { IDerivativePriceFeed } from "./IDerivativePriceFeed.js";
+export { IDisallowedAdapterIncomingAssetsPolicy } from "./IDisallowedAdapterIncomingAssetsPolicy.js";
 export { IDispatcher } from "./IDispatcher.js";
 export { IERC4626Adapter } from "./IERC4626Adapter.js";
 export { IERC4626PriceFeed } from "./IERC4626PriceFeed.js";

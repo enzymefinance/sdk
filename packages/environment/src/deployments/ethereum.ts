@@ -136,6 +136,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         CurveLiquidityStethAdapter: "0x1453e5a5c029cdd91f584c603818baf2ab4ce663",
         CurvePriceFeed: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
         DepositWrapper: "0x65bbad6545b7ac9c30fb0f07e64e25106bf05eec",
+        DisallowedAdapterIncomingAssetsPolicy: "0x5e216f370e3555feb9a0575a57ada732a9e50386",
         Dispatcher: "0xc3dc853dd716bd5754f421ef94fdcbac3902ab32",
         EntranceRateBurnFee: "0xcdec5bbecc6d2c004d5378a63a3c484c2643ed9d",
         EntranceRateDirectFee: "0xfb8df7d5e320020cd8047226b81cf6d68f3e3c19",

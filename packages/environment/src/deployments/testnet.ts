@@ -71,6 +71,7 @@ export default defineDeployment<Deployment.TESTNET>({
         CurveLiquidityStethAdapter: "0x0000000000000000000000000000000000000000",
         CurvePriceFeed: "0x5876b6044d8aea8a5e59e4feb00d50f9c8b0c8f2",
         DepositWrapper: "0x0043bd9b82095724ec613136083e093436dc0649",
+        DisallowedAdapterIncomingAssetsPolicy: "0x0000000000000000000000000000000000000000",
         Dispatcher: "0xd77231f355c6790441c1fb95a2e2ef916d5b3d84",
         EntranceRateBurnFee: "0x722e252e5140a46530cc3f4534eb1561851b8b57",
         EntranceRateDirectFee: "0xc1755fb4b9157186aecf0775c4f6c3a0dd0ea7af",

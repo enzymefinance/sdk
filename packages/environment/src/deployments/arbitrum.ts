@@ -119,6 +119,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         CurveLiquidityStethAdapter: "0x0000000000000000000000000000000000000000",
         CurvePriceFeed: "0x0000000000000000000000000000000000000000",
         DepositWrapper: "0x41d82e0512d77508ad486d6800059f3d936910db",
+        DisallowedAdapterIncomingAssetsPolicy: "0x5c9348fbedb75c39f0e84396618accab6c01f847",
         Dispatcher: "0x8da28441a4c594fd2fac72726c1412d8cf9e4a19",
         EntranceRateBurnFee: "0x6180b98d85afbd904016c7ea08eb41cba77a1c08",
         EntranceRateDirectFee: "0xbd35b273453eb3a977f2757f92b20e8c0b33c0b2",
