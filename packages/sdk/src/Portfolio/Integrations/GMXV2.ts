@@ -3775,12 +3775,12 @@ export async function getPositionInfo(
 
 export const usdDecimals = 30;
 
-export function formatUsd(value: bigint) {
-  return Number(formatUnits(value, usdDecimals));
+export function formatUsd(value: bigint, decimalsToAdjust = 0) {
+  return Number(formatUnits(value, usdDecimals - decimalsToAdjust));
 }
 
-export function parseUsd(value: number) {
-  return parseUnits(value.toString(), usdDecimals);
+export function parseUsd(value: number, decimalsToAdjust = 0) {
+  return parseUnits(value.toString(), usdDecimals - decimalsToAdjust);
 }
 
 export function encodeKey(key: string) {
