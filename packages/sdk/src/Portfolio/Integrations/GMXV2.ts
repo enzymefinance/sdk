@@ -3773,6 +3773,51 @@ export async function getPositionInfo(
   };
 }
 
+export function getExecutionGasFeeBaseAmountV2One(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [encodeKey("EXECUTION_GAS_FEE_BASE_AMOUNT_V2_1")],
+  });
+}
+
+export function getExecutionGasFeePerOraclePrice(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [encodeKey("EXECUTION_GAS_FEE_PER_ORACLE_PRICE")],
+  });
+}
+
+export function getExecutionGasFeeMultiplierFactor(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [encodeKey("EXECUTION_GAS_FEE_MULTIPLIER_FACTOR")],
+  });
+}
+
 export const usdDecimals = 30;
 
 export function formatUsd(value: bigint, decimalsToAdjust = 0) {
