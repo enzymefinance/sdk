@@ -300,16 +300,22 @@ export const claimFundingFees = ExternalPositionManager.makeUse(Action.ClaimFund
 
 const claimFundingFeesEncoding = [
   {
-    name: "markets",
-    type: "address[]",
-  },
-  {
-    name: "tokens",
-    type: "address[]",
-  },
-  {
-    name: "exchangeRouter",
-    type: "address",
+    components: [
+      {
+        name: "markets",
+        type: "address[]",
+      },
+      {
+        name: "tokens",
+        type: "address[]",
+      },
+      {
+        name: "exchangeRouter",
+        type: "address",
+      },
+    ],
+    name: "fundingsFeesArgs",
+    type: "tuple",
   },
 ] as const;
 
@@ -320,11 +326,11 @@ export type ClaimFundingFeesArgs = {
 };
 
 export function claimFundingFeesEncode(args: ClaimFundingFeesArgs): Hex {
-  return encodeAbiParameters(claimFundingFeesEncoding, [args.markets, args.tokens, args.exchangeRouter]);
+  return encodeAbiParameters(claimFundingFeesEncoding, [args]);
 }
 
 export function claimFundingFeesDecode(encoded: Hex): ClaimFundingFeesArgs {
-  const [markets, tokens, exchangeRouter] = decodeAbiParameters(claimFundingFeesEncoding, encoded);
+  const [{ markets, tokens, exchangeRouter }] = decodeAbiParameters(claimFundingFeesEncoding, encoded);
 
   return {
     markets,
