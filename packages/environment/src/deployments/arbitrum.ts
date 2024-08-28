@@ -232,7 +232,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     core: {
       slug: "enzyme-core-arbitrum",
       id: "8UJ5Bkf2eazZhXsAshhzQ2Keibcb8NFHBvXis9pb2C2Y",
-      devVersion: "version/latest",
+      devVersion: "gmx-v2",
     },
     shares: { slug: "vault-shares-arbitrum", id: "8pUZ51EFRYiMMdL5JLdjzYRjG5yqA2zv1KiMRHdrz9EH" },
     vaults: { slug: "vault-lineage-arbitrum", id: "ErvkSrie41cprdwYAnLz7PAN44ZjJoqrLm14SyPvhbHa" },
