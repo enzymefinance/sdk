@@ -3580,7 +3580,7 @@ export async function getExternalPositionFundingFees(
                     [
                       encodeKey("CLAIMABLE_FUNDING_AMOUNT"),
                       marketInfo.marketToken,
-                      marketInfo.longToken,
+                      marketInfo.shortToken,
                       args.externalPosition,
                     ],
                   ),
