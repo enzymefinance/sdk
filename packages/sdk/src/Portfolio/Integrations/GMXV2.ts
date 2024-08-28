@@ -300,6 +300,7 @@ export const claimFundingFees = ExternalPositionManager.makeUse(Action.ClaimFund
 
 const claimFundingFeesEncoding = [
   {
+    type: "tuple",
     components: [
       {
         name: "markets",
@@ -314,8 +315,6 @@ const claimFundingFeesEncoding = [
         type: "address",
       },
     ],
-    name: "fundingsFeesArgs",
-    type: "tuple",
   },
 ] as const;
 
@@ -347,20 +346,25 @@ export const claimCollateral = ExternalPositionManager.makeUse(Action.ClaimColla
 
 const claimCollateralEncoding = [
   {
-    name: "markets",
-    type: "address[]",
-  },
-  {
-    name: "tokens",
-    type: "address[]",
-  },
-  {
-    name: "timeKeys",
-    type: "uint256[]",
-  },
-  {
-    name: "exchangeRouter",
-    type: "address",
+    type: "tuple",
+    components: [
+      {
+        name: "markets",
+        type: "address[]",
+      },
+      {
+        name: "tokens",
+        type: "address[]",
+      },
+      {
+        name: "timeKeys",
+        type: "uint256[]",
+      },
+      {
+        name: "exchangeRouter",
+        type: "address",
+      },
+    ],
   },
 ] as const;
 
@@ -372,11 +376,11 @@ export type ClaimCollateralArgs = {
 };
 
 export function claimCollateralEncode(args: ClaimCollateralArgs): Hex {
-  return encodeAbiParameters(claimCollateralEncoding, [args.markets, args.tokens, args.timeKeys, args.exchangeRouter]);
+  return encodeAbiParameters(claimCollateralEncoding, [args]);
 }
 
 export function claimCollateralDecode(encoded: Hex): ClaimCollateralArgs {
-  const [markets, tokens, timeKeys, exchangeRouter] = decodeAbiParameters(claimCollateralEncoding, encoded);
+  const [{markets, tokens, timeKeys, exchangeRouter}] = decodeAbiParameters(claimCollateralEncoding, encoded);
 
   return {
     markets,
