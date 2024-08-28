@@ -196,28 +196,28 @@ const updateOrderEncoding = [
     type: "uint256",
   },
   {
-    name: "exchangeRouter",
-    type: "address",
+    name: "autoCancel",
+    type: "bool",
   },
   {
     name: "executionFeeIncrease",
     type: "uint256",
   },
   {
-    name: "autoCancel",
-    type: "bool",
+    name: "exchangeRouter",
+    type: "address",
   },
 ] as const;
 
 export type UpdateOrderArgs = {
   key: Hex;
   sizeDeltaUsd: bigint;
-  triggerPrice: bigint;
   acceptablePrice: bigint;
+  triggerPrice: bigint;
   minOutputAmount: bigint;
-  exchangeRouter: Address;
-  executionFeeIncrease: bigint;
   autoCancel: boolean;
+  executionFeeIncrease: bigint;
+  exchangeRouter: Address;
 };
 
 export function updateOrderEncode(args: UpdateOrderArgs): Hex {
@@ -227,9 +227,9 @@ export function updateOrderEncode(args: UpdateOrderArgs): Hex {
     args.acceptablePrice,
     args.triggerPrice,
     args.minOutputAmount,
-    args.exchangeRouter,
-    args.executionFeeIncrease,
     args.autoCancel,
+    args.executionFeeIncrease,
+    args.exchangeRouter,
   ]);
 }
 
@@ -240,9 +240,9 @@ export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
     acceptablePrice,
     triggerPrice,
     minOutputAmount,
-    exchangeRouter,
-    executionFeeIncrease,
     autoCancel,
+    executionFeeIncrease,
+    exchangeRouter,
   ] = decodeAbiParameters(updateOrderEncoding, encoded);
 
   return {
