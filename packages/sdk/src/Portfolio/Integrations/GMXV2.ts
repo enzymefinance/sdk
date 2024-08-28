@@ -380,7 +380,7 @@ export function claimCollateralEncode(args: ClaimCollateralArgs): Hex {
 }
 
 export function claimCollateralDecode(encoded: Hex): ClaimCollateralArgs {
-  const [{markets, tokens, timeKeys, exchangeRouter}] = decodeAbiParameters(claimCollateralEncoding, encoded);
+  const [{ markets, tokens, timeKeys, exchangeRouter }] = decodeAbiParameters(claimCollateralEncoding, encoded);
 
   return {
     markets,
