@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.19
+
+### Patch Changes
+
+- [#487](https://github.com/enzymefinance/sdk/pull/487) [`b05c9fa`](https://github.com/enzymefinance/sdk/commit/b05c9fab734acac99f0c0a4a92e50a5e3f0c1dca) Thanks [@iherger](https://github.com/iherger)! - Update paraswap adapter address for arbitrum
+
 ## 5.0.18
 
 ### Patch Changes
