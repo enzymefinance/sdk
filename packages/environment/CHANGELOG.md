@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.18
+
+### Patch Changes
+
+- [#485](https://github.com/enzymefinance/sdk/pull/485) [`665a550`](https://github.com/enzymefinance/sdk/commit/665a55072744b2ed50db6d21b5a3642bcac43f52) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice Protocol
+
 ## 5.0.17
 
 ### Patch Changes
