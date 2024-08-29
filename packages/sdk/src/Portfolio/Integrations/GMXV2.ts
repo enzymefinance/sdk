@@ -3828,6 +3828,30 @@ export function getExecutionGasFeeMultiplierFactor(
   });
 }
 
+export function getPositionFeeFactor(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    dataStore: Address;
+    market: Address;
+    forPositiveImpact: boolean;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: dataStoreAbi,
+    functionName: "getUint",
+    address: args.dataStore,
+    args: [
+      keccak256(
+        encodeAbiParameters(
+          [{ type: "bytes32" }, { type: "address" }, { type: "bool" }],
+          [encodeKey("POSITION_FEE_FACTOR"), args.market, args.forPositiveImpact],
+        ),
+      ),
+    ],
+  });
+}
+
 export const usdDecimals = 30;
 
 export function formatUsd(value: bigint, decimalsToAdjust = 0) {
