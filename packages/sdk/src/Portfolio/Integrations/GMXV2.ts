@@ -3630,7 +3630,7 @@ export function getMinCollateralUsd(
     abi: dataStoreAbi,
     functionName: "getUint",
     address: args.dataStore,
-    args: [keccak256(encodeAbiParameters([{ type: "bytes32" }], [encodeKey("MIN_COLLATERAL_USD")]))],
+    args: [encodeKey("MIN_COLLATERAL_USD")],
   });
 }
 
