@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ethereum.sulu, polygon.sulu]
+        release: [arbitrum.sulu, ethereum.sulu, polygon.sulu]
 
     steps:
       - name: Clone repository
