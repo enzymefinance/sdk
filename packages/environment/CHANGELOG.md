@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.21
+
+### Patch Changes
+
+- [#490](https://github.com/enzymefinance/sdk/pull/490) [`8786ccc`](https://github.com/enzymefinance/sdk/commit/8786cccff739f3dc3af8b40d15ae285372324ec1) Thanks [@iherger](https://github.com/iherger)! - Arbitrum go live
+
 ## 5.0.20
 
 ### Patch Changes
