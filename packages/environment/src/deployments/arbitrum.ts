@@ -52,7 +52,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     zeroExV4Exchange: "0x0000000000000000000000000000000000000000",
   },
   inception: 230330283,
-  kind: Kind.TEST,
+  kind: Kind.LIVE,
   knownAddressLists: {
     noSlippageAdapters: "1",
     adapters: "2",
