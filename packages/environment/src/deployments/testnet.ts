@@ -54,6 +54,7 @@ export default defineDeployment<Deployment.TESTNET>({
         BalancerV2LiquidityAdapter: "0x8ffe411488c2d2c55acbea7d1feab7beb5881605",
         BalancerV2StablePoolPriceFeed: "0xbbd3cc67c7f90f3fa546c62d13db59e3fd11eb36",
         BalancerV2WeightedPoolPriceFeed: "0xfd63783414032e146842e191d2568329a91b3aae",
+        ChainlinkLikeWstethPriceFeed: "0x0000000000000000000000000000000000000000",
         CompoundAdapter: "0x0000000000000000000000000000000000000000",
         CompoundDebtPositionLib: "0x0000000000000000000000000000000000000000",
         CompoundDebtPositionParser: "0x0000000000000000000000000000000000000000",

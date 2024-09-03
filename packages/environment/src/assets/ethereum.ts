@@ -2541,8 +2541,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_WSTETH,
-      address: "0x50da4957032c8fc5f94ec8d5ec8bfce84f9c9311",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
