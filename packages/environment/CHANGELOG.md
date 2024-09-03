@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.20
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
+- Updated dependencies [[`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9)]:
+  - @enzymefinance/sdk@0.8.26
+
 ## 5.0.19
 
 ### Patch Changes

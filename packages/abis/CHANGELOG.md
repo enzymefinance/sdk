@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.8
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
 ## 0.4.7
 
 ### Patch Changes
