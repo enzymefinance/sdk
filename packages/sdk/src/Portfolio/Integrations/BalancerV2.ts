@@ -7,7 +7,8 @@ import {
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Assertion, type Types, Viem } from "../../Utils.js";
+import { type Types, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -302,14 +303,10 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
   return encodeAbiParameters(takeOrderEncoding, [args.kind, args.swaps, args.assets, args.limits, args.stakingTokens]);
 }
 
-export function isValidSwapKind(kind: number): kind is SwapKind {
-  return Object.values(SwapKind).includes(kind as SwapKind);
-}
-
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [kind, swaps, assets, limits, stakingTokens] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  Assertion.invariant(isValidSwapKind(kind), `Invalid swap kind ${kind}`);
+  assertEnumType(SwapKind, kind);
 
   return { kind, swaps, assets, limits, stakingTokens };
 }

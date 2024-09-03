@@ -98,6 +98,8 @@ export interface SuluContracts extends CommonContracts {
   readonly GenericAdapter: Address;
   readonly GlobalConfigLib: Address;
   readonly GlobalConfigProxy: Address;
+  readonly GMXV2LeverageTradingPositionLib: Address;
+  readonly GMXV2LeverageTradingPositionParser: Address;
   readonly IdleAdapter: Address;
   readonly IdlePriceFeed: Address;
   readonly KilnStakingPositionLib: Address;
