@@ -170,7 +170,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         OneInchV5Adapter: "0xc2f737aeece89d8db98a7d82bfed40d09e381ed5",
         OnlyRemoveDustExternalPositionPolicy: "0xe4453105be9e579896a3ed73df9a1e285c8c95c2",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0xa482f4ab637cd5ca00084d511b3ca9aa8d8f475e",
-        ParaSwapV5Adapter: "0xbc3ed85d1136225bef70e5655b16e9f35f3facd1",
+        ParaSwapV5Adapter: "0x08df49f617ecdccbc90d9a0f87b8c1a84b2e7cb9",
         PeggedDerivativesPriceFeed: "0x0000000000000000000000000000000000000000",
         PerformanceFee: "0x9e0f80bc5a688e93d6c57efcfdd4564f70975e8b",
         PendleV2PositionLib: "0x0000000000000000000000000000000000000000",
