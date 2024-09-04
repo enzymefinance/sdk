@@ -695,4 +695,26 @@ export default defineAssetList(Network.ARBITRUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    decimals: 6,
+    id: "0xa1b91fe9fd52141ff8cac388ce3f10bfdc1de79d",
+    name: "dogwifhat",
+    releases: [],
+    symbol: "$WIF",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+    name: "Pepe",
+    releases: [],
+    symbol: "PEPE",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
