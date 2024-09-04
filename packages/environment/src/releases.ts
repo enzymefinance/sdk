@@ -228,6 +228,7 @@ export interface KnownAddressListIdMapping {
   fees: string;
   policies: string;
   kilnStakingContracts?: string;
+  nonStandardPriceFeedAssets?: string;
 }
 
 export interface ExternalContractsMapping {
