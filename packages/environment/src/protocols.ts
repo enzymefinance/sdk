@@ -2,6 +2,7 @@ export enum Protocol {
   AAVE = "AAVE",
   AAVE_V3 = "AAVE_V3",
   AURA = "AURA",
+  ALICE = "ALICE",
   BALANCER = "BALANCER",
   COMPOUND_V2 = "COMPOUND_V2",
   COMPOUND_V3 = "COMPOUND_V3",

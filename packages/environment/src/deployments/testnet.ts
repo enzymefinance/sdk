@@ -95,6 +95,8 @@ export default defineDeployment<Deployment.TESTNET>({
         GenericAdapter: "0xd8d52afef3e073f6378b89885a1b15e36e1fb5e5",
         GlobalConfigLib: "0xa2669671b9de8acb4032f5e40d0240e4599e7a2d",
         GlobalConfigProxy: "0x864371e0ea7543e0b76f847a29f48dc77416f09b",
+        GMXV2LeverageTradingPositionLib: "0x0000000000000000000000000000000000000000",
+        GMXV2LeverageTradingPositionParser: "0x0000000000000000000000000000000000000000",
         IdleAdapter: "0xb9a814bbb050d9e9604f6fd21657ec8fa734a84f",
         IdlePriceFeed: "0x46718fbafcf58e89154db9f5e2d8e2e2ee5baff7",
         IntegrationManager: "0xad31aaeffd50430b80386263aeb477b9e607b0d1",

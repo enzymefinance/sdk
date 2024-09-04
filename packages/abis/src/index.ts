@@ -78,6 +78,7 @@ export { IGasRelayPaymasterLib } from "./IGasRelayPaymasterLib.js";
 export { IGatedRedemptionQueueSharesWrapperFactory } from "./IGatedRedemptionQueueSharesWrapperFactory.js";
 export { IGatedRedemptionQueueSharesWrapperLib } from "./IGatedRedemptionQueueSharesWrapperLib.js";
 export { IGlobalConfigLib } from "./IGlobalConfigLib.js";
+export { IGMXV2LeverageTradingPositionLib } from "./IGMXV2LeverageTradingPositionLib.js";
 export { IHelperDataReader } from "./IHelperDataReader.js";
 export { IHelperDataReaderRouter } from "./IHelperDataReaderRouter.js";
 export { IIdleAdapter } from "./IIdleAdapter.js";

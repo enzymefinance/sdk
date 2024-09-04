@@ -1,5 +1,32 @@
 # @enzymefinance/environment
 
+## 5.0.21
+
+### Patch Changes
+
+- [#490](https://github.com/enzymefinance/sdk/pull/490) [`8786ccc`](https://github.com/enzymefinance/sdk/commit/8786cccff739f3dc3af8b40d15ae285372324ec1) Thanks [@iherger](https://github.com/iherger)! - Arbitrum go live
+
+## 5.0.20
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
+- Updated dependencies [[`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9)]:
+  - @enzymefinance/sdk@0.8.26
+
+## 5.0.19
+
+### Patch Changes
+
+- [#487](https://github.com/enzymefinance/sdk/pull/487) [`b05c9fa`](https://github.com/enzymefinance/sdk/commit/b05c9fab734acac99f0c0a4a92e50a5e3f0c1dca) Thanks [@iherger](https://github.com/iherger)! - Update paraswap adapter address for arbitrum
+
+## 5.0.18
+
+### Patch Changes
+
+- [#485](https://github.com/enzymefinance/sdk/pull/485) [`665a550`](https://github.com/enzymefinance/sdk/commit/665a55072744b2ed50db6d21b5a3642bcac43f52) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice Protocol
+
 ## 5.0.17
 
 ### Patch Changes
