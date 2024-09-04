@@ -5902,7 +5902,19 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
-
+  {
+    decimals: 18,
+    id: "0x455e53cbb86018ac2b8092fdcd39d8444affc3f6",
+    name: "Polygon Ecosystem Token",
+    releases: [sulu],
+    symbol: "POL",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7bac85a8a13a4bcd8abb3eb7d6b4d632c5a57676",
+      rateAsset: RateAsset.USD,
+    },
+  },
   {
     decimals: 18,
     id: "0x45804880de22913dafe09f4980848ece6ecbaf78",
