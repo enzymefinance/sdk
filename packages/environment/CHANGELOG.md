@@ -1,5 +1,21 @@
 # @enzymefinance/environment
 
+## 5.0.23
+
+### Patch Changes
+
+- [#496](https://github.com/enzymefinance/sdk/pull/496) [`c0a4273`](https://github.com/enzymefinance/sdk/commit/c0a4273a155981b0eb51efe0a005ce0e0cc5cebc) Thanks [@iherger](https://github.com/iherger)! - Rename Polygon gas token
+
+## 5.0.22
+
+### Patch Changes
+
+- [#489](https://github.com/enzymefinance/sdk/pull/489) [`5220004`](https://github.com/enzymefinance/sdk/commit/52200042382c869cbee3a27079dcba5b45fe12aa) Thanks [@ignacio-rsg](https://github.com/ignacio-rsg)! - Add POL
+
+- [#494](https://github.com/enzymefinance/sdk/pull/494) [`85ef3d6`](https://github.com/enzymefinance/sdk/commit/85ef3d64634a519069df940586b011eb2a99d849) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add WIF and Pepe to Arbitrum
+
+- [#493](https://github.com/enzymefinance/sdk/pull/493) [`9031a09`](https://github.com/enzymefinance/sdk/commit/9031a09f4b3ffe8412f85c963cc4aba413bd02da) Thanks [@iherger](https://github.com/iherger)! - Reregister wstETH as a primitive on Ethereum
+
 ## 5.0.21
 
 ### Patch Changes

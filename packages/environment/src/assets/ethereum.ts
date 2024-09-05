@@ -2541,8 +2541,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_WSTETH,
-      address: "0x50da4957032c8fc5f94ec8d5ec8bfce84f9c9311",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -5901,7 +5902,19 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
-
+  {
+    decimals: 18,
+    id: "0x455e53cbb86018ac2b8092fdcd39d8444affc3f6",
+    name: "Polygon Ecosystem Token",
+    releases: [sulu],
+    symbol: "POL",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7bac85a8a13a4bcd8abb3eb7d6b4d632c5a57676",
+      rateAsset: RateAsset.USD,
+    },
+  },
   {
     decimals: 18,
     id: "0x45804880de22913dafe09f4980848ece6ecbaf78",

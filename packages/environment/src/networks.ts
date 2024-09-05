@@ -152,8 +152,8 @@ const polygon: NetworkDefinition<Network.POLYGON> = {
     wrapper: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
     nativeToken: {
       id: "0x0000000000000000000000000000000000001010",
-      name: "Matic",
-      symbol: "MATIC",
+      name: "Polygon Ecosystem Token",
+      symbol: "POL",
       decimals: 18,
       type: AssetType.PRIMITIVE,
       releases: [],
