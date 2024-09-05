@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.23
+
+### Patch Changes
+
+- [#496](https://github.com/enzymefinance/sdk/pull/496) [`c0a4273`](https://github.com/enzymefinance/sdk/commit/c0a4273a155981b0eb51efe0a005ce0e0cc5cebc) Thanks [@iherger](https://github.com/iherger)! - Rename Polygon gas token
+
 ## 5.0.22
 
 ### Patch Changes
