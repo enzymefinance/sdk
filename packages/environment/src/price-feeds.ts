@@ -4,6 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
+  PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
@@ -23,6 +24,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
 ];
@@ -51,6 +53,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
+  | PrimitiveChainlinkLikeWstEthPriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
   | DerivativeArrakisV2PriceFeed
@@ -80,6 +83,12 @@ export interface PrimitiveChainlinkPriceFeed {
   rateAsset: RateAsset;
 }
 
+export interface PrimitiveChainlinkLikeWstEthPriceFeed {
+  type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
+  aggregator: Address;
+  rateAsset: RateAsset.ETH;
+}
+
 export interface PrimitiveRedstonePriceFeed {
   type: PriceFeedType.PRIMITIVE_REDSTONE;
   aggregator: Address;
@@ -105,11 +114,19 @@ export interface DerivativeBalancerV2GaugeTokenPriceFeed {
 export interface DerivativeBalancerV2StablePoolPriceFeed {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL;
   address: Address;
+  /**
+   * Invariant Proxy Asset (ipa)
+   */
+  readonly ipa: Address;
 }
 
 export interface DerivativeBalancerV2WeightedPoolPriceFeed {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
   address: Address;
+  /**
+   * Invariant Proxy Asset (ipa)
+   */
+  readonly ipa: Address;
 }
 
 export interface DerivativeCompoundPriceFeed {
@@ -120,6 +137,10 @@ export interface DerivativeCompoundPriceFeed {
 export interface DerivativeCurvePriceFeed {
   type: PriceFeedType.DERIVATIVE_CURVE;
   address: Address;
+  /**
+   * Invariant Proxy Asset (ipa)
+   */
+  readonly ipa: Address;
 }
 
 export interface DerivativeERC4626PriceFeed {

@@ -60,6 +60,11 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
         break;
       }
+
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH: {
+        break;
+      }
+
       case PriceFeedType.PRIMITIVE_REDSTONE: {
         const [description, decimals] = await Promise.all([
           aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
@@ -88,6 +93,10 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
   test("has the correct price feed details", async () => {
     const priceFeedType = asset.priceFeed.type;
 
+    const usdEthSimulatedAggregator = Environment.isSulu(environment)
+      ? environment.contracts.UsdEthSimulatedAggregator
+      : undefined;
+
     switch (priceFeedType) {
       case PriceFeedType.NONE:
         break;
@@ -98,6 +107,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       }
 
       case PriceFeedType.PRIMITIVE_CHAINLINK:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
         const [aggregator, rateAsset] = await Promise.all([
@@ -111,13 +121,20 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
+      case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL:
+      case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL:
+      case PriceFeedType.DERIVATIVE_CURVE: {
+        const ipa = asset.priceFeed.ipa;
+        // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator.
+        expect(asset.priceFeed.ipa === usdEthSimulatedAggregator || assets.find((item) => ipa === item.id)).toBe(true);
+
+        break;
+      }
+
       // TODO: check derivative price feed details
       case PriceFeedType.DERIVATIVE_ARRAKIS_V2:
       case PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN:
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL:
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL:
       case PriceFeedType.DERIVATIVE_COMPOUND:
-      case PriceFeedType.DERIVATIVE_CURVE:
       case PriceFeedType.DERIVATIVE_ERC4626:
       case PriceFeedType.DERIVATIVE_ETHERFI:
       case PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES:
@@ -154,6 +171,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.NONE:
       case PriceFeedType.WETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
         break;
