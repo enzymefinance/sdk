@@ -123,10 +123,6 @@ export interface DerivativeBalancerV2StablePoolPriceFeed {
 export interface DerivativeBalancerV2WeightedPoolPriceFeed {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
   address: Address;
-  /**
-   * Invariant Proxy Asset (ipa)
-   */
-  readonly ipa: Address;
 }
 
 export interface DerivativeCompoundPriceFeed {

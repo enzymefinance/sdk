@@ -122,11 +122,23 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       }
 
       case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL:
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL:
       case PriceFeedType.DERIVATIVE_CURVE: {
+        const priceFeed = await Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id });
+
+        expect(toAddress(priceFeed)).toBe(asset.priceFeed.address);
+
+        const isSupportedAssetForDerivativePriceFeed = await Protocol.isSupportedAssetForDerivativePriceFeed(client, {
+          derivativePriceFeed: priceFeed,
+          asset: asset.id,
+        });
+
+        expect(isSupportedAssetForDerivativePriceFeed).toBe(true);
         const ipa = asset.priceFeed.ipa;
-        // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator.
-        expect(asset.priceFeed.ipa === usdEthSimulatedAggregator || assets.find((item) => ipa === item.id)).toBe(true);
+        // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator
+        // (but not both)
+        expect(Boolean(asset.priceFeed.ipa === usdEthSimulatedAggregator)).not.toBe(
+          Boolean(assets.find((item) => ipa === item.id)),
+        );
 
         break;
       }
@@ -134,6 +146,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       // TODO: check derivative price feed details
       case PriceFeedType.DERIVATIVE_ARRAKIS_V2:
       case PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN:
+      case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL:
       case PriceFeedType.DERIVATIVE_COMPOUND:
       case PriceFeedType.DERIVATIVE_ERC4626:
       case PriceFeedType.DERIVATIVE_ETHERFI:

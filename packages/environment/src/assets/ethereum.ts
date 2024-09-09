@@ -5988,7 +5988,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -6081,7 +6080,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -6126,7 +6124,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -6216,7 +6213,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -6261,7 +6257,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -6306,7 +6301,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
       address: "0x083b8f465bba2bb274e48387e3f9c56323341286",
-      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {

@@ -1316,7 +1316,6 @@ export default defineAssetList(Network.POLYGON, [
   {
     decimals: 18,
     id: "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     name: "Curve.fi amDAI/amUSDC/amUSDT",
     pool: "0x445fe580ef8d70ff569ab36e80c647af338db351",
     releases: [polygon.sulu, testnet.sulu],
@@ -1332,12 +1331,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0x20759f567bb3ecdb55c817c9a1d13076ab215edc",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     lp: "0xe7a24ef0c5e95ffb0f6684b813a78f2a3ad7d171",
     name: "Curve.fi am3CRV Gauge Deposit",
     pool: "0x445fe580ef8d70ff569ab36e80c647af338db351",
@@ -1353,12 +1352,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     name: "Curve.fi Factory USD Metapool: Curve FRAX3CRV Pool",
     pool: "0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac",
     releases: [polygon.sulu, testnet.sulu],
@@ -1370,12 +1369,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0x78da40dbfa5c3cc65319e8d658d3c9bad3322f26",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     lp: "0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac",
     name: "Curve.fi FRAX3CRV-f3CRV-f Gauge Deposit",
     pool: "0x5e5a23b52cb48f5e70271be83079ca5bc9c9e9ac",
@@ -1387,12 +1386,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0x447646e84498552e62ecf097cc305eabfff09308",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     name: "Curve.fi Factory USD Metapool: MAI+3Pool",
     pool: "0x447646e84498552e62ecf097cc305eabfff09308",
     releases: [polygon.sulu, testnet.sulu],
@@ -1404,12 +1403,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0x93db264ee9c42092dc963517885be167b5bf62db",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     lp: "0x447646e84498552e62ecf097cc305eabfff09308",
     name: "Curve.fi MAI+3Pool3CRV-f Gauge Deposit",
     pool: "0x447646e84498552e62ecf097cc305eabfff09308",
@@ -1421,12 +1420,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0xadf577b69eeac9df325536cf1af106372f2da263",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     name: "Curve.fi Factory USD Metapool: curve.fi TUSD/am3CRV Pool",
     pool: "0xadf577b69eeac9df325536cf1af106372f2da263",
     releases: [polygon.sulu, testnet.sulu],
@@ -1438,12 +1437,12 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
     decimals: 18,
     id: "0xda690c2ea49a058a9966c69f46a05bfc225939f4",
-    ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     lp: "0xadf577b69eeac9df325536cf1af106372f2da263",
     name: "Curve.fi TUSDam3CRV3CRV-f Gauge Deposit",
     pool: "0xadf577b69eeac9df325536cf1af106372f2da263",
@@ -1455,6 +1454,7 @@ export default defineAssetList(Network.POLYGON, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
+      ipa: "0x51e75b5e0eef2d40b4d70c5daa2666e1ea30f0bd",
     },
   },
   {
