@@ -334,7 +334,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x18ec0a6e18e5bc3784fdd3a3634b31245ab704f6",
     name: "Monerium EUR emoney",
-    releases: [polygon.sulu],
+    releases: [polygon.sulu, testnet.sulu],
     symbol: "EURe",
     type: AssetType.PRIMITIVE,
     priceFeed: {
