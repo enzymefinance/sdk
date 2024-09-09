@@ -70,50 +70,83 @@ export type PriceFeed =
   | DerivativeYearnVaultV2PriceFeed;
 
 export interface NoPriceFeed {
-  type: PriceFeedType.NONE;
+  readonly type: PriceFeedType.NONE;
 }
 
 export interface WethPriceFeed {
-  type: PriceFeedType.WETH;
+  readonly type: PriceFeedType.WETH;
 }
 
 export interface PrimitiveChainlinkPriceFeed {
-  type: PriceFeedType.PRIMITIVE_CHAINLINK;
-  aggregator: Address;
-  rateAsset: RateAsset;
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset;
 }
 
 export interface PrimitiveChainlinkLikeWstEthPriceFeed {
-  type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
-  aggregator: Address;
-  rateAsset: RateAsset.ETH;
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset.ETH;
 }
 
 export interface PrimitiveRedstonePriceFeed {
-  type: PriceFeedType.PRIMITIVE_REDSTONE;
-  aggregator: Address;
-  rateAsset: RateAsset;
+  readonly type: PriceFeedType.PRIMITIVE_REDSTONE;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset;
 }
 
 export interface PrimitiveNonStandardPrecisionPriceFeed {
-  type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
-  aggregator: Address;
-  rateAsset: RateAsset;
+  readonly type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset;
 }
 
 export interface DerivativeArrakisV2PriceFeed {
-  type: PriceFeedType.DERIVATIVE_ARRAKIS_V2;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_ARRAKIS_V2;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeBalancerV2GaugeTokenPriceFeed {
-  type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeBalancerV2StablePoolPriceFeed {
-  type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
   /**
    * Invariant Proxy Asset (ipa)
    */
@@ -121,18 +154,27 @@ export interface DerivativeBalancerV2StablePoolPriceFeed {
 }
 
 export interface DerivativeBalancerV2WeightedPoolPriceFeed {
-  type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeCompoundPriceFeed {
-  type: PriceFeedType.DERIVATIVE_COMPOUND;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_COMPOUND;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeCurvePriceFeed {
-  type: PriceFeedType.DERIVATIVE_CURVE;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_CURVE;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
   /**
    * Invariant Proxy Asset (ipa)
    */
@@ -140,31 +182,49 @@ export interface DerivativeCurvePriceFeed {
 }
 
 export interface DerivativeERC4626PriceFeed {
-  type: PriceFeedType.DERIVATIVE_ERC4626;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_ERC4626;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeEtherfiPriceFeed {
-  type: PriceFeedType.DERIVATIVE_ETHERFI;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_ETHERFI;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativePeggedDerivativesPriceFeed {
-  type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeUniswapV2PoolPriceFeed {
-  type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeWstethPriceFeed {
-  type: PriceFeedType.DERIVATIVE_WSTETH;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_WSTETH;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeYearnVaultV2PriceFeed {
-  type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2;
-  address: Address;
+  readonly type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
