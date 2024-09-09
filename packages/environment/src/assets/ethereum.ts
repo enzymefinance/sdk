@@ -1082,6 +1082,19 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
+    id: "0x30d20208d987713f46dfd34ef128bb16c404d10f",
+    name: "Stader",
+    releases: [sulu],
+    symbol: "SD",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
     id: "0x3155ba85d5f96b2d030a4966af206230e46849cb",
     name: "THORChain ETH.RUNE",
     releases: [],
@@ -2609,6 +2622,19 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 8,
+    id: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    name: "Lombard Staked Bitcoin",
+    releases: [sulu],
+    symbol: "LBTC",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
     decimals: 18,
     id: "0x845838df265dcd2c412a1dc9e959c7d08537f8a2",
     ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
@@ -2809,6 +2835,19 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x8c9532a60e0e7c6bbd2b2c1303f63ace1c3e9811",
+    name: "Renzo Restaked LST",
+    releases: [sulu],
+    symbol: "pzETH",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x62967dc5140fba7204cef0d4b55b38d9109a7fcb",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -6496,6 +6535,19 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x09db87a538bd693e9d08544577d5ccfaa6373a48",
+    name: "ynETH",
+    releases: [sulu],
+    symbol: "ynETH",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
