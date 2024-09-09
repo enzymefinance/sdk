@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.8.27
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+- Updated dependencies [[`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0)]:
+  - @enzymefinance/abis@0.4.9
+
 ## 0.8.26
 
 ### Patch Changes
