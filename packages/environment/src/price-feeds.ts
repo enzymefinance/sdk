@@ -4,6 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
+  PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
@@ -16,6 +17,7 @@ export enum PriceFeedType {
   DERIVATIVE_ETHERFI = "DERIVATIVE_ETHERFI",
   DERIVATIVE_PEGGED_DERIVATIVES = "DERIVATIVE_PEGGED_DERIVATIVES",
   DERIVATIVE_REVERTING = "DERIVATIVE_REVERTING",
+  DERIVATIVE_STADER_SD = "DERIVATIVE_STADER_SD",
   DERIVATIVE_UNISWAP_V2_POOL = "DERIVATIVE_UNISWAP_V2_POOL",
   DERIVATIVE_WSTETH = "DERIVATIVE_WSTETH",
   DERIVATIVE_YEARN_VAULT_V2 = "DERIVATIVE_YEARN_VAULT_V2",
@@ -23,6 +25,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
 ];
@@ -37,6 +40,7 @@ export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_ERC4626,
   PriceFeedType.DERIVATIVE_ETHERFI,
   PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
+  PriceFeedType.DERIVATIVE_STADER_SD,
   PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
   PriceFeedType.DERIVATIVE_WSTETH,
   PriceFeedType.DERIVATIVE_YEARN_VAULT_V2,
@@ -51,6 +55,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
+  | PrimitiveChainlinkLikeYnEthPriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
   | DerivativeArrakisV2PriceFeed
@@ -62,92 +67,110 @@ export type PriceFeed =
   | DerivativeERC4626PriceFeed
   | DerivativeEtherfiPriceFeed
   | DerivativePeggedDerivativesPriceFeed
+  | DerivativeStaderSDPriceFeed
   | DerivativeUniswapV2PoolPriceFeed
   | DerivativeWstethPriceFeed
   | DerivativeYearnVaultV2PriceFeed;
 
-export interface NoPriceFeed {
+interface PriceFeedBase {
+  nonStandard?: boolean;
+  peggedTo?: string;
+  comment?: string;
+}
+
+export interface NoPriceFeed extends PriceFeedBase {
   type: PriceFeedType.NONE;
 }
 
-export interface WethPriceFeed {
+export interface WethPriceFeed extends PriceFeedBase {
   type: PriceFeedType.WETH;
 }
 
-export interface PrimitiveChainlinkPriceFeed {
+export interface PrimitiveChainlinkPriceFeed extends PriceFeedBase {
   type: PriceFeedType.PRIMITIVE_CHAINLINK;
   aggregator: Address;
   rateAsset: RateAsset;
 }
 
-export interface PrimitiveRedstonePriceFeed {
+export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {
+  type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH;
+  aggregator: Address;
+  rateAsset: RateAsset.ETH;
+}
+
+export interface PrimitiveRedstonePriceFeed extends PriceFeedBase {
   type: PriceFeedType.PRIMITIVE_REDSTONE;
   aggregator: Address;
   rateAsset: RateAsset;
 }
 
-export interface PrimitiveNonStandardPrecisionPriceFeed {
+export interface PrimitiveNonStandardPrecisionPriceFeed extends PriceFeedBase {
   type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
   aggregator: Address;
   rateAsset: RateAsset;
 }
 
-export interface DerivativeArrakisV2PriceFeed {
+export interface DerivativeArrakisV2PriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_ARRAKIS_V2;
   address: Address;
 }
 
-export interface DerivativeBalancerV2GaugeTokenPriceFeed {
+export interface DerivativeBalancerV2GaugeTokenPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN;
   address: Address;
 }
 
-export interface DerivativeBalancerV2StablePoolPriceFeed {
+export interface DerivativeBalancerV2StablePoolPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL;
   address: Address;
 }
 
-export interface DerivativeBalancerV2WeightedPoolPriceFeed {
+export interface DerivativeBalancerV2WeightedPoolPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
   address: Address;
 }
 
-export interface DerivativeCompoundPriceFeed {
+export interface DerivativeCompoundPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_COMPOUND;
   address: Address;
 }
 
-export interface DerivativeCurvePriceFeed {
+export interface DerivativeCurvePriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_CURVE;
   address: Address;
 }
 
-export interface DerivativeERC4626PriceFeed {
+export interface DerivativeERC4626PriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_ERC4626;
   address: Address;
 }
 
-export interface DerivativeEtherfiPriceFeed {
+export interface DerivativeEtherfiPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_ETHERFI;
   address: Address;
 }
 
-export interface DerivativePeggedDerivativesPriceFeed {
+export interface DerivativePeggedDerivativesPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES;
   address: Address;
 }
 
-export interface DerivativeUniswapV2PoolPriceFeed {
+export interface DerivativeStaderSDPriceFeed extends PriceFeedBase {
+  type: PriceFeedType.DERIVATIVE_STADER_SD;
+  address: Address;
+}
+
+export interface DerivativeUniswapV2PoolPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL;
   address: Address;
 }
 
-export interface DerivativeWstethPriceFeed {
+export interface DerivativeWstethPriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_WSTETH;
   address: Address;
 }
 
-export interface DerivativeYearnVaultV2PriceFeed {
+export interface DerivativeYearnVaultV2PriceFeed extends PriceFeedBase {
   type: PriceFeedType.DERIVATIVE_YEARN_VAULT_V2;
   address: Address;
 }

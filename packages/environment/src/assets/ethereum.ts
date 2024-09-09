@@ -838,6 +838,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
+      peggedTo: "BTC",
     },
   },
   {
@@ -1088,9 +1089,8 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.DERIVATIVE_STADER_SD,
+      address: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
     },
   },
   {
@@ -2632,6 +2632,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
+      peggedTo: "BTC",
     },
   },
   {
@@ -3249,6 +3250,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
+      peggedTo: "BTC",
     },
   },
   {
@@ -3263,6 +3265,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
+      peggedTo: "BTC",
     },
   },
   {
@@ -6545,7 +6548,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ynETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
       aggregator: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
       rateAsset: RateAsset.ETH,
     },
