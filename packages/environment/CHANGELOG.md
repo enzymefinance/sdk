@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.27
+
+### Patch Changes
+
+- [#504](https://github.com/enzymefinance/sdk/pull/504) [`56cbef0`](https://github.com/enzymefinance/sdk/commit/56cbef045459201f60b0b81a7f80300b15ef86c6) Thanks [@iherger](https://github.com/iherger)! - Add address list ids
+
 ## 5.0.26
 
 ### Patch Changes
