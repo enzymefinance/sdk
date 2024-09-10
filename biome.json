@@ -9,6 +9,7 @@
       "build",
       "generated",
       "coverage",
+      "package.json",
       "pnpm-lock.yaml",
       "tsconfig.json",
       "tsconfig.*.json"
