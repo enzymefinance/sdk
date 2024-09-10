@@ -19,8 +19,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
-        with:
-          github-token: ${{ github.token }}
       - name: Run tests
         run: pnpm vitest --project @enzymefinance/environment
         env:
