@@ -6361,7 +6361,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.BALANCER_POOL,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
-      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+      address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
       ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
@@ -6436,7 +6436,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.BALANCER_POOL,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
-      address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+      address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
       ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
