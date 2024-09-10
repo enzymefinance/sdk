@@ -687,7 +687,7 @@ export default defineAssetList(Network.ARBITRUM, [
     id: "0x050c24dbf1eec17babe5fc585f06116a259cc77a",
     name: "dlcBTC",
     releases: [sulu],
-    symbol: "DLCBTC",
+    symbol: "dlcBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
