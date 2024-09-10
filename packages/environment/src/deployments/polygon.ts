@@ -130,6 +130,7 @@ export default defineDeployment<Deployment.POLYGON>({
         CurveLiquidityStethAdapter: "0x0000000000000000000000000000000000000000",
         CurvePriceFeed: "0xc537439f4397a0f625cb323f90bf87397da92fcf",
         DepositWrapper: "0x2baa64f0ce9c2e60e91127fc3f40a72529e82c87",
+        DisallowedAdapterIncomingAssetsPolicy: "0x45be6669cc53fb2f6ae7f5e302482e30113888fb",
         Dispatcher: "0x2e25271297537b8124b8f883a92ffd95c4032733",
         EntranceRateBurnFee: "0x01460ba35cb6f847d65c5eee124e7e9e10055f16",
         EntranceRateDirectFee: "0x88c9a11c7bb8bc274388d0db864ab87c14fb78b8",

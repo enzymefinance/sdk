@@ -82,6 +82,7 @@ export interface SuluContracts extends CommonContracts {
   readonly CurveLiquidityStethAdapter: Address;
   readonly CurvePriceFeed: Address;
   readonly DepositWrapper: Address;
+  readonly DisallowedAdapterIncomingAssetsPolicy: Address;
   readonly EntranceRateBurnFee: Address;
   readonly EntranceRateDirectFee: Address;
   readonly ERC4626Adapter: Address;

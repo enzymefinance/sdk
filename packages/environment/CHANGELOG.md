@@ -1,5 +1,20 @@
 # @enzymefinance/environment
 
+## 5.0.25
+
+### Patch Changes
+
+- [#500](https://github.com/enzymefinance/sdk/pull/500) [`09a444b`](https://github.com/enzymefinance/sdk/commit/09a444b17c27119e4f260edf1d10347afcddc165) Thanks [@iherger](https://github.com/iherger)! - Price feed cleanup in environment
+
+## 5.0.24
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+- Updated dependencies [[`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0)]:
+  - @enzymefinance/sdk@0.8.27
+
 ## 5.0.23
 
 ### Patch Changes

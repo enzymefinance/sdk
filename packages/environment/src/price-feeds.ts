@@ -4,6 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
+  PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
   PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
@@ -25,6 +26,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
@@ -55,6 +57,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
+  | PrimitiveChainlinkLikeWstEthPriceFeed
   | PrimitiveChainlinkLikeYnEthPriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
@@ -90,6 +93,12 @@ export interface PrimitiveChainlinkPriceFeed extends PriceFeedBase {
   type: PriceFeedType.PRIMITIVE_CHAINLINK;
   aggregator: Address;
   rateAsset: RateAsset;
+}
+
+export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
+  type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
+  aggregator: Address;
+  rateAsset: RateAsset.ETH;
 }
 
 export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {

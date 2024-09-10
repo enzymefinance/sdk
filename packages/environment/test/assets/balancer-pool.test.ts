@@ -1,6 +1,6 @@
 import { Utils } from "@enzymefinance/sdk";
 import { expect, test } from "vitest";
-import { AssetType, BalancerPoolType, Environment } from "../../src/index.js";
+import { AssetType } from "../../src/index.js";
 import { Network } from "../../src/networks.js";
 import { getClient } from "../utils/client.js";
 import { getPoolId, getVault } from "../utils/contracts/BalancerPool.js";
@@ -12,10 +12,6 @@ const client = getClient(environment.network.id);
 
 const assets = environment.getAssets();
 const lps = environment.getAssets({ types: [AssetType.BALANCER_POOL] });
-
-const usdEthSimulatedAggregator = Environment.isSulu(environment)
-  ? environment.contracts.UsdEthSimulatedAggregator
-  : undefined;
 
 const deprecatedFactories = {
   [Network.ARBITRUM]: [""],
@@ -40,18 +36,6 @@ const deprecatedFactories = {
 };
 
 test.each(lps)("balancer pool details: $symbol ($name): $id", async (asset) => {
-  // Check that the invariant proxy asset exists (only for non weighted pools).
-  expect(
-    [
-      ...(asset.poolType === BalancerPoolType.WEIGHTED
-        ? [true]
-        : [
-            ...(asset.ipa === usdEthSimulatedAggregator ? [true] : [...assets.filter((item) => item.id === asset.ipa)]),
-          ]),
-    ].length,
-    "Invariant proxy asset not found",
-  ).toBe(1);
-
   // Check that the underlying tokens are correct and ordered properly
   const [poolId, vaultAddress] = await Promise.all([
     getPoolId(client, { balancerPool: asset.id }),

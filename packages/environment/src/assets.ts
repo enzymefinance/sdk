@@ -215,10 +215,6 @@ export enum BalancerPoolType {
 export interface BalancerPoolAsset extends AssetBase {
   readonly type: AssetType.BALANCER_POOL;
   /**
-   * Invariant Proxy Asset (ipa) - only for stable pools
-   */
-  readonly ipa?: Address;
-  /**
    * Balancer pool factory.
    */
   readonly poolFactory: Address;
@@ -282,10 +278,6 @@ export interface CurveStaking {
 export interface CurvePoolLpAsset extends AssetBase {
   readonly type: AssetType.CURVE_POOL_LP;
   /**
-   * Invariant Proxy Asset (ipa).
-   */
-  readonly ipa: Address;
-  /**
    * Curve Pool.
    */
   readonly pool: Address;
@@ -305,10 +297,6 @@ export interface CurvePoolLpAsset extends AssetBase {
 
 export interface CurvePoolGaugeAsset extends AssetBase {
   readonly type: AssetType.CURVE_POOL_GAUGE;
-  /**
-   * Invariant Proxy Asset (ipa).
-   */
-  readonly ipa: Address;
   /**
    * Curve LP Token.
    */

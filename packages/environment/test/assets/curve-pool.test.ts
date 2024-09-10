@@ -1,6 +1,6 @@
 import { Utils } from "@enzymefinance/sdk";
 import { expect, test } from "vitest";
-import { AssetType, Environment } from "../../src/index.js";
+import { AssetType } from "../../src/index.js";
 import { getClient } from "../utils/client.js";
 import { calcWithdrawOneCoin, getCoins, getCoinsInt128 } from "../utils/contracts/CurvePool.js";
 import { environment } from "../utils/fixtures.js";
@@ -10,18 +10,7 @@ const client = getClient(environment.network.id);
 const assets = environment.getAssets();
 const lps = environment.getAssets({ types: [AssetType.CURVE_POOL_LP] });
 
-const usdEthSimulatedAggregator = Environment.isSulu(environment)
-  ? environment.contracts.UsdEthSimulatedAggregator
-  : undefined;
-
 test.each(lps)("curve pool details: $symbol ($name): $id", async (asset) => {
-  // Check that the invariant proxy asset exists.
-  expect(
-    [...(asset.ipa === usdEthSimulatedAggregator ? [true] : []), ...assets.filter((item) => item.id === asset.ipa)]
-      .length,
-    "Invariant proxy asset not found",
-  ).toBe(1);
-
   // Check that the underlying tokens are correct and ordered properly
 
   const coins = await Promise.all(
