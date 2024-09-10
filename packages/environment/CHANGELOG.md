@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.25
+
+### Patch Changes
+
+- [#500](https://github.com/enzymefinance/sdk/pull/500) [`09a444b`](https://github.com/enzymefinance/sdk/commit/09a444b17c27119e4f260edf1d10347afcddc165) Thanks [@iherger](https://github.com/iherger)! - Price feed cleanup in environment
+
 ## 5.0.24
 
 ### Patch Changes
