@@ -49,7 +49,6 @@ export const AaveV3Schema = CommonAssetSchema.extend({
 
 export const BalancerPoolSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.BALANCER_POOL),
-  ipa: address.optional(),
   poolFactory: address,
   poolId: z.string().regex(/^0x[0-9a-f]{64}$/) as z.Schema<Hex>,
   poolType: z.nativeEnum(BalancerPoolType),
@@ -59,7 +58,6 @@ export const BalancerPoolSchema = CommonAssetSchema.extend({
 
 export const BalancerPoolGaugeSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.BALANCER_POOL_GAUGE),
-  ipa: address.optional(),
   pool: address,
   poolType: z.nativeEnum(BalancerPoolType),
   underlyings: z.array(address).min(1),
@@ -108,7 +106,6 @@ export const ERC4626Schema = CommonAssetSchema.extend({
 });
 
 export const CurvePoolGaugeSchema = CommonAssetSchema.extend({
-  ipa: address,
   lp: address,
   pool: address,
   template: z.nativeEnum(CurvePoolTemplate),
@@ -118,7 +115,6 @@ export const CurvePoolGaugeSchema = CommonAssetSchema.extend({
 
 export const CurvePoolLpSchema = CommonAssetSchema.extend({
   gauge: address.optional(),
-  ipa: address,
   pool: address,
   staking: z.array(z.object({ token: address, type: z.nativeEnum(CurveStakingType) })),
   template: z.nativeEnum(CurvePoolTemplate),

@@ -1,7 +1,7 @@
 import { Utils } from "@enzymefinance/sdk";
 import { expect, test } from "vitest";
 import type { CurvePoolLpAsset } from "../../src/index.js";
-import { AssetType, CurveStakingType, Environment } from "../../src/index.js";
+import { AssetType, CurveStakingType } from "../../src/index.js";
 import { getClient } from "../utils/client.js";
 import { getLpToken } from "../utils/contracts/CurveGauge.js";
 import { getCoins, getCoinsInt128 } from "../utils/contracts/CurvePool.js";
@@ -12,18 +12,7 @@ const client = getClient(environment.network.id);
 const assets = environment.getAssets();
 const gauges = environment.getAssets({ types: [AssetType.CURVE_POOL_GAUGE] });
 
-const usdEthSimulatedAggregator = Environment.isSulu(environment)
-  ? environment.contracts.UsdEthSimulatedAggregator
-  : undefined;
-
 test.each(gauges)("curve gauge details: $symbol ($name): $id", async (asset) => {
-  // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator.
-  expect(
-    [...(asset.ipa === usdEthSimulatedAggregator ? [true] : []), ...assets.filter((item) => item.id === asset.ipa)]
-      .length,
-    "Invariant proxy asset not found",
-  ).toBe(1);
-
   // Check that the lp token is correct
   const lpToken = await getLpToken(client, { curveGauge: asset.id });
   expect(lpToken.toLowerCase(), "LP token does not match the one returned by the contract").toEqual(asset.lp);

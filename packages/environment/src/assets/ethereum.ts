@@ -29,9 +29,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "TUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x3886ba987236181d98f2401c507fb8bea7871df2",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -138,7 +136,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x02d341ccb60faaf662bc0554d13778015d1b285c",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi aDAI/aSUSD",
     pool: "0xeb16ae0052ed37f479f7fe63849198df1765a733",
     releases: [sulu],
@@ -150,6 +147,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -249,7 +247,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x05ff47afada98a98982113758878f9a8b9fdda0a",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Balancer weETH/rETH StablePool",
     releases: [sulu],
     symbol: "weETH/rETH",
@@ -266,12 +263,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
       address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
     decimals: 18,
     id: "0x06325440d014e39736583c165c2963ba99faf14e",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Curve.fi ETH/stETH",
     pool: "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
     releases: [sulu],
@@ -283,6 +280,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -299,7 +297,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x075b1bb99792c9e1041ba13afef80c91a1e70fb3",
-    ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     name: "Curve.fi renBTC/wBTC/sBTC",
     pool: "0x7fc77b5c7614e1533320ea6ddc2eb61fa00a9714",
     releases: [sulu],
@@ -315,6 +312,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     },
   },
   {
@@ -569,7 +567,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x182b723a58739a9c974cfdb385ceadb237453c28",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     lp: "0x06325440d014e39736583c165c2963ba99faf14e",
     name: "Curve.fi steCRV Gauge Deposit",
     pool: "0xdc24316b9ae028f1497c275eb9192a3ea0f67022",
@@ -581,6 +578,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -597,7 +595,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x194ebd173f6cdace046c53eacce9b953f28411d1",
-    ipa: "0xd71ecff9342a5ced620049e616c5035f1db98620",
     name: "Curve.fi EURS/sEUR",
     pool: "0x0ce6a5ff5217e38315f87032cf90686c96627caa",
     releases: [],
@@ -945,7 +942,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x278cfb6f06b1efc09d34fc7127d6060c61d629db",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "weeTH/rswETH",
     pool: "0x278cfb6f06b1efc09d34fc7127d6060c61d629db",
     releases: [sulu],
@@ -957,6 +953,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -1105,7 +1102,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi FRAX/USDC",
     pool: "0xdcef968d416a41cdac0ed8702fac8128a64241a2",
     releases: [sulu],
@@ -1122,6 +1118,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -1172,7 +1169,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: TUSDFRAXBP",
     pool: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
     releases: [],
@@ -1182,8 +1178,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_CURVE,
-      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -1203,7 +1198,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x359fd5d6417ae3d8d6497d9b2e7a890798262ba4",
     lp: "0xecd5e75afb02efa118af914515d6521aabd189f1",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi TUSD3CRV-f Gauge Deposit",
     pool: "0xecd5e75afb02efa118af914515d6521aabd189f1",
     releases: [],
@@ -1212,8 +1206,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_CURVE,
-      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -1303,7 +1296,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x389fc079a15354e9cbce8258433cc0f85b755a42",
     lp: "0x497ce58f34605b9944e6b15ecafe6b001206fd25",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi LUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0x497ce58f34605b9944e6b15ecafe6b001206fd25",
     releases: [sulu],
@@ -1314,6 +1306,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -1383,7 +1376,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x3c0ffff15ea30c35d7a85b85c0782d6c94e1d238",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     lp: "0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c",
     name: "Curve.fi ETH/sETH Gauge Deposit",
     pool: "0xc5424b857f758e906013f3555dad202e4bdb4567",
@@ -1395,6 +1387,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -1557,7 +1550,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x43b4fdfd4ff969587185cdb6f0bd875c5fc83f8c",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: Alchemix USD",
     pool: "0x43b4fdfd4ff969587185cdb6f0bd875c5fc83f8c",
     releases: [sulu],
@@ -1569,6 +1561,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -1597,7 +1590,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x462253b8f74b72304c145db0e4eebd326b22ca39",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0x02d341ccb60faaf662bc0554d13778015d1b285c",
     name: "Curve.fi saCRV Gauge Deposit",
     pool: "0xeb16ae0052ed37f479f7fe63849198df1765a733",
@@ -1609,6 +1601,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -1636,7 +1629,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x4807862aa8b2bf68830e4c8dc86d0e9a998e085a",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: Binance USD",
     pool: "0x4807862aa8b2bf68830e4c8dc86d0e9a998e085a",
     releases: [],
@@ -1663,7 +1655,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x497ce58f34605b9944e6b15ecafe6b001206fd25",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: LUSDFRAXBP",
     pool: "0x497ce58f34605b9944e6b15ecafe6b001206fd25",
     releases: [sulu],
@@ -1675,12 +1666,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0x49849c98ae39fff122806c06791fa73784fb3675",
-    ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     name: "Curve.fi renBTC/wBTC",
     pool: "0x93054188d876f558f4a66b2ef1d97d16edf0895b",
     releases: [sulu],
@@ -1692,6 +1683,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     },
   },
   {
@@ -1797,7 +1789,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x4e43151b78b5fbb16298c1161fcbf7531d5f8d93",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: GUSDFRAXBP",
     pool: "0x4e43151b78b5fbb16298c1161fcbf7531d5f8d93",
     releases: [sulu],
@@ -1809,12 +1800,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0x4f3e8f405cf5afc05d68142f3783bdfe13811522",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi USDN/3Crv",
     pool: "0x0f9cb53ebe405d49a0bbdbd291a65ff571bc83e1",
     releases: [sulu],
@@ -1826,6 +1817,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -1983,7 +1975,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x5a6a4d54456819380173272a5e8e9b9904bdf41b",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: Magic Internet Money 3Pool",
     pool: "0x5a6a4d54456819380173272a5e8e9b9904bdf41b",
     releases: [sulu],
@@ -1995,6 +1986,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -2024,7 +2016,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x5b5cfe992adac0c9d48e05854b2d91c73a003858",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi HUSD/3Crv",
     pool: "0x3ef6a01a0f81d6046290f3e2a8c5b843e738e604",
     releases: [],
@@ -2276,7 +2267,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x6ba5b4e438fa0aaf7c1bd179285af65d13bd3d90",
-    ipa: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     name: "RAI3CRV",
     pool: "0x618788357d0ebd8a37e763adab3bc575d54c2c7d",
     releases: [],
@@ -2292,7 +2282,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi DAI/USDC/USDT",
     pool: "0xbebc44782c7db0a1a60cb6fe97d0b483032ff1c7",
     releases: [sulu],
@@ -2308,6 +2297,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -2411,7 +2401,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x72e158d38dbd50a483501c24f792bdaaa3e7d55c",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0xd632f22692fac7611d2aa1c0d552930d43caed3b",
     name: "Curve.fi FRAX3CRV-f Gauge Deposit",
     pool: "0xd632f22692fac7611d2aa1c0d552930d43caed3b",
@@ -2423,13 +2412,13 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0x740ba8aa0052e07b925908b380248cb03f3de5cb",
     lp: "0xb30da2376f63de30b42dc055c93fa474f31330a5",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi alUSDFRAXB3CRV-f Gauge Deposit",
     pool: "0xb30da2376f63de30b42dc055c93fa474f31330a5",
     releases: [sulu],
@@ -2440,6 +2429,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -2541,7 +2531,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
       aggregator: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
       rateAsset: RateAsset.ETH,
     },
@@ -2611,7 +2601,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x845838df265dcd2c412a1dc9e959c7d08537f8a2",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi cDAI/cUSDC",
     pool: "0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56",
     releases: [sulu],
@@ -2623,12 +2612,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0x848a5564158d84b8a8fb68ab5d004fae11619a54",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Balancer weETH/ezETH/rswETH",
     releases: [sulu],
     symbol: "weETH/ezETH/rswETH",
@@ -2646,6 +2635,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
       address: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -2819,9 +2809,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "SXP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfb0cfd6c19e25db4a08d8a204a387cea48cc138f",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -2879,7 +2867,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x8fdb0bb9365a46b145db80d0b1c5c5e979c84190",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: BUSDFRAXBP",
     pool: "0x8fdb0bb9365a46b145db80d0b1c5c5e979c84190",
     releases: [],
@@ -2918,7 +2905,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x90bb609649e0451e5ad952683d64bd2d1f245840",
-    ipa: "0xd71ecff9342a5ced620049e616c5035f1db98620",
     lp: "0x194ebd173f6cdace046c53eacce9b953f28411d1",
     name: "Curve.fi eursCRV Gauge Deposit",
     pool: "0x0ce6a5ff5217e38315f87032cf90686c96627caa",
@@ -2957,7 +2943,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x9582c4adacb3bce56fea3e590f05c3ca2fb9c477",
     lp: "0x43b4fdfd4ff969587185cdb6f0bd875c5fc83f8c",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi alUSD3CRV-f Gauge Deposit",
     pool: "0x43b4fdfd4ff969587185cdb6f0bd875c5fc83f8c",
     releases: [sulu],
@@ -2968,6 +2953,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -2999,7 +2985,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x97e2768e8e73511ca874545dc5ff8067eb19b787",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi USDK/3Crv",
     pool: "0x3e01dd8a5e1fb3481f0f589056b428fc308af0fb",
     releases: [sulu],
@@ -3011,6 +2996,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -3100,7 +3086,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x9b8519a9a00100720ccdc8a120fbed319ca47a14",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca",
     name: "Curve.fi LUSD3CRV-f Gauge Deposit",
     pool: "0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca",
@@ -3112,6 +3097,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -3180,7 +3166,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x9fc689ccada600b6df723d9e47d84d76664a1f23",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi cDAI/cUSDC/USDT",
     pool: "0x52ea46506b9cc5ef470c5bf89f17dc28bb35d85c",
     releases: [sulu],
@@ -3196,6 +3181,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -3415,7 +3401,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xa3d87fffce63b53e0d54faa1cc983b7eb0b74a9c",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Curve.fi ETH/sETH",
     pool: "0xc5424b857f758e906013f3555dad202e4bdb4567",
     releases: [sulu],
@@ -3427,6 +3412,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -3547,8 +3533,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0x8ce9137d39326ad0cd6491fb5cc0cba0e089b6a9", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
-      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -3644,7 +3629,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xaeac6dcd12cc0be74c8f99efe4bb5205a1f9a608",
     lp: "0x8fdb0bb9365a46b145db80d0b1c5c5e979c84190",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi BUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0x8fdb0bb9365a46b145db80d0b1c5c5e979c84190",
     releases: [],
@@ -3692,7 +3676,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xb19059ebb43466c323583928285a49f558e572fd",
-    ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     name: "Curve.fi hBTC/wBTC",
     pool: "0x4ca9b3063ec5866a4b82e437059d2c43d1be596f",
     releases: [sulu],
@@ -3704,6 +3687,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     },
   },
   {
@@ -3734,7 +3718,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xb30da2376f63de30b42dc055c93fa474f31330a5",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: alUSDFRAXBP",
     pool: "0xb30da2376f63de30b42dc055c93fa474f31330a5",
     releases: [sulu],
@@ -3746,6 +3729,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4171,7 +4155,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xc25a3a3b969415c80451098fa907ec722572917f",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi DAI/USDC/USDT/sUSD",
     pool: "0xa5407eae9ba41422680e2e00537571bcc53efbfd",
     releases: [sulu],
@@ -4188,6 +4171,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4418,7 +4402,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xcfc25170633581bf896cb6cdee170e3e3aa59503",
     lp: "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi crvFRAX Gauge Deposit",
     pool: "0xdcef968d416a41cdac0ed8702fac8128a64241a2",
     releases: [sulu],
@@ -4429,6 +4412,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4469,7 +4453,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xd2967f45c4f384deea880f807be904762a3dea07",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi GUSD/3Crv",
     pool: "0x4f062658eaaf2c1ccf8c8e36d6824cdf41167956",
     releases: [sulu],
@@ -4481,6 +4464,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4570,7 +4554,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xd4b22fedca85e684919955061fdf353b9d38389b",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0x4807862aa8b2bf68830e4c8dc86d0e9a998e085a",
     name: "Curve.fi BUSD3CRV-f Gauge Deposit",
     pool: "0x4807862aa8b2bf68830e4c8dc86d0e9a998e085a",
@@ -4621,7 +4604,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xd632f22692fac7611d2aa1c0d552930d43caed3b",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: Frax",
     pool: "0xd632f22692fac7611d2aa1c0d552930d43caed3b",
     releases: [sulu],
@@ -4633,12 +4615,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0xd662908ada2ea1916b3318327a97eb18ad588b5d",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0xfd2a8fa60abd58efe3eee34dd494cd491dc14900",
     name: "Curve.fi a3CRV Gauge Deposit",
     pool: "0xdebf20617708857ebe4f679508e7b7863a8a8eee",
@@ -4654,6 +4636,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4670,7 +4653,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xd8b712d29381748db89c36bca0138d7c75866ddf",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     lp: "0x5a6a4d54456819380173272a5e8e9b9904bdf41b",
     name: "Curve.fi MIM-3LP3CRV-f Gauge Deposit",
     pool: "0x5a6a4d54456819380173272a5e8e9b9904bdf41b",
@@ -4682,13 +4664,13 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
     decimals: 18,
     id: "0xda7f9dd286577cc338047b040c289463743a474e",
     lp: "0x4e43151b78b5fbb16298c1161fcbf7531d5f8d93",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi GUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0x4e43151b78b5fbb16298c1161fcbf7531d5f8d93",
     releases: [sulu],
@@ -4699,6 +4681,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -4907,7 +4890,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xe3c190c57b5959ae62efe3b6797058b76ba2f5ef",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: sUSDFRAXBP",
     pool: "0xe3c190c57b5959ae62efe3b6797058b76ba2f5ef",
     releases: [sulu],
@@ -4919,6 +4901,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -5016,7 +4999,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xecd5e75afb02efa118af914515d6521aabd189f1",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: TrueUSD",
     pool: "0xecd5e75afb02efa118af914515d6521aabd189f1",
     releases: [],
@@ -5026,8 +5008,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_LP,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x6c3f90f043a72fa612cbac8115ee7e52bde6e490"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_CURVE,
-      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -5046,7 +5027,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi Factory USD Metapool: Liquity",
     pool: "0xed279fdd11ca84beef15af5d39bb4d4bee23f0ca",
     releases: [sulu],
@@ -5058,6 +5038,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -5216,7 +5197,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xf6d7087d4ae4dcf85956d743406e63cda74d99ad",
     lp: "0xe3c190c57b5959ae62efe3b6797058b76ba2f5ef",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi SUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0xe3c190c57b5959ae62efe3b6797058b76ba2f5ef",
     releases: [sulu],
@@ -5227,6 +5207,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -5257,7 +5238,6 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xf865fdd6a5f307f398a94dc40687995cfaa77bc9",
     lp: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi TUSDFRAXBP3CRV-f Gauge Deposit",
     pool: "0x33baeda08b8afacc4d3d07cf31d49fc1f1f3e893",
     releases: [],
@@ -5266,8 +5246,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.CURVE_POOL_GAUGE,
     underlyings: ["0x0000000000085d4780b73119b644ae5ecd22b376", "0x3175df0976dfa876431c2e9ee6bc45b65d3473cc"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_CURVE,
-      address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -5356,7 +5335,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xfd2a8fa60abd58efe3eee34dd494cd491dc14900",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Curve.fi aDAI/aUSDC/aUSDT",
     pool: "0xdebf20617708857ebe4f679508e7b7863a8a8eee",
     releases: [sulu, encore],
@@ -5372,6 +5350,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     },
   },
   {
@@ -5617,7 +5596,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x13947303f63b363876868d070f14dc865c36463b",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "weETH/WETH",
     pool: "0x13947303f63b363876868d070f14dc865c36463b",
     releases: [sulu],
@@ -5629,6 +5607,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -5680,7 +5659,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x828b154032950c8ff7cf8085d841723db2696056",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Curve.fi Factory Plain Pool: stETH concentrated",
     pool: "0x828b154032950c8ff7cf8085d841723db2696056",
     releases: [sulu],
@@ -5692,12 +5670,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
     decimals: 18,
     id: "0xf668e6d326945d499e5b35e7cd2e82acfbcfe6f0",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     lp: "0x828b154032950c8ff7cf8085d841723db2696056",
     name: "Curve.fi STETHETH_C-f Gauge Deposit",
     pool: "0x828b154032950c8ff7cf8085d841723db2696056",
@@ -5709,6 +5687,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -5997,7 +5976,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x5c6ee304399dbdb9c8ef030ab642b10820db8f56",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 80 BAL 20 WETH",
     releases: [sulu],
     symbol: "B-80BAL-20WETH",
@@ -6015,7 +5993,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xc45d42f801105e861e86658648e3678ad7aa70f9",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 50OHM-25DAI-25WETH",
     releases: [],
     symbol: "50OHM-25DAI-25WETH",
@@ -6055,7 +6032,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xf4c0dd9b82da36c07605df83c8a416f11724d88b",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 80 GNO 20 WETH",
     releases: [],
     symbol: "B-80GNO-20WETH",
@@ -6092,7 +6068,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xa6f548df93de924d73be7d25dc02554c6bd66db5",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 50 WBTC 50 WETH",
     releases: [sulu],
     symbol: "B-50WBTC-50WETH",
@@ -6137,7 +6112,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x96646936b91d6b9d7d0c47c496afbf3d6ec7b6f8",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 50 USDC 50 WETH",
     releases: [sulu],
     symbol: "B-50USDC-50WETH",
@@ -6196,7 +6170,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x6a5ead5433a50472642cd268e584dafa5a394490",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 50wstETH-50LDO",
     releases: [],
     symbol: "50WSTETH-50LDO",
@@ -6228,7 +6201,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x5f1f4e50ba51d723f12385a8a9606afc3a0555f5",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 50wstETH-LDO",
     releases: [sulu],
     symbol: "50wstETH-50LDO",
@@ -6273,7 +6245,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xbf96189eee9357a95c7719f4f5047f76bde804e5",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 80 LDO 20 WETH",
     releases: [sulu],
     symbol: "B-80LDO-20WETH",
@@ -6318,7 +6289,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0xaac98ee71d4f8a156b6abaa6844cdb7789d086ce",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "Balancer 60 MKR 40 WETH",
     releases: [sulu],
     symbol: "B-60MKR-40WETH",
@@ -6336,7 +6306,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x0bf37157d30dfe6f56757dcadff01aed83b08cd6",
-    ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
     name: "80NATION-20WETH",
     releases: [],
     symbol: "80NATION-20WETH",
@@ -6353,7 +6322,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x0bfb387b87e8bf173a10a7dcf786b0b7875f6771",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     lp: "0x278cfb6f06b1efc09d34fc7127d6060c61d629db",
     name: "Curve.fi weeTH/rswE Gauge Deposit",
     pool: "0x278cfb6f06b1efc09d34fc7127d6060c61d629db",
@@ -6365,6 +6333,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -6381,7 +6350,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x32296969ef14eb0c6d29669c550d4a0449130230",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Balancer stETH Stable Pool",
     releases: [sulu],
     symbol: "B-stETH-STABLE",
@@ -6394,6 +6362,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
       address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
@@ -6439,7 +6408,6 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x1cac1a0ed47e2e0a313c712b2dcf85994021a365",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     lp: "0x13947303f63b363876868d070f14dc865c36463b",
     name: "Curve.fi weETH-WETH Gauge Deposit",
     pool: "0x13947303f63b363876868d070f14dc865c36463b",
@@ -6451,12 +6419,12 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
     decimals: 18,
     id: "0x1e19cf2d73a72ef1332c882f20534b6519be0276",
-    ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     name: "Balancer rETH Stable Pool",
     releases: [sulu],
     symbol: "B-rETH-STABLE",
@@ -6469,6 +6437,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
       address: "0x4d663e21ef8f8bccae7779c4433aa9f8442ec895", // TODO: does not correspond with environment
+      ipa: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     },
   },
   {
