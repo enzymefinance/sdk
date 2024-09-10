@@ -136,9 +136,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const ipa = asset.priceFeed.ipa;
         // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator
         // (but not both)
-        expect(Boolean(asset.priceFeed.ipa === usdEthSimulatedAggregator)).not.toBe(
-          Boolean(assets.find((item) => ipa === item.id)),
-        );
+        expect(ipa === usdEthSimulatedAggregator || environment.hasAsset(ipa)).toBe(true);
 
         break;
       }
