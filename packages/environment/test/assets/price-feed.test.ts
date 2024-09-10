@@ -108,6 +108,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
       case PriceFeedType.PRIMITIVE_CHAINLINK:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
         const [aggregator, rateAsset] = await Promise.all([
@@ -149,6 +150,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.DERIVATIVE_ERC4626:
       case PriceFeedType.DERIVATIVE_ETHERFI:
       case PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES:
+      case PriceFeedType.DERIVATIVE_STADER_SD:
       case PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL:
       case PriceFeedType.DERIVATIVE_WSTETH:
       case PriceFeedType.DERIVATIVE_YEARN_VAULT_V2: {
@@ -183,6 +185,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.WETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
         break;
@@ -242,16 +245,24 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
+      case PriceFeedType.DERIVATIVE_STADER_SD: {
+        expect(asset.priceFeed.address).toBe(environment.contracts.StaderSDPriceFeed);
+
+        break;
+      }
+
       case PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL: {
         expect(asset.priceFeed.address).toBe(environment.contracts.UniswapV2PoolPriceFeed);
 
         break;
       }
+
       case PriceFeedType.DERIVATIVE_WSTETH: {
         expect(asset.priceFeed.address).toBe(environment.contracts.WstethPriceFeed);
 
         break;
       }
+
       case PriceFeedType.DERIVATIVE_YEARN_VAULT_V2: {
         expect(asset.priceFeed.address).toBe(environment.contracts.YearnVaultV2PriceFeed);
 
