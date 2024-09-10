@@ -22,7 +22,7 @@ jobs:
         with:
           github-token: ${{ github.token }}
       - name: Run tests
-        run: pnpm run --filter @enzymefinance/environment test
+        run: pnpm vitest --project @enzymefinance/environment
         env:
           VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
           VITE_RELEASE: ${{ matrix.release }}
