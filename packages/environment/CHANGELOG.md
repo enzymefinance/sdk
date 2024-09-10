@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.28
+
+### Patch Changes
+
+- [#507](https://github.com/enzymefinance/sdk/pull/507) [`23e6485`](https://github.com/enzymefinance/sdk/commit/23e648592c1dbd78b58a541f8e94438f90b87a58) Thanks [@iherger](https://github.com/iherger)! - Update price feed address
+
 ## 5.0.27
 
 ### Patch Changes
