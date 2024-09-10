@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.26
+
+### Patch Changes
+
+- [#501](https://github.com/enzymefinance/sdk/pull/501) [`4ff9e22`](https://github.com/enzymefinance/sdk/commit/4ff9e22f08566324bc9e878a9dda5062d96bb4c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Curve exchange
+
 ## 5.0.25
 
 ### Patch Changes
