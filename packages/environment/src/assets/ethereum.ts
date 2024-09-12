@@ -694,6 +694,21 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 8,
+    id: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    name: "Lombard Staked Bitcoin",
+    releases: [sulu],
+    symbol: "LBTC",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      rateAsset: RateAsset.ETH,
+      peggedTo: "BTC",
+      nonStandard: true,
+    },
+  },
+  {
     decimals: 18,
     id: "0x221657776846890989a759ba2973e427dff5c9bb",
     name: "Reputation",
@@ -2617,10 +2632,10 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 8,
-    id: "0x8236a87084f8b84306f72007f36f2618a5634494",
-    name: "Lombard Staked Bitcoin",
+    id: "0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2",
+    name: "dlcBTC",
     releases: [sulu],
-    symbol: "LBTC",
+    symbol: "DLCBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
