@@ -54,6 +54,8 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
       rateAsset: RateAsset.ETH,
+      peggedTo: "USDC",
+      nonStandard: true,
     },
   },
   {
@@ -68,6 +70,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      nonStandard: true,
     },
   },
   {
@@ -1088,6 +1091,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_STADER_SD,
       address: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
+      nonStandard: true,
     },
   },
   {
@@ -2623,6 +2627,7 @@ export default defineAssetList(Network.ETHEREUM, [
       aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
+      nonStandard: true,
     },
   },
   {
@@ -6520,6 +6525,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
       aggregator: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
       rateAsset: RateAsset.ETH,
+      nonStandard: true,
     },
   },
   {

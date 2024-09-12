@@ -1,6 +1,8 @@
 import { Protocol } from "@enzymefinance/sdk";
 import { expect, suite, test } from "vitest";
+import { BalancerV2, Curve } from "../../../sdk/src/Portfolio/Integrations.js";
 import { Assertion } from "../../../sdk/src/Utils.js";
+import type { CurvePoolLpAsset } from "../../src/assets.js";
 import { Environment } from "../../src/environment.js";
 import { PriceFeedType, derivativePriceFeeds, primitivePriceFeeds } from "../../src/price-feeds.js";
 import { toAddress } from "../../src/utils.js";
@@ -122,11 +124,38 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL:
-      case PriceFeedType.DERIVATIVE_CURVE: {
-        const priceFeed = await Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id });
+      case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL: {
+        const [priceFeed, poolInfo] = await Promise.all([
+          Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id }),
+          BalancerV2.getPoolInfo(client, { balancerV2StablePoolPriceFeed: asset.priceFeed.address, pool: asset.id }),
+        ]);
 
         expect(toAddress(priceFeed)).toBe(asset.priceFeed.address);
+        expect(toAddress(poolInfo.invariantProxyAsset)).toBe(asset.priceFeed.ipa);
+
+        const isSupportedAssetForDerivativePriceFeed = await Protocol.isSupportedAssetForDerivativePriceFeed(client, {
+          derivativePriceFeed: priceFeed,
+          asset: asset.id,
+        });
+
+        expect(isSupportedAssetForDerivativePriceFeed).toBe(true);
+        const ipa = asset.priceFeed.ipa;
+        // Check that the invariant proxy asset exists in the asset universe, or that it is equal to the UsdEthSimulatedAggregator
+        // (but not both)
+        expect(ipa === usdEthSimulatedAggregator || environment.hasAsset(ipa)).toBe(true);
+
+        break;
+      }
+
+      case PriceFeedType.DERIVATIVE_CURVE: {
+        const pool = (asset as CurvePoolLpAsset).pool;
+        const [priceFeed, poolInfo] = await Promise.all([
+          Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id }),
+          Curve.getPoolInfo(client, { curvePriceFeed: asset.priceFeed.address, pool }),
+        ]);
+
+        expect(toAddress(priceFeed)).toBe(asset.priceFeed.address);
+        expect(toAddress(poolInfo.invariantProxyAsset)).toBe(asset.priceFeed.ipa);
 
         const isSupportedAssetForDerivativePriceFeed = await Protocol.isSupportedAssetForDerivativePriceFeed(client, {
           derivativePriceFeed: priceFeed,
