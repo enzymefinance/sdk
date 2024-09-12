@@ -2,7 +2,7 @@ import { Protocol } from "@enzymefinance/sdk";
 import { expect, suite, test } from "vitest";
 import { BalancerV2, Curve } from "../../../sdk/src/Portfolio/Integrations.js";
 import { Assertion } from "../../../sdk/src/Utils.js";
-import type { CurvePoolLpAsset } from "../../src/assets.js";
+import { AssetType, type CurvePoolGaugeAsset, type CurvePoolLpAsset } from "../../src/assets.js";
 import { Environment } from "../../src/environment.js";
 import { PriceFeedType, derivativePriceFeeds, primitivePriceFeeds } from "../../src/price-feeds.js";
 import { toAddress } from "../../src/utils.js";
@@ -148,7 +148,9 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       }
 
       case PriceFeedType.DERIVATIVE_CURVE: {
-        const pool = (asset as CurvePoolLpAsset).pool;
+        expect([AssetType.CURVE_POOL_LP, AssetType.CURVE_POOL_GAUGE].includes(asset.type)).toBe(true);
+        const pool = (asset as CurvePoolLpAsset | CurvePoolGaugeAsset).pool;
+
         const [priceFeed, poolInfo] = await Promise.all([
           Protocol.getPriceFeedForDerivative(client, { valueInterpreter, asset: asset.id }),
           Curve.getPoolInfo(client, { curvePriceFeed: asset.priceFeed.address, pool }),
