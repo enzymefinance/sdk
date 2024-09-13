@@ -27,6 +27,7 @@ export enum AdapterType {
   PARASWAP_V4 = "paraswap-v4",
   PARASWAP_V5 = "paraswap-v5",
   POOLTOGETHER_V4 = "pooltogether-v4",
+  SWELL_STAKING = "swell-staking",
   SYNTHETIX = "synthetix",
   THREE_ONE_THIRD = "three-one-third",
   TRACKED_ASSETS = "tracked-assets",
@@ -217,6 +218,11 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: "PoolTogetherV4Adapter",
     name: "PoolTogether",
     type: AdapterType.POOLTOGETHER_V4,
+  },
+  [AdapterType.SWELL_STAKING]: {
+    contractName: "SwellStakingAdapter",
+    name: "Swell Staking",
+    type: AdapterType.SWELL_STAKING,
   },
   [AdapterType.SYNTHETIX]: {
     contractName: "SynthetixAdapter",
