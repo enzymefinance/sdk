@@ -29,6 +29,10 @@ export const CommonAssetSchema = z.object({
     .optional(),
 });
 
+export const StaderSchema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.STADER),
+});
+
 export const SynthetixSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.SYNTHETIX),
 });
@@ -124,6 +128,7 @@ export const CurvePoolLpSchema = CommonAssetSchema.extend({
 
 export const AssetSchema = z.union([
   PrimitiveSchema,
+  StaderSchema,
   SynthetixSchema,
   AaveSchema,
   AaveV3Schema,

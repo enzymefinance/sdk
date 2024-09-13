@@ -1102,7 +1102,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Stader",
     releases: [sulu],
     symbol: "SD",
-    type: AssetType.PRIMITIVE,
+    type: AssetType.STADER,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_STADER_SD,
       address: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
