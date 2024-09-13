@@ -59,6 +59,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     fees: "3",
     policies: "4",
     kilnStakingContracts: "400",
+    nonStandardPriceFeedAssets: "650",
   },
   label: "Ethereum",
   namedTokens: {

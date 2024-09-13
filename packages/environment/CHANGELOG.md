@@ -1,5 +1,23 @@
 # @enzymefinance/environment
 
+## 5.0.28
+
+### Patch Changes
+
+- [#507](https://github.com/enzymefinance/sdk/pull/507) [`23e6485`](https://github.com/enzymefinance/sdk/commit/23e648592c1dbd78b58a541f8e94438f90b87a58) Thanks [@iherger](https://github.com/iherger)! - Update price feed address
+
+## 5.0.27
+
+### Patch Changes
+
+- [#504](https://github.com/enzymefinance/sdk/pull/504) [`56cbef0`](https://github.com/enzymefinance/sdk/commit/56cbef045459201f60b0b81a7f80300b15ef86c6) Thanks [@iherger](https://github.com/iherger)! - Add address list ids
+
+## 5.0.26
+
+### Patch Changes
+
+- [#501](https://github.com/enzymefinance/sdk/pull/501) [`4ff9e22`](https://github.com/enzymefinance/sdk/commit/4ff9e22f08566324bc9e878a9dda5062d96bb4c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Curve exchange
+
 ## 5.0.25
 
 ### Patch Changes

@@ -58,6 +58,7 @@ export default defineDeployment<Deployment.POLYGON>({
     adapters: "2",
     fees: "3",
     policies: "4",
+    nonStandardPriceFeedAssets: "1383",
   },
   label: "Polygon",
   namedTokens: {
