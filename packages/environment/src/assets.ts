@@ -64,6 +64,7 @@ export type Asset =
   | MapleV1Asset
   | MapleV2Asset
   | PrimitiveAsset
+  | StaderAsset
   | SynthetixAsset
   | UniswapV2PoolAsset
   | YearnVaultV2Asset;
@@ -79,12 +80,17 @@ export enum AssetType {
   CURVE_POOL_GAUGE = "curve-pool-gauge",
   IDLE = "idle",
   PRIMITIVE = "primitive",
+  STADER = "stader",
   SYNTHETIX = "synthetix",
   UNISWAP_V2_POOL = "uniswap-v2-pool",
   YEARN_VAULT_V2 = "yearn-vault-v2",
   MAPLE_V1 = "maple-v1",
   MAPLE_V2 = "maple-v2",
   ERC_4626 = "erc-4626",
+}
+
+export interface StaderAsset extends AssetBase {
+  readonly type: AssetType.STADER;
 }
 
 export interface SynthetixAsset extends AssetBase {

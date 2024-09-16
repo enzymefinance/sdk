@@ -1,3 +1,4 @@
+import { IBalancerV2StablePoolPriceFeed } from "@enzymefinance/abis";
 import {
   type Address,
   type Client,
@@ -343,6 +344,26 @@ export async function getMinterRewards(
   });
 
   return result;
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getPoolInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    balancerV2StablePoolPriceFeed: Address;
+    pool: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IBalancerV2StablePoolPriceFeed,
+    functionName: "getPoolInfo",
+    address: args.balancerV2StablePoolPriceFeed,
+    args: [args.pool],
+  });
 }
 
 //--------------------------------------------------------------------------------------------

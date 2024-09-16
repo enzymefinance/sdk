@@ -693,6 +693,8 @@ export default defineAssetList(Network.ARBITRUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xd0c7101eacbb49f3decccc166d238410d6d46d57",
       rateAsset: RateAsset.USD,
+      peggedTo: "WBTC",
+      nonStandard: true,
     },
   },
   {
