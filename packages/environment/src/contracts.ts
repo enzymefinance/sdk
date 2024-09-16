@@ -65,6 +65,7 @@ export interface SuluContracts extends CommonContracts {
   readonly BalancerV2StablePoolPriceFeed: Address;
   readonly BalancerV2WeightedPoolPriceFeed: Address;
   readonly ChainlinkLikeWstethPriceFeed: Address;
+  readonly ChainlinkLikeYnEthPriceFeed: Address;
   readonly CompoundAdapter: Address;
   readonly CompoundDebtPositionLib: Address;
   readonly CompoundDebtPositionParser: Address;
@@ -142,6 +143,7 @@ export interface SuluContracts extends CommonContracts {
   readonly SolvV2BondBuyerPositionParser: Address;
   readonly SolvV2BondIssuerPositionLib: Address;
   readonly SolvV2BondIssuerPositionParser: Address;
+  readonly StaderSDPriceFeed: Address;
   readonly StakeWiseV3StakingPositionLib: Address;
   readonly StakeWiseV3StakingPositionParser: Address;
   readonly SwellStakingAdapter: Address;

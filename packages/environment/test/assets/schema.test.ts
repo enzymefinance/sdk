@@ -1,5 +1,6 @@
 import { expect, suite, test } from "vitest";
 
+import { Assertion } from "@enzymefinance/sdk/Utils";
 import { AssetType } from "../../src/index.js";
 import { environment } from "../utils/fixtures.js";
 import {
@@ -17,6 +18,7 @@ import {
   MaplePoolV1Schema,
   MaplePoolV2Schema,
   PrimitiveSchema,
+  StaderSchema,
   SynthetixSchema,
   UniswapV2PoolSchema,
   YearnVaultV2Schema,
@@ -39,6 +41,10 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.PRIMITIVE: {
           validate(PrimitiveSchema, asset);
+          break;
+        }
+        case AssetType.STADER: {
+          validate(StaderSchema, asset);
           break;
         }
         case AssetType.SYNTHETIX: {
@@ -93,6 +99,8 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           validate(ERC4626Schema, asset);
           break;
         }
+        default:
+          Assertion.never(asset, "Unknown asset type.");
       }
     }
   });

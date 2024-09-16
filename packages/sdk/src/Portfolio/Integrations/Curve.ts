@@ -1,3 +1,4 @@
+import { ICurvePriceFeed } from "@enzymefinance/abis";
 import {
   type Address,
   type Client,
@@ -556,6 +557,26 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
     default:
       Assertion.never(redeemType, "Invalid redeemType");
   }
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getPoolInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    curvePriceFeed: Address;
+    pool: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ICurvePriceFeed,
+    functionName: "getPoolInfo",
+    address: args.curvePriceFeed,
+    args: [args.pool],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
