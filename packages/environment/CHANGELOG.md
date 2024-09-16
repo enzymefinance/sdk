@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.29
+
+### Patch Changes
+
+- [#499](https://github.com/enzymefinance/sdk/pull/499) [`e4f5254`](https://github.com/enzymefinance/sdk/commit/e4f5254c49050c3fe3aaef2852ba5056732351b0) Thanks [@ignacio-rsg](https://github.com/ignacio-rsg)! - Add assets
+
+- Updated dependencies [[`e4f5254`](https://github.com/enzymefinance/sdk/commit/e4f5254c49050c3fe3aaef2852ba5056732351b0)]:
+  - @enzymefinance/sdk@0.8.28
+
 ## 5.0.28
 
 ### Patch Changes
