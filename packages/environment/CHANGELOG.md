@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.30
+
+### Patch Changes
+
+- [#509](https://github.com/enzymefinance/sdk/pull/509) [`6753c27`](https://github.com/enzymefinance/sdk/commit/6753c271bb56c789e752aa0ef83977ac28f76f32) Thanks [@iherger](https://github.com/iherger)! - VaultCraft lbtc
+
 ## 5.0.29
 
 ### Patch Changes
