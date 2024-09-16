@@ -182,6 +182,20 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    id: "0x1c0e06a0b1a4c160c17545ff2a951bfca57c0002",
+    name: "Aave Ethereum ETHx",
+    symbol: "aEthETHx",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.AAVE_V3,
+    underlying: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
     decimals: 18,
     id: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     name: "Huobi BTC",
@@ -4445,6 +4459,21 @@ export default defineAssetList(Network.ETHEREUM, [
     underlyings: ["0x8207c1ffc5b6804f6024322ccf34f29c3541ae26", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    id: "0xce3ac66020555edce9b54dad5ec1c35e0478b887",
+    name: "VaultCraft Lombard Staked Bitcoin Vault",
+    releases: [sulu],
+    symbol: "vc-LBTC",
+    decimals: 8,
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.VAULTCRAFT,
+    underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      nonStandard: true,
     },
   },
   {
