@@ -193,6 +193,7 @@ export enum Erc4626Protocol {
   ANGLE = "ANGLE",
   MORPHO = "MORPHO",
   SPARK = "SPARK",
+  VAULTCRAFT = "VAULTCRAFT",
 }
 
 export enum BalancerStakingType {

@@ -4386,6 +4386,20 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    id: "0xce3ac66020555edce9b54dad5ec1c35e0478b887",
+    name: "VaultCraft Lombard Staked Bitcoin Vault",
+    releases: [sulu],
+    symbol: "vc-LBTC",
+    decimals: 8,
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.VAULTCRAFT,
+    underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
     decimals: 18,
     id: "0xce84867c3c02b05dc570d0135103d3fb9cc19433",
     name: "Uniswap SUSHI/ETH Pool",
