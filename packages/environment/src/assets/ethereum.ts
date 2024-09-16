@@ -182,6 +182,20 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    id: "0x1c0e06a0b1a4c160c17545ff2a951bfca57c0002",
+    name: "Aave Ethereum ETHx",
+    symbol: "aEthETHx",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.AAVE_V3,
+    underlying: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+      aggregator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
     decimals: 18,
     id: "0x0316eb71485b0ab14103307bf65a021042c6d380",
     name: "Huobi BTC",
