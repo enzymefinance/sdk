@@ -1269,6 +1269,21 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    id: "0x35d8949372d46b7a3d5a56006ae77b215fc69bc0",
+    name: "USD0 Liquid Bond",
+    symbol: "USD0++",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7e891debd8fa0a4cf6be58ddff5a8ca174febdcb",
+      rateAsset: RateAsset.USD,
+      peggedTo: "USD0",
+      nonStandard: true,
+    },
+  },
+  {
     decimals: 18,
     id: "0x35f6b052c598d933d69a4eec4d04c73a191fe6c2",
     name: "Aave SNX",
@@ -2459,6 +2474,19 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.DERIVATIVE_CURVE,
       address: "0x7e6130e497035a34a08e0f18b7a9b0fa06ed013e",
       ipa: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
+    },
+  },
+  {
+    id: "0x73a15fed60bf67631dc6cd7bc5b6e8da8190acf5",
+    name: "Usual USD",
+    symbol: "USD0",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x7e891debd8fa0a4cf6be58ddff5a8ca174febdcb",
+      rateAsset: RateAsset.USD,
     },
   },
   {
