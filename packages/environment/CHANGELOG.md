@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.31
+
+### Patch Changes
+
+- [#512](https://github.com/enzymefinance/sdk/pull/512) [`386c7fd`](https://github.com/enzymefinance/sdk/commit/386c7fdd5cecc2ad630e5fc90a8a22c6b2aa7fc4) Thanks [@iherger](https://github.com/iherger)! - Asset additions (USD0, USD0++)
+
 ## 5.0.30
 
 ### Patch Changes
