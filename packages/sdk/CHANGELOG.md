@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.29
+
+### Patch Changes
+
+- [#515](https://github.com/enzymefinance/sdk/pull/515) [`e9d77b2`](https://github.com/enzymefinance/sdk/commit/e9d77b2d2461649c3d1817d990add49971e22e8d) Thanks [@iherger](https://github.com/iherger)! - Aave v3 getUserAccountData
+
 ## 0.8.28
 
 ### Patch Changes
