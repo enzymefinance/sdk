@@ -360,6 +360,20 @@ const poolAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    name: "getUserAccountData",
+    outputs: [
+      { internalType: "uint256", name: "totalCollateralBase", type: "uint256" },
+      { internalType: "uint256", name: "totalDebtBase", type: "uint256" },
+      { internalType: "uint256", name: "availableBorrowsBase", type: "uint256" },
+      { internalType: "uint256", name: "currentLiquidationThreshold", type: "uint256" },
+      { internalType: "uint256", name: "ltv", type: "uint256" },
+      { internalType: "uint256", name: "healthFactor", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export function getEModeCategoryData(
@@ -376,4 +390,23 @@ export function getEModeCategoryData(
     address: args.pool,
     args: [args.categoryId],
   });
+}
+
+export async function getUserAccountData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    pool: Address;
+    user: Address;
+  }>,
+) {
+  const [availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase] =
+    await readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: poolAbi,
+      functionName: "getUserAccountData",
+      address: args.pool,
+      args: [args.user],
+    });
+
+  return { availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase };
 }
