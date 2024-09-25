@@ -9,7 +9,9 @@ export default defineDeployment<Deployment.ETHEREUM>({
   externalContracts: {
     aaveV2IncentivesController: "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
     aaveV2LendingPoolProvider: "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
+    aaveV3IncentivesController: "0x8164cc65827dcfe994ab23944cbc90e0aa80bfcb",
     aaveV3LendingPoolProvider: "0x2f39d218133afab8f2b819b1066c7e434ad94e9e",
+    aaveV3ProtocolDataProvider: "0x7b4eb56e7cd4b454ba8ff71e4518426369a138a3",
     aliceOrderManager: "0x841473a19279e54a850e9083a3a57de9e6244d2e",
     arrakisV2Helper: "0x89e4be1f999e3a58d16096fbe405fc2a1d7f07d6",
     arrakisV2Resolver: "0x535c5fdf31477f799366df6e4899a12a801cc7b8",
