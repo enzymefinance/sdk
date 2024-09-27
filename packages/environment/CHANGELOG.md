@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.33
+
+### Patch Changes
+
+- [#518](https://github.com/enzymefinance/sdk/pull/518) [`d36e481`](https://github.com/enzymefinance/sdk/commit/d36e481b30477f2fad5e15d8556fc84008256385) Thanks [@iherger](https://github.com/iherger)! - Rename WMATIC
+
 ## 5.0.32
 
 ### Patch Changes
