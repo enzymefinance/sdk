@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 0.8.30
+
+### Patch Changes
+
+- [#520](https://github.com/enzymefinance/sdk/pull/520) [`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea) Thanks [@iherger](https://github.com/iherger)! - Add Aave v3 flash loans
+
+- Updated dependencies [[`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea)]:
+  - @enzymefinance/abis@0.4.10
+
 ## 0.8.29
 
 ### Patch Changes
