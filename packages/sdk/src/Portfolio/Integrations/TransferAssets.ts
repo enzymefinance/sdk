@@ -27,7 +27,7 @@ export function transferEncode(args: TransferArgs): Hex {
   return encodeAbiParameters(transferEncoding, [args.actionData, args.assetData]);
 }
 
-export function lendDecode(encoded: Hex): TransferArgs {
+export function transferDecode(encoded: Hex): TransferArgs {
   const [actionData, assetData] = decodeAbiParameters(transferEncoding, encoded);
 
   return {
