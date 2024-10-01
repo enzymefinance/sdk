@@ -1,5 +1,5 @@
 import { IAaveV3FlashLoanAssetManager, IDispatcherOwnedBeaconFactory } from "@enzymefinance/abis";
-import { type Address, type Client, type Hex, encodeAbiParameters, encodeFunctionData, parseAbi } from "viem";
+import { type Address, type Client, type Hex, encodeAbiParameters, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
@@ -7,12 +7,12 @@ import { Viem } from "../../Utils.js";
 // FACTORY
 //--------------------------------------------------------------------------------------------
 
-export function encodeDeployProxyContructData(args: {
+export function encodeDeployProxyConstructData(args: {
   owner: Address;
   borrowedAssetsRecipient: Address;
 }) {
   return encodeFunctionData({
-    abi: parseAbi(["function init(address owner, address borrowedAssetsRecipient)"]),
+    abi: IAaveV3FlashLoanAssetManager,
     functionName: "init",
     args: [args.owner, args.borrowedAssetsRecipient],
   });
@@ -34,21 +34,20 @@ export function deployProxy(args: {
 // LIB
 //--------------------------------------------------------------------------------------------
 
-const flashLoanSingleCallEncoding = [
-  {
-    type: "address",
-    name: "target",
-  },
-  {
-    type: "bytes",
-    name: "data",
-  },
-] as const;
-
 const flashLoanCallsEncoding = [
   {
-    type: "bytes[]",
+    type: "tuple[]",
     name: "calls",
+    components: [
+      {
+        name: "target",
+        type: "address",
+      },
+      {
+        name: "data",
+        type: "bytes",
+      },
+    ],
   },
 ] as const;
 
@@ -58,9 +57,7 @@ export function encodeFlashLoanCalls(args: {
     data: Hex;
   }>;
 }) {
-  const calls = args.calls.map((call) => encodeAbiParameters(flashLoanSingleCallEncoding, [call.target, call.data]));
-
-  return encodeAbiParameters(flashLoanCallsEncoding, [calls]);
+  return encodeAbiParameters(flashLoanCallsEncoding, [args.calls]);
 }
 
 export function flashLoan(args: {
