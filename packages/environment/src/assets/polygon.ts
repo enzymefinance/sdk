@@ -296,9 +296,9 @@ export default defineAssetList(Network.POLYGON, [
   {
     decimals: 18,
     id: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
-    name: "Wrapped Matic",
+    name: "Wrapped Polygon Ecosystem Token",
     releases: [polygon.sulu, testnet.sulu],
-    symbol: "WMATIC",
+    symbol: "WPOL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
