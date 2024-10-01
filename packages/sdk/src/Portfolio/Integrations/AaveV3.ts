@@ -816,6 +816,25 @@ export async function getAllUserRewards(
   return { rewardsList, unclaimedAmounts };
 }
 
+export async function getRewardsData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    incentivesProvider: Address;
+    asset: Address;
+    user: Address;
+  }>,
+) {
+  const [emissionPerSecond, index, lastUpdateTimestamp, distributionEnd] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: incentivesProviderAbi,
+    functionName: "getRewardsData",
+    address: args.incentivesProvider,
+    args: [args.asset, args.user],
+  });
+
+  return { emissionPerSecond, index, lastUpdateTimestamp, distributionEnd };
+}
+
 const protocolDataProviderAbi = [
   {
     inputs: [{ internalType: "contract IPoolAddressesProvider", name: "addressesProvider", type: "address" }],
