@@ -821,15 +821,15 @@ export async function getRewardsData(
   args: Viem.ContractCallParameters<{
     incentivesProvider: Address;
     asset: Address;
-    user: Address;
+    reward: Address;
   }>,
 ) {
-  const [emissionPerSecond, index, lastUpdateTimestamp, distributionEnd] = await readContract(client, {
+  const [index, emissionPerSecond, lastUpdateTimestamp, distributionEnd] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: incentivesProviderAbi,
     functionName: "getRewardsData",
     address: args.incentivesProvider,
-    args: [args.asset, args.user],
+    args: [args.asset, args.reward],
   });
 
   return { emissionPerSecond, index, lastUpdateTimestamp, distributionEnd };
