@@ -3,6 +3,7 @@ import type { Address, Client, Hex } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import * as Assets from "./Asset.js";
 import { Assertion, Viem } from "./Utils.js";
+export * as AssetManagers from "./Portfolio/AssetManagers.js";
 export * as Integrations from "./Portfolio/Integrations.js";
 export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 

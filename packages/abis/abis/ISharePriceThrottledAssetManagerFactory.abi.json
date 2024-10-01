@@ -1,0 +1,101 @@
+[
+  {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_libAddress",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "deployProxy",
+    "inputs": [
+      {
+        "name": "_owner",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_vaultProxyAddress",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_lossTolerance",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "_lossTolerancePeriodDuration",
+        "type": "uint32",
+        "internalType": "uint32"
+      },
+      {
+        "name": "_shutdowner",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "proxyAddress_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "ProxyDeployed",
+    "inputs": [
+      {
+        "name": "deployer",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "proxyAddress",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "vaultProxy",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "lossTolerance",
+        "type": "uint64",
+        "indexed": false,
+        "internalType": "uint64"
+      },
+      {
+        "name": "lossTolerancePeriodDuration",
+        "type": "uint32",
+        "indexed": false,
+        "internalType": "uint32"
+      },
+      {
+        "name": "shutDowner",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  }
+]

@@ -22,6 +22,7 @@ export * as StakeWiseV3 from "./Integrations/StakeWiseV3.js";
 export * as Swell from "./Integrations/Swell.js";
 export * as TheGraph from "./Integrations/TheGraph.js";
 export * as ThreeOneThird from "./Integrations/ThreeOneThird.js";
+export * as TransferAssets from "./Integrations/TransferAssets.js";
 export * as UniswapV2 from "./Integrations/UniswapV2.js";
 export * as UniswapV3 from "./Integrations/UniswapV3.js";
 export * as YearnV2 from "./Integrations/YearnV2.js";
