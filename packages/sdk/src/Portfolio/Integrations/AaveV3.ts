@@ -1,4 +1,4 @@
-import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -83,6 +83,7 @@ export const Action = {
   RepayBorrow: 3n,
   SetEMode: 4n,
   SetUseReserveAsCollateral: 5n,
+  ClaimRewards: 6n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -312,6 +313,47 @@ export function setUseReserveAsCollateralDecode(encoded: Hex): SetUseReserveAsCo
 }
 
 //--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+  {
+    name: "amount",
+    type: "uint256",
+  },
+  {
+    name: "rewardToken",
+    type: "address",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  assets: ReadonlyArray<Address>;
+  amount: bigint;
+  rewardToken: Address;
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.assets, args.amount, args.rewardToken]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [assets, amount, rewardToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    assets,
+    amount,
+    rewardToken,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
 // THIRD PARTY READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
@@ -409,4 +451,30 @@ export async function getUserAccountData(
     });
 
   return { availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase };
+}
+
+export async function getAllUserRewards(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    rewardsController: Address;
+    assets: ReadonlyArray<Address>;
+    user: Address;
+  }>,
+) {
+  const [rewardsList, unclaimedAmounts] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi([
+      "function getAllUserRewards(address[] assets, address user) external view returns (address[] rewardsList, uint256[] unclaimedAmounts)",
+    ]),
+    functionName: "getAllUserRewards",
+    address: args.rewardsController,
+    args: [args.assets, args.user],
+  });
+
+  return rewardsList
+    .map((rewardToken, index) => ({
+      rewardToken,
+      unclaimedAmount: unclaimedAmounts[index],
+    }))
+    .filter(({ unclaimedAmount }) => unclaimedAmount > 0n);
 }
