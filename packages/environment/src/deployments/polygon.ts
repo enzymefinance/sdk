@@ -10,6 +10,7 @@ export default defineDeployment<Deployment.POLYGON>({
     aaveV2IncentivesController: "0x357d51124f59836ded84c8a1730d72b749d8bc23",
     aaveV2LendingPoolProvider: "0xd05e3e715d945b59290df0ae8ef85c1bdb684744",
     aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
+    aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
     aliceOrderManager: "0x0000000000000000000000000000000000000000",
     arrakisV2Helper: "0x89e4be1f999e3a58d16096fbe405fc2a1d7f07d6",
     arrakisV2Resolver: "0x535c5fdf31477f799366df6e4899a12a801cc7b8",
