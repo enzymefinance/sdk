@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.35
+
+### Patch Changes
+
+- [#517](https://github.com/enzymefinance/sdk/pull/517) [`baf8f90`](https://github.com/enzymefinance/sdk/commit/baf8f9062c48aaf68d258337a379305f055f9494) Thanks [@iherger](https://github.com/iherger)! - Add various Aave v3 read functions
+
+- Updated dependencies [[`baf8f90`](https://github.com/enzymefinance/sdk/commit/baf8f9062c48aaf68d258337a379305f055f9494)]:
+  - @enzymefinance/sdk@0.8.31
+
 ## 5.0.34
 
 ### Patch Changes
