@@ -9,7 +9,7 @@ export default defineDeployment<Deployment.POLYGON>({
   externalContracts: {
     aaveV2IncentivesController: "0x357d51124f59836ded84c8a1730d72b749d8bc23",
     aaveV2LendingPoolProvider: "0xd05e3e715d945b59290df0ae8ef85c1bdb684744",
-    aaveV3IncentivesController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
+    aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
     aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
     aaveV3ProtocolDataProvider: "0x69fa688f1dc47d4b5d8029d5a35fb7a548310654",
     aliceOrderManager: "0x0000000000000000000000000000000000000000",

@@ -412,7 +412,7 @@ export async function getUserAccountData(
   return { availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase };
 }
 
-const incentivesProviderAbi = [
+const rewardsControllerAbi = [
   {
     inputs: [
       { internalType: "address[]", name: "assets", type: "address[]" },
@@ -453,16 +453,16 @@ const incentivesProviderAbi = [
 export async function getAllUserRewards(
   client: Client,
   args: Viem.ContractCallParameters<{
-    incentivesProvider: Address;
+    rewardsController: Address;
     assets: ReadonlyArray<Address>;
     user: Address;
   }>,
 ) {
   const [rewardsList, unclaimedAmounts] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: incentivesProviderAbi,
+    abi: rewardsControllerAbi,
     functionName: "getAllUserRewards",
-    address: args.incentivesProvider,
+    address: args.rewardsController,
     args: [args.assets, args.user],
   });
 
@@ -472,15 +472,15 @@ export async function getAllUserRewards(
 export function getRewardsByAsset(
   client: Client,
   args: Viem.ContractCallParameters<{
-    incentivesProvider: Address;
+    rewardsController: Address;
     asset: Address;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: incentivesProviderAbi,
+    abi: rewardsControllerAbi,
     functionName: "getRewardsByAsset",
-    address: args.incentivesProvider,
+    address: args.rewardsController,
     args: [args.asset],
   });
 }
@@ -488,16 +488,16 @@ export function getRewardsByAsset(
 export async function getRewardsData(
   client: Client,
   args: Viem.ContractCallParameters<{
-    incentivesProvider: Address;
+    rewardsController: Address;
     asset: Address;
     reward: Address;
   }>,
 ) {
   const [index, emissionPerSecond, lastUpdateTimestamp, distributionEnd] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: incentivesProviderAbi,
+    abi: rewardsControllerAbi,
     functionName: "getRewardsData",
-    address: args.incentivesProvider,
+    address: args.rewardsController,
     args: [args.asset, args.reward],
   });
 
