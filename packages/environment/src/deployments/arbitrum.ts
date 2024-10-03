@@ -9,8 +9,13 @@ export default defineDeployment<Deployment.ARBITRUM>({
   externalContracts: {
     aaveV2IncentivesController: "0x0000000000000000000000000000000000000000",
     aaveV2LendingPoolProvider: "0x0000000000000000000000000000000000000000",
-    aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
     aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
+    aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
+<<<<<<< HEAD
+    aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
+=======
+    aaveV3ProtocolDataProvider: "0x69fa688f1dc47d4b5d8029d5a35fb7a548310654",
+>>>>>>> fc8f8b714b9e1c19e38fd2c84549c08cdc0ae595
     aliceOrderManager: "0x0000000000000000000000000000000000000000",
     arrakisV2Helper: "0x0000000000000000000000000000000000000000",
     arrakisV2Resolver: "0x0000000000000000000000000000000000000000",
