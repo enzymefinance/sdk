@@ -7,15 +7,12 @@ export default defineDeployment<Deployment.POLYGON>({
   address: "0x2e25271297537b8124b8f883a92ffd95c4032733",
   assets,
   externalContracts: {
+    aaveUIIncentiveDataProvider: "0x874313a46e4957d29faac43bf5eb2b144894f557",
     aaveV2IncentivesController: "0x357d51124f59836ded84c8a1730d72b749d8bc23",
     aaveV2LendingPoolProvider: "0xd05e3e715d945b59290df0ae8ef85c1bdb684744",
     aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
     aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-<<<<<<< HEAD
-    aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
-=======
     aaveV3ProtocolDataProvider: "0x69fa688f1dc47d4b5d8029d5a35fb7a548310654",
->>>>>>> fc8f8b714b9e1c19e38fd2c84549c08cdc0ae595
     aliceOrderManager: "0x0000000000000000000000000000000000000000",
     arrakisV2Helper: "0x89e4be1f999e3a58d16096fbe405fc2a1d7f07d6",
     arrakisV2Resolver: "0x535c5fdf31477f799366df6e4899a12a801cc7b8",
