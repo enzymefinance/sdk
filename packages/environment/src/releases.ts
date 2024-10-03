@@ -234,7 +234,9 @@ export interface KnownAddressListIdMapping {
 export interface ExternalContractsMapping {
   readonly aaveV2IncentivesController: Address;
   readonly aaveV2LendingPoolProvider: Address;
+  readonly aaveV3RewardsController: Address;
   readonly aaveV3LendingPoolProvider: Address;
+  readonly aaveV3ProtocolDataProvider: Address;
   readonly aliceOrderManager: Address;
   readonly arrakisV2Resolver: Address;
   readonly arrakisV2Helper: Address;
