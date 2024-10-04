@@ -16,6 +16,7 @@ export default defineDeployment<Deployment.TESTNET>({
     fees: "3",
     policies: "4",
     nonStandardPriceFeedAssets: "128",
+    aTokens: "115",
   },
   label: "Testnet",
   namedTokens: polygonDeployment.namedTokens,

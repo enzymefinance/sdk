@@ -222,13 +222,16 @@ export interface SubgraphMapping {
   readonly vaults: { slug: string; id: string };
 }
 
+type NumberAsString = `${number}`;
+
 export interface KnownAddressListIdMapping {
-  noSlippageAdapters: string;
-  adapters: string;
-  fees: string;
-  policies: string;
-  kilnStakingContracts?: string;
-  nonStandardPriceFeedAssets: string;
+  noSlippageAdapters: NumberAsString;
+  adapters: NumberAsString;
+  fees: NumberAsString;
+  policies: NumberAsString;
+  kilnStakingContracts?: NumberAsString;
+  nonStandardPriceFeedAssets: NumberAsString;
+  aTokens: NumberAsString;
 }
 
 export interface ExternalContractsMapping {

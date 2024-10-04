@@ -61,6 +61,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     fees: "3",
     policies: "4",
     nonStandardPriceFeedAssets: "16",
+    aTokens: "8",
   },
   label: "Arbitrum",
   namedTokens: {
