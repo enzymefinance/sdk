@@ -7,6 +7,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
   address: "0x8da28441a4c594fd2fac72726c1412d8cf9e4a19",
   assets,
   externalContracts: {
+    aaveUIIncentiveDataProvider: "0xda67af3403555ce0ae3ffc22fdb7354458277358",
     aaveV2IncentivesController: "0x0000000000000000000000000000000000000000",
     aaveV2LendingPoolProvider: "0x0000000000000000000000000000000000000000",
     aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
