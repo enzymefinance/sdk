@@ -3975,7 +3975,7 @@ export function getLiquidationPrice({
 }
 
 export function applyFactor(value: bigint, factor: bigint) {
-  const precision = 30;
+  const precision = 30; // precision used in the GMX protocol
   return (value * factor) / parseUnits("1", precision);
 }
 
