@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.32
+
+### Patch Changes
+
+- [#526](https://github.com/enzymefinance/sdk/pull/526) [`bd886b5`](https://github.com/enzymefinance/sdk/commit/bd886b5603cf89950eb4a6bdf7c4c11f6740d57d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more GMX V2 utils
+
 ## 0.8.31
 
 ### Patch Changes
