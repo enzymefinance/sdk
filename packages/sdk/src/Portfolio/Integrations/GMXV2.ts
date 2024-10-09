@@ -3979,9 +3979,7 @@ export function applyFactor(value: bigint, factor: bigint) {
   return (value * factor) / parseUnits("1", precision);
 }
 
-// execution fee
-
-type ExecutionOrderType = "increase" | "decrease";
+export type ExecutionOrderType = "increase" | "decrease";
 
 export async function getExecutionFee({
   client,
