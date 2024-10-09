@@ -3986,7 +3986,7 @@ export async function getExecutionFee({
   orderType,
   dataStore,
 }: { client: PublicClient; orderType: ExecutionOrderType; dataStore: Address }) {
-  const callbackGasLimit = 750_000n; // value set in the external position lib
+  const callbackGasLimit = 750_000n; // value set in the Enzyme integration contract
 
   const [gasLimit, gasPrice, baseGasLimit, executionGasFeePerOraclePrice, executionGasFeeMultiplierFactor] =
     await Promise.all([
