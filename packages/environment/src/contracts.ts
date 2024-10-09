@@ -37,6 +37,8 @@ export interface SuluContracts extends CommonContracts {
   readonly AaveDebtPositionParser: Address;
   readonly AaveV3DebtPositionLib: Address;
   readonly AaveV3DebtPositionParser: Address;
+  readonly AaveV3FlashLoanAssetManagerFactory: Address; // Contract name on-chain: DispatcherOwnedBeaconFactory
+  readonly AaveV3FlashLoanAssetManagerLib: Address;
   readonly AavePriceFeed: Address;
   readonly AaveV2Adapter: Address;
   readonly AaveV2ATokenListOwner: Address;
@@ -153,6 +155,7 @@ export interface SuluContracts extends CommonContracts {
   readonly TheGraphDelegationPositionLib: Address;
   readonly TheGraphDelegationPositionParser: Address;
   readonly ThreeOneThirdAdapter: Address;
+  readonly TransferAssetsAdapter: Address;
   readonly UintListRegistry: Address;
   readonly UniswapV2ExchangeAdapter: Address;
   readonly UniswapV2LiquidityAdapter: Address;
