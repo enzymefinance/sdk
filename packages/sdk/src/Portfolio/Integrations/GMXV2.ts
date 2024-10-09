@@ -3,16 +3,20 @@ import {
   type Address,
   type Client,
   type Hex,
+  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   formatUnits,
   isAddressEqual,
   keccak256,
   parseUnits,
+  zeroAddress,
 } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import { assertEnumType } from "../../Utils/assertion.js";
+import { getGasPrice } from "../../Utils/gas.js";
+import { multiplyBySlippage } from "../../Utils/slippage.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = (typeof Action)[keyof typeof Action];
@@ -3865,3 +3869,317 @@ export function parseUsd(value: number, decimalsToAdjust = 0) {
 export function encodeKey(key: string) {
   return keccak256(encodeAbiParameters([{ type: "string" }], [key]));
 }
+
+export function getLiquidationPrice({
+  sizeInUsd,
+  sizeInTokens,
+  collateralUsd,
+  collateralAmount,
+  indexToken,
+  indexTokenDecimals,
+  maxPositionImpactFactorForLiquidations,
+  minCollateralFactor,
+  collateralToken,
+  minCollateralUsd,
+  isLong,
+  priceImpactUsd,
+  totalFeesUsd,
+  protocolFeeUsd,
+}: {
+  sizeInUsd: bigint;
+  sizeInTokens: bigint;
+  collateralAmount: bigint;
+  collateralUsd: bigint;
+  collateralToken: Address;
+  indexToken: Address;
+  indexTokenDecimals: number;
+  maxPositionImpactFactorForLiquidations: bigint;
+  minCollateralFactor: bigint;
+  minCollateralUsd: bigint;
+  protocolFeeUsd: bigint;
+  priceImpactUsd: bigint;
+  isLong: boolean;
+  totalFeesUsd: bigint;
+}) {
+  if (sizeInUsd <= 0 || sizeInTokens <= 0) {
+    return undefined;
+  }
+
+  const totalPendingFeesUsd = totalFeesUsd - protocolFeeUsd;
+
+  const maxNegativePriceImpactUsd = -1n * applyFactor(sizeInUsd, maxPositionImpactFactorForLiquidations);
+
+  let priceImpactDeltaUsd = priceImpactUsd;
+
+  if (priceImpactDeltaUsd < maxNegativePriceImpactUsd) {
+    priceImpactDeltaUsd = maxNegativePriceImpactUsd;
+  }
+
+  // Ignore positive price impact
+  if (priceImpactDeltaUsd > 0) {
+    priceImpactDeltaUsd = 0n;
+  }
+
+  let liquidationCollateralUsd = applyFactor(sizeInUsd, minCollateralFactor);
+  if (liquidationCollateralUsd < minCollateralUsd) {
+    liquidationCollateralUsd = minCollateralUsd;
+  }
+
+  let liquidationPrice: bigint;
+
+  if (isAddressEqual(collateralToken, indexToken)) {
+    if (isLong) {
+      const denominator = sizeInTokens + collateralAmount;
+
+      if (denominator === 0n) {
+        return undefined;
+      }
+
+      liquidationPrice =
+        ((sizeInUsd + liquidationCollateralUsd - priceImpactDeltaUsd + totalFeesUsd) / denominator) *
+        parseUnits("1", indexTokenDecimals);
+    } else {
+      const denominator = sizeInTokens - collateralAmount;
+
+      if (denominator === 0n) {
+        return undefined;
+      }
+
+      liquidationPrice =
+        ((sizeInUsd - liquidationCollateralUsd + priceImpactDeltaUsd - totalFeesUsd) / denominator) *
+        parseUnits("1", indexTokenDecimals);
+    }
+  } else {
+    if (sizeInTokens === 0n) {
+      return undefined;
+    }
+
+    const remainingCollateralUsd = collateralUsd + priceImpactDeltaUsd - totalPendingFeesUsd - protocolFeeUsd;
+
+    if (isLong) {
+      liquidationPrice =
+        ((liquidationCollateralUsd - remainingCollateralUsd + sizeInUsd) / sizeInTokens) *
+        parseUnits("1", indexTokenDecimals);
+    } else {
+      liquidationPrice =
+        ((liquidationCollateralUsd - remainingCollateralUsd - sizeInUsd) / -sizeInTokens) *
+        parseUnits("1", indexTokenDecimals);
+    }
+  }
+
+  if (liquidationPrice <= 0) {
+    return undefined;
+  }
+
+  return formatUsd(liquidationPrice);
+}
+
+export function applyFactor(value: bigint, factor: bigint) {
+  const precision = 30;
+  return (value * factor) / parseUnits("1", precision);
+}
+
+// execution fee
+
+type ExecutionOrderType = "increase" | "decrease";
+
+export async function getExecutionFee({
+  client,
+  orderType,
+  dataStore,
+}: { client: PublicClient; orderType: ExecutionOrderType; dataStore: Address }) {
+  const callbackGasLimit = 750_000n; // value set in the external position lib
+
+  const [gasLimit, gasPrice, baseGasLimit, executionGasFeePerOraclePrice, executionGasFeeMultiplierFactor] =
+    await Promise.all([
+      getGasLimit({ client, orderType, dataStore }),
+      getGasPrice(client),
+      getExecutionGasFeeBaseAmountV2One(client, { dataStore }),
+      getExecutionGasFeePerOraclePrice(client, { dataStore }),
+      getExecutionGasFeeMultiplierFactor(client, { dataStore }),
+    ]);
+
+  const estimatedGasLimit = gasLimit + (orderType === "increase" ? 0n : callbackGasLimit);
+
+  const adjustedGasLimit = adjustGasLimitForEstimate({
+    estimatedGasLimit,
+    baseGasLimit,
+    executionGasFeePerOraclePrice,
+    executionGasFeeMultiplierFactor,
+  });
+
+  return adjustedGasLimit * gasPrice;
+}
+
+export function adjustGasLimitForEstimate({
+  estimatedGasLimit,
+  baseGasLimit,
+  executionGasFeePerOraclePrice,
+  executionGasFeeMultiplierFactor,
+}: {
+  estimatedGasLimit: bigint;
+  baseGasLimit: bigint;
+  executionGasFeePerOraclePrice: bigint;
+  executionGasFeeMultiplierFactor: bigint;
+}) {
+  const oraclePriceCount = 3n; // value set in gmx protocol
+
+  const baseGasLimitWithOraclePrice = baseGasLimit + executionGasFeePerOraclePrice * oraclePriceCount;
+
+  return baseGasLimitWithOraclePrice + applyFactor(estimatedGasLimit, executionGasFeeMultiplierFactor);
+}
+
+export function getGasLimit({
+  client,
+  orderType,
+  dataStore,
+}: { client: PublicClient; orderType: ExecutionOrderType; dataStore: Address }) {
+  return orderType === "increase"
+    ? getIncreaseOrderGasLimit(client, { dataStore })
+    : getDecreaseOrderGasLimit(client, { dataStore });
+}
+
+export function getAcceptablePrice({
+  executionPrice,
+  slippage,
+  isLong,
+  isIncrease,
+}: { executionPrice: bigint; slippage: number; isLong: boolean; isIncrease: boolean }) {
+  const slippageUsd = executionPrice - multiplyBySlippage({ value: executionPrice, slippage });
+
+  if (isLong) {
+    return isIncrease ? executionPrice + slippageUsd : executionPrice - slippageUsd;
+  }
+
+  return isIncrease ? executionPrice - slippageUsd : executionPrice + slippageUsd;
+}
+
+export function getPositionNetValue({
+  collateralUsd,
+  totalFeesUsd,
+  pnl,
+}: {
+  collateralUsd: bigint;
+  totalFeesUsd: bigint;
+  pnl: bigint;
+}) {
+  return formatUsd(collateralUsd - totalFeesUsd + pnl);
+}
+
+export function getEntryPrice({
+  sizeInUsd,
+  sizeInTokens,
+  indexTokenDecimals,
+}: { sizeInUsd: bigint; sizeInTokens: bigint; indexTokenDecimals: number }) {
+  if (sizeInTokens === 0n) {
+    return undefined;
+  }
+
+  return formatUsd((sizeInUsd * parseUnits("1", indexTokenDecimals)) / sizeInTokens);
+}
+
+export function getLeverage({
+  pnl,
+  sizeInUsd,
+  collateralUsd,
+  pendingBorrowingFeesUsd,
+  pendingFundingFeesUsd,
+}: {
+  sizeInUsd: bigint;
+  collateralUsd: bigint;
+  pnl: bigint;
+  pendingFundingFeesUsd: bigint;
+  pendingBorrowingFeesUsd: bigint;
+}) {
+  const totalPendingFeesUsd = getPositionPendingFeesUsd({ pendingFundingFeesUsd, pendingBorrowingFeesUsd });
+
+  const remainingCollateralUsd = collateralUsd + (pnl ?? 0n) - totalPendingFeesUsd;
+
+  if (remainingCollateralUsd <= 0) {
+    return undefined;
+  }
+  const basisPointsDivisor = 10000;
+
+  return Number(
+    (Number((sizeInUsd * BigInt(basisPointsDivisor)) / remainingCollateralUsd) / basisPointsDivisor).toFixed(2),
+  );
+}
+
+export function getPositionPendingFeesUsd(p: { pendingFundingFeesUsd: bigint; pendingBorrowingFeesUsd: bigint }) {
+  const { pendingFundingFeesUsd, pendingBorrowingFeesUsd } = p;
+
+  return pendingBorrowingFeesUsd + pendingFundingFeesUsd;
+}
+
+// Those are index tokens that GMX uses internally to mark certain tokens. There might be no contract under those addresses.
+// GMX for some pools uses common tokens, and info about those can be get via our environment package with environment.getAsset(tokenAddress) method.
+export const arbitrumGMXIndexTokens = [
+  {
+    name: "Ethereum",
+    symbol: "ETH",
+    decimals: 18,
+    address: zeroAddress,
+  },
+  {
+    name: "Magic Internet Money",
+    symbol: "MIM",
+    decimals: 18,
+    address: "0xFEa7a6a0B346362BF88A9e4A88416B77a57D6c2A",
+  },
+  {
+    name: "Bitcoin",
+    symbol: "BTC",
+    address: "0x47904963fc8b2340414262125aF798B9655E58Cd",
+    decimals: 8,
+  },
+  {
+    name: "Dogecoin",
+    symbol: "DOGE",
+    address: "0xC4da4c24fd591125c3F47b340b6f4f76111883d8",
+    decimals: 8,
+  },
+  {
+    name: "Litecoin",
+    symbol: "LTC",
+    decimals: 8,
+    address: "0xB46A094Bc4B0adBD801E14b9DB95e05E28962764",
+  },
+  {
+    name: "XRP",
+    symbol: "XRP",
+    address: "0xc14e065b0067dE91534e032868f5Ac6ecf2c6868",
+    decimals: 6,
+  },
+  {
+    name: "Cosmos",
+    symbol: "ATOM",
+    address: "0x7D7F1765aCbaF847b9A1f7137FE8Ed4931FbfEbA",
+    decimals: 6,
+  },
+  {
+    name: "Near",
+    symbol: "NEAR",
+    address: "0x1FF7F3EFBb9481Cbd7db4F932cBCD4467144237C",
+    decimals: 24,
+  },
+  {
+    name: "ORDI",
+    symbol: "ORDI",
+    address: "0x1E15d08f3CA46853B692EE28AE9C7a0b88a9c994",
+    decimals: 18,
+  },
+  {
+    name: "Stacks",
+    symbol: "STX",
+    address: "0xBaf07cF91D413C0aCB2b7444B9Bf13b4e03c9D71",
+    decimals: 6,
+  },
+  {
+    name: "Shiba Inu",
+    symbol: "SHIB",
+    address: "0x3E57D02f9d196873e55727382974b02EdebE6bfd",
+    decimals: 18,
+  },
+] as const;
+
+export const uiFeeReceiver = "0xbF70734E9E1da98149E4550025B1055Facd60583"; // UI fee receiver address set in the Enzyme integration contract. The fee is currently set to 0
