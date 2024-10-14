@@ -11,7 +11,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     aaveV2LendingPoolProvider: "0x0000000000000000000000000000000000000000",
     aaveV3RewardsController: "0x929ec64c34a17401f460460d4b9390518e5b473e",
     aaveV3LendingPoolProvider: "0xa97684ead0e402dc232d5a977953df7ecbab3cdb",
-    aaveV3ProtocolDataProvider: "0x69fa688f1dc47d4b5d8029d5a35fb7a548310654",
+    aaveV3ProtocolDataProvider: "0x7f23d86ee20d869112572136221e173428dd740b",
     aliceOrderManager: "0x0000000000000000000000000000000000000000",
     arrakisV2Helper: "0x0000000000000000000000000000000000000000",
     arrakisV2Resolver: "0x0000000000000000000000000000000000000000",

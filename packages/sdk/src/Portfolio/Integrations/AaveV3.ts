@@ -610,9 +610,23 @@ export async function getAvailableSupplyAmount(
   args: Viem.ContractCallParameters<{
     protocolDataProvider: Address;
     asset: Address;
+    decimals: number;
   }>,
 ) {
   const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
 
-  return reserveCaps.supplyCap - reserveData.totalAToken;
+  return reserveCaps.supplyCap * 10n ** BigInt(args.decimals) - reserveData.totalAToken;
+}
+
+export async function getAvailableVariableDebtAmount(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+    decimals: number;
+  }>,
+) {
+  const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
+
+  return reserveCaps.borrowCap * 10n ** BigInt(args.decimals) - reserveData.totalVariableDebt;
 }
