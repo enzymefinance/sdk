@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.37
+
+### Patch Changes
+
+- [#528](https://github.com/enzymefinance/sdk/pull/528) [`d3632eb`](https://github.com/enzymefinance/sdk/commit/d3632eb075ba7073b4712b505e69c9dc8d552264) Thanks [@iherger](https://github.com/iherger)! - Aave v3 updates
+
+- Updated dependencies [[`d3632eb`](https://github.com/enzymefinance/sdk/commit/d3632eb075ba7073b4712b505e69c9dc8d552264)]:
+  - @enzymefinance/sdk@0.8.33
+
 ## 5.0.36
 
 ### Patch Changes
