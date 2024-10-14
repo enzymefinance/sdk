@@ -6959,7 +6959,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "sUSDS",
     type: AssetType.ERC_4626,
-    underlying: '0xdC035D45d973E3EC169d2276DDab16f1e407384F',
+    underlying: "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
     protocol: Erc4626Protocol.SKY,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
