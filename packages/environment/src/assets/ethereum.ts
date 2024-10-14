@@ -6939,4 +6939,31 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    decimals: 18,
+    id: "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    name: "USDS Stablecoin",
+    releases: [sulu],
+    symbol: "USDS",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
+    name: "Savings USDS",
+    releases: [sulu],
+    symbol: "sUSDS",
+    type: AssetType.ERC_4626,
+    underlying: '0xdC035D45d973E3EC169d2276DDab16f1e407384F',
+    protocol: Erc4626Protocol.SKY,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
