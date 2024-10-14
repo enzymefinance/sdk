@@ -615,7 +615,7 @@ export async function getAvailableSupplyAmount(
 ) {
   const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
 
-  return parseUnits(reserveCaps.supplyCap.toString(), args.decimals) - reserveData.totalAToken;
+  return reserveCaps.supplyCap * 10n ** BigInt(args.decimals) - reserveData.totalAToken;
 }
 
 export async function getAvailableVariableDebtAmount(
@@ -628,5 +628,5 @@ export async function getAvailableVariableDebtAmount(
 ) {
   const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
 
-  return parseUnits(reserveCaps.borrowCap.toString(), args.decimals) - reserveData.totalVariableDebt;
+  return reserveCaps.borrowCap * 10n ** BigInt(args.decimals) - reserveData.totalVariableDebt;
 }
