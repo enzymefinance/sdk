@@ -7,7 +7,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
   address: "0xc3dc853dd716bd5754f421ef94fdcbac3902ab32",
   assets,
   externalContracts: {
-    aaveUIIncentiveDataProvider: "0x162a7ac02f547ad796ca549f757e2b8d1d9b10a6",
+    aaveUIIncentiveDataProvider: "0x5a40cde2b76da2bed545efb3ae15708ee56aaf9c",
     aaveV2IncentivesController: "0xd784927ff2f95ba542bfc824c8a8a98f3495f6b5",
     aaveV2LendingPoolProvider: "0xb53c1a33016b2dc2ff3653530bff1848a515c8c5",
     aaveV3RewardsController: "0x8164cc65827dcfe994ab23944cbc90e0aa80bfcb",
