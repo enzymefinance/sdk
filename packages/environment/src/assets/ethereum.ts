@@ -6941,7 +6941,7 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
-    id: "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    id: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
     name: "USDS Stablecoin",
     releases: [sulu],
     symbol: "USDS",
@@ -6959,11 +6959,24 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     symbol: "sUSDS",
     type: AssetType.ERC_4626,
-    underlying: "0xdC035D45d973E3EC169d2276DDab16f1e407384F",
+    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
     protocol: Erc4626Protocol.SKY,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xec53bf9167f50cdeb3ae105f56099aaab9061f83",
+    name: "Eigen",
+    symbol: "EIGEN",
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xf2917e602c2dca458937fad715bb1e465305a4a1",
+      rateAsset: RateAsset.USD,
     },
   },
 ]);
