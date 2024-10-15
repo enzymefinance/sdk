@@ -56,12 +56,12 @@ export default defineDeployment<Deployment.ARBITRUM>({
   inception: 230330283,
   kind: Kind.LIVE,
   knownAddressLists: {
-    noSlippageAdapters: "1",
-    adapters: "2",
-    fees: "3",
-    policies: "4",
-    nonStandardPriceFeedAssets: "16",
-    aTokens: "8",
+    noSlippageAdapters: 1n,
+    adapters: 2n,
+    fees: 3n,
+    policies: 4n,
+    nonStandardPriceFeedAssets: 16n,
+    aTokens: 8n,
   },
   label: "Arbitrum",
   namedTokens: {

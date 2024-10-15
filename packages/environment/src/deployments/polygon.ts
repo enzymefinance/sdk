@@ -56,12 +56,12 @@ export default defineDeployment<Deployment.POLYGON>({
   inception: 25825424,
   kind: Kind.LIVE,
   knownAddressLists: {
-    noSlippageAdapters: "1",
-    adapters: "2",
-    fees: "3",
-    policies: "4",
-    nonStandardPriceFeedAssets: "1383",
-    aTokens: "735",
+    noSlippageAdapters: 1n,
+    adapters: 2n,
+    fees: 3n,
+    policies: 4n,
+    nonStandardPriceFeedAssets: 1383n,
+    aTokens: 735n,
   },
   label: "Polygon",
   namedTokens: {
