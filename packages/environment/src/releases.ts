@@ -223,12 +223,13 @@ export interface SubgraphMapping {
 }
 
 export interface KnownAddressListIdMapping {
-  noSlippageAdapters: string;
-  adapters: string;
-  fees: string;
-  policies: string;
-  kilnStakingContracts?: string;
-  nonStandardPriceFeedAssets: string;
+  noSlippageAdapters: bigint;
+  adapters: bigint;
+  fees: bigint;
+  policies: bigint;
+  kilnStakingContracts?: bigint;
+  nonStandardPriceFeedAssets: bigint;
+  aTokens: bigint;
 }
 
 export interface ExternalContractsMapping {
