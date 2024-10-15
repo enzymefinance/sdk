@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.34
+
+### Patch Changes
+
+- [#522](https://github.com/enzymefinance/sdk/pull/522) [`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 claim rewards
+
 ## 0.8.33
 
 ### Patch Changes

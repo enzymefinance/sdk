@@ -1,5 +1,16 @@
 # @enzymefinance/environment
 
+## 5.0.38
+
+### Patch Changes
+
+- [#524](https://github.com/enzymefinance/sdk/pull/524) [`6bbc994`](https://github.com/enzymefinance/sdk/commit/6bbc9942394d1dc2afccaa9aec28fb477d79a380) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aToken list
+
+- [#522](https://github.com/enzymefinance/sdk/pull/522) [`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 claim rewards
+
+- Updated dependencies [[`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd)]:
+  - @enzymefinance/sdk@0.8.34
+
 ## 5.0.37
 
 ### Patch Changes
