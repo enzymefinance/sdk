@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.39
+
+### Patch Changes
+
+- [#532](https://github.com/enzymefinance/sdk/pull/532) [`34c41e6`](https://github.com/enzymefinance/sdk/commit/34c41e6838b8b82880351b8281d9d6ee2edf03a4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update Aave UI incenctive data provider
+
 ## 5.0.38
 
 ### Patch Changes
