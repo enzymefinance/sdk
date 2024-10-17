@@ -6948,8 +6948,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xff30586cd0f29ed462364c7e81375fc0c71219b1",
+      rateAsset: RateAsset.USD,
     },
   },
   {
