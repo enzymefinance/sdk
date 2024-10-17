@@ -83,8 +83,6 @@ export { IGatedRedemptionQueueSharesWrapperLib } from "./IGatedRedemptionQueueSh
 export { IGlobalConfigLib } from "./IGlobalConfigLib.js";
 export { IHelperDataReader } from "./IHelperDataReader.js";
 export { IHelperDataReaderRouter } from "./IHelperDataReaderRouter.js";
-export { IIdleAdapter } from "./IIdleAdapter.js";
-export { IIdlePriceFeed } from "./IIdlePriceFeed.js";
 export { IIntegrationAdapter } from "./IIntegrationAdapter.js";
 export { IIntegrationManager } from "./IIntegrationManager.js";
 export { IKilnStakingPositionLib } from "./IKilnStakingPositionLib.js";

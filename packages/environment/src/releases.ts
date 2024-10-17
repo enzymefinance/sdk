@@ -250,7 +250,6 @@ export interface ExternalContractsMapping {
   readonly chainlinkFeedsRegistry: Address;
   readonly cvxCrvStaking: Address;
   readonly voteLockedConvexToken: Address;
-  readonly idleController: Address;
   readonly curveChildLiquidityGaugeFactory: Address;
   readonly curveRegistry: Address;
   readonly kilnStaking: Address;

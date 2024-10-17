@@ -185,7 +185,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.ERC_4626,
   },
   [AdapterType.IDLE]: {
-    contractName: "IdleAdapter",
+    contractName: undefined,
     name: "Idle",
     type: AdapterType.IDLE,
   },
