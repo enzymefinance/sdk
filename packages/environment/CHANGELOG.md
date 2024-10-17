@@ -1,5 +1,28 @@
 # @enzymefinance/environment
 
+## 5.0.40
+
+### Patch Changes
+
+- [#525](https://github.com/enzymefinance/sdk/pull/525) [`3f58452`](https://github.com/enzymefinance/sdk/commit/3f5845209a80cea308f8a55b41f4468888e5828b) Thanks [@iherger](https://github.com/iherger)! - Add newly deployed contracts
+
+## 5.0.39
+
+### Patch Changes
+
+- [#532](https://github.com/enzymefinance/sdk/pull/532) [`34c41e6`](https://github.com/enzymefinance/sdk/commit/34c41e6838b8b82880351b8281d9d6ee2edf03a4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update Aave UI incenctive data provider
+
+## 5.0.38
+
+### Patch Changes
+
+- [#524](https://github.com/enzymefinance/sdk/pull/524) [`6bbc994`](https://github.com/enzymefinance/sdk/commit/6bbc9942394d1dc2afccaa9aec28fb477d79a380) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aToken list
+
+- [#522](https://github.com/enzymefinance/sdk/pull/522) [`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 claim rewards
+
+- Updated dependencies [[`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd)]:
+  - @enzymefinance/sdk@0.8.34
+
 ## 5.0.37
 
 ### Patch Changes

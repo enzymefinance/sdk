@@ -10,7 +10,6 @@ export * as Convex from "./Integrations/Convex.js";
 export * as Curve from "./Integrations/Curve.js";
 export * as Erc4626 from "./Integrations/Erc4626.js";
 export * as GMXV2 from "./Integrations/GMXV2.js";
-export * as IdleV4 from "./Integrations/IdleV4.js";
 export * as Kiln from "./Integrations/Kiln.js";
 export * as Lido from "./Integrations/Lido.js";
 export * as Liquity from "./Integrations/Liquity.js";

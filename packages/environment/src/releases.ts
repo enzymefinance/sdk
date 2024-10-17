@@ -223,15 +223,17 @@ export interface SubgraphMapping {
 }
 
 export interface KnownAddressListIdMapping {
-  noSlippageAdapters: string;
-  adapters: string;
-  fees: string;
-  policies: string;
-  kilnStakingContracts?: string;
-  nonStandardPriceFeedAssets: string;
+  noSlippageAdapters: bigint;
+  adapters: bigint;
+  fees: bigint;
+  policies: bigint;
+  kilnStakingContracts?: bigint;
+  nonStandardPriceFeedAssets: bigint;
+  aTokens: bigint;
 }
 
 export interface ExternalContractsMapping {
+  readonly aaveUIIncentiveDataProvider: Address;
   readonly aaveV2IncentivesController: Address;
   readonly aaveV2LendingPoolProvider: Address;
   readonly aaveV3RewardsController: Address;
@@ -248,7 +250,6 @@ export interface ExternalContractsMapping {
   readonly chainlinkFeedsRegistry: Address;
   readonly cvxCrvStaking: Address;
   readonly voteLockedConvexToken: Address;
-  readonly idleController: Address;
   readonly curveChildLiquidityGaugeFactory: Address;
   readonly curveRegistry: Address;
   readonly kilnStaking: Address;
