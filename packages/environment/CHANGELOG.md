@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.40
+
+### Patch Changes
+
+- [#525](https://github.com/enzymefinance/sdk/pull/525) [`3f58452`](https://github.com/enzymefinance/sdk/commit/3f5845209a80cea308f8a55b41f4468888e5828b) Thanks [@iherger](https://github.com/iherger)! - Add newly deployed contracts
+
 ## 5.0.39
 
 ### Patch Changes
