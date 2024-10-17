@@ -8,7 +8,6 @@ export enum Protocol {
   COMPOUND_V3 = "COMPOUND_V3",
   CONVEX = "CONVEX",
   CURVE = "CURVE",
-  IDLE = "IDLE",
   KILN = "KILN",
   LIQUITY = "LIQUITY",
   MAPLE = "MAPLE",
