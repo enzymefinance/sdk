@@ -1,5 +1,23 @@
 # @enzymefinance/sdk
 
+## 0.8.34
+
+### Patch Changes
+
+- [#522](https://github.com/enzymefinance/sdk/pull/522) [`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 claim rewards
+
+## 0.8.33
+
+### Patch Changes
+
+- [#528](https://github.com/enzymefinance/sdk/pull/528) [`d3632eb`](https://github.com/enzymefinance/sdk/commit/d3632eb075ba7073b4712b505e69c9dc8d552264) Thanks [@iherger](https://github.com/iherger)! - Aave v3 updates
+
+## 0.8.32
+
+### Patch Changes
+
+- [#526](https://github.com/enzymefinance/sdk/pull/526) [`bd886b5`](https://github.com/enzymefinance/sdk/commit/bd886b5603cf89950eb4a6bdf7c4c11f6740d57d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more GMX V2 utils
+
 ## 0.8.31
 
 ### Patch Changes

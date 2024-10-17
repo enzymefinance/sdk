@@ -84,6 +84,7 @@ export const Action = {
   RepayBorrow: 3n,
   SetEMode: 4n,
   SetUseReserveAsCollateral: 5n,
+  ClaimRewards: 6n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -309,6 +310,47 @@ export function setUseReserveAsCollateralDecode(encoded: Hex): SetUseReserveAsCo
   return {
     underlying,
     useAsCollateral,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+  {
+    name: "amount",
+    type: "uint256",
+  },
+  {
+    name: "rewardToken",
+    type: "address",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  assets: ReadonlyArray<Address>;
+  amount: bigint;
+  rewardToken: Address;
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.assets, args.amount, args.rewardToken]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [assets, amount, rewardToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    assets,
+    amount,
+    rewardToken,
   };
 }
 
@@ -610,9 +652,139 @@ export async function getAvailableSupplyAmount(
   args: Viem.ContractCallParameters<{
     protocolDataProvider: Address;
     asset: Address;
+    decimals: number;
   }>,
 ) {
   const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
 
-  return reserveCaps.supplyCap - reserveData.totalAToken;
+  return reserveCaps.supplyCap * 10n ** BigInt(args.decimals) - reserveData.totalAToken;
+}
+
+export async function getAvailableVariableDebtAmount(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+    decimals: number;
+  }>,
+) {
+  const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
+
+  return reserveCaps.borrowCap * 10n ** BigInt(args.decimals) - reserveData.totalVariableDebt;
+}
+
+const uiIncentiveDataProviderAbi = [
+  {
+    inputs: [{ internalType: "contract IPoolAddressesProvider", name: "provider", type: "address" }],
+    name: "getReservesIncentivesData",
+    outputs: [
+      {
+        components: [
+          { internalType: "address", name: "underlyingAsset", type: "address" },
+          {
+            components: [
+              { internalType: "address", name: "tokenAddress", type: "address" },
+              { internalType: "address", name: "incentiveControllerAddress", type: "address" },
+              {
+                components: [
+                  { internalType: "string", name: "rewardTokenSymbol", type: "string" },
+                  { internalType: "address", name: "rewardTokenAddress", type: "address" },
+                  { internalType: "address", name: "rewardOracleAddress", type: "address" },
+                  { internalType: "uint256", name: "emissionPerSecond", type: "uint256" },
+                  { internalType: "uint256", name: "incentivesLastUpdateTimestamp", type: "uint256" },
+                  { internalType: "uint256", name: "tokenIncentivesIndex", type: "uint256" },
+                  { internalType: "uint256", name: "emissionEndTimestamp", type: "uint256" },
+                  { internalType: "int256", name: "rewardPriceFeed", type: "int256" },
+                  { internalType: "uint8", name: "rewardTokenDecimals", type: "uint8" },
+                  { internalType: "uint8", name: "precision", type: "uint8" },
+                  { internalType: "uint8", name: "priceFeedDecimals", type: "uint8" },
+                ],
+                internalType: "struct IUiIncentiveDataProviderV3.RewardInfo[]",
+                name: "rewardsTokenInformation",
+                type: "tuple[]",
+              },
+            ],
+            internalType: "struct IUiIncentiveDataProviderV3.IncentiveData",
+            name: "aIncentiveData",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "address", name: "tokenAddress", type: "address" },
+              { internalType: "address", name: "incentiveControllerAddress", type: "address" },
+              {
+                components: [
+                  { internalType: "string", name: "rewardTokenSymbol", type: "string" },
+                  { internalType: "address", name: "rewardTokenAddress", type: "address" },
+                  { internalType: "address", name: "rewardOracleAddress", type: "address" },
+                  { internalType: "uint256", name: "emissionPerSecond", type: "uint256" },
+                  { internalType: "uint256", name: "incentivesLastUpdateTimestamp", type: "uint256" },
+                  { internalType: "uint256", name: "tokenIncentivesIndex", type: "uint256" },
+                  { internalType: "uint256", name: "emissionEndTimestamp", type: "uint256" },
+                  { internalType: "int256", name: "rewardPriceFeed", type: "int256" },
+                  { internalType: "uint8", name: "rewardTokenDecimals", type: "uint8" },
+                  { internalType: "uint8", name: "precision", type: "uint8" },
+                  { internalType: "uint8", name: "priceFeedDecimals", type: "uint8" },
+                ],
+                internalType: "struct IUiIncentiveDataProviderV3.RewardInfo[]",
+                name: "rewardsTokenInformation",
+                type: "tuple[]",
+              },
+            ],
+            internalType: "struct IUiIncentiveDataProviderV3.IncentiveData",
+            name: "vIncentiveData",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "address", name: "tokenAddress", type: "address" },
+              { internalType: "address", name: "incentiveControllerAddress", type: "address" },
+              {
+                components: [
+                  { internalType: "string", name: "rewardTokenSymbol", type: "string" },
+                  { internalType: "address", name: "rewardTokenAddress", type: "address" },
+                  { internalType: "address", name: "rewardOracleAddress", type: "address" },
+                  { internalType: "uint256", name: "emissionPerSecond", type: "uint256" },
+                  { internalType: "uint256", name: "incentivesLastUpdateTimestamp", type: "uint256" },
+                  { internalType: "uint256", name: "tokenIncentivesIndex", type: "uint256" },
+                  { internalType: "uint256", name: "emissionEndTimestamp", type: "uint256" },
+                  { internalType: "int256", name: "rewardPriceFeed", type: "int256" },
+                  { internalType: "uint8", name: "rewardTokenDecimals", type: "uint8" },
+                  { internalType: "uint8", name: "precision", type: "uint8" },
+                  { internalType: "uint8", name: "priceFeedDecimals", type: "uint8" },
+                ],
+                internalType: "struct IUiIncentiveDataProviderV3.RewardInfo[]",
+                name: "rewardsTokenInformation",
+                type: "tuple[]",
+              },
+            ],
+            internalType: "struct IUiIncentiveDataProviderV3.IncentiveData",
+            name: "sIncentiveData",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export function getReservesIncentivesData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    uiIncentiveDataProvider: Address;
+    poolAddressProvider: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: uiIncentiveDataProviderAbi,
+    functionName: "getReservesIncentivesData",
+    address: args.uiIncentiveDataProvider,
+    args: [args.poolAddressProvider],
+  });
 }
