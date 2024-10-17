@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.41
+
+### Patch Changes
+
+- [#535](https://github.com/enzymefinance/sdk/pull/535) [`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove idle
+
+- Updated dependencies [[`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3)]:
+  - @enzymefinance/sdk@0.8.35
+
 ## 5.0.40
 
 ### Patch Changes

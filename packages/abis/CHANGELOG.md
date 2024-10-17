@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 0.4.11
+
+### Patch Changes
+
+- [#535](https://github.com/enzymefinance/sdk/pull/535) [`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove idle
+
 ## 0.4.10
 
 ### Patch Changes
