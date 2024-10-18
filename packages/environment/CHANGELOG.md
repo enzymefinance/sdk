@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.42
+
+### Patch Changes
+
+- [#530](https://github.com/enzymefinance/sdk/pull/530) [`e957ef1`](https://github.com/enzymefinance/sdk/commit/e957ef1615f11262c81ccca3751f5efcc7a570f3) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add sUSDS and USDS to the asset universe"
+
 ## 5.0.41
 
 ### Patch Changes
