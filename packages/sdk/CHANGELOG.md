@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.36
+
+### Patch Changes
+
+- [#538](https://github.com/enzymefinance/sdk/pull/538) [`3460cd0`](https://github.com/enzymefinance/sdk/commit/3460cd0b9200e2169c8619283798c80e1aff02a1) Thanks [@iherger](https://github.com/iherger)! - Aave amounts
+
 ## 0.8.35
 
 ### Patch Changes
