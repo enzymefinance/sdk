@@ -6979,4 +6979,18 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    symbol: "gtUSDCcore",
+    name: "Gauntlet USDC Core",
+    id: "0x8eB67A509616cd6A7c1B3c8C21D48FF57df3d458",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
