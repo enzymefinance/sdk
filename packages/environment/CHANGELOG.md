@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.44
+
+### Patch Changes
+
+- [#540](https://github.com/enzymefinance/sdk/pull/540) [`4dc67c2`](https://github.com/enzymefinance/sdk/commit/4dc67c28f61b1ad613c5e0913932b12cc9d2b374) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Gauntlet USDC Core
+
+- Updated dependencies [[`4dc67c2`](https://github.com/enzymefinance/sdk/commit/4dc67c28f61b1ad613c5e0913932b12cc9d2b374)]:
+  - @enzymefinance/sdk@0.8.37
+
 ## 5.0.43
 
 ### Patch Changes
