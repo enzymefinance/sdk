@@ -6995,7 +6995,7 @@ export default defineAssetList(Network.ETHEREUM, [
   },
 
   {
-    symbol: "gtUSDACore",
+    symbol: "gtUSDAcore",
     name: "Gauntlet USDA Core",
     id: "0x125d41a6e5dbf455cd9df8f80bcc6fd172d52cc6",
     type: AssetType.ERC_4626,
@@ -7006,10 +7006,11 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      nonStandard: true,
     },
   },
   {
-    symbol: "gtDAICore",
+    symbol: "gtDAIcore",
     name: "Gauntlet DAI Core",
     id: "0x500331c9ff24d9d11aee6b07734aa72343ea74a5",
     type: AssetType.ERC_4626,
@@ -7048,6 +7049,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      nonStandard: true,
     },
   },
   {
@@ -7122,7 +7124,7 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     symbol: "USUALUSDC+",
-    name: "Usual Boosted USDC",
+    name: " Usual Boosted USDC", // Initial space is correct (on-chain)
     id: "0xd63070114470f685b75b74d60eec7c1113d33a3d",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
