@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.45
+
+### Patch Changes
+
+- [#541](https://github.com/enzymefinance/sdk/pull/541) [`37f7a5d`](https://github.com/enzymefinance/sdk/commit/37f7a5df8900662b6c969ac1f6888d5ea7d1bad0) Thanks [@iherger](https://github.com/iherger)! - Environment update
+
 ## 5.0.44
 
 ### Patch Changes
