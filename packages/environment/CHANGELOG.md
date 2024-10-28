@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 5.0.46
+
+### Patch Changes
+
+- [#545](https://github.com/enzymefinance/sdk/pull/545) [`014fc08`](https://github.com/enzymefinance/sdk/commit/014fc083d2c0ce351e21b619db4b41091a0045f1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add the graph external contracts
+
+- [#543](https://github.com/enzymefinance/sdk/pull/543) [`7e35bd5`](https://github.com/enzymefinance/sdk/commit/7e35bd59a6ed7e45b3b1c9600eba5656887b0c27) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Morpho assets
+
 ## 5.0.45
 
 ### Patch Changes
