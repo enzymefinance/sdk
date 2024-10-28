@@ -739,12 +739,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0xd508f85f1511aaec63434e26aeb6d10be0188dc7",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -753,12 +752,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x490bbbc2485e99989ba39b34802fafa58e26aba4",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -767,12 +765,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x36f8d0d0573ae92326827c4a82fe4ce4c244cab6",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -781,12 +778,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0xa5269a8e31b93ff27b887b56720a25f844db0529",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -795,12 +791,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0xafe7131a57e44f832cb2de78ade38cad644aac2f",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -809,12 +804,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x9dc7094530cb1bcf5442c3b9389ee386738a190c",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xd533a949740bb3306d119cc777fa900ba034cd52",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -823,12 +817,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x39dd7790e75c6f663731f7e1fdc0f35007d3879b",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+      type: PriceFeedType.NONE,
     },
   },
   {
