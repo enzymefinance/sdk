@@ -170,7 +170,7 @@ export default defineDeployment<Deployment.POLYGON>({
         LiquityDebtPositionLib: "0x0000000000000000000000000000000000000000",
         LiquityDebtPositionParser: "0x0000000000000000000000000000000000000000",
         ManagementFee: "0x97f13b3040a565be791d331b0edd4b1b58dbd843",
-        ManualValueOracleFactory: "0x0000000000000000000000000000000000000000",
+        ManualValueOracleFactory: "0x735615beb04bfd3665f06541ea00af1860c4354f",
         MapleLiquidityPositionLib: "0x0000000000000000000000000000000000000000",
         MapleLiquidityPositionParser: "0x0000000000000000000000000000000000000000",
         MinAssetBalancesPostRedemptionPolicy: "0x9d940beaa6e3cfb441d49787fdf1db18d7f8251e",

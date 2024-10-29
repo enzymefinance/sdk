@@ -183,7 +183,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         LiquityDebtPositionLib: "0x016b63941df5fd92b49f861559d8b7792629419f",
         LiquityDebtPositionParser: "0x55e41333d949f13c73ae99689d7137574d927d4b",
         ManagementFee: "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
-        ManualValueOracleFactory: "0x0000000000000000000000000000000000000000",
+        ManualValueOracleFactory: "0x0edbb060a8f00f5967eecfc87c8559fa65501a3d",
         MapleLiquidityPositionLib: "0xb35623a479383b87da32fdde8dbe83fac5f6bf3d",
         MapleLiquidityPositionParser: "0x31915278772a2bc68cbfb7effe1209677b0aad10",
         MinAssetBalancesPostRedemptionPolicy: "0x58c0a2a546b3903fa68a53e34ee0c8a02aabfad0",

@@ -193,7 +193,7 @@ export default defineDeployment<Deployment.TESTNET>({
     core: {
       slug: "enzyme-core-testnet",
       id: "98iFcdDw1g5akWxbTFqcs2TsUaJhVDNxPTgH8P2WBUao",
-      devVersion: "daiap-v3",
+      devVersion: "version/latest",
     },
     shares: {
       slug: "vault-shares-testnet",
