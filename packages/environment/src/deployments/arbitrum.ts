@@ -166,6 +166,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         LiquityDebtPositionLib: "0x0000000000000000000000000000000000000000",
         LiquityDebtPositionParser: "0x0000000000000000000000000000000000000000",
         ManagementFee: "0xd2fa8f6706241dfdf8069d05e1d6f6c4a439aa86",
+        ManualValueOracleFactory: "0x0000000000000000000000000000000000000000",
         MapleLiquidityPositionLib: "0x0000000000000000000000000000000000000000",
         MapleLiquidityPositionParser: "0x0000000000000000000000000000000000000000",
         MinAssetBalancesPostRedemptionPolicy: "0x53a124c9201f0d00470cd4245946d2bbb98210ba",
