@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.49
+
+### Patch Changes
+
+- [#552](https://github.com/enzymefinance/sdk/pull/552) [`d910bb6`](https://github.com/enzymefinance/sdk/commit/d910bb65a1146a467d7615ca29aa70c5579194e7) Thanks [@fubhy](https://github.com/fubhy)! - Fix underlying address
+
 ## 5.0.48
 
 ### Patch Changes
