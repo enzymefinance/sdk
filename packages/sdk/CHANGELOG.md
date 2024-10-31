@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 0.8.38
+
+### Patch Changes
+
+- [#549](https://github.com/enzymefinance/sdk/pull/549) [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb) Thanks [@iherger](https://github.com/iherger)! - Add ManualValueOracle and related
+
+- [#549](https://github.com/enzymefinance/sdk/pull/549) [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb) Thanks [@iherger](https://github.com/iherger)! - Add ManualValueOracle
+
 ## 0.8.37
 
 ### Patch Changes
