@@ -111,6 +111,7 @@ export default defineDeployment<Deployment.TESTNET>({
         LiquityDebtPositionLib: "0x0000000000000000000000000000000000000000",
         LiquityDebtPositionParser: "0x0000000000000000000000000000000000000000",
         ManagementFee: "0x4a95185896adce31a8cdfaaa2832decc3d20dc2c",
+        ManualValueOracleFactory: "0x0b7fa18e37e9bd2e156cac8467d164261f5119cc",
         MapleLiquidityPositionLib: "0x0000000000000000000000000000000000000000",
         MapleLiquidityPositionParser: "0x0000000000000000000000000000000000000000",
         MinAssetBalancesPostRedemptionPolicy: "0x7800955aae98c31e4eac22c1b4e7edd6ad0c3ba0",
@@ -192,7 +193,7 @@ export default defineDeployment<Deployment.TESTNET>({
     core: {
       slug: "enzyme-core-testnet",
       id: "98iFcdDw1g5akWxbTFqcs2TsUaJhVDNxPTgH8P2WBUao",
-      devVersion: "daiap-v3",
+      devVersion: "version/latest",
     },
     shares: {
       slug: "vault-shares-testnet",
