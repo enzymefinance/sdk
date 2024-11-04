@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 5.0.51
+
+### Patch Changes
+
+- [#556](https://github.com/enzymefinance/sdk/pull/556) [`202d123`](https://github.com/enzymefinance/sdk/commit/202d123d7b34f28dbafd1c56ae82c88f94126b32) Thanks [@iherger](https://github.com/iherger)! - Fix Morpho optimizers data
+
 ## 5.0.50
 
 ### Patch Changes
