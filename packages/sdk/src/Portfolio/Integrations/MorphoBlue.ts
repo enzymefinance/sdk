@@ -373,7 +373,7 @@ export function getMarketParamsFromId(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     morphoBlue: Address;
-    marketId: Address;
+    marketId: Hex;
   }>,
 ) {
   return readContract(client, {
@@ -389,7 +389,7 @@ export function getMarket(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     morphoBlue: Address;
-    marketId: Address;
+    marketId: Hex;
   }>,
 ) {
   return readContract(client, {
@@ -405,7 +405,7 @@ export function getPosition(
   client: PublicClient,
   args: Viem.ContractCallParameters<{
     morphoBlue: Address;
-    marketId: Address;
+    marketId: Hex;
     user: Address;
   }>,
 ) {
