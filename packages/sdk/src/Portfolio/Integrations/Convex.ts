@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -276,7 +276,7 @@ const cvxMiningAbi = {
 } as const;
 
 export function convertCrvToCvx(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxMining: Address;
     amount: bigint;
@@ -352,7 +352,7 @@ const cvxLockerV2Abi = [
 ] as const;
 
 export async function getVoteLockedBalances(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
     positionAddress: Address;
@@ -381,7 +381,7 @@ export async function getVoteLockedBalances(
 }
 
 export function getClaimableRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
     user: Address;
@@ -397,7 +397,7 @@ export function getClaimableRewards(
 }
 
 export async function getUserLocks(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     voteLockedConvexToken: Address;
     user: Address;
@@ -475,7 +475,7 @@ export interface PoolInfo {
 }
 
 export async function getPoolInfo(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     booster: Address;
     pid: bigint;
@@ -493,7 +493,7 @@ export async function getPoolInfo(
 }
 
 export function getLockIncentive(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     booster: Address;
   }>,
@@ -507,7 +507,7 @@ export function getLockIncentive(
 }
 
 export function getStakerIncentive(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     booster: Address;
   }>,
@@ -521,7 +521,7 @@ export function getStakerIncentive(
 }
 
 export function getEarmarkIncentive(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     booster: Address;
   }>,
@@ -535,7 +535,7 @@ export function getEarmarkIncentive(
 }
 
 export function getPlatformFee(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     booster: Address;
   }>,
@@ -578,7 +578,7 @@ const cvxCrvRewards = [
 ] as const;
 
 export function getRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
     user: Address;
@@ -594,7 +594,7 @@ export function getRewards(
 }
 
 export function getExtraRewardsLength(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
     user: Address;
@@ -609,7 +609,7 @@ export function getExtraRewardsLength(
 }
 
 export function getExtraRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxCrvRewards: Address;
     id: bigint;
@@ -629,7 +629,7 @@ export function getExtraRewards(
 //--------------------------------------------------------------------------------------------
 
 export function getExtraRewardsRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxCrvExtraRewards: Address;
     user: Address;
@@ -645,7 +645,7 @@ export function getExtraRewardsRewards(
 }
 
 export function getExtraRewardsRewardToken(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cvxCrvExtraRewards: Address;
   }>,
@@ -663,7 +663,7 @@ export function getExtraRewardsRewardToken(
 //--------------------------------------------------------------------------------------------
 
 export async function getEstimateRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     stakingWrapper: Address;
     beneficiary: Address;
@@ -693,7 +693,7 @@ export async function getEstimateRewards(
 }
 
 export function getAllEstimateRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     stakingWrappers: ReadonlyArray<Address>;
     beneficiary: Address;

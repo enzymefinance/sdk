@@ -1,5 +1,23 @@
 # @enzymefinance/api
 
+## 0.4.4
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+## 0.4.3
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+## 0.4.2
+
+### Patch Changes
+
+- [`28c6153`](https://github.com/enzymefinance/sdk/commit/28c6153de12ca3fa32ab8c5e0598aa252e44160a) Thanks [@fubhy](https://github.com/fubhy)! - Codegen
+
 ## 0.4.1
 
 ### Patch Changes

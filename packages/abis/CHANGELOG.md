@@ -1,5 +1,41 @@
 # @enzymefinance/abis
 
+## 0.4.11
+
+### Patch Changes
+
+- [#535](https://github.com/enzymefinance/sdk/pull/535) [`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove idle
+
+## 0.4.10
+
+### Patch Changes
+
+- [#520](https://github.com/enzymefinance/sdk/pull/520) [`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea) Thanks [@iherger](https://github.com/iherger)! - Add Aave v3 flash loans
+
+## 0.4.9
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+## 0.4.8
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
+## 0.4.7
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+## 0.4.6
+
+### Patch Changes
+
+- [#435](https://github.com/enzymefinance/sdk/pull/435) [`85c3f61`](https://github.com/enzymefinance/sdk/commit/85c3f611cca5fbdd12186c76be9d8fd39f205f00) Thanks [@iherger](https://github.com/iherger)! - Updated generated exports
+
 ## 0.4.5
 
 ### Patch Changes

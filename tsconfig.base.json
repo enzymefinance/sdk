@@ -12,11 +12,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "NodeNext",
-    "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "isolatedModules": true,
     "sourceMap": true,
     "declarationMap": true,
@@ -39,13 +35,18 @@
     "incremental": true,
     "removeComments": false,
     "paths": {
-        "@enzymefinance/sdk": ["./packages/sdk/src/index.js"],
-        "@enzymefinance/sdk/test": ["./packages/sdk/test/setup.js"],
-        "@enzymefinance/sdk/*": ["./packages/sdk/src/*.js"],
-        "@enzymefinance/abis": ["./packages/abis/src/index.js"],
-        "@enzymefinance/abis/*": ["./packages/abis/src/abis/*.js"],
-        "@enzymefinance/api": ["./packages/api/src/index.js"],
-        "@enzymefinance/api/*": ["./packages/api/src/*.js"]
+      "@enzymefinance/environment": ["./packages/environment/src/index.js"],
+      "@enzymefinance/environment/test": [
+        "./packages/environment/test/setup.js"
+      ],
+      "@enzymefinance/environment/*": ["./packages/environment/src/*.js"],
+      "@enzymefinance/sdk": ["./packages/sdk/src/index.js"],
+      "@enzymefinance/sdk/test": ["./packages/sdk/test/setup.js"],
+      "@enzymefinance/sdk/*": ["./packages/sdk/src/*.js"],
+      "@enzymefinance/abis": ["./packages/abis/src/index.js"],
+      "@enzymefinance/abis/*": ["./packages/abis/src/abis/*.js"],
+      "@enzymefinance/api": ["./packages/api/src/index.js"],
+      "@enzymefinance/api/*": ["./packages/api/src/*.js"]
     }
   }
 }

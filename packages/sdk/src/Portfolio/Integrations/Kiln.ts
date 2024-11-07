@@ -1,6 +1,7 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
-import { Assertion, Viem } from "../../Utils.js";
+import { Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 
 export type Action = (typeof Action)[keyof typeof Action];
@@ -89,14 +90,10 @@ export function claimFeesEncode(args: ClaimFeesArgs): Hex {
   return encodeAbiParameters(claimFeesEncoding, [args.stakingContract, args.publicKeys, args.claimFeeType]);
 }
 
-export function isValidClaimType(value: number): value is ClaimType {
-  return Object.values(ClaimType).includes(value as ClaimType);
-}
-
 export function claimFeesDecode(encoded: Hex): ClaimFeesArgs {
   const [stakingContract, publicKeys, claimFeeType] = decodeAbiParameters(claimFeesEncoding, encoded);
 
-  Assertion.invariant(isValidClaimType(claimFeeType), `Invalid claim fee type ${claimFeeType}`);
+  assertEnumType(ClaimType, claimFeeType);
 
   return {
     stakingContract,
@@ -163,7 +160,7 @@ export function unstakeDecode(encoded: Hex): UnstakeArgs {
 //--------------------------------------------------------------------------------------------
 
 export function getCLFeeRecipient(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
     validatorPublicKey: Hex;
@@ -179,7 +176,7 @@ export function getCLFeeRecipient(
 }
 
 export function getELFeeRecipient(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
     validatorPublicKey: Hex;
@@ -195,7 +192,7 @@ export function getELFeeRecipient(
 }
 
 export function getGlobalFee(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     kilnStaking: Address;
   }>,

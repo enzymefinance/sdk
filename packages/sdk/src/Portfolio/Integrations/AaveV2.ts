@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -285,7 +285,7 @@ const aaveIncentivesControllerAbi = [
 ] as const;
 
 export function getRewardsBalance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
     assets: ReadonlyArray<Address>;
@@ -302,7 +302,7 @@ export function getRewardsBalance(
 }
 
 export function getUserUnclaimedRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     aaveIncentivesController: Address;
     user: Address;

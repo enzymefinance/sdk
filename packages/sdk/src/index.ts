@@ -4,6 +4,7 @@ export * as Depositor from "./Depositor.js";
 export * as LifeCycle from "./LifeCycle.js";
 export * as Performance from "./Performance.js";
 export * as Portfolio from "./Portfolio.js";
+export * as Protocol from "./Protocol.js";
 export * as Relayer from "./Relayer.js";
 export * as Tools from "./Tools.js";
 export * as Utils from "./Utils.js";

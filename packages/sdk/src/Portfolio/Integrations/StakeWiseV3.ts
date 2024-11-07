@@ -1,4 +1,4 @@
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -165,7 +165,7 @@ export function claimExitedAssetsDecode(encoded: Hex): ClaimExitedAssetsArgs {
 //--------------------------------------------------------------------------------------------
 
 export function convertSharesToAssets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sharesAmount: bigint;
     stakeWiseVault: Address;
@@ -181,7 +181,7 @@ export function convertSharesToAssets(
 }
 
 export function getVaultSharesBalance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     account: Address;
     stakeWiseVault: Address;
@@ -197,7 +197,7 @@ export function getVaultSharesBalance(
 }
 
 export async function getStakedEthBalance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     account: Address;
     stakeWiseVault: Address;
@@ -208,7 +208,7 @@ export async function getStakedEthBalance(
 }
 
 export function getStakePreview(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     account: Address;
     stakeWiseVault: Address;
@@ -225,7 +225,7 @@ export function getStakePreview(
 }
 
 export function getClaimExitedAssetsPreview(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     exitQueueIndex: bigint;
     positionTicket: bigint;
@@ -246,7 +246,7 @@ export function getClaimExitedAssetsPreview(
 }
 
 export function getExitQueueIndex(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     positionTicket: bigint;
     stakeWiseVault: Address;
@@ -262,7 +262,7 @@ export function getExitQueueIndex(
 }
 
 export function isCollateralized(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     keeperRewards: Address;
     stakeWiseVault: Address;
@@ -278,7 +278,7 @@ export function isCollateralized(
 }
 
 export function isHarvestRequired(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     keeperRewards: Address;
     stakeWiseVault: Address;

@@ -1,5 +1,179 @@
 # @enzymefinance/sdk
 
+## 0.8.38
+
+### Patch Changes
+
+- [#549](https://github.com/enzymefinance/sdk/pull/549) [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb) Thanks [@iherger](https://github.com/iherger)! - Add ManualValueOracle and related
+
+- [#549](https://github.com/enzymefinance/sdk/pull/549) [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb) Thanks [@iherger](https://github.com/iherger)! - Add ManualValueOracle
+
+## 0.8.37
+
+### Patch Changes
+
+- [#540](https://github.com/enzymefinance/sdk/pull/540) [`4dc67c2`](https://github.com/enzymefinance/sdk/commit/4dc67c28f61b1ad613c5e0913932b12cc9d2b374) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Gauntlet USDC Core
+
+## 0.8.36
+
+### Patch Changes
+
+- [#538](https://github.com/enzymefinance/sdk/pull/538) [`3460cd0`](https://github.com/enzymefinance/sdk/commit/3460cd0b9200e2169c8619283798c80e1aff02a1) Thanks [@iherger](https://github.com/iherger)! - Aave amounts
+
+## 0.8.35
+
+### Patch Changes
+
+- [#535](https://github.com/enzymefinance/sdk/pull/535) [`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove idle
+
+- Updated dependencies [[`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3)]:
+  - @enzymefinance/abis@0.4.11
+
+## 0.8.34
+
+### Patch Changes
+
+- [#522](https://github.com/enzymefinance/sdk/pull/522) [`8b88fcf`](https://github.com/enzymefinance/sdk/commit/8b88fcfa07522449754888fc9d4debd6fa5fa2dd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add aave v3 claim rewards
+
+## 0.8.33
+
+### Patch Changes
+
+- [#528](https://github.com/enzymefinance/sdk/pull/528) [`d3632eb`](https://github.com/enzymefinance/sdk/commit/d3632eb075ba7073b4712b505e69c9dc8d552264) Thanks [@iherger](https://github.com/iherger)! - Aave v3 updates
+
+## 0.8.32
+
+### Patch Changes
+
+- [#526](https://github.com/enzymefinance/sdk/pull/526) [`bd886b5`](https://github.com/enzymefinance/sdk/commit/bd886b5603cf89950eb4a6bdf7c4c11f6740d57d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more GMX V2 utils
+
+## 0.8.31
+
+### Patch Changes
+
+- [#517](https://github.com/enzymefinance/sdk/pull/517) [`baf8f90`](https://github.com/enzymefinance/sdk/commit/baf8f9062c48aaf68d258337a379305f055f9494) Thanks [@iherger](https://github.com/iherger)! - Add various Aave v3 read functions
+
+## 0.8.30
+
+### Patch Changes
+
+- [#520](https://github.com/enzymefinance/sdk/pull/520) [`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea) Thanks [@iherger](https://github.com/iherger)! - Add Aave v3 flash loans
+
+- Updated dependencies [[`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea)]:
+  - @enzymefinance/abis@0.4.10
+
+## 0.8.29
+
+### Patch Changes
+
+- [#515](https://github.com/enzymefinance/sdk/pull/515) [`e9d77b2`](https://github.com/enzymefinance/sdk/commit/e9d77b2d2461649c3d1817d990add49971e22e8d) Thanks [@iherger](https://github.com/iherger)! - Aave v3 getUserAccountData
+
+## 0.8.28
+
+### Patch Changes
+
+- [#499](https://github.com/enzymefinance/sdk/pull/499) [`e4f5254`](https://github.com/enzymefinance/sdk/commit/e4f5254c49050c3fe3aaef2852ba5056732351b0) Thanks [@ignacio-rsg](https://github.com/ignacio-rsg)! - Add assets
+
+## 0.8.27
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+- Updated dependencies [[`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0)]:
+  - @enzymefinance/abis@0.4.9
+
+## 0.8.26
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
+- Updated dependencies [[`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9)]:
+  - @enzymefinance/abis@0.4.8
+
+## 0.8.25
+
+### Patch Changes
+
+- [#473](https://github.com/enzymefinance/sdk/pull/473) [`2146212`](https://github.com/enzymefinance/sdk/commit/21462121be6288c6d6f375f5ab0736d3d0708b2e) Thanks [@iherger](https://github.com/iherger)! - Add price feed details for assets
+
+## 0.8.24
+
+### Patch Changes
+
+- [#474](https://github.com/enzymefinance/sdk/pull/474) [`a9682bc`](https://github.com/enzymefinance/sdk/commit/a9682bc6a6ab5004760839d01e8c0c01ee58e162) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update sweep encoding to use a tuple"
+
+## 0.8.23
+
+### Patch Changes
+
+- [#464](https://github.com/enzymefinance/sdk/pull/464) [`d5b7be7`](https://github.com/enzymefinance/sdk/commit/d5b7be7e3666a108ad4fc53b04f91de122f2e638) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix alice arg ordering
+
+## 0.8.22
+
+### Patch Changes
+
+- [#446](https://github.com/enzymefinance/sdk/pull/446) [`a39a6a4`](https://github.com/enzymefinance/sdk/commit/a39a6a4340256a4548e7a863efb1cc215ea18b27) Thanks [@fubhy](https://github.com/fubhy)! - Use base client instead of public client
+
+## 0.8.21
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+- Updated dependencies [[`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4)]:
+  - @enzymefinance/abis@0.4.7
+
+## 0.8.20
+
+### Patch Changes
+
+- Updated dependencies [[`85c3f61`](https://github.com/enzymefinance/sdk/commit/85c3f611cca5fbdd12186c76be9d8fd39f205f00)]:
+  - @enzymefinance/abis@0.4.6
+
+## 0.8.19
+
+### Patch Changes
+
+- [#433](https://github.com/enzymefinance/sdk/pull/433) [`d5340e9`](https://github.com/enzymefinance/sdk/commit/d5340e9ba8d5595e332dcd3d12ef5b20c66a294a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add deposit erc20 to deposit wrapper
+
+## 0.8.18
+
+### Patch Changes
+
+- [#431](https://github.com/enzymefinance/sdk/pull/431) [`b212547`](https://github.com/enzymefinance/sdk/commit/b21254785df41cedb8ca82de2569f6ee9dcb1152) Thanks [@iherger](https://github.com/iherger)! - Add Multicall3 tool
+
+## 0.8.17
+
+### Patch Changes
+
+- [#429](https://github.com/enzymefinance/sdk/pull/429) [`3e9ecf8`](https://github.com/enzymefinance/sdk/commit/3e9ecf81d9f7d5f2dc6931f12ba409fd67d9217f) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice whitelist check
+
+## 0.8.16
+
+### Patch Changes
+
+- [#422](https://github.com/enzymefinance/sdk/pull/422) [`394a88c`](https://github.com/enzymefinance/sdk/commit/394a88c091230da1468de92b83c9618f9e4e4d0a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add three on third helpers
+
+## 0.8.15
+
+### Patch Changes
+
+- [#425](https://github.com/enzymefinance/sdk/pull/425) [`172280c`](https://github.com/enzymefinance/sdk/commit/172280c729234fb406e15d685c31267dcf7d96b8) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add Alice to Integrations
+
+## 0.8.14
+
+### Patch Changes
+
+- [#423](https://github.com/enzymefinance/sdk/pull/423) [`e83ae0a`](https://github.com/enzymefinance/sdk/commit/e83ae0abd0dc67b4fe68d7bbe1f23711630a1797) Thanks [@iherger](https://github.com/iherger)! - Improve SingleAssetRedemptionQueue
+
+## 0.8.13
+
+### Patch Changes
+
+- [#413](https://github.com/enzymefinance/sdk/pull/413) [`52fbbb6`](https://github.com/enzymefinance/sdk/commit/52fbbb62cc99033cd63330eba58a066c40affa4b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more helpers for pendle
+
 ## 0.8.12
 
 ### Patch Changes

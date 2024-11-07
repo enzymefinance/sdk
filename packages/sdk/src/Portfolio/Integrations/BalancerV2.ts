@@ -1,13 +1,15 @@
+import { IBalancerV2StablePoolPriceFeed } from "@enzymefinance/abis";
 import {
   type Address,
+  type Client,
   type Hex,
-  type PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Assertion, type Types, Viem } from "../../Utils.js";
+import { type Types, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -302,14 +304,10 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
   return encodeAbiParameters(takeOrderEncoding, [args.kind, args.swaps, args.assets, args.limits, args.stakingTokens]);
 }
 
-export function isValidSwapKind(kind: number): kind is SwapKind {
-  return Object.values(SwapKind).includes(kind as SwapKind);
-}
-
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [kind, swaps, assets, limits, stakingTokens] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  Assertion.invariant(isValidSwapKind(kind), `Invalid swap kind ${kind}`);
+  assertEnumType(SwapKind, kind);
 
   return { kind, swaps, assets, limits, stakingTokens };
 }
@@ -329,7 +327,7 @@ const minterAbi = [
 ] as const;
 
 export async function getMinterRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     minter: Address;
     beneficiary: Address;
@@ -346,6 +344,26 @@ export async function getMinterRewards(
   });
 
   return result;
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getPoolInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    balancerV2StablePoolPriceFeed: Address;
+    pool: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IBalancerV2StablePoolPriceFeed,
+    functionName: "getPoolInfo",
+    address: args.balancerV2StablePoolPriceFeed,
+    args: [args.pool],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
@@ -366,7 +384,7 @@ const gaugeAbi = [
 ] as const;
 
 export function getClaimableRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     gauge: Address;
     user: Address;
@@ -532,7 +550,7 @@ export interface BatchSwapFunds {
 }
 
 export async function queryBatchSwap(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
@@ -569,7 +587,7 @@ export async function queryBatchSwap(
 }
 
 export async function queryExit(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     poolId: Hex;
@@ -599,7 +617,7 @@ export async function queryExit(
 }
 
 export async function queryJoin(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     balancerQueries: Address;
     poolId: Hex;

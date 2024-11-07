@@ -7,14 +7,14 @@
     "start": "tsx src/index.ts"
   },
   "dependencies": {
-    "@bufbuild/protobuf": "^1.8.0",
+    "@bufbuild/protobuf": "^1.4.0",
     "@connectrpc/connect-node": "^1.4.0",
     "@connectrpc/connect-web": "^1.4.0",
     "@enzymefinance/api": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.12.2",
-    "tsx": "^4.7.1",
-    "typescript": "^5.4.3"
+    "@types/node": "^22.5.1",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4"
   }
 }

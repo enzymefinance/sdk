@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -119,12 +119,22 @@ export function setRedemptionAsset(args: {
   });
 }
 
+export function shutdown(args: {
+  redemptionQueue: Address;
+}) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.ISingleAssetRedemptionQueueLib,
+    functionName: "shutdown",
+    address: args.redemptionQueue,
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
 export function getBypassableSharesThreshold(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
@@ -138,7 +148,7 @@ export function getBypassableSharesThreshold(
 }
 
 export function getNextNewId(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
@@ -152,7 +162,7 @@ export function getNextNewId(
 }
 
 export function getNextQueuedId(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
@@ -166,7 +176,7 @@ export function getNextQueuedId(
 }
 
 export function getRedemptionAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
@@ -180,7 +190,7 @@ export function getRedemptionAsset(
 }
 
 export function getSharesForRequest(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
     requestId: bigint;
@@ -196,7 +206,7 @@ export function getSharesForRequest(
 }
 
 export function getUserForRequest(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
     requestId: bigint;
@@ -212,7 +222,7 @@ export function getUserForRequest(
 }
 
 export function getVaultProxy(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
@@ -226,7 +236,7 @@ export function getVaultProxy(
 }
 
 export function isManager(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
     user: Address;
@@ -242,7 +252,7 @@ export function isManager(
 }
 
 export function queueIsShutdown(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     redemptionQueue: Address;
   }>,
