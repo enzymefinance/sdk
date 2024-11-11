@@ -10,6 +10,7 @@ export const Action = {
 
 export type Selector = (typeof Selector)[keyof typeof Selector];
 export const Selector = {
+  Action: "0xa7a19e00", // action(address,bytes,bytes)
   ClaimRewards: "0xb9dfbacc", // claimRewards(address,bytes,bytes)
   Lend: "0x099f7515", // lend(address,bytes,bytes)
   LendAndStake: "0x29fa046e", // lendAndStake(address,bytes,bytes)

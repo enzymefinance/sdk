@@ -181,6 +181,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         ParaSwapV5Adapter: "0x08df49f617ecdccbc90d9a0f87b8c1a84b2e7cb9",
         PeggedDerivativesPriceFeed: "0x0000000000000000000000000000000000000000",
         PerformanceFee: "0x9e0f80bc5a688e93d6c57efcfdd4564f70975e8b",
+        PendleV2Adapter: "0x0000000000000000000000000000000000000000",
         PendleV2PositionLib: "0x0000000000000000000000000000000000000000",
         PendleV2PositionParser: "0x0000000000000000000000000000000000000000",
         PendleMarketsRegistry: "0x0000000000000000000000000000000000000000",
