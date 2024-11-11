@@ -189,6 +189,8 @@ export default defineDeployment<Deployment.ETHEREUM>({
         MinAssetBalancesPostRedemptionPolicy: "0x58c0a2a546b3903fa68a53e34ee0c8a02aabfad0",
         MinMaxInvestmentPolicy: "0xebdadfc929c357d12281118828aea556db5be30c",
         MinSharesSupplyFee: "0xbc9da8edde80ffb1294852d23ee1b385ea2d4929",
+        MorphoBluePositionLib: "0xd84123f688601133d478949277be8065f48ff810",
+        MorphoBluePositionParser: "0xfdf34798b21774523be370490b8730807d4f9167",
         NoDepegOnRedeemSharesForSpecificAssetsPolicy: "0x96ef0f7c10505460fa39c57a037a5ec2520b8b25",
         NotionalV2PositionLib: "0x73436d870da10281aa3872b1ec48451e077900de",
         NotionalV2PositionParser: "0x59053fc5ee387321ea4ab415d1160e49e4f5b166",

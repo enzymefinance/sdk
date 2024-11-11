@@ -117,6 +117,8 @@ export default defineDeployment<Deployment.TESTNET>({
         MinAssetBalancesPostRedemptionPolicy: "0x7800955aae98c31e4eac22c1b4e7edd6ad0c3ba0",
         MinMaxInvestmentPolicy: "0xd2dbb1d5222200b94f4aea2618d88cc33146987b",
         MinSharesSupplyFee: "0x8a2cfb231be7c229209dc41e62def7756a6088a2",
+        MorphoBluePositionLib: "0x0000000000000000000000000000000000000000",
+        MorphoBluePositionParser: "0x0000000000000000000000000000000000000000",
         NoDepegOnRedeemSharesForSpecificAssetsPolicy: "0x91cf2e3a615428f1f14fa3240b8dd52a2bdae649",
         NotionalV2PositionLib: "0x0000000000000000000000000000000000000000",
         NotionalV2PositionParser: "0x0000000000000000000000000000000000000000",
