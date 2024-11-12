@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.39
+
+### Patch Changes
+
+- [`8604429`](https://github.com/enzymefinance/sdk/commit/86044294be8fbd3043d987f9a2aee9e6d76cc084) Thanks [@fubhy](https://github.com/fubhy)! - Updating viem
+
 ## 0.8.38
 
 ### Patch Changes
