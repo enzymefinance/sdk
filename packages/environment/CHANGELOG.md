@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 5.0.52
+
+### Patch Changes
+
+- [`8604429`](https://github.com/enzymefinance/sdk/commit/86044294be8fbd3043d987f9a2aee9e6d76cc084) Thanks [@fubhy](https://github.com/fubhy)! - Updating viem
+
+- Updated dependencies [[`8604429`](https://github.com/enzymefinance/sdk/commit/86044294be8fbd3043d987f9a2aee9e6d76cc084)]:
+  - @enzymefinance/sdk@0.8.39
+
 ## 5.0.51
 
 ### Patch Changes
