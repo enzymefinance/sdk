@@ -27,7 +27,7 @@
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
     "p-throttle": "^6.2.0",
-    "viem": "^2.20.1",
+    "viem": "^2.21.44",
     "zod": "^3.23.8"
   },
   "effect": {
