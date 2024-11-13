@@ -176,6 +176,8 @@ export default defineDeployment<Deployment.POLYGON>({
         MinAssetBalancesPostRedemptionPolicy: "0x9d940beaa6e3cfb441d49787fdf1db18d7f8251e",
         MinMaxInvestmentPolicy: "0x8ac04e34d9c1d0bd5a440157538cc6fbb0dbbc9a",
         MinSharesSupplyFee: "0xeb45b91d582ae383e750a1626a97f854a9df19a3",
+        MorphoBluePositionLib: "0x0000000000000000000000000000000000000000",
+        MorphoBluePositionParser: "0x0000000000000000000000000000000000000000",
         NoDepegOnRedeemSharesForSpecificAssetsPolicy: "0x0069111def5258f692d88bde2116c9c211cf8b04",
         NotionalV2PositionLib: "0x0000000000000000000000000000000000000000",
         NotionalV2PositionParser: "0x0000000000000000000000000000000000000000",
