@@ -26,8 +26,6 @@
     "build-annotate": "babel build --plugins annotate-pure-calls --out-dir build --source-maps"
   },
   "effect": {
-    "publicModules": [
-      "abis/*.ts"
-    ]
+    "publicModules": ["abis/*.ts"]
   }
 }
