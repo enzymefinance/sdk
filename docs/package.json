@@ -12,7 +12,7 @@
     "@enzymefinance/sdk": "workspace:^",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "viem": "^2.20.1",
+    "viem": "^2.21.44",
     "vocs": "1.0.0-alpha.55"
   },
   "devDependencies": {
