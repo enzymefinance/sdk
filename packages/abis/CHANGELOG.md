@@ -1,5 +1,21 @@
 # @enzymefinance/abis
 
+## 1.0.0
+
+### Major Changes
+
+- [#562](https://github.com/enzymefinance/sdk/pull/562) [`c04699b`](https://github.com/enzymefinance/sdk/commit/c04699b4f40cd181dcd2d204ca61d57331682b54) Thanks [@iherger](https://github.com/iherger)! - Stable release
+
+### Minor Changes
+
+- [#558](https://github.com/enzymefinance/sdk/pull/558) [`fa681e5`](https://github.com/enzymefinance/sdk/commit/fa681e5d01a886e0cd976af88eaf2a8b4af63a47) Thanks [@iherger](https://github.com/iherger)! - Add PendleV2 adapter
+
+- [#419](https://github.com/enzymefinance/sdk/pull/419) [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc) Thanks [@iherger](https://github.com/iherger)! - Add Morpho Blue
+
+### Patch Changes
+
+- [#419](https://github.com/enzymefinance/sdk/pull/419) [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc) Thanks [@iherger](https://github.com/iherger)! - Add MorphoBlue
+
 ## 0.4.11
 
 ### Patch Changes

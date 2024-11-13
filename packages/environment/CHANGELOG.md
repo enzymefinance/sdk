@@ -1,5 +1,18 @@
 # @enzymefinance/environment
 
+## 6.0.0
+
+### Minor Changes
+
+- [#558](https://github.com/enzymefinance/sdk/pull/558) [`fa681e5`](https://github.com/enzymefinance/sdk/commit/fa681e5d01a886e0cd976af88eaf2a8b4af63a47) Thanks [@iherger](https://github.com/iherger)! - Add PendleV2 adapter
+
+- [#419](https://github.com/enzymefinance/sdk/pull/419) [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc) Thanks [@iherger](https://github.com/iherger)! - Add Morpho Blue
+
+### Patch Changes
+
+- Updated dependencies [[`fa681e5`](https://github.com/enzymefinance/sdk/commit/fa681e5d01a886e0cd976af88eaf2a8b4af63a47), [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc), [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc)]:
+  - @enzymefinance/sdk@1.0.0
+
 ## 5.0.53
 
 ### Patch Changes
