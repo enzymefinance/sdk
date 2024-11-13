@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 0.8.40
+
+### Patch Changes
+
+- [#550](https://github.com/enzymefinance/sdk/pull/550) [`782ebb8`](https://github.com/enzymefinance/sdk/commit/782ebb8113c0e24919d421313f2932386e6b53dc) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update GMX
+
 ## 0.8.39
 
 ### Patch Changes
