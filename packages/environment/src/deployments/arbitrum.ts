@@ -172,6 +172,8 @@ export default defineDeployment<Deployment.ARBITRUM>({
         MinAssetBalancesPostRedemptionPolicy: "0x53a124c9201f0d00470cd4245946d2bbb98210ba",
         MinMaxInvestmentPolicy: "0x542812a43334634213877fbfde33ecbef5234c9d",
         MinSharesSupplyFee: "0xa8c3b04a800c08ae010b56ac1c1ad7033d980b0f",
+        MorphoBluePositionLib: "0x0000000000000000000000000000000000000000",
+        MorphoBluePositionParser: "0x0000000000000000000000000000000000000000",
         NoDepegOnRedeemSharesForSpecificAssetsPolicy: "0xad404ceabad39d4b22bf2e1265a161ac44620825",
         NotionalV2PositionLib: "0x0000000000000000000000000000000000000000",
         NotionalV2PositionParser: "0x0000000000000000000000000000000000000000",
