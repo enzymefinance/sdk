@@ -107,6 +107,7 @@ export { IOnlyRemoveDustExternalPositionPolicy } from "./IOnlyRemoveDustExternal
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./IOnlyUntrackDustOrPricelessAssetsPolicy.js";
 export { IParaSwapV5Adapter } from "./IParaSwapV5Adapter.js";
 export { IPendleMarketsRegistry } from "./IPendleMarketsRegistry.js";
+export { IPendleV2Adapter } from "./IPendleV2Adapter.js";
 export { IPendleV2PositionLib } from "./IPendleV2PositionLib.js";
 export { IPendleV2PositionParser } from "./IPendleV2PositionParser.js";
 export { IPerformanceFee } from "./IPerformanceFee.js";

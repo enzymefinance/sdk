@@ -98,16 +98,16 @@ export function makeCreateAndUse<TArgs>(action: bigint, encoder?: (args: TArgs) 
 
 const callEncoding = [
   {
-    type: "address",
     name: "externalPositionProxy",
+    type: "address",
   },
   {
     name: "actionId",
     type: "uint256",
   },
   {
-    type: "bytes",
     name: "actionArgs",
+    type: "bytes",
   },
 ] as const;
 
