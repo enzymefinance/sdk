@@ -487,7 +487,7 @@ export default defineAssetList(Network.ARBITRUM, [
     releases: [sulu],
     symbol: "aArbUSDC",
     type: AssetType.AAVE_V3,
-    underlying: "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+    underlying: "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x50834f3163758fcc1df9973b6e91f0f0f0434ad3",

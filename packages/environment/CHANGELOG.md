@@ -1,5 +1,41 @@
 # @enzymefinance/environment
 
+## 5.0.52
+
+### Patch Changes
+
+- [`8604429`](https://github.com/enzymefinance/sdk/commit/86044294be8fbd3043d987f9a2aee9e6d76cc084) Thanks [@fubhy](https://github.com/fubhy)! - Updating viem
+
+- Updated dependencies [[`8604429`](https://github.com/enzymefinance/sdk/commit/86044294be8fbd3043d987f9a2aee9e6d76cc084)]:
+  - @enzymefinance/sdk@0.8.39
+
+## 5.0.51
+
+### Patch Changes
+
+- [#556](https://github.com/enzymefinance/sdk/pull/556) [`202d123`](https://github.com/enzymefinance/sdk/commit/202d123d7b34f28dbafd1c56ae82c88f94126b32) Thanks [@iherger](https://github.com/iherger)! - Fix Morpho optimizers data
+
+## 5.0.50
+
+### Patch Changes
+
+- [#554](https://github.com/enzymefinance/sdk/pull/554) [`37b30ee`](https://github.com/enzymefinance/sdk/commit/37b30ee3ecc6b09f09530902e579be447b0728c5) Thanks [@iherger](https://github.com/iherger)! - Fix aave v3 test
+
+## 5.0.49
+
+### Patch Changes
+
+- [#552](https://github.com/enzymefinance/sdk/pull/552) [`d910bb6`](https://github.com/enzymefinance/sdk/commit/d910bb65a1146a467d7615ca29aa70c5579194e7) Thanks [@fubhy](https://github.com/fubhy)! - Fix underlying address
+
+## 5.0.48
+
+### Patch Changes
+
+- [#549](https://github.com/enzymefinance/sdk/pull/549) [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb) Thanks [@iherger](https://github.com/iherger)! - Add ManualValueOracle
+
+- Updated dependencies [[`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb), [`f80de1c`](https://github.com/enzymefinance/sdk/commit/f80de1c80503de7fb8ef8839c9000a7ebc8fdadb)]:
+  - @enzymefinance/sdk@0.8.38
+
 ## 5.0.47
 
 ### Patch Changes

@@ -112,6 +112,7 @@ export interface SuluContracts extends CommonContracts {
   readonly LiquityDebtPositionLib: Address;
   readonly LiquityDebtPositionParser: Address;
   readonly ManagementFee: Address;
+  readonly ManualValueOracleFactory: Address;
   readonly MapleLiquidityPositionLib: Address;
   readonly MapleLiquidityPositionParser: Address;
   readonly MinAssetBalancesPostRedemptionPolicy: Address;

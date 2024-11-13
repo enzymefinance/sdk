@@ -87,6 +87,32 @@ export function configureLoanDecode(encoded: Hex): ConfigureLoanArgs {
   };
 }
 
+const configureTotalNominalDeltaOracleModuleEncoding = [
+  {
+    name: "oracle",
+    type: "address",
+  },
+  {
+    name: "stalenessThreshold",
+    type: "uint32",
+  },
+] as const;
+
+export type ConfigureTotalNominalDeltaOracleModuleArgs = {
+  oracle: Address;
+  stalenessThreshold: number;
+};
+
+export function configureTotalNominalDeltaOracleModuleEncode(args: ConfigureTotalNominalDeltaOracleModuleArgs): Hex {
+  return encodeAbiParameters(configureTotalNominalDeltaOracleModuleEncoding, [args.oracle, args.stalenessThreshold]);
+}
+
+export function configureTotalNominalDeltaOracleModuleDecode(encoded: Hex): ConfigureTotalNominalDeltaOracleModuleArgs {
+  const [oracle, stalenessThreshold] = decodeAbiParameters(configureTotalNominalDeltaOracleModuleEncoding, encoded);
+
+  return { oracle, stalenessThreshold };
+}
+
 //--------------------------------------------------------------------------------------------
 // UPDATE BORROWABLE AMOUNT
 //--------------------------------------------------------------------------------------------
