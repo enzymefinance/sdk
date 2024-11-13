@@ -96,6 +96,10 @@ const createOrderEncoding = [
         name: "minOutputAmount",
         type: "uint256",
       },
+      {
+        name: "validFromTime",
+        type: "uint256",
+      },
     ],
     name: "numbers",
     type: "tuple",
@@ -134,6 +138,7 @@ export type CreateOrderArgs = {
     acceptablePrice: bigint;
     executionFee: bigint;
     minOutputAmount: bigint;
+    validFromTime: bigint;
   };
   orderType: OrderType;
   decreasePositionSwapType: DecreasePositionSwapType;
@@ -200,6 +205,10 @@ const updateOrderEncoding = [
     type: "uint256",
   },
   {
+    name: "validFromTime",
+    type: "uint256",
+  },
+  {
     name: "autoCancel",
     type: "bool",
   },
@@ -219,6 +228,7 @@ export type UpdateOrderArgs = {
   acceptablePrice: bigint;
   triggerPrice: bigint;
   minOutputAmount: bigint;
+  validFromTime: bigint;
   autoCancel: boolean;
   executionFeeIncrease: bigint;
   exchangeRouter: Address;
@@ -231,6 +241,7 @@ export function updateOrderEncode(args: UpdateOrderArgs): Hex {
     args.acceptablePrice,
     args.triggerPrice,
     args.minOutputAmount,
+    args.validFromTime,
     args.autoCancel,
     args.executionFeeIncrease,
     args.exchangeRouter,
@@ -244,6 +255,7 @@ export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
     acceptablePrice,
     triggerPrice,
     minOutputAmount,
+    validFromTime,
     autoCancel,
     executionFeeIncrease,
     exchangeRouter,
@@ -254,6 +266,7 @@ export function updateOrderDecode(encoded: Hex): UpdateOrderArgs {
     sizeDeltaUsd,
     triggerPrice,
     acceptablePrice,
+    validFromTime,
     minOutputAmount,
     exchangeRouter,
     executionFeeIncrease,
@@ -406,18 +419,8 @@ export const sweep = ExternalPositionManager.makeUse(Action.Sweep);
 
 const readerAbi = [
   {
-    inputs: [{ internalType: "address", name: "market", type: "address" }],
-    name: "DisabledMarket",
-    type: "error",
-  },
-  { inputs: [], name: "EmptyMarket", type: "error" },
-  {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "account", type: "address" },
       { internalType: "uint256", name: "start", type: "uint256" },
       { internalType: "uint256", name: "end", type: "uint256" },
@@ -428,46 +431,14 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "account",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "receiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "cancellationReceiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "callbackContract",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "uiFeeReceiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "market",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "initialCollateralToken",
-                type: "address",
-              },
-              {
-                internalType: "address[]",
-                name: "swapPath",
-                type: "address[]",
-              },
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "receiver", type: "address" },
+              { internalType: "address", name: "cancellationReceiver", type: "address" },
+              { internalType: "address", name: "callbackContract", type: "address" },
+              { internalType: "address", name: "uiFeeReceiver", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address", name: "initialCollateralToken", type: "address" },
+              { internalType: "address[]", name: "swapPath", type: "address[]" },
             ],
             internalType: "struct Order.Addresses",
             name: "addresses",
@@ -475,61 +446,17 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "enum Order.OrderType",
-                name: "orderType",
-                type: "uint8",
-              },
-              {
-                internalType: "enum Order.DecreasePositionSwapType",
-                name: "decreasePositionSwapType",
-                type: "uint8",
-              },
-              {
-                internalType: "uint256",
-                name: "sizeDeltaUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "initialCollateralDeltaAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "triggerPrice",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "acceptablePrice",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "executionFee",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "callbackGasLimit",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "minOutputAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtTime",
-                type: "uint256",
-              },
+              { internalType: "enum Order.OrderType", name: "orderType", type: "uint8" },
+              { internalType: "enum Order.DecreasePositionSwapType", name: "decreasePositionSwapType", type: "uint8" },
+              { internalType: "uint256", name: "sizeDeltaUsd", type: "uint256" },
+              { internalType: "uint256", name: "initialCollateralDeltaAmount", type: "uint256" },
+              { internalType: "uint256", name: "triggerPrice", type: "uint256" },
+              { internalType: "uint256", name: "acceptablePrice", type: "uint256" },
+              { internalType: "uint256", name: "executionFee", type: "uint256" },
+              { internalType: "uint256", name: "callbackGasLimit", type: "uint256" },
+              { internalType: "uint256", name: "minOutputAmount", type: "uint256" },
+              { internalType: "uint256", name: "updatedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "validFromTime", type: "uint256" },
             ],
             internalType: "struct Order.Numbers",
             name: "numbers",
@@ -538,11 +465,7 @@ const readerAbi = [
           {
             components: [
               { internalType: "bool", name: "isLong", type: "bool" },
-              {
-                internalType: "bool",
-                name: "shouldUnwrapNativeToken",
-                type: "bool",
-              },
+              { internalType: "bool", name: "shouldUnwrapNativeToken", type: "bool" },
               { internalType: "bool", name: "isFrozen", type: "bool" },
               { internalType: "bool", name: "autoCancel", type: "bool" },
             ],
@@ -561,21 +484,10 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
-      {
-        internalType: "contract IReferralStorage",
-        name: "referralStorage",
-        type: "address",
-      },
-      {
-        internalType: "bytes32[]",
-        name: "positionKeys",
-        type: "bytes32[]",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "contract IReferralStorage", name: "referralStorage", type: "address" },
+      { internalType: "address", name: "account", type: "address" },
+      { internalType: "address[]", name: "markets", type: "address[]" },
       {
         components: [
           {
@@ -607,10 +519,12 @@ const readerAbi = [
           },
         ],
         internalType: "struct MarketUtils.MarketPrices[]",
-        name: "prices",
+        name: "marketPrices",
         type: "tuple[]",
       },
       { internalType: "address", name: "uiFeeReceiver", type: "address" },
+      { internalType: "uint256", name: "start", type: "uint256" },
+      { internalType: "uint256", name: "end", type: "uint256" },
     ],
     name: "getAccountPositionInfoList",
     outputs: [
@@ -620,21 +534,9 @@ const readerAbi = [
             components: [
               {
                 components: [
-                  {
-                    internalType: "address",
-                    name: "account",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "market",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "collateralToken",
-                    type: "address",
-                  },
+                  { internalType: "address", name: "account", type: "address" },
+                  { internalType: "address", name: "market", type: "address" },
+                  { internalType: "address", name: "collateralToken", type: "address" },
                 ],
                 internalType: "struct Position.Addresses",
                 name: "addresses",
@@ -642,61 +544,15 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "sizeInUsd",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "sizeInTokens",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "collateralAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "fundingFeeAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "longTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "shortTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "increasedAtBlock",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "decreasedAtBlock",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "increasedAtTime",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "decreasedAtTime",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "sizeInUsd", type: "uint256" },
+                  { internalType: "uint256", name: "sizeInTokens", type: "uint256" },
+                  { internalType: "uint256", name: "collateralAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFactor", type: "uint256" },
+                  { internalType: "uint256", name: "fundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "longTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "shortTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "increasedAtTime", type: "uint256" },
+                  { internalType: "uint256", name: "decreasedAtTime", type: "uint256" },
                 ],
                 internalType: "struct Position.Numbers",
                 name: "numbers",
@@ -717,46 +573,16 @@ const readerAbi = [
             components: [
               {
                 components: [
-                  {
-                    internalType: "bytes32",
-                    name: "referralCode",
-                    type: "bytes32",
-                  },
-                  {
-                    internalType: "address",
-                    name: "affiliate",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "trader",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "totalRebateFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "traderDiscountFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "totalRebateAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "traderDiscountAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "affiliateRewardAmount",
-                    type: "uint256",
-                  },
+                  { internalType: "bytes32", name: "referralCode", type: "bytes32" },
+                  { internalType: "address", name: "affiliate", type: "address" },
+                  { internalType: "address", name: "trader", type: "address" },
+                  { internalType: "uint256", name: "totalRebateFactor", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "adjustedAffiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "totalRebateAmount", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardAmount", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionReferralFees",
                 name: "referral",
@@ -764,36 +590,22 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "fundingFeeAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "claimableLongTokenAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "claimableShortTokenAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestFundingFeeAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestLongTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestShortTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "traderTier", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionProFees",
+                name: "pro",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "fundingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableLongTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableShortTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "latestFundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestLongTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestShortTokenClaimableFundingAmountPerSize", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionFundingFees",
                 name: "funding",
@@ -801,26 +613,10 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeUsd",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeReceiverFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeAmountForFeeReceiver",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "borrowingFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmountForFeeReceiver", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionBorrowingFees",
                 name: "borrowing",
@@ -828,21 +624,9 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "address",
-                    name: "uiFeeReceiver",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "uiFeeReceiverFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "uiFeeAmount",
-                    type: "uint256",
-                  },
+                  { internalType: "address", name: "uiFeeReceiver", type: "address" },
+                  { internalType: "uint256", name: "uiFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "uiFeeAmount", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionUiFees",
                 name: "ui",
@@ -850,66 +634,34 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "min",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "max",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "liquidationFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmountForFeeReceiver", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionLiquidationFees",
+                name: "liquidation",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "min", type: "uint256" },
+                  { internalType: "uint256", name: "max", type: "uint256" },
                 ],
                 internalType: "struct Price.Props",
                 name: "collateralTokenPrice",
                 type: "tuple",
               },
-              {
-                internalType: "uint256",
-                name: "positionFeeFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "protocolFeeAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeReceiverFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "feeReceiverAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "feeAmountForPool",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeAmountForPool",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "totalCostAmountExcludingFunding",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "totalCostAmount",
-                type: "uint256",
-              },
+              { internalType: "uint256", name: "positionFeeFactor", type: "uint256" },
+              { internalType: "uint256", name: "protocolFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeReceiverFactor", type: "uint256" },
+              { internalType: "uint256", name: "feeReceiverAmount", type: "uint256" },
+              { internalType: "uint256", name: "feeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmountExcludingFunding", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalDiscountAmount", type: "uint256" },
             ],
             internalType: "struct PositionPricingUtils.PositionFees",
             name: "fees",
@@ -917,39 +669,19 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "int256",
-                name: "priceImpactUsd",
-                type: "int256",
-              },
-              {
-                internalType: "uint256",
-                name: "priceImpactDiffUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "executionPrice",
-                type: "uint256",
-              },
+              { internalType: "int256", name: "priceImpactUsd", type: "int256" },
+              { internalType: "uint256", name: "priceImpactDiffUsd", type: "uint256" },
+              { internalType: "uint256", name: "executionPrice", type: "uint256" },
             ],
             internalType: "struct ReaderPricingUtils.ExecutionPriceResult",
             name: "executionPriceResult",
             type: "tuple",
           },
           { internalType: "int256", name: "basePnlUsd", type: "int256" },
-          {
-            internalType: "int256",
-            name: "uncappedBasePnlUsd",
-            type: "int256",
-          },
-          {
-            internalType: "int256",
-            name: "pnlAfterPriceImpactUsd",
-            type: "int256",
-          },
+          { internalType: "int256", name: "uncappedBasePnlUsd", type: "int256" },
+          { internalType: "int256", name: "pnlAfterPriceImpactUsd", type: "int256" },
         ],
-        internalType: "struct ReaderUtils.PositionInfo[]",
+        internalType: "struct ReaderPositionUtils.PositionInfo[]",
         name: "",
         type: "tuple[]",
       },
@@ -959,11 +691,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "account", type: "address" },
       { internalType: "uint256", name: "start", type: "uint256" },
       { internalType: "uint256", name: "end", type: "uint256" },
@@ -974,21 +702,9 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "account",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "market",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "collateralToken",
-                type: "address",
-              },
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address", name: "collateralToken", type: "address" },
             ],
             internalType: "struct Position.Addresses",
             name: "addresses",
@@ -996,61 +712,15 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "uint256",
-                name: "sizeInUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "sizeInTokens",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "collateralAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "borrowingFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "fundingFeeAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "longTokenClaimableFundingAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "shortTokenClaimableFundingAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "increasedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "decreasedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "increasedAtTime",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "decreasedAtTime",
-                type: "uint256",
-              },
+              { internalType: "uint256", name: "sizeInUsd", type: "uint256" },
+              { internalType: "uint256", name: "sizeInTokens", type: "uint256" },
+              { internalType: "uint256", name: "collateralAmount", type: "uint256" },
+              { internalType: "uint256", name: "borrowingFactor", type: "uint256" },
+              { internalType: "uint256", name: "fundingFeeAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "longTokenClaimableFundingAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "shortTokenClaimableFundingAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "increasedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "decreasedAtTime", type: "uint256" },
             ],
             internalType: "struct Position.Numbers",
             name: "numbers",
@@ -1073,11 +743,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "market", type: "address" },
       { internalType: "bool", name: "isLong", type: "bool" },
       {
@@ -1127,11 +793,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "bytes32", name: "key", type: "bytes32" },
     ],
     name: "getDeposit",
@@ -1140,51 +802,15 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "account",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "receiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "callbackContract",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "uiFeeReceiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "market",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "initialLongToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "initialShortToken",
-                type: "address",
-              },
-              {
-                internalType: "address[]",
-                name: "longTokenSwapPath",
-                type: "address[]",
-              },
-              {
-                internalType: "address[]",
-                name: "shortTokenSwapPath",
-                type: "address[]",
-              },
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "receiver", type: "address" },
+              { internalType: "address", name: "callbackContract", type: "address" },
+              { internalType: "address", name: "uiFeeReceiver", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address", name: "initialLongToken", type: "address" },
+              { internalType: "address", name: "initialShortToken", type: "address" },
+              { internalType: "address[]", name: "longTokenSwapPath", type: "address[]" },
+              { internalType: "address[]", name: "shortTokenSwapPath", type: "address[]" },
             ],
             internalType: "struct Deposit.Addresses",
             name: "addresses",
@@ -1192,54 +818,19 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "uint256",
-                name: "initialLongTokenAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "initialShortTokenAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "minMarketTokens",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtTime",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "executionFee",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "callbackGasLimit",
-                type: "uint256",
-              },
+              { internalType: "uint256", name: "initialLongTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "initialShortTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "minMarketTokens", type: "uint256" },
+              { internalType: "uint256", name: "updatedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "executionFee", type: "uint256" },
+              { internalType: "uint256", name: "callbackGasLimit", type: "uint256" },
             ],
             internalType: "struct Deposit.Numbers",
             name: "numbers",
             type: "tuple",
           },
           {
-            components: [
-              {
-                internalType: "bool",
-                name: "shouldUnwrapNativeToken",
-                type: "bool",
-              },
-            ],
+            components: [{ internalType: "bool", name: "shouldUnwrapNativeToken", type: "bool" }],
             internalType: "struct Deposit.Flags",
             name: "flags",
             type: "tuple",
@@ -1255,23 +846,11 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -1313,27 +892,11 @@ const readerAbi = [
         name: "prices",
         type: "tuple",
       },
-      {
-        internalType: "uint256",
-        name: "longTokenAmount",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "shortTokenAmount",
-        type: "uint256",
-      },
+      { internalType: "uint256", name: "longTokenAmount", type: "uint256" },
+      { internalType: "uint256", name: "shortTokenAmount", type: "uint256" },
       { internalType: "address", name: "uiFeeReceiver", type: "address" },
-      {
-        internalType: "enum ISwapPricingUtils.SwapPricingType",
-        name: "swapPricingType",
-        type: "uint8",
-      },
-      {
-        internalType: "bool",
-        name: "includeVirtualInventoryImpact",
-        type: "bool",
-      },
+      { internalType: "enum ISwapPricingUtils.SwapPricingType", name: "swapPricingType", type: "uint8" },
+      { internalType: "bool", name: "includeVirtualInventoryImpact", type: "bool" },
     ],
     name: "getDepositAmountOut",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
@@ -1342,11 +905,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "marketKey", type: "address" },
       {
         components: [
@@ -1357,16 +916,8 @@ const readerAbi = [
         name: "indexTokenPrice",
         type: "tuple",
       },
-      {
-        internalType: "uint256",
-        name: "positionSizeInUsd",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "positionSizeInTokens",
-        type: "uint256",
-      },
+      { internalType: "uint256", name: "positionSizeInUsd", type: "uint256" },
+      { internalType: "uint256", name: "positionSizeInTokens", type: "uint256" },
       { internalType: "int256", name: "sizeDeltaUsd", type: "int256" },
       { internalType: "bool", name: "isLong", type: "bool" },
     ],
@@ -1374,21 +925,9 @@ const readerAbi = [
     outputs: [
       {
         components: [
-          {
-            internalType: "int256",
-            name: "priceImpactUsd",
-            type: "int256",
-          },
-          {
-            internalType: "uint256",
-            name: "priceImpactDiffUsd",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "executionPrice",
-            type: "uint256",
-          },
+          { internalType: "int256", name: "priceImpactUsd", type: "int256" },
+          { internalType: "uint256", name: "priceImpactDiffUsd", type: "uint256" },
+          { internalType: "uint256", name: "executionPrice", type: "uint256" },
         ],
         internalType: "struct ReaderPricingUtils.ExecutionPriceResult",
         name: "",
@@ -1400,27 +939,15 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "key", type: "address" },
     ],
     name: "getMarket",
     outputs: [
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -1434,27 +961,15 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "bytes32", name: "salt", type: "bytes32" },
     ],
     name: "getMarketBySalt",
     outputs: [
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -1468,11 +983,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
           {
@@ -1515,57 +1026,25 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "marketToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "indexToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "longToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "shortToken",
-                type: "address",
-              },
+              { internalType: "address", name: "marketToken", type: "address" },
+              { internalType: "address", name: "indexToken", type: "address" },
+              { internalType: "address", name: "longToken", type: "address" },
+              { internalType: "address", name: "shortToken", type: "address" },
             ],
             internalType: "struct Market.Props",
             name: "market",
             type: "tuple",
           },
-          {
-            internalType: "uint256",
-            name: "borrowingFactorPerSecondForLongs",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "borrowingFactorPerSecondForShorts",
-            type: "uint256",
-          },
+          { internalType: "uint256", name: "borrowingFactorPerSecondForLongs", type: "uint256" },
+          { internalType: "uint256", name: "borrowingFactorPerSecondForShorts", type: "uint256" },
           {
             components: [
               {
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1573,16 +1052,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1597,16 +1068,8 @@ const readerAbi = [
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1614,16 +1077,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1641,35 +1096,15 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "bool",
-                name: "longsPayShorts",
-                type: "bool",
-              },
-              {
-                internalType: "uint256",
-                name: "fundingFactorPerSecond",
-                type: "uint256",
-              },
-              {
-                internalType: "int256",
-                name: "nextSavedFundingFactorPerSecond",
-                type: "int256",
-              },
+              { internalType: "bool", name: "longsPayShorts", type: "bool" },
+              { internalType: "uint256", name: "fundingFactorPerSecond", type: "uint256" },
+              { internalType: "int256", name: "nextSavedFundingFactorPerSecond", type: "int256" },
               {
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1677,16 +1112,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1701,16 +1128,8 @@ const readerAbi = [
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1718,16 +1137,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1745,21 +1156,9 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "uint256",
-                name: "virtualPoolAmountForLongToken",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "virtualPoolAmountForShortToken",
-                type: "uint256",
-              },
-              {
-                internalType: "int256",
-                name: "virtualInventoryForPositions",
-                type: "int256",
-              },
+              { internalType: "uint256", name: "virtualPoolAmountForLongToken", type: "uint256" },
+              { internalType: "uint256", name: "virtualPoolAmountForShortToken", type: "uint256" },
+              { internalType: "int256", name: "virtualInventoryForPositions", type: "int256" },
             ],
             internalType: "struct ReaderUtils.VirtualInventory",
             name: "virtualInventory",
@@ -1777,11 +1176,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
           {
@@ -1825,57 +1220,25 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "marketToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "indexToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "longToken",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "shortToken",
-                type: "address",
-              },
+              { internalType: "address", name: "marketToken", type: "address" },
+              { internalType: "address", name: "indexToken", type: "address" },
+              { internalType: "address", name: "longToken", type: "address" },
+              { internalType: "address", name: "shortToken", type: "address" },
             ],
             internalType: "struct Market.Props",
             name: "market",
             type: "tuple",
           },
-          {
-            internalType: "uint256",
-            name: "borrowingFactorPerSecondForLongs",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "borrowingFactorPerSecondForShorts",
-            type: "uint256",
-          },
+          { internalType: "uint256", name: "borrowingFactorPerSecondForLongs", type: "uint256" },
+          { internalType: "uint256", name: "borrowingFactorPerSecondForShorts", type: "uint256" },
           {
             components: [
               {
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1883,16 +1246,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1907,16 +1262,8 @@ const readerAbi = [
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1924,16 +1271,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -1951,35 +1290,15 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "bool",
-                name: "longsPayShorts",
-                type: "bool",
-              },
-              {
-                internalType: "uint256",
-                name: "fundingFactorPerSecond",
-                type: "uint256",
-              },
-              {
-                internalType: "int256",
-                name: "nextSavedFundingFactorPerSecond",
-                type: "int256",
-              },
+              { internalType: "bool", name: "longsPayShorts", type: "bool" },
+              { internalType: "uint256", name: "fundingFactorPerSecond", type: "uint256" },
+              { internalType: "int256", name: "nextSavedFundingFactorPerSecond", type: "int256" },
               {
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -1987,16 +1306,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -2011,16 +1322,8 @@ const readerAbi = [
                 components: [
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "long",
@@ -2028,16 +1331,8 @@ const readerAbi = [
                   },
                   {
                     components: [
-                      {
-                        internalType: "uint256",
-                        name: "longToken",
-                        type: "uint256",
-                      },
-                      {
-                        internalType: "uint256",
-                        name: "shortToken",
-                        type: "uint256",
-                      },
+                      { internalType: "uint256", name: "longToken", type: "uint256" },
+                      { internalType: "uint256", name: "shortToken", type: "uint256" },
                     ],
                     internalType: "struct MarketUtils.CollateralType",
                     name: "short",
@@ -2055,21 +1350,9 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "uint256",
-                name: "virtualPoolAmountForLongToken",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "virtualPoolAmountForShortToken",
-                type: "uint256",
-              },
-              {
-                internalType: "int256",
-                name: "virtualInventoryForPositions",
-                type: "int256",
-              },
+              { internalType: "uint256", name: "virtualPoolAmountForLongToken", type: "uint256" },
+              { internalType: "uint256", name: "virtualPoolAmountForShortToken", type: "uint256" },
+              { internalType: "int256", name: "virtualInventoryForPositions", type: "int256" },
             ],
             internalType: "struct ReaderUtils.VirtualInventory",
             name: "virtualInventory",
@@ -2087,23 +1370,11 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -2150,41 +1421,13 @@ const readerAbi = [
           { internalType: "int256", name: "longPnl", type: "int256" },
           { internalType: "int256", name: "shortPnl", type: "int256" },
           { internalType: "int256", name: "netPnl", type: "int256" },
-          {
-            internalType: "uint256",
-            name: "longTokenAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "shortTokenAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "longTokenUsd",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "shortTokenUsd",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "totalBorrowingFees",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "borrowingFeePoolFactor",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "impactPoolAmount",
-            type: "uint256",
-          },
+          { internalType: "uint256", name: "longTokenAmount", type: "uint256" },
+          { internalType: "uint256", name: "shortTokenAmount", type: "uint256" },
+          { internalType: "uint256", name: "longTokenUsd", type: "uint256" },
+          { internalType: "uint256", name: "shortTokenUsd", type: "uint256" },
+          { internalType: "uint256", name: "totalBorrowingFees", type: "uint256" },
+          { internalType: "uint256", name: "borrowingFeePoolFactor", type: "uint256" },
+          { internalType: "uint256", name: "impactPoolAmount", type: "uint256" },
         ],
         internalType: "struct MarketPoolValueInfo.Props",
         name: "",
@@ -2196,11 +1439,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "uint256", name: "start", type: "uint256" },
       { internalType: "uint256", name: "end", type: "uint256" },
     ],
@@ -2208,16 +1447,8 @@ const readerAbi = [
     outputs: [
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -2231,23 +1462,11 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -2273,23 +1492,11 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -2316,11 +1523,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "bytes32", name: "key", type: "bytes32" },
     ],
     name: "getOrder",
@@ -2329,46 +1532,14 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "account",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "receiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "cancellationReceiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "callbackContract",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "uiFeeReceiver",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "market",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "initialCollateralToken",
-                type: "address",
-              },
-              {
-                internalType: "address[]",
-                name: "swapPath",
-                type: "address[]",
-              },
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "receiver", type: "address" },
+              { internalType: "address", name: "cancellationReceiver", type: "address" },
+              { internalType: "address", name: "callbackContract", type: "address" },
+              { internalType: "address", name: "uiFeeReceiver", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address", name: "initialCollateralToken", type: "address" },
+              { internalType: "address[]", name: "swapPath", type: "address[]" },
             ],
             internalType: "struct Order.Addresses",
             name: "addresses",
@@ -2376,61 +1547,17 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "enum Order.OrderType",
-                name: "orderType",
-                type: "uint8",
-              },
-              {
-                internalType: "enum Order.DecreasePositionSwapType",
-                name: "decreasePositionSwapType",
-                type: "uint8",
-              },
-              {
-                internalType: "uint256",
-                name: "sizeDeltaUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "initialCollateralDeltaAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "triggerPrice",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "acceptablePrice",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "executionFee",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "callbackGasLimit",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "minOutputAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "updatedAtTime",
-                type: "uint256",
-              },
+              { internalType: "enum Order.OrderType", name: "orderType", type: "uint8" },
+              { internalType: "enum Order.DecreasePositionSwapType", name: "decreasePositionSwapType", type: "uint8" },
+              { internalType: "uint256", name: "sizeDeltaUsd", type: "uint256" },
+              { internalType: "uint256", name: "initialCollateralDeltaAmount", type: "uint256" },
+              { internalType: "uint256", name: "triggerPrice", type: "uint256" },
+              { internalType: "uint256", name: "acceptablePrice", type: "uint256" },
+              { internalType: "uint256", name: "executionFee", type: "uint256" },
+              { internalType: "uint256", name: "callbackGasLimit", type: "uint256" },
+              { internalType: "uint256", name: "minOutputAmount", type: "uint256" },
+              { internalType: "uint256", name: "updatedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "validFromTime", type: "uint256" },
             ],
             internalType: "struct Order.Numbers",
             name: "numbers",
@@ -2439,11 +1566,7 @@ const readerAbi = [
           {
             components: [
               { internalType: "bool", name: "isLong", type: "bool" },
-              {
-                internalType: "bool",
-                name: "shouldUnwrapNativeToken",
-                type: "bool",
-              },
+              { internalType: "bool", name: "shouldUnwrapNativeToken", type: "bool" },
               { internalType: "bool", name: "isFrozen", type: "bool" },
               { internalType: "bool", name: "autoCancel", type: "bool" },
             ],
@@ -2462,23 +1585,11 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       {
         components: [
-          {
-            internalType: "address",
-            name: "marketToken",
-            type: "address",
-          },
-          {
-            internalType: "address",
-            name: "indexToken",
-            type: "address",
-          },
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
           { internalType: "address", name: "longToken", type: "address" },
           { internalType: "address", name: "shortToken", type: "address" },
         ],
@@ -2505,11 +1616,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "address", name: "marketAddress", type: "address" },
       {
         components: [
@@ -2555,11 +1662,7 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
       { internalType: "bytes32", name: "key", type: "bytes32" },
     ],
     name: "getPosition",
@@ -2568,21 +1671,9 @@ const readerAbi = [
         components: [
           {
             components: [
-              {
-                internalType: "address",
-                name: "account",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "market",
-                type: "address",
-              },
-              {
-                internalType: "address",
-                name: "collateralToken",
-                type: "address",
-              },
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address", name: "collateralToken", type: "address" },
             ],
             internalType: "struct Position.Addresses",
             name: "addresses",
@@ -2590,61 +1681,15 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "uint256",
-                name: "sizeInUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "sizeInTokens",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "collateralAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "borrowingFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "fundingFeeAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "longTokenClaimableFundingAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "shortTokenClaimableFundingAmountPerSize",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "increasedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "decreasedAtBlock",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "increasedAtTime",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "decreasedAtTime",
-                type: "uint256",
-              },
+              { internalType: "uint256", name: "sizeInUsd", type: "uint256" },
+              { internalType: "uint256", name: "sizeInTokens", type: "uint256" },
+              { internalType: "uint256", name: "collateralAmount", type: "uint256" },
+              { internalType: "uint256", name: "borrowingFactor", type: "uint256" },
+              { internalType: "uint256", name: "fundingFeeAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "longTokenClaimableFundingAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "shortTokenClaimableFundingAmountPerSize", type: "uint256" },
+              { internalType: "uint256", name: "increasedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "decreasedAtTime", type: "uint256" },
             ],
             internalType: "struct Position.Numbers",
             name: "numbers",
@@ -2667,16 +1712,8 @@ const readerAbi = [
   },
   {
     inputs: [
-      {
-        internalType: "contract DataStore",
-        name: "dataStore",
-        type: "address",
-      },
-      {
-        internalType: "contract IReferralStorage",
-        name: "referralStorage",
-        type: "address",
-      },
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "contract IReferralStorage", name: "referralStorage", type: "address" },
       { internalType: "bytes32", name: "positionKey", type: "bytes32" },
       {
         components: [
@@ -2714,11 +1751,7 @@ const readerAbi = [
       },
       { internalType: "uint256", name: "sizeDeltaUsd", type: "uint256" },
       { internalType: "address", name: "uiFeeReceiver", type: "address" },
-      {
-        internalType: "bool",
-        name: "usePositionSizeAsSizeDeltaUsd",
-        type: "bool",
-      },
+      { internalType: "bool", name: "usePositionSizeAsSizeDeltaUsd", type: "bool" },
     ],
     name: "getPositionInfo",
     outputs: [
@@ -2728,21 +1761,9 @@ const readerAbi = [
             components: [
               {
                 components: [
-                  {
-                    internalType: "address",
-                    name: "account",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "market",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "collateralToken",
-                    type: "address",
-                  },
+                  { internalType: "address", name: "account", type: "address" },
+                  { internalType: "address", name: "market", type: "address" },
+                  { internalType: "address", name: "collateralToken", type: "address" },
                 ],
                 internalType: "struct Position.Addresses",
                 name: "addresses",
@@ -2750,61 +1771,15 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "sizeInUsd",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "sizeInTokens",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "collateralAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "fundingFeeAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "longTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "shortTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "increasedAtBlock",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "decreasedAtBlock",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "increasedAtTime",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "decreasedAtTime",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "sizeInUsd", type: "uint256" },
+                  { internalType: "uint256", name: "sizeInTokens", type: "uint256" },
+                  { internalType: "uint256", name: "collateralAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFactor", type: "uint256" },
+                  { internalType: "uint256", name: "fundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "longTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "shortTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "increasedAtTime", type: "uint256" },
+                  { internalType: "uint256", name: "decreasedAtTime", type: "uint256" },
                 ],
                 internalType: "struct Position.Numbers",
                 name: "numbers",
@@ -2825,46 +1800,16 @@ const readerAbi = [
             components: [
               {
                 components: [
-                  {
-                    internalType: "bytes32",
-                    name: "referralCode",
-                    type: "bytes32",
-                  },
-                  {
-                    internalType: "address",
-                    name: "affiliate",
-                    type: "address",
-                  },
-                  {
-                    internalType: "address",
-                    name: "trader",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "totalRebateFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "traderDiscountFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "totalRebateAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "traderDiscountAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "affiliateRewardAmount",
-                    type: "uint256",
-                  },
+                  { internalType: "bytes32", name: "referralCode", type: "bytes32" },
+                  { internalType: "address", name: "affiliate", type: "address" },
+                  { internalType: "address", name: "trader", type: "address" },
+                  { internalType: "uint256", name: "totalRebateFactor", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "adjustedAffiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "totalRebateAmount", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardAmount", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionReferralFees",
                 name: "referral",
@@ -2872,36 +1817,22 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "fundingFeeAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "claimableLongTokenAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "claimableShortTokenAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestFundingFeeAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestLongTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "latestShortTokenClaimableFundingAmountPerSize",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "traderTier", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionProFees",
+                name: "pro",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "fundingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableLongTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableShortTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "latestFundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestLongTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestShortTokenClaimableFundingAmountPerSize", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionFundingFees",
                 name: "funding",
@@ -2909,26 +1840,10 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeUsd",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeAmount",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeReceiverFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "borrowingFeeAmountForFeeReceiver",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "borrowingFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmountForFeeReceiver", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionBorrowingFees",
                 name: "borrowing",
@@ -2936,21 +1851,9 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "address",
-                    name: "uiFeeReceiver",
-                    type: "address",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "uiFeeReceiverFactor",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "uiFeeAmount",
-                    type: "uint256",
-                  },
+                  { internalType: "address", name: "uiFeeReceiver", type: "address" },
+                  { internalType: "uint256", name: "uiFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "uiFeeAmount", type: "uint256" },
                 ],
                 internalType: "struct PositionPricingUtils.PositionUiFees",
                 name: "ui",
@@ -2958,66 +1861,34 @@ const readerAbi = [
               },
               {
                 components: [
-                  {
-                    internalType: "uint256",
-                    name: "min",
-                    type: "uint256",
-                  },
-                  {
-                    internalType: "uint256",
-                    name: "max",
-                    type: "uint256",
-                  },
+                  { internalType: "uint256", name: "liquidationFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmountForFeeReceiver", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionLiquidationFees",
+                name: "liquidation",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "min", type: "uint256" },
+                  { internalType: "uint256", name: "max", type: "uint256" },
                 ],
                 internalType: "struct Price.Props",
                 name: "collateralTokenPrice",
                 type: "tuple",
               },
-              {
-                internalType: "uint256",
-                name: "positionFeeFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "protocolFeeAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeReceiverFactor",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "feeReceiverAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "feeAmountForPool",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeAmountForPool",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "positionFeeAmount",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "totalCostAmountExcludingFunding",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "totalCostAmount",
-                type: "uint256",
-              },
+              { internalType: "uint256", name: "positionFeeFactor", type: "uint256" },
+              { internalType: "uint256", name: "protocolFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeReceiverFactor", type: "uint256" },
+              { internalType: "uint256", name: "feeReceiverAmount", type: "uint256" },
+              { internalType: "uint256", name: "feeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmountExcludingFunding", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalDiscountAmount", type: "uint256" },
             ],
             internalType: "struct PositionPricingUtils.PositionFees",
             name: "fees",
@@ -3025,39 +1896,615 @@ const readerAbi = [
           },
           {
             components: [
-              {
-                internalType: "int256",
-                name: "priceImpactUsd",
-                type: "int256",
-              },
-              {
-                internalType: "uint256",
-                name: "priceImpactDiffUsd",
-                type: "uint256",
-              },
-              {
-                internalType: "uint256",
-                name: "executionPrice",
-                type: "uint256",
-              },
+              { internalType: "int256", name: "priceImpactUsd", type: "int256" },
+              { internalType: "uint256", name: "priceImpactDiffUsd", type: "uint256" },
+              { internalType: "uint256", name: "executionPrice", type: "uint256" },
             ],
             internalType: "struct ReaderPricingUtils.ExecutionPriceResult",
             name: "executionPriceResult",
             type: "tuple",
           },
           { internalType: "int256", name: "basePnlUsd", type: "int256" },
+          { internalType: "int256", name: "uncappedBasePnlUsd", type: "int256" },
+          { internalType: "int256", name: "pnlAfterPriceImpactUsd", type: "int256" },
+        ],
+        internalType: "struct ReaderPositionUtils.PositionInfo",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "contract IReferralStorage", name: "referralStorage", type: "address" },
+      { internalType: "bytes32[]", name: "positionKeys", type: "bytes32[]" },
+      {
+        components: [
           {
-            internalType: "int256",
-            name: "uncappedBasePnlUsd",
-            type: "int256",
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "indexTokenPrice",
+            type: "tuple",
           },
           {
-            internalType: "int256",
-            name: "pnlAfterPriceImpactUsd",
-            type: "int256",
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "longTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "shortTokenPrice",
+            type: "tuple",
           },
         ],
-        internalType: "struct ReaderUtils.PositionInfo",
+        internalType: "struct MarketUtils.MarketPrices[]",
+        name: "prices",
+        type: "tuple[]",
+      },
+      { internalType: "address", name: "uiFeeReceiver", type: "address" },
+    ],
+    name: "getPositionInfoList",
+    outputs: [
+      {
+        components: [
+          {
+            components: [
+              {
+                components: [
+                  { internalType: "address", name: "account", type: "address" },
+                  { internalType: "address", name: "market", type: "address" },
+                  { internalType: "address", name: "collateralToken", type: "address" },
+                ],
+                internalType: "struct Position.Addresses",
+                name: "addresses",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "sizeInUsd", type: "uint256" },
+                  { internalType: "uint256", name: "sizeInTokens", type: "uint256" },
+                  { internalType: "uint256", name: "collateralAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFactor", type: "uint256" },
+                  { internalType: "uint256", name: "fundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "longTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "shortTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "increasedAtTime", type: "uint256" },
+                  { internalType: "uint256", name: "decreasedAtTime", type: "uint256" },
+                ],
+                internalType: "struct Position.Numbers",
+                name: "numbers",
+                type: "tuple",
+              },
+              {
+                components: [{ internalType: "bool", name: "isLong", type: "bool" }],
+                internalType: "struct Position.Flags",
+                name: "flags",
+                type: "tuple",
+              },
+            ],
+            internalType: "struct Position.Props",
+            name: "position",
+            type: "tuple",
+          },
+          {
+            components: [
+              {
+                components: [
+                  { internalType: "bytes32", name: "referralCode", type: "bytes32" },
+                  { internalType: "address", name: "affiliate", type: "address" },
+                  { internalType: "address", name: "trader", type: "address" },
+                  { internalType: "uint256", name: "totalRebateFactor", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "adjustedAffiliateRewardFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "totalRebateAmount", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                  { internalType: "uint256", name: "affiliateRewardAmount", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionReferralFees",
+                name: "referral",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "traderTier", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountFactor", type: "uint256" },
+                  { internalType: "uint256", name: "traderDiscountAmount", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionProFees",
+                name: "pro",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "fundingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableLongTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "claimableShortTokenAmount", type: "uint256" },
+                  { internalType: "uint256", name: "latestFundingFeeAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestLongTokenClaimableFundingAmountPerSize", type: "uint256" },
+                  { internalType: "uint256", name: "latestShortTokenClaimableFundingAmountPerSize", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionFundingFees",
+                name: "funding",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "borrowingFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "borrowingFeeAmountForFeeReceiver", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionBorrowingFees",
+                name: "borrowing",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "address", name: "uiFeeReceiver", type: "address" },
+                  { internalType: "uint256", name: "uiFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "uiFeeAmount", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionUiFees",
+                name: "ui",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "liquidationFeeUsd", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmount", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeReceiverFactor", type: "uint256" },
+                  { internalType: "uint256", name: "liquidationFeeAmountForFeeReceiver", type: "uint256" },
+                ],
+                internalType: "struct PositionPricingUtils.PositionLiquidationFees",
+                name: "liquidation",
+                type: "tuple",
+              },
+              {
+                components: [
+                  { internalType: "uint256", name: "min", type: "uint256" },
+                  { internalType: "uint256", name: "max", type: "uint256" },
+                ],
+                internalType: "struct Price.Props",
+                name: "collateralTokenPrice",
+                type: "tuple",
+              },
+              { internalType: "uint256", name: "positionFeeFactor", type: "uint256" },
+              { internalType: "uint256", name: "protocolFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeReceiverFactor", type: "uint256" },
+              { internalType: "uint256", name: "feeReceiverAmount", type: "uint256" },
+              { internalType: "uint256", name: "feeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmountForPool", type: "uint256" },
+              { internalType: "uint256", name: "positionFeeAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmountExcludingFunding", type: "uint256" },
+              { internalType: "uint256", name: "totalCostAmount", type: "uint256" },
+              { internalType: "uint256", name: "totalDiscountAmount", type: "uint256" },
+            ],
+            internalType: "struct PositionPricingUtils.PositionFees",
+            name: "fees",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "int256", name: "priceImpactUsd", type: "int256" },
+              { internalType: "uint256", name: "priceImpactDiffUsd", type: "uint256" },
+              { internalType: "uint256", name: "executionPrice", type: "uint256" },
+            ],
+            internalType: "struct ReaderPricingUtils.ExecutionPriceResult",
+            name: "executionPriceResult",
+            type: "tuple",
+          },
+          { internalType: "int256", name: "basePnlUsd", type: "int256" },
+          { internalType: "int256", name: "uncappedBasePnlUsd", type: "int256" },
+          { internalType: "int256", name: "pnlAfterPriceImpactUsd", type: "int256" },
+        ],
+        internalType: "struct ReaderPositionUtils.PositionInfo[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      {
+        components: [
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
+          { internalType: "address", name: "longToken", type: "address" },
+          { internalType: "address", name: "shortToken", type: "address" },
+        ],
+        internalType: "struct Market.Props",
+        name: "market",
+        type: "tuple",
+      },
+      {
+        components: [
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "indexTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "longTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "shortTokenPrice",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct MarketUtils.MarketPrices",
+        name: "prices",
+        type: "tuple",
+      },
+      { internalType: "bytes32", name: "positionKey", type: "bytes32" },
+      { internalType: "uint256", name: "sizeDeltaUsd", type: "uint256" },
+    ],
+    name: "getPositionPnlUsd",
+    outputs: [
+      { internalType: "int256", name: "", type: "int256" },
+      { internalType: "int256", name: "", type: "int256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "bytes32", name: "key", type: "bytes32" },
+    ],
+    name: "getShift",
+    outputs: [
+      {
+        components: [
+          {
+            components: [
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "receiver", type: "address" },
+              { internalType: "address", name: "callbackContract", type: "address" },
+              { internalType: "address", name: "uiFeeReceiver", type: "address" },
+              { internalType: "address", name: "fromMarket", type: "address" },
+              { internalType: "address", name: "toMarket", type: "address" },
+            ],
+            internalType: "struct Shift.Addresses",
+            name: "addresses",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "marketTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "minMarketTokens", type: "uint256" },
+              { internalType: "uint256", name: "updatedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "executionFee", type: "uint256" },
+              { internalType: "uint256", name: "callbackGasLimit", type: "uint256" },
+            ],
+            internalType: "struct Shift.Numbers",
+            name: "numbers",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct Shift.Props",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      {
+        components: [
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
+          { internalType: "address", name: "longToken", type: "address" },
+          { internalType: "address", name: "shortToken", type: "address" },
+        ],
+        internalType: "struct Market.Props",
+        name: "market",
+        type: "tuple",
+      },
+      {
+        components: [
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "indexTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "longTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "shortTokenPrice",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct MarketUtils.MarketPrices",
+        name: "prices",
+        type: "tuple",
+      },
+      { internalType: "address", name: "tokenIn", type: "address" },
+      { internalType: "uint256", name: "amountIn", type: "uint256" },
+      { internalType: "address", name: "uiFeeReceiver", type: "address" },
+    ],
+    name: "getSwapAmountOut",
+    outputs: [
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "int256", name: "", type: "int256" },
+      {
+        components: [
+          { internalType: "uint256", name: "feeReceiverAmount", type: "uint256" },
+          { internalType: "uint256", name: "feeAmountForPool", type: "uint256" },
+          { internalType: "uint256", name: "amountAfterFees", type: "uint256" },
+          { internalType: "address", name: "uiFeeReceiver", type: "address" },
+          { internalType: "uint256", name: "uiFeeReceiverFactor", type: "uint256" },
+          { internalType: "uint256", name: "uiFeeAmount", type: "uint256" },
+        ],
+        internalType: "struct SwapPricingUtils.SwapFees",
+        name: "fees",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "address", name: "marketKey", type: "address" },
+      { internalType: "address", name: "tokenIn", type: "address" },
+      { internalType: "address", name: "tokenOut", type: "address" },
+      { internalType: "uint256", name: "amountIn", type: "uint256" },
+      {
+        components: [
+          { internalType: "uint256", name: "min", type: "uint256" },
+          { internalType: "uint256", name: "max", type: "uint256" },
+        ],
+        internalType: "struct Price.Props",
+        name: "tokenInPrice",
+        type: "tuple",
+      },
+      {
+        components: [
+          { internalType: "uint256", name: "min", type: "uint256" },
+          { internalType: "uint256", name: "max", type: "uint256" },
+        ],
+        internalType: "struct Price.Props",
+        name: "tokenOutPrice",
+        type: "tuple",
+      },
+    ],
+    name: "getSwapPriceImpact",
+    outputs: [
+      { internalType: "int256", name: "", type: "int256" },
+      { internalType: "int256", name: "", type: "int256" },
+      { internalType: "int256", name: "", type: "int256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "bytes32", name: "key", type: "bytes32" },
+    ],
+    name: "getWithdrawal",
+    outputs: [
+      {
+        components: [
+          {
+            components: [
+              { internalType: "address", name: "account", type: "address" },
+              { internalType: "address", name: "receiver", type: "address" },
+              { internalType: "address", name: "callbackContract", type: "address" },
+              { internalType: "address", name: "uiFeeReceiver", type: "address" },
+              { internalType: "address", name: "market", type: "address" },
+              { internalType: "address[]", name: "longTokenSwapPath", type: "address[]" },
+              { internalType: "address[]", name: "shortTokenSwapPath", type: "address[]" },
+            ],
+            internalType: "struct Withdrawal.Addresses",
+            name: "addresses",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "marketTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "minLongTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "minShortTokenAmount", type: "uint256" },
+              { internalType: "uint256", name: "updatedAtTime", type: "uint256" },
+              { internalType: "uint256", name: "executionFee", type: "uint256" },
+              { internalType: "uint256", name: "callbackGasLimit", type: "uint256" },
+            ],
+            internalType: "struct Withdrawal.Numbers",
+            name: "numbers",
+            type: "tuple",
+          },
+          {
+            components: [{ internalType: "bool", name: "shouldUnwrapNativeToken", type: "bool" }],
+            internalType: "struct Withdrawal.Flags",
+            name: "flags",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct Withdrawal.Props",
+        name: "",
+        type: "tuple",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      {
+        components: [
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
+          { internalType: "address", name: "longToken", type: "address" },
+          { internalType: "address", name: "shortToken", type: "address" },
+        ],
+        internalType: "struct Market.Props",
+        name: "market",
+        type: "tuple",
+      },
+      {
+        components: [
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "indexTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "longTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "shortTokenPrice",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct MarketUtils.MarketPrices",
+        name: "prices",
+        type: "tuple",
+      },
+      { internalType: "uint256", name: "marketTokenAmount", type: "uint256" },
+      { internalType: "address", name: "uiFeeReceiver", type: "address" },
+      { internalType: "enum ISwapPricingUtils.SwapPricingType", name: "swapPricingType", type: "uint8" },
+    ],
+    name: "getWithdrawalAmountOut",
+    outputs: [
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "contract DataStore", name: "dataStore", type: "address" },
+      { internalType: "contract IReferralStorage", name: "referralStorage", type: "address" },
+      { internalType: "bytes32", name: "positionKey", type: "bytes32" },
+      {
+        components: [
+          { internalType: "address", name: "marketToken", type: "address" },
+          { internalType: "address", name: "indexToken", type: "address" },
+          { internalType: "address", name: "longToken", type: "address" },
+          { internalType: "address", name: "shortToken", type: "address" },
+        ],
+        internalType: "struct Market.Props",
+        name: "market",
+        type: "tuple",
+      },
+      {
+        components: [
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "indexTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "longTokenPrice",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "uint256", name: "min", type: "uint256" },
+              { internalType: "uint256", name: "max", type: "uint256" },
+            ],
+            internalType: "struct Price.Props",
+            name: "shortTokenPrice",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct MarketUtils.MarketPrices",
+        name: "prices",
+        type: "tuple",
+      },
+      { internalType: "bool", name: "shouldValidateMinCollateralUsd", type: "bool" },
+    ],
+    name: "isPositionLiquidatable",
+    outputs: [
+      { internalType: "bool", name: "", type: "bool" },
+      { internalType: "string", name: "", type: "string" },
+      {
+        components: [
+          { internalType: "int256", name: "remainingCollateralUsd", type: "int256" },
+          { internalType: "int256", name: "minCollateralUsd", type: "int256" },
+          { internalType: "int256", name: "minCollateralUsdForLeverage", type: "int256" },
+        ],
+        internalType: "struct PositionUtils.IsPositionLiquidatableInfo",
         name: "",
         type: "tuple",
       },
@@ -3337,12 +2784,23 @@ export async function getAccountPositionInfoList(
     }),
   );
 
+  const markets = marketPrices.map(({ marketInfo }) => marketInfo.marketToken);
+
   const accountPositionInfoList = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: readerAbi,
     functionName: "getAccountPositionInfoList",
     address: args.reader,
-    args: [args.dataStore, args.referralStorage, positionsKeys, marketPrices, args.uiFeeReceiver],
+    args: [
+      args.dataStore,
+      args.referralStorage,
+      args.account,
+      markets,
+      marketPrices,
+      args.uiFeeReceiver,
+      args.start,
+      args.end,
+    ],
   });
 
   return {
