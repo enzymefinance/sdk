@@ -7349,7 +7349,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_REDSTONE,
       aggregator: "0x24c8964338deb5204b096039147b8e8c3aea42cc",
       rateAsset: RateAsset.USD,
-      peggedTo: "WBTC",
+      peggedTo: "SolvBTC",
       nonStandard: true,
     },
   },
@@ -7363,7 +7363,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x0000000000000000000000000000000000000000",
+      aggregator: "0x0000000000000000000000000000000000000000", // TODO: update when Pendle has deployed their oracle contract
       rateAsset: RateAsset.ETH,
     },
   },
@@ -7377,7 +7377,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x0000000000000000000000000000000000000000",
+      aggregator: "0x0000000000000000000000000000000000000000", // TODO: update when Pendle has deployed their oracle contract
       rateAsset: RateAsset.ETH,
     },
   },
