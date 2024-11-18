@@ -8,6 +8,7 @@ export enum PriceFeedType {
   PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
+  PRIMITIVE_PENDLE_V2 = "PRIMITIVE_PENDLE_V2",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
   DERIVATIVE_BALANCER_V2_GAUGE_TOKEN = "DERIVATIVE_BALANCER_V2_GAUGE_TOKEN",
   DERIVATIVE_BALANCER_V2_STABLE_POOL = "DERIVATIVE_BALANCER_V2_STABLE_POOL",
@@ -30,6 +31,7 @@ export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
+  PriceFeedType.PRIMITIVE_PENDLE_V2,
 ];
 
 export const derivativePriceFeeds = [
@@ -61,6 +63,7 @@ export type PriceFeed =
   | PrimitiveChainlinkLikeYnEthPriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
+  | PrimitivePendleV2PriceFeed
   | DerivativeArrakisV2PriceFeed
   | DerivativeBalancerV2GaugeTokenPriceFeed
   | DerivativeBalancerV2StablePoolPriceFeed
@@ -139,6 +142,18 @@ export interface PrimitiveRedstonePriceFeed extends PriceFeedBase {
 
 export interface PrimitiveNonStandardPrecisionPriceFeed extends PriceFeedBase {
   readonly type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset;
+}
+
+export interface PrimitivePendleV2PriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_PENDLE_V2;
   /**
    * Aggregator address
    */
