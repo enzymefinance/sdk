@@ -24,18 +24,18 @@ export function getSyFromPt(client: PublicClient, args: Viem.ContractCallParamet
 const syAbi = [
   {
     inputs: [],
-    name: "depositToken",
+    name: "yieldToken",
     outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
 ] as const;
 
-export function getDepositTokenFromSy(client: PublicClient, args: Viem.ContractCallParameters<{ asset: Address }>) {
+export function getYieldTokenFromSy(client: PublicClient, args: Viem.ContractCallParameters<{ asset: Address }>) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: syAbi,
-    functionName: "depositToken",
+    functionName: "yieldToken",
     address: args.asset,
   });
 }
