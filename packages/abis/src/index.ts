@@ -100,6 +100,7 @@ export { IMigrationHookHandler } from "./IMigrationHookHandler.js";
 export { IMinAssetBalancesPostRedemptionPolicy } from "./IMinAssetBalancesPostRedemptionPolicy.js";
 export { IMinMaxInvestmentPolicy } from "./IMinMaxInvestmentPolicy.js";
 export { IMinSharesSupplyFee } from "./IMinSharesSupplyFee.js";
+export { IMorphoBlueFlashLoanAssetManager } from "./IMorphoBlueFlashLoanAssetManager.js";
 export { IMorphoBluePositionLib } from "./IMorphoBluePositionLib.js";
 export { IMorphoBluePositionParser } from "./IMorphoBluePositionParser.js";
 export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./INoDepegOnRedeemSharesForSpecificAssetsPolicy.js";
