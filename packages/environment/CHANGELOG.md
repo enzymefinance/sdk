@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.0.1
+
+### Patch Changes
+
+- [#564](https://github.com/enzymefinance/sdk/pull/564) [`1597caf`](https://github.com/enzymefinance/sdk/commit/1597cafaa19b8003d3899e8a0c688d005e6f6465) Thanks [@iherger](https://github.com/iherger)! - Update GMX router
+
 ## 6.0.0
 
 ### Minor Changes
