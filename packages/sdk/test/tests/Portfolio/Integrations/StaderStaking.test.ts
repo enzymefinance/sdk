@@ -45,6 +45,5 @@ test("wrap should work correctly", async () => {
     asset: environment.constants.ethx,
     owner: vaultProxy,
     expected: receivedEthx,
-    fuzziness: 1000n,
   });
 });
