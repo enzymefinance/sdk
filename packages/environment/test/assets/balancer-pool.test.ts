@@ -15,6 +15,7 @@ const lps = environment.getAssets({ types: [AssetType.BALANCER_POOL] });
 
 const deprecatedFactories = {
   [Network.ARBITRUM]: [""],
+  [Network.BASE]: [""],
   [Network.ETHEREUM]: [
     "0x7d833fef5bb92ddb578da85fc0c35cd5cc00fb3e", // AaveLinearPoolFactory (v3)
     "0xf9ac7b9df2b3454e841110cce5550bd5ac6f875f", // ComposableStablePoolFactory
