@@ -28,7 +28,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     curveMinter: "0x0000000000000000000000000000000000000000",
     curveRegistry: "0x0000000000000000000000000000000000000000",
     cvxCrvStaking: "0x0000000000000000000000000000000000000000",
-    gmxV2ExchangeRouter: "0x674ee2ffe588c4b1fde6d5481c55ef6133004cba",
+    gmxV2ExchangeRouter: "0x900173a66dbd345006c51fa35fa3ab760fcd843b",
     gmxV2ChainlinkPriceFeed: "0x527fb0bcff63c47761039bb386cfe181a92a4701",
     gmxV2DataStore: "0xfd70de6b91282d8017aa4e741e9ae325cab992d8",
     gmxV2Reader: "0x0537c767cdac0726c76bb89e92904fe28fd02fe1",
