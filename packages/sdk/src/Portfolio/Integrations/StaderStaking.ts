@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { readContract } from "viem/actions";
+import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -8,17 +10,6 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 export const wrap = IntegrationManager.makeUse(IntegrationManager.Selector.Wrap, wrapEncode);
 
 const wrapEncoding = [
-  {
-    name: "vaultProxy",
-    type: "address",
-  },
-  {
-    name: "callData",
-    type: "bytes",
-  },
-] as const;
-
-const callDataEncoding = [
   {
     name: "outgoingAmount",
     type: "uint256",
@@ -30,25 +21,49 @@ const callDataEncoding = [
 ] as const;
 
 export type WrapArgs = {
-  vaultProxy: Address;
   outgoingAmount: bigint;
   minIncomingAmount: bigint;
 };
 
 export function wrapEncode(args: WrapArgs): Hex {
-  const callData = encodeAbiParameters(callDataEncoding, [args.outgoingAmount, args.minIncomingAmount]);
-
-  return encodeAbiParameters(wrapEncoding, [args.vaultProxy, callData]);
+  return encodeAbiParameters(wrapEncoding, [args.outgoingAmount, args.minIncomingAmount]);
 }
 
 export function wrapDecode(encoded: Hex): WrapArgs {
-  const [vaultProxy, callData] = decodeAbiParameters(wrapEncoding, encoded);
-
-  const [outgoingAmount, minIncomingAmount] = decodeAbiParameters(callDataEncoding, callData);
+  const [outgoingAmount, minIncomingAmount] = decodeAbiParameters(wrapEncoding, encoded);
 
   return {
-    vaultProxy,
     outgoingAmount,
     minIncomingAmount,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+const staderStakePoolsManagerAbi = [
+  {
+    inputs: [{ internalType: "uint256", name: "_assets", type: "uint256" }],
+    name: "previewDeposit",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export function previewDeposit(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    staderStakingPoolManager: Address;
+    depositAmount: bigint;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: staderStakePoolsManagerAbi,
+    functionName: "previewDeposit",
+    address: args.staderStakingPoolManager,
+    args: [args.depositAmount],
+  });
 }

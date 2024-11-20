@@ -42,6 +42,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
     pendlePtLpOracle: "0x66a1096c6366b2529274df4f5d8247827fe4cea8",
+    staderStakingPoolManager: "0xcf5ea1b38380f6af39068375516daf40ed70d299",
     stakeWiseV3KeeperRewards: "0x6b5815467da09daa7dc83db21c9239d98bb487b5",
     uniswapV3NonFungiblePositionManager: "0xc36442b4a4522e871399cd717abdd847ab11fe88",
     voteLockedConvexToken: "0x72a19342e8f1838460ebfccef09f6585e32db86e",

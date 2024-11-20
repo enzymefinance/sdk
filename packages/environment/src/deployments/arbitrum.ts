@@ -42,6 +42,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
     pendlePtLpOracle: "0x0000000000000000000000000000000000000000",
+    staderStakingPoolManager: "0x0000000000000000000000000000000000000000",
     stakeWiseV3KeeperRewards: "0x0000000000000000000000000000000000000000",
     uniswapV3NonFungiblePositionManager: "0xc36442b4a4522e871399cd717abdd847ab11fe88",
     voteLockedConvexToken: "0x0000000000000000000000000000000000000000",

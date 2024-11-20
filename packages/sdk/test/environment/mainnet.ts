@@ -64,6 +64,7 @@ const constants = {
   paraswapV5Adapter: "0x871a7f0ef4917a1534e651d1fde3763a52a23ece",
   oneInchV5Adapter: "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677",
   zeroExV4Adapter: "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5",
+  staderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",
   // External contracts & misc addresses.
   balancerMinter: "0x239e55F427D44C3cc793f49bFB507ebe76638a2b",
   voteLockedCvx: "0x72a19342e8F1838460eBFCCEf09F6585e32db86E",
@@ -89,6 +90,7 @@ const constants = {
   cvx: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
   dai: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
   dpi: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
+  ethx: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
   frax: "0x853d955aCEf822Db058eb8505911ED77F175b99e",
   idle: "0x875773784Af8135eA0ef43b5a374AaD105c5D39e",
   idleV4Weth: "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80",
@@ -100,6 +102,7 @@ const constants = {
   wbtc: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
   weth: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   yearnVaultV2Weth: "0xa258C4606Ca8206D8aA700cE2143D7db854D168c",
+  staderStakingPoolManager: "0xcf5ea1b38380f6af39068375516daf40ed70d299",
 } as const;
 
 export const setupMainnet = createSetup({
