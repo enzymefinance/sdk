@@ -220,7 +220,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         SolvV2BondIssuerPositionLib: "0x31c30bacb054f5db7f5bc96850b488440abb8991",
         SolvV2BondIssuerPositionParser: "0xc4b599043a5479398eb8af387b1e36d9a924f8c2",
         StaderSDPriceFeed: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
-        StaderStakingAdapter: "0x0000000000000000000000000000000000000000",
+        StaderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",
         StakeWiseV3StakingPositionLib: "0xef268eb475a096adb95712b05b095acc1fc2d3ae",
         StakeWiseV3StakingPositionParser: "0x642348ee0c28c2943082f950f3a35db07bd4bbdf",
         SwellStakingAdapter: "0x50bae03333dd8495263c9049091a8925063b068e",
