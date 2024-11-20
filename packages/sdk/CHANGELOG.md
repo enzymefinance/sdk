@@ -1,5 +1,16 @@
 # @enzymefinance/sdk
 
+## 2.0.0
+
+### Minor Changes
+
+- [#568](https://github.com/enzymefinance/sdk/pull/568) [`0a63573`](https://github.com/enzymefinance/sdk/commit/0a63573ab757471c9177072ed8b37ac7d9b19023) Thanks [@iherger](https://github.com/iherger)! - Add Stader Staking adapter
+
+### Patch Changes
+
+- Updated dependencies [[`0a63573`](https://github.com/enzymefinance/sdk/commit/0a63573ab757471c9177072ed8b37ac7d9b19023)]:
+  - @enzymefinance/abis@1.1.0
+
 ## 1.0.0
 
 ### Minor Changes
