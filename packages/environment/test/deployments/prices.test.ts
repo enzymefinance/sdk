@@ -76,14 +76,14 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
 
         const difference = Math.abs((offchain - onchain) / ((offchain + onchain) / 2));
-        const _message = [
+        const message = [
           `Off-chain: $${offchain.toFixed(4)}`,
           `On-chain: $${onchain.toFixed(4)}`,
           `Difference: ${(difference * 100).toFixed(2)}%`,
         ];
 
         // Allow a difference of up to 5%
-        // expect(difference, message.join(' / ')).toBeLessThan(0.05);
+        expect(difference, message.join(" / ")).toBeLessThan(0.05);
       },
       { retry: 1, timeout: 60000 },
     );
