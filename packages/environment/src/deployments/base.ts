@@ -54,7 +54,7 @@ export default defineDeployment<Deployment.BASE>({
     zeroExV4Exchange: "0x0000000000000000000000000000000000000000",
     staderStakingPoolManager: "0x0000000000000000000000000000000000000000",
   },
-  inception: 230330283,
+  inception: 22694485,
   kind: Kind.TEST,
   knownAddressLists: {
     noSlippageAdapters: 1n,
@@ -227,7 +227,7 @@ export default defineDeployment<Deployment.BASE>({
         ZeroExV4Adapter: "0x0000000000000000000000000000000000000000",
         ZeroExV4AdapterPmm2Kyc: "0x0000000000000000000000000000000000000000",
       },
-      inception: 230330283,
+      inception: 22694485,
       network: Network.BASE,
       slug: `${Deployment.BASE}.${Version.SULU}`,
       status: Status.LIVE,
