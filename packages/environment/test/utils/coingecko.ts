@@ -23,7 +23,7 @@ export async function getCoingeckoPrices(network: Network, assets: ReadonlyArray
   const url = `https://api.coingecko.com/api/v3/simple/token_price/${slug}`;
 
   const ids = assets.map((asset) => asset.id);
-  const chunks = [...Array(Math.ceil(ids.length / 10))].map(() => ids.splice(0, 10));
+  const chunks = [...new Array(Math.ceil(ids.length / 10))].map(() => ids.splice(0, 10));
 
   const results = await Promise.all(
     chunks.map(async (addresses) => {

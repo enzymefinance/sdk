@@ -1,8 +1,8 @@
-import type { Interceptor, PromiseClient, Transport } from "@connectrpc/connect";
-import { createPromiseClient } from "@connectrpc/connect";
+import type { Client, Interceptor, Transport } from "@connectrpc/connect";
+import { createClient as createClientBase } from "@connectrpc/connect";
 import { EnzymeService } from "./protobuf.js";
 
-export type EnzymeClient = PromiseClient<typeof EnzymeService>;
+export type EnzymeClient = Client<typeof EnzymeService>;
 
 /**
  * Creates a client for the Enzyme service.
@@ -11,7 +11,7 @@ export type EnzymeClient = PromiseClient<typeof EnzymeService>;
  * @returns The client.
  */
 export function createClient(transport: Transport): EnzymeClient {
-  return createPromiseClient(EnzymeService, transport);
+  return createClientBase(EnzymeService, transport);
 }
 
 /**

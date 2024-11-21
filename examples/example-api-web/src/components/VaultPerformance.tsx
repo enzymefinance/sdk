@@ -36,15 +36,15 @@ export function VaultPerformance({ address }: { address: string }) {
 
   return (
     <>
-      <Card className="mt-7">
+      <Card class="mt-7">
         <Title>Share price</Title>
         {timeseries.isLoading ? (
-          <div className="mt-4 h-80 flex items-center justify-center">
+          <div class="mt-4 h-80 flex items-center justify-center">
             <Spinner />
           </div>
         ) : (
           <AreaChart
-            className="mt-4 h-80"
+            class="mt-4 h-80"
             data={timeseries.data ?? []}
             categories={["netShareValue"]}
             index="timestamp"
@@ -53,15 +53,15 @@ export function VaultPerformance({ address }: { address: string }) {
           />
         )}
       </Card>
-      <Card className="mt-7">
+      <Card class="mt-7">
         <Title>Assets under management</Title>
         {timeseries.isLoading ? (
-          <div className="mt-4 h-80 flex items-center justify-center">
+          <div class="mt-4 h-80 flex items-center justify-center">
             <Spinner />
           </div>
         ) : (
           <AreaChart
-            className="mt-4 h-80"
+            class="mt-4 h-80"
             data={timeseries.data ?? []}
             categories={["grossAssetValue"]}
             index="timestamp"

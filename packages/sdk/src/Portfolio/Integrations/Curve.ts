@@ -818,7 +818,7 @@ export async function getExpectedWithdrawalTokens(
 
   // Withdraw in a single asset
   if (!args.equalProportion && expectedSingleToken !== undefined) {
-    const expectedTokens = Array<bigint>(numberOfCoins).fill(0n);
+    const expectedTokens = new Array(numberOfCoins).fill(0n);
 
     expectedTokens[Number(args.singleTokenIndex)] = expectedSingleToken;
 

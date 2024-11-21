@@ -72,19 +72,15 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const offchain = prices[asset.id];
 
         if (offchain === undefined) {
-          console.warn(`Missing off-chain price for ${asset.symbol} (${asset.id})`);
-
           return;
         }
 
         const difference = Math.abs((offchain - onchain) / ((offchain + onchain) / 2));
-        const message = [
+        const _message = [
           `Off-chain: $${offchain.toFixed(4)}`,
           `On-chain: $${onchain.toFixed(4)}`,
           `Difference: ${(difference * 100).toFixed(2)}%`,
         ];
-
-        console.info(message.join("\n"));
 
         // Allow a difference of up to 5%
         // expect(difference, message.join(' / ')).toBeLessThan(0.05);

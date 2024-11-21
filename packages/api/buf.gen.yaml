@@ -7,6 +7,8 @@ plugins:
   - remote: buf.build/connectrpc/es:v1.4.0
     out: src/generated
     opt: target=ts
-  - remote: buf.build/bufbuild/es:v1.7.2
+  - remote: buf.build/bufbuild/es:v2.2.0
     out: src/generated
-    opt: target=ts
+    opt: 
+      - target=ts
+      - import_extension=js

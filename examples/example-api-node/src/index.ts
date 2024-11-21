@@ -21,10 +21,8 @@ const transport = createConnectTransport(
 );
 
 const client = createClient(transport);
-const vault = await client.getVault({
+const _vault = await client.getVault({
   address,
   deployment: Deployment.ETHEREUM,
   currency: Currency.USD,
 });
-
-console.dir(vault);

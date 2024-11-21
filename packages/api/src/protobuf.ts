@@ -5,7 +5,6 @@ export * from "./generated/enzyme/enzyme/v1/asset_value_pb.js";
 export * from "./generated/enzyme/enzyme/v1/depositor_item_pb.js";
 export * from "./generated/enzyme/enzyme/v1/depositor_time_series_item_pb.js";
 export * from "./generated/enzyme/enzyme/v1/enums_pb.js";
-export * from "./generated/enzyme/enzyme/v1/enzyme_connect.js";
 export * from "./generated/enzyme/enzyme/v1/enzyme_pb.js";
 export * from "./generated/enzyme/enzyme/v1/external_position_item_pb.js";
 export * from "./generated/enzyme/enzyme/v1/fee_configuration_pb.js";

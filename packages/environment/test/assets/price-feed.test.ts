@@ -52,9 +52,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         const descriptionParts = description.match(/^([\w\s\+]+)\s\/\s(\w+)[\s\w$]*/);
 
         if (descriptionParts?.[1].toLowerCase() !== asset.symbol.toLowerCase()) {
-          console.warn(
-            `Inconsistent price feed description: asset is ${asset.symbol}, aggregator is ${descriptionParts?.[1]}`,
-          );
         }
 
         expect(descriptionParts?.[2]).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");

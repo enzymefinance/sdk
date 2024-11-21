@@ -272,7 +272,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     let assets = Object.values(this.assets);
 
     if (typeof types !== "undefined") {
-      assets = types.length ? assets.filter((item) => types.includes(item.type)) : [];
+      assets = types.length > 0 ? assets.filter((item) => types.includes(item.type)) : [];
     }
 
     if (typeof registered !== "undefined") {
