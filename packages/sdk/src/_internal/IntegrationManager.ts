@@ -21,6 +21,7 @@ export const Selector = {
   Transfer: "0x3461917c", // transfer(address,bytes,bytes)
   Unstake: "0x68e30677", // unstake(address,bytes,bytes)
   UnstakeAndRedeem: "0x8334eb99", // unstakeAndRedeem(address,bytes,bytes)
+  Wrap: "0xa5ca2d71", // wrap(address,bytes,bytes)
 } as const;
 
 export type UseParams<TArgs> = {
