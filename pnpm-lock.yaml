@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@changesets/assemble-release-plan':
+    hash: 7yy5fjjkdxu3dwnn7xxfsjv3ym
+    path: patches/@changesets__assemble-release-plan.patch
+
 importers:
 
   .:
@@ -4223,7 +4228,7 @@ snapshots:
       resolve-from: 5.0.0
       semver: 7.6.3
 
-  '@changesets/assemble-release-plan@6.0.3':
+  '@changesets/assemble-release-plan@6.0.3(patch_hash=7yy5fjjkdxu3dwnn7xxfsjv3ym)':
     dependencies:
       '@babel/runtime': 7.25.4
       '@changesets/errors': 0.2.0
@@ -4249,7 +4254,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.25.4
       '@changesets/apply-release-plan': 7.0.4
-      '@changesets/assemble-release-plan': 6.0.3
+      '@changesets/assemble-release-plan': 6.0.3(patch_hash=7yy5fjjkdxu3dwnn7xxfsjv3ym)
       '@changesets/changelog-git': 0.2.0
       '@changesets/config': 3.0.2
       '@changesets/errors': 0.2.0
@@ -4312,7 +4317,7 @@ snapshots:
   '@changesets/get-release-plan@4.0.3':
     dependencies:
       '@babel/runtime': 7.25.4
-      '@changesets/assemble-release-plan': 6.0.3
+      '@changesets/assemble-release-plan': 6.0.3(patch_hash=7yy5fjjkdxu3dwnn7xxfsjv3ym)
       '@changesets/config': 3.0.2
       '@changesets/pre': 2.0.0
       '@changesets/read': 0.6.0

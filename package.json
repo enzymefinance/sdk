@@ -29,5 +29,10 @@
     "vite": "^5.4.2",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.0.5"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@changesets/assemble-release-plan": "patches/@changesets__assemble-release-plan.patch"
+    }
   }
 }
