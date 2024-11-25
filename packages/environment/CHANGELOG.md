@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.1.1
+
+### Patch Changes
+
+- [#572](https://github.com/enzymefinance/sdk/pull/572) [`d594e51`](https://github.com/enzymefinance/sdk/commit/d594e5151f9f104c3b3dda6ef9d88ad7f816c708) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add 31Third adapter on Arbitrum
+
 ## 6.1.0
 
 ### Minor Changes
