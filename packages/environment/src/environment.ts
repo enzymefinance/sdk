@@ -177,6 +177,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
       this.namedTokens = namedTokens as DeploymentNamedAssetsTokens<TDeployment> & DeploymentNamedTokensAssetsArbitrum;
     } else if (Environment.isDeploymentBase(this)) {
       const namedTokens = {
+        bal: this.getAssetAs(this.deployment.namedTokens.bal, AssetType.PRIMITIVE),
         dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
         mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),
         nativeTokenWrapper: this.getAssetAs(this.network.currency.wrapper, AssetType.PRIMITIVE),
@@ -283,7 +284,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     let assets = Object.values(this.assets);
 
     if (typeof types !== "undefined") {
-      assets = types.length ? assets.filter((item) => types.includes(item.type)) : [];
+      assets = types.length > 0 ? assets.filter((item) => types.includes(item.type)) : [];
     }
 
     if (typeof registered !== "undefined") {

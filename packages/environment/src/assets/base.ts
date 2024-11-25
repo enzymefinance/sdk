@@ -43,4 +43,17 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    decimals: 18,
+    id: "0x4158734d47fc9692176b5085e0f52ee0da5d47f1",
+    name: "Balancer",
+    releases: [sulu],
+    symbol: "BAL",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x0000000000000000000000000000000000000000",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
