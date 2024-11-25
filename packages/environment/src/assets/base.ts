@@ -30,4 +30,17 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    decimals: 18,
+    id: "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
+    name: "Dai Stablecoin",
+    releases: [sulu],
+    symbol: "DAI",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x0000000000000000000000000000000000000000",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
