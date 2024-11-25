@@ -56,4 +56,17 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    decimals: 18,
+    id: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
+    name: "Compound",
+    releases: [sulu],
+    symbol: "COMP",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x0000000000000000000000000000000000000000",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
