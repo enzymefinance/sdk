@@ -1,5 +1,28 @@
 # @enzymefinance/environment
 
+## 6.1.1
+
+### Patch Changes
+
+- [#572](https://github.com/enzymefinance/sdk/pull/572) [`d594e51`](https://github.com/enzymefinance/sdk/commit/d594e5151f9f104c3b3dda6ef9d88ad7f816c708) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add 31Third adapter on Arbitrum
+
+## 6.1.0
+
+### Minor Changes
+
+- [#568](https://github.com/enzymefinance/sdk/pull/568) [`0a63573`](https://github.com/enzymefinance/sdk/commit/0a63573ab757471c9177072ed8b37ac7d9b19023) Thanks [@iherger](https://github.com/iherger)! - Add Stader Staking adapter
+
+### Patch Changes
+
+- Updated dependencies [[`0a63573`](https://github.com/enzymefinance/sdk/commit/0a63573ab757471c9177072ed8b37ac7d9b19023)]:
+  - @enzymefinance/sdk@2.0.0
+
+## 6.0.1
+
+### Patch Changes
+
+- [#564](https://github.com/enzymefinance/sdk/pull/564) [`1597caf`](https://github.com/enzymefinance/sdk/commit/1597cafaa19b8003d3899e8a0c688d005e6f6465) Thanks [@iherger](https://github.com/iherger)! - Update GMX router
+
 ## 6.0.0
 
 ### Minor Changes

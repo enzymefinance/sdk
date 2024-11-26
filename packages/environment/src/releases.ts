@@ -271,6 +271,7 @@ export interface ExternalContractsMapping {
   readonly paraswapV5AugustusSwapper: Address;
   readonly paraswapV5TokenTransferProxy: Address;
   readonly pendlePtLpOracle: Address;
+  readonly staderStakingPoolManager: Address;
   readonly stakeWiseV3KeeperRewards: Address;
   readonly theGraphDelegationStakingProxy: Address;
   readonly theGraphEpochManagerProxy: Address;

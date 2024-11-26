@@ -126,6 +126,7 @@ export { ISolvV2BondBuyerPositionLib } from "./ISolvV2BondBuyerPositionLib.js";
 export { ISolvV2BondBuyerPositionParser } from "./ISolvV2BondBuyerPositionParser.js";
 export { ISolvV2BondIssuerPositionLib } from "./ISolvV2BondIssuerPositionLib.js";
 export { ISolvV2BondIssuerPositionParser } from "./ISolvV2BondIssuerPositionParser.js";
+export { IStaderStakingAdapter } from "./IStaderStakingAdapter.js";
 export { IStakeWiseV3StakingPositionLib } from "./IStakeWiseV3StakingPositionLib.js";
 export { IStakeWiseV3StakingPositionParser } from "./IStakeWiseV3StakingPositionParser.js";
 export { IStakingWrapper } from "./IStakingWrapper.js";
