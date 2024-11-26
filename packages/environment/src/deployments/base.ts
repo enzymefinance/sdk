@@ -66,7 +66,6 @@ export default defineDeployment<Deployment.BASE>({
   },
   label: "Base",
   namedTokens: {
-    bal: "0x4158734d47fc9692176b5085e0f52ee0da5d47f1",
     comp: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
     dai: "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
     mln: "0x7c298664bd6582f6f264c2cb5a4b9cc09b6e3889",

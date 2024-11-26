@@ -177,7 +177,6 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
       this.namedTokens = namedTokens as DeploymentNamedAssetsTokens<TDeployment> & DeploymentNamedTokensAssetsArbitrum;
     } else if (Environment.isDeploymentBase(this)) {
       const namedTokens = {
-        bal: this.getAssetAs(this.deployment.namedTokens.bal, AssetType.PRIMITIVE),
         comp: this.getAssetAs(this.deployment.namedTokens.comp, AssetType.PRIMITIVE),
         dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
         mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),

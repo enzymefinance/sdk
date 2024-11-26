@@ -95,7 +95,6 @@ export interface DeploymentNamedTokensArbitrum {
 }
 
 export interface DeploymentNamedTokensBase {
-  readonly bal: Address;
   readonly comp: Address;
   readonly dai: Address;
   readonly mln: Address;
@@ -173,7 +172,6 @@ export interface DeploymentNamedTokensAssetsArbitrum {
 }
 
 export interface DeploymentNamedTokensAssetsBase {
-  readonly bal: PrimitiveAsset;
   readonly comp: PrimitiveAsset;
   readonly dai: PrimitiveAsset;
   readonly mln: PrimitiveAsset;

@@ -45,19 +45,6 @@ export default defineAssetList(Network.BASE, [
   },
   {
     decimals: 18,
-    id: "0x4158734d47fc9692176b5085e0f52ee0da5d47f1",
-    name: "Balancer",
-    releases: [sulu],
-    symbol: "BAL",
-    type: AssetType.PRIMITIVE,
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x0000000000000000000000000000000000000000",
-      rateAsset: RateAsset.USD,
-    },
-  },
-  {
-    decimals: 18,
     id: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
     name: "Compound",
     releases: [sulu],
