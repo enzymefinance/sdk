@@ -3464,7 +3464,9 @@ export async function getExecutionFee({
     executionGasFeeMultiplierFactor,
   });
 
-  return adjustedGasLimit * gasPrice;
+  const value = adjustedGasLimit * gasPrice;
+
+  return value + multiplyBySlippage({ value, slippage: 0.003 }); // add 0.3% slippage to gas fee if gas price in block changes while order is being created
 }
 
 export function adjustGasLimitForEstimate({
