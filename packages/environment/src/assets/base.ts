@@ -39,7 +39,7 @@ export default defineAssetList(Network.BASE, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x0000000000000000000000000000000000000000",
+      aggregator: "0x591e79239a7d679378ec8c847e5038150364c78f",
       rateAsset: RateAsset.USD,
     },
   },
@@ -65,7 +65,20 @@ export default defineAssetList(Network.BASE, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x0000000000000000000000000000000000000000",
+      aggregator: "0x9dda783de64a9d1a60c49ca761ebe528c35ba428",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xfde4c96c8593536e31f229ea8f37b2ada2699bb2",
+    name: "Tether USD",
+    releases: [sulu],
+    symbol: "USDT",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xf19d560eb8d2adf07bd6d13ed03e1d11215721f9",
       rateAsset: RateAsset.USD,
     },
   },

@@ -70,6 +70,7 @@ export default defineDeployment<Deployment.BASE>({
     comp: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
     dai: "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
     mln: "0x7c298664bd6582f6f264c2cb5a4b9cc09b6e3889",
+    usdt: "0xfde4c96c8593536e31f229ea8f37b2ada2699bb2",
     weth: "0x4200000000000000000000000000000000000006",
   },
   network: Network.BASE,

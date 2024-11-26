@@ -99,6 +99,7 @@ export interface DeploymentNamedTokensBase {
   readonly comp: Address;
   readonly dai: Address;
   readonly mln: Address;
+  readonly usdt: Address;
   readonly weth: Address;
 }
 
@@ -177,6 +178,7 @@ export interface DeploymentNamedTokensAssetsBase {
   readonly dai: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
   readonly nativeTokenWrapper: PrimitiveAsset;
+  readonly usdt: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
 }
 
