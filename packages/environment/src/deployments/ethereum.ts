@@ -66,6 +66,9 @@ export default defineDeployment<Deployment.ETHEREUM>({
     nonStandardPriceFeedAssets: 650n,
     aTokens: 463n,
   },
+  knownUintLists: {
+    allowedMorphoBlueVaults: 3n,
+  },
   label: "Ethereum",
   namedTokens: {
     aave: "0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9",

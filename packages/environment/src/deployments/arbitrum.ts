@@ -65,6 +65,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     nonStandardPriceFeedAssets: 16n,
     aTokens: 8n,
   },
+  knownUintLists: {},
   label: "Arbitrum",
   namedTokens: {
     bal: "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8",

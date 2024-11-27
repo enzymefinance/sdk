@@ -65,6 +65,7 @@ export default defineDeployment<Deployment.POLYGON>({
     nonStandardPriceFeedAssets: 1383n,
     aTokens: 735n,
   },
+  knownUintLists: {},
   label: "Polygon",
   namedTokens: {
     aave: "0xd6df932a45c0f255f85145f286ea0b292b21c90b",
