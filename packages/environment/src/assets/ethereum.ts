@@ -2668,9 +2668,9 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 8,
     id: "0x20157dbabb84e3bbfe68c349d0d44e48ae7b5ad2",
-    name: "dlcBTC",
+    name: "iBTC",
     releases: [sulu],
-    symbol: "DLCBTC",
+    symbol: "IBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
