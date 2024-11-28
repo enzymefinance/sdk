@@ -7330,7 +7330,7 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     symbol: "steakPYUSD",
     name: "Steakhouse PYUSD",
-    id: "0xbEEF02e5E13584ab96848af90261f0C8Ee04722a",
+    id: "0xbeef02e5e13584ab96848af90261f0c8ee04722a",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.MORPHO,
     releases: [sulu],
