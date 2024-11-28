@@ -18,6 +18,7 @@ export default defineDeployment<Deployment.TESTNET>({
     nonStandardPriceFeedAssets: 128n,
     aTokens: 115n,
   },
+  knownUintLists: {},
   label: "Testnet",
   namedTokens: polygonDeployment.namedTokens,
   network: Network.POLYGON,

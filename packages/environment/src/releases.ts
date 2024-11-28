@@ -232,6 +232,10 @@ export interface KnownAddressListIdMapping {
   aTokens: bigint;
 }
 
+export interface KnownUintListIdMapping {
+  allowedMorphoBlueVaults?: bigint;
+}
+
 export interface ExternalContractsMapping {
   readonly aaveUIIncentiveDataProvider: Address;
   readonly aaveV2IncentivesController: Address;
@@ -266,6 +270,7 @@ export interface ExternalContractsMapping {
   readonly liquitySortedTroves: Address;
   readonly liquityTroveManager: Address;
   readonly makerMCDPotAddress: Address;
+  readonly morphoBlue: Address;
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;
   readonly paraswapV5TokenTransferProxy: Address;
@@ -298,6 +303,10 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
    * Ids for known address lists.
    */
   readonly knownAddressLists: KnownAddressListIdMapping;
+  /**
+   * Ids for known uint lists.
+   */
+  readonly knownUintLists: KnownUintListIdMapping;
   /**
    * The kind of the deployment (e.g. testnet or production).
    */
