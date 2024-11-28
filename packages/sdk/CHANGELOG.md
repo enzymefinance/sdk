@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.1.1
+
+### Patch Changes
+
+- [#574](https://github.com/enzymefinance/sdk/pull/574) [`cee1200`](https://github.com/enzymefinance/sdk/commit/cee1200a5dd8d09a6afa5df11ac0d48e5287600e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - GMX improvements
+
 ## 1.1.0
 
 ### Minor Changes

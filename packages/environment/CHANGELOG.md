@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.1.2
+
+### Patch Changes
+
+- [#575](https://github.com/enzymefinance/sdk/pull/575) [`1db8e78`](https://github.com/enzymefinance/sdk/commit/1db8e7891528257ce001d6364753484442917a18) Thanks [@iherger](https://github.com/iherger)! - Rename dlcBTC to iBTC
+
+- Updated dependencies [[`cee1200`](https://github.com/enzymefinance/sdk/commit/cee1200a5dd8d09a6afa5df11ac0d48e5287600e)]:
+  - @enzymefinance/sdk@1.1.1
+
 ## 6.1.1
 
 ### Patch Changes
