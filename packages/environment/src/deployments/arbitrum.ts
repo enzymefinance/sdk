@@ -215,7 +215,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         TermFinanceV1LendingPositionParser: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionLib: "0x92da9df390d3e9199d105289b297eca357ecc9b7",
         TheGraphDelegationPositionParser: "0xc2822eca13a7760141041a173c1b9b13e22515f6",
-        ThreeOneThirdAdapter: "0x908c0c476c0dc8f7b6d6b6aa34f0349a714380b8",
+        ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",
         TransferAssetsAdapter: "0xe8db4924569a3c61aadfb721bbb009e3127196bd",
         UintListRegistry: "0xc438e48f5d2f99eb4a2b9865f8cccfc9915f227a",
         UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
