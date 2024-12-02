@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.1.5
+
+### Patch Changes
+
+- [#577](https://github.com/enzymefinance/sdk/pull/577) [`5b364f0`](https://github.com/enzymefinance/sdk/commit/5b364f00c85a595d4e67c379708847ea68eea49d) Thanks [@iherger](https://github.com/iherger)! - Add PYUSD and 2 Morpho vaults
+
 ## 6.1.4
 
 ### Patch Changes
