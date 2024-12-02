@@ -1,5 +1,17 @@
 # @enzymefinance/environment
 
+## 6.1.4
+
+### Patch Changes
+
+- [#579](https://github.com/enzymefinance/sdk/pull/579) [`d69d80e`](https://github.com/enzymefinance/sdk/commit/d69d80e7703a4d6c6764f78102847938b543ed87) Thanks [@iherger](https://github.com/iherger)! - Update 31Third adapter addresses
+
+## 6.1.3
+
+### Patch Changes
+
+- [#563](https://github.com/enzymefinance/sdk/pull/563) [`43c8e86`](https://github.com/enzymefinance/sdk/commit/43c8e86ef3ed3668d5af92e3473034be81563a32) Thanks [@iherger](https://github.com/iherger)! - Add pendle assets
+
 ## 6.1.2
 
 ### Patch Changes

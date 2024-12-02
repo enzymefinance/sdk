@@ -17,6 +17,7 @@ import {
   IdleSchema,
   MaplePoolV1Schema,
   MaplePoolV2Schema,
+  PendleV2PtSchema,
   PrimitiveSchema,
   StaderSchema,
   SynthetixSchema,
@@ -97,6 +98,10 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.ERC_4626: {
           validate(ERC4626Schema, asset);
+          break;
+        }
+        case AssetType.PENDLE_V2_PT: {
+          validate(PendleV2PtSchema, asset);
           break;
         }
         default:

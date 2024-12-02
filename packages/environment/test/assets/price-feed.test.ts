@@ -73,7 +73,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        expect(description).toBe("Redstone Price Feed");
+        expect(description).toMatch(/^Red(?:s|S)tone Price Feed(?: for SolvBTC)*$/);
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
 
         break;
@@ -112,7 +112,8 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
-      case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
+      case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:
+      case PriceFeedType.PRIMITIVE_PENDLE_V2: {
         const [aggregator, rateAsset] = await Promise.all([
           Protocol.getAggregatorForPrimitive(client, { valueInterpreter, asset: asset.id }),
           Protocol.getRateAssetForPrimitive(client, { valueInterpreter, asset: asset.id }),
@@ -218,7 +219,8 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
       case PriceFeedType.PRIMITIVE_REDSTONE:
-      case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION: {
+      case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:
+      case PriceFeedType.PRIMITIVE_PENDLE_V2: {
         break;
       }
 
