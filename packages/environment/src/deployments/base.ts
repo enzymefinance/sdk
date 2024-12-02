@@ -240,14 +240,14 @@ export default defineDeployment<Deployment.BASE>({
   },
   slug: Deployment.BASE,
   subgraphs: {
-    assets: { slug: "asset-universe-base", id: "" },
-    balances: { slug: "vault-balances-base", id: "" },
+    assets: { slug: "asset-universe-base", id: "5pEH7HJiFmFcBeZet5v9QkyWAsTYrynzSTrGsvmG35zr" },
+    balances: { slug: "vault-balances-base", id: "33E2svxCDLYayW9M92Xk5hZPpzeoTVLG3xcCS4j2EHD4" },
     core: {
       slug: "enzyme-core-base",
-      id: "",
+      id: "4mN2FhEurr8LEaFgSGwfcTzUxn7FCrY2UzqFLRcsfGne",
       devVersion: "version/latest",
     },
-    shares: { slug: "vault-shares-base", id: "" },
-    vaults: { slug: "vault-lineage-base", id: "" },
+    shares: { slug: "vault-shares-base", id: "8TUqAo4HpMPapdmG6nsAUmUuKb3YqGbjtGAZsycgd1JM" },
+    vaults: { slug: "vault-lineage-base", id: "C7yW1brB1mwHyAmjsHdhnA7uaMdr8hj1fBvL2RdzcyrV" },
   },
 });
