@@ -16,6 +16,7 @@ import type {
   DeploymentNetwork,
   ExternalContractsMapping,
   KnownAddressListIdMapping,
+  KnownUintListIdMapping,
   Release,
   ReleaseDefinition,
 } from "./releases.js";
@@ -96,6 +97,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public readonly contracts: VersionContracts<TVersion>;
   public readonly externalContracts: ExternalContractsMapping;
   public readonly knownAddressLists: KnownAddressListIdMapping;
+  public readonly knownUintLists: KnownUintListIdMapping;
   public readonly assets: Record<Address, Asset> = {};
   public readonly adapters: Record<string, AdapterDefinition> = {};
   public readonly namedTokens: DeploymentNamedAssetsTokens<TDeployment>;
@@ -143,6 +145,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
 
     this.externalContracts = deployment.externalContracts;
     this.knownAddressLists = deployment.knownAddressLists;
+    this.knownUintLists = deployment.knownUintLists;
 
     const network = deployment.network;
     const assets = deployment.assets.filter((asset) => asset.network === network);

@@ -126,6 +126,11 @@ export const CurvePoolLpSchema = CommonAssetSchema.extend({
   underlyings: z.array(address).min(1),
 });
 
+export const PendleV2PtSchema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.PENDLE_V2_PT),
+  underlying: address,
+});
+
 export const AssetSchema = z.union([
   PrimitiveSchema,
   StaderSchema,
@@ -140,6 +145,7 @@ export const AssetSchema = z.union([
   CurvePoolGaugeSchema,
   CurvePoolLpSchema,
   ERC4626Schema,
+  PendleV2PtSchema,
 ]);
 
 function error(result: z.SafeParseReturnType<any, any>) {

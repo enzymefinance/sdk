@@ -1,5 +1,32 @@
 # @enzymefinance/environment
 
+## 6.1.5
+
+### Patch Changes
+
+- [#577](https://github.com/enzymefinance/sdk/pull/577) [`5b364f0`](https://github.com/enzymefinance/sdk/commit/5b364f00c85a595d4e67c379708847ea68eea49d) Thanks [@iherger](https://github.com/iherger)! - Add PYUSD and 2 Morpho vaults
+
+## 6.1.4
+
+### Patch Changes
+
+- [#579](https://github.com/enzymefinance/sdk/pull/579) [`d69d80e`](https://github.com/enzymefinance/sdk/commit/d69d80e7703a4d6c6764f78102847938b543ed87) Thanks [@iherger](https://github.com/iherger)! - Update 31Third adapter addresses
+
+## 6.1.3
+
+### Patch Changes
+
+- [#563](https://github.com/enzymefinance/sdk/pull/563) [`43c8e86`](https://github.com/enzymefinance/sdk/commit/43c8e86ef3ed3668d5af92e3473034be81563a32) Thanks [@iherger](https://github.com/iherger)! - Add pendle assets
+
+## 6.1.2
+
+### Patch Changes
+
+- [#575](https://github.com/enzymefinance/sdk/pull/575) [`1db8e78`](https://github.com/enzymefinance/sdk/commit/1db8e7891528257ce001d6364753484442917a18) Thanks [@iherger](https://github.com/iherger)! - Rename dlcBTC to iBTC
+
+- Updated dependencies [[`cee1200`](https://github.com/enzymefinance/sdk/commit/cee1200a5dd8d09a6afa5df11ac0d48e5287600e)]:
+  - @enzymefinance/sdk@1.1.1
+
 ## 6.1.1
 
 ### Patch Changes

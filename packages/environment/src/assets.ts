@@ -63,6 +63,7 @@ export type Asset =
   | IdleAsset
   | MapleV1Asset
   | MapleV2Asset
+  | PendleV2Asset
   | PrimitiveAsset
   | StaderAsset
   | SynthetixAsset
@@ -79,6 +80,7 @@ export enum AssetType {
   CURVE_POOL_LP = "curve-pool-lp",
   CURVE_POOL_GAUGE = "curve-pool-gauge",
   IDLE = "idle",
+  PENDLE_V2_PT = "pendle-v2-pt",
   PRIMITIVE = "primitive",
   STADER = "stader",
   SYNTHETIX = "synthetix",
@@ -321,6 +323,14 @@ export interface CurvePoolGaugeAsset extends AssetBase {
    * Underlying Assets.
    */
   readonly underlyings: Array<Address>;
+}
+
+export interface PendleV2Asset extends AssetBase {
+  readonly type: AssetType.PENDLE_V2_PT;
+  /**
+   * Underlying Asset.
+   */
+  readonly underlying: Address;
 }
 
 export function defineAssetList<TNetwork extends Network>(
