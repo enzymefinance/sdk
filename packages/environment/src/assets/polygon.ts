@@ -353,8 +353,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xefb7e6be8356ccc6827799b6a7348ee674a80eae",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xfe4a8cc5b5b2366c1b58bea3858e81843581b2f7",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -367,8 +367,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xefb7e6be8356ccc6827799b6a7348ee674a80eae",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xfe4a8cc5b5b2366c1b58bea3858e81843581b2f7",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -499,8 +499,8 @@ export default defineAssetList(Network.POLYGON, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xefb7e6be8356ccc6827799b6a7348ee674a80eae",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xfe4a8cc5b5b2366c1b58bea3858e81843581b2f7",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -677,8 +677,8 @@ export default defineAssetList(Network.POLYGON, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xefb7e6be8356ccc6827799b6a7348ee674a80eae",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xfe4a8cc5b5b2366c1b58bea3858e81843581b2f7",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -845,8 +845,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xf9d5aac6e5572aefa6bd64108ff86a222f69b64d",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x0a6513e40db6eb1b165753ad52e80663aea50545",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -859,8 +859,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xf9d5aac6e5572aefa6bd64108ff86a222f69b64d",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x0a6513e40db6eb1b165753ad52e80663aea50545",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1139,8 +1139,8 @@ export default defineAssetList(Network.POLYGON, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xf9d5aac6e5572aefa6bd64108ff86a222f69b64d",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x0a6513e40db6eb1b165753ad52e80663aea50545",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1553,8 +1553,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x2791bca1f2de4661ed88a30c99a7a9449aa84174",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xefb7e6be8356ccc6827799b6a7348ee674a80eae",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xfe4a8cc5b5b2366c1b58bea3858e81843581b2f7",
+      rateAsset: RateAsset.USD,
     },
   },
   {
