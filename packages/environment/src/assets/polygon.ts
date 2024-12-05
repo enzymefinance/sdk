@@ -513,8 +513,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfc539a559e170f848323e19dfd66007520510085",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x4746dec9e833a82ec7c2c1356372ccf2cfcd2f3d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -527,8 +527,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfc539a559e170f848323e19dfd66007520510085",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x4746dec9e833a82ec7c2c1356372ccf2cfcd2f3d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1011,8 +1011,8 @@ export default defineAssetList(Network.POLYGON, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfc539a559e170f848323e19dfd66007520510085",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x4746dec9e833a82ec7c2c1356372ccf2cfcd2f3d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
