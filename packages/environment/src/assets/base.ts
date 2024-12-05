@@ -21,13 +21,11 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0x7c298664bd6582f6f264c2cb5a4b9cc09b6e3889",
     name: "Melon Token",
-    releases: [sulu],
+    releases: [],
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x0000000000000000000000000000000000000000",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
