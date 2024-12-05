@@ -113,7 +113,7 @@ export function claimWithdrawalsDecode(encoded: Hex): ClaimWithdrawalsArgs {
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-const staderStakePoolsManagerAbi = [
+const staderStakingPoolManagerAbi = [
   {
     inputs: [{ internalType: "uint256", name: "_assets", type: "uint256" }],
     name: "previewDeposit",
@@ -132,100 +132,91 @@ export function previewDeposit(
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: staderStakePoolsManagerAbi,
+    abi: staderStakingPoolManagerAbi,
     functionName: "previewDeposit",
     address: args.staderStakingPoolManager,
     args: [args.depositAmount],
   });
 }
 
-const lidoWithdrawalsQueueAbi = [
+const userWithdrawManagerAbi = [
   {
-    inputs: [],
-    name: "getLastCheckpointIndex",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-
-  {
-    inputs: [
-      { internalType: "uint256[]", name: "_requestIds", type: "uint256[]" },
-      { internalType: "uint256", name: "_firstIndex", type: "uint256" },
-      { internalType: "uint256", name: "_lastIndex", type: "uint256" },
-    ],
-    name: "findCheckpointHints",
-    outputs: [{ internalType: "uint256[]", name: "hintIds", type: "uint256[]" }],
+    inputs: [{ internalType: "address", name: "_owner", type: "address" }],
+    name: "getRequestIdsByUser",
+    outputs: [{ internalType: "uint256[]", name: "", type: "uint256[]" }],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256[]", name: "_requestIds", type: "uint256[]" }],
-    name: "getWithdrawalStatus",
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "userWithdrawRequests",
     outputs: [
-      {
-        components: [
-          { internalType: "uint256", name: "amountOfStETH", type: "uint256" },
-          { internalType: "uint256", name: "amountOfShares", type: "uint256" },
-          { internalType: "address", name: "owner", type: "address" },
-          { internalType: "uint256", name: "timestamp", type: "uint256" },
-          { internalType: "bool", name: "isFinalized", type: "bool" },
-          { internalType: "bool", name: "isClaimed", type: "bool" },
-        ],
-        internalType: "struct WithdrawalQueueBase.WithdrawalRequestStatus[]",
-        name: "statuses",
-        type: "tuple[]",
-      },
+      { internalType: "address payable", name: "owner", type: "address" },
+      { internalType: "uint256", name: "ethXAmount", type: "uint256" },
+      { internalType: "uint256", name: "ethExpected", type: "uint256" },
+      { internalType: "uint256", name: "ethFinalized", type: "uint256" },
+      { internalType: "uint256", name: "requestBlock", type: "uint256" },
     ],
     stateMutability: "view",
     type: "function",
   },
 ] as const;
 
-export function getLastCheckpointIndex(
+export function getRequestIdsByUser(
   client: Client,
   args: Viem.ContractCallParameters<{
-    lidoWithdrawalsQueue: Address;
+    userWithdrawManager: Address;
+    user: Address;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: lidoWithdrawalsQueueAbi,
-    functionName: "getLastCheckpointIndex",
-    address: args.lidoWithdrawalsQueue,
+    abi: userWithdrawManagerAbi,
+    functionName: "getRequestIdsByUser",
+    address: args.userWithdrawManager,
+    args: [args.user],
   });
 }
 
-export function findCheckpointHints(
+export function userWithdrawRequests(
   client: Client,
   args: Viem.ContractCallParameters<{
-    lidoWithdrawalsQueue: Address;
-    requestIds: ReadonlyArray<bigint>;
-    firstIndex: bigint;
-    lastIndex: bigint;
+    userWithdrawManager: Address;
+    requestId: bigint;
   }>,
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: lidoWithdrawalsQueueAbi,
-    functionName: "findCheckpointHints",
-    address: args.lidoWithdrawalsQueue,
-    args: [args.requestIds, args.firstIndex, args.lastIndex],
+    abi: userWithdrawManagerAbi,
+    functionName: "userWithdrawRequests",
+    address: args.userWithdrawManager,
+    args: [args.requestId],
   });
 }
 
-export function getWithdrawalStatus(
+export async function getRequestsWithDetailsByUser(
   client: Client,
   args: Viem.ContractCallParameters<{
-    lidoWithdrawalsQueue: Address;
-    requestIds: ReadonlyArray<bigint>;
+    userWithdrawManager: Address;
+    user: Address;
   }>,
 ) {
-  return readContract(client, {
-    ...Viem.extractBlockParameters(args),
-    abi: lidoWithdrawalsQueueAbi,
-    functionName: "getWithdrawalStatus",
-    address: args.lidoWithdrawalsQueue,
-    args: [args.requestIds],
+  const requestIds = await getRequestIdsByUser(client, {
+    userWithdrawManager: args.userWithdrawManager,
+    user: args.user,
   });
+
+  const requestDetails = await Promise.all(
+    requestIds.map((requestId) =>
+      userWithdrawRequests(client, { userWithdrawManager: args.userWithdrawManager, requestId }),
+    ),
+  );
+
+  return requestDetails.map((detail) => ({
+    owner: detail[0],
+    ethXAmount: detail[1],
+    ethExpected: detail[2],
+    ethFinalized: detail[3],
+    requestBlock: detail[4],
+  }));
 }
