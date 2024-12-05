@@ -149,6 +149,8 @@ export interface SuluContracts extends CommonContracts {
   readonly SolvV2BondIssuerPositionParser: Address;
   readonly StaderSDPriceFeed: Address;
   readonly StaderStakingAdapter: Address;
+  readonly StaderWithdrawalsPositionLib: Address;
+  readonly StaderWithdrawalsPositionParser: Address;
   readonly StakeWiseV3StakingPositionLib: Address;
   readonly StakeWiseV3StakingPositionParser: Address;
   readonly SwellStakingAdapter: Address;
