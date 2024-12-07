@@ -52,8 +52,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
+      rateAsset: RateAsset.USD,
       peggedTo: "USDC",
       nonStandard: true,
     },
@@ -118,8 +118,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xaed0c38402a5d19df6e4c03f4e2dced6e29c1ee9",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -132,8 +132,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x6b175474e89094c44da98b954eedeac495271d0f",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xaed0c38402a5d19df6e4c03f4e2dced6e29c1ee9",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1478,8 +1478,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -1492,8 +1492,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2301,8 +2301,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x773616e4d11a78f511299002da57a0a94577f1f4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xaed0c38402a5d19df6e4c03f4e2dced6e29c1ee9",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -2752,8 +2752,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xb9e1e3a9feff48998e45fa90847ed4d467e8bcfd",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -3369,8 +3369,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -4106,8 +4106,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -4120,8 +4120,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -4659,8 +4659,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x853d955acef822db058eb8505911ed77f175b99e",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x14d04fff8d21bd62987a5ce9ce543d2f1edf5d3e",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xb9e1e3a9feff48998e45fa90847ed4d467e8bcfd",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -4818,8 +4818,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xee9f2375b4bdf6387aa8265dd4fb8f16512a1d46",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -6658,8 +6658,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x986b5e1e1755e3c2440e960477f25201b0a8bbd4",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
+      rateAsset: RateAsset.USD,
     },
   },
   {

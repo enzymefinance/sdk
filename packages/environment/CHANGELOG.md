@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.1.6
+
+### Patch Changes
+
+- [#585](https://github.com/enzymefinance/sdk/pull/585) [`0cf5367`](https://github.com/enzymefinance/sdk/commit/0cf5367dbf6d541a1fdeac88a9f20f1a8cb1d022) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more USD based price feeds for stablecoins
+
+- [#582](https://github.com/enzymefinance/sdk/pull/582) [`d28700c`](https://github.com/enzymefinance/sdk/commit/d28700cc75497bec0f0e8247f81972e11168c192) Thanks [@iherger](https://github.com/iherger)! - Use USD based feeds for stablecoins
+
 ## 6.1.5
 
 ### Patch Changes
