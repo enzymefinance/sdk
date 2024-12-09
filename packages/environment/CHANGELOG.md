@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.2.1
+
+### Patch Changes
+
+- [#587](https://github.com/enzymefinance/sdk/pull/587) [`aff051e`](https://github.com/enzymefinance/sdk/commit/aff051e125a837879dae6f2a259748fc52a2aff6) Thanks [@iherger](https://github.com/iherger)! - Add additional deployment addresses
+
 ## 6.2.0
 
 ### Minor Changes
