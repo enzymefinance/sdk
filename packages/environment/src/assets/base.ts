@@ -89,7 +89,7 @@ export default defineAssetList(Network.BASE, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x64c911996d3c6ac71f9b455b1e8e7266bcbd848f",
+      aggregator: "0xccadc697c55bbb68dc5bcdf8d3cbe83cdd4e071e",
       rateAsset: RateAsset.USD,
     },
   },
