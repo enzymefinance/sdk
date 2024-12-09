@@ -32,7 +32,7 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0x50c5725949a6f0c72e6c4a641f24049a917db0cb",
     name: "Dai Stablecoin",
-    releases: [sulu],
+    releases: [],
     symbol: "DAI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -45,7 +45,7 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
     name: "Compound",
-    releases: [sulu],
+    releases: [],
     symbol: "COMP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -58,7 +58,7 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0xfde4c96c8593536e31f229ea8f37b2ada2699bb2",
     name: "Tether USD",
-    releases: [sulu],
+    releases: [],
     symbol: "USDT",
     type: AssetType.PRIMITIVE,
     priceFeed: {
