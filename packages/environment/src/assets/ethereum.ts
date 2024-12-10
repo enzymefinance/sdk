@@ -7411,4 +7411,15 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    decimals: 18,
+    id: "0x626e8036deb333b408be468f951bdb42433cbf18",
+    name: "AIOZ Network",
+    releases: [],
+    symbol: "AIOZ",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
