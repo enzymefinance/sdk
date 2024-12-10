@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.2.3
+
+### Patch Changes
+
+- [#591](https://github.com/enzymefinance/sdk/pull/591) [`877592d`](https://github.com/enzymefinance/sdk/commit/877592d57ae54050e939c8c0b049e18860f887d5) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add AIOZ token
+
 ## 6.2.2
 
 ### Patch Changes
