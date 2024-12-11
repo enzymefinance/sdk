@@ -1270,10 +1270,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x7e891debd8fa0a4cf6be58ddff5a8ca174febdcb",
+      aggregator: "0xfc9e30cf89f8a00dba3d34edf8b65bcdadecc1cb",
       rateAsset: RateAsset.USD,
-      peggedTo: "USD0",
-      nonStandard: true,
     },
   },
   {
