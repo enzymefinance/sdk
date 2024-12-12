@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.2.6
+
+### Patch Changes
+
+- [#598](https://github.com/enzymefinance/sdk/pull/598) [`687790e`](https://github.com/enzymefinance/sdk/commit/687790e683520648bfb85daad4600db528e8a792) Thanks [@iherger](https://github.com/iherger)! - Aave v3 asset type
+
+- [#593](https://github.com/enzymefinance/sdk/pull/593) [`767c194`](https://github.com/enzymefinance/sdk/commit/767c194d71cbe5714425229b93993abc066e53f7) Thanks [@iherger](https://github.com/iherger)! - Asset price feed update
+
 ## 6.2.5
 
 ### Patch Changes
