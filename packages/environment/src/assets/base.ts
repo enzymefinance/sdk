@@ -99,7 +99,8 @@ export default defineAssetList(Network.BASE, [
     name: "Aave Base WETH",
     releases: [sulu],
     symbol: "aBasWETH",
-    type: AssetType.PRIMITIVE,
+    type: AssetType.AAVE_V3,
+    underlying: "0x4200000000000000000000000000000000000006",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70",
@@ -112,7 +113,8 @@ export default defineAssetList(Network.BASE, [
     name: "Aave Base USDC",
     releases: [sulu],
     symbol: "aBasUSDC",
-    type: AssetType.PRIMITIVE,
+    type: AssetType.AAVE_V3,
+    underlying: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x7e860098f58bbfc8648a4311b374b1d669a2bc6b",
