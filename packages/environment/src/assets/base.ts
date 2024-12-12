@@ -1,4 +1,4 @@
-import { AssetType, defineAssetList } from "../assets.js";
+import { AssetType, Erc4626Protocol, defineAssetList } from "../assets.js";
 import { Network } from "../networks.js";
 import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
@@ -119,6 +119,34 @@ export default defineAssetList(Network.BASE, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x7e860098f58bbfc8648a4311b374b1d669a2bc6b",
       rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    id: "0xbeef010f9cb27031ad51e3333f9af9c6b1228183",
+    decimals: 18,
+    name: "Steakhouse USDC",
+    symbol: "steakUSDC",
+    releases: [sulu],
+    type: AssetType.ERC_4626,
+    underlying: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+    protocol: Erc4626Protocol.MORPHO,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
+    },
+  },
+  {
+    id: "0xbeef050a7485865a7a8d8ca0cc5f7536b7a3443e",
+    decimals: 18,
+    name: "Steakhouse ETH",
+    symbol: "steakETH",
+    releases: [sulu],
+    type: AssetType.ERC_4626,
+    underlying: "0x4200000000000000000000000000000000000006",
+    protocol: Erc4626Protocol.MORPHO,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
     },
   },
 ]);
