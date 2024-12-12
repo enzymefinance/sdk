@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.2.7
+
+### Patch Changes
+
+- [#600](https://github.com/enzymefinance/sdk/pull/600) [`74e8cec`](https://github.com/enzymefinance/sdk/commit/74e8cece5e6a5f67057e271a31c1195949a35bb7) Thanks [@iherger](https://github.com/iherger)! - Add Morpho ERC4626 assets on Base
+
 ## 6.2.6
 
 ### Patch Changes
