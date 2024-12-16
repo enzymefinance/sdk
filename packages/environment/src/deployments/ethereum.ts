@@ -46,6 +46,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
     pendlePtLpOracle: "0x66a1096c6366b2529274df4f5d8247827fe4cea8",
     staderStakingPoolManager: "0xcf5ea1b38380f6af39068375516daf40ed70d299",
+    staderUserWithdrawManager: "0x9f0491b32dbce587c50c4c43ab303b06478193a7",
     stakeWiseV3KeeperRewards: "0x6b5815467da09daa7dc83db21c9239d98bb487b5",
     theGraphDelegationStakingProxy: "0xf55041e37e12cd407ad00ce2910b8269b01263b9",
     theGraphEpochManagerProxy: "0x64f990bf16552a693dcb043bb7bf3866c5e05ddb",

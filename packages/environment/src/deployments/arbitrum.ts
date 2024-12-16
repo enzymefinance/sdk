@@ -46,6 +46,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
     pendlePtLpOracle: "0x0000000000000000000000000000000000000000",
     staderStakingPoolManager: "0x0000000000000000000000000000000000000000",
+    staderUserWithdrawManager: "0x0000000000000000000000000000000000000000",
     stakeWiseV3KeeperRewards: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03",
     theGraphEpochManagerProxy: "0x5a843145c43d328b9bb7a4401d94918f131bb281",
