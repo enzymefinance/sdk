@@ -160,6 +160,13 @@ const userWithdrawManagerAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [],
+    name: "nextRequestIdToFinalize",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export function getRequestIdsByUser(
@@ -178,19 +185,35 @@ export function getRequestIdsByUser(
   });
 }
 
-export function userWithdrawRequests(
+export async function getUserWithdrawRequests(
   client: Client,
   args: Viem.ContractCallParameters<{
     userWithdrawManager: Address;
     requestId: bigint;
   }>,
 ) {
-  return readContract(client, {
+  const [owner, ethxAmount, ethExpected, ethFinalized, requestBlock] = await readContract(client, {
     ...Viem.extractBlockParameters(args),
     abi: userWithdrawManagerAbi,
     functionName: "userWithdrawRequests",
     address: args.userWithdrawManager,
     args: [args.requestId],
+  });
+
+  return { owner, ethxAmount, ethExpected, ethFinalized, requestBlock };
+}
+
+export function getNextRequestIdToFinalize(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    userWithdrawManager: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: userWithdrawManagerAbi,
+    functionName: "nextRequestIdToFinalize",
+    address: args.userWithdrawManager,
   });
 }
 
@@ -201,22 +224,25 @@ export async function getRequestsWithDetailsByUser(
     user: Address;
   }>,
 ) {
-  const requestIds = await getRequestIdsByUser(client, {
-    userWithdrawManager: args.userWithdrawManager,
-    user: args.user,
-  });
+  const [requestIds, nextRequestIdToFinalize] = await Promise.all([
+    getRequestIdsByUser(client, {
+      userWithdrawManager: args.userWithdrawManager,
+      user: args.user,
+    }),
+    getNextRequestIdToFinalize(client, { userWithdrawManager: args.userWithdrawManager }),
+  ]);
 
   const requestDetails = await Promise.all(
     requestIds.map((requestId) =>
-      userWithdrawRequests(client, { userWithdrawManager: args.userWithdrawManager, requestId }),
+      getUserWithdrawRequests(client, { userWithdrawManager: args.userWithdrawManager, requestId }),
     ),
   );
 
-  return requestDetails.map((detail) => ({
-    owner: detail[0],
-    ethXAmount: detail[1],
-    ethExpected: detail[2],
-    ethFinalized: detail[3],
-    requestBlock: detail[4],
-  }));
+  return requestIds.map((requestId, index) => {
+    return {
+      requestId,
+      ...requestDetails[index],
+      claimable: requestId < nextRequestIdToFinalize,
+    };
+  });
 }
