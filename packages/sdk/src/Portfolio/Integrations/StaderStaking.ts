@@ -83,7 +83,7 @@ export function requestWithdrawalsDecode(encoded: Hex): RequestWithdrawalsArgs {
 }
 
 //--------------------------------------------------------------------------------------------
-// CLAIM WITHDRAWALS
+// EXTERNAL POSITION - CLAIM WITHDRAWALS
 //--------------------------------------------------------------------------------------------
 
 export const claimWithdrawals = ExternalPositionManager.makeUse(Action.ClaimWithdrawals, claimWithdrawalsEncode);
