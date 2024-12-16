@@ -7,12 +7,14 @@ import { Deployment, Kind, isDeployment } from "../releases.js";
 import type { Address } from "../types.js";
 import { isNonZeroAddress } from "../utils.js";
 import arbitrum from "./arbitrum.js";
+import base from "./base.js";
 import ethereum from "./ethereum.js";
 import polygon from "./polygon.js";
 import testnet from "./testnet.js";
 
 export const deployments = {
   [Deployment.ARBITRUM]: arbitrum,
+  [Deployment.BASE]: base,
   [Deployment.ETHEREUM]: ethereum,
   [Deployment.POLYGON]: polygon,
   [Deployment.TESTNET]: testnet,

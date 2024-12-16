@@ -10,6 +10,7 @@ import type {
   DeploymentDefinition,
   DeploymentNamedAssetsTokens,
   DeploymentNamedTokensAssetsArbitrum,
+  DeploymentNamedTokensAssetsBase,
   DeploymentNamedTokensAssetsEthereum,
   DeploymentNamedTokensAssetsPolygon,
   DeploymentNetwork,
@@ -121,6 +122,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   }
 
   public static isDeploymentArbitrum = Environment.createIsDeployment(Deployment.ARBITRUM);
+  public static isDeploymentBase = Environment.createIsDeployment(Deployment.BASE);
   public static isDeploymentEthereum = Environment.createIsDeployment(Deployment.ETHEREUM);
   public static isDeploymentPolygon = Environment.createIsDeployment(Deployment.POLYGON);
   public static isDeploymentTestnet = Environment.createIsDeployment(Deployment.TESTNET);
@@ -176,6 +178,17 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
       };
 
       this.namedTokens = namedTokens as DeploymentNamedAssetsTokens<TDeployment> & DeploymentNamedTokensAssetsArbitrum;
+    } else if (Environment.isDeploymentBase(this)) {
+      const namedTokens = {
+        comp: this.getAssetAs(this.deployment.namedTokens.comp, AssetType.PRIMITIVE),
+        dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
+        mln: this.getAssetAs(this.deployment.namedTokens.mln, AssetType.PRIMITIVE),
+        nativeTokenWrapper: this.getAssetAs(this.network.currency.wrapper, AssetType.PRIMITIVE),
+        usdt: this.getAssetAs(this.deployment.namedTokens.usdt, AssetType.PRIMITIVE),
+        weth: this.getAssetAs(this.deployment.namedTokens.weth, AssetType.PRIMITIVE),
+      };
+
+      this.namedTokens = namedTokens as DeploymentNamedAssetsTokens<TDeployment> & DeploymentNamedTokensAssetsBase;
     } else if (Environment.isDeploymentEthereum(this)) {
       const namedTokens = {
         aave: this.getAssetAs(this.deployment.namedTokens.aave, AssetType.PRIMITIVE),
@@ -275,7 +288,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
     let assets = Object.values(this.assets);
 
     if (typeof types !== "undefined") {
-      assets = types.length ? assets.filter((item) => types.includes(item.type)) : [];
+      assets = types.length > 0 ? assets.filter((item) => types.includes(item.type)) : [];
     }
 
     if (typeof registered !== "undefined") {

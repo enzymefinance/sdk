@@ -1,5 +1,64 @@
 # @enzymefinance/environment
 
+## 6.2.7
+
+### Patch Changes
+
+- [#600](https://github.com/enzymefinance/sdk/pull/600) [`74e8cec`](https://github.com/enzymefinance/sdk/commit/74e8cece5e6a5f67057e271a31c1195949a35bb7) Thanks [@iherger](https://github.com/iherger)! - Add Morpho ERC4626 assets on Base
+
+## 6.2.6
+
+### Patch Changes
+
+- [#598](https://github.com/enzymefinance/sdk/pull/598) [`687790e`](https://github.com/enzymefinance/sdk/commit/687790e683520648bfb85daad4600db528e8a792) Thanks [@iherger](https://github.com/iherger)! - Aave v3 asset type
+
+- [#593](https://github.com/enzymefinance/sdk/pull/593) [`767c194`](https://github.com/enzymefinance/sdk/commit/767c194d71cbe5714425229b93993abc066e53f7) Thanks [@iherger](https://github.com/iherger)! - Asset price feed update
+
+## 6.2.5
+
+### Patch Changes
+
+- Updated dependencies [[`23d8b47`](https://github.com/enzymefinance/sdk/commit/23d8b477eb6d6aa5b49e4262a9f091b8740d133c)]:
+  - @enzymefinance/sdk@1.1.2
+
+## 6.2.4
+
+### Patch Changes
+
+- [#594](https://github.com/enzymefinance/sdk/pull/594) [`ff16e6d`](https://github.com/enzymefinance/sdk/commit/ff16e6d1e48d6eb9a7db99a1e28055475da69842) Thanks [@iherger](https://github.com/iherger)! - Additional deployment addresses on Base
+
+## 6.2.3
+
+### Patch Changes
+
+- [#591](https://github.com/enzymefinance/sdk/pull/591) [`877592d`](https://github.com/enzymefinance/sdk/commit/877592d57ae54050e939c8c0b049e18860f887d5) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add AIOZ token
+
+## 6.2.2
+
+### Patch Changes
+
+- [#589](https://github.com/enzymefinance/sdk/pull/589) [`4f7f27b`](https://github.com/enzymefinance/sdk/commit/4f7f27b4d7a4820fcd074e2d2d4ee57c5fed164a) Thanks [@iherger](https://github.com/iherger)! - Add more assets to Base deployment
+
+## 6.2.1
+
+### Patch Changes
+
+- [#587](https://github.com/enzymefinance/sdk/pull/587) [`aff051e`](https://github.com/enzymefinance/sdk/commit/aff051e125a837879dae6f2a259748fc52a2aff6) Thanks [@iherger](https://github.com/iherger)! - Add additional deployment addresses
+
+## 6.2.0
+
+### Minor Changes
+
+- [#567](https://github.com/enzymefinance/sdk/pull/567) [`7e263fa`](https://github.com/enzymefinance/sdk/commit/7e263fae9b7c11de7415e37b63c635df747248b6) Thanks [@iherger](https://github.com/iherger)! - Enzyme deployment on base
+
+## 6.1.6
+
+### Patch Changes
+
+- [#585](https://github.com/enzymefinance/sdk/pull/585) [`0cf5367`](https://github.com/enzymefinance/sdk/commit/0cf5367dbf6d541a1fdeac88a9f20f1a8cb1d022) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more USD based price feeds for stablecoins
+
+- [#582](https://github.com/enzymefinance/sdk/pull/582) [`d28700c`](https://github.com/enzymefinance/sdk/commit/d28700cc75497bec0f0e8247f81972e11168c192) Thanks [@iherger](https://github.com/iherger)! - Use USD based feeds for stablecoins
+
 ## 6.1.5
 
 ### Patch Changes
