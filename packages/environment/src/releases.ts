@@ -111,6 +111,7 @@ export interface DeploymentNamedTokensEthereum {
   readonly cvx: Address;
   readonly dai: Address;
   readonly diva: Address;
+  readonly ethx: Address;
   readonly grt: Address;
   readonly idle: Address;
   readonly lusd: Address;
@@ -189,6 +190,7 @@ export interface DeploymentNamedTokensAssetsEthereum {
   readonly cvx: PrimitiveAsset;
   readonly dai: PrimitiveAsset;
   readonly diva: PrimitiveAsset;
+  readonly ethx: PrimitiveAsset;
   readonly grt: PrimitiveAsset;
   readonly idle: PrimitiveAsset;
   readonly lusd: PrimitiveAsset;

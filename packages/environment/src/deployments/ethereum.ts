@@ -80,6 +80,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     cvx: "0x4e3fbd56cd56c3e72c1403e103b45db9da5b9d2b",
     dai: "0x6b175474e89094c44da98b954eedeac495271d0f",
     diva: "0xbfabde619ed5c4311811cf422562709710db587d",
+    ethx: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
     grt: "0xc944e90c64b2c07662a292be6244bdf05cda44a7",
     idle: "0x875773784af8135ea0ef43b5a374aad105c5d39e",
     lusd: "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
