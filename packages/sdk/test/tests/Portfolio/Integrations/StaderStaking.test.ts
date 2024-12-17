@@ -22,14 +22,14 @@ test("create vault", async () => {
 });
 
 test("wrap should work correctly", async () => {
-  const receivedEthx = await Portfolio.Integrations.StaderStaking.previewDeposit(environment.client, {
+  const receivedEthx = await Portfolio.Integrations.Stader.previewDeposit(environment.client, {
     staderStakingPoolManager: environment.constants.staderStakingPoolManager,
     depositAmount,
   });
 
   await environment.send({
     account: vaultOwner,
-    transaction: Portfolio.Integrations.StaderStaking.wrap({
+    transaction: Portfolio.Integrations.Stader.wrap({
       comptrollerProxy,
       integrationManager: environment.constants.integrationManager,
       integrationAdapter: environment.constants.staderStakingAdapter,
