@@ -401,7 +401,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     core: {
       slug: "enzyme-core",
       id: "9DLBBLep5UyU16kUQRvxBCMqko4q9XzuE4XsMMpARhKK",
-      devVersion: "stader-withdrawals-v1",
+      devVersion: "stader-withdrawals-v4",
     },
     shares: { slug: "vault-shares", id: "6p2L2gQ4Hw4Dh2kxZFDJbcqtbv44vrJbrBEh3EjS7qVo" },
     vaults: { slug: "vault-lineage", id: "5FdivFcUPmVSqCFkv3jqJh3QYjHjh1ztzd7GHiCAMP1h" },
