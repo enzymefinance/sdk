@@ -1,5 +1,13 @@
 # @enzymefinance/api
 
+## 1.0.2
+
+### Patch Changes
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Publish packages fix
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Bump
+
 ## 1.0.1
 
 ### Patch Changes
