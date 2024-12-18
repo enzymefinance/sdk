@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 1.2.0
+
+### Minor Changes
+
+- [#583](https://github.com/enzymefinance/sdk/pull/583) [`4cddbb0`](https://github.com/enzymefinance/sdk/commit/4cddbb094f27e60ffca0c6b4e0f2f4c58b53b889) Thanks [@iherger](https://github.com/iherger)! - Add StaderWithdrawals
+
 ## 1.1.0
 
 ### Minor Changes
