@@ -1,5 +1,16 @@
 # @enzymefinance/environment
 
+## 6.3.2
+
+### Patch Changes
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Publish packages fix
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Bump
+
+- Updated dependencies [[`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915), [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915)]:
+  - @enzymefinance/sdk@1.2.2
+
 ## 6.3.1
 
 ### Patch Changes
