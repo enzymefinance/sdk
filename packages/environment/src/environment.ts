@@ -199,6 +199,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
         cvx: this.getAssetAs(this.deployment.namedTokens.cvx, AssetType.PRIMITIVE),
         dai: this.getAssetAs(this.deployment.namedTokens.dai, AssetType.PRIMITIVE),
         diva: this.getAssetAs(this.deployment.namedTokens.diva, AssetType.PRIMITIVE),
+        ethx: this.getAssetAs(this.deployment.namedTokens.ethx, AssetType.PRIMITIVE),
         grt: this.getAssetAs(this.deployment.namedTokens.grt, AssetType.PRIMITIVE),
         idle: this.getAssetAs(this.deployment.namedTokens.idle, AssetType.PRIMITIVE),
         lusd: this.getAssetAs(this.deployment.namedTokens.lusd, AssetType.PRIMITIVE),
