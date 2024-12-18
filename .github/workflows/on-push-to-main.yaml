@@ -41,8 +41,9 @@ jobs:
         uses: changesets/action@v1
         with:
           publish: pnpm release
-          commit: 'chore: publish package(s)'
-          title: 'chore: publish package(s)'
+          commit: "chore: publish package(s)"
+          title: "chore: publish package(s)"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
