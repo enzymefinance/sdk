@@ -3463,8 +3463,8 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ETHx",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0x8c7fe497fcd0c4f75da39aef3c69e024915f4239",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
+      aggregator: "0x75c4dc3201015c78a60dbe673fc7247549527c1b",
       rateAsset: RateAsset.ETH,
     },
   },

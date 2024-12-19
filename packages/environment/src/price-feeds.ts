@@ -4,6 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
+  PRIMITIVE_CHAINLINK_LIKE_ETHX = "PRIMITIVE_CHAINLINK_LIKE_ETHX",
   PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
   PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
@@ -27,6 +28,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
@@ -59,6 +61,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
+  | PrimitiveChainlinkLikeEthxPriceFeed
   | PrimitiveChainlinkLikeWstEthPriceFeed
   | PrimitiveChainlinkLikeYnEthPriceFeed
   | PrimitiveRedstonePriceFeed
@@ -118,6 +121,17 @@ export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
 
 export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {
   readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset.ETH;
+}
+export interface PrimitiveChainlinkLikeEthxPriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX;
   /**
    * Aggregator address
    */
