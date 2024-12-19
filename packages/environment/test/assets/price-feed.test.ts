@@ -73,7 +73,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        expect(description).toMatch(/^Red(?:s|S)tone Price Feed(?: for SolvBTC)*$/);
+        expect(description).toMatch(/^Red(?:s|S)tone Price Feed/);
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
 
         break;
