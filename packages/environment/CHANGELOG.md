@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.3
+
+### Patch Changes
+
+- [#608](https://github.com/enzymefinance/sdk/pull/608) [`2e60023`](https://github.com/enzymefinance/sdk/commit/2e60023d634bbb2dd9b4c541978719e5881f23e4) Thanks [@iherger](https://github.com/iherger)! - Change ETHx price feed
+
 ## 6.3.2
 
 ### Patch Changes
