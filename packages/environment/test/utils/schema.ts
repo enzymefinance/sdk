@@ -129,6 +129,7 @@ export const CurvePoolLpSchema = CommonAssetSchema.extend({
 export const PendleV2PtSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.PENDLE_V2_PT),
   underlying: address,
+  market: address,
 });
 
 export const PendleV2LpSchema = CommonAssetSchema.extend({

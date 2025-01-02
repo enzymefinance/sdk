@@ -341,6 +341,10 @@ export interface PendleV2PTAsset extends AssetBase {
    * Underlying Asset.
    */
   readonly underlying: Address;
+  /**
+   * Market.
+   */
+  readonly market: Address;
 }
 
 export function defineAssetList<TNetwork extends Network>(

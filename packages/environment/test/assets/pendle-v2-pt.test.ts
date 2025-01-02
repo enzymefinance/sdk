@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 import { AssetType } from "../../src/index.js";
 import { getClient } from "../utils/client.js";
-import { getSyFromPt, getYieldTokenFromSy } from "../utils/contracts/PendleV2Tokens.js";
+import { getYieldTokenFromSy, readTokensFromMarket } from "../utils/contracts/PendleV2Tokens.js";
 import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
@@ -11,7 +11,10 @@ const assets = environment.getAssets();
 
 test.each(pendleV2PtAssets)("pendle v2 pt underlying is correct: $symbol ($name): $id", async (asset) => {
   // check if deposit token is correct
-  const sy = await getSyFromPt(client, { asset: asset.id });
+  const { sy, pt } = await readTokensFromMarket(client, { market: asset.market });
+
+  expect(pt.toLowerCase(), "Asset token does not match expected").toBe(asset.id);
+
   const yieldToken = await getYieldTokenFromSy(client, { asset: sy });
 
   expect(yieldToken.toLowerCase(), "Actual underlying asset does not match expected").toBe(asset.underlying);
