@@ -7389,6 +7389,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 8,
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    market: "0x70b70ac0445c3ef04e314dfda6caafd825428221",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
@@ -7402,6 +7403,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
     decimals: 8,
+    market: "0x0000000000000000000000000000000000000000", // TODO: Update this
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
