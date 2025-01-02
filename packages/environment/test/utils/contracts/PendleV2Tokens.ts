@@ -1,5 +1,5 @@
 import { Viem } from "@enzymefinance/sdk/Utils";
-import type { Address, PublicClient } from "viem";
+import { type Address, type PublicClient, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 
 const ptAbi = [
@@ -38,4 +38,20 @@ export function getYieldTokenFromSy(client: PublicClient, args: Viem.ContractCal
     functionName: "yieldToken",
     address: args.asset,
   });
+}
+
+export async function readTokensFromLp(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{
+    lp: Address;
+  }>,
+) {
+  const [sy, pt, yt] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function readTokens() external view returns (address,address,address)"]),
+    functionName: "readTokens",
+    address: args.lp,
+  });
+
+  return { sy, pt, yt };
 }

@@ -131,6 +131,11 @@ export const PendleV2PtSchema = CommonAssetSchema.extend({
   underlying: address,
 });
 
+export const PendleV2LpSchema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.PENDLE_V2_LP),
+  underlying: address,
+});
+
 export const AssetSchema = z.union([
   PrimitiveSchema,
   StaderSchema,

@@ -63,7 +63,8 @@ export type Asset =
   | IdleAsset
   | MapleV1Asset
   | MapleV2Asset
-  | PendleV2Asset
+  | PendleV2PTAsset
+  | PendleV2LPAsset
   | PrimitiveAsset
   | StaderAsset
   | SynthetixAsset
@@ -80,6 +81,7 @@ export enum AssetType {
   CURVE_POOL_LP = "curve-pool-lp",
   CURVE_POOL_GAUGE = "curve-pool-gauge",
   IDLE = "idle",
+  PENDLE_V2_LP = "pendle-v2-lp",
   PENDLE_V2_PT = "pendle-v2-pt",
   PRIMITIVE = "primitive",
   STADER = "stader",
@@ -325,7 +327,15 @@ export interface CurvePoolGaugeAsset extends AssetBase {
   readonly underlyings: Array<Address>;
 }
 
-export interface PendleV2Asset extends AssetBase {
+export interface PendleV2LPAsset extends AssetBase {
+  readonly type: AssetType.PENDLE_V2_LP;
+  /**
+   * Underlying Asset.
+   */
+  readonly underlying: Address;
+}
+
+export interface PendleV2PTAsset extends AssetBase {
   readonly type: AssetType.PENDLE_V2_PT;
   /**
    * Underlying Asset.

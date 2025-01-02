@@ -104,6 +104,10 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           validate(PendleV2PtSchema, asset);
           break;
         }
+        case AssetType.PENDLE_V2_LP: {
+          validate(PendleV2PtSchema, asset);
+          break;
+        }
         default:
           Assertion.never(asset, "Unknown asset type.");
       }
