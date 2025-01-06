@@ -7403,7 +7403,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
     decimals: 8,
-    market: "0x0000000000000000000000000000000000000000", // TODO: Update this
+    market: "0xeb4d3057738b9ed930f451be473c1ccc42988384",
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
