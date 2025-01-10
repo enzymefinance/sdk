@@ -35,6 +35,7 @@ export const OrderType = {
   MarketDecrease: 4,
   LimitDecrease: 5,
   StopLossDecrease: 6,
+  Liquidation: 7,
 } as const;
 
 export type DecreasePositionSwapType = (typeof DecreasePositionSwapType)[keyof typeof DecreasePositionSwapType];
