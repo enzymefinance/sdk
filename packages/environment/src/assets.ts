@@ -344,7 +344,7 @@ export interface PendleV2PTAsset extends AssetBase {
   /**
    * Market.
    */
-  readonly market: Address;
+  readonly markets: ReadonlyArray<Address>;
 }
 
 export function defineAssetList<TNetwork extends Network>(
