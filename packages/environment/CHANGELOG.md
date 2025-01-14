@@ -1,5 +1,16 @@
 # @enzymefinance/environment
 
+## 6.3.4
+
+### Patch Changes
+
+- [#614](https://github.com/enzymefinance/sdk/pull/614) [`45b628c`](https://github.com/enzymefinance/sdk/commit/45b628cc793286abdd9a418d0b3c107743a11f7e) Thanks [@iherger](https://github.com/iherger)! - Add unregistered Morpho token
+
+- [#610](https://github.com/enzymefinance/sdk/pull/610) [`0f044cd`](https://github.com/enzymefinance/sdk/commit/0f044cd35499bfffa05509115ffd70a156d000e0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update GMX lib
+
+- Updated dependencies [[`2dbc17e`](https://github.com/enzymefinance/sdk/commit/2dbc17e1f76f9648f94dc383cc18d46fa16871cd)]:
+  - @enzymefinance/sdk@1.2.3
+
 ## 6.3.3
 
 ### Patch Changes
