@@ -7415,7 +7415,7 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     symbol: "PT-sUSDS-27MAR2025",
     name: "PT Savings USDS 27MAR2025",
-    id: "0x152b8629fee8105248bA3b7ba6afb94f7a468302",
+    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
     type: AssetType.PENDLE_V2_PT,
     releases: [],
     decimals: 18,
