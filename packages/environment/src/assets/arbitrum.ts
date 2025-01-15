@@ -581,9 +581,9 @@ export default defineAssetList(Network.ARBITRUM, [
   {
     decimals: 6,
     id: "0xe80772eaf6e2e18b651f160bc9158b2a5cafca65",
-    name: "USD+",
+    name: "xUSD",
     releases: [sulu],
-    symbol: "USD+",
+    symbol: "xUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
