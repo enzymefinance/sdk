@@ -7389,6 +7389,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 8,
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    markets: ["0x70b70ac0445c3ef04e314dfda6caafd825428221"],
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
@@ -7402,10 +7403,41 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
     decimals: 8,
+    markets: ["0xeb4d3057738b9ed930f451be473c1ccc42988384"],
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x65427ee55ab33c00d467923af340b8fb3e73a0cd",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  // TODO: only for testing, remove later
+  {
+    symbol: "PT-sUSDS-27MAR2025",
+    name: "PT Savings USDS 27MAR2025",
+    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [],
+    decimals: 18,
+    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02", "0x21d85ff3bedff031ef466c7d5295240c8ab2a2b8"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PENDLE-LPT",
+    name: "Pendle Market", // sUSDe 29 May 2025
+    id: "0xb162b764044697cf03617c2efbcb1f42e31e4766",
+    type: AssetType.PENDLE_V2_LP,
+    releases: [],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xFF3BC18cCBd5999CE63E788A1c250a88626aD099",
       rateAsset: RateAsset.USD,
     },
   },

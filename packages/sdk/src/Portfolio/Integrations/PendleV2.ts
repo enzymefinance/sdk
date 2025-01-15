@@ -480,6 +480,19 @@ export function removeLiquidityWithAdapterDecode(encoded: Hex): RemoveLiquidityW
 }
 
 //--------------------------------------------------------------------------------------------
+// TRANSACTIONS
+//--------------------------------------------------------------------------------------------
+
+export function redeemRewards(args: { user: Address; market: Address }) {
+  return new Viem.PopulatedTransaction({
+    abi: parseAbi(["function redeemRewards(address user)"]),
+    functionName: "redeemRewards",
+    args: [args.user],
+    address: args.market,
+  });
+}
+
+//--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
