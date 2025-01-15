@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.5
+
+### Patch Changes
+
+- [#615](https://github.com/enzymefinance/sdk/pull/615) [`b386519`](https://github.com/enzymefinance/sdk/commit/b386519845579114f3ee7f34ed16db004570766a) Thanks [@iherger](https://github.com/iherger)! - Rename USD+ to xUSD
+
 ## 6.3.4
 
 ### Patch Changes
