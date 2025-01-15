@@ -7428,6 +7428,20 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    symbol: "PENDLE-LPT",
+    name: "Pendle Market", // sUSDe 29 May 2025
+    id: "0xb162b764044697cf03617c2efbcb1f42e31e4766",
+    type: AssetType.PENDLE_V2_LP,
+    releases: [],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xFF3BC18cCBd5999CE63E788A1c250a88626aD099",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
     decimals: 18,
     id: "0x626e8036deb333b408be468f951bdb42433cbf18",
     name: "AIOZ Network",
