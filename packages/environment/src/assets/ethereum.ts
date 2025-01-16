@@ -858,7 +858,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
@@ -3287,7 +3287,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
@@ -3302,7 +3302,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
