@@ -7432,12 +7432,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Pendle Market", // sUSDe 29 May 2025
     id: "0xb162b764044697cf03617c2efbcb1f42e31e4766",
     type: AssetType.PENDLE_V2_LP,
-    releases: [],
+    releases: [sulu],
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xFF3BC18cCBd5999CE63E788A1c250a88626aD099",
+      aggregator: "0x0998a52dbf3851c8b97012cfc2acba234a413e86",
       rateAsset: RateAsset.USD,
     },
   },
