@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.6
+
+### Patch Changes
+
+- [#617](https://github.com/enzymefinance/sdk/pull/617) [`aa74759`](https://github.com/enzymefinance/sdk/commit/aa74759d00818678c97350496c40865199dee374) Thanks [@iherger](https://github.com/iherger)! - Add Polygon assets
+
 ## 6.3.5
 
 ### Patch Changes
