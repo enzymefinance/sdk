@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.4
+
+### Patch Changes
+
+- [#621](https://github.com/enzymefinance/sdk/pull/621) [`2fcea94`](https://github.com/enzymefinance/sdk/commit/2fcea94e61348f38fba09673d3a52bcdb0896c02) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Pendle update
+
 ## 1.2.3
 
 ### Patch Changes
