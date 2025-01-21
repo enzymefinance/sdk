@@ -858,7 +858,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
@@ -3287,7 +3287,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
@@ -3302,7 +3302,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
     },
@@ -7389,6 +7389,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 8,
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    markets: ["0x70b70ac0445c3ef04e314dfda6caafd825428221"],
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
@@ -7402,10 +7403,25 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
     decimals: 8,
+    markets: ["0xeb4d3057738b9ed930f451be473c1ccc42988384"],
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x65427ee55ab33c00d467923af340b8fb3e73a0cd",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    symbol: "PENDLE-LPT",
+    name: "Pendle Market", // sUSDe 29 May 2025
+    id: "0xb162b764044697cf03617c2efbcb1f42e31e4766",
+    type: AssetType.PENDLE_V2_LP,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x0998a52dbf3851c8b97012cfc2acba234a413e86",
       rateAsset: RateAsset.USD,
     },
   },

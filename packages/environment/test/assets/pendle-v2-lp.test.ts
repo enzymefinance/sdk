@@ -1,26 +1,20 @@
 import { expect, test } from "vitest";
 import { AssetType } from "../../src/index.js";
-import { toAddress } from "../../src/utils.js";
 import { getClient } from "../utils/client.js";
 import { getYieldTokenFromSy, readTokensFromMarket } from "../utils/contracts/PendleV2Tokens.js";
 import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const pendleV2PtAssets = environment.getAssets({ types: [AssetType.PENDLE_V2_PT] });
+const pendleV2LpAssets = environment.getAssets({ types: [AssetType.PENDLE_V2_LP] });
 const assets = environment.getAssets();
 
-test.each(pendleV2PtAssets)("pendle v2 pt underlying is correct: $symbol ($name): $id", async (asset) => {
-  for (const market of asset.markets) {
-    // check if deposit token is correct
-    const { sy, pt } = await readTokensFromMarket(client, { market: toAddress(market) });
+test.each(pendleV2LpAssets)("pendle v2 pt underlying is correct: $symbol ($name): $id", async (asset) => {
+  // check if deposit token is correct
+  const { sy } = await readTokensFromMarket(client, { market: asset.id });
+  const yieldToken = await getYieldTokenFromSy(client, { asset: sy });
 
-    expect(pt.toLowerCase(), "Asset token does not match expected").toBe(asset.id);
-
-    const yieldToken = await getYieldTokenFromSy(client, { asset: sy });
-
-    expect(yieldToken.toLowerCase(), "Actual underlying asset does not match expected").toBe(asset.underlying);
-  }
+  expect(yieldToken.toLowerCase(), "Actual underlying asset does not match expected").toBe(asset.underlying);
 
   // Check that the underlying asset exists.
   expect(
