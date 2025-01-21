@@ -16,7 +16,7 @@ import { PriceFeedType } from "../../src/price-feeds.js";
 const address = z.string().regex(/^0x[0-9a-f]{40}$/) as z.Schema<Address>;
 
 export const CommonAssetSchema = z.object({
-  decimals: z.number().min(2).max(18),
+  decimals: z.number().int().min(0).max(18),
   id: address,
   name: z.string(),
   network: z.nativeEnum(Network),
