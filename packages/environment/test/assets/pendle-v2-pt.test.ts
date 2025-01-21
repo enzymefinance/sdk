@@ -11,7 +11,7 @@ const pendleV2PtAssets = environment.getAssets({ types: [AssetType.PENDLE_V2_PT]
 const assets = environment.getAssets();
 
 test.each(pendleV2PtAssets)("pendle v2 pt underlying is correct: $symbol ($name): $id", async (asset) => {
-  for (const market in asset.markets) {
+  for (const market of asset.markets) {
     // check if deposit token is correct
     const { sy, pt } = await readTokensFromMarket(client, { market: toAddress(market) });
 
