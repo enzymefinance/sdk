@@ -7411,22 +7411,6 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
-  // TODO: only for testing, remove later
-  {
-    symbol: "PT-sUSDS-27MAR2025",
-    name: "PT Savings USDS 27MAR2025",
-    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
-    type: AssetType.PENDLE_V2_PT,
-    releases: [],
-    decimals: 18,
-    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
-    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02", "0x21d85ff3bedff031ef466c7d5295240c8ab2a2b8"],
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
-      rateAsset: RateAsset.ETH,
-    },
-  },
   {
     symbol: "PENDLE-LPT",
     name: "Pendle Market", // sUSDe 29 May 2025
