@@ -1,5 +1,28 @@
 # @enzymefinance/environment
 
+## 6.3.6
+
+### Patch Changes
+
+- [#617](https://github.com/enzymefinance/sdk/pull/617) [`aa74759`](https://github.com/enzymefinance/sdk/commit/aa74759d00818678c97350496c40865199dee374) Thanks [@iherger](https://github.com/iherger)! - Add Polygon assets
+
+## 6.3.5
+
+### Patch Changes
+
+- [#615](https://github.com/enzymefinance/sdk/pull/615) [`b386519`](https://github.com/enzymefinance/sdk/commit/b386519845579114f3ee7f34ed16db004570766a) Thanks [@iherger](https://github.com/iherger)! - Rename USD+ to xUSD
+
+## 6.3.4
+
+### Patch Changes
+
+- [#614](https://github.com/enzymefinance/sdk/pull/614) [`45b628c`](https://github.com/enzymefinance/sdk/commit/45b628cc793286abdd9a418d0b3c107743a11f7e) Thanks [@iherger](https://github.com/iherger)! - Add unregistered Morpho token
+
+- [#610](https://github.com/enzymefinance/sdk/pull/610) [`0f044cd`](https://github.com/enzymefinance/sdk/commit/0f044cd35499bfffa05509115ffd70a156d000e0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update GMX lib
+
+- Updated dependencies [[`2dbc17e`](https://github.com/enzymefinance/sdk/commit/2dbc17e1f76f9648f94dc383cc18d46fa16871cd)]:
+  - @enzymefinance/sdk@1.2.3
+
 ## 6.3.3
 
 ### Patch Changes

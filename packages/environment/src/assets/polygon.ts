@@ -341,6 +341,8 @@ export default defineAssetList(Network.POLYGON, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x73366fe0aa0ded304479862808e02506fe556a98",
       rateAsset: RateAsset.USD,
+      peggedTo: "EUR",
+      nonStandard: true,
     },
   },
   {
@@ -1566,6 +1568,36 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    id: "0x6a8742d7f417431ae4218e94678d91f2ace24a66",
+    name: "UI Space Y Stock",
+    symbol: "UISTEST",
+    decimals: 0,
+    releases: [polygon.sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x73366fe0aa0ded304479862808e02506fe556a98",
+      rateAsset: RateAsset.USD,
+      peggedTo: "EUR",
+      nonStandard: true,
+    },
+  },
+  {
+    id: "0xdd52fb974e8b486da82e69d56da8c6f8bf35b0e0",
+    name: "UI Real Estate",
+    symbol: "UIRETEST",
+    decimals: 0,
+    releases: [polygon.sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x73366fe0aa0ded304479862808e02506fe556a98",
+      rateAsset: RateAsset.USD,
+      peggedTo: "EUR",
+      nonStandard: true,
     },
   },
 ]);

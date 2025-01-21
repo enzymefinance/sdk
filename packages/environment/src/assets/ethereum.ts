@@ -7436,4 +7436,15 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    id: "0x58d97b57bb95320f9a05dc918aef65434969c2b2",
+    name: "Morpho Token",
+    symbol: "MORPHO",
+    decimals: 18,
+    releases: [],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);

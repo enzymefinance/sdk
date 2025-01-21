@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.3
+
+### Patch Changes
+
+- [#613](https://github.com/enzymefinance/sdk/pull/613) [`2dbc17e`](https://github.com/enzymefinance/sdk/commit/2dbc17e1f76f9648f94dc383cc18d46fa16871cd) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update gmx order type
+
 ## 1.2.2
 
 ### Patch Changes

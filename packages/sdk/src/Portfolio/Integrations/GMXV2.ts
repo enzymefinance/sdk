@@ -31,10 +31,7 @@ export const Action = {
 
 export type OrderType = (typeof OrderType)[keyof typeof OrderType];
 export const OrderType = {
-  MarketSwap: 0,
-  LimitSwap: 1,
   MarketIncrease: 2,
-  LimitIncrease: 3,
   MarketDecrease: 4,
   LimitDecrease: 5,
   StopLossDecrease: 6,
