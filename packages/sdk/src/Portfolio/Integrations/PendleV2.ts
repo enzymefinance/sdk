@@ -319,47 +319,6 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 }
 
 //--------------------------------------------------------------------------------------------
-// ADAPTER - ACTIONS
-//--------------------------------------------------------------------------------------------
-
-export type AdapterAction = (typeof AdapterAction)[keyof typeof AdapterAction];
-export const AdapterAction = {
-  BuyPrincipalToken: 0n,
-  SellPrincipalToken: 1n,
-  AddLiquidity: 2n,
-  RemoveLiquidity: 3n,
-} as const;
-
-const adapterActionEncoding = [
-  {
-    name: "actionId",
-    type: "uint256",
-  },
-  {
-    name: "encodedActionArgs",
-    type: "bytes",
-  },
-] as const;
-
-export type AdapterActionArgs = {
-  actionId: bigint;
-  encodedActionArgs: Hex;
-};
-
-export function encodeAdapterAction(args: AdapterActionArgs): Hex {
-  return encodeAbiParameters(adapterActionEncoding, [args.actionId, args.encodedActionArgs]);
-}
-
-export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
-  const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
-
-  return {
-    actionId,
-    encodedActionArgs,
-  };
-}
-
-//--------------------------------------------------------------------------------------------
 // ADAPTER - BUY PRINCIPLE TOKEN
 //--------------------------------------------------------------------------------------------
 
@@ -375,11 +334,11 @@ export function buyPrincipleTokenWithAdapterEncode(args: BuyPrincipleTokenWithAd
 
   const encodedActionArgs = buyPrincipleTokenEncode(actionArgs);
 
-  return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
+  return encodeAbiParameters(IntegrationManager.adapterActionEncoding, [actionId, encodedActionArgs]);
 }
 
 export function buyPrincipleTokenWithAdapterDecode(encoded: Hex): BuyPrincipleTokenWithAdapterArgs {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+  const { actionId, encodedActionArgs } = IntegrationManager.decodeAdapterAction(encoded);
 
   const decodedActionArgs = buyPrincipleTokenDecode(encodedActionArgs);
 
@@ -405,11 +364,11 @@ export function sellPrincipleTokenWithAdapterEncode(args: SellPrincipleTokenWith
 
   const encodedActionArgs = sellPrincipleTokenEncode(actionArgs);
 
-  return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
+  return encodeAbiParameters(IntegrationManager.adapterActionEncoding, [actionId, encodedActionArgs]);
 }
 
 export function sellPrincipleTokenWithAdapterDecode(encoded: Hex): SellPrincipleTokenWithAdapterArgs {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+  const { actionId, encodedActionArgs } = IntegrationManager.decodeAdapterAction(encoded);
 
   const decodedActionArgs = sellPrincipleTokenDecode(encodedActionArgs);
 
@@ -435,11 +394,11 @@ export function addLiquidityWithAdapterEncode(args: AddLiquidityWithAdapterArgs)
 
   const encodedActionArgs = addLiquidityEncode(actionArgs);
 
-  return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
+  return encodeAbiParameters(IntegrationManager.adapterActionEncoding, [actionId, encodedActionArgs]);
 }
 
 export function addLiquidityWithAdapterDecode(encoded: Hex): AddLiquidityWithAdapterArgs {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+  const { actionId, encodedActionArgs } = IntegrationManager.decodeAdapterAction(encoded);
 
   const decodedActionArgs = addLiquidityDecode(encodedActionArgs);
 
@@ -465,11 +424,11 @@ export function removeLiquidityWithAdapterEncode(args: RemoveLiquidityWithAdapte
 
   const encodedActionArgs = removeLiquidityEncode(actionArgs);
 
-  return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
+  return encodeAbiParameters(IntegrationManager.adapterActionEncoding, [actionId, encodedActionArgs]);
 }
 
 export function removeLiquidityWithAdapterDecode(encoded: Hex): RemoveLiquidityWithAdapterArgs {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+  const { actionId, encodedActionArgs } = IntegrationManager.decodeAdapterAction(encoded);
 
   const decodedActionArgs = removeLiquidityDecode(encodedActionArgs);
 

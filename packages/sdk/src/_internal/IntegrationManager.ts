@@ -235,3 +235,44 @@ export function removeTracketAssets(args: RemoveTrackedAssetsParams) {
     }),
   });
 }
+
+//--------------------------------------------------------------------------------------------
+// ADAPTER - ACTIONS
+//--------------------------------------------------------------------------------------------
+
+export type AdapterAction = (typeof AdapterAction)[keyof typeof AdapterAction];
+export const AdapterAction = {
+  BuyPrincipalToken: 0n,
+  SellPrincipalToken: 1n,
+  AddLiquidity: 2n,
+  RemoveLiquidity: 3n,
+} as const;
+
+export const adapterActionEncoding = [
+  {
+    name: "actionId",
+    type: "uint256",
+  },
+  {
+    name: "encodedActionArgs",
+    type: "bytes",
+  },
+] as const;
+
+export type AdapterActionArgs = {
+  actionId: bigint;
+  encodedActionArgs: Hex;
+};
+
+export function encodeAdapterAction(args: AdapterActionArgs): Hex {
+  return encodeAbiParameters(adapterActionEncoding, [args.actionId, args.encodedActionArgs]);
+}
+
+export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
+  const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+
+  return {
+    actionId,
+    encodedActionArgs,
+  };
+}
