@@ -1,9 +1,9 @@
 import { Asset } from "@enzymefinance/sdk";
 import { isAddressEqual } from "viem";
 import { expect, suite, test } from "vitest";
-import type { UniswapV2PoolAsset } from "../../src/index.js";
 import { AssetType } from "../../src/index.js";
 import { getClient } from "../utils/client.js";
+import { readTokensFromMarket } from "../utils/contracts/PendleV2Tokens.js";
 import { getApiVersion } from "../utils/contracts/YearnVaultToken.js";
 import { environment } from "../utils/fixtures.js";
 
@@ -20,10 +20,25 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
   });
 
   test.skipIf(symbolExceptions.includes(asset.symbol))("defined symbol matches on-chain symbol", async () => {
-    await expect(
-      Asset.getSymbol(client, { asset: asset.id }),
-      `Symbol for ${asset.name} (${asset.id}) is not defined in the environment`,
-    ).resolves.toBe(asset.symbol);
+    switch (asset.type) {
+      case AssetType.PENDLE_V2_LP: {
+        const pendleV2LpAsset = environment.getAssetAs(asset.id, asset.type);
+        const { pt } = await readTokensFromMarket(client, { market: pendleV2LpAsset.id });
+
+        const ptSymbol = await Asset.getSymbol(client, { asset: pt });
+
+        expect(asset.symbol, "Symbol for Pendle LP token is not defined correctly in the environment").toEqual(
+          ptSymbol.replace("PT", "LP"),
+        );
+        break;
+      }
+      default: {
+        await expect(
+          Asset.getSymbol(client, { asset: asset.id }),
+          `Symbol for ${asset.name} (${asset.id}) is not defined in the environment`,
+        ).resolves.toBe(asset.symbol);
+      }
+    }
   });
 
   test("asset id is unique", () => {
@@ -49,14 +64,27 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       }
 
       case AssetType.UNISWAP_V2_POOL: {
-        const token0 = environment.getAsset((asset as UniswapV2PoolAsset).underlyings[0]);
-        const token1 = environment.getAsset((asset as UniswapV2PoolAsset).underlyings[1]);
+        const uniswapV2Asset = environment.getAssetAs(asset.id, asset.type);
+        const token0 = environment.getAsset(uniswapV2Asset.underlyings[0]);
+        const token1 = environment.getAsset(uniswapV2Asset.underlyings[1]);
 
         const symbol0 = token0.symbol === "WETH" ? "ETH" : token0.symbol;
         const symbol1 = token1.symbol === "WETH" ? "ETH" : token1.symbol;
 
         expect(asset.name, "Name for Uniswap pool is not defined correctly in the environment").toEqual(
           `Uniswap ${symbol0}/${symbol1} Pool`,
+        );
+        break;
+      }
+
+      case AssetType.PENDLE_V2_LP: {
+        const pendleV2LpAsset = environment.getAssetAs(asset.id, asset.type);
+        const { pt } = await readTokensFromMarket(client, { market: pendleV2LpAsset.id });
+
+        const ptName = await Asset.getName(client, { asset: pt });
+
+        expect(asset.name, "Name for Pendle LP token is not defined correctly in the environment").toEqual(
+          ptName.replace("PT", "LP"),
         );
         break;
       }

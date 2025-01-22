@@ -7412,8 +7412,8 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "PENDLE-LPT",
-    name: "Pendle Market", // sUSDe 29 May 2025
+    symbol: "LP-sUSDE-29MAY2025",
+    name: "LP Ethena sUSDE 29MAY2025",
     id: "0xb162b764044697cf03617c2efbcb1f42e31e4766",
     type: AssetType.PENDLE_V2_LP,
     releases: [sulu],
