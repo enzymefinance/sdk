@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.9
+
+### Patch Changes
+
+- [#625](https://github.com/enzymefinance/sdk/pull/625) [`0c24ace`](https://github.com/enzymefinance/sdk/commit/0c24ace5a1163dce57a0dcda17dffda6760b5deb) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Use custom name for pendle lp tokens
+
 ## 6.3.8
 
 ### Patch Changes
