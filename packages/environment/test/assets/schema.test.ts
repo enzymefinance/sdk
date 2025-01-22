@@ -17,6 +17,7 @@ import {
   IdleSchema,
   MaplePoolV1Schema,
   MaplePoolV2Schema,
+  PendleV2LpSchema,
   PendleV2PtSchema,
   PrimitiveSchema,
   StaderSchema,
@@ -105,7 +106,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           break;
         }
         case AssetType.PENDLE_V2_LP: {
-          validate(PendleV2PtSchema, asset);
+          validate(PendleV2LpSchema, asset);
           break;
         }
         default:
