@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.5
+
+### Patch Changes
+
+- [#627](https://github.com/enzymefinance/sdk/pull/627) [`4d55ab1`](https://github.com/enzymefinance/sdk/commit/4d55ab115f0d7b56f3200fbc19cb3ae1b0282a1c) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add get fund deployer
+
 ## 1.2.4
 
 ### Patch Changes
