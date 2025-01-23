@@ -97,6 +97,34 @@ export function setSymbol(args: SetSymbolParams) {
   });
 }
 
+export function addAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: ReadonlyArray<Address>;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "addAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
+  });
+}
+
+export function removeAssetManagers(
+  args: Viem.ContractCallParameters<{
+    vaultProxy: Address;
+    managers: ReadonlyArray<Address>;
+  }>,
+) {
+  return new Viem.PopulatedTransaction({
+    abi: Abis.IVaultLib,
+    functionName: "removeAssetManagers",
+    address: args.vaultProxy,
+    args: [args.managers],
+  });
+}
+
 //--------------------------------------------------------------------------------------------
 // READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
@@ -227,30 +255,16 @@ export function sharesAreFreelyTransferable(
   });
 }
 
-export function addAssetManagers(
+export function getFundDeployer(
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
-    managers: ReadonlyArray<Address>;
   }>,
 ) {
-  return new Viem.PopulatedTransaction({
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
     abi: Abis.IVaultLib,
-    functionName: "addAssetManagers",
+    functionName: "getFundDeployer",
     address: args.vaultProxy,
-    args: [args.managers],
-  });
-}
-
-export function removeAssetManagers(
-  args: Viem.ContractCallParameters<{
-    vaultProxy: Address;
-    managers: ReadonlyArray<Address>;
-  }>,
-) {
-  return new Viem.PopulatedTransaction({
-    abi: Abis.IVaultLib,
-    functionName: "removeAssetManagers",
-    address: args.vaultProxy,
-    args: [args.managers],
   });
 }
