@@ -7,10 +7,12 @@ import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const aaveV3Assets = environment.getAssets({ types: [AssetType.AAVE_V3] });
+const aaveV3LikeAssets = environment.getAssets({
+  types: [AssetType.AAVE_V3, AssetType.ZERO_LEND_AAVE_V3_LRT_BTC, AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS],
+});
 const assets = environment.getAssets();
 
-test.each(aaveV3Assets)("aave V3 underlying is correct: $symbol ($name): $id", async (asset) => {
+test.each(aaveV3LikeAssets)("aave V3 like underlying is correct: $symbol ($name): $id", async (asset) => {
   // check if underlying is correct
   const checksum = await getUnderlyingAssetAddressUpperCase(client, { asset: asset.id });
   expect(checksum.toLowerCase(), "Actual underlying asset does not match expected").toBe(asset.underlying);
@@ -21,7 +23,7 @@ test.each(aaveV3Assets)("aave V3 underlying is correct: $symbol ($name): $id", a
     "Underlying asset not found in the environment",
   ).toBe(1);
 
-  // check if underlying asset is registerd
+  // check if underlying asset is registered
   expect(
     asset.registered ? environment.getAsset(asset.underlying).registered : true,
     "Underlying asset not registered",

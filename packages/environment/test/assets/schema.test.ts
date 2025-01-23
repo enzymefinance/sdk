@@ -37,6 +37,8 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           validate(AaveSchema, asset);
           break;
         }
+        case AssetType.ZERO_LEND_AAVE_V3_LRT_BTC:
+        case AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS:
         case AssetType.AAVE_V3: {
           validate(AaveV3Schema, asset);
           break;

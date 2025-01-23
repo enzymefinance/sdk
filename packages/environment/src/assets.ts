@@ -69,7 +69,9 @@ export type Asset =
   | StaderAsset
   | SynthetixAsset
   | UniswapV2PoolAsset
-  | YearnVaultV2Asset;
+  | YearnVaultV2Asset
+  | ZeroLendAaveV3LRTBTCAsset
+  | ZeroLendAaveV3RWAStablecoinsAsset;
 
 export enum AssetType {
   AAVE_V2 = "aave-v2",
@@ -91,6 +93,8 @@ export enum AssetType {
   MAPLE_V1 = "maple-v1",
   MAPLE_V2 = "maple-v2",
   ERC_4626 = "erc-4626",
+  ZERO_LEND_AAVE_V3_LRT_BTC = "zero-lend-aave-v3-lrt-btc",
+  ZERO_LEND_AAVE_V3_RWA_STABLECOINS = "zero-lend-aave-v3-rwa-stablecoins",
 }
 
 export interface StaderAsset extends AssetBase {
@@ -115,6 +119,30 @@ export interface AaveV2Asset extends AssetBase {
 
 export interface AaveV3Asset extends AssetBase {
   readonly type: AssetType.AAVE_V3;
+  /**
+   * Underlying Asset.
+   */
+  readonly underlying: Address;
+}
+
+export interface ZeroLendAaveV3LRTBTCAsset extends AssetBase {
+  readonly type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC;
+  /**
+   * Underlying Asset.
+   */
+  readonly underlying: Address;
+}
+
+export interface ZeroLendAaveV3RWAStablecoinsAsset extends AssetBase {
+  readonly type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS;
+  /**
+   * Underlying Asset.
+   */
+  readonly underlying: Address;
+}
+
+export interface ZeroLendAaveV3LRTBTCAsset extends AssetBase {
+  readonly type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC;
   /**
    * Underlying Asset.
    */
