@@ -248,15 +248,20 @@ export interface SubgraphMapping {
   readonly vaults: { slug: string; id: string };
 }
 
-export interface KnownAddressListIdMapping {
+export type KnownAddressListIdMapping<TDeployment extends Deployment> = {
   noSlippageAdapters: bigint;
   adapters: bigint;
   fees: bigint;
   policies: bigint;
-  kilnStakingContracts?: bigint;
   nonStandardPriceFeedAssets: bigint;
   aTokens: bigint;
-}
+} & (TDeployment extends Deployment.ETHEREUM ? KnownAddressListIdMappingEthereumSpecific : {});
+
+export type KnownAddressListIdMappingEthereumSpecific = {
+  kilnStakingContracts: bigint;
+  zeroLendRWAStablecoinsATokens: bigint;
+  zeroLendLRTBTCATokens: bigint;
+};
 
 export interface KnownUintListIdMapping {
   allowedMorphoBlueVaults?: bigint;
@@ -329,7 +334,7 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   /**
    * Ids for known address lists.
    */
-  readonly knownAddressLists: KnownAddressListIdMapping;
+  readonly knownAddressLists: KnownAddressListIdMapping<TDeployment>;
   /**
    * Ids for known uint lists.
    */
