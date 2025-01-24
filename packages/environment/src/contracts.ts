@@ -177,6 +177,10 @@ export interface SuluContracts extends CommonContracts {
   readonly ZeroExV2Adapter: Address;
   readonly ZeroExV4Adapter: Address;
   readonly ZeroExV4AdapterPmm2Kyc: Address;
+  readonly ZeroLendAaveV3LRTBTCDebtPositionLib: Address;
+  readonly ZeroLendAaveV3LRTBTCDebtPositionParser: Address;
+  readonly ZeroLendAaveV3RWAStablecoinsDebtPositionLib: Address;
+  readonly ZeroLendAaveV3RWAStablecoinsDebtPositionParser: Address;
 }
 
 export interface EncoreContracts extends CommonContracts {

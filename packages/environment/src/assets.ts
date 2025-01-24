@@ -141,14 +141,6 @@ export interface ZeroLendAaveV3RWAStablecoinsAsset extends AssetBase {
   readonly underlying: Address;
 }
 
-export interface ZeroLendAaveV3LRTBTCAsset extends AssetBase {
-  readonly type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC;
-  /**
-   * Underlying Asset.
-   */
-  readonly underlying: Address;
-}
-
 export interface CompoundV2Asset extends AssetBase {
   readonly type: AssetType.COMPOUND_V2;
   /**
