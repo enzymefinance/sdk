@@ -7397,6 +7397,49 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 8,
+    id: "0x813ff1cf08b381632d0087cc6d9e17ff73a7afc8",
+    name: "ZeroLend PT Lombard LBTC 27MAR2025",
+    releases: [sulu],
+    symbol: "z0PT-LBTC-27MAR2025",
+    type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC,
+    underlying: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    symbol: "PT-sUSDE-27MAR2025",
+    name: "PT Ethena sUSDE 27MAR2025",
+    id: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x0000000000000000000000000000000000000000", // TODO: Add aggregator
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xb73ca924bf3e1c2c5ac4d7718700650d706aad73",
+    name: "ZeroLend PT Ethena sUSDE 27MAR2025",
+    releases: [sulu],
+    symbol: "z0PT-sUSDE-27MAR2025",
+    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    underlying: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x0000000000000000000000000000000000000000", // TODO: Add aggregator
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
     symbol: "PT-corn-SolvBTC.BBN-26DEC2024",
     name: "PT Corn SolvBTC Babylon 26DEC2024",
     id: "0x23e479ddcda990e8523494895759bd98cd2fdbf6",
