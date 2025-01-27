@@ -6,7 +6,7 @@ import { isAddress } from "./utils.js";
 
 export enum AdapterType {
   AAVE_V2 = "aave-v2",
-  AAVE_V3 = "aave-v3",
+  AAVE_V3 = "aavev3",
   ALPHA_HOMORA_V1 = "alpha-homora-v1",
   AURA = "aura",
   BALANCER_V2 = "balancer-v2",
@@ -40,8 +40,8 @@ export enum AdapterType {
   ZERO_EX_V2 = "zeroex-v2",
   ZERO_EX_V4 = "zeroex-v4",
   ZERO_EX_V4_PMM_KYC = "zeroex-v4-pmm-kyc",
-  ZERO_LEND_AAVE_V3_LRT_BTC = "zero-lend-aave-v3-lrt-btc",
-  ZERO_LEND_AAVE_V3_RWA_STABLECOINS = "zero-lend-aave-v3-rwa-stablecoins",
+  ZERO_LEND_AAVE_V3_LRT_BTC = "zerolendaavev3lrtbtc",
+  ZERO_LEND_AAVE_V3_RWA_STABLECOINS = "zerolendaavev3rwastablecoins",
 }
 
 interface UnresolvedAdapterDefinition<TAdapterType extends AdapterType = AdapterType> {
