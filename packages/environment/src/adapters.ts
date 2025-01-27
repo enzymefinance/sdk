@@ -40,6 +40,8 @@ export enum AdapterType {
   ZERO_EX_V2 = "zeroex-v2",
   ZERO_EX_V4 = "zeroex-v4",
   ZERO_EX_V4_PMM_KYC = "zeroex-v4-pmm-kyc",
+  ZERO_LEND_AAVE_V3_LRT_BTC = "zero-lend-aave-v3-lrt-btc",
+  ZERO_LEND_AAVE_V3_RWA_STABLECOINS = "zero-lend-aave-v3-rwa-stablecoins",
 }
 
 interface UnresolvedAdapterDefinition<TAdapterType extends AdapterType = AdapterType> {
@@ -279,6 +281,16 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: "ZeroExV4AdapterPmm2Kyc",
     name: "0x V4",
     type: AdapterType.ZERO_EX_V4_PMM_KYC,
+  },
+  [AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC]: {
+    contractName: "ZeroLendAaveV3LRTBTCAdapter",
+    name: "Zero Lend LRT BTC Supply",
+    type: AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC,
+  },
+  [AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS]: {
+    contractName: "ZeroLendAaveV3RWAStablecoinsAdapter",
+    name: "Zero Lend RWA Stablecoins Supply",
+    type: AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
   },
 } as const;
 
