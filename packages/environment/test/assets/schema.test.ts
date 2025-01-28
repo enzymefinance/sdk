@@ -3,6 +3,7 @@ import { expect, suite, test } from "vitest";
 import { Assertion } from "@enzymefinance/sdk/Utils";
 import { AssetType } from "../../src/index.js";
 import { environment } from "../utils/fixtures.js";
+import { ZeroLendAaveV3RWAStablecoinsSchema } from "../utils/schema.js";
 import {
   AaveSchema,
   AaveV3Schema,
@@ -24,6 +25,7 @@ import {
   SynthetixSchema,
   UniswapV2PoolSchema,
   YearnVaultV2Schema,
+  ZeroLendAaveV3LRTBTCSchema,
   validate,
 } from "../utils/schema.js";
 
@@ -37,10 +39,16 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
           validate(AaveSchema, asset);
           break;
         }
-        case AssetType.ZERO_LEND_AAVE_V3_LRT_BTC:
-        case AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS:
         case AssetType.AAVE_V3: {
           validate(AaveV3Schema, asset);
+          break;
+        }
+        case AssetType.ZERO_LEND_AAVE_V3_LRT_BTC: {
+          validate(ZeroLendAaveV3LRTBTCSchema, asset);
+          break;
+        }
+        case AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS: {
+          validate(ZeroLendAaveV3RWAStablecoinsSchema, asset);
           break;
         }
         case AssetType.PRIMITIVE: {
