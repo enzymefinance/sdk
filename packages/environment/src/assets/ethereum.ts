@@ -7421,7 +7421,7 @@ export default defineAssetList(Network.ETHEREUM, [
     markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x0000000000000000000000000000000000000000", // TODO: Add aggregator
+      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
       rateAsset: RateAsset.ETH,
     },
   },
@@ -7435,7 +7435,51 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x0000000000000000000000000000000000000000", // TODO: Add aggregator
+      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-sUSDE-29MAY2025",
+    name: "PT Ethena sUSDE 29MAY2025",
+    id: "0xb7de5dfcb74d25c2f21841fbd6230355c50d9308",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    markets: ["0xb162b764044697cf03617c2efbcb1f42e31e4766"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x52325958f2da217886e3c49e3cdbdbcf1c058a9c",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-USDE-27MAR2025",
+    name: "PT Ethena USDE 27MAR2025",
+    id: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+    markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x691ad41906e3fe78c3fe1328ecddc9bd7c0e5eb8",
+    name: "ZeroLend PT Ethena USDE 27MAR2025",
+    releases: [sulu],
+    symbol: "z0PT-USDE-27MAR2025",
+    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    underlying: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
       rateAsset: RateAsset.ETH,
     },
   },
