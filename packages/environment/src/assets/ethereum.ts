@@ -7407,7 +7407,7 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
-      rateAsset: RateAsset.USD,
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7496,6 +7496,32 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x65427ee55ab33c00d467923af340b8fb3e73a0cd",
       rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    symbol: "PT-BTC-Zerolend-eBTC-27MAR2025",
+    name: "PT BTC-Zerolend eBTC 27MAR2025",
+    id: "0x8b89d5ea6c9ea52dab5834e9789aa10085c14858",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 8,
+    underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
+    markets: ["0x98ffefd1a51d322c8def6d0ba183e71547216f7f"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xd80a1aeb9d604c1e253756c3974a7564e7c15e5a",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 8,
+    id: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
+    name: "ether.fi BTC",
+    releases: [],
+    symbol: "eBTC",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
     },
   },
   {
