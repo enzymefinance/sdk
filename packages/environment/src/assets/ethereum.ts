@@ -7545,11 +7545,13 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 8,
     id: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
     name: "ether.fi BTC",
-    releases: [],
+    releases: [sulu],
     symbol: "eBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_REDSTONE_QUOTED,
+      aggregator: "0xb04f255f21bc7a45ef4790deb007926e01b1f1f5",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
