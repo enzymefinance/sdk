@@ -3231,6 +3231,20 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
+    id: "0xe24933aa6dfb66a32df7ea897a1818ecaabd54e1",
+    name: "ZeroLend Staked USDe",
+    releases: [sulu],
+    symbol: "z0sUSDe",
+    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xb99d174ed06c83588af997c8859f93e83dd4733f",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
     id: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     name: "Maker",
     releases: [sulu, encore, phoenix],
