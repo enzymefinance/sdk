@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.11
+
+### Patch Changes
+
+- [#631](https://github.com/enzymefinance/sdk/pull/631) [`70e38b6`](https://github.com/enzymefinance/sdk/commit/70e38b6fcf80db297d818946e6e98fcd1799b731) Thanks [@iherger](https://github.com/iherger)! - Update Aave addresses
+
 ## 6.3.10
 
 ### Patch Changes
