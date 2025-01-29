@@ -7405,7 +7405,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC,
     underlying: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
       rateAsset: RateAsset.ETH,
     },
@@ -7455,8 +7455,8 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "PT-USDE-27MAR2025",
-    name: "PT Ethena USDE 27MAR2025",
+    symbol: "PT-USDe-27MAR2025",
+    name: "PT Ethena USDe 27MAR2025",
     id: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
@@ -7472,9 +7472,9 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x691ad41906e3fe78c3fe1328ecddc9bd7c0e5eb8",
-    name: "ZeroLend PT Ethena USDE 27MAR2025",
+    name: "ZeroLend PT Ethena USDe 27MAR2025",
     releases: [sulu],
-    symbol: "z0PT-USDE-27MAR2025",
+    symbol: "z0PT-USDe-27MAR2025",
     type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
     underlying: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     priceFeed: {
