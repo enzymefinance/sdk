@@ -358,7 +358,7 @@ export default defineAssetList(Network.ARBITRUM, [
   {
     decimals: 6,
     id: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
-    name: "Tether USD",
+    name: "USD₮0",
     releases: [sulu],
     symbol: "USD₮0",
     type: AssetType.PRIMITIVE,
