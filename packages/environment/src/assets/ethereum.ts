@@ -7447,4 +7447,19 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    id: "0xde17a000ba631c5d7c2bd9fb692efea52d90dee2",
+    name: "Ultimate Synthetic Delta Neutral",
+    symbol: "USDN",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x9579f735d0c93b5eef064fe312ca3509bd695206",
+      rateAsset: RateAsset.ETH,
+      nonStandard: true,
+      peggedTo: "USD",
+    },
+  },
 ]);
