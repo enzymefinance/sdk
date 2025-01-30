@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.12
+
+### Patch Changes
+
+- [#634](https://github.com/enzymefinance/sdk/pull/634) [`3658113`](https://github.com/enzymefinance/sdk/commit/3658113013fa793c0d25c81ffafe4f5d9e6392de) Thanks [@iherger](https://github.com/iherger)! - Fix USDT symbol on Arbitrum
+
 ## 6.3.11
 
 ### Patch Changes
