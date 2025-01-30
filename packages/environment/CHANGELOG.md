@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.13
+
+### Patch Changes
+
+- [#633](https://github.com/enzymefinance/sdk/pull/633) [`3e1c327`](https://github.com/enzymefinance/sdk/commit/3e1c327e9f898d4d2807e9ead1afdae7984cc578) Thanks [@iherger](https://github.com/iherger)! - Add USDN
+
 ## 6.3.12
 
 ### Patch Changes
