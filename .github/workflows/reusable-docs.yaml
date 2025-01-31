@@ -18,7 +18,7 @@ jobs:
         run: pnpm run --filter docs build
       - name: Upload pages artifact
         if: github.repository_owner == 'enzymefinance' && github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           path: docs/dist
 
