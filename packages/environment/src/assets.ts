@@ -70,8 +70,8 @@ export type Asset =
   | SynthetixAsset
   | UniswapV2PoolAsset
   | YearnVaultV2Asset
-  | ZeroLendAaveV3LRTBTCAsset
-  | ZeroLendAaveV3RWAStablecoinsAsset;
+  | ZeroLendLRTBTCAaveV3Asset
+  | ZeroLendRWAStablecoinsAaveV3Asset;
 
 export enum AssetType {
   AAVE_V2 = "aave-v2",
@@ -125,7 +125,7 @@ export interface AaveV3Asset extends AssetBase {
   readonly underlying: Address;
 }
 
-export interface ZeroLendAaveV3LRTBTCAsset extends AssetBase {
+export interface ZeroLendLRTBTCAaveV3Asset extends AssetBase {
   readonly type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC;
   /**
    * Underlying Asset.
@@ -133,7 +133,7 @@ export interface ZeroLendAaveV3LRTBTCAsset extends AssetBase {
   readonly underlying: Address;
 }
 
-export interface ZeroLendAaveV3RWAStablecoinsAsset extends AssetBase {
+export interface ZeroLendRWAStablecoinsAaveV3Asset extends AssetBase {
   readonly type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS;
   /**
    * Underlying Asset.

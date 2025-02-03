@@ -283,12 +283,12 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.ZERO_EX_V4_PMM_KYC,
   },
   [AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC]: {
-    contractName: "ZeroLendAaveV3LRTBTCAdapter",
+    contractName: "ZeroLendLRTBTCAaveV3Adapter",
     name: "Zero Lend LRT BTC Supply",
     type: AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC,
   },
   [AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS]: {
-    contractName: "ZeroLendAaveV3RWAStablecoinsAdapter",
+    contractName: "ZeroLendRWAStablecoinsAaveV3Adapter",
     name: "Zero Lend RWA Stablecoins Supply",
     type: AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
   },
