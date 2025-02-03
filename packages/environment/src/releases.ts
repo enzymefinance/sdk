@@ -316,6 +316,13 @@ export interface ExternalContractsMapping {
   readonly votiumVoteProxy: Address;
   readonly zeroExExchangeProxy: Address;
   readonly zeroExV4Exchange: Address;
+  readonly zeroLendAaveV3UIIncentiveDataProvider: Address;
+  readonly zeroLendLRTBTCAaveV3LendingPoolProvider: Address;
+  readonly zeroLendLRTBTCAaveV3ProtocolDataProvider: Address;
+  readonly zeroLendLRTBTCAaveV3RewardsController: Address;
+  readonly zeroLendRWAStablecoinsAaveV3LendingPoolProvider: Address;
+  readonly zeroLendRWAStablecoinsAaveV3ProtocolDataProvider: Address;
+  readonly zeroLendRWAStablecoinsAaveV3RewardsController: Address;
 }
 
 export interface DeploymentDefinition<TDeployment extends Deployment> {
