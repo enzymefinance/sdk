@@ -40,8 +40,8 @@ export enum AdapterType {
   ZERO_EX_V2 = "zeroex-v2",
   ZERO_EX_V4 = "zeroex-v4",
   ZERO_EX_V4_PMM_KYC = "zeroex-v4-pmm-kyc",
-  ZERO_LEND_AAVE_V3_LRT_BTC = "zero-lend-aave-v3-lrt-btc",
-  ZERO_LEND_AAVE_V3_RWA_STABLECOINS = "zero-lend-aave-v3-rwa-stablecoins",
+  ZERO_LEND_LRT_BTC_AAVE_V3 = "zero-lend-lrt-btc-aave-v3",
+  ZERO_LEND_RWA_STABLECOINS_AAVE_V3 = "zero-lend-rwa-stablecoins-aave-v3",
 }
 
 interface UnresolvedAdapterDefinition<TAdapterType extends AdapterType = AdapterType> {
@@ -282,15 +282,15 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     name: "0x V4",
     type: AdapterType.ZERO_EX_V4_PMM_KYC,
   },
-  [AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC]: {
+  [AdapterType.ZERO_LEND_LRT_BTC_AAVE_V3]: {
     contractName: "ZeroLendLRTBTCAaveV3Adapter",
     name: "Zero Lend LRT BTC Supply",
-    type: AdapterType.ZERO_LEND_AAVE_V3_LRT_BTC,
+    type: AdapterType.ZERO_LEND_LRT_BTC_AAVE_V3,
   },
-  [AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS]: {
+  [AdapterType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3]: {
     contractName: "ZeroLendRWAStablecoinsAaveV3Adapter",
     name: "Zero Lend RWA Stablecoins Supply",
-    type: AdapterType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    type: AdapterType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
   },
 } as const;
 

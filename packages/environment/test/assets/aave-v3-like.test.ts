@@ -9,7 +9,7 @@ import { environment } from "../utils/fixtures.js";
 const client = getClient(environment.network.id);
 
 const aaveV3LikeAssets = environment.getAssets({
-  types: [AssetType.AAVE_V3, AssetType.ZERO_LEND_AAVE_V3_LRT_BTC, AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS],
+  types: [AssetType.AAVE_V3, AssetType.ZERO_LEND_LRT_BTC_AAVE_V3, AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3],
 });
 const assets = environment.getAssets();
 

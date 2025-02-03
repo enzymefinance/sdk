@@ -3235,7 +3235,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend Staked USDe",
     releases: [sulu],
     symbol: "z0sUSDe",
-    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_REDSTONE,
@@ -7416,7 +7416,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend PT Lombard LBTC 27MAR2025",
     releases: [sulu],
     symbol: "z0PT-LBTC-27MAR2025",
-    type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC,
+    type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
     underlying: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
@@ -7445,7 +7445,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend PT Ethena sUSDE 27MAR2025",
     releases: [sulu],
     symbol: "z0PT-sUSDE-27MAR2025",
-    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
@@ -7489,7 +7489,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend PT Ethena USDe 27MAR2025",
     releases: [sulu],
     symbol: "z0PT-USDe-27MAR2025",
-    type: AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS,
+    type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
@@ -7531,7 +7531,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "z0PT-corn-eBTC-27MAR2025",
     name: "ZeroLend PT Corn ether.fi eBTC 27MAR2025",
     id: "0xe2e3075c8962010e0d0b3a945c4671cc652ad5b7",
-    type: AssetType.ZERO_LEND_AAVE_V3_LRT_BTC,
+    type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
     releases: [sulu],
     decimals: 8,
     underlying: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",

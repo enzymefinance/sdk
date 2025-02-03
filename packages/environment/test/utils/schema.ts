@@ -52,12 +52,12 @@ export const AaveV3Schema = CommonAssetSchema.extend({
 });
 
 export const ZeroLendLRTBTCAaveV3Schema = CommonAssetSchema.extend({
-  type: z.literal(AssetType.ZERO_LEND_AAVE_V3_LRT_BTC),
+  type: z.literal(AssetType.ZERO_LEND_LRT_BTC_AAVE_V3),
   underlying: address,
 });
 
 export const ZeroLendRWAStablecoinsAaveV3Schema = CommonAssetSchema.extend({
-  type: z.literal(AssetType.ZERO_LEND_AAVE_V3_RWA_STABLECOINS),
+  type: z.literal(AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3),
   underlying: address,
 });
 
