@@ -315,6 +315,47 @@ export function setUseReserveAsCollateralDecode(encoded: Hex): SetUseReserveAsCo
 }
 
 //--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+  {
+    name: "amount",
+    type: "uint256",
+  },
+  {
+    name: "rewardToken",
+    type: "address",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  assets: ReadonlyArray<Address>;
+  amount: bigint;
+  rewardToken: Address;
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.assets, args.amount, args.rewardToken]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [assets, amount, rewardToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    assets,
+    amount,
+    rewardToken,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
 // SWEEP
 //--------------------------------------------------------------------------------------------
 
