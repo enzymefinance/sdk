@@ -10,6 +10,7 @@ export const Action = {
 
 export type Selector = (typeof Selector)[keyof typeof Selector];
 export const Selector = {
+  Action: "0xa7a19e00", // action(address,bytes,bytes)
   ClaimRewards: "0xb9dfbacc", // claimRewards(address,bytes,bytes)
   Lend: "0x099f7515", // lend(address,bytes,bytes)
   LendAndStake: "0x29fa046e", // lendAndStake(address,bytes,bytes)
@@ -17,8 +18,10 @@ export const Selector = {
   Stake: "0xfa7dd04d", // stake(address,bytes,bytes)
   TakeMultipleOrders: "0x0e7f692d", // takeMultipleOrders(address,bytes,bytes)
   TakeOrder: "0x03e38a2b", // takeOrder(address,bytes,bytes)
+  Transfer: "0x3461917c", // transfer(address,bytes,bytes)
   Unstake: "0x68e30677", // unstake(address,bytes,bytes)
   UnstakeAndRedeem: "0x8334eb99", // unstakeAndRedeem(address,bytes,bytes)
+  Wrap: "0xa5ca2d71", // wrap(address,bytes,bytes)
 } as const;
 
 export type UseParams<TArgs> = {

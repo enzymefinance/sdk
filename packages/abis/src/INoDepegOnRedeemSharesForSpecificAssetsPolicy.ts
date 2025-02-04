@@ -1,0 +1,220 @@
+export const INoDepegOnRedeemSharesForSpecificAssetsPolicy = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_policyManagerAddress",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_valueInterpreter",
+        type: "address",
+        internalType: "contract IValueInterpreter",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "activateForFund",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "addFundSettings",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_encodedSettings",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "canDisable",
+    inputs: [],
+    outputs: [
+      {
+        name: "canDisable_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "pure",
+  },
+  {
+    type: "function",
+    name: "getAssetConfigsForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "assetConfigs_",
+        type: "tuple[]",
+        internalType: "struct NoDepegPolicyBase.AssetConfig[]",
+        components: [
+          {
+            name: "asset",
+            type: "address",
+            internalType: "contract ERC20",
+          },
+          {
+            name: "referenceAsset",
+            type: "address",
+            internalType: "contract ERC20",
+          },
+          {
+            name: "deviationToleranceInBps",
+            type: "uint16",
+            internalType: "uint16",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPolicyManager",
+    inputs: [],
+    outputs: [
+      {
+        name: "policyManager_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "identifier",
+    inputs: [],
+    outputs: [
+      {
+        name: "identifier_",
+        type: "string",
+        internalType: "string",
+      },
+    ],
+    stateMutability: "pure",
+  },
+  {
+    type: "function",
+    name: "implementedHooks",
+    inputs: [],
+    outputs: [
+      {
+        name: "implementedHooks_",
+        type: "uint8[]",
+        internalType: "enum IPolicyManager.PolicyHook[]",
+      },
+    ],
+    stateMutability: "pure",
+  },
+  {
+    type: "function",
+    name: "updateFundSettings",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_encodedSettings",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "validateRule",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "",
+        type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
+      },
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [
+      {
+        name: "isValid_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "FundSettingsUpdated",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "assetConfigs",
+        type: "tuple[]",
+        indexed: false,
+        internalType: "struct NoDepegPolicyBase.AssetConfig[]",
+        components: [
+          {
+            name: "asset",
+            type: "address",
+            internalType: "contract ERC20",
+          },
+          {
+            name: "referenceAsset",
+            type: "address",
+            internalType: "contract ERC20",
+          },
+          {
+            name: "deviationToleranceInBps",
+            type: "uint16",
+            internalType: "uint16",
+          },
+        ],
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

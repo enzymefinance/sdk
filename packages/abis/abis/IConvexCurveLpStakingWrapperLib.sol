@@ -1,7 +1,17 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IConvexCurveLpStakingWrapperLib {
+    struct TotalHarvestData {
+        uint128 integral;
+        uint128 lastCheckpointBalance;
+    }
+
+    struct UserHarvestData {
+        uint128 integral;
+        uint128 claimableReward;
+    }
+
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Deposited(address indexed from, address indexed to, uint256 amount);
     event PauseToggled(bool isPaused);
@@ -15,16 +25,6 @@ interface IConvexCurveLpStakingWrapperLib {
         address indexed user, address indexed rewardToken, uint256 integral, uint256 claimableReward
     );
     event Withdrawn(address indexed caller, address indexed from, address indexed to, uint256 amount);
-
-    struct TotalHarvestData {
-        uint128 integral;
-        uint128 lastCheckpointBalance;
-    }
-
-    struct UserHarvestData {
-        uint128 integral;
-        uint128 claimableReward;
-    }
 
     function addExtraRewards() external;
     function allowance(address owner, address spender) external view returns (uint256);

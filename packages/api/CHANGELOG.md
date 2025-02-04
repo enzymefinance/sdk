@@ -1,5 +1,49 @@
 # @enzymefinance/api
 
+## 1.0.2
+
+### Patch Changes
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Publish packages fix
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Bump
+
+## 1.0.1
+
+### Patch Changes
+
+- [#603](https://github.com/enzymefinance/sdk/pull/603) [`291765c`](https://github.com/enzymefinance/sdk/commit/291765c7e1e5fa83ec7e2f10196b7aebe2e1e608) Thanks [@iherger](https://github.com/iherger)! - Bump
+
+## 1.0.0
+
+### Major Changes
+
+- [#562](https://github.com/enzymefinance/sdk/pull/562) [`c04699b`](https://github.com/enzymefinance/sdk/commit/c04699b4f40cd181dcd2d204ca61d57331682b54) Thanks [@iherger](https://github.com/iherger)! - Stable release
+
+## 0.4.4
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+## 0.4.3
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+## 0.4.2
+
+### Patch Changes
+
+- [`28c6153`](https://github.com/enzymefinance/sdk/commit/28c6153de12ca3fa32ab8c5e0598aa252e44160a) Thanks [@fubhy](https://github.com/fubhy)! - Codegen
+
+## 0.4.1
+
+### Patch Changes
+
+- [#411](https://github.com/enzymefinance/sdk/pull/411) [`7a6790d`](https://github.com/enzymefinance/sdk/commit/7a6790deb860f85e4fd65315bb5396607018ea32) Thanks [@iherger](https://github.com/iherger)! - Pendle V2
+
 ## 0.4.0
 
 ### Minor Changes

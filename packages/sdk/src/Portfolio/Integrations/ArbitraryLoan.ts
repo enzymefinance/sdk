@@ -67,7 +67,7 @@ export function configureLoanEncode(args: ConfigureLoanArgs): Hex {
     args.amount,
     args.accountingModule,
     args.accountingModuleConfigData,
-    stringToHex(args.description),
+    stringToHex(args.description, { size: 32 }),
   ]);
 }
 
@@ -87,6 +87,32 @@ export function configureLoanDecode(encoded: Hex): ConfigureLoanArgs {
   };
 }
 
+const configureTotalNominalDeltaOracleModuleEncoding = [
+  {
+    name: "oracle",
+    type: "address",
+  },
+  {
+    name: "stalenessThreshold",
+    type: "uint32",
+  },
+] as const;
+
+export type ConfigureTotalNominalDeltaOracleModuleArgs = {
+  oracle: Address;
+  stalenessThreshold: number;
+};
+
+export function configureTotalNominalDeltaOracleModuleEncode(args: ConfigureTotalNominalDeltaOracleModuleArgs): Hex {
+  return encodeAbiParameters(configureTotalNominalDeltaOracleModuleEncoding, [args.oracle, args.stalenessThreshold]);
+}
+
+export function configureTotalNominalDeltaOracleModuleDecode(encoded: Hex): ConfigureTotalNominalDeltaOracleModuleArgs {
+  const [oracle, stalenessThreshold] = decodeAbiParameters(configureTotalNominalDeltaOracleModuleEncoding, encoded);
+
+  return { oracle, stalenessThreshold };
+}
+
 //--------------------------------------------------------------------------------------------
 // UPDATE BORROWABLE AMOUNT
 //--------------------------------------------------------------------------------------------
@@ -99,7 +125,7 @@ export const updateBorrowableAmount = ExternalPositionManager.makeUse(
 const updateBorrowableAmountEncoding = [
   {
     name: "amountDelta",
-    type: "uint256",
+    type: "int256",
   },
 ] as const;
 

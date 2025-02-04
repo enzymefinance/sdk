@@ -1,8 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Hex, PublicClient } from "viem";
+import type { Address, Client, Hex } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import * as Assets from "./Asset.js";
 import { Assertion, Viem } from "./Utils.js";
+export * as AssetManagers from "./Portfolio/AssetManagers.js";
 export * as Integrations from "./Portfolio/Integrations.js";
 export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
 
@@ -60,7 +61,7 @@ export function vaultCallOnContract(args: VaultCallOnContractParams) {
 }
 
 export async function getPortfolio(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -100,7 +101,7 @@ export async function getPortfolio(
 }
 
 export function getTrackedAssets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -118,7 +119,7 @@ export function getTrackedAssets(
 //--------------------------------------------------------------------------------------------
 
 export function isActiveExternalPosition(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     externalPosition: Address;
@@ -134,7 +135,7 @@ export function isActiveExternalPosition(
 }
 
 export async function getTotalValueForAllExternalPositions(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -162,7 +163,7 @@ export async function getTotalValueForAllExternalPositions(
 }
 
 export function getActiveExternalPositions(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
   }>,
@@ -176,7 +177,7 @@ export function getActiveExternalPositions(
 }
 
 export async function getExternalPositionManagedAssets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -202,7 +203,7 @@ export async function getExternalPositionManagedAssets(
 }
 
 export async function getExternalPositionDebtAssets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -228,7 +229,7 @@ export async function getExternalPositionDebtAssets(
 }
 
 export async function getExternalPositionAssets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -245,7 +246,7 @@ export async function getExternalPositionAssets(
 }
 
 export function getExternalPositionType(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPosition: Address;
   }>,
@@ -259,7 +260,7 @@ export function getExternalPositionType(
 }
 
 export function getTypeLabel(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPositionFactory: Address;
     typeId: bigint;

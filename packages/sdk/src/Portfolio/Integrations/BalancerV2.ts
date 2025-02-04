@@ -1,14 +1,15 @@
+import { IBalancerV2StablePoolPriceFeed } from "@enzymefinance/abis";
 import {
   type Address,
+  type Client,
   type Hex,
-  PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
-  parseAbi,
   parseAbiParameters,
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Assertion, Types, Viem } from "../../Utils.js";
+import { type Types, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -303,14 +304,10 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
   return encodeAbiParameters(takeOrderEncoding, [args.kind, args.swaps, args.assets, args.limits, args.stakingTokens]);
 }
 
-export function isValidSwapKind(kind: number): kind is SwapKind {
-  return Object.values(SwapKind).includes(kind as SwapKind);
-}
-
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [kind, swaps, assets, limits, stakingTokens] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  Assertion.invariant(isValidSwapKind(kind), `Invalid swap kind ${kind}`);
+  assertEnumType(SwapKind, kind);
 
   return { kind, swaps, assets, limits, stakingTokens };
 }
@@ -330,7 +327,7 @@ const minterAbi = [
 ] as const;
 
 export async function getMinterRewards(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     minter: Address;
     beneficiary: Address;
@@ -350,6 +347,26 @@ export async function getMinterRewards(
 }
 
 //--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getPoolInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    balancerV2StablePoolPriceFeed: Address;
+    pool: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IBalancerV2StablePoolPriceFeed,
+    functionName: "getPoolInfo",
+    address: args.balancerV2StablePoolPriceFeed,
+    args: [args.pool],
+  });
+}
+
+//--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS - BALANCER GAUGE
 //--------------------------------------------------------------------------------------------
 
@@ -366,8 +383,8 @@ const gaugeAbi = [
   },
 ] as const;
 
-export async function getClaimableRewards(
-  client: PublicClient,
+export function getClaimableRewards(
+  client: Client,
   args: Viem.ContractCallParameters<{
     gauge: Address;
     user: Address;
@@ -384,8 +401,138 @@ export async function getClaimableRewards(
 }
 
 //--------------------------------------------------------------------------------------------
-// EXTERNAL READ FUNCTIONS - BALANCER VAULT
+// EXTERNAL READ FUNCTIONS - BALANCER QUERIES
 //--------------------------------------------------------------------------------------------
+
+const balancerQueriesAbi = [
+  {
+    inputs: [{ internalType: "contract IVault", name: "_vault", type: "address" }],
+    stateMutability: "nonpayable",
+    type: "constructor",
+  },
+  {
+    inputs: [
+      { internalType: "enum IVault.SwapKind", name: "kind", type: "uint8" },
+      {
+        components: [
+          { internalType: "bytes32", name: "poolId", type: "bytes32" },
+          { internalType: "uint256", name: "assetInIndex", type: "uint256" },
+          { internalType: "uint256", name: "assetOutIndex", type: "uint256" },
+          { internalType: "uint256", name: "amount", type: "uint256" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+        ],
+        internalType: "struct IVault.BatchSwapStep[]",
+        name: "swaps",
+        type: "tuple[]",
+      },
+      { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+      {
+        components: [
+          { internalType: "address", name: "sender", type: "address" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+          { internalType: "address payable", name: "recipient", type: "address" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.FundManagement",
+        name: "funds",
+        type: "tuple",
+      },
+    ],
+    name: "queryBatchSwap",
+    outputs: [{ internalType: "int256[]", name: "assetDeltas", type: "int256[]" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "poolId", type: "bytes32" },
+      { internalType: "address", name: "sender", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
+      {
+        components: [
+          { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+          { internalType: "uint256[]", name: "minAmountsOut", type: "uint256[]" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.ExitPoolRequest",
+        name: "request",
+        type: "tuple",
+      },
+    ],
+    name: "queryExit",
+    outputs: [
+      { internalType: "uint256", name: "bptIn", type: "uint256" },
+      { internalType: "uint256[]", name: "amountsOut", type: "uint256[]" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "bytes32", name: "poolId", type: "bytes32" },
+      { internalType: "address", name: "sender", type: "address" },
+      { internalType: "address", name: "recipient", type: "address" },
+      {
+        components: [
+          { internalType: "contract IAsset[]", name: "assets", type: "address[]" },
+          { internalType: "uint256[]", name: "maxAmountsIn", type: "uint256[]" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.JoinPoolRequest",
+        name: "request",
+        type: "tuple",
+      },
+    ],
+    name: "queryJoin",
+    outputs: [
+      { internalType: "uint256", name: "bptOut", type: "uint256" },
+      { internalType: "uint256[]", name: "amountsIn", type: "uint256[]" },
+    ],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        components: [
+          { internalType: "bytes32", name: "poolId", type: "bytes32" },
+          { internalType: "enum IVault.SwapKind", name: "kind", type: "uint8" },
+          { internalType: "contract IAsset", name: "assetIn", type: "address" },
+          { internalType: "contract IAsset", name: "assetOut", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" },
+          { internalType: "bytes", name: "userData", type: "bytes" },
+        ],
+        internalType: "struct IVault.SingleSwap",
+        name: "singleSwap",
+        type: "tuple",
+      },
+      {
+        components: [
+          { internalType: "address", name: "sender", type: "address" },
+          { internalType: "bool", name: "fromInternalBalance", type: "bool" },
+          { internalType: "address payable", name: "recipient", type: "address" },
+          { internalType: "bool", name: "toInternalBalance", type: "bool" },
+        ],
+        internalType: "struct IVault.FundManagement",
+        name: "funds",
+        type: "tuple",
+      },
+    ],
+    name: "querySwap",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "vault",
+    outputs: [{ internalType: "contract IVault", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
 
 export interface BatchSwapStep {
   poolId: Hex;
@@ -403,24 +550,100 @@ export interface BatchSwapFunds {
 }
 
 export async function queryBatchSwap(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
-    balancerVault: Address;
+    balancerQueries: Address;
     kind: (typeof SwapKind)[keyof typeof SwapKind];
-    swaps: BatchSwapStep[];
-    assets: Address[];
+    swaps: ReadonlyArray<BatchSwapStep>;
+    assets: ReadonlyArray<Address>;
     funds: BatchSwapFunds;
   }>,
 ) {
-  return readContract(client, {
+  const { result } = await simulateContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: parseAbi([
-      "function queryBatchSwap(uint8 kind, (bytes32 poolId, uint256 assetInIndex, uint256 assetOutIndex, uint256 amount, bytes userData)[] memory swaps, address[] memory assets, (address sender, bool fromInternalBalance, address payable recipient, bool toInternalBalance) memory funds) external view returns (int256[] memory assetDeltas)",
-    ]),
+    abi: balancerQueriesAbi,
     functionName: "queryBatchSwap",
-    address: args.balancerVault,
-    args: [args.kind, args.swaps, args.assets, args.funds],
+    address: args.balancerQueries,
+    args: [
+      args.kind,
+      args.swaps.map((swap) => ({
+        poolId: swap.poolId,
+        assetInIndex: swap.assetInIndex,
+        assetOutIndex: swap.assetOutIndex,
+        amount: swap.amount,
+        userData: swap.userData,
+      })),
+      args.assets,
+      {
+        sender: args.funds.sender,
+        fromInternalBalance: args.funds.fromInternalBalance,
+        recipient: args.funds.recipient,
+        toInternalBalance: args.funds.toInternalBalance,
+      },
+    ],
   });
+
+  return result;
+}
+
+export async function queryExit(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    balancerQueries: Address;
+    poolId: Hex;
+    sender: Address;
+    recipient: Address;
+    request: {
+      assets: ReadonlyArray<Address>;
+      minAmountsOut: ReadonlyArray<bigint>;
+      userData: Hex;
+      toInternalBalance: boolean;
+    };
+  }>,
+) {
+  const {
+    result: [bptIn, amountsOut],
+  } = await simulateContract(client, {
+    address: args.balancerQueries,
+    abi: balancerQueriesAbi,
+    functionName: "queryExit",
+    args: [args.poolId, args.sender, args.recipient, args.request],
+  });
+
+  return {
+    bptIn,
+    amountsOut,
+  };
+}
+
+export async function queryJoin(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    balancerQueries: Address;
+    poolId: Hex;
+    sender: Address;
+    recipient: Address;
+    request: {
+      assets: ReadonlyArray<Address>;
+      maxAmountsIn: ReadonlyArray<bigint>;
+      userData: Hex;
+      fromInternalBalance: boolean;
+    };
+  }>,
+) {
+  const {
+    result: [bptOut, amountsIn],
+  } = await simulateContract(client, {
+    address: args.balancerQueries,
+    abi: balancerQueriesAbi,
+    functionName: "queryJoin",
+    args: [args.poolId, args.sender, args.recipient, args.request],
+  });
+
+  return {
+    bptOut,
+    amountsIn,
+  };
 }
 
 //--------------------------------------------------------------------------------------------
@@ -448,7 +671,7 @@ export function weightedPoolsUserDataBptInForExactTokensOut({
   amountsOut,
   maxBPTAmountIn,
 }: {
-  amountsOut: bigint[];
+  amountsOut: ReadonlyArray<bigint>;
   maxBPTAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters("uint8, uint256[], uint256"), [
@@ -485,7 +708,7 @@ export function weightedPoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -555,7 +778,7 @@ export function stablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
@@ -580,76 +803,17 @@ export function stablePoolsUserDataTokenInForExactBptOut({
 }
 
 //--------------------------------------------------------------------------------------------
-// COMPOSABLE STABLE POOLS - V1
+// COMPOSABLE STABLE POOLS
 //--------------------------------------------------------------------------------------------
 
-export enum ComposableStableV1PoolJoinKind {
+export enum ComposableStablePoolJoinKind {
   INIT = 0,
   EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
   TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
   ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
 }
 
-export enum ComposableStableV1PoolExitKind {
-  EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
-  BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
-}
-
-// joins
-
-export function composableStableV1PoolsUserDataExactTokensInForBptOut({
-  amountsIn,
-  bptOut,
-}: {
-  amountsIn: bigint[];
-  bptOut: bigint;
-}) {
-  return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
-    ComposableStableV1PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
-    amountsIn,
-    bptOut,
-  ]);
-}
-
-// exits
-
-export function composableStableV1PoolsUserDataExactBptInForOneTokenOut({
-  bptAmountIn,
-  tokenIndex,
-}: {
-  bptAmountIn: bigint;
-  tokenIndex: bigint;
-}) {
-  return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
-    ComposableStableV1PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
-    bptAmountIn,
-    tokenIndex,
-  ]);
-}
-
-export function composableStableV1PoolsUserDataBptInForExactTokensOut({
-  bptAmountIn,
-}: {
-  bptAmountIn: bigint;
-}) {
-  return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
-    ComposableStableV1PoolExitKind.BPT_IN_FOR_EXACT_TOKENS_OUT,
-    bptAmountIn,
-  ]);
-}
-
-//--------------------------------------------------------------------------------------------
-// COMPOSABLE STABLE POOLS - V2
-//--------------------------------------------------------------------------------------------
-
-export enum ComposableStableV2PoolJoinKind {
-  INIT = 0,
-  EXACT_TOKENS_IN_FOR_BPT_OUT = 1,
-  TOKEN_IN_FOR_EXACT_BPT_OUT = 2,
-  ALL_TOKENS_IN_FOR_EXACT_BPT_OUT = 3,
-}
-
-export enum ComposableStableV2PoolExitKind {
+export enum ComposableStablePoolExitKind {
   EXACT_BPT_IN_FOR_ONE_TOKEN_OUT = 0,
   BPT_IN_FOR_EXACT_TOKENS_OUT = 1,
   EXACT_BPT_IN_FOR_ALL_TOKENS_OUT = 2,
@@ -657,15 +821,15 @@ export enum ComposableStableV2PoolExitKind {
 
 // joins
 
-export function composableStableV2PoolsUserDataExactTokensInForBptOut({
+export function composableStablePoolsUserDataExactTokensInForBptOut({
   amountsIn,
   bptOut,
 }: {
-  amountsIn: bigint[];
+  amountsIn: ReadonlyArray<bigint>;
   bptOut: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256[], uint256"]), [
-    ComposableStableV2PoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
+    ComposableStablePoolJoinKind.EXACT_TOKENS_IN_FOR_BPT_OUT,
     amountsIn,
     bptOut,
   ]);
@@ -673,7 +837,7 @@ export function composableStableV2PoolsUserDataExactTokensInForBptOut({
 
 // exits
 
-export function composableStableV2PoolsUserDataExactBptInForOneTokenOut({
+export function composableStablePoolsUserDataExactBptInForOneTokenOut({
   bptAmountIn,
   tokenIndex,
 }: {
@@ -681,19 +845,19 @@ export function composableStableV2PoolsUserDataExactBptInForOneTokenOut({
   tokenIndex: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256, uint256"]), [
-    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
+    ComposableStablePoolExitKind.EXACT_BPT_IN_FOR_ONE_TOKEN_OUT,
     bptAmountIn,
     tokenIndex,
   ]);
 }
 
-export function composableStableV2PoolsUserDataExactBptInForTokensOut({
+export function composableStablePoolsUserDataExactBptInForTokensOut({
   bptAmountIn,
 }: {
   bptAmountIn: bigint;
 }) {
   return encodeAbiParameters(parseAbiParameters(["uint8, uint256"]), [
-    ComposableStableV2PoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
+    ComposableStablePoolExitKind.EXACT_BPT_IN_FOR_ALL_TOKENS_OUT,
     bptAmountIn,
   ]);
 }

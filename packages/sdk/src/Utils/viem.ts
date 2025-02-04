@@ -6,15 +6,16 @@ import type {
   BlockTag,
   CallParameters,
   Chain,
+  Client,
   ContractFunctionName,
   ContractFunctionParameters,
   EstimateContractGasReturnType,
   EstimateGasParameters,
   GetValue,
   Hex,
-  PublicClient,
   SimulateContractReturnType,
 } from "viem";
+import { estimateContractGas, simulateContract } from "viem/actions";
 
 export type PopulatedTransactionParams<
   TAbi extends Abi,
@@ -44,11 +45,11 @@ export class PopulatedTransaction<
 > {
   constructor(public readonly params: PopulatedTransactionParams<TAbi, TFunctionName>) {}
 
-  async simulate(
-    client: PublicClient,
+  simulate(
+    client: Client,
     args: PopulatedTransactionSimulateParams,
   ): Promise<SimulateContractReturnType<TAbi, TFunctionName>> {
-    return client.simulateContract({
+    return simulateContract(client, {
       ...args,
       abi: this.params.abi,
       functionName: this.params.functionName,
@@ -58,11 +59,8 @@ export class PopulatedTransaction<
     } as any);
   }
 
-  async estimate(
-    client: PublicClient,
-    args: PopulatedTransactionEstimateParams,
-  ): Promise<EstimateContractGasReturnType> {
-    return client.estimateContractGas({
+  estimate(client: Client, args: PopulatedTransactionEstimateParams): Promise<EstimateContractGasReturnType> {
+    return estimateContractGas(client, {
       ...args,
       abi: this.params.abi,
       functionName: this.params.functionName,

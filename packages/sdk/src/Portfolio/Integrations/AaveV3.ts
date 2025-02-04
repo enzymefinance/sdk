@@ -1,8 +1,9 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseUnits } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
+import { Asset } from "../../index.js";
 
 //--------------------------------------------------------------------------------------------
 // LEND
@@ -83,6 +84,7 @@ export const Action = {
   RepayBorrow: 3n,
   SetEMode: 4n,
   SetUseReserveAsCollateral: 5n,
+  ClaimRewards: 6n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -312,6 +314,47 @@ export function setUseReserveAsCollateralDecode(encoded: Hex): SetUseReserveAsCo
 }
 
 //--------------------------------------------------------------------------------------------
+// CLAIM REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+
+const claimRewardsEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+  {
+    name: "amount",
+    type: "uint256",
+  },
+  {
+    name: "rewardToken",
+    type: "address",
+  },
+] as const;
+
+export type ClaimRewardsArgs = {
+  assets: ReadonlyArray<Address>;
+  amount: bigint;
+  rewardToken: Address;
+};
+
+export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
+  return encodeAbiParameters(claimRewardsEncoding, [args.assets, args.amount, args.rewardToken]);
+}
+
+export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
+  const [assets, amount, rewardToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
+
+  return {
+    assets,
+    amount,
+    rewardToken,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
 // THIRD PARTY READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
@@ -325,8 +368,8 @@ const poolAddressProviderAbi = [
   },
 ] as const;
 
-export async function getPool(
-  client: PublicClient,
+export function getPool(
+  client: Client,
   args: Viem.ContractCallParameters<{
     poolAddressProvider: Address;
   }>,
@@ -360,10 +403,24 @@ const poolAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [{ internalType: "address", name: "user", type: "address" }],
+    name: "getUserAccountData",
+    outputs: [
+      { internalType: "uint256", name: "totalCollateralBase", type: "uint256" },
+      { internalType: "uint256", name: "totalDebtBase", type: "uint256" },
+      { internalType: "uint256", name: "availableBorrowsBase", type: "uint256" },
+      { internalType: "uint256", name: "currentLiquidationThreshold", type: "uint256" },
+      { internalType: "uint256", name: "ltv", type: "uint256" },
+      { internalType: "uint256", name: "healthFactor", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
-export async function getEModeCategoryData(
-  client: PublicClient,
+export function getEModeCategoryData(
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
     categoryId: number;
@@ -375,5 +432,332 @@ export async function getEModeCategoryData(
     functionName: "getEModeCategoryData",
     address: args.pool,
     args: [args.categoryId],
+  });
+}
+
+export async function getUserAccountData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    pool: Address;
+    user: Address;
+  }>,
+) {
+  const [availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase] =
+    await readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: poolAbi,
+      functionName: "getUserAccountData",
+      address: args.pool,
+      args: [args.user],
+    });
+
+  return { availableBorrowsBase, currentLiquidationThreshold, healthFactor, ltv, totalCollateralBase, totalDebtBase };
+}
+
+const rewardsControllerAbi = [
+  {
+    inputs: [
+      { internalType: "address[]", name: "assets", type: "address[]" },
+      { internalType: "address", name: "user", type: "address" },
+    ],
+    name: "getAllUserRewards",
+    outputs: [
+      { internalType: "address[]", name: "rewardsList", type: "address[]" },
+      { internalType: "uint256[]", name: "unclaimedAmounts", type: "uint256[]" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "asset", type: "address" }],
+    name: "getRewardsByAsset",
+    outputs: [{ internalType: "address[]", name: "", type: "address[]" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "asset", type: "address" },
+      { internalType: "address", name: "reward", type: "address" },
+    ],
+    name: "getRewardsData",
+    outputs: [
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+      { internalType: "uint256", name: "", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export async function getAllUserRewards(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    rewardsController: Address;
+    assets: ReadonlyArray<Address>;
+    user: Address;
+  }>,
+) {
+  const [rewardsList, unclaimedAmounts] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: rewardsControllerAbi,
+    functionName: "getAllUserRewards",
+    address: args.rewardsController,
+    args: [args.assets, args.user],
+  });
+
+  return { rewardsList, unclaimedAmounts };
+}
+
+export function getRewardsByAsset(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    rewardsController: Address;
+    asset: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: rewardsControllerAbi,
+    functionName: "getRewardsByAsset",
+    address: args.rewardsController,
+    args: [args.asset],
+  });
+}
+
+export async function getRewardsData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    rewardsController: Address;
+    asset: Address;
+    reward: Address;
+  }>,
+) {
+  const [index, emissionPerSecond, lastUpdateTimestamp, distributionEnd] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: rewardsControllerAbi,
+    functionName: "getRewardsData",
+    address: args.rewardsController,
+    args: [args.asset, args.reward],
+  });
+
+  return { emissionPerSecond, index, lastUpdateTimestamp, distributionEnd };
+}
+
+const protocolDataProviderAbi = [
+  {
+    inputs: [{ internalType: "address", name: "asset", type: "address" }],
+    name: "getReserveCaps",
+    outputs: [
+      { internalType: "uint256", name: "borrowCap", type: "uint256" },
+      { internalType: "uint256", name: "supplyCap", type: "uint256" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "asset", type: "address" }],
+    name: "getReserveData",
+    outputs: [
+      { internalType: "uint256", name: "unbacked", type: "uint256" },
+      { internalType: "uint256", name: "accruedToTreasuryScaled", type: "uint256" },
+      { internalType: "uint256", name: "totalAToken", type: "uint256" },
+      { internalType: "uint256", name: "totalStableDebt", type: "uint256" },
+      { internalType: "uint256", name: "totalVariableDebt", type: "uint256" },
+      { internalType: "uint256", name: "liquidityRate", type: "uint256" },
+      { internalType: "uint256", name: "variableBorrowRate", type: "uint256" },
+      { internalType: "uint256", name: "stableBorrowRate", type: "uint256" },
+      { internalType: "uint256", name: "averageStableBorrowRate", type: "uint256" },
+      { internalType: "uint256", name: "liquidityIndex", type: "uint256" },
+      { internalType: "uint256", name: "variableBorrowIndex", type: "uint256" },
+      { internalType: "uint40", name: "lastUpdateTimestamp", type: "uint40" },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export async function getReserveCaps(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+  }>,
+) {
+  const [[supplyCap, borrowCap], decimals] = await Promise.all([
+    readContract(client, {
+      ...Viem.extractBlockParameters(args),
+      abi: protocolDataProviderAbi,
+      functionName: "getReserveCaps",
+      address: args.protocolDataProvider,
+      args: [args.asset],
+    }),
+    Asset.getDecimals(client, { asset: args.asset }),
+  ]);
+
+  return {
+    supplyCap: parseUnits(supplyCap.toString(), Number(decimals)),
+    borrowCap: parseUnits(borrowCap.toString(), Number(decimals)),
+  };
+}
+
+export async function getReserveData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+  }>,
+) {
+  const [
+    unbacked,
+    accruedToTreasuryScaled,
+    totalAToken,
+    totalStableDebt,
+    totalVariableDebt,
+    liquidityRate,
+    variableBorrowRate,
+    stableBorrowRate,
+    averageStableBorrowRate,
+    liquidityIndex,
+    variableBorrowIndex,
+    lastUpdateTimestamp,
+  ] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: protocolDataProviderAbi,
+    functionName: "getReserveData",
+    address: args.protocolDataProvider,
+    args: [args.asset],
+  });
+
+  return {
+    unbacked,
+    accruedToTreasuryScaled,
+    totalAToken,
+    totalStableDebt,
+    totalVariableDebt,
+    liquidityRate,
+    variableBorrowRate,
+    stableBorrowRate,
+    averageStableBorrowRate,
+    liquidityIndex,
+    variableBorrowIndex,
+    lastUpdateTimestamp,
+  };
+}
+
+export async function getAvailableSupplyAmount(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+    decimals: number;
+  }>,
+) {
+  const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
+
+  return reserveCaps.supplyCap - reserveData.totalAToken;
+}
+
+export async function getAvailableVariableDebtAmount(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolDataProvider: Address;
+    asset: Address;
+    decimals: number;
+  }>,
+) {
+  const [reserveCaps, reserveData] = await Promise.all([getReserveCaps(client, args), getReserveData(client, args)]);
+
+  return reserveCaps.borrowCap - reserveData.totalVariableDebt;
+}
+
+const uiIncentiveDataProviderAbi = [
+  {
+    inputs: [{ internalType: "contract IPoolAddressesProvider", name: "provider", type: "address" }],
+    name: "getReservesIncentivesData",
+    outputs: [
+      {
+        components: [
+          { internalType: "address", name: "underlyingAsset", type: "address" },
+          {
+            components: [
+              { internalType: "address", name: "tokenAddress", type: "address" },
+              { internalType: "address", name: "incentiveControllerAddress", type: "address" },
+              {
+                components: [
+                  { internalType: "string", name: "rewardTokenSymbol", type: "string" },
+                  { internalType: "address", name: "rewardTokenAddress", type: "address" },
+                  { internalType: "address", name: "rewardOracleAddress", type: "address" },
+                  { internalType: "uint256", name: "emissionPerSecond", type: "uint256" },
+                  { internalType: "uint256", name: "incentivesLastUpdateTimestamp", type: "uint256" },
+                  { internalType: "uint256", name: "tokenIncentivesIndex", type: "uint256" },
+                  { internalType: "uint256", name: "emissionEndTimestamp", type: "uint256" },
+                  { internalType: "int256", name: "rewardPriceFeed", type: "int256" },
+                  { internalType: "uint8", name: "rewardTokenDecimals", type: "uint8" },
+                  { internalType: "uint8", name: "precision", type: "uint8" },
+                  { internalType: "uint8", name: "priceFeedDecimals", type: "uint8" },
+                ],
+                internalType: "struct IUiIncentiveDataProviderV3.RewardInfo[]",
+                name: "rewardsTokenInformation",
+                type: "tuple[]",
+              },
+            ],
+            internalType: "struct IUiIncentiveDataProviderV3.IncentiveData",
+            name: "aIncentiveData",
+            type: "tuple",
+          },
+          {
+            components: [
+              { internalType: "address", name: "tokenAddress", type: "address" },
+              { internalType: "address", name: "incentiveControllerAddress", type: "address" },
+              {
+                components: [
+                  { internalType: "string", name: "rewardTokenSymbol", type: "string" },
+                  { internalType: "address", name: "rewardTokenAddress", type: "address" },
+                  { internalType: "address", name: "rewardOracleAddress", type: "address" },
+                  { internalType: "uint256", name: "emissionPerSecond", type: "uint256" },
+                  { internalType: "uint256", name: "incentivesLastUpdateTimestamp", type: "uint256" },
+                  { internalType: "uint256", name: "tokenIncentivesIndex", type: "uint256" },
+                  { internalType: "uint256", name: "emissionEndTimestamp", type: "uint256" },
+                  { internalType: "int256", name: "rewardPriceFeed", type: "int256" },
+                  { internalType: "uint8", name: "rewardTokenDecimals", type: "uint8" },
+                  { internalType: "uint8", name: "precision", type: "uint8" },
+                  { internalType: "uint8", name: "priceFeedDecimals", type: "uint8" },
+                ],
+                internalType: "struct IUiIncentiveDataProviderV3.RewardInfo[]",
+                name: "rewardsTokenInformation",
+                type: "tuple[]",
+              },
+            ],
+            internalType: "struct IUiIncentiveDataProviderV3.IncentiveData",
+            name: "vIncentiveData",
+            type: "tuple",
+          },
+        ],
+        internalType: "struct IUiIncentiveDataProviderV3.AggregatedReserveIncentiveData[]",
+        name: "",
+        type: "tuple[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+] as const;
+
+export function getReservesIncentivesData(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    uiIncentiveDataProvider: Address;
+    poolAddressProvider: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: uiIncentiveDataProviderAbi,
+    functionName: "getReservesIncentivesData",
+    address: args.uiIncentiveDataProvider,
+    args: [args.poolAddressProvider],
   });
 }

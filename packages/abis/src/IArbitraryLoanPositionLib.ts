@@ -1,0 +1,268 @@
+export const IArbitraryLoanPositionLib = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_wrappedNativeAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "borrow",
+    inputs: [
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getAccountingModule",
+    inputs: [],
+    outputs: [
+      {
+        name: "accountingModule_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getBorrowableAmount",
+    inputs: [],
+    outputs: [
+      {
+        name: "borrowableAmount_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getBorrower",
+    inputs: [],
+    outputs: [
+      {
+        name: "borrower_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDebtAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getLoanAsset",
+    inputs: [],
+    outputs: [
+      {
+        name: "asset_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getManagedAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getTotalBorrowed",
+    inputs: [],
+    outputs: [
+      {
+        name: "totalBorrowed_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getTotalRepaid",
+    inputs: [],
+    outputs: [
+      {
+        name: "totalRepaid_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "init",
+    inputs: [
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "loanIsClosed",
+    inputs: [],
+    outputs: [
+      {
+        name: "isClosed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "receiveCallFromVault",
+    inputs: [
+      {
+        name: "_actionData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "repay",
+    inputs: [
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "BorrowableAmountUpdated",
+    inputs: [
+      {
+        name: "borrowableAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "LoanClosed",
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "LoanConfigured",
+    inputs: [
+      {
+        name: "borrower",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "loanAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "accountingModule",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "description",
+        type: "bytes32",
+        indexed: false,
+        internalType: "bytes32",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TotalBorrowedUpdated",
+    inputs: [
+      {
+        name: "totalBorrowed",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TotalRepaidUpdated",
+    inputs: [
+      {
+        name: "totalRepaid",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

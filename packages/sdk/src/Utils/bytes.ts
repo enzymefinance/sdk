@@ -1,4 +1,4 @@
-import { ByteArray } from "viem";
+import type { ByteArray } from "viem";
 
 export function removeTrailingZeros(input: ByteArray): ByteArray {
   let length = input.length;

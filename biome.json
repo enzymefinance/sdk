@@ -1,4 +1,7 @@
 {
+  "vcs": {
+    "useIgnoreFile": true
+  },
   "files": {
     "ignore": [
       ".direnv",
@@ -6,6 +9,7 @@
       "build",
       "generated",
       "coverage",
+      "package.json",
       "pnpm-lock.yaml",
       "tsconfig.json",
       "tsconfig.*.json"
@@ -18,16 +22,36 @@
   "linter": {
     "rules": {
       "all": true,
+      "performance": {
+        "noReExportAll": "off",
+        "noBarrelFile": "off"
+      },
       "suspicious": {
-        "noExplicitAny": "off"
+        "noEmptyBlockStatements": "off",
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off"
+      },
+      "style": {
+        "useFilenamingConvention": "off",
+        "noDefaultExport": "off",
+        "noParameterProperties": "off",
+        "noNamespaceImport": "off",
+        "useNamingConvention": "off",
+        "useShorthandArrayType": "off",
+        "useConsistentArrayType": {
+          "options": {
+            "syntax": "generic"
+          }
+        }
       },
       "nursery": {
         "useImportRestrictions": "off"
       },
-      "style": {
-        "useShorthandArrayType": "off"
+      "correctness": {
+        "noNodejsModules": "off"
       },
       "complexity": {
+        "noExcessiveCognitiveComplexity": "off",
         "noBannedTypes": "off"
       }
     }

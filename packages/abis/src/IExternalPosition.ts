@@ -1,0 +1,64 @@
+export const IExternalPosition = [
+  {
+    type: "function",
+    name: "getDebtAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getManagedAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "assets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "init",
+    inputs: [
+      {
+        name: "_data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "receiveCallFromVault",
+    inputs: [
+      {
+        name: "_data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+] as const;

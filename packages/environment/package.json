@@ -1,0 +1,42 @@
+{
+  "name": "@enzymefinance/environment",
+  "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
+  "version": "6.3.14",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enzymefinance/enzyme-sdk.git",
+    "directory": "packages/environment"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
+    "build-prepare": "build-utils prepare-v2",
+    "build-esm": "tsc -b tsconfig.build.json",
+    "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
+    "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps"
+  },
+  "peerDependencies": {
+    "@enzymefinance/sdk": "workspace:*",
+    "viem": "^2.7.16"
+  },
+  "devDependencies": {
+    "@enzymefinance/sdk": "workspace:*",
+    "p-throttle": "^6.2.0",
+    "viem": "^2.21.44",
+    "zod": "^3.23.8"
+  },
+  "effect": {
+    "generateExports": {
+      "include": [
+        "*.ts",
+        "assets/*.ts",
+        "deployments/*.ts"
+      ]
+    }
+  }
+}

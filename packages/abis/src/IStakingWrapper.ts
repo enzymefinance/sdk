@@ -1,0 +1,265 @@
+export const IStakingWrapper = [
+  {
+    type: "function",
+    name: "claimRewardsFor",
+    inputs: [
+      {
+        name: "_for",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "rewardTokens_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "claimedAmounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "claimRewardsForWithoutCheckpoint",
+    inputs: [
+      {
+        name: "_for",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "rewardTokens_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "claimedAmounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "depositTo",
+    inputs: [
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getRewardTokenAtIndex",
+    inputs: [
+      {
+        name: "_index",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "rewardToken_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRewardTokenCount",
+    inputs: [],
+    outputs: [
+      {
+        name: "count_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRewardTokens",
+    inputs: [],
+    outputs: [
+      {
+        name: "rewardTokens_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getTotalHarvestDataForRewardToken",
+    inputs: [
+      {
+        name: "_rewardToken",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "totalHarvestData_",
+        type: "tuple",
+        internalType: "struct IStakingWrapper.TotalHarvestData",
+        components: [
+          {
+            name: "integral",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "lastCheckpointBalance",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getUserHarvestDataForRewardToken",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_rewardToken",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "userHarvestData_",
+        type: "tuple",
+        internalType: "struct IStakingWrapper.UserHarvestData",
+        components: [
+          {
+            name: "integral",
+            type: "uint128",
+            internalType: "uint128",
+          },
+          {
+            name: "claimableReward",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "isPaused",
+    inputs: [],
+    outputs: [
+      {
+        name: "isPaused_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "togglePause",
+    inputs: [
+      {
+        name: "_isPaused",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "withdrawTo",
+    inputs: [
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "withdrawToOnBehalf",
+    inputs: [
+      {
+        name: "_onBehalf",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "withdrawToWithoutCheckpoint",
+    inputs: [
+      {
+        name: "_to",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+] as const;

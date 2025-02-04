@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -157,8 +157,8 @@ const cometRewardsAbi = [
   },
 ] as const;
 
-export async function getUtilization(
-  client: PublicClient,
+export function getUtilization(
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -171,8 +171,8 @@ export async function getUtilization(
   });
 }
 
-export async function getSupplyRate(
-  client: PublicClient,
+export function getSupplyRate(
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     utilization: bigint;
@@ -187,8 +187,8 @@ export async function getSupplyRate(
   });
 }
 
-export async function getTotalSupply(
-  client: PublicClient,
+export function getTotalSupply(
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -201,8 +201,8 @@ export async function getTotalSupply(
   });
 }
 
-export async function getBaseTrackingSupplySpeed(
-  client: PublicClient,
+export function getBaseTrackingSupplySpeed(
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
   }>,
@@ -216,7 +216,7 @@ export async function getBaseTrackingSupplySpeed(
 }
 
 export async function getRewardOwed(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cometRewards: Address;
     asset: Address;

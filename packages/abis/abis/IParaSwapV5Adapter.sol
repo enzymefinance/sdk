@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IParaSwapV5Adapter {
+    type SpendAssetsHandleType is uint8;
+
     event MultipleOrdersItemFailed(uint256 index, bytes reason);
 
     function CLAIM_REWARDS_SELECTOR() external view returns (bytes4);
@@ -20,7 +22,7 @@ interface IParaSwapV5Adapter {
         external
         view
         returns (
-            uint8 spendAssetsHandleType_,
+            SpendAssetsHandleType spendAssetsHandleType_,
             address[] memory spendAssets_,
             uint256[] memory spendAssetAmounts_,
             address[] memory incomingAssets_,

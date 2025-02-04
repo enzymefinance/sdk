@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -108,7 +108,7 @@ const resolverAbi = [
 ] as const;
 
 export async function getMintAmounts(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     resolver: Address;
     arrakisVault: Address;
@@ -145,7 +145,7 @@ const helperAbi = [
 ] as const;
 
 export async function totalUnderlying(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     helper: Address;
     arrakisVault: Address;
@@ -214,7 +214,7 @@ const vaultAbi = [
 ] as const;
 
 export async function burn(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
     receiver: Address;
@@ -240,7 +240,7 @@ export async function burn(
 }
 
 export async function inits(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
   }>,
@@ -267,7 +267,7 @@ export async function inits(
 }
 
 export async function numberOfRanges(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     arrakisVault: Address;
   }>,

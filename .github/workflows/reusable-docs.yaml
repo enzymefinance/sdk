@@ -2,6 +2,8 @@ name: Documentation
 on:
   workflow_call:
 
+permissions: {}
+
 jobs:
   build:
     name: Build
@@ -34,4 +36,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy pages artifact
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4

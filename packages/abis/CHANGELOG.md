@@ -1,5 +1,115 @@
 # @enzymefinance/abis
 
+## 1.2.2
+
+### Patch Changes
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Publish packages fix
+
+- [#605](https://github.com/enzymefinance/sdk/pull/605) [`32fa3a6`](https://github.com/enzymefinance/sdk/commit/32fa3a66656a65424ce365781ca78d15d0078915) Thanks [@iherger](https://github.com/iherger)! - Bump
+
+## 1.2.1
+
+### Patch Changes
+
+- [#603](https://github.com/enzymefinance/sdk/pull/603) [`291765c`](https://github.com/enzymefinance/sdk/commit/291765c7e1e5fa83ec7e2f10196b7aebe2e1e608) Thanks [@iherger](https://github.com/iherger)! - Bump
+
+## 1.2.0
+
+### Minor Changes
+
+- [#583](https://github.com/enzymefinance/sdk/pull/583) [`4cddbb0`](https://github.com/enzymefinance/sdk/commit/4cddbb094f27e60ffca0c6b4e0f2f4c58b53b889) Thanks [@iherger](https://github.com/iherger)! - Add StaderWithdrawals
+
+## 1.1.0
+
+### Minor Changes
+
+- [#568](https://github.com/enzymefinance/sdk/pull/568) [`0a63573`](https://github.com/enzymefinance/sdk/commit/0a63573ab757471c9177072ed8b37ac7d9b19023) Thanks [@iherger](https://github.com/iherger)! - Add Stader Staking adapter
+
+## 1.0.0
+
+### Major Changes
+
+- [#562](https://github.com/enzymefinance/sdk/pull/562) [`c04699b`](https://github.com/enzymefinance/sdk/commit/c04699b4f40cd181dcd2d204ca61d57331682b54) Thanks [@iherger](https://github.com/iherger)! - Stable release
+
+### Minor Changes
+
+- [#558](https://github.com/enzymefinance/sdk/pull/558) [`fa681e5`](https://github.com/enzymefinance/sdk/commit/fa681e5d01a886e0cd976af88eaf2a8b4af63a47) Thanks [@iherger](https://github.com/iherger)! - Add PendleV2 adapter
+
+- [#419](https://github.com/enzymefinance/sdk/pull/419) [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc) Thanks [@iherger](https://github.com/iherger)! - Add Morpho Blue
+
+### Patch Changes
+
+- [#419](https://github.com/enzymefinance/sdk/pull/419) [`688f34c`](https://github.com/enzymefinance/sdk/commit/688f34c0caf0e9c231fbbb75262c6ceeef499ebc) Thanks [@iherger](https://github.com/iherger)! - Add MorphoBlue
+
+## 0.4.11
+
+### Patch Changes
+
+- [#535](https://github.com/enzymefinance/sdk/pull/535) [`2d07ae7`](https://github.com/enzymefinance/sdk/commit/2d07ae7ffffa18f4948705837dd50327df9901c3) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove idle
+
+## 0.4.10
+
+### Patch Changes
+
+- [#520](https://github.com/enzymefinance/sdk/pull/520) [`8d67c41`](https://github.com/enzymefinance/sdk/commit/8d67c41ca1d39fbbe42ec663bc6e0bbccb9621ea) Thanks [@iherger](https://github.com/iherger)! - Add Aave v3 flash loans
+
+## 0.4.9
+
+### Patch Changes
+
+- [#483](https://github.com/enzymefinance/sdk/pull/483) [`ab7e3ae`](https://github.com/enzymefinance/sdk/commit/ab7e3ae4922a7b74363f8dc3f78522a15dd84ce0) Thanks [@iherger](https://github.com/iherger)! - Add DisallowedAdapterIncomingAssetsPolicy
+
+## 0.4.8
+
+### Patch Changes
+
+- [#472](https://github.com/enzymefinance/sdk/pull/472) [`0e8f586`](https://github.com/enzymefinance/sdk/commit/0e8f5867d749b0166bed0879c55439bd32e48cd9) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gmx v2
+
+## 0.4.7
+
+### Patch Changes
+
+- [`c25f9ff`](https://github.com/enzymefinance/sdk/commit/c25f9ffb5607df59e80098c88189a2f05d5038a4) Thanks [@fubhy](https://github.com/fubhy)! - Simplify babel processing
+
+## 0.4.6
+
+### Patch Changes
+
+- [#435](https://github.com/enzymefinance/sdk/pull/435) [`85c3f61`](https://github.com/enzymefinance/sdk/commit/85c3f611cca5fbdd12186c76be9d8fd39f205f00) Thanks [@iherger](https://github.com/iherger)! - Updated generated exports
+
+## 0.4.5
+
+### Patch Changes
+
+- [#417](https://github.com/enzymefinance/sdk/pull/417) [`0b52071`](https://github.com/enzymefinance/sdk/commit/0b520712c8456ac70e45cceece6e7b2c85816eaf) Thanks [@iherger](https://github.com/iherger)! - Update pnpm
+
+## 0.4.4
+
+### Patch Changes
+
+- [#414](https://github.com/enzymefinance/sdk/pull/414) [`79612b1`](https://github.com/enzymefinance/sdk/commit/79612b110daef369a2b99cb48125547656b88b37) Thanks [@iherger](https://github.com/iherger)! - Add AllowedRedeemersForSpecificAssetsPolicy
+
+## 0.4.3
+
+### Patch Changes
+
+- [#411](https://github.com/enzymefinance/sdk/pull/411) [`7a6790d`](https://github.com/enzymefinance/sdk/commit/7a6790deb860f85e4fd65315bb5396607018ea32) Thanks [@iherger](https://github.com/iherger)! - Pendle V2
+
+## 0.4.2
+
+### Patch Changes
+
+- [#405](https://github.com/enzymefinance/sdk/pull/405) [`8414507`](https://github.com/enzymefinance/sdk/commit/8414507288f505da58de24bdcf052de551976970) Thanks [@iherger](https://github.com/iherger)! - Add SingleAssetRedemptionQueue
+
+## 0.4.1
+
+### Patch Changes
+
+- [#401](https://github.com/enzymefinance/sdk/pull/401) [`5d9f020`](https://github.com/enzymefinance/sdk/commit/5d9f020a90fc80d7be5fc6e7904c3933ff3fe872) Thanks [@fubhy](https://github.com/fubhy)! - Updated generated abis
+
+- [`0495455`](https://github.com/enzymefinance/sdk/commit/04954551b93f992fdbfe03fc71ee69c04a8a41cb) Thanks [@fubhy](https://github.com/fubhy)! - Added ABI for SharePriceThrottleMultiCallAccount
+
 ## 0.4.0
 
 ### Minor Changes

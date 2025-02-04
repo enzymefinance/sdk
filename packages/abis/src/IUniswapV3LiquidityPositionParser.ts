@@ -1,0 +1,107 @@
+export const IUniswapV3LiquidityPositionParser = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_valueInterpreter",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_nonfungiblePositionManager",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getUniswapV3NonfungiblePositionManager",
+    inputs: [],
+    outputs: [
+      {
+        name: "nonfungiblePositionManager_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getValueInterpreter",
+    inputs: [],
+    outputs: [
+      {
+        name: "valueInterpreter_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "parseAssetsForAction",
+    inputs: [
+      {
+        name: "_externalPosition",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_actionId",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_encodedActionArgs",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [
+      {
+        name: "assetsToTransfer_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "amountsToTransfer_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+      {
+        name: "assetsToReceive_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "parseInitArgs",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    stateMutability: "view",
+  },
+] as const;

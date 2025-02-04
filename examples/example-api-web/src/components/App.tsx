@@ -1,5 +1,5 @@
 import { TransportProvider } from "@connectrpc/connect-query";
-import { ConnectTransportOptions, createConnectTransport } from "@connectrpc/connect-web";
+import { type ConnectTransportOptions, createConnectTransport } from "@connectrpc/connect-web";
 import { withTokenAuth } from "@enzymefinance/api";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Text, Title } from "@tremor/react";

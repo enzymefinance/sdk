@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -228,7 +228,7 @@ export const claimComp = ExternalPositionManager.makeUse(Action.ClaimComp);
 //--------------------------------------------------------------------------------------------
 
 export function getCTokenFromBorrowedAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     externalPositionProxy: Address;
     borrowedAsset: Address;
@@ -349,6 +349,15 @@ const compoundComptrollerAbi = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    constant: true,
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "compAccrued",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    payable: false,
+    stateMutability: "view",
+    type: "function",
+  },
 ] as const;
 
 export interface Market {
@@ -358,7 +367,7 @@ export interface Market {
 }
 
 export function getBorrowRatePerBlock(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
   }>,
@@ -372,7 +381,7 @@ export function getBorrowRatePerBlock(
 }
 
 export function getSupplyRatePerBlock(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
   }>,
@@ -386,7 +395,7 @@ export function getSupplyRatePerBlock(
 }
 
 export function getTotalSupply(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
   }>,
@@ -400,7 +409,7 @@ export function getTotalSupply(
 }
 
 export function getTotalBorrows(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
   }>,
@@ -414,7 +423,7 @@ export function getTotalBorrows(
 }
 
 export function getExchangeRateStored(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
   }>,
@@ -428,7 +437,7 @@ export function getExchangeRateStored(
 }
 
 export function getBalanceOf(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cToken: Address;
     account: Address;
@@ -444,7 +453,7 @@ export function getBalanceOf(
 }
 
 export function getCompSupplySpeeds(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
     cToken: Address;
@@ -460,7 +469,7 @@ export function getCompSupplySpeeds(
 }
 
 export function getCompBorrowSpeeds(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
     cToken: Address;
@@ -476,7 +485,7 @@ export function getCompBorrowSpeeds(
 }
 
 export async function getMarkets(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
     cToken: Address;
@@ -494,7 +503,7 @@ export async function getMarkets(
 }
 
 export function getMintGuardianPaused(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     compoundComptroller: Address;
     cToken: Address;
@@ -505,5 +514,21 @@ export function getMintGuardianPaused(
     abi: compoundComptrollerAbi,
     functionName: "_mintGuardianPaused",
     address: args.compoundComptroller,
+  });
+}
+
+export function getCompAccrued(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    compoundComptroller: Address;
+    account: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: compoundComptrollerAbi,
+    functionName: "compAccrued",
+    address: args.compoundComptroller,
+    args: [args.account],
   });
 }

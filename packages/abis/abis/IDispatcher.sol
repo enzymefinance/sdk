@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IDispatcher {
+    type MigrationOutHook is uint8;
+
     event CurrentFundDeployerSet(address prevFundDeployer, address nextFundDeployer);
     event MigrationCancelled(
         address indexed vaultProxy,
@@ -29,7 +31,7 @@ interface IDispatcher {
     );
     event MigrationOutHookFailed(
         bytes failureReturnData,
-        uint8 hook,
+        MigrationOutHook hook,
         address indexed vaultProxy,
         address indexed prevFundDeployer,
         address indexed nextFundDeployer,

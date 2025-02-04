@@ -1,9 +1,9 @@
-import { Address, PublicClient, parseAbi } from "viem";
+import { type Address, type Client, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
-export async function getZeroExV2Exchange(
-  client: PublicClient,
+export function getZeroExV2Exchange(
+  client: Client,
   args: Viem.ContractCallParameters<{
     zeroExV2Adapter: Address;
   }>,
@@ -16,8 +16,8 @@ export async function getZeroExV2Exchange(
   });
 }
 
-export async function isAllowedMaker(
-  client: PublicClient,
+export function isAllowedMaker(
+  client: Client,
   args: Viem.ContractCallParameters<{
     zeroExV2Adapter: Address;
     who: Address;

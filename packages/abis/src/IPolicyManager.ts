@@ -1,0 +1,383 @@
+export const IPolicyManager = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_fundDeployer",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_gasRelayPaymasterFactory",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "activateForFund",
+    inputs: [
+      {
+        name: "_isMigratedFund",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "deactivateForFund",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "disablePolicyForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_policy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "enablePolicyForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_policy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_settingsData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getEnabledPoliciesForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "enabledPolicies_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getEnabledPoliciesOnHookForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_hook",
+        type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
+      },
+    ],
+    outputs: [
+      {
+        name: "enabledPolicies_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFundDeployer",
+    inputs: [],
+    outputs: [
+      {
+        name: "fundDeployer_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getGasRelayPaymasterFactory",
+    inputs: [],
+    outputs: [
+      {
+        name: "gasRelayPaymasterFactory_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getGasRelayTrustedForwarder",
+    inputs: [],
+    outputs: [
+      {
+        name: "trustedForwarder_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getOwner",
+    inputs: [],
+    outputs: [
+      {
+        name: "owner_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getVaultProxyForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "vaultProxy_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "policyIsEnabledOnHookForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_hook",
+        type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
+      },
+      {
+        name: "_policy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "isEnabled_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "receiveCallFromComptroller",
+    inputs: [
+      {
+        name: "",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setConfigForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_configData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "updatePolicySettingsForFund",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_policy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_settingsData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "validatePolicies",
+    inputs: [
+      {
+        name: "_comptrollerProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_hook",
+        type: "uint8",
+        internalType: "enum IPolicyManager.PolicyHook",
+      },
+      {
+        name: "_validationData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "PolicyDisabledOnHookForFund",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "policy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "hook",
+        type: "uint8",
+        indexed: true,
+        internalType: "enum IPolicyManager.PolicyHook",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PolicyEnabledForFund",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "policy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "settingsData",
+        type: "bytes",
+        indexed: false,
+        internalType: "bytes",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ValidatedVaultProxySetForFund",
+    inputs: [
+      {
+        name: "comptrollerProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

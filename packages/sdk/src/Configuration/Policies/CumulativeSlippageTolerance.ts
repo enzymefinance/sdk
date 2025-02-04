@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Hex, type PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { multicall, readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
@@ -45,7 +45,7 @@ export function decodeSettings(settings: Hex): Settings {
 //--------------------------------------------------------------------------------------------
 
 export function getInfo(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
     cumulativeSlippageTolerancePolicy: Address;
@@ -61,7 +61,7 @@ export function getInfo(
 }
 
 export async function getCurrentCumulativeSlippage(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     cumulativeSlippageTolerancePolicy: Address;
     comptrollerProxy: Address;

@@ -1,0 +1,291 @@
+export const IHelperDataReaderRouter = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_dispatcher",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_fundDeployers",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_helperDataReadersInfo",
+        type: "tuple[]",
+        internalType: "struct HelperDataReaderRouter.HelperDataReaderInfo[]",
+        components: [
+          {
+            name: "helperDataReader",
+            type: "address",
+            internalType: "contract IHelperDataReader",
+          },
+          {
+            name: "version",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getDispatcher",
+    inputs: [],
+    outputs: [
+      {
+        name: "dispatcher_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getHelperDataReaderForVault",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "tuple",
+        internalType: "struct HelperDataReaderRouter.HelperDataReaderInfo",
+        components: [
+          {
+            name: "helperDataReader",
+            type: "address",
+            internalType: "contract IHelperDataReader",
+          },
+          {
+            name: "version",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getHelperDataReaderInfoForFundDeployer",
+    inputs: [
+      {
+        name: "_fundDeployer",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "helperDataReader_",
+        type: "tuple",
+        internalType: "struct HelperDataReaderRouter.HelperDataReaderInfo",
+        components: [
+          {
+            name: "helperDataReader",
+            type: "address",
+            internalType: "contract IHelperDataReader",
+          },
+          {
+            name: "version",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getVaultActiveExternalPositionsDetails",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "version",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultDetails",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "version",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultFeesDetails",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "version",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultPoliciesDetails",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "version",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getVaultTrackedAssetsAmounts",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "data",
+        type: "bytes",
+        internalType: "bytes",
+      },
+      {
+        name: "version",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setHelperDataReaders",
+    inputs: [
+      {
+        name: "_fundDeployers",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_helperDataReadersInfo",
+        type: "tuple[]",
+        internalType: "struct HelperDataReaderRouter.HelperDataReaderInfo[]",
+        components: [
+          {
+            name: "helperDataReader",
+            type: "address",
+            internalType: "contract IHelperDataReader",
+          },
+          {
+            name: "version",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "HelperDataReaderUpdated",
+    inputs: [
+      {
+        name: "fundDeployer",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "HelperDataReader",
+        type: "tuple",
+        indexed: false,
+        internalType: "struct HelperDataReaderRouter.HelperDataReaderInfo",
+        components: [
+          {
+            name: "helperDataReader",
+            type: "address",
+            internalType: "contract IHelperDataReader",
+          },
+          {
+            name: "version",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

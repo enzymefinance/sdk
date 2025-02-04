@@ -1,13 +1,13 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IArbitraryLoanTotalNominalDeltaOracleModule {
-    event OracleSetForLoan(address indexed loan, address indexed oracle, uint32 stalenessThreshold);
-
     struct OracleInfo {
         address oracle;
         uint32 stalenessThreshold;
     }
+
+    event OracleSetForLoan(address indexed loan, address indexed oracle, uint32 stalenessThreshold);
 
     function calcFaceValue(uint256 _totalBorrowed, uint256 _totalRepaid) external view returns (uint256 faceValue_);
     function configure(bytes memory _configData) external;

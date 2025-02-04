@@ -1,192 +1,192 @@
 [
   {
+    "type": "constructor",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_policyManager",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
+    "stateMutability": "nonpayable"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "asset",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "minBalance",
-        "type": "uint256"
-      }
-    ],
-    "name": "MinAssetBalanceAddedForFund",
-    "type": "event"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
+    "type": "function",
     "name": "activateForFund",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_encodedSettings",
-        "type": "bytes"
+        "name": "",
+        "type": "address",
+        "internalType": "address"
       }
     ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
     "name": "addFundSettings",
+    "inputs": [
+      {
+        "name": "_comptrollerProxy",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_encodedSettings",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
-    "inputs": [],
+    "type": "function",
     "name": "canDisable",
+    "inputs": [],
     "outputs": [
       {
-        "internalType": "bool",
         "name": "canDisable_",
-        "type": "bool"
+        "type": "bool",
+        "internalType": "bool"
       }
     ],
-    "stateMutability": "pure",
-    "type": "function"
+    "stateMutability": "pure"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_comptrollerProxy",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_asset",
-        "type": "address"
-      }
-    ],
+    "type": "function",
     "name": "getMinAssetBalanceForFund",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "minBalance_",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getPolicyManager",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "policyManager_",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "identifier",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "identifier_",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "implementedHooks",
-    "outputs": [
-      {
-        "internalType": "enum IPolicyManager.PolicyHook[]",
-        "name": "implementedHooks_",
-        "type": "uint8[]"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "",
-        "type": "bytes"
-      }
-    ],
-    "name": "updateFundSettings",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
         "name": "_comptrollerProxy",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "enum IPolicyManager.PolicyHook",
-        "name": "",
-        "type": "uint8"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_encodedArgs",
-        "type": "bytes"
+        "name": "_asset",
+        "type": "address",
+        "internalType": "address"
       }
     ],
-    "name": "validateRule",
     "outputs": [
       {
-        "internalType": "bool",
-        "name": "isValid_",
-        "type": "bool"
+        "name": "minBalance_",
+        "type": "uint256",
+        "internalType": "uint256"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPolicyManager",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "policyManager_",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "identifier",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "identifier_",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "implementedHooks",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "implementedHooks_",
+        "type": "uint8[]",
+        "internalType": "enum IPolicyManager.PolicyHook[]"
+      }
+    ],
+    "stateMutability": "pure"
+  },
+  {
+    "type": "function",
+    "name": "updateFundSettings",
+    "inputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "validateRule",
+    "inputs": [
+      {
+        "name": "_comptrollerProxy",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "",
+        "type": "uint8",
+        "internalType": "enum IPolicyManager.PolicyHook"
+      },
+      {
+        "name": "_encodedArgs",
+        "type": "bytes",
+        "internalType": "bytes"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "isValid_",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "MinAssetBalanceAddedForFund",
+    "inputs": [
+      {
+        "name": "comptrollerProxy",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "asset",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "minBalance",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
   }
 ]

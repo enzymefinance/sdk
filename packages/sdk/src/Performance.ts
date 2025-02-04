@@ -1,10 +1,10 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, ContractFunctionExecutionError, type PublicClient } from "viem";
+import { type Address, type Client, ContractFunctionExecutionError } from "viem";
 import { simulateContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
 export async function getNav(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -24,7 +24,7 @@ export async function getNav(
 }
 
 export async function getNavInAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -43,7 +43,7 @@ export async function getNavInAsset(
 }
 
 export async function getGav(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -63,7 +63,7 @@ export async function getGav(
 }
 
 export async function getGavInAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -82,7 +82,7 @@ export async function getGavInAsset(
 }
 
 export async function getSharePrice(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     valueCalculator: Address;
@@ -102,7 +102,7 @@ export async function getSharePrice(
 }
 
 export async function getSharePriceInAsset(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     asset: Address;
     vaultProxy: Address;
@@ -121,7 +121,7 @@ export async function getSharePriceInAsset(
 }
 
 export async function getCanonicalAssetValue(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
     baseAsset: Address;
@@ -150,11 +150,11 @@ export async function getCanonicalAssetValue(
 }
 
 export async function calcCanonicalAssetsTotalValue(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     valueInterpreter: Address;
-    baseAssets: Address[];
-    amounts: bigint[];
+    baseAssets: ReadonlyArray<Address>;
+    amounts: ReadonlyArray<bigint>;
     quoteAsset: Address;
   }>,
 ) {

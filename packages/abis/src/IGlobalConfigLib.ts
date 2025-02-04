@@ -1,0 +1,213 @@
+export const IGlobalConfigLib = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_fundDeployerV4",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "formatDepositCall",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_depositAssetAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "target_",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "payload_",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "formatSingleAssetRedemptionCall",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_amountIsShares",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [
+      {
+        name: "target_",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "payload_",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDispatcher",
+    inputs: [],
+    outputs: [
+      {
+        name: "dispatcher_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getGlobalConfigLib",
+    inputs: [],
+    outputs: [
+      {
+        name: "globalConfigLib_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "init",
+    inputs: [
+      {
+        name: "_dispatcher",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "isValidRedeemSharesCall",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipientToValidate",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_sharesAmountToValidate",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_redeemContract",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_redeemSelector",
+        type: "bytes4",
+        internalType: "bytes4",
+      },
+      {
+        name: "_redeemData",
+        type: "bytes",
+        internalType: "bytes",
+      },
+    ],
+    outputs: [
+      {
+        name: "isValid_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "proxiableUUID",
+    inputs: [],
+    outputs: [
+      {
+        name: "uuid_",
+        type: "bytes32",
+        internalType: "bytes32",
+      },
+    ],
+    stateMutability: "pure",
+  },
+  {
+    type: "function",
+    name: "setGlobalConfigLib",
+    inputs: [
+      {
+        name: "_nextGlobalConfigLib",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "GlobalConfigLibSet",
+    inputs: [
+      {
+        name: "nextGlobalConfigLib",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

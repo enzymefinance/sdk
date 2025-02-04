@@ -1,0 +1,147 @@
+export const IMapleV1ToV2PoolMapper = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_dispacher",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "allowMigration",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "freezeSnapshots",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getPoolTokenV2FromPoolTokenV1",
+    inputs: [
+      {
+        name: "_poolTokenV1",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "poolTokenV2_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "mapPools",
+    inputs: [
+      {
+        name: "_poolTokensV1",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_poolTokensV2",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "migrateExternalPositions",
+    inputs: [
+      {
+        name: "_proxies",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "migrationIsAllowed",
+    inputs: [],
+    outputs: [
+      {
+        name: "allowed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "snapshotExternalPositions",
+    inputs: [
+      {
+        name: "_proxies",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "snapshotsAreAllowed",
+    inputs: [],
+    outputs: [
+      {
+        name: "allowed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "event",
+    name: "MigrationAllowed",
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "PoolMapped",
+    inputs: [
+      {
+        name: "poolTokenV1",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "poolTokenV2",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "SnapshotsFrozen",
+    inputs: [],
+    anonymous: false,
+  },
+] as const;

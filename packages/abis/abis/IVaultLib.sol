@@ -1,7 +1,9 @@
-// SPDX-License-Identifier: Unlicense
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
 interface IVaultLib {
+    type VaultAction is uint8;
+
     event AccessorSet(address prevAccessor, address nextAccessor);
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event AssetManagerAdded(address manager);
@@ -24,6 +26,8 @@ interface IVaultLib {
     event TrackedAssetRemoved(address asset);
     event Transfer(address indexed from, address indexed to, uint256 value);
     event VaultLibSet(address prevVaultLib, address nextVaultLib);
+
+    receive() external payable;
 
     function addAssetManagers(address[] memory _managers) external;
     function addTrackedAsset(address _asset) external;
@@ -68,7 +72,7 @@ interface IVaultLib {
     function name() external view returns (string memory);
     function payProtocolFee() external;
     function proxiableUUID() external pure returns (bytes32 uuid_);
-    function receiveValidatedVaultAction(uint8 _action, bytes memory _actionData) external;
+    function receiveValidatedVaultAction(VaultAction _action, bytes memory _actionData) external;
     function removeAssetManagers(address[] memory _managers) external;
     function removeNominatedOwner() external;
     function setAccessor(address _nextAccessor) external;

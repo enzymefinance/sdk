@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -23,7 +23,7 @@ export type RedemptionWindowConfig = {
 export function deploy(args: {
   sharesWrapperFactory: Address;
   vaultProxy: Address;
-  managers: Address[];
+  managers: ReadonlyArray<Address>;
   redemptionAsset: Address;
   useDepositApproval: boolean;
   useRedemptionApproval: boolean;
@@ -111,9 +111,9 @@ export function forceTransfer(args: {
 
 export function setDepositApprovals(args: {
   sharesWrapper: Address;
-  depositors: Address[];
-  assets: Address[];
-  amounts: bigint[];
+  depositors: ReadonlyArray<Address>;
+  assets: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -125,8 +125,8 @@ export function setDepositApprovals(args: {
 
 export function setRedemptionApprovals(args: {
   sharesWrapper: Address;
-  depositors: Address[];
-  amounts: bigint[];
+  depositors: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -138,9 +138,9 @@ export function setRedemptionApprovals(args: {
 
 export function setTransferApprovals(args: {
   sharesWrapper: Address;
-  senders: Address[];
-  recipients: Address[];
-  amounts: bigint[];
+  senders: ReadonlyArray<Address>;
+  recipients: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -153,7 +153,7 @@ export function setTransferApprovals(args: {
 export function depositFromQueue(args: {
   sharesWrapper: Address;
   asset: Address;
-  depositors: Address[];
+  depositors: ReadonlyArray<Address>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -177,7 +177,7 @@ export function depositAllFromQueue(args: {
 
 export function addManagers(args: {
   sharesWrapper: Address;
-  managers: Address[];
+  managers: ReadonlyArray<Address>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -189,7 +189,7 @@ export function addManagers(args: {
 
 export function removeManagers(args: {
   sharesWrapper: Address;
-  managers: Address[];
+  managers: ReadonlyArray<Address>;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IGatedRedemptionQueueSharesWrapperLib,
@@ -253,7 +253,7 @@ export function setRedemptionAsset(args: {
 //--------------------------------------------------------------------------------------------
 
 export function getDepositQueueUser(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sharesWrapper: Address;
     depositAsset: Address;
@@ -270,7 +270,7 @@ export function getDepositQueueUser(
 }
 
 export function getRedemptionQueueUsers(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
   }>,
@@ -283,8 +283,8 @@ export function getRedemptionQueueUsers(
   });
 }
 
-export async function getRedemptionQueueUsersLength(
-  client: PublicClient,
+export function getRedemptionQueueUsersLength(
+  client: Client,
   args: Viem.ContractCallParameters<{
     sharesWrapperId: Address;
   }>,

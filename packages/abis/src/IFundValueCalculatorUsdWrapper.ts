@@ -1,0 +1,180 @@
+export const IFundValueCalculatorUsdWrapper = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_fundValueCalculatorRouter",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_wethToken",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_ethUsdAggregator",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_staleRateThreshold",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcGav",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "gav_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcGrossShareValue",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "grossShareValue_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcNav",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "nav_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcNetShareValue",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "netShareValue_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcNetValueForSharesHolder",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_sharesHolder",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "netValue_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getEthUsdAggregatorContract",
+    inputs: [],
+    outputs: [
+      {
+        name: "ethUsdAggregatorContract_",
+        type: "address",
+        internalType: "contract IChainlinkAggregatorFundValueCalculatorUsdWrapper",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFundValueCalculatorRouter",
+    inputs: [],
+    outputs: [
+      {
+        name: "fundValueCalculatorRouter_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getStaleRateThreshold",
+    inputs: [],
+    outputs: [
+      {
+        name: "staleRateThreshold_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getWethToken",
+    inputs: [],
+    outputs: [
+      {
+        name: "wethToken_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+] as const;

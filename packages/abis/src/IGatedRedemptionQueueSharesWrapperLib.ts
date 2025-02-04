@@ -1,0 +1,1514 @@
+export const IGatedRedemptionQueueSharesWrapperLib = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_globalConfigProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_wrappedNativeAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "receive",
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "addManagers",
+    inputs: [
+      {
+        name: "_managers",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "balanceOf",
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "calcLatestRedemptionWindow",
+    inputs: [],
+    outputs: [
+      {
+        name: "windowStart_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "windowEnd_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "cancelRequestDeposit",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "cancelRequestRedeem",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "decimals",
+    inputs: [],
+    outputs: [
+      {
+        name: "decimals_",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "decreaseAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "subtractedValue",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "deposit",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_depositAssetAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_minSharesAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "sharesReceived_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "depositAllFromQueue",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "users_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "userSharesReceived_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "depositApprovalsAreUsed",
+    inputs: [],
+    outputs: [
+      {
+        name: "approvalsUsed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "depositFromQueue",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_users",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [
+      {
+        name: "userSharesReceived_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "forceTransfer",
+    inputs: [
+      {
+        name: "_sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "amount_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getDepositApproval",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "amount_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDepositMode",
+    inputs: [],
+    outputs: [
+      {
+        name: "mode_",
+        type: "uint8",
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDepositQueueUserRequest",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "request_",
+        type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.DepositRequest",
+        components: [
+          {
+            name: "index",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "assetAmount",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDepositQueueUsers",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "users_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionApproval",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "amount_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionAsset",
+    inputs: [],
+    outputs: [
+      {
+        name: "asset_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionQueue",
+    inputs: [],
+    outputs: [
+      {
+        name: "totalSharesPending_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "relativeSharesAllowed_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "relativeSharesCheckpointed_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionQueueUserByIndex",
+    inputs: [
+      {
+        name: "_index",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "user_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionQueueUserRequest",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "request_",
+        type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionRequest",
+        components: [
+          {
+            name: "index",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "lastRedeemed",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "sharesPending",
+            type: "uint128",
+            internalType: "uint128",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionQueueUsers",
+    inputs: [],
+    outputs: [
+      {
+        name: "users_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionQueueUsersLength",
+    inputs: [],
+    outputs: [
+      {
+        name: "length_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedemptionWindowConfig",
+    inputs: [],
+    outputs: [
+      {
+        name: "redemptionWindowConfig_",
+        type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        components: [
+          {
+            name: "firstWindowStart",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "frequency",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "duration",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "relativeSharesCap",
+            type: "uint64",
+            internalType: "uint64",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getTransferApproval",
+    inputs: [
+      {
+        name: "_sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "amount_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getVaultProxy",
+    inputs: [],
+    outputs: [
+      {
+        name: "vaultProxy_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "increaseAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "addedValue",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "init",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_managers",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_redemptionAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_useDepositApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+      {
+        name: "_useRedemptionApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+      {
+        name: "_useTransferApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+      {
+        name: "_depositMode",
+        type: "uint8",
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+      },
+      {
+        name: "_windowConfig",
+        type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        components: [
+          {
+            name: "firstWindowStart",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "frequency",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "duration",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "relativeSharesCap",
+            type: "uint64",
+            internalType: "uint64",
+          },
+        ],
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "isManager",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "isManager_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "kick",
+    inputs: [
+      {
+        name: "_user",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "sharesRedeemed_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "name",
+    inputs: [],
+    outputs: [
+      {
+        name: "name_",
+        type: "string",
+        internalType: "string",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "redeemFromQueue",
+    inputs: [
+      {
+        name: "_startIndex",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_endIndex",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "usersRedeemed_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "sharesRedeemed_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "redemptionApprovalsAreUsed",
+    inputs: [],
+    outputs: [
+      {
+        name: "approvalsUsed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "removeManagers",
+    inputs: [
+      {
+        name: "_managers",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "requestDeposit",
+    inputs: [
+      {
+        name: "_depositAsset",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_depositAssetAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "requestRedeem",
+    inputs: [
+      {
+        name: "_sharesAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setDepositApprovals",
+    inputs: [
+      {
+        name: "_users",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_assets",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_amounts",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setDepositMode",
+    inputs: [
+      {
+        name: "_mode",
+        type: "uint8",
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setRedemptionApprovals",
+    inputs: [
+      {
+        name: "_users",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_amounts",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setRedemptionAsset",
+    inputs: [
+      {
+        name: "_nextRedemptionAsset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setRedemptionWindowConfig",
+    inputs: [
+      {
+        name: "_nextWindowConfig",
+        type: "tuple",
+        internalType: "struct GatedRedemptionQueueSharesWrapperLibBase1.RedemptionWindowConfig",
+        components: [
+          {
+            name: "firstWindowStart",
+            type: "uint64",
+            internalType: "uint64",
+          },
+          {
+            name: "frequency",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "duration",
+            type: "uint32",
+            internalType: "uint32",
+          },
+          {
+            name: "relativeSharesCap",
+            type: "uint64",
+            internalType: "uint64",
+          },
+        ],
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setTransferApprovals",
+    inputs: [
+      {
+        name: "_users",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_recipients",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "_amounts",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setUseDepositApprovals",
+    inputs: [
+      {
+        name: "_nextUseDepositApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setUseRedemptionApprovals",
+    inputs: [
+      {
+        name: "_nextUseRedemptionApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setUseTransferApprovals",
+    inputs: [
+      {
+        name: "_nextUseTransferApprovals",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "symbol",
+    inputs: [],
+    outputs: [
+      {
+        name: "symbol_",
+        type: "string",
+        internalType: "string",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "totalSupply",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "transfer",
+    inputs: [
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "success_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "transferApprovalsAreUsed",
+    inputs: [],
+    outputs: [
+      {
+        name: "approvalsUsed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "transferFrom",
+    inputs: [
+      {
+        name: "_sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "success_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "Approval",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DepositApproval",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DepositModeSet",
+    inputs: [
+      {
+        name: "mode",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum GatedRedemptionQueueSharesWrapperLibBase1.DepositMode",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DepositRequestAdded",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "depositAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "depositAssetAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "DepositRequestRemoved",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "depositAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Deposited",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "depositToken",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "depositTokenAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "sharesReceived",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Initialized",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Kicked",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ManagerAdded",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ManagerRemoved",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Redeemed",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "redemptionAsset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "redemptionAssetAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RedemptionApproval",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RedemptionAssetSet",
+    inputs: [
+      {
+        name: "asset",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RedemptionRequestAdded",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "sharesAmount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RedemptionRequestRemoved",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "RedemptionWindowConfigSet",
+    inputs: [
+      {
+        name: "firstWindowStart",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "frequency",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "duration",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "relativeSharesCap",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Transfer",
+    inputs: [
+      {
+        name: "from",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TransferApproval",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "recipient",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TransferForced",
+    inputs: [
+      {
+        name: "sender",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "recipient",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UseDepositApprovalsSet",
+    inputs: [
+      {
+        name: "useApprovals",
+        type: "bool",
+        indexed: false,
+        internalType: "bool",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UseRedemptionApprovalsSet",
+    inputs: [
+      {
+        name: "useApprovals",
+        type: "bool",
+        indexed: false,
+        internalType: "bool",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "UseTransferApprovalsSet",
+    inputs: [
+      {
+        name: "useApprovals",
+        type: "bool",
+        indexed: false,
+        internalType: "bool",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

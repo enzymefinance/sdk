@@ -1,8 +1,9 @@
+import { ICurvePriceFeed } from "@enzymefinance/abis";
 import {
   type Address,
+  type Client,
   ContractFunctionExecutionError,
   type Hex,
-  PublicClient,
   decodeAbiParameters,
   encodeAbiParameters,
   isAddressEqual,
@@ -13,6 +14,7 @@ import {
 } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Constants, Rates, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -265,17 +267,13 @@ export function redeemEncode(args: RedeemArgs): Hex {
   }
 }
 
-export function isValidRedeemType(value: number): value is RedeemType {
-  return Object.values(RedeemType).includes(value as RedeemType);
-}
-
 export function redeemDecode(encoded: Hex): RedeemArgs {
   const [pool, outgoingLpTokenAmount, useUnderlyings, redeemType, incomingAssetsData] = decodeAbiParameters(
     redeemEncoding,
     encoded,
   );
 
-  Assertion.invariant(isValidRedeemType(redeemType), "Invalid redeem type");
+  assertEnumType(RedeemType, redeemType);
 
   switch (redeemType) {
     case RedeemType.Standard: {
@@ -314,7 +312,7 @@ export function redeemDecode(encoded: Hex): RedeemArgs {
 
 export type StandardRedeemArgs = {
   redeemType: typeof RedeemType.Standard;
-  orderedMinIncomingAssetAmounts: readonly bigint[];
+  orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>;
 };
 
 export type OneCoinRedeemArgs = {
@@ -326,7 +324,7 @@ export type OneCoinRedeemArgs = {
 const standardRedeemEncoding = parseAbiParameters("uint256[]");
 const oneCoinRedeemEncoding = parseAbiParameters("uint256, uint256");
 
-export function standardRedeemEncode(orderedMinIncomingAssetAmounts: readonly bigint[]): Hex {
+export function standardRedeemEncode(orderedMinIncomingAssetAmounts: ReadonlyArray<bigint>): Hex {
   return encodeAbiParameters(standardRedeemEncoding, [orderedMinIncomingAssetAmounts]);
 }
 
@@ -527,7 +525,7 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
   const [pool, outgoingStakingToken, outgoingStakingTokenAmount, useUnderlyings, redeemType, incomingAssetsData] =
     decodeAbiParameters(unstakeAndRedeemEncoding, encoded);
 
-  Assertion.invariant(isValidRedeemType(redeemType), `Invalid redeem type ${redeemType}`);
+  assertEnumType(RedeemType, redeemType);
 
   switch (redeemType) {
     case RedeemType.Standard: {
@@ -559,6 +557,26 @@ export function unstakeAndRedeemDecode(encoded: Hex): UnstakeAndRedeemArgs {
     default:
       Assertion.never(redeemType, "Invalid redeemType");
   }
+}
+
+//--------------------------------------------------------------------------------------------
+// READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function getPoolInfo(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    curvePriceFeed: Address;
+    pool: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: ICurvePriceFeed,
+    functionName: "getPoolInfo",
+    address: args.curvePriceFeed,
+    args: [args.pool],
+  });
 }
 
 //--------------------------------------------------------------------------------------------
@@ -601,7 +619,7 @@ const erc20Abi = {
 const swapId = 2n; // id won't change, for swaps it will be always the same id in the registry
 
 export async function getBestPrice(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     incoming: Address;
     outgoing: Address;
@@ -620,7 +638,7 @@ export async function getBestPrice(
   const curveOutgoing = isAddressEqual(args.outgoing, args.weth) ? Constants.ETH_ADDRESS : args.outgoing;
   const curveIncoming = isAddressEqual(args.incoming, args.weth) ? Constants.ETH_ADDRESS : args.incoming;
 
-  const [bestPool, amountReceived] = await client.readContract({
+  const [bestPool, amountReceived] = await readContract(client, {
     abi: [curveSwapsAbi],
     address: curveSwaps,
     functionName: "get_best_rate",
@@ -632,7 +650,7 @@ export async function getBestPrice(
 
   try {
     // not all pools support this method, this is why we need to catch the error
-    const poolName = await client.readContract({
+    const poolName = await readContract(client, {
       abi: [erc20Abi],
       address: bestPool,
       functionName: "name",
@@ -665,7 +683,7 @@ const calcWithdrawOneCoinAbi = {
 } as const;
 
 export async function isSingleAssetRedemptionAllowed(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -692,10 +710,10 @@ export async function isSingleAssetRedemptionAllowed(
 }
 
 export async function getExpectedGaugeTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
-    tokenAmounts: bigint[];
+    tokenAmounts: ReadonlyArray<bigint>;
     isDeposit: boolean;
   }>,
 ) {
@@ -746,11 +764,11 @@ const lpTokenAbi = [
 const balancesUint256Signature = "function balances(uint256 i) view returns(uint256)" as const;
 
 export async function getExpectedWithdrawalTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curvePool: Address;
     singleTokenIndex: bigint;
-    underlyingAssetsDecimals: number[];
+    underlyingAssetsDecimals: ReadonlyArray<number>;
     lpToken: Address;
     lpTokenAmount: bigint;
     equalProportion: boolean;
@@ -861,7 +879,7 @@ export async function getExpectedWithdrawalTokens(
 //--------------------------------------------------------------------------------------------
 
 export async function getClaimableTokens(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curveGauge: Address;
     user: Address;
@@ -883,7 +901,7 @@ export async function getClaimableTokens(
 //--------------------------------------------------------------------------------------------
 
 export async function isAllowedToMintFor(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     curveMinter: Address;
     vault: Address;

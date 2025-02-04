@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, Hex, type PublicClient, encodeFunctionData, isAddressEqual, parseAbi, zeroAddress } from "viem";
+import { type Address, type Client, type Hex, encodeFunctionData, isAddressEqual, parseAbi, zeroAddress } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "./Utils.js";
 
@@ -119,7 +119,7 @@ export function shutdownGasRelayPaymaster(args: {
 //--------------------------------------------------------------------------------------------
 
 export async function isRelayerEnabled(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -134,8 +134,8 @@ export async function isRelayerEnabled(
   return !isAddressEqual(address, zeroAddress);
 }
 
-export async function getGasRelayPaymaster(
-  client: PublicClient,
+export function getGasRelayPaymaster(
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -149,7 +149,7 @@ export async function getGasRelayPaymaster(
 }
 
 export function getRelayerBalance(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     gasRelayPaymaster: Address;
   }>,
@@ -163,7 +163,7 @@ export function getRelayerBalance(
 }
 
 export function getTrustedForwarder(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     gasRelayPaymaster: Address;
   }>,
@@ -177,7 +177,7 @@ export function getTrustedForwarder(
 }
 
 export function getNonce(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     trustedForwarder: Address;
     sender: Address;

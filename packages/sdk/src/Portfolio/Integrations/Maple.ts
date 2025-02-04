@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -189,8 +189,8 @@ export function claimRewardsV1Decode(encoded: Hex): ClaimRewardsV1Args {
 // EXTERNAL READ FUNCTIONS - MAPLE POOL
 //--------------------------------------------------------------------------------------------
 
-export async function getMaxDeposit(
-  client: PublicClient,
+export function getMaxDeposit(
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
     receiver: Address;
@@ -205,8 +205,8 @@ export async function getMaxDeposit(
   });
 }
 
-export async function getTotalAssets(
-  client: PublicClient,
+export function getTotalAssets(
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -219,8 +219,8 @@ export async function getTotalAssets(
   });
 }
 
-export async function getUnrealizedLosses(
-  client: PublicClient,
+export function getUnrealizedLosses(
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
   }>,
@@ -233,8 +233,8 @@ export async function getUnrealizedLosses(
   });
 }
 
-export async function getSharesConvertedToExitAssets(
-  client: PublicClient,
+export function getSharesConvertedToExitAssets(
+  client: Client,
   args: Viem.ContractCallParameters<{
     pool: Address;
     shares: bigint;
@@ -253,8 +253,8 @@ export async function getSharesConvertedToExitAssets(
 // EXTERNAL READ FUNCTIONS - POOL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getWithdrawalManager(
-  client: PublicClient,
+export function getWithdrawalManager(
+  client: Client,
   args: Viem.ContractCallParameters<{
     poolManager: Address;
   }>,
@@ -271,8 +271,8 @@ export async function getWithdrawalManager(
 // EXTERNAL READ FUNCTIONS - WITHDRAWAL MANAGER
 //--------------------------------------------------------------------------------------------
 
-export async function getLockedShares(
-  client: PublicClient,
+export function getLockedShares(
+  client: Client,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;
@@ -287,8 +287,8 @@ export async function getLockedShares(
   });
 }
 
-export async function getCurrentCycleId(
-  client: PublicClient,
+export function getCurrentCycleId(
+  client: Client,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
   }>,
@@ -302,7 +302,7 @@ export async function getCurrentCycleId(
 }
 
 export async function getWindowAtId(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     cycleId: bigint;
@@ -319,8 +319,8 @@ export async function getWindowAtId(
   return { windowStart, windowEnd };
 }
 
-export async function getExitCycleId(
-  client: PublicClient,
+export function getExitCycleId(
+  client: Client,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;
@@ -336,7 +336,7 @@ export async function getExitCycleId(
 }
 
 export async function getRedemptionPreview(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     withdrawalManager: Address;
     user: Address;

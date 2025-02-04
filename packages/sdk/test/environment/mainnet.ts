@@ -1,4 +1,4 @@
-import { type Chain } from "viem";
+import type { Chain } from "viem";
 import { localhost, mainnet } from "viem/chains";
 import { createSetup } from "./anvil.js";
 
@@ -55,17 +55,16 @@ const constants = {
   convexCurveLpStakingAdapter: "0xE8943F116c974C05F637920Fff3DFE0463528D9A",
   curveExchangeAdapter: "0xC9c14a99cCF467EA1ff2e19584A5FaBA3671B8de",
   curveLiquidityAdapter: "0xEa0a896ddE31CFcB53A96ac767119B69D7B4f633",
-  idleV4Adapter: "0x474c8d4A0e53B7235C6f8fC27c9B6406a32Dd0b1",
   uniswapV2ExchangeAdapter: "0x8c36435A653041BFd65515CC82502663C1ce6F0e",
   uniswapV2LiquidityAdapter: "0xF78130AfedA6d9Df3394b34d36239aeC7FAe48d9",
   uniswapV3Adapter: "0xeD6A08E05cB4260388dc7CC60Bc5fEFcCfab2793",
   yearnVaultV2Adapter: "0x7eA777F9F6ecBf4d03Dc5323d3F057B0730Fc34a",
   managementFee: "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
-  idleV4PriceFeed: "0x8Ddf1f3f0c13E099378B2B6F73cdB8F61526ed6F",
   erc4626Adapter: "0x64Fa106DD89F21d6e687EEbE9384637F7d54f707",
   paraswapV5Adapter: "0x871a7f0ef4917a1534e651d1fde3763a52a23ece",
   oneInchV5Adapter: "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677",
   zeroExV4Adapter: "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5",
+  staderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",
   // External contracts & misc addresses.
   balancerMinter: "0x239e55F427D44C3cc793f49bFB507ebe76638a2b",
   voteLockedCvx: "0x72a19342e8F1838460eBFCCEf09F6585e32db86E",
@@ -91,6 +90,7 @@ const constants = {
   cvx: "0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B",
   dai: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
   dpi: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
+  ethx: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
   frax: "0x853d955aCEf822Db058eb8505911ED77F175b99e",
   idle: "0x875773784Af8135eA0ef43b5a374AaD105c5D39e",
   idleV4Weth: "0xC8E6CA6E96a326dC448307A5fDE90a0b21fd7f80",
@@ -102,6 +102,7 @@ const constants = {
   wbtc: "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599",
   weth: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
   yearnVaultV2Weth: "0xa258C4606Ca8206D8aA700cE2143D7db854D168c",
+  staderStakingPoolManager: "0xcf5ea1b38380f6af39068375516daf40ed70d299",
 } as const;
 
 export const setupMainnet = createSetup({

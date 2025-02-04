@@ -1,4 +1,4 @@
-import { type Address, PublicClient, parseAbi } from "viem";
+import { type Address, type Client, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 
@@ -6,8 +6,8 @@ import { Viem } from "../../Utils.js";
 // EXTERNAL READ FUNCTIONS
 //--------------------------------------------------------------------------------------------
 
-export async function ethToSwETHRate(
-  client: PublicClient,
+export function ethToSwETHRate(
+  client: Client,
   args: Viem.ContractCallParameters<{
     swethAddress: Address;
   }>,

@@ -1,65 +1,65 @@
 [
   {
+    "type": "function",
+    "name": "parseAssetsForAction",
     "inputs": [
       {
-        "internalType": "address",
         "name": "_externalPosition",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "uint256",
         "name": "_actionId",
-        "type": "uint256"
+        "type": "uint256",
+        "internalType": "uint256"
       },
       {
-        "internalType": "bytes",
         "name": "_encodedActionArgs",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "parseAssetsForAction",
     "outputs": [
       {
-        "internalType": "address[]",
         "name": "assetsToTransfer_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       },
       {
-        "internalType": "uint256[]",
         "name": "amountsToTransfer_",
-        "type": "uint256[]"
+        "type": "uint256[]",
+        "internalType": "uint256[]"
       },
       {
-        "internalType": "address[]",
         "name": "assetsToReceive_",
-        "type": "address[]"
+        "type": "address[]",
+        "internalType": "address[]"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   },
   {
+    "type": "function",
+    "name": "parseInitArgs",
     "inputs": [
       {
-        "internalType": "address",
         "name": "",
-        "type": "address"
+        "type": "address",
+        "internalType": "address"
       },
       {
-        "internalType": "bytes",
         "name": "",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "name": "parseInitArgs",
     "outputs": [
       {
-        "internalType": "bytes",
         "name": "",
-        "type": "bytes"
+        "type": "bytes",
+        "internalType": "bytes"
       }
     ],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "nonpayable"
   }
 ]

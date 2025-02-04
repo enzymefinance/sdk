@@ -1,0 +1,807 @@
+export const IArbitraryTokenPhasedSharesWrapperLib = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_dispatcher",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_addressListRegistry",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_fundDeployerV4",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_protocolFeeRecipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_protocolFeeBps",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_initializer",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "allowance",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "approve",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "balanceOf",
+    inputs: [
+      {
+        name: "account",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "decimals",
+    inputs: [],
+    outputs: [
+      {
+        name: "decimals_",
+        type: "uint8",
+        internalType: "uint8",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "decreaseAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "subtractedValue",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "deposit",
+    inputs: [
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "enterLockedState",
+    inputs: [],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "enterRedeemState",
+    inputs: [
+      {
+        name: "_untrackedAssetsToClaim",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getAllowedDepositorListId",
+    inputs: [],
+    outputs: [
+      {
+        name: "allowedDepositorListId_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getDepositToken",
+    inputs: [],
+    outputs: [
+      {
+        name: "depositToken_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFeeBps",
+    inputs: [],
+    outputs: [
+      {
+        name: "feeBps_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFeeExcludesDepositTokenPrincipal",
+    inputs: [],
+    outputs: [
+      {
+        name: "excludesPrincipal_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFeeRecipient",
+    inputs: [],
+    outputs: [
+      {
+        name: "feeRecipient_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getManager",
+    inputs: [],
+    outputs: [
+      {
+        name: "manager_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getProtocolFeeStart",
+    inputs: [],
+    outputs: [
+      {
+        name: "protocolFeeStart_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getRedeemedAssets",
+    inputs: [],
+    outputs: [
+      {
+        name: "redeemedAssets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getState",
+    inputs: [],
+    outputs: [
+      {
+        name: "state_",
+        type: "uint8",
+        internalType: "enum ArbitraryTokenPhasedSharesWrapperLib.State",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getTotalDepositMax",
+    inputs: [],
+    outputs: [
+      {
+        name: "totalDepositMax_",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getTransfersAllowed",
+    inputs: [],
+    outputs: [
+      {
+        name: "transfersAllowed_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getVaultProxy",
+    inputs: [],
+    outputs: [
+      {
+        name: "vaultProxy_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "increaseAllowance",
+    inputs: [
+      {
+        name: "spender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "addedValue",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "init",
+    inputs: [
+      {
+        name: "_vaultProxy",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_depositToken",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_allowedDepositorListId",
+        type: "uint128",
+        internalType: "uint128",
+      },
+      {
+        name: "_transfersAllowed",
+        type: "bool",
+        internalType: "bool",
+      },
+      {
+        name: "_totalDepositMax",
+        type: "uint128",
+        internalType: "uint128",
+      },
+      {
+        name: "_feeRecipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_feeBps",
+        type: "uint16",
+        internalType: "uint16",
+      },
+      {
+        name: "_feeExcludesDepositTokenPrincipal",
+        type: "bool",
+        internalType: "bool",
+      },
+      {
+        name: "_manager",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "name",
+    inputs: [],
+    outputs: [
+      {
+        name: "name_",
+        type: "string",
+        internalType: "string",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "setAllowedDepositorListId",
+    inputs: [
+      {
+        name: "_nextAllowedDepositorListId",
+        type: "uint128",
+        internalType: "uint128",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setManager",
+    inputs: [
+      {
+        name: "_nextManager",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "setTotalDepositMax",
+    inputs: [
+      {
+        name: "_nextTotalDepositMax",
+        type: "uint128",
+        internalType: "uint128",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "symbol",
+    inputs: [],
+    outputs: [
+      {
+        name: "symbol_",
+        type: "string",
+        internalType: "string",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "totalSupply",
+    inputs: [],
+    outputs: [
+      {
+        name: "",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "transfer",
+    inputs: [
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "success_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "transferFrom",
+    inputs: [
+      {
+        name: "_sender",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_recipient",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "success_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "withdraw",
+    inputs: [
+      {
+        name: "_amount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+      {
+        name: "_additionalAssets",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [
+      {
+        name: "claimedAssets_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "claimedAssetAmounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "AllowedDepositorListIdSet",
+    inputs: [
+      {
+        name: "listId",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Approval",
+    inputs: [
+      {
+        name: "owner",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "spender",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Deposited",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "FeePaid",
+    inputs: [
+      {
+        name: "token",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Initialized",
+    inputs: [
+      {
+        name: "vaultProxy",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "depositToken",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "transfersAllowed",
+        type: "bool",
+        indexed: false,
+        internalType: "bool",
+      },
+      {
+        name: "feeRecipient",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "feeBps",
+        type: "uint16",
+        indexed: false,
+        internalType: "uint16",
+      },
+      {
+        name: "feeExcludesDepositTokenPrincipal",
+        type: "bool",
+        indexed: false,
+        internalType: "bool",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ManagerSet",
+    inputs: [
+      {
+        name: "manager",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProtocolFeePaid",
+    inputs: [
+      {
+        name: "token",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "ProtocolFeeStarted",
+    inputs: [],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "StateSet",
+    inputs: [
+      {
+        name: "state",
+        type: "uint8",
+        indexed: false,
+        internalType: "enum ArbitraryTokenPhasedSharesWrapperLib.State",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "TotalDepositMaxSet",
+    inputs: [
+      {
+        name: "totalDepositMax",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Transfer",
+    inputs: [
+      {
+        name: "from",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "to",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "value",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+    ],
+    anonymous: false,
+  },
+  {
+    type: "event",
+    name: "Withdrawn",
+    inputs: [
+      {
+        name: "user",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "amount",
+        type: "uint256",
+        indexed: false,
+        internalType: "uint256",
+      },
+      {
+        name: "claimedAssets",
+        type: "address[]",
+        indexed: false,
+        internalType: "address[]",
+      },
+      {
+        name: "claimedAssetAmounts",
+        type: "uint256[]",
+        indexed: false,
+        internalType: "uint256[]",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

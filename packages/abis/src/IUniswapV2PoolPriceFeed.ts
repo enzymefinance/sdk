@@ -1,0 +1,226 @@
+export const IUniswapV2PoolPriceFeed = [
+  {
+    type: "constructor",
+    inputs: [
+      {
+        name: "_fundDeployer",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_valueInterpreter",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_factory",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "addPoolTokens",
+    inputs: [
+      {
+        name: "_poolTokens",
+        type: "address[]",
+        internalType: "address[]",
+      },
+    ],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "calcUnderlyingValues",
+    inputs: [
+      {
+        name: "_derivative",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "_derivativeAmount",
+        type: "uint256",
+        internalType: "uint256",
+      },
+    ],
+    outputs: [
+      {
+        name: "underlyings_",
+        type: "address[]",
+        internalType: "address[]",
+      },
+      {
+        name: "underlyingAmounts_",
+        type: "uint256[]",
+        internalType: "uint256[]",
+      },
+    ],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "getFactory",
+    inputs: [],
+    outputs: [
+      {
+        name: "factory_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getFundDeployer",
+    inputs: [],
+    outputs: [
+      {
+        name: "fundDeployer_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getOwner",
+    inputs: [],
+    outputs: [
+      {
+        name: "owner_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPoolTokenInfo",
+    inputs: [
+      {
+        name: "_poolToken",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "poolTokenInfo_",
+        type: "tuple",
+        internalType: "struct UniswapV2PoolPriceFeed.PoolTokenInfo",
+        components: [
+          {
+            name: "token0",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "token1",
+            type: "address",
+            internalType: "address",
+          },
+          {
+            name: "token0Decimals",
+            type: "uint8",
+            internalType: "uint8",
+          },
+          {
+            name: "token1Decimals",
+            type: "uint8",
+            internalType: "uint8",
+          },
+        ],
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getPoolTokenUnderlyings",
+    inputs: [
+      {
+        name: "_poolToken",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "token0_",
+        type: "address",
+        internalType: "address",
+      },
+      {
+        name: "token1_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "getValueInterpreter",
+    inputs: [],
+    outputs: [
+      {
+        name: "valueInterpreter_",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "isSupportedAsset",
+    inputs: [
+      {
+        name: "_asset",
+        type: "address",
+        internalType: "address",
+      },
+    ],
+    outputs: [
+      {
+        name: "isSupported_",
+        type: "bool",
+        internalType: "bool",
+      },
+    ],
+    stateMutability: "view",
+  },
+  {
+    type: "event",
+    name: "PoolTokenAdded",
+    inputs: [
+      {
+        name: "poolToken",
+        type: "address",
+        indexed: true,
+        internalType: "address",
+      },
+      {
+        name: "token0",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+      {
+        name: "token1",
+        type: "address",
+        indexed: false,
+        internalType: "address",
+      },
+    ],
+    anonymous: false,
+  },
+] as const;

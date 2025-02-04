@@ -1,6 +1,7 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -288,25 +289,18 @@ export function takeOrderEncode(args: TakeOrderArgs): Hex {
   return encodeAbiParameters(takeOrderEncoding, [encodedOrder, args.takerAssetFillAmount, args.orderType]);
 }
 
-export function isValidOrderType(value: number): value is OrderType {
-  return Object.values(OrderType).includes(value as OrderType);
-}
-
-export function isValidSignatureType(value: number): value is SignatureType {
-  return Object.values(SignatureType).includes(value as SignatureType);
-}
-
 export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   const [encodedZeroExOrderArgs, takerAssetFillAmount, orderType] = decodeAbiParameters(takeOrderEncoding, encoded);
 
-  Assertion.invariant(isValidOrderType(orderType), `Invalid order type ${orderType}`);
+  assertEnumType(OrderType, orderType);
 
   switch (orderType) {
     case OrderType.Limit: {
       const [order, signature] = decodeAbiParameters([limitOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
+
+      assertEnumType(SignatureType, signatureType);
 
       return {
         takerAssetFillAmount,
@@ -323,7 +317,8 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([rfqOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
+
+      assertEnumType(SignatureType, signatureType);
 
       return {
         takerAssetFillAmount,
@@ -340,7 +335,8 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
       const [order, signature] = decodeAbiParameters([otcOrderEncoding, signatureEncoding], encodedZeroExOrderArgs);
 
       const signatureType = signature.signatureType;
-      Assertion.invariant(isValidSignatureType(signatureType), "Invalid signature type");
+
+      assertEnumType(SignatureType, signatureType);
 
       return {
         takerAssetFillAmount,
@@ -359,8 +355,8 @@ export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
   }
 }
 
-export async function isAllowedMaker(
-  client: PublicClient,
+export function isAllowedMaker(
+  client: Client,
   args: Viem.ContractCallParameters<{
     zeroExV4Adapter: Address;
     who: Address;

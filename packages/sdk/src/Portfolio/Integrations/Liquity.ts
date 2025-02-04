@@ -1,4 +1,4 @@
-import { type Address, type Hex, PublicClient, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
@@ -11,6 +11,7 @@ export const Action = {
   Borrow: 3n,
   RepayBorrow: 4n,
   CloseTrove: 5n,
+  ClaimCollateral: 6n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -260,6 +261,12 @@ export function repayBorrowDecode(encoded: Hex): RepayBorrowArgs {
 export const closeTrove = ExternalPositionManager.makeUse(Action.CloseTrove);
 
 //--------------------------------------------------------------------------------------------
+// CLOSE TROVE
+//--------------------------------------------------------------------------------------------
+
+export const claimCollateral = ExternalPositionManager.makeUse(Action.ClaimCollateral);
+
+//--------------------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS - TROVE MANAGER
 //--------------------------------------------------------------------------------------------
 
@@ -338,7 +345,7 @@ const troveManagerAbi = [
 ] as const;
 
 export async function getTrove(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
     debtPosition: Address;
@@ -361,8 +368,8 @@ export async function getTrove(
   };
 }
 
-export async function getLusdGasCompensation(
-  client: PublicClient,
+export function getLusdGasCompensation(
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
   }>,
@@ -375,8 +382,8 @@ export async function getLusdGasCompensation(
   });
 }
 
-export async function getBorrowingFeeWithDecay(
-  client: PublicClient,
+export function getBorrowingFeeWithDecay(
+  client: Client,
   args: Viem.ContractCallParameters<{
     troveManager: Address;
     lusdAmount: bigint;
@@ -446,7 +453,7 @@ const sortedTrovesAbi = [
 ] as const;
 
 export function getSortedTrovesSize(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
   }>,
@@ -460,7 +467,7 @@ export function getSortedTrovesSize(
 }
 
 export async function findInsertPosition(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     sortedTroves: Address;
     nicr: bigint;
@@ -526,7 +533,7 @@ const hintHelpersAbi = [
 ] as const;
 
 export async function getApproxHint(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     hintHelpers: Address;
     nicr: bigint;
@@ -543,4 +550,28 @@ export async function getApproxHint(
   });
 
   return { hintAddress, diff, latestRandomSeed };
+}
+
+export function getSurplusPoolCollaterall(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    collSurplusPool: Address;
+    account: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: [
+      {
+        inputs: [{ internalType: "address", name: "_account", type: "address" }],
+        name: "getCollateral",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+    functionName: "getCollateral",
+    address: args.collSurplusPool,
+    args: [args.account],
+  });
 }

@@ -1,5 +1,5 @@
 import * as Abis from "@enzymefinance/abis";
-import { Address, PublicClient } from "viem";
+import type { Address, Client } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Viem } from "../Utils.js";
 
@@ -40,7 +40,7 @@ export function buyBackProtocolFeeShares(args: BuyBackProtocolFeeSharesParams) {
 //--------------------------------------------------------------------------------------------
 
 export function getProtocolFeeRate(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -56,7 +56,7 @@ export function getProtocolFeeRate(
 }
 
 export async function getAccruedProtocolFee(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     vaultProxy: Address;
     protocolFeeTracker: Address;
@@ -74,7 +74,7 @@ export async function getAccruedProtocolFee(
 }
 
 export function doesAutoProtocolFeeSharesBuyback(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     comptrollerProxy: Address;
   }>,
@@ -88,7 +88,7 @@ export function doesAutoProtocolFeeSharesBuyback(
 }
 
 export async function getMlnValueAndBurnAmountForSharesBuyback(
-  client: PublicClient,
+  client: Client,
   args: Viem.ContractCallParameters<{
     denominationAsset: Address;
     buybackSharesAmount: bigint;
