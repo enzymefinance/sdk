@@ -85,6 +85,7 @@ export const Action = {
   SetEMode: 4n,
   SetUseReserveAsCollateral: 5n,
   ClaimRewards: 6n,
+  Sweep: 7n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -314,43 +315,31 @@ export function setUseReserveAsCollateralDecode(encoded: Hex): SetUseReserveAsCo
 }
 
 //--------------------------------------------------------------------------------------------
-// CLAIM REWARDS
+// SWEEP
 //--------------------------------------------------------------------------------------------
 
-export const claimRewards = ExternalPositionManager.makeUse(Action.ClaimRewards, claimRewardsEncode);
+export const sweep = ExternalPositionManager.makeUse(Action.Sweep, sweepEncode);
 
-const claimRewardsEncoding = [
+const sweepEncoding = [
   {
     name: "assets",
     type: "address[]",
   },
-  {
-    name: "amount",
-    type: "uint256",
-  },
-  {
-    name: "rewardToken",
-    type: "address",
-  },
 ] as const;
 
-export type ClaimRewardsArgs = {
+export type SweepArgs = {
   assets: ReadonlyArray<Address>;
-  amount: bigint;
-  rewardToken: Address;
 };
 
-export function claimRewardsEncode(args: ClaimRewardsArgs): Hex {
-  return encodeAbiParameters(claimRewardsEncoding, [args.assets, args.amount, args.rewardToken]);
+export function sweepEncode(args: SweepArgs): Hex {
+  return encodeAbiParameters(sweepEncoding, [args.assets]);
 }
 
-export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
-  const [assets, amount, rewardToken] = decodeAbiParameters(claimRewardsEncoding, encoded);
+export function sweepDecode(encoded: Hex): SweepArgs {
+  const [assets] = decodeAbiParameters(sweepEncoding, encoded);
 
   return {
     assets,
-    amount,
-    rewardToken,
   };
 }
 
