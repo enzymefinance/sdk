@@ -85,6 +85,7 @@ export const Action = {
   SetEMode: 4n,
   SetUseReserveAsCollateral: 5n,
   ClaimRewards: 6n,
+  Sweep: 7n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -351,6 +352,35 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
     assets,
     amount,
     rewardToken,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// SWEEP
+//--------------------------------------------------------------------------------------------
+
+export const sweep = ExternalPositionManager.makeUse(Action.Sweep, sweepEncode);
+
+const sweepEncoding = [
+  {
+    name: "assets",
+    type: "address[]",
+  },
+] as const;
+
+export type SweepArgs = {
+  assets: ReadonlyArray<Address>;
+};
+
+export function sweepEncode(args: SweepArgs): Hex {
+  return encodeAbiParameters(sweepEncoding, [args.assets]);
+}
+
+export function sweepDecode(encoded: Hex): SweepArgs {
+  const [assets] = decodeAbiParameters(sweepEncoding, encoded);
+
+  return {
+    assets,
   };
 }
 

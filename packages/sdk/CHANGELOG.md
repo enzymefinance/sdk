@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.6
+
+### Patch Changes
+
+- [#641](https://github.com/enzymefinance/sdk/pull/641) [`6665881`](https://github.com/enzymefinance/sdk/commit/6665881c275911ca8b252adfe028dd95d5648619) Thanks [@iherger](https://github.com/iherger)! - Add Aave v3 sweep action
+
 ## 1.2.5
 
 ### Patch Changes
