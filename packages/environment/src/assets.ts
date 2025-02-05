@@ -93,8 +93,8 @@ export enum AssetType {
   MAPLE_V1 = "maple-v1",
   MAPLE_V2 = "maple-v2",
   ERC_4626 = "erc-4626",
-  ZERO_LEND_LRT_BTC_AAVE_V3 = "zero-lend-aave-v3-lrt-btc",
-  ZERO_LEND_RWA_STABLECOINS_AAVE_V3 = "zero-lend-aave-v3-rwa-stablecoins",
+  ZERO_LEND_LRT_BTC_AAVE_V3 = "zero-lend-lrt-btc-aave-v3",
+  ZERO_LEND_RWA_STABLECOINS_AAVE_V3 = "zero-lend-rwa-stablecoins-aave-v3",
 }
 
 export interface StaderAsset extends AssetBase {
