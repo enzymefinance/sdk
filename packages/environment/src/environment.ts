@@ -96,7 +96,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public readonly release: ReleaseDefinition<TVersion, TDeployment>;
   public readonly contracts: VersionContracts<TVersion>;
   public readonly externalContracts: ExternalContractsMapping;
-  public readonly knownAddressLists: KnownAddressListIdMapping;
+  public readonly knownAddressLists: KnownAddressListIdMapping<TDeployment>;
   public readonly knownUintLists: KnownUintListIdMapping;
   public readonly assets: Record<Address, Asset> = {};
   public readonly adapters: Record<string, AdapterDefinition> = {};

@@ -51,6 +51,16 @@ export const AaveV3Schema = CommonAssetSchema.extend({
   underlying: address,
 });
 
+export const ZeroLendLRTBTCAaveV3Schema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.ZERO_LEND_LRT_BTC_AAVE_V3),
+  underlying: address,
+});
+
+export const ZeroLendRWAStablecoinsAaveV3Schema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3),
+  underlying: address,
+});
+
 export const BalancerPoolSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.BALANCER_POOL),
   poolFactory: address,

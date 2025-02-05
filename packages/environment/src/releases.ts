@@ -248,15 +248,20 @@ export interface SubgraphMapping {
   readonly vaults: { slug: string; id: string };
 }
 
-export interface KnownAddressListIdMapping {
+export type KnownAddressListIdMapping<TDeployment extends Deployment> = {
   noSlippageAdapters: bigint;
   adapters: bigint;
   fees: bigint;
   policies: bigint;
-  kilnStakingContracts?: bigint;
   nonStandardPriceFeedAssets: bigint;
   aTokens: bigint;
-}
+} & (TDeployment extends Deployment.ETHEREUM ? KnownAddressListIdMappingEthereumSpecific : {});
+
+export type KnownAddressListIdMappingEthereumSpecific = {
+  kilnStakingContracts: bigint;
+  zeroLendRWAStablecoinsATokens: bigint;
+  zeroLendLRTBTCATokens: bigint;
+};
 
 export interface KnownUintListIdMapping {
   allowedMorphoBlueVaults?: bigint;
@@ -311,6 +316,13 @@ export interface ExternalContractsMapping {
   readonly votiumVoteProxy: Address;
   readonly zeroExExchangeProxy: Address;
   readonly zeroExV4Exchange: Address;
+  readonly zeroLendAaveV3UIIncentiveDataProvider: Address;
+  readonly zeroLendLRTBTCAaveV3LendingPoolProvider: Address;
+  readonly zeroLendLRTBTCAaveV3ProtocolDataProvider: Address;
+  readonly zeroLendLRTBTCAaveV3RewardsController: Address;
+  readonly zeroLendRWAStablecoinsAaveV3LendingPoolProvider: Address;
+  readonly zeroLendRWAStablecoinsAaveV3ProtocolDataProvider: Address;
+  readonly zeroLendRWAStablecoinsAaveV3RewardsController: Address;
 }
 
 export interface DeploymentDefinition<TDeployment extends Deployment> {
@@ -329,7 +341,7 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   /**
    * Ids for known address lists.
    */
-  readonly knownAddressLists: KnownAddressListIdMapping;
+  readonly knownAddressLists: KnownAddressListIdMapping<TDeployment>;
   /**
    * Ids for known uint lists.
    */
