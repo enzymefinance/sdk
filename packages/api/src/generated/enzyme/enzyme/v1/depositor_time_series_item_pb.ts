@@ -31,6 +31,13 @@ export class DepositorTimeSeriesItem extends Message<DepositorTimeSeriesItem> {
    */
   numberOfVaults = 0;
 
+  /**
+   * The net asset value at the timestamp
+   *
+   * @generated from field: float net_asset_value = 4;
+   */
+  netAssetValue = 0;
+
   constructor(data?: PartialMessage<DepositorTimeSeriesItem>) {
     super();
     proto3.util.initPartial(data, this);
@@ -42,6 +49,7 @@ export class DepositorTimeSeriesItem extends Message<DepositorTimeSeriesItem> {
     { no: 1, name: "timestamp", kind: "message", T: Timestamp },
     { no: 2, name: "gross_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 3, name: "number_of_vaults", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 4, name: "net_asset_value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DepositorTimeSeriesItem {

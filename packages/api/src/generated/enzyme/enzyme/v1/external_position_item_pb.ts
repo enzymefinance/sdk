@@ -232,6 +232,12 @@ export class ExternalPositionAdditionalInfo extends Message<ExternalPositionAddi
      */
     value: GMXV2LeverageTradingAdditionalInfo;
     case: "gmxV2LeverageTrading";
+  } | {
+    /**
+     * @generated from field: enzyme.enzyme.v1.StaderWithdrawalsAdditionalInfo stader_withdrawals = 15;
+     */
+    value: StaderWithdrawalsAdditionalInfo;
+    case: "staderWithdrawals";
   } | { case: undefined; value?: undefined } = { case: undefined };
 
   constructor(data?: PartialMessage<ExternalPositionAdditionalInfo>) {
@@ -256,6 +262,7 @@ export class ExternalPositionAdditionalInfo extends Message<ExternalPositionAddi
     { no: 12, name: "pendle_v2", kind: "message", T: PendleV2AdditionalInfo, oneof: "additional_info" },
     { no: 13, name: "alice", kind: "message", T: AliceAdditionalInfo, oneof: "additional_info" },
     { no: 14, name: "gmx_v2_leverage_trading", kind: "message", T: GMXV2LeverageTradingAdditionalInfo, oneof: "additional_info" },
+    { no: 15, name: "stader_withdrawals", kind: "message", T: StaderWithdrawalsAdditionalInfo, oneof: "additional_info" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ExternalPositionAdditionalInfo {
@@ -1025,6 +1032,92 @@ export class LidoWithdrawalsAdditionalInfo extends Message<LidoWithdrawalsAdditi
 
   static equals(a: LidoWithdrawalsAdditionalInfo | PlainMessage<LidoWithdrawalsAdditionalInfo> | undefined, b: LidoWithdrawalsAdditionalInfo | PlainMessage<LidoWithdrawalsAdditionalInfo> | undefined): boolean {
     return proto3.util.equals(LidoWithdrawalsAdditionalInfo, a, b);
+  }
+}
+
+/**
+ * @generated from message enzyme.enzyme.v1.StaderWithdrawalsRequest
+ */
+export class StaderWithdrawalsRequest extends Message<StaderWithdrawalsRequest> {
+  /**
+   * The amount of requested tokens
+   *
+   * @generated from field: float ethx_amount = 1;
+   */
+  ethxAmount = 0;
+
+  /**
+   * The id of withdrawal request
+   *
+   * @generated from field: int32 request_id = 2;
+   */
+  requestId = 0;
+
+  constructor(data?: PartialMessage<StaderWithdrawalsRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.StaderWithdrawalsRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "ethx_amount", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 2, name: "request_id", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StaderWithdrawalsRequest {
+    return new StaderWithdrawalsRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StaderWithdrawalsRequest {
+    return new StaderWithdrawalsRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StaderWithdrawalsRequest {
+    return new StaderWithdrawalsRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StaderWithdrawalsRequest | PlainMessage<StaderWithdrawalsRequest> | undefined, b: StaderWithdrawalsRequest | PlainMessage<StaderWithdrawalsRequest> | undefined): boolean {
+    return proto3.util.equals(StaderWithdrawalsRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message enzyme.enzyme.v1.StaderWithdrawalsAdditionalInfo
+ */
+export class StaderWithdrawalsAdditionalInfo extends Message<StaderWithdrawalsAdditionalInfo> {
+  /**
+   * The list of requests
+   *
+   * @generated from field: repeated enzyme.enzyme.v1.StaderWithdrawalsRequest requests = 1;
+   */
+  requests: StaderWithdrawalsRequest[] = [];
+
+  constructor(data?: PartialMessage<StaderWithdrawalsAdditionalInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.StaderWithdrawalsAdditionalInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "requests", kind: "message", T: StaderWithdrawalsRequest, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StaderWithdrawalsAdditionalInfo {
+    return new StaderWithdrawalsAdditionalInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StaderWithdrawalsAdditionalInfo {
+    return new StaderWithdrawalsAdditionalInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StaderWithdrawalsAdditionalInfo {
+    return new StaderWithdrawalsAdditionalInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StaderWithdrawalsAdditionalInfo | PlainMessage<StaderWithdrawalsAdditionalInfo> | undefined, b: StaderWithdrawalsAdditionalInfo | PlainMessage<StaderWithdrawalsAdditionalInfo> | undefined): boolean {
+    return proto3.util.equals(StaderWithdrawalsAdditionalInfo, a, b);
   }
 }
 
