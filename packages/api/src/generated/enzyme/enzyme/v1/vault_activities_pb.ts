@@ -297,6 +297,12 @@ export class VaultActivities extends Message<VaultActivities> {
      */
     value: GMXV2PositionChange;
     case: "gmxV2PositionChange";
+  } | {
+    /**
+     * @generated from field: enzyme.enzyme.v1.StaderWithdrawalsPositionChange stader_withdrawals_position_change = 48;
+     */
+    value: StaderWithdrawalsPositionChange;
+    case: "staderWithdrawalsPositionChange";
   } | { case: undefined; value?: undefined } = { case: undefined };
 
   constructor(data?: PartialMessage<VaultActivities>) {
@@ -354,6 +360,7 @@ export class VaultActivities extends Message<VaultActivities> {
     { no: 45, name: "tracked_asset_removed", kind: "message", T: TrackedAssetRemoved, oneof: "vaultActivity" },
     { no: 46, name: "alice_position_change", kind: "message", T: AlicePositionChange, oneof: "vaultActivity" },
     { no: 47, name: "gmx_v2_position_change", kind: "message", T: GMXV2PositionChange, oneof: "vaultActivity" },
+    { no: 48, name: "stader_withdrawals_position_change", kind: "message", T: StaderWithdrawalsPositionChange, oneof: "vaultActivity" },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): VaultActivities {
@@ -1861,7 +1868,8 @@ export class LidoWithdrawalsPositionChange extends Message<LidoWithdrawalsPositi
   lidoWithdrawalsPositionChangeType = "";
 
   /**
-   * @generated from field: repeated string amounts = 7;
+   * @generated from field: repeated string amounts = 7 [deprecated = true];
+   * @deprecated
    */
   amounts: string[] = [];
 
@@ -1869,6 +1877,11 @@ export class LidoWithdrawalsPositionChange extends Message<LidoWithdrawalsPositi
    * @generated from field: repeated string request_ids = 8;
    */
   requestIds: string[] = [];
+
+  /**
+   * @generated from field: repeated enzyme.enzyme.v1.AssetAmount asset_amounts = 9;
+   */
+  assetAmounts: AssetAmount[] = [];
 
   constructor(data?: PartialMessage<LidoWithdrawalsPositionChange>) {
     super();
@@ -1886,6 +1899,7 @@ export class LidoWithdrawalsPositionChange extends Message<LidoWithdrawalsPositi
     { no: 6, name: "lido_withdrawals_position_change_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 7, name: "amounts", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 8, name: "request_ids", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 9, name: "asset_amounts", kind: "message", T: AssetAmount, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): LidoWithdrawalsPositionChange {
@@ -2582,6 +2596,11 @@ export class SharesBoughtEvent extends Message<SharesBoughtEvent> {
    */
   sharesIssued = "";
 
+  /**
+   * @generated from field: float timestamp = 4;
+   */
+  timestamp = 0;
+
   constructor(data?: PartialMessage<SharesBoughtEvent>) {
     super();
     proto3.util.initPartial(data, this);
@@ -2593,6 +2612,7 @@ export class SharesBoughtEvent extends Message<SharesBoughtEvent> {
     { no: 1, name: "activity_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "deposit_asset_amount", kind: "message", T: AssetAmount },
     { no: 3, name: "shares_issued", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "timestamp", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SharesBoughtEvent {
@@ -2626,6 +2646,16 @@ export class SharesRedeemedEvent extends Message<SharesRedeemedEvent> {
    */
   payoutAssetAmounts: AssetAmount[] = [];
 
+  /**
+   * @generated from field: string shares_redeemed = 3;
+   */
+  sharesRedeemed = "";
+
+  /**
+   * @generated from field: float timestamp = 4;
+   */
+  timestamp = 0;
+
   constructor(data?: PartialMessage<SharesRedeemedEvent>) {
     super();
     proto3.util.initPartial(data, this);
@@ -2636,6 +2666,8 @@ export class SharesRedeemedEvent extends Message<SharesRedeemedEvent> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "activity_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "payout_asset_amounts", kind: "message", T: AssetAmount, repeated: true },
+    { no: 3, name: "shares_redeemed", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "timestamp", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SharesRedeemedEvent {
@@ -2889,6 +2921,85 @@ export class PendleV2PositionChange extends Message<PendleV2PositionChange> {
 
   static equals(a: PendleV2PositionChange | PlainMessage<PendleV2PositionChange> | undefined, b: PendleV2PositionChange | PlainMessage<PendleV2PositionChange> | undefined): boolean {
     return proto3.util.equals(PendleV2PositionChange, a, b);
+  }
+}
+
+/**
+ * @generated from message enzyme.enzyme.v1.StaderWithdrawalsPositionChange
+ */
+export class StaderWithdrawalsPositionChange extends Message<StaderWithdrawalsPositionChange> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  /**
+   * @generated from field: float timestamp = 2;
+   */
+  timestamp = 0;
+
+  /**
+   * @generated from field: string activity_type = 3;
+   */
+  activityType = "";
+
+  /**
+   * @generated from field: string vault = 4;
+   */
+  vault = "";
+
+  /**
+   * @generated from field: string external_position = 5;
+   */
+  externalPosition = "";
+
+  /**
+   * @generated from field: string stader_withdrawals_position_change_type = 6;
+   */
+  staderWithdrawalsPositionChangeType = "";
+
+  /**
+   * @generated from field: enzyme.enzyme.v1.AssetAmount amount = 7;
+   */
+  amount?: AssetAmount;
+
+  /**
+   * @generated from field: string request_id = 8;
+   */
+  requestId = "";
+
+  constructor(data?: PartialMessage<StaderWithdrawalsPositionChange>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.StaderWithdrawalsPositionChange";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "timestamp", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 3, name: "activity_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "vault", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "external_position", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "stader_withdrawals_position_change_type", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "amount", kind: "message", T: AssetAmount },
+    { no: 8, name: "request_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): StaderWithdrawalsPositionChange {
+    return new StaderWithdrawalsPositionChange().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): StaderWithdrawalsPositionChange {
+    return new StaderWithdrawalsPositionChange().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): StaderWithdrawalsPositionChange {
+    return new StaderWithdrawalsPositionChange().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: StaderWithdrawalsPositionChange | PlainMessage<StaderWithdrawalsPositionChange> | undefined, b: StaderWithdrawalsPositionChange | PlainMessage<StaderWithdrawalsPositionChange> | undefined): boolean {
+    return proto3.util.equals(StaderWithdrawalsPositionChange, a, b);
   }
 }
 

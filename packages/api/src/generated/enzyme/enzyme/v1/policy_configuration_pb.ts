@@ -107,6 +107,12 @@ export class PolicyConfiguration extends Message<PolicyConfiguration> {
     case: "allowedRedeemersForSpecificAssetsPolicy";
   } | {
     /**
+     * @generated from field: enzyme.enzyme.v1.DisallowedAdapterIncomingAssetsPolicyConfiguration disallowed_adapter_incoming_assets_policy = 24;
+     */
+    value: DisallowedAdapterIncomingAssetsPolicyConfiguration;
+    case: "disallowedAdapterIncomingAssetsPolicy";
+  } | {
+    /**
      * Pre-Sulu policies 
      *
      * @generated from field: enzyme.enzyme.v1.AdapterBlackistPolicy adapter_blacklist_policy = 14;
@@ -186,6 +192,7 @@ export class PolicyConfiguration extends Message<PolicyConfiguration> {
     { no: 13, name: "only_untrack_dust_or_priceless_assets_policy", kind: "message", T: OnlyUntrackDustOrPricelessAssetsPolicy, oneof: "policy" },
     { no: 22, name: "no_depeg_on_redeem_shares_for_specific_assets_policy", kind: "message", T: NoDepegOnRedeemSharesForSpecificAssetsPolicy, oneof: "policy" },
     { no: 23, name: "allowed_redeemers_for_specific_assets_policy", kind: "message", T: AllowedRedeemersForSpecificAssetsPolicy, oneof: "policy" },
+    { no: 24, name: "disallowed_adapter_incoming_assets_policy", kind: "message", T: DisallowedAdapterIncomingAssetsPolicyConfiguration, oneof: "policy" },
     { no: 14, name: "adapter_blacklist_policy", kind: "message", T: AdapterBlackistPolicy, oneof: "policy" },
     { no: 15, name: "adapter_whitelist_policy", kind: "message", T: AdapterWhitelistPolicy, oneof: "policy" },
     { no: 16, name: "asset_blacklist_policy", kind: "message", T: AssetBlacklistPolicy, oneof: "policy" },
@@ -773,6 +780,61 @@ export class CumulativeSlippageTolarancePolicy extends Message<CumulativeSlippag
 
   static equals(a: CumulativeSlippageTolarancePolicy | PlainMessage<CumulativeSlippageTolarancePolicy> | undefined, b: CumulativeSlippageTolarancePolicy | PlainMessage<CumulativeSlippageTolarancePolicy> | undefined): boolean {
     return proto3.util.equals(CumulativeSlippageTolarancePolicy, a, b);
+  }
+}
+
+/**
+ * @generated from message enzyme.enzyme.v1.DisallowedAdapterIncomingAssetsPolicyConfiguration
+ */
+export class DisallowedAdapterIncomingAssetsPolicyConfiguration extends Message<DisallowedAdapterIncomingAssetsPolicyConfiguration> {
+  /**
+   * @generated from field: string address = 1;
+   */
+  address = "";
+
+  /**
+   * @generated from field: google.protobuf.Timestamp created_at = 2;
+   */
+  createdAt?: Timestamp;
+
+  /**
+   * @generated from field: bool enabled = 3;
+   */
+  enabled = false;
+
+  /**
+   * @generated from field: repeated enzyme.enzyme.v1.AddressList address_lists = 4;
+   */
+  addressLists: AddressList[] = [];
+
+  constructor(data?: PartialMessage<DisallowedAdapterIncomingAssetsPolicyConfiguration>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "enzyme.enzyme.v1.DisallowedAdapterIncomingAssetsPolicyConfiguration";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "created_at", kind: "message", T: Timestamp },
+    { no: 3, name: "enabled", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "address_lists", kind: "message", T: AddressList, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DisallowedAdapterIncomingAssetsPolicyConfiguration {
+    return new DisallowedAdapterIncomingAssetsPolicyConfiguration().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): DisallowedAdapterIncomingAssetsPolicyConfiguration {
+    return new DisallowedAdapterIncomingAssetsPolicyConfiguration().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): DisallowedAdapterIncomingAssetsPolicyConfiguration {
+    return new DisallowedAdapterIncomingAssetsPolicyConfiguration().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: DisallowedAdapterIncomingAssetsPolicyConfiguration | PlainMessage<DisallowedAdapterIncomingAssetsPolicyConfiguration> | undefined, b: DisallowedAdapterIncomingAssetsPolicyConfiguration | PlainMessage<DisallowedAdapterIncomingAssetsPolicyConfiguration> | undefined): boolean {
+    return proto3.util.equals(DisallowedAdapterIncomingAssetsPolicyConfiguration, a, b);
   }
 }
 

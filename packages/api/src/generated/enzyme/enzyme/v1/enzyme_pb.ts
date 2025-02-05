@@ -161,6 +161,13 @@ export class GetDepositorTimeSeriesRequest extends Message<GetDepositorTimeSerie
    */
   resolution = Resolution.UNSPECIFIED;
 
+  /**
+   * The addresses of the vaults
+   *
+   * @generated from field: repeated string vault_addresses = 6;
+   */
+  vaultAddresses: string[] = [];
+
   constructor(data?: PartialMessage<GetDepositorTimeSeriesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -174,6 +181,7 @@ export class GetDepositorTimeSeriesRequest extends Message<GetDepositorTimeSerie
     { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
     { no: 4, name: "range", kind: "message", T: TimeWindow },
     { no: 5, name: "resolution", kind: "enum", T: proto3.getEnumType(Resolution) },
+    { no: 6, name: "vault_addresses", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetDepositorTimeSeriesRequest {
@@ -1343,6 +1351,13 @@ export class GetVaultActivitiesRequest extends Message<GetVaultActivitiesRequest
    */
   currency = Currency.UNSPECIFIED;
 
+  /**
+   * The time range (from/to) of the time series
+   *
+   * @generated from field: enzyme.enzyme.v1.TimeWindow range = 4;
+   */
+  range?: TimeWindow;
+
   constructor(data?: PartialMessage<GetVaultActivitiesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1354,6 +1369,7 @@ export class GetVaultActivitiesRequest extends Message<GetVaultActivitiesRequest
     { no: 1, name: "deployment", kind: "enum", T: proto3.getEnumType(Deployment) },
     { no: 2, name: "address", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "currency", kind: "enum", T: proto3.getEnumType(Currency) },
+    { no: 4, name: "range", kind: "message", T: TimeWindow },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetVaultActivitiesRequest {

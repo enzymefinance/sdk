@@ -80,6 +80,13 @@ export enum Network {
    * @generated from enum value: NETWORK_ARBITRUM = 3;
    */
   ARBITRUM = 3,
+
+  /**
+   * Base network
+   *
+   * @generated from enum value: NETWORK_BASE = 4;
+   */
+  BASE = 4,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Network)
 proto3.util.setEnumType(Network, "enzyme.enzyme.v1.Network", [
@@ -87,6 +94,7 @@ proto3.util.setEnumType(Network, "enzyme.enzyme.v1.Network", [
   { no: 1, name: "NETWORK_ETHEREUM" },
   { no: 2, name: "NETWORK_POLYGON" },
   { no: 3, name: "NETWORK_ARBITRUM" },
+  { no: 4, name: "NETWORK_BASE" },
 ]);
 
 /**
@@ -129,6 +137,13 @@ export enum Deployment {
    * @generated from enum value: DEPLOYMENT_ARBITRUM = 4;
    */
   ARBITRUM = 4,
+
+  /**
+   * Base production deployment
+   *
+   * @generated from enum value: DEPLOYMENT_BASE = 5;
+   */
+  BASE = 5,
 }
 // Retrieve enum metadata with: proto3.getEnumType(Deployment)
 proto3.util.setEnumType(Deployment, "enzyme.enzyme.v1.Deployment", [
@@ -137,6 +152,7 @@ proto3.util.setEnumType(Deployment, "enzyme.enzyme.v1.Deployment", [
   { no: 2, name: "DEPLOYMENT_POLYGON" },
   { no: 3, name: "DEPLOYMENT_TESTNET" },
   { no: 4, name: "DEPLOYMENT_ARBITRUM" },
+  { no: 5, name: "DEPLOYMENT_BASE" },
 ]);
 
 /**
