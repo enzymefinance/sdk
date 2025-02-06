@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.16
+
+### Patch Changes
+
+- [#646](https://github.com/enzymefinance/sdk/pull/646) [`ee9ecc7`](https://github.com/enzymefinance/sdk/commit/ee9ecc773a2e470b671f1115020993cc89921aa8) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add zero lend
+
+- Updated dependencies [[`ee9ecc7`](https://github.com/enzymefinance/sdk/commit/ee9ecc773a2e470b671f1115020993cc89921aa8)]:
+  - @enzymefinance/sdk@1.2.7
+
 ## 6.3.15
 
 ### Patch Changes
