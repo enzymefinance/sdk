@@ -18,7 +18,7 @@ test.each(aave)("aave underlying is correct: $symbol ($name): $id", async (asset
 
   expect(checksum.toLowerCase(), "Actual underlying asset does not match expected").toBe(asset.underlying);
 
-  // check if underlying asset is registerd
+  // check if underlying asset is regiseterd
   expect(
     asset.registered ? environment.getAsset(asset.underlying).registered : true,
     "Underlying asset not registered",

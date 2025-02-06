@@ -114,3 +114,17 @@ export function getPriceFeedForDerivative(
     args: [args.asset],
   });
 }
+
+export function getEthUsdAggregator(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    valueInterpreter: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: IValueInterpreter,
+    functionName: "getEthUsdAggregator",
+    address: args.valueInterpreter,
+  });
+}

@@ -22,3 +22,25 @@ export function aggregatorDecimals(client: PublicClient, args: Viem.ContractCall
     address: args.aggregator,
   });
 }
+
+export async function aggregatorLatestRound(
+  client: PublicClient,
+  args: Viem.ContractCallParameters<{ aggregator: Address }>,
+) {
+  const [roundId, answer, startedAt, updatedAt, answeredInRound] = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi([
+      "function latestRoundData() external view returns (uint80 roundId_, int256 answer_, uint256 startedAt_, uint256 updatedAt_, uint80 answeredInRound_)",
+    ]),
+    functionName: "latestRoundData",
+    address: args.aggregator,
+  });
+
+  return {
+    roundId,
+    answer,
+    startedAt,
+    updatedAt,
+    answeredInRound,
+  };
+}
