@@ -46,6 +46,6 @@ suite("prices are correct", async () => {
       "OffChain price does not match onChain price",
     );
   });
-});
 
-test.skip("empty test suite fallback");
+  test.skip("empty test suite fallback");
+});
