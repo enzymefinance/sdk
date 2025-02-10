@@ -564,7 +564,7 @@ export function removeLiquidityToPtAndUnderlyingDecode(encoded: Hex): RemoveLiqu
   };
 }
 
-export type RemoveLiquidityToPtAndUnderlyingWithAdapterArgs = RemoveLiquidityArgs & {
+export type RemoveLiquidityToPtAndUnderlyingWithAdapterArgs = RemoveLiquidityToPtAndUnderlyingArgs & {
   actionId: typeof AdapterAction.RemoveLiquidityToPtAndUnderlying;
 };
 
@@ -578,7 +578,7 @@ export function removeLiquidityToPtAndUnderlyingWithAdapterEncode(
 ): Hex {
   const { actionId, ...actionArgs } = args;
 
-  const encodedActionArgs = removeLiquidityEncode(actionArgs);
+  const encodedActionArgs = removeLiquidityToPtAndUnderlyingEncode(actionArgs);
 
   return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
 }
@@ -588,7 +588,7 @@ export function removeLiquidityToPtAndUnderlyingWithAdapterDecode(
 ): RemoveLiquidityToPtAndUnderlyingWithAdapterArgs {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
-  const decodedActionArgs = removeLiquidityDecode(encodedActionArgs);
+  const decodedActionArgs = removeLiquidityToPtAndUnderlyingDecode(encodedActionArgs);
 
   Assertion.invariant(actionId === AdapterAction.RemoveLiquidityToPtAndUnderlying, "Invalid actionId");
 
