@@ -133,6 +133,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         CompoundV3TokenListOwner: "0x0000000000000000000000000000000000000000",
         CompoundV3Adapter: "0x0000000000000000000000000000000000000000",
         ComptrollerLib: "0x3868c0fc34b6ece124c6ab122f6f29e978be6661",
+        ConvertedQuoteAggregatorFactory: "0xd12e5973a04dabe5bbc2d05b2598310217bd2640",
         ConvexVotingPositionLib: "0x0000000000000000000000000000000000000000",
         ConvexVotingPositionParser: "0x0000000000000000000000000000000000000000",
         CumulativeSlippageTolerancePolicy: "0x487f6a8a93c2be5a296ead2c3fbc3fceed4ac599",

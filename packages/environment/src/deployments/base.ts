@@ -129,6 +129,7 @@ export default defineDeployment<Deployment.BASE>({
         CompoundV3TokenListOwner: "0x0000000000000000000000000000000000000000",
         CompoundV3Adapter: "0x0000000000000000000000000000000000000000",
         ComptrollerLib: "0x67132b2d9b31ffcab67c9216f3fa937b259673b8",
+        ConvertedQuoteAggregatorFactory: "0xe14a2297328c4bd3e30c365653bb4fdb3514ebac",
         ConvexVotingPositionLib: "0x0000000000000000000000000000000000000000",
         ConvexVotingPositionParser: "0x0000000000000000000000000000000000000000",
         CumulativeSlippageTolerancePolicy: "0xf34cd6612dbfaf771cb961934855870afa384422",

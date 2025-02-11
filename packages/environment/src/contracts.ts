@@ -74,6 +74,7 @@ export interface SuluContracts extends CommonContracts {
   readonly CompoundPriceFeed: Address;
   readonly CompoundV3TokenListOwner: Address;
   readonly CompoundV3Adapter: Address;
+  readonly ConvertedQuoteAggregatorFactory: Address;
   readonly ConvexVotingPositionLib: Address;
   readonly ConvexVotingPositionParser: Address;
   readonly CumulativeSlippageTolerancePolicy: Address;

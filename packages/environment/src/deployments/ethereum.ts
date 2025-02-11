@@ -155,6 +155,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         CompoundV3TokenListOwner: "0xa9e085b1ca8ecd1dd5bf4c1b5fed3be84c341fd4",
         CompoundV3Adapter: "0xfaa9b9cc98503f51a54f6038dfdd0e43aa0ac98e",
         ComptrollerLib: "0x03f7f3b8da875881206655d8099b9dacf721f1ef",
+        ConvertedQuoteAggregatorFactory: "0x8f1e6f61323bf64a47ffbfca99e9e2bd4f982c07",
         ConvexVotingPositionLib: "0x12fa6805a1ff2d21318dcbcf677712bde8a033e1",
         ConvexVotingPositionParser: "0x4619b0394f09ef964407dedce4ca19ad012bca20",
         CumulativeSlippageTolerancePolicy: "0x3a49d5aec385ac1bde99f305316b945c5ee71312",
