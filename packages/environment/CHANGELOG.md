@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.17
+
+### Patch Changes
+
+- [#650](https://github.com/enzymefinance/sdk/pull/650) [`8b94836`](https://github.com/enzymefinance/sdk/commit/8b94836f88090444330d16148217332d5177d27c) Thanks [@iherger](https://github.com/iherger)! - Add ETHFI
+
 ## 6.3.16
 
 ### Patch Changes
