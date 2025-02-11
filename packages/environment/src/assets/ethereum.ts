@@ -1816,13 +1816,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x4e15361fd6b4bb609fa63c81a2be19d873717870",
     name: "Fantom Token",
-    releases: [sulu, encore],
+    releases: [encore],
     symbol: "FTM",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x2de7e4a9488488e0058b95854cc2f7955b35dc9b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
