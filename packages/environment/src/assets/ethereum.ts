@@ -7678,4 +7678,15 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    id: "0xfe0c30065b384f05761f15d0cc899d4f9f9cc0eb",
+    name: "ether.fi governance token",
+    symbol: "ETHFI",
+    decimals: 18,
+    releases: [],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
