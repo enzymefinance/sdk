@@ -68,6 +68,7 @@ export default defineDeployment<Deployment.TESTNET>({
         CompoundV3TokenListOwner: "0xca64c1d5e337f18e9d270225aa5004be5a8e570c",
         CompoundV3Adapter: "0xaa1cb33f9659ff7cb1876eba57ee6ae5ea053e99",
         ComptrollerLib: "0x1c3279e12f94943bf3021029cbcd0287b4c89135",
+        ConvertedQuoteAggregatorFactory: "0x0000000000000000000000000000000000000000",
         ConvexVotingPositionLib: "0x0000000000000000000000000000000000000000",
         ConvexVotingPositionParser: "0x0000000000000000000000000000000000000000",
         CumulativeSlippageTolerancePolicy: "0x561176cd43b958482d33dcd62a1eb437bd7bfef9",

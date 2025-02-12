@@ -137,6 +137,7 @@ export default defineDeployment<Deployment.POLYGON>({
         CompoundV3TokenListOwner: "0xbabf1375c221a2bb838fe87052833212d5a95011",
         CompoundV3Adapter: "0x360eb57d32bf3a95e9fb0aad2a4629ceca3ef7ac",
         ComptrollerLib: "0xf5fc0e36c85552e44354132d188c33d9361eb441",
+        ConvertedQuoteAggregatorFactory: "0xf19652f82eeacc4ec2c4284a3632c0e27d76857d",
         ConvexVotingPositionLib: "0x0000000000000000000000000000000000000000",
         ConvexVotingPositionParser: "0x0000000000000000000000000000000000000000",
         CumulativeSlippageTolerancePolicy: "0x1332367c181f1157f751b160187dcaa219706bf2",
