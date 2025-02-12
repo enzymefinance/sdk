@@ -1,6 +1,7 @@
 import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
-import { Viem } from "../../Utils.js";
+import { Assertion, Viem } from "../../Utils.js";
+import { assertEnumType } from "../../Utils/assertion.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -15,6 +16,7 @@ export const Action = {
   AddLiquidity: 2n,
   RemoveLiquidity: 3n,
   ClaimRewards: 4n,
+  Migrate: 5n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -319,6 +321,12 @@ export function claimRewardsDecode(encoded: Hex): ClaimRewardsArgs {
 }
 
 //--------------------------------------------------------------------------------------------
+// EXTERNAL POSITION - MIGRATE
+//--------------------------------------------------------------------------------------------
+
+export const migrate = ExternalPositionManager.makeUse(Action.Migrate);
+
+//--------------------------------------------------------------------------------------------
 // ADAPTER - ACTIONS
 //--------------------------------------------------------------------------------------------
 
@@ -327,7 +335,8 @@ export const AdapterAction = {
   BuyPrincipalToken: 0n,
   SellPrincipalToken: 1n,
   AddLiquidity: 2n,
-  RemoveLiquidity: 3n,
+  RemoveLiquidityToUnderlying: 3n,
+  RemoveLiquidityToPtAndUnderlying: 4n,
 } as const;
 
 const adapterActionEncoding = [
@@ -342,7 +351,7 @@ const adapterActionEncoding = [
 ] as const;
 
 export type AdapterActionArgs = {
-  actionId: bigint;
+  actionId: AdapterAction;
   encodedActionArgs: Hex;
 };
 
@@ -352,6 +361,8 @@ export function encodeAdapterAction(args: AdapterActionArgs): Hex {
 
 export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
   const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+
+  assertEnumType(AdapterAction, actionId);
 
   return {
     actionId,
@@ -363,7 +374,9 @@ export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
 // ADAPTER - BUY PRINCIPLE TOKEN
 //--------------------------------------------------------------------------------------------
 
-export type BuyPrincipleTokenWithAdapterArgs = BuyPrincipleTokenArgs & { actionId: bigint };
+export type BuyPrincipleTokenWithAdapterArgs = BuyPrincipleTokenArgs & {
+  actionId: typeof AdapterAction.BuyPrincipalToken;
+};
 
 export const buyPrincipleTokenWithAdapter = IntegrationManager.makeUse(
   IntegrationManager.Selector.Action,
@@ -383,6 +396,8 @@ export function buyPrincipleTokenWithAdapterDecode(encoded: Hex): BuyPrincipleTo
 
   const decodedActionArgs = buyPrincipleTokenDecode(encodedActionArgs);
 
+  Assertion.invariant(actionId === AdapterAction.BuyPrincipalToken, "Invalid actionId");
+
   return {
     actionId,
     ...decodedActionArgs,
@@ -393,7 +408,9 @@ export function buyPrincipleTokenWithAdapterDecode(encoded: Hex): BuyPrincipleTo
 // ADAPTER - SELL PRINCIPLE TOKEN
 //--------------------------------------------------------------------------------------------
 
-export type SellPrincipleTokenWithAdapterArgs = SellPrincipleTokenArgs & { actionId: bigint };
+export type SellPrincipleTokenWithAdapterArgs = SellPrincipleTokenArgs & {
+  actionId: typeof AdapterAction.SellPrincipalToken;
+};
 
 export const sellPrincipleTokenWithAdapter = IntegrationManager.makeUse(
   IntegrationManager.Selector.Action,
@@ -413,6 +430,8 @@ export function sellPrincipleTokenWithAdapterDecode(encoded: Hex): SellPrinciple
 
   const decodedActionArgs = sellPrincipleTokenDecode(encodedActionArgs);
 
+  Assertion.invariant(actionId === AdapterAction.SellPrincipalToken, "Invalid actionId");
+
   return {
     actionId,
     ...decodedActionArgs,
@@ -423,7 +442,7 @@ export function sellPrincipleTokenWithAdapterDecode(encoded: Hex): SellPrinciple
 // ADAPTER - ADD LIQUIDITY
 //--------------------------------------------------------------------------------------------
 
-export type AddLiquidityWithAdapterArgs = AddLiquidityArgs & { actionId: bigint };
+export type AddLiquidityWithAdapterArgs = AddLiquidityArgs & { actionId: typeof AdapterAction.AddLiquidity };
 
 export const addLiquidityWithAdapter = IntegrationManager.makeUse(
   IntegrationManager.Selector.Action,
@@ -443,6 +462,8 @@ export function addLiquidityWithAdapterDecode(encoded: Hex): AddLiquidityWithAda
 
   const decodedActionArgs = addLiquidityDecode(encodedActionArgs);
 
+  Assertion.invariant(actionId === AdapterAction.AddLiquidity, "Invalid actionId");
+
   return {
     actionId,
     ...decodedActionArgs,
@@ -450,17 +471,19 @@ export function addLiquidityWithAdapterDecode(encoded: Hex): AddLiquidityWithAda
 }
 
 //--------------------------------------------------------------------------------------------
-// ADAPTER - ADD LIQUIDITY
+// ADAPTER - REMOVE LIQUIDITY TO UNDERLYING
 //--------------------------------------------------------------------------------------------
 
-export type RemoveLiquidityWithAdapterArgs = RemoveLiquidityArgs & { actionId: bigint };
+export type RemoveLiquidityToUnderlyingWithAdapterArgs = RemoveLiquidityArgs & {
+  actionId: typeof AdapterAction.RemoveLiquidityToUnderlying;
+};
 
-export const removeLiquidityWithAdapter = IntegrationManager.makeUse(
+export const removeLiquidityToUnderlyingWithAdapter = IntegrationManager.makeUse(
   IntegrationManager.Selector.Action,
-  removeLiquidityWithAdapterEncode,
+  removeLiquidityToUnderlyingWithAdapterEncode,
 );
 
-export function removeLiquidityWithAdapterEncode(args: RemoveLiquidityWithAdapterArgs): Hex {
+export function removeLiquidityToUnderlyingWithAdapterEncode(args: RemoveLiquidityToUnderlyingWithAdapterArgs): Hex {
   const { actionId, ...actionArgs } = args;
 
   const encodedActionArgs = removeLiquidityEncode(actionArgs);
@@ -468,10 +491,106 @@ export function removeLiquidityWithAdapterEncode(args: RemoveLiquidityWithAdapte
   return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
 }
 
-export function removeLiquidityWithAdapterDecode(encoded: Hex): RemoveLiquidityWithAdapterArgs {
+export function removeLiquidityToUnderlyingWithAdapterDecode(encoded: Hex): RemoveLiquidityToUnderlyingWithAdapterArgs {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
   const decodedActionArgs = removeLiquidityDecode(encodedActionArgs);
+
+  Assertion.invariant(actionId === AdapterAction.RemoveLiquidityToUnderlying, "Invalid actionId");
+
+  return {
+    actionId,
+    ...decodedActionArgs,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// ADAPTER - REMOVE LIQUIDITY TO PT AND UNDERLYING
+//--------------------------------------------------------------------------------------------
+
+const removeLiquidityToPtAndUnderlyingEncoding = [
+  {
+    name: "market",
+    type: "address",
+  },
+  {
+    name: "lpAmount",
+    type: "uint256",
+  },
+  {
+    name: "withdrawalTokenAddress",
+    type: "address",
+  },
+  {
+    name: "minWithdrawalTokenAmount",
+    type: "uint256",
+  },
+  {
+    name: "minPtAmount",
+    type: "uint256",
+  },
+] as const;
+
+export type RemoveLiquidityToPtAndUnderlyingArgs = {
+  market: Address;
+  lpAmount: bigint;
+  withdrawalTokenAddress: Address;
+  minWithdrawalTokenAmount: bigint;
+  minPtAmount: bigint;
+};
+
+export function removeLiquidityToPtAndUnderlyingEncode(args: RemoveLiquidityToPtAndUnderlyingArgs): Hex {
+  return encodeAbiParameters(removeLiquidityToPtAndUnderlyingEncoding, [
+    args.market,
+    args.lpAmount,
+    args.withdrawalTokenAddress,
+    args.minWithdrawalTokenAmount,
+    args.minPtAmount,
+  ]);
+}
+
+export function removeLiquidityToPtAndUnderlyingDecode(encoded: Hex): RemoveLiquidityToPtAndUnderlyingArgs {
+  const [market, lpAmount, withdrawalTokenAddress, minWithdrawalTokenAmount, minPtAmount] = decodeAbiParameters(
+    removeLiquidityToPtAndUnderlyingEncoding,
+    encoded,
+  );
+
+  return {
+    market,
+    lpAmount,
+    withdrawalTokenAddress,
+    minWithdrawalTokenAmount,
+    minPtAmount,
+  };
+}
+
+export type RemoveLiquidityToPtAndUnderlyingWithAdapterArgs = RemoveLiquidityToPtAndUnderlyingArgs & {
+  actionId: typeof AdapterAction.RemoveLiquidityToPtAndUnderlying;
+};
+
+export const removeLiquidityToPtAndUnderlyingWithAdapter = IntegrationManager.makeUse(
+  IntegrationManager.Selector.Action,
+  removeLiquidityToPtAndUnderlyingWithAdapterEncode,
+);
+
+export function removeLiquidityToPtAndUnderlyingWithAdapterEncode(
+  args: RemoveLiquidityToPtAndUnderlyingWithAdapterArgs,
+): Hex {
+  const { actionId, ...actionArgs } = args;
+
+  const encodedActionArgs = removeLiquidityToPtAndUnderlyingEncode(actionArgs);
+
+  return encodeAbiParameters(adapterActionEncoding, [actionId, encodedActionArgs]);
+}
+
+export function removeLiquidityToPtAndUnderlyingWithAdapterDecode(
+  encoded: Hex,
+): RemoveLiquidityToPtAndUnderlyingWithAdapterArgs {
+  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+
+  const decodedActionArgs = removeLiquidityToPtAndUnderlyingDecode(encodedActionArgs);
+
+  Assertion.invariant(actionId === AdapterAction.RemoveLiquidityToPtAndUnderlying, "Invalid actionId");
 
   return {
     actionId,
