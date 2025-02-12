@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.8
+
+### Patch Changes
+
+- [#648](https://github.com/enzymefinance/sdk/pull/648) [`f044a57`](https://github.com/enzymefinance/sdk/commit/f044a579510cc5af54bbd5edb33c3be70bace0df) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update Pendle V2 adapter, and EP
+
 ## 1.2.7
 
 ### Patch Changes
