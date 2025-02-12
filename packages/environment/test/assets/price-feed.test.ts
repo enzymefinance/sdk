@@ -1,4 +1,5 @@
 import { Protocol } from "@enzymefinance/sdk";
+import { isAddressEqual } from "viem";
 import { expect, suite, test } from "vitest";
 import { BalancerV2, Curve } from "../../../sdk/src/Portfolio/Integrations.js";
 import { Assertion } from "../../../sdk/src/Utils.js";
@@ -44,21 +45,35 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
     switch (priceFeedType) {
       case PriceFeedType.PRIMITIVE_CHAINLINK: {
+        const isUsdEthSimulatedAggregator =
+          Environment.isSulu(environment) &&
+          isAddressEqual(environment.contracts.UsdEthSimulatedAggregator, asset.priceFeed.aggregator);
+
         const [description, decimals] = await Promise.all([
-          aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
+          isUsdEthSimulatedAggregator
+            ? undefined
+            : aggregatorDescription(client, { aggregator: asset.priceFeed.aggregator }),
           aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator }),
         ]);
 
-        const descriptionParts = description.match(/^([\w\s\+]+)\s\/\s(\w+)[\s\w$]*/);
-
-        if (descriptionParts?.[1].toLowerCase() !== asset.symbol.toLowerCase()) {
-          console.warn(
-            `Inconsistent price feed description: asset is ${asset.symbol}, aggregator is ${descriptionParts?.[1]}`,
-          );
-        }
-
-        expect(descriptionParts?.[2]).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
         expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
+
+        if (!isUsdEthSimulatedAggregator) {
+          Assertion.invariant(
+            description !== undefined,
+            "Description should be undefined for UsdEthSimulatedAggregator",
+          );
+
+          const descriptionParts = description.match(/^([\w\s\+]+)\s\/\s(\w+)[\s\w$]*/);
+
+          if (descriptionParts?.[1].toLowerCase() !== asset.symbol.toLowerCase()) {
+            console.warn(
+              `Inconsistent price feed description: asset is ${asset.symbol}, aggregator is ${descriptionParts?.[1]}`,
+            );
+          }
+
+          expect(descriptionParts?.[2]).toBe(asset.priceFeed.rateAsset === 0 ? "ETH" : "USD");
+        }
 
         break;
       }

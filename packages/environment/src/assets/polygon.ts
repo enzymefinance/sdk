@@ -1000,8 +1000,8 @@ export default defineAssetList(Network.POLYGON, [
     underlying: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x327e23a4855b6f663a28c5161541d69af8973302",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xab594600376ec9fd91f8e885dadf0ce036862de0",
+      rateAsset: RateAsset.USD,
     },
   },
   {
