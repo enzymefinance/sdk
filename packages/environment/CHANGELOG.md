@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.18
+
+### Patch Changes
+
+- [#649](https://github.com/enzymefinance/sdk/pull/649) [`5fbb8d8`](https://github.com/enzymefinance/sdk/commit/5fbb8d8dfcfd07bc16371876d3f7c36b36059f5b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix aggregator, and tests
+
+- [#651](https://github.com/enzymefinance/sdk/pull/651) [`5713c7b`](https://github.com/enzymefinance/sdk/commit/5713c7ba81df60759018d123b20a68452e8763a9) Thanks [@iherger](https://github.com/iherger)! - Deregister FTM
+
 ## 6.3.17
 
 ### Patch Changes
