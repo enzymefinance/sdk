@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.20
+
+### Patch Changes
+
+- [#656](https://github.com/enzymefinance/sdk/pull/656) [`337cb13`](https://github.com/enzymefinance/sdk/commit/337cb13e6e7869f29c8a65c725cf1b91a7b00391) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Revert PendleV2 EP update
+
 ## 6.3.19
 
 ### Patch Changes
