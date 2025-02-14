@@ -212,6 +212,8 @@ export default defineDeployment<Deployment.POLYGON>({
         SharePriceThrottledAssetManagerFactory: "0x42637a6fe8dd32448be441a10782b4e29bfea3de",
         SharePriceThrottledAssetManagerLib: "0x65d9202b5494450310c43b6b47942305859a349c",
         SharesSplitterFactory: "0x1a0e3326795a77903e2a11790bd702ebb29b8944",
+        SingleAssetDepositQueueFactory: "0x0000000000000000000000000000000000000000",
+        SingleAssetDepositQueueLib: "0x0000000000000000000000000000000000000000",
         SingleAssetRedemptionQueueFactory: "0x4b6b342ba8bb29e2d1b542532e6b7be1cae026b9",
         SingleAssetRedemptionQueueLib: "0xe54065f5b303c2843c769fb232b95bb893cf0b87",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",

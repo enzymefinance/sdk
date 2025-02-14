@@ -121,6 +121,7 @@ export { ISharePriceThrottledAssetManagerLib } from "./ISharePriceThrottledAsset
 export { ISharesSplitterFactory } from "./ISharesSplitterFactory.js";
 export { ISharesSplitterLib } from "./ISharesSplitterLib.js";
 export { ISingleAssetRedemptionQueueFactory } from "./ISingleAssetRedemptionQueueFactory.js";
+export { ISingleAssetDepositQueueLib } from "./ISingleAssetDepositQueueLib.js";
 export { ISingleAssetRedemptionQueueLib } from "./ISingleAssetRedemptionQueueLib.js";
 export { ISolvV2BondBuyerPositionLib } from "./ISolvV2BondBuyerPositionLib.js";
 export { ISolvV2BondBuyerPositionParser } from "./ISolvV2BondBuyerPositionParser.js";

@@ -144,6 +144,8 @@ export interface SuluContracts extends CommonContracts {
   readonly SharesSplitterFactory: Address;
   readonly SingleAssetRedemptionQueueLib: Address;
   readonly SingleAssetRedemptionQueueFactory: Address;
+  readonly SingleAssetDepositQueueLib: Address;
+  readonly SingleAssetDepositQueueFactory: Address;
   readonly SolvV2BondBuyerPositionLib: Address;
   readonly SolvV2BondBuyerPositionParser: Address;
   readonly SolvV2BondIssuerPositionLib: Address;

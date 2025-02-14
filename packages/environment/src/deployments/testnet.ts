@@ -143,6 +143,8 @@ export default defineDeployment<Deployment.TESTNET>({
         SharePriceThrottledAssetManagerFactory: "0x0000000000000000000000000000000000000000",
         SharePriceThrottledAssetManagerLib: "0x0000000000000000000000000000000000000000",
         SharesSplitterFactory: "0x7d3a58e675362de47a4f79dd5451074f2ebc8459",
+        SingleAssetDepositQueueFactory: "0x0000000000000000000000000000000000000000",
+        SingleAssetDepositQueueLib: "0x0000000000000000000000000000000000000000",
         SingleAssetRedemptionQueueFactory: "0xad1980b3301557eae118275e79c2554cb6efbd5a",
         SingleAssetRedemptionQueueLib: "0x78c357627c65c336a64abefa062a0b19ba6fa6f4",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",
