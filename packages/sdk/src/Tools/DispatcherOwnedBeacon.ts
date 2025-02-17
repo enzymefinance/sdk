@@ -8,7 +8,6 @@ import { Viem } from "../Utils.js";
 
 export function deployProxy(args: {
   factory: Address;
-  vaultProxy: Address;
   constructData: Hex;
 }) {
   return new Viem.PopulatedTransaction({
