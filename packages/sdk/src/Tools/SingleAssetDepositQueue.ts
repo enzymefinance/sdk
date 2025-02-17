@@ -1,7 +1,26 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Client } from "viem";
+import { type Address, type Client, encodeAbiParameters } from "viem";
 import { readContract } from "viem/actions";
-import { Viem } from "../Utils.js";
+import { Assertion, Viem } from "../Utils.js";
+
+//--------------------------------------------------------------------------------------------
+// DEPLOYMENT HELPERS
+//--------------------------------------------------------------------------------------------
+
+export function encodeProxyConstructData(args: {
+  addressListRegistry: Address;
+  globalConfigProxy: Address;
+  gsnTrustedForwardersAddressListId: bigint;
+}) {
+  const constructorAbi = Abis.ISingleAssetDepositQueueLib[0];
+  Assertion.invariant(constructorAbi.type !== "constructor", "Expected constructor abi");
+
+  return encodeAbiParameters(constructorAbi.inputs, [
+    args.addressListRegistry,
+    args.globalConfigProxy,
+    args.gsnTrustedForwardersAddressListId,
+  ]);
+}
 
 //--------------------------------------------------------------------------------------------
 // SHARE HOLDER TRANSACTIONS
