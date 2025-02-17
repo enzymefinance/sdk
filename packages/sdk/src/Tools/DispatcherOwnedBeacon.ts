@@ -7,14 +7,14 @@ import { Viem } from "../Utils.js";
 //--------------------------------------------------------------------------------------------
 
 export function deployProxy(args: {
-  redemptionQueueFactory: Address;
+  factory: Address;
   vaultProxy: Address;
   constructData: Hex;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.IDispatcherOwnedBeaconFactory,
     functionName: "deployProxy",
-    address: args.redemptionQueueFactory,
+    address: args.factory,
     args: [args.constructData],
   });
 }
