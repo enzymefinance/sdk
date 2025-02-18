@@ -30,18 +30,18 @@ export function encodeProxyConstructData(args: {
 }
 
 //--------------------------------------------------------------------------------------------
-// SHARE HOLDER TRANSACTIONS
+// DEPOSITOR TRANSACTIONS
 //--------------------------------------------------------------------------------------------
 
 export function requestDeposit(args: {
   depositQueue: Address;
-  sharesAmount: bigint;
+  assetAmount: bigint;
 }) {
   return new Viem.PopulatedTransaction({
     abi: Abis.ISingleAssetDepositQueueLib,
     functionName: "requestDeposit",
     address: args.depositQueue,
-    args: [args.sharesAmount],
+    args: [args.assetAmount],
   });
 }
 
