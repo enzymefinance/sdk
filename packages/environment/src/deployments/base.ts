@@ -189,6 +189,7 @@ export default defineDeployment<Deployment.BASE>({
         OnlyRemoveDustExternalPositionPolicy: "0x3e96363dedc1b5b2dc628399466f7d194cb97706",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0x7f0e594275ccb17c26a61b35e2d5bd88772fc8a0",
         ParaSwapV5Adapter: "0xee144a9aff584ce709b2d72cbcea4053c0c1717d",
+        ParaSwapV6Adapter: "0x0000000000000000000000000000000000000000",
         PeggedDerivativesPriceFeed: "0x0000000000000000000000000000000000000000",
         PerformanceFee: "0x072d99cf2a75aadf605b9970ccba0352e7c4947c",
         PendleV2Adapter: "0x0000000000000000000000000000000000000000",
