@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.21
+
+### Patch Changes
+
+- [#660](https://github.com/enzymefinance/sdk/pull/660) [`3ef8b20`](https://github.com/enzymefinance/sdk/commit/3ef8b2045db963c69272bb920f36de611337d5c1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add singel asset redemption queue lib to arbitrum, and base
+
+- [#662](https://github.com/enzymefinance/sdk/pull/662) [`88b6404`](https://github.com/enzymefinance/sdk/commit/88b64047577be4cce7ae90498efd48bbd443db19) Thanks [@iherger](https://github.com/iherger)! - Update GMX lib contract address
+
 ## 6.3.20
 
 ### Patch Changes
