@@ -1,5 +1,4 @@
 export * as Asset from "./Asset.js";
-export * as AddressListRegistry from "./AddressListRegistry.js";
 export * as Configuration from "./Configuration.js";
 export * as Depositor from "./Depositor.js";
 export * as LifeCycle from "./LifeCycle.js";
