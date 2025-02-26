@@ -86,6 +86,7 @@ export const Action = {
   SetUseReserveAsCollateral: 5n,
   ClaimRewards: 6n,
   Sweep: 7n,
+  ClaimMerklRewards: 8n,
 } as const;
 
 export const create = ExternalPositionManager.createOnly;
@@ -381,6 +382,47 @@ export function sweepDecode(encoded: Hex): SweepArgs {
 
   return {
     assets,
+  };
+}
+
+//--------------------------------------------------------------------------------------------
+// CLAIM MERKL REWARDS
+//--------------------------------------------------------------------------------------------
+
+export const claimMerklRewards = ExternalPositionManager.makeUse(Action.ClaimMerklRewards, claimMerklRewardsEncode);
+
+const claimMerklRewardsEncoding = [
+  {
+    name: "tokens",
+    type: "address[]",
+  },
+  {
+    name: "amounts",
+    type: "uint256[]",
+  },
+  {
+    name: "proofs",
+    type: "bytes32[][]",
+  },
+] as const;
+
+export type ClaimMerklRewardsArgs = {
+  tokens: ReadonlyArray<Address>;
+  amounts: ReadonlyArray<bigint>;
+  proofs: ReadonlyArray<ReadonlyArray<Hex>>;
+};
+
+export function claimMerklRewardsEncode(args: ClaimMerklRewardsArgs): Hex {
+  return encodeAbiParameters(claimMerklRewardsEncoding, [args.tokens, args.amounts, args.proofs]);
+}
+
+export function claimMerklRewardsDecode(encoded: Hex): ClaimMerklRewardsArgs {
+  const [tokens, amounts, proofs] = decodeAbiParameters(claimMerklRewardsEncoding, encoded);
+
+  return {
+    tokens,
+    amounts,
+    proofs,
   };
 }
 
