@@ -39,6 +39,7 @@ export default defineDeployment<Deployment.BASE>({
     liquitySortedTroves: "0x0000000000000000000000000000000000000000",
     liquityTroveManager: "0x0000000000000000000000000000000000000000",
     liquityCollSurplusPool: "0x0000000000000000000000000000000000000000",
+    merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     morphoBlue: "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
     paraswapV5AugustusSwapper: "0x59c7c832e96d2568bea6db468c1aadcbbda08a52",
     paraswapV5TokenTransferProxy: "0x93aaae79a53759cd164340e4c8766e4db5331cd7",

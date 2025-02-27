@@ -301,6 +301,7 @@ export interface ExternalContractsMapping {
   readonly liquitySortedTroves: Address;
   readonly liquityTroveManager: Address;
   readonly makerMCDPotAddress: Address;
+  readonly merklDistributor: Address;
   readonly morphoBlue: Address;
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;

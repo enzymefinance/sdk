@@ -40,6 +40,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     liquitySortedTroves: "0x8fdd3fbfeb32b28fb73555518f8b361bcea741a6",
     liquityTroveManager: "0xa39739ef8b0231dbfa0dcda07d7e29faabcf4bb2",
     makerMCDPotAddress: "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
+    merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     morphoBlue: "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
     multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
