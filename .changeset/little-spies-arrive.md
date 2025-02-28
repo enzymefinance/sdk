@@ -2,4 +2,4 @@
 "@enzymefinance/environment": patch
 ---
 
-Add assets for Base
+Add assets, and contracts for Base
