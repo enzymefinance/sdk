@@ -21,11 +21,13 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0x7c298664bd6582f6f264c2cb5a4b9cc09b6e3889",
     name: "Melon Token",
-    releases: [],
+    releases: [sulu],
     symbol: "MLN",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x122b5334a8b55861dbc6729c294451471fbf318d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -147,6 +149,45 @@ export default defineAssetList(Network.BASE, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
+    },
+  },
+  {
+    decimals: 8,
+    id: "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+    name: "Coinbase Wrapped BTC",
+    releases: [sulu],
+    symbol: "cbBTC",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x07da0e54543a844a80abe69c8a12f22b3aa59f9d",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
+    name: "Wrapped liquid staked Ether 2.0",
+    releases: [sulu],
+    symbol: "wstETH",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x43a5c292a453a3bf3606fa856197f09d7b74251a",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
+    name: "KelpDao Restaked ETH",
+    releases: [sulu],
+    symbol: "rsETH",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd7221b10fbbc1e1ba95fd0b4d031c15f7f365296",
+      rateAsset: RateAsset.ETH,
     },
   },
 ]);
