@@ -7730,4 +7730,19 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    symbol: "PT-weETH-26JUN2025",
+    name: "PT ether.fi weETH 26JUN2025",
+    id: "0xef6122835a2bbf575d0117d394fda24ab7d09d4e",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
+    markets: ["0xf4cf59259d007a96c641b41621ab52c93b9691b1"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x8dda8b784d288a8a7f073a8e20617139fca02801",
+      rateAsset: RateAsset.ETH,
+    },
+  },
 ]);
