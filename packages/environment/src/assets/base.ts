@@ -179,7 +179,7 @@ export default defineAssetList(Network.BASE, [
   },
   {
     decimals: 18,
-    id: "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
+    id: "0x1bc71130a0e39942a7658878169764bbd8a45993",
     name: "KelpDao Restaked ETH",
     releases: [sulu],
     symbol: "rsETH",
