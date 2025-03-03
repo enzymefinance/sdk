@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.22
+
+### Patch Changes
+
+- [#665](https://github.com/enzymefinance/sdk/pull/665) [`55d273e`](https://github.com/enzymefinance/sdk/commit/55d273edf9c400f0d8b876f08f57a328cc10e64c) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add assets, and contracts for Base
+
 ## 6.3.21
 
 ### Patch Changes
