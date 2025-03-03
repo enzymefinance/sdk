@@ -190,4 +190,32 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    id: "0xdbfefd2e8460a6ee4955a68582f85708baea60a3",
+    name: "Super OETH",
+    symbol: "superOETHb",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x71041dddad3595f9ced3dccfbe3d1f4b0a16bb70",
+      rateAsset: RateAsset.USD,
+      nonStandard: true,
+      peggedTo: "ETH",
+    },
+  },
+  {
+    id: "0x7fcd174e80f264448ebee8c88a7c4476aaf58ea6",
+    name: "Wrapped Super OETH",
+    symbol: "wsuperOETHb",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
+      nonStandard: true,
+    },
+  },
 ]);
