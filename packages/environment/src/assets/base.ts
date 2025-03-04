@@ -179,6 +179,20 @@ export default defineAssetList(Network.BASE, [
   },
   {
     decimals: 18,
+    id: "0x99cbc45ea5bb7ef3a5bc08fb1b7e56bb2442ef0d",
+    name: "Aave Base wstETH",
+    releases: [sulu],
+    symbol: "aBaswstETH",
+    type: AssetType.AAVE_V3,
+    underlying: "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x43a5c292a453a3bf3606fa856197f09d7b74251a",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
     id: "0x1bc71130a0e39942a7658878169764bbd8a45993",
     name: "KelpDao Restaked ETH",
     releases: [sulu],
