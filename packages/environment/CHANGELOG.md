@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.24
+
+### Patch Changes
+
+- [#670](https://github.com/enzymefinance/sdk/pull/670) [`f45ef0f`](https://github.com/enzymefinance/sdk/commit/f45ef0fad16ebd6f95c594c888102431271824d1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update base block inception
+
 ## 6.3.23
 
 ### Patch Changes
