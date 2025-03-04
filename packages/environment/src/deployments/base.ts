@@ -63,7 +63,7 @@ export default defineDeployment<Deployment.BASE>({
     zeroLendRWAStablecoinsAaveV3ProtocolDataProvider: "0x0000000000000000000000000000000000000000",
     zeroLendRWAStablecoinsAaveV3RewardsController: "0x0000000000000000000000000000000000000000",
   },
-  inception: 23178855,
+  inception: 23178791,
   kind: Kind.TEST,
   knownAddressLists: {
     depositWrapperAllowedExchanges: 1n,
