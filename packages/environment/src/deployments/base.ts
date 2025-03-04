@@ -71,7 +71,7 @@ export default defineDeployment<Deployment.BASE>({
     adapters: 4n,
     fees: 5n,
     policies: 6n,
-    nonStandardPriceFeedAssets: 12n,
+    nonStandardPriceFeedAssets: 2n,
     aTokens: 9n,
   },
   knownUintLists: {},
