@@ -1,5 +1,25 @@
 # @enzymefinance/environment
 
+## 6.3.24
+
+### Patch Changes
+
+- [#670](https://github.com/enzymefinance/sdk/pull/670) [`f45ef0f`](https://github.com/enzymefinance/sdk/commit/f45ef0fad16ebd6f95c594c888102431271824d1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update base block inception
+
+## 6.3.23
+
+### Patch Changes
+
+- [#667](https://github.com/enzymefinance/sdk/pull/667) [`34b76a6`](https://github.com/enzymefinance/sdk/commit/34b76a6c80ca638489f30c3ee2a7a29e539428b0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 wstETH Base"
+
+- [#668](https://github.com/enzymefinance/sdk/pull/668) [`bb95653`](https://github.com/enzymefinance/sdk/commit/bb95653c16904f8b1311c5bd2591cb9dd0111442) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add deposit wrapper allowed exchanges list
+
+## 6.3.22
+
+### Patch Changes
+
+- [#665](https://github.com/enzymefinance/sdk/pull/665) [`55d273e`](https://github.com/enzymefinance/sdk/commit/55d273edf9c400f0d8b876f08f57a328cc10e64c) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add assets, and contracts for Base
+
 ## 6.3.21
 
 ### Patch Changes

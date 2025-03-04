@@ -255,6 +255,7 @@ export type KnownAddressListIdMapping<TDeployment extends Deployment> = {
   policies: bigint;
   nonStandardPriceFeedAssets: bigint;
   aTokens: bigint;
+  depositWrapperAllowedExchanges: bigint;
 } & (TDeployment extends Deployment.ETHEREUM ? KnownAddressListIdMappingEthereumSpecific : {});
 
 export type KnownAddressListIdMappingEthereumSpecific = {

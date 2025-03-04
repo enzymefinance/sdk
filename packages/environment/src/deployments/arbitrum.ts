@@ -70,6 +70,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     adapters: 2n,
     fees: 3n,
     policies: 4n,
+    depositWrapperAllowedExchanges: 5n,
     nonStandardPriceFeedAssets: 16n,
     aTokens: 8n,
   },
