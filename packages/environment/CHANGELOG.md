@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.25
+
+### Patch Changes
+
+- [#672](https://github.com/enzymefinance/sdk/pull/672) [`c79031b`](https://github.com/enzymefinance/sdk/commit/c79031b2270fc71c00f562e8502e75b3782719c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix non standard price feed assets
+
 ## 6.3.24
 
 ### Patch Changes
