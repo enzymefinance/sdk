@@ -60,6 +60,7 @@ const swapActionArgsEncoding = [
   {
     type: "tuple",
     name: "swapData",
+    internalType: "struct IParaSwapV6Adapter.SwapData",
     components: [
       { type: "address", name: "srcToken" },
       { type: "address", name: "destToken" },
@@ -74,7 +75,7 @@ const swapActionArgsEncoding = [
 ] as const;
 
 export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
-  const encodedArgs = encodeAbiParameters(swapActionArgsEncoding, [
+  const encodedActionArgs = encodeAbiParameters(swapActionArgsEncoding, [
     args.executor,
     {
       srcToken: args.swapData.srcToken,
@@ -87,15 +88,18 @@ export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
     args.partnerAndFee,
     args.executorData,
   ]);
-  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountIn, encodedArgs]);
+  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountIn, encodedActionArgs]);
 }
 
 export function swapExactAmountInDecode(encoded: Hex): SwapActionArgs {
-  const [action, encodedArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+  const [action, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
   if (action !== AdapterAction.SwapExactAmountIn) {
     throw new Error("Invalid action type for SwapExactAmountIn");
   }
-  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(swapActionArgsEncoding, encodedArgs);
+  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(
+    swapActionArgsEncoding,
+    encodedActionArgs,
+  );
   const { srcToken, destToken, fromAmount, toAmount, quotedAmount, metadata } = swapData;
   return {
     executor,
@@ -113,28 +117,24 @@ export function swapExactAmountInDecode(encoded: Hex): SwapActionArgs {
 }
 
 export function swapExactAmountOutEncode(args: SwapActionArgs): Hex {
-  const encodedArgs = encodeAbiParameters(swapActionArgsEncoding, [
+  const encodedActionArgs = encodeAbiParameters(swapActionArgsEncoding, [
     args.executor,
-    {
-      srcToken: args.swapData.srcToken,
-      destToken: args.swapData.destToken,
-      fromAmount: args.swapData.fromAmount,
-      toAmount: args.swapData.toAmount,
-      quotedAmount: args.swapData.quotedAmount,
-      metadata: args.swapData.metadata,
-    },
+    args.swapData,
     args.partnerAndFee,
     args.executorData,
   ]);
-  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountOut, encodedArgs]);
+  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountOut, encodedActionArgs]);
 }
 
 export function swapExactAmountOutDecode(encoded: Hex): SwapActionArgs {
-  const [action, encodedArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+  const [action, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
   if (action !== AdapterAction.SwapExactAmountOut) {
     throw new Error("Invalid action type for SwapExactAmountOut");
   }
-  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(swapActionArgsEncoding, encodedArgs);
+  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(
+    swapActionArgsEncoding,
+    encodedActionArgs,
+  );
   const { srcToken, destToken, fromAmount, toAmount, quotedAmount, metadata } = swapData;
   return {
     executor,
