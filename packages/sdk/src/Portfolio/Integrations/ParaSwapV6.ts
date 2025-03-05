@@ -1,5 +1,4 @@
 import { type Address, type Hex, encodeAbiParameters } from "viem";
-import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 export type AdapterAction = (typeof AdapterAction)[keyof typeof AdapterAction];
