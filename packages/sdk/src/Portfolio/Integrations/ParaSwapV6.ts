@@ -56,37 +56,39 @@ export type SwapActionArgs = {
 };
 
 const swapActionArgsEncoding = [
-  { type: "address", name: "executor" },
   {
     type: "tuple",
-    name: "swapData",
-    internalType: "struct IParaSwapV6Adapter.SwapData",
+    name: "swapActionArgs",
+    internalType: "struct IParaSwapV6Adapter.SwapActionArgs",
     components: [
-      { type: "address", name: "srcToken" },
-      { type: "address", name: "destToken" },
-      { type: "uint256", name: "fromAmount" },
-      { type: "uint256", name: "toAmount" },
-      { type: "uint256", name: "quotedAmount" },
-      { type: "bytes32", name: "metadata" },
+      { type: "address", name: "executor" },
+      {
+        type: "tuple",
+        name: "swapData",
+        internalType: "struct IParaSwapV6Adapter.SwapData",
+        components: [
+          { type: "address", name: "srcToken" },
+          { type: "address", name: "destToken" },
+          { type: "uint256", name: "fromAmount" },
+          { type: "uint256", name: "toAmount" },
+          { type: "uint256", name: "quotedAmount" },
+          { type: "bytes32", name: "metadata" },
+        ],
+      },
+      { type: "uint256", name: "partnerAndFee" },
+      { type: "bytes", name: "executorData" },
     ],
   },
-  { type: "uint256", name: "partnerAndFee" },
-  { type: "bytes", name: "executorData" },
 ] as const;
 
 export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
   const encodedActionArgs = encodeAbiParameters(swapActionArgsEncoding, [
-    args.executor,
     {
-      srcToken: args.swapData.srcToken,
-      destToken: args.swapData.destToken,
-      fromAmount: args.swapData.fromAmount,
-      toAmount: args.swapData.toAmount,
-      quotedAmount: args.swapData.quotedAmount,
-      metadata: args.swapData.metadata,
+      executor: args.executor,
+      swapData: args.swapData,
+      partnerAndFee: args.partnerAndFee,
+      executorData: args.executorData,
     },
-    args.partnerAndFee,
-    args.executorData,
   ]);
   return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountIn, encodedActionArgs]);
 }
@@ -96,21 +98,14 @@ export function swapExactAmountInDecode(encoded: Hex): SwapActionArgs {
   if (action !== AdapterAction.SwapExactAmountIn) {
     throw new Error("Invalid action type for SwapExactAmountIn");
   }
-  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(
+  const { executor, swapData, partnerAndFee, executorData } = decodeAbiParameters(
     swapActionArgsEncoding,
     encodedActionArgs,
-  );
-  const { srcToken, destToken, fromAmount, toAmount, quotedAmount, metadata } = swapData;
+  )[0];
+
   return {
     executor,
-    swapData: {
-      srcToken,
-      destToken,
-      fromAmount,
-      toAmount,
-      quotedAmount,
-      metadata,
-    },
+    swapData,
     partnerAndFee,
     executorData,
   };
@@ -118,10 +113,12 @@ export function swapExactAmountInDecode(encoded: Hex): SwapActionArgs {
 
 export function swapExactAmountOutEncode(args: SwapActionArgs): Hex {
   const encodedActionArgs = encodeAbiParameters(swapActionArgsEncoding, [
-    args.executor,
-    args.swapData,
-    args.partnerAndFee,
-    args.executorData,
+    {
+      executor: args.executor,
+      swapData: args.swapData,
+      partnerAndFee: args.partnerAndFee,
+      executorData: args.executorData,
+    },
   ]);
   return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountOut, encodedActionArgs]);
 }
@@ -131,21 +128,13 @@ export function swapExactAmountOutDecode(encoded: Hex): SwapActionArgs {
   if (action !== AdapterAction.SwapExactAmountOut) {
     throw new Error("Invalid action type for SwapExactAmountOut");
   }
-  const [executor, swapData, partnerAndFee, executorData] = decodeAbiParameters(
+  const { executor, swapData, partnerAndFee, executorData } = decodeAbiParameters(
     swapActionArgsEncoding,
     encodedActionArgs,
-  );
-  const { srcToken, destToken, fromAmount, toAmount, quotedAmount, metadata } = swapData;
+  )[0];
   return {
     executor,
-    swapData: {
-      srcToken,
-      destToken,
-      fromAmount,
-      toAmount,
-      quotedAmount,
-      metadata,
-    },
+    swapData,
     partnerAndFee,
     executorData,
   };
