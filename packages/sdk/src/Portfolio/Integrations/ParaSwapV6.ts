@@ -23,28 +23,33 @@ export type SwapActionArgs = {
   executorData: Hex;
 };
 
-const adapterSwapEncoding = [
-  { name: "actionId", type: "uint256" },
-  { name: "executor", type: "address" },
+// This encoding matches the Solidity SwapActionArgs struct:
+// (address executor, SwapData swapData, uint256 partnerAndFee, bytes executorData)
+const swapActionArgsEncoding = [
+  { type: "address", name: "executor" },
   {
-    name: "swapData",
     type: "tuple",
+    name: "swapData",
     components: [
-      { name: "srcToken", type: "address" },
-      { name: "destToken", type: "address" },
-      { name: "fromAmount", type: "uint256" },
-      { name: "toAmount", type: "uint256" },
-      { name: "quotedAmount", type: "uint256" },
-      { name: "metadata", type: "bytes32" },
+      { type: "address", name: "srcToken" },
+      { type: "address", name: "destToken" },
+      { type: "uint256", name: "fromAmount" },
+      { type: "uint256", name: "toAmount" },
+      { type: "uint256", name: "quotedAmount" },
+      { type: "bytes32", name: "metadata" },
     ],
   },
-  { name: "partnerAndFee", type: "uint256" },
-  { name: "executorData", type: "bytes" },
+  { type: "uint256", name: "partnerAndFee" },
+  { type: "bytes", name: "executorData" },
+] as const;
+
+const adapterActionEncoding = [
+  { name: "actionId", type: "uint256" },
+  { name: "encodedActionArgs", type: "bytes" },
 ] as const;
 
 export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
-  return encodeAbiParameters(adapterSwapEncoding, [
-    AdapterAction.SwapExactAmountIn,
+  const encodedSwapArgs = encodeAbiParameters(swapActionArgsEncoding, [
     args.executor,
     {
       srcToken: args.swapData.srcToken,
@@ -57,11 +62,11 @@ export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
     args.partnerAndFee,
     args.executorData,
   ]);
+  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountIn, encodedSwapArgs]);
 }
 
 export function swapExactAmountOutEncode(args: SwapActionArgs): Hex {
-  return encodeAbiParameters(adapterSwapEncoding, [
-    AdapterAction.SwapExactAmountOut,
+  const encodedSwapArgs = encodeAbiParameters(swapActionArgsEncoding, [
     args.executor,
     {
       srcToken: args.swapData.srcToken,
@@ -74,6 +79,7 @@ export function swapExactAmountOutEncode(args: SwapActionArgs): Hex {
     args.partnerAndFee,
     args.executorData,
   ]);
+  return encodeAbiParameters(adapterActionEncoding, [AdapterAction.SwapExactAmountOut, encodedSwapArgs]);
 }
 
 export const swapExactAmountIn = IntegrationManager.makeUse(
