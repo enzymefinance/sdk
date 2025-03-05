@@ -17,6 +17,7 @@ export default defineDeployment<Deployment.TESTNET>({
     policies: 4n,
     nonStandardPriceFeedAssets: 128n,
     aTokens: 115n,
+    depositWrapperAllowedExchanges: 125n,
   },
   knownUintLists: {},
   label: "Testnet",
