@@ -93,7 +93,7 @@ export default defineDeployment<Deployment.TESTNET>({
         ExternalPositionManager: "0x370826fa91762609964723962187efba705c1f17",
         FeeManager: "0x22d1c7aabd397b4715afa64ff89bc225650787ba",
         FiduPriceFeed: "0x0000000000000000000000000000000000000000",
-        FundDataProviderRouter: "0xad2ee0cd4820f62cd78121a22c582c56804740d9",
+        FundDataProviderRouter: "0x094ff43722d2760276e5814bfb01b0f4325c467c",
         FundDeployer: "0x4bc71568feb39e38734db97113752a4e5657d319",
         FundValueCalculator: "0x36d55c3c1c57a88efda07df425d10ff267f3f9d1",
         FundValueCalculatorRouter: "0xb9c46d50d25808014b9371a91f44e602ecda7f0f",
