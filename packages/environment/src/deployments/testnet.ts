@@ -18,6 +18,7 @@ export default defineDeployment<Deployment.TESTNET>({
     nonStandardPriceFeedAssets: 128n,
     aTokens: 115n,
     depositWrapperAllowedExchanges: 125n,
+    gsnTrustedForwarders: 122n,
   },
   knownUintLists: {},
   label: "Testnet",
