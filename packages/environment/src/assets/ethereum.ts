@@ -7687,4 +7687,32 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    decimals: 6,
+    id: "0x3afdc9bca9213a35503b077a6072f3d0d5ab0840",
+    name: "Compound USDT",
+    releases: [sulu],
+    symbol: "cUSDTv3",
+    type: AssetType.COMPOUND_V3,
+    underlying: "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x3e7d1eab13ad0104d2750b8863b489d65364e32d",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x5d409e56d886231adaf00c8775665ad0f9897b56",
+    name: "Compound USDS",
+    releases: [sulu],
+    symbol: "cUSDSv3",
+    type: AssetType.COMPOUND_V3,
+    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xff30586cd0f29ed462364c7e81375fc0c71219b1",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
