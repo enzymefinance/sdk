@@ -121,6 +121,8 @@ export interface SuluContracts extends CommonContracts {
   readonly MinSharesSupplyFee: Address;
   readonly MorphoBluePositionLib: Address;
   readonly MorphoBluePositionParser: Address;
+  readonly MysoV3PositionLib: Address;
+  readonly MysoV3PositionParser: Address;
   readonly NoDepegOnRedeemSharesForSpecificAssetsPolicy: Address;
   readonly NotionalV2PositionLib: Address;
   readonly NotionalV2PositionParser: Address;
