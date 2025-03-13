@@ -88,8 +88,6 @@ export { IIntegrationManager } from "./IIntegrationManager.js";
 export { IKilnStakingPositionLib } from "./IKilnStakingPositionLib.js";
 export { IKilnStakingPositionParser } from "./IKilnStakingPositionParser.js";
 export { ILidoWithdrawalsPositionLib } from "./ILidoWithdrawalsPositionLib.js";
-export { ILiquityDebtPositionLib } from "./ILiquityDebtPositionLib.js";
-export { ILiquityDebtPositionParser } from "./ILiquityDebtPositionParser.js";
 export { IManagementFee } from "./IManagementFee.js";
 export { IManualValueOracleFactory } from "./IManualValueOracleFactory.js";
 export { IManualValueOracleLib } from "./IManualValueOracleLib.js";

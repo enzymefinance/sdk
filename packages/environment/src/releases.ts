@@ -306,10 +306,6 @@ export interface ExternalContractsMapping {
   readonly gmxV2ReferralStorage: Address;
   readonly kilnStaking: Address;
   readonly lidoWithdrawalsQueue: Address;
-  readonly liquityCollSurplusPool: Address;
-  readonly liquityHintHelpers: Address;
-  readonly liquitySortedTroves: Address;
-  readonly liquityTroveManager: Address;
   readonly makerMCDPotAddress: Address;
   readonly morphoBlue: Address;
   readonly multicall: Address;
