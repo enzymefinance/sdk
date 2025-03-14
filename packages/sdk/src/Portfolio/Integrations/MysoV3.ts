@@ -80,7 +80,6 @@ export type CloseAndSweepEscrowsArgs = {
 export type WithdrawTokensFromEscrowsArgs = {
   escrows: ReadonlyArray<Address>;
   tokens: ReadonlyArray<Address>;
-  amounts: ReadonlyArray<bigint>;
 };
 
 export type SweepArgs = {
@@ -238,19 +237,15 @@ const withdrawTokensFromEscrowsEncoding = [
     type: "address[]",
     name: "tokens",
   },
-  {
-    type: "uint256[]",
-    name: "amounts",
-  },
 ] as const;
 
 export function withdrawTokensFromEscrowsEncode(args: WithdrawTokensFromEscrowsArgs): Hex {
-  return encodeAbiParameters(withdrawTokensFromEscrowsEncoding, [args.escrows, args.tokens, args.amounts]);
+  return encodeAbiParameters(withdrawTokensFromEscrowsEncoding, [args.escrows, args.tokens]);
 }
 
 export function withdrawTokensFromEscrowsDecode(encoded: Hex): WithdrawTokensFromEscrowsArgs {
-  const [escrows, tokens, amounts] = decodeAbiParameters(withdrawTokensFromEscrowsEncoding, encoded);
-  return { escrows, tokens, amounts };
+  const [escrows, tokens] = decodeAbiParameters(withdrawTokensFromEscrowsEncoding, encoded);
+  return { escrows, tokens };
 }
 
 //------------------------------------------------------------------------------
