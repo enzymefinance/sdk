@@ -159,7 +159,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         ExternalPositionManager: "0x90b53aefdbd2ba3573d965d2d98951f2aa00507d",
         FeeManager: "0x2c46503d4a0313c7161a5593b6865baa194b466f",
         FiduPriceFeed: "0x0000000000000000000000000000000000000000",
-        FundDataProviderRouter: "0xbd154eed58a880fe4c0129491539751fc2bbbfe1",
+        FundDataProviderRouter: "0xeb0159f3ba9721f4c76df41005a6b8058b019a7f",
         FundDeployer: "0xa2b4c827de13d4e9801ea1ca837524a1a148dec3",
         FundValueCalculator: "0xea609eeb38d1ee8e8719597d47cc9276df9f8707",
         FundValueCalculatorRouter: "0x2e58f80cea88f0787cadf1bb30acc23d8ac81982",
