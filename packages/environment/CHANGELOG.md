@@ -1,5 +1,21 @@
 # @enzymefinance/environment
 
+## 6.3.26
+
+### Patch Changes
+
+- [#675](https://github.com/enzymefinance/sdk/pull/675) [`16b7203`](https://github.com/enzymefinance/sdk/commit/16b720317c8ede841815a093945c7cebec3e5455) Thanks [@iherger](https://github.com/iherger)! - Add additional Compound v3 tokens
+
+- [#674](https://github.com/enzymefinance/sdk/pull/674) [`d8e85a1`](https://github.com/enzymefinance/sdk/commit/d8e85a1d671c625f862b0940ab0b92574d942897) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gsn trusted forwarders
+
+- [#676](https://github.com/enzymefinance/sdk/pull/676) [`88dec54`](https://github.com/enzymefinance/sdk/commit/88dec54c7997c8cacc811ef26085f9e280eb070f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update fund data provider router
+
+## 6.3.25
+
+### Patch Changes
+
+- [#672](https://github.com/enzymefinance/sdk/pull/672) [`c79031b`](https://github.com/enzymefinance/sdk/commit/c79031b2270fc71c00f562e8502e75b3782719c2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix non standard price feed assets
+
 ## 6.3.24
 
 ### Patch Changes

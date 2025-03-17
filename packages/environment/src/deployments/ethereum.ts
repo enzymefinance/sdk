@@ -76,6 +76,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     zeroLendRWAStablecoinsATokens: 737n,
     zeroLendLRTBTCATokens: 738n,
     depositWrapperAllowedExchanges: 553n,
+    gsnTrustedForwarders: 598n,
   },
   knownUintLists: {
     allowedMorphoBlueVaults: 3n,
@@ -180,7 +181,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         ExternalPositionManager: "0x1e3da40f999cf47091f869ebac477d84b0827cf4",
         FeeManager: "0xaf0dffac1ce85c3fce4c2bf50073251f615eefc4",
         FiduPriceFeed: "0x478335491e1fb798c64a9e95ca43d3d967f42486",
-        FundDataProviderRouter: "0x781ec8517a75172ea007d7458ea1811fc9f99c30",
+        FundDataProviderRouter: "0xbfa57f99e059301d8bd3bbf0ae39ee87d9919734",
         FundDeployer: "0x4f1c53f096533c04d8157efb6bca3eb22ddc6360",
         FundValueCalculator: "0x490e64e0690b4aa481fb02255aed3d052bad7bf1",
         FundValueCalculatorRouter: "0x7c728cd0cfa92401e01a4849a01b57ee53f5b2b9",
