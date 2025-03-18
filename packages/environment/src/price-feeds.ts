@@ -17,6 +17,7 @@ export enum PriceFeedType {
   DERIVATIVE_BALANCER_V2_WEIGHTED_POOL = "DERIVATIVE_BALANCER_V2_WEIGHTED_POOL",
   DERIVATIVE_COMPOUND = "DERIVATIVE_COMPOUND",
   DERIVATIVE_CURVE = "DERIVATIVE_CURVE",
+  DERIVATIVE_ENZYME_VAULT = "DERIVATIVE_ENZYME_VAULT",
   DERIVATIVE_ERC4626 = "DERIVATIVE_ERC4626",
   DERIVATIVE_ETHERFI = "DERIVATIVE_ETHERFI",
   DERIVATIVE_PEGGED_DERIVATIVES = "DERIVATIVE_PEGGED_DERIVATIVES",
@@ -45,6 +46,7 @@ export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
   PriceFeedType.DERIVATIVE_COMPOUND,
   PriceFeedType.DERIVATIVE_CURVE,
+  PriceFeedType.DERIVATIVE_ENZYME_VAULT,
   PriceFeedType.DERIVATIVE_ERC4626,
   PriceFeedType.DERIVATIVE_ETHERFI,
   PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
@@ -76,6 +78,7 @@ export type PriceFeed =
   | DerivativeBalancerV2WeightedPoolPriceFeed
   | DerivativeCompoundPriceFeed
   | DerivativeCurvePriceFeed
+  | DerivativeEnzymeVaultPriceFeed
   | DerivativeERC4626PriceFeed
   | DerivativeEtherfiPriceFeed
   | DerivativePeggedDerivativesPriceFeed
@@ -247,6 +250,14 @@ export interface DerivativeCurvePriceFeed extends PriceFeedBase {
    * Invariant Proxy Asset (ipa)
    */
   readonly ipa: Address;
+}
+
+export interface DerivativeEnzymeVaultPriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.DERIVATIVE_ENZYME_VAULT;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeERC4626PriceFeed extends PriceFeedBase {

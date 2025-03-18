@@ -36,7 +36,6 @@ export { IBalancerV2StablePoolPriceFeed } from "./IBalancerV2StablePoolPriceFeed
 export { IBalancerV2WeightedPoolPriceFeed } from "./IBalancerV2WeightedPoolPriceFeed.js";
 export { IChainlinkPriceFeedMixin } from "./IChainlinkPriceFeedMixin.js";
 export { ICompoundAdapter } from "./ICompoundAdapter.js";
-export { ICompoundDebtPositionLib } from "./ICompoundDebtPositionLib.js";
 export { ICompoundDebtPositionParser } from "./ICompoundDebtPositionParser.js";
 export { ICompoundPriceFeed } from "./ICompoundPriceFeed.js";
 export { ICompoundV3Adapter } from "./ICompoundV3Adapter.js";
@@ -57,6 +56,7 @@ export { IDerivativePriceFeed } from "./IDerivativePriceFeed.js";
 export { IDisallowedAdapterIncomingAssetsPolicy } from "./IDisallowedAdapterIncomingAssetsPolicy.js";
 export { IDispatcher } from "./IDispatcher.js";
 export { IDispatcherOwnedBeaconFactory } from "./IDispatcherOwnedBeaconFactory.js";
+export { IEnzymeVaultAdapter } from "./IEnzymeVaultAdapter.js";
 export { IERC4626Adapter } from "./IERC4626Adapter.js";
 export { IERC4626PriceFeed } from "./IERC4626PriceFeed.js";
 export { IEntranceRateBurnFee } from "./IEntranceRateBurnFee.js";

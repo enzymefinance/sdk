@@ -88,6 +88,8 @@ export interface SuluContracts extends CommonContracts {
   readonly DisallowedAdapterIncomingAssetsPolicy: Address;
   readonly EntranceRateBurnFee: Address;
   readonly EntranceRateDirectFee: Address;
+  readonly EnzymeVaultAdapter: Address;
+  readonly EnzymeVaultPriceFeed: Address;
   readonly ERC4626Adapter: Address;
   readonly ERC4626PriceFeed: Address;
   readonly EtherFiEthPriceFeed: Address;

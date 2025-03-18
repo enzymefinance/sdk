@@ -1,7 +1,6 @@
 import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import { Assertion, Viem } from "../../Utils.js";
-import { assertEnumType } from "../../Utils/assertion.js";
 import * as ExternalPositionManager from "../../_internal/ExternalPositionManager.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -355,20 +354,11 @@ export type AdapterActionArgs = {
   encodedActionArgs: Hex;
 };
 
-export function encodeAdapterAction(args: AdapterActionArgs): Hex {
-  return encodeAbiParameters(adapterActionEncoding, [args.actionId, args.encodedActionArgs]);
-}
+export const encodeAdapterAction = IntegrationManager.createEncodeAdapterAction<AdapterAction>();
 
-export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
-  const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
-
-  assertEnumType(AdapterAction, actionId);
-
-  return {
-    actionId,
-    encodedActionArgs,
-  };
-}
+export const decodeAdapterAction = IntegrationManager.createDecodeAdapterAction<AdapterAction, typeof AdapterAction>(
+  AdapterAction,
+);
 
 //--------------------------------------------------------------------------------------------
 // ADAPTER - BUY PRINCIPLE TOKEN

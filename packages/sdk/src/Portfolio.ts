@@ -1,8 +1,9 @@
 import * as Abis from "@enzymefinance/abis";
-import type { Address, Client, Hex } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import * as Assets from "./Asset.js";
 import { Assertion, Viem } from "./Utils.js";
+import { assertEnumType } from "./Utils/assertion.js";
 export * as AssetManagers from "./Portfolio/AssetManagers.js";
 export * as Integrations from "./Portfolio/Integrations.js";
 export * as VoteDelegation from "./Portfolio/VoteDelegation.js";
@@ -43,6 +44,17 @@ export {
   removeTrackedAssetsDecode,
   type RemoveTrackedAssetsArgs,
 } from "./_internal/IntegrationManager.js";
+
+// export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
+//   const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+
+//   assertEnumType(AdapterAction, actionId);
+
+//   return {
+//     actionId,
+//     encodedActionArgs,
+//   };
+// }
 
 export type VaultCallOnContractParams = {
   comptrollerProxy: Address;
