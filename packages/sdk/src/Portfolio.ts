@@ -1,9 +1,8 @@
 import * as Abis from "@enzymefinance/abis";
-import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import type { Address, Client, Hex } from "viem";
 import { readContract, simulateContract } from "viem/actions";
 import * as Assets from "./Asset.js";
 import { Assertion, Viem } from "./Utils.js";
-import { assertEnumType } from "./Utils/assertion.js";
 export * as AssetManagers from "./Portfolio/AssetManagers.js";
 export * as Integrations from "./Portfolio/Integrations.js";
 export * as VoteDelegation from "./Portfolio/VoteDelegation.js";

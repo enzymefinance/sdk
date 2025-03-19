@@ -36,6 +36,7 @@ export { IBalancerV2StablePoolPriceFeed } from "./IBalancerV2StablePoolPriceFeed
 export { IBalancerV2WeightedPoolPriceFeed } from "./IBalancerV2WeightedPoolPriceFeed.js";
 export { IChainlinkPriceFeedMixin } from "./IChainlinkPriceFeedMixin.js";
 export { ICompoundAdapter } from "./ICompoundAdapter.js";
+export { ICompoundDebtPositionLib } from "./ICompoundDebtPositionLib.js";
 export { ICompoundDebtPositionParser } from "./ICompoundDebtPositionParser.js";
 export { ICompoundPriceFeed } from "./ICompoundPriceFeed.js";
 export { ICompoundV3Adapter } from "./ICompoundV3Adapter.js";
