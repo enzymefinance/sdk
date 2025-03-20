@@ -64,7 +64,7 @@ export default defineDeployment<Deployment.BASE>({
     zeroLendRWAStablecoinsAaveV3RewardsController: "0x0000000000000000000000000000000000000000",
   },
   inception: 23178791,
-  kind: Kind.TEST,
+  kind: Kind.LIVE,
   knownAddressLists: {
     depositWrapperAllowedExchanges: 1n,
     noSlippageAdapters: 3n,
