@@ -199,7 +199,7 @@ export default defineDeployment<Deployment.POLYGON>({
         OnlyRemoveDustExternalPositionPolicy: "0xc0f49507c125a000e02ab58c22be9764e2abab99",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0x9f856372f7bd844dac0254c7859b117259b5c9d2",
         ParaSwapV5Adapter: "0xb665e93e19eb18ef5005f0296d4693e3154ab0df",
-        ParaSwapV6Adapter: "0xe01f0599e9a0104fc9bbf3d789a39bc80683638e",
+        ParaSwapV6Adapter: "0x4c8026a88f1da2d299c539b8c070c1c44372d53c",
         PendleV2Adapter: "0x0000000000000000000000000000000000000000",
         PendleV2PositionLib: "0x0000000000000000000000000000000000000000",
         PendleV2PositionParser: "0x0000000000000000000000000000000000000000",

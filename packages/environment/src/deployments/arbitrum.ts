@@ -194,7 +194,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         OnlyRemoveDustExternalPositionPolicy: "0xe4453105be9e579896a3ed73df9a1e285c8c95c2",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0xa482f4ab637cd5ca00084d511b3ca9aa8d8f475e",
         ParaSwapV5Adapter: "0x08df49f617ecdccbc90d9a0f87b8c1a84b2e7cb9",
-        ParaSwapV6Adapter: "0x883d1e0c82b6d7f051a18a01be07b19da14f1e22",
+        ParaSwapV6Adapter: "0xd68543ec57ba6aa5c546d23dde7dbbc3b6d0222d",
         PeggedDerivativesPriceFeed: "0x0000000000000000000000000000000000000000",
         PerformanceFee: "0x9e0f80bc5a688e93d6c57efcfdd4564f70975e8b",
         PendleV2Adapter: "0x0000000000000000000000000000000000000000",
