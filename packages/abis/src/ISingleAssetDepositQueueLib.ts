@@ -136,8 +136,8 @@ export const ISingleAssetDepositQueueLib = [
     outputs: [
       {
         name: "minRequestTime_",
-        type: "uint256",
-        internalType: "uint256",
+        type: "uint64",
+        internalType: "uint64",
       },
     ],
     stateMutability: "view",
@@ -386,6 +386,12 @@ export const ISingleAssetDepositQueueLib = [
         type: "uint128",
         indexed: false,
         internalType: "uint128",
+      },
+      {
+        name: "canCancelTime",
+        type: "uint96",
+        indexed: false,
+        internalType: "uint96",
       },
     ],
     anonymous: false,

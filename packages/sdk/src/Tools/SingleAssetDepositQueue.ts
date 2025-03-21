@@ -2,19 +2,35 @@ import * as Abis from "@enzymefinance/abis";
 import { type Address, type Client, encodeFunctionData } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../Utils.js";
+import * as DispatcherOwnedBeacon from "./DispatcherOwnedBeacon.js";
 
 //--------------------------------------------------------------------------------------------
 // DEPLOYMENT HELPERS
 //--------------------------------------------------------------------------------------------
 
-export function encodeProxyConstructData(args: {
+export function deployProxy(
+  args: {
+    factory: Address;
+  } & EncodeProxyConstructDataArgs,
+) {
+  const { factory, ...constructDataArgs } = args;
+
+  return DispatcherOwnedBeacon.deployProxy({
+    factory,
+    constructData: encodeProxyConstructData(constructDataArgs),
+  });
+}
+
+export type EncodeProxyConstructDataArgs = {
   vaultProxy: Address;
   depositAsset: Address;
   managers: ReadonlyArray<Address>;
   minDepositAssetAmount: bigint;
   minRequestTime: bigint;
   depositorAllowlistId: bigint;
-}) {
+};
+
+export function encodeProxyConstructData(args: EncodeProxyConstructDataArgs) {
   return encodeFunctionData({
     abi: Abis.ISingleAssetDepositQueueLib,
     functionName: "init",

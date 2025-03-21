@@ -22,7 +22,7 @@ interface ISingleAssetDepositQueueLib {
     error SingleAssetDepositQueue__RequestDeposit__DepositorIsNotAllowlisted();
     error SingleAssetDepositQueue__RequestDeposit__TooLowDepositAmount();
 
-    event DepositRequestAdded(uint88 id, address user, uint128 depositAssetAmount);
+    event DepositRequestAdded(uint88 id, address user, uint128 depositAssetAmount, uint96 canCancelTime);
     event Deposited(uint256 id, uint256 sharesAmountReceived);
     event DepositorAllowlistIdSet(uint64 depositorAllowlistId);
     event Initialized(address vaultProxy, address depositAsset);
@@ -42,7 +42,7 @@ interface ISingleAssetDepositQueueLib {
     function getDepositAsset() external view returns (address asset_);
     function getDepositorAllowlistId() external view returns (uint256 depositorAllowlistId_);
     function getMinDepositAssetAmount() external view returns (uint256 minDepositAssetAmount_);
-    function getMinRequestTime() external view returns (uint256 minRequestTime_);
+    function getMinRequestTime() external view returns (uint64 minRequestTime_);
     function getNextNewId() external view returns (uint88 id_);
     function getNextQueuedId() external view returns (uint88 id_);
     function getRequest(uint256 _id) external view returns (Request memory request_);
