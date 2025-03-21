@@ -12,7 +12,6 @@ export * as Erc4626 from "./Integrations/Erc4626.js";
 export * as GMXV2 from "./Integrations/GMXV2.js";
 export * as Kiln from "./Integrations/Kiln.js";
 export * as Lido from "./Integrations/Lido.js";
-export * as Liquity from "./Integrations/Liquity.js";
 export * as Maple from "./Integrations/Maple.js";
 export * as MorphoBlue from "./Integrations/MorphoBlue.js";
 export * as OneInchV5 from "./Integrations/OneInchV5.js";

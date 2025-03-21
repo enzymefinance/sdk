@@ -9,7 +9,6 @@ export enum Protocol {
   CONVEX = "CONVEX",
   CURVE = "CURVE",
   KILN = "KILN",
-  LIQUITY = "LIQUITY",
   MAPLE = "MAPLE",
   MORPHO = "MORPHO",
   ONE_INCH_V5 = "ONE_INCH_V5",
