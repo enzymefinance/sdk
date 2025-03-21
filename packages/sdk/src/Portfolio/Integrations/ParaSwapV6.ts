@@ -1,4 +1,5 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { Assertion } from "../../Utils.js";
 import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
@@ -95,9 +96,9 @@ export function swapExactAmountInEncode(args: SwapActionArgs): Hex {
 
 export function swapExactAmountInDecode(encoded: Hex): SwapActionArgs {
   const [action, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
-  if (action !== AdapterAction.SwapExactAmountIn) {
-    throw new Error("Invalid action type for SwapExactAmountIn");
-  }
+
+  Assertion.invariant(action === AdapterAction.SwapExactAmountIn, "Action Type should be SwapExactAmountIn");
+
   const { executor, swapData, partnerAndFee, executorData } = decodeAbiParameters(
     swapActionArgsEncoding,
     encodedActionArgs,
@@ -125,9 +126,9 @@ export function swapExactAmountOutEncode(args: SwapActionArgs): Hex {
 
 export function swapExactAmountOutDecode(encoded: Hex): SwapActionArgs {
   const [action, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
-  if (action !== AdapterAction.SwapExactAmountOut) {
-    throw new Error("Invalid action type for SwapExactAmountOut");
-  }
+
+  Assertion.invariant(action === AdapterAction.SwapExactAmountOut, "Action Type should be SwapExactAmountOut");
+
   const { executor, swapData, partnerAndFee, executorData } = decodeAbiParameters(
     swapActionArgsEncoding,
     encodedActionArgs,
