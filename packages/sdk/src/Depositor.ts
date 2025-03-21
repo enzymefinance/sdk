@@ -340,38 +340,6 @@ export function sharesWrapperCancelRequestRedeem(
 }
 
 //--------------------------------------------------------------------------------------------
-// SINGLE ASSET REDEMPTION QUEUE
-//--------------------------------------------------------------------------------------------
-
-export function redemptionQueueRequestRedeem(
-  args: Viem.ContractCallParameters<{
-    redemptionQueue: Address;
-    amount: bigint;
-  }>,
-) {
-  return new Viem.PopulatedTransaction({
-    abi: Abis.ISingleAssetRedemptionQueueLib,
-    functionName: "requestRedeem",
-    address: args.redemptionQueue,
-    args: [args.amount],
-  });
-}
-
-export function redemptionQueueWithdrawRequest(
-  args: Viem.ContractCallParameters<{
-    redemptionQueue: Address;
-    requestId: bigint;
-  }>,
-) {
-  return new Viem.PopulatedTransaction({
-    abi: Abis.ISingleAssetRedemptionQueueLib,
-    functionName: "withdrawRequest",
-    address: args.redemptionQueue,
-    args: [args.requestId],
-  });
-}
-
-//--------------------------------------------------------------------------------------------
 // POLICY CHECK
 //--------------------------------------------------------------------------------------------
 
