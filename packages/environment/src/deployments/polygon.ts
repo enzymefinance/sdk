@@ -201,6 +201,7 @@ export default defineDeployment<Deployment.POLYGON>({
         OnlyUntrackDustOrPricelessAssetsPolicy: "0x9f856372f7bd844dac0254c7859b117259b5c9d2",
         ParaSwapV5Adapter: "0xb665e93e19eb18ef5005f0296d4693e3154ab0df",
         PeggedRateDeviationAggregatorFactory: "0x124fda4b626cda9481948a86a5f8f510d8a22f4a",
+        ParaSwapV6Adapter: "0x4c8026a88f1da2d299c539b8c070c1c44372d53c",
         PendleV2Adapter: "0x0000000000000000000000000000000000000000",
         PendleV2PositionLib: "0x0000000000000000000000000000000000000000",
         PendleV2PositionParser: "0x0000000000000000000000000000000000000000",

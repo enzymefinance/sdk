@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.9
+
+### Patch Changes
+
+- [#658](https://github.com/enzymefinance/sdk/pull/658) [`4a06def`](https://github.com/enzymefinance/sdk/commit/4a06def2ddded3ad3a69fc909c89ad4d89b5cdd2) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add ParaSwapV6 Integration
+
 ## 1.2.8
 
 ### Patch Changes
