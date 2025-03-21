@@ -1,4 +1,5 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { assertEnumType } from "../Utils/assertion.js";
 import { callExtension } from "./Extensions.js";
 
 export type Action = (typeof Action)[keyof typeof Action];
@@ -234,4 +235,44 @@ export function removeTracketAssets(args: RemoveTrackedAssetsParams) {
       removeAssets: args.removeAssets,
     }),
   });
+}
+
+export const adapterActionEncoding = [
+  {
+    name: "actionId",
+    type: "uint256",
+  },
+  {
+    name: "encodedActionArgs",
+    type: "bytes",
+  },
+] as const;
+
+export type AdapterActionArgs<TAdapterActionId extends bigint> = {
+  actionId: TAdapterActionId;
+  encodedActionArgs: Hex;
+};
+
+export function createEncodeAdapterAction<TAdapterActionId extends bigint>(): (
+  args: AdapterActionArgs<TAdapterActionId>,
+) => Hex {
+  return function encodeAdapterAction(args) {
+    return encodeAbiParameters(adapterActionEncoding, [args.actionId, args.encodedActionArgs]);
+  };
+}
+
+export function createDecodeAdapterAction<
+  TAdapterActionId extends bigint,
+  TAdapterAction extends Record<string, TAdapterActionId>,
+>(adapterAction: TAdapterAction): (encoded: Hex) => AdapterActionArgs<TAdapterActionId> {
+  return function decodeAdapterAction(encoded) {
+    const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
+
+    assertEnumType(adapterAction, actionId);
+
+    return {
+      actionId,
+      encodedActionArgs,
+    };
+  };
 }
