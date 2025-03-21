@@ -225,6 +225,7 @@ export enum Erc4626Protocol {
   SKY = "SKY",
   SPARK = "SPARK",
   VAULTCRAFT = "VAULTCRAFT",
+  ORIGIN = "ORIGIN",
 }
 
 export enum BalancerStakingType {

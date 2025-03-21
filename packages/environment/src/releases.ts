@@ -273,9 +273,19 @@ export type KnownAddressListIdMappingPolygonSpecific = {
   gsnTrustedForwarders: bigint;
 };
 
-export interface KnownUintListIdMapping {
+export type KnownUintListIdMapping<TDeployment extends Deployment> = {
   allowedMorphoBlueVaults?: bigint;
-}
+} & (TDeployment extends Deployment.ETHEREUM
+  ? KnownUintListIdMappingEthereumSpecific
+  : TDeployment extends Deployment.BASE
+    ? KnownUintListIdMappingBaseChainSpecific
+    : {});
+
+export type KnownUintListIdMappingEthereumSpecific = {
+  allowedMorphoBlueVaults: bigint;
+};
+
+export type KnownUintListIdMappingBaseChainSpecific = KnownUintListIdMappingEthereumSpecific;
 
 export interface ExternalContractsMapping {
   readonly aaveUIIncentiveDataProvider: Address;
@@ -355,7 +365,7 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   /**
    * Ids for known uint lists.
    */
-  readonly knownUintLists: KnownUintListIdMapping;
+  readonly knownUintLists: KnownUintListIdMapping<TDeployment>;
   /**
    * The kind of the deployment (e.g. testnet or production).
    */
