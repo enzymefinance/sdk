@@ -217,6 +217,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         OnlyRemoveDustExternalPositionPolicy: "0x966ec191ed9e026cb6f7e22bb2a284bad6a2838d",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0x747beaee139fba4a89fa71bebb5f21231530292b",
         ParaSwapV5Adapter: "0x871a7f0ef4917a1534e651d1fde3763a52a23ece",
+        ParaSwapV6Adapter: "0xb3ec98d4a608577289e442474832b7f69540e169",
         PeggedDerivativesPriceFeed: "0x86533352bdd201c89f184f7ebbfebea3e31c8bb3",
         PerformanceFee: "0xfedc73464dfd156d30f6524654a5d56e766da0c3",
         PendleV2Adapter: "0xe77ba2e88aae1543839ec6ee0a0f847391205610",
