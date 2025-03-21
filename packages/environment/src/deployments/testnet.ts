@@ -130,6 +130,7 @@ export default defineDeployment<Deployment.TESTNET>({
         OnlyRemoveDustExternalPositionPolicy: "0x713e7dac3c237b71dd54a8718ce21ecd5d2dc747",
         OnlyUntrackDustOrPricelessAssetsPolicy: "0xc1f7b231874e2f9b2c9d4ec701dc6f046eab253a",
         ParaSwapV5Adapter: "0xb663c344ce8f66f906dd1bb7f1e269ed352deea9",
+        ParaSwapV6Adapter: "0x43bcca8830182165c6f9209065df6fb849dd6abb",
         PeggedDerivativesPriceFeed: "0xad80a1c732e3e3b979c64e1df6815f739d3317f7",
         PerformanceFee: "0xf1fcba510713355d7504b87a163420a2bd116a4b",
         PendleV2Adapter: "0x0000000000000000000000000000000000000000",
