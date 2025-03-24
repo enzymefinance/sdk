@@ -41,6 +41,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     liquityTroveManager: "0x0000000000000000000000000000000000000000",
     makerMCDPotAddress: "0x0000000000000000000000000000000000000000",
     morphoBlue: "0x0000000000000000000000000000000000000000",
+    merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
