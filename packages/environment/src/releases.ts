@@ -255,12 +255,22 @@ export type KnownAddressListIdMapping<TDeployment extends Deployment> = {
   policies: bigint;
   nonStandardPriceFeedAssets: bigint;
   aTokens: bigint;
-} & (TDeployment extends Deployment.ETHEREUM ? KnownAddressListIdMappingEthereumSpecific : {});
+  depositWrapperAllowedExchanges: bigint;
+} & (TDeployment extends Deployment.ETHEREUM
+  ? KnownAddressListIdMappingEthereumSpecific
+  : TDeployment extends Deployment.POLYGON | Deployment.TESTNET
+    ? KnownAddressListIdMappingPolygonSpecific
+    : {});
 
 export type KnownAddressListIdMappingEthereumSpecific = {
+  gsnTrustedForwarders: bigint;
   kilnStakingContracts: bigint;
   zeroLendRWAStablecoinsATokens: bigint;
   zeroLendLRTBTCATokens: bigint;
+};
+
+export type KnownAddressListIdMappingPolygonSpecific = {
+  gsnTrustedForwarders: bigint;
 };
 
 export interface KnownUintListIdMapping {
