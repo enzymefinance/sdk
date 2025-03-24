@@ -12,6 +12,7 @@ export enum PriceFeedType {
   PRIMITIVE_REDSTONE_QUOTED = "PRIMITIVE_REDSTONE_QUOTED",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
   PRIMITIVE_PENDLE_V2 = "PRIMITIVE_PENDLE_V2",
+  REVERTING = "REVERTING",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
   DERIVATIVE_BALANCER_V2_GAUGE_TOKEN = "DERIVATIVE_BALANCER_V2_GAUGE_TOKEN",
   DERIVATIVE_BALANCER_V2_STABLE_POOL = "DERIVATIVE_BALANCER_V2_STABLE_POOL",
@@ -63,6 +64,7 @@ export enum RateAsset {
 
 export type PriceFeed =
   | NoPriceFeed
+  | RevertingPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
   | PrimitiveChainlinkLikeEthxPriceFeed
@@ -95,6 +97,10 @@ interface PriceFeedBase {
 
 export interface NoPriceFeed extends PriceFeedBase {
   type: PriceFeedType.NONE;
+}
+
+export interface RevertingPriceFeed extends PriceFeedBase {
+  type: PriceFeedType.REVERTING;
 }
 
 export interface WethPriceFeed extends PriceFeedBase {

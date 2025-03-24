@@ -23,6 +23,10 @@ suite("prices are correct", async () => {
   const { answer: answerEthUsd } = await aggregatorLatestRound(client, { aggregator: ethUsdAggregator });
 
   test.each(pendleV2Assets)("pendle v2 price is correct: $symbol ($name): $id", async (asset) => {
+    if (asset.priceFeed.type === PriceFeedType.REVERTING) {
+      return;
+    }
+
     if (asset.priceFeed.type !== PriceFeedType.PRIMITIVE_PENDLE_V2) {
       throw new Error("Invalid price feed type");
     }

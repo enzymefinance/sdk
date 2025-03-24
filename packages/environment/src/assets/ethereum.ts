@@ -7773,4 +7773,17 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    symbol: "PT-sUSDS-27MAR2025",
+    name: "PT Savings USDS 27MAR2025",
+    id: "0x152b8629fee8105248bA3b7ba6afb94f7a468302",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
+    decimals: 18,
+    underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
+    priceFeed: {
+      type: PriceFeedType.REVERTING,
+    },
+  },
 ]);
