@@ -225,6 +225,7 @@ export enum Erc4626Protocol {
   RESOLV = "RESOLV",
   SKY = "SKY",
   SPARK = "SPARK",
+  SYRUP = "SYRUP",
   VAULTCRAFT = "VAULTCRAFT",
 }
 
