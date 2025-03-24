@@ -7890,7 +7890,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "SuperUSDC",
     id: "0xf7de3c70f2db39a188a81052d2f3c8e3e217822a",
     type: AssetType.ERC_4626,
-    protocol: Erc4626Protocol.SYRUP,
+    protocol: Erc4626Protocol.SUPERFORM,
     releases: [sulu],
     decimals: 6,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
