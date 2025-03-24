@@ -222,6 +222,7 @@ export interface ERC4626Asset extends AssetBase {
 export enum Erc4626Protocol {
   ANGLE = "ANGLE",
   MORPHO = "MORPHO",
+  RESOLV = "RESOLV",
   SKY = "SKY",
   SPARK = "SPARK",
   VAULTCRAFT = "VAULTCRAFT",
