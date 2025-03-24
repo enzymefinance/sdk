@@ -7776,7 +7776,7 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     symbol: "PT-sUSDS-27MAR2025",
     name: "PT Savings USDS 27MAR2025",
-    id: "0x152b8629fee8105248bA3b7ba6afb94f7a468302",
+    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
     markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
@@ -7862,7 +7862,7 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x2beeb2c4809954e5b514a3205afbdc097eb810b4",
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
-    decimals: 18,
+    decimals: 6,
     underlying: "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
     markets: ["0x580e40c15261f7baf18ea50f562118ae99361096"],
     priceFeed: {
@@ -7903,10 +7903,10 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     symbol: "PT-ysUSDC-17APR2025",
     name: "PT SuperUSDC 17APR2025",
-    id: "0x8fa8dA847BC3E8a945Bae061C73af74df6375a95",
+    id: "0x8fa8da847bc3e8a945bae061c73af74df6375a95",
     type: AssetType.PENDLE_V2_PT,
     releases: [sulu],
-    decimals: 18,
+    decimals: 6,
     underlying: "0xf7de3c70f2db39a188a81052d2f3c8e3e217822a",
     markets: ["0x1bd1ae9d7a377e63cd0c584a2c42b8c614937e81"],
     priceFeed: {
