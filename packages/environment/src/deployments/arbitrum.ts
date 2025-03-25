@@ -206,6 +206,8 @@ export default defineDeployment<Deployment.ARBITRUM>({
         SharePriceThrottledAssetManagerFactory: "0x0000000000000000000000000000000000000000",
         SharePriceThrottledAssetManagerLib: "0x0000000000000000000000000000000000000000",
         SharesSplitterFactory: "0x0000000000000000000000000000000000000000",
+        SingleAssetDepositQueueFactory: "0x78c89968b121e64fa559f3b4ed1b35222a42c059",
+        SingleAssetDepositQueueLib: "0x969ea85f65677daa9552b8530a47511286894a5a",
         SingleAssetRedemptionQueueFactory: "0xb658a26ec9638051a42160bb02319fed12299b25",
         SingleAssetRedemptionQueueLib: "0x137ac14e27de154e6a0a260570259f8cef436ba4",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",

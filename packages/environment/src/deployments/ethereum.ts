@@ -229,6 +229,8 @@ export default defineDeployment<Deployment.ETHEREUM>({
         SharePriceThrottledAssetManagerFactory: "0x0883ba10f44217b97bde11900e197738a7df911b",
         SharePriceThrottledAssetManagerLib: "0xfde8c198bef60d026332a671f64c34d65c60c935",
         SharesSplitterFactory: "0xfc8ed755c52782fa1a4ba9193b566e775701e511",
+        SingleAssetDepositQueueFactory: "0xc90d0a2d50bb6e3282d4e54dbd49a6c6034b084e",
+        SingleAssetDepositQueueLib: "0x9267feef36484d3cb3a8e7c9cf57da360d85e0ad",
         SingleAssetRedemptionQueueFactory: "0xfe84d5209054254389c9d6a754b821f3a297d56a",
         SingleAssetRedemptionQueueLib: "0x0012b7c26b8c081a29a61cd52526cf6305367968",
         SolvV2BondBuyerPositionLib: "0x0e7d828f9f9a3ce152d39f21f2e2d0ff89448b6b",
