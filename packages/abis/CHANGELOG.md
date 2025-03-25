@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 1.2.4
+
+### Patch Changes
+
+- [#659](https://github.com/enzymefinance/sdk/pull/659) [`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add single asset deposit queue
+
 ## 1.2.3
 
 ### Patch Changes
