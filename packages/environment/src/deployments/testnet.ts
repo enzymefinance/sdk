@@ -113,8 +113,6 @@ export default defineDeployment<Deployment.TESTNET>({
         KilnStakingPositionParser: "0x0000000000000000000000000000000000000000",
         LidoWithdrawalsPositionLib: "0x0000000000000000000000000000000000000000",
         LidoWithdrawalsPositionParser: "0x0000000000000000000000000000000000000000",
-        LiquityDebtPositionLib: "0x0000000000000000000000000000000000000000",
-        LiquityDebtPositionParser: "0x0000000000000000000000000000000000000000",
         ManagementFee: "0x4a95185896adce31a8cdfaaa2832decc3d20dc2c",
         ManualValueOracleFactory: "0x0b7fa18e37e9bd2e156cac8467d164261f5119cc",
         MapleLiquidityPositionLib: "0x0000000000000000000000000000000000000000",
