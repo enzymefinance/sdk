@@ -7784,7 +7784,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xc20FEF0E0c7f85C6a61Dc50aBe8E2d6fD862e979",
+      aggregator: "0xc20fef0e0c7f85c6a61dc50abe8e2d6fd862e979",
       rateAsset: RateAsset.ETH,
     },
   },
