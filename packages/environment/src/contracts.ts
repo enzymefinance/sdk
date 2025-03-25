@@ -90,6 +90,7 @@ export interface SuluContracts extends CommonContracts {
   readonly EntranceRateDirectFee: Address;
   readonly ERC4626Adapter: Address;
   readonly ERC4626PriceFeed: Address;
+  readonly ERC4626RateAggregatorFactory: Address;
   readonly EtherFiEthPriceFeed: Address;
   readonly ExitRateBurnFee: Address;
   readonly ExitRateDirectFee: Address;
@@ -126,7 +127,9 @@ export interface SuluContracts extends CommonContracts {
   readonly OnlyRemoveDustExternalPositionPolicy: Address;
   readonly OnlyUntrackDustOrPricelessAssetsPolicy: Address;
   readonly ParaSwapV5Adapter: Address;
+  readonly ParaSwapV6Adapter: Address;
   readonly PeggedDerivativesPriceFeed: Address;
+  readonly PeggedRateDeviationAggregatorFactory: Address;
   readonly PendleV2Adapter: Address;
   readonly PendleV2PositionLib: Address;
   readonly PendleV2PositionParser: Address;
