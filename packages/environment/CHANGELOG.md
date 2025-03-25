@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.30
+
+### Patch Changes
+
+- [#682](https://github.com/enzymefinance/sdk/pull/682) [`df7cd76`](https://github.com/enzymefinance/sdk/commit/df7cd76a011ec24976be7e4e4b008541452548f4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Base adjustments
+
 ## 6.3.29
 
 ### Patch Changes
