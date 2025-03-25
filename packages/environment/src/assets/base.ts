@@ -225,7 +225,9 @@ export default defineAssetList(Network.BASE, [
     symbol: "wsuperOETHb",
     decimals: 18,
     releases: [sulu],
-    type: AssetType.PRIMITIVE,
+    underlying: "0xdbfefd2e8460a6ee4955a68582f85708baea60a3",
+    protocol: Erc4626Protocol.ORIGIN,
+    type: AssetType.ERC_4626,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",

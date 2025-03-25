@@ -60,7 +60,7 @@ export default defineDeployment<Deployment.BASE>({
     zeroLendRWAStablecoinsAaveV3RewardsController: "0x0000000000000000000000000000000000000000",
   },
   inception: 23178791,
-  kind: Kind.TEST,
+  kind: Kind.LIVE,
   knownAddressLists: {
     depositWrapperAllowedExchanges: 1n,
     noSlippageAdapters: 3n,
@@ -70,7 +70,7 @@ export default defineDeployment<Deployment.BASE>({
     nonStandardPriceFeedAssets: 2n,
     aTokens: 9n,
   },
-  knownUintLists: {},
+  knownUintLists: { allowedMorphoBlueVaults: 1n },
   label: "Base",
   namedTokens: {
     comp: "0x9e1028f5f1d5ede59748ffcee5532509976840e0",
@@ -176,7 +176,7 @@ export default defineDeployment<Deployment.BASE>({
         MinAssetBalancesPostRedemptionPolicy: "0x0af17b9abe72d68ca78aa9ea1efc2def0ed1dd8a",
         MinMaxInvestmentPolicy: "0xe16990bcfc59ec6cc00fa1e20707871ae22fd6f7",
         MinSharesSupplyFee: "0xa32d9085c8c56515a1a03648b5c417badbe7732d",
-        MorphoBluePositionLib: "0x38953a28a729a60ad2c18ddab964193678292695",
+        MorphoBluePositionLib: "0x3cfdd91a5d80cdf175a92db128a54d30e4014f03",
         MorphoBluePositionParser: "0x33691ac33507c8a9ac94ac8f879a6416b04cb53b",
         NoDepegOnRedeemSharesForSpecificAssetsPolicy: "0x33d9d62a9155e96202378b80078bf73d4f1317a9",
         NotionalV2PositionLib: "0x0000000000000000000000000000000000000000",
