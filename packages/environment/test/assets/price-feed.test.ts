@@ -116,7 +116,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
     switch (priceFeedType) {
       case PriceFeedType.NONE:
-      case PriceFeedType.REVERTING:
         break;
 
       case PriceFeedType.WETH: {
@@ -234,7 +233,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
     switch (priceFeedType) {
       case PriceFeedType.NONE:
-      case PriceFeedType.REVERTING:
       case PriceFeedType.WETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX:
