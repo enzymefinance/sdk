@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 1.2.3
+
+### Patch Changes
+
+- [#680](https://github.com/enzymefinance/sdk/pull/680) [`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove liquity
+
 ## 1.2.2
 
 ### Patch Changes

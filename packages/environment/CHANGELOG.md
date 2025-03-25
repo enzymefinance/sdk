@@ -1,5 +1,16 @@
 # @enzymefinance/environment
 
+## 6.3.28
+
+### Patch Changes
+
+- [#679](https://github.com/enzymefinance/sdk/pull/679) [`176dd2a`](https://github.com/enzymefinance/sdk/commit/176dd2a4768a9332b88edd8d629b6bcfc45ed634) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add price feed factories
+
+- [#680](https://github.com/enzymefinance/sdk/pull/680) [`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove liquity
+
+- Updated dependencies [[`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275)]:
+  - @enzymefinance/sdk@1.2.10
+
 ## 6.3.27
 
 ### Patch Changes
