@@ -321,6 +321,7 @@ export interface ExternalContractsMapping {
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;
   readonly paraswapV5TokenTransferProxy: Address;
+  readonly paraswapV6AugustusSwapper: Address;
   readonly pendlePtLpOracle: Address;
   readonly staderStakingPoolManager: Address;
   readonly staderUserWithdrawManager: Address;

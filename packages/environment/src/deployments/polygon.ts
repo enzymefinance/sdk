@@ -42,6 +42,7 @@ export default defineDeployment<Deployment.POLYGON>({
     staderUserWithdrawManager: "0x0000000000000000000000000000000000000000",
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
+    paraswapV6AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     pendlePtLpOracle: "0x0000000000000000000000000000000000000000",
     stakeWiseV3KeeperRewards: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x0000000000000000000000000000000000000000",
