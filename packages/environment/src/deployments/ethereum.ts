@@ -40,7 +40,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",
-    paraswapV6AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
+    paraswapV6AugustusSwapper: "0x6a000f20005980200259b80c5102003040001068",
     pendlePtLpOracle: "0x66a1096c6366b2529274df4f5d8247827fe4cea8",
     staderStakingPoolManager: "0xcf5ea1b38380f6af39068375516daf40ed70d299",
     staderUserWithdrawManager: "0x9f0491b32dbce587c50c4c43ab303b06478193a7",
