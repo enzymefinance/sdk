@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.31
+
+### Patch Changes
+
+- [#687](https://github.com/enzymefinance/sdk/pull/687) [`60ad801`](https://github.com/enzymefinance/sdk/commit/60ad8019153723a32d56f4796d799d6120b48397) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add ParaSwapV6AugustusSwapper to external contracts
+
 ## 6.3.30
 
 ### Patch Changes
