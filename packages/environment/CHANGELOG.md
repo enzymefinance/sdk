@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.32
+
+### Patch Changes
+
+- [#689](https://github.com/enzymefinance/sdk/pull/689) [`e525c38`](https://github.com/enzymefinance/sdk/commit/e525c38fb88892690c9b9337a763b90fce32a125) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix ParaSwapV6.2 AugustusSwapperAddress
+
 ## 6.3.31
 
 ### Patch Changes
