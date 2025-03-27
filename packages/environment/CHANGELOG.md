@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.33
+
+### Patch Changes
+
+- [#663](https://github.com/enzymefinance/sdk/pull/663) [`898a8b8`](https://github.com/enzymefinance/sdk/commit/898a8b825d88537402e94fd559748e52218787ac) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle V2 assets
+
 ## 6.3.32
 
 ### Patch Changes
