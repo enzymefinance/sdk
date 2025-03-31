@@ -7403,9 +7403,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
     markets: ["0x70b70ac0445c3ef04e314dfda6caafd825428221"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7417,9 +7415,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
     underlying: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7432,9 +7428,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7446,9 +7440,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7520,9 +7512,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
     markets: ["0x2c71ead7ac9ae53d05f8664e77031d4f9eba064b"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7643,9 +7633,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7901,6 +7889,21 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x06c9c8ff33b05f92993c06083f8e49c6651fd003",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-sUSDS-27MAR2025",
+    name: "PT Savings USDS 27MAR2025",
+    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [],
+    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
+    decimals: 18,
+    underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xc20fef0e0c7f85c6a61dc50abe8e2d6fd862e979",
       rateAsset: RateAsset.ETH,
     },
   },
