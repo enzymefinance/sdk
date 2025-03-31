@@ -7468,23 +7468,19 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
     decimals: 18,
     id: "0x691ad41906e3fe78c3fe1328ecddc9bd7c0e5eb8",
     name: "ZeroLend PT Ethena USDe 27MAR2025",
-    releases: [sulu],
+    releases: [],
     symbol: "z0PT-USDe-27MAR2025",
     type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7520,13 +7516,11 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend PT Corn ether.fi eBTC 27MAR2025",
     id: "0xe2e3075c8962010e0d0b3a945c4671cc652ad5b7",
     type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
-    releases: [sulu],
+    releases: [],
     decimals: 8,
     underlying: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7603,9 +7597,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7634,21 +7626,6 @@ export default defineAssetList(Network.ETHEREUM, [
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
       type: PriceFeedType.NONE,
-    },
-  },
-  {
-    symbol: "PT-corn-eBTC-27MAR2025",
-    name: "PT Corn ether.fi eBTC 27MAR2025",
-    id: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",
-    type: AssetType.PENDLE_V2_PT,
-    releases: [],
-    decimals: 8,
-    underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
-    markets: ["0x2c71ead7ac9ae53d05f8664e77031d4f9eba064b"],
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
-      rateAsset: RateAsset.ETH,
     },
   },
   {
