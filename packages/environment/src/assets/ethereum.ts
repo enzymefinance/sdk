@@ -7762,6 +7762,19 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    symbol: "PT-sUSDS-27MAR2025",
+    name: "PT Savings USDS 27MAR2025",
+    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [],
+    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
+    decimals: 18,
+    underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
     decimals: 18,
     id: "0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110",
     name: "Resolv USD",
@@ -7889,21 +7902,6 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x06c9c8ff33b05f92993c06083f8e49c6651fd003",
-      rateAsset: RateAsset.ETH,
-    },
-  },
-  {
-    symbol: "PT-sUSDS-27MAR2025",
-    name: "PT Savings USDS 27MAR2025",
-    id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
-    type: AssetType.PENDLE_V2_PT,
-    releases: [],
-    markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
-    decimals: 18,
-    underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xc20fef0e0c7f85c6a61dc50abe8e2d6fd862e979",
       rateAsset: RateAsset.ETH,
     },
   },
