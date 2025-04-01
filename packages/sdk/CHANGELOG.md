@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.12
+
+### Patch Changes
+
+- [#695](https://github.com/enzymefinance/sdk/pull/695) [`d1b938d`](https://github.com/enzymefinance/sdk/commit/d1b938d52790741ef5422e81fc9487a864be4a2d) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add protocol fee bps default to queries
+
 ## 1.2.11
 
 ### Patch Changes
