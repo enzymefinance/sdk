@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.34
+
+### Patch Changes
+
+- [#696](https://github.com/enzymefinance/sdk/pull/696) [`a80ec5d`](https://github.com/enzymefinance/sdk/commit/a80ec5ddb0dcaf8f3ea7a81c5a0f245b1fa5f6a0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add RSUP
+
 ## 6.3.33
 
 ### Patch Changes
