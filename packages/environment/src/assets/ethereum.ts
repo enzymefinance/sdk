@@ -7931,4 +7931,15 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    decimals: 18,
+    id: "0x419905009e4656fdc02418c7df35b1e61ed5f726",
+    name: "RSUP",
+    releases: [],
+    symbol: "Resupply",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
