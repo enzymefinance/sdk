@@ -9,7 +9,7 @@ import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 export type AdapterAction = (typeof AdapterAction)[keyof typeof AdapterAction];
 export const AdapterAction = {
   BuyShares: 0n,
-  RedeemShares: 1n,
+  RedeemSharesForSpecificAssets: 1n,
 } as const;
 
 export const encodeAdapterAction = IntegrationManager.createEncodeAdapterAction<AdapterAction>();
@@ -82,20 +82,24 @@ export function buySharesDecode(encoded: Hex): BuySharesArgs {
 }
 
 //--------------------------------------------------------------------------------------------
-// ADAPTER - REDEEM SHARES
+// ADAPTER - REDEEM SHARES FOR SPECIFIC ASSETS
 //--------------------------------------------------------------------------------------------
 
-export type RedeemSharesArgs = {
-  actionId: typeof AdapterAction.RedeemShares;
+export type RedeemSharesForSpecificAssetsArgs = {
+  actionId: typeof AdapterAction.RedeemSharesForSpecificAssets;
   vaultProxy: Address;
   sharesQuantity: bigint;
-  payoutAsset: Address;
-  minPayoutAssetAmount: bigint;
+  payoutAssets: ReadonlyArray<Address>;
+  payoutAssetPercentages: ReadonlyArray<bigint>;
+  minPayoutAssetAmounts: ReadonlyArray<bigint>;
 };
 
-export const redeemShares = IntegrationManager.makeUse(IntegrationManager.Selector.Action, redeemSharesEncode);
+export const redeemSharesForSpecificAssets = IntegrationManager.makeUse(
+  IntegrationManager.Selector.Action,
+  redeemSharesForSpecificAssetsEncode,
+);
 
-const redeemSharesEncoding = [
+const redeemSharesForSpecificAssetsEncoding = [
   {
     name: "vaultProxy",
     type: "address",
@@ -105,41 +109,47 @@ const redeemSharesEncoding = [
     type: "uint256",
   },
   {
-    name: "payoutAsset",
-    type: "address",
+    name: "payoutAssets",
+    type: "address[]",
   },
   {
-    name: "minPayoutAssetAmount",
-    type: "uint256",
+    name: "payoutAssetPercentages",
+    type: "uint256[]",
+  },
+  {
+    name: "minPayoutAssetAmounts",
+    type: "uint256[]",
   },
 ] as const;
 
-export function redeemSharesEncode(args: RedeemSharesArgs): Hex {
-  const encodedActionArgs = encodeAbiParameters(redeemSharesEncoding, [
+export function redeemSharesForSpecificAssetsEncode(args: RedeemSharesForSpecificAssetsArgs): Hex {
+  const encodedActionArgs = encodeAbiParameters(redeemSharesForSpecificAssetsEncoding, [
     args.vaultProxy,
     args.sharesQuantity,
-    args.payoutAsset,
-    args.minPayoutAssetAmount,
+    args.payoutAssets,
+    args.payoutAssetPercentages,
+    args.minPayoutAssetAmounts,
   ]);
 
   return encodeAdapterAction({ actionId: args.actionId, encodedActionArgs });
 }
 
-export function redeemSharesDecode(encoded: Hex): RedeemSharesArgs {
+export function redeemSharesForSpecificAssetsDecode(encoded: Hex): RedeemSharesForSpecificAssetsArgs {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
-  const [vaultProxy, sharesQuantity, payoutAsset, minPayoutAssetAmount] = decodeAbiParameters(
-    redeemSharesEncoding,
+  const [vaultProxy, sharesQuantity, payoutAssets, payoutAssetPercentages, minPayoutAssetAmounts] = decodeAbiParameters(
+    redeemSharesForSpecificAssetsEncoding,
     encodedActionArgs,
   );
 
-  Assertion.invariant(actionId === AdapterAction.RedeemShares, "Invalid actionId");
+  Assertion.invariant(actionId === AdapterAction.RedeemSharesForSpecificAssets, "Invalid actionId");
 
   return {
     actionId,
     vaultProxy,
     sharesQuantity,
-    payoutAsset,
-    minPayoutAssetAmount,
+    payoutAssets,
+    payoutAssetPercentages,
+    minPayoutAssetAmounts,
   };
 }
