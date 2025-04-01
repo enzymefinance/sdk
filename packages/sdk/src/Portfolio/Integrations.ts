@@ -8,7 +8,7 @@ export * as CompoundV2 from "./Integrations/CompoundV2.js";
 export * as CompoundV3 from "./Integrations/CompoundV3.js";
 export * as Convex from "./Integrations/Convex.js";
 export * as Curve from "./Integrations/Curve.js";
-export * as EnzymeVault from "./Integrations/EnzymeVault.js";
+export * as EnzymeVault from "./Integrations/EnzymeV4Vault.js";
 export * as Erc4626 from "./Integrations/Erc4626.js";
 export * as GMXV2 from "./Integrations/GMXV2.js";
 export * as Kiln from "./Integrations/Kiln.js";

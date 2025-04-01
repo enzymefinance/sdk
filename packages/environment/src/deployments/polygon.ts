@@ -151,7 +151,7 @@ export default defineDeployment<Deployment.POLYGON>({
         Dispatcher: "0x2e25271297537b8124b8f883a92ffd95c4032733",
         EntranceRateBurnFee: "0x01460ba35cb6f847d65c5eee124e7e9e10055f16",
         EntranceRateDirectFee: "0x88c9a11c7bb8bc274388d0db864ab87c14fb78b8",
-        EnzymeVaultAdapter: "0x0000000000000000000000000000000000000000",
+        EnzymeV4VaultAdapter: "0x0000000000000000000000000000000000000000",
         EnzymeVaultPriceFeed: "0x0000000000000000000000000000000000000000",
         ERC4626Adapter: "0x79567acc4c54c23f5f449c1fbc1b54ac615df87d",
         ERC4626PriceFeed: "0xb13f73c5e333fb760a5bed668b1ff04432cadab0",

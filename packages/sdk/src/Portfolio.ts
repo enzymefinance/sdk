@@ -44,17 +44,6 @@ export {
   type RemoveTrackedAssetsArgs,
 } from "./_internal/IntegrationManager.js";
 
-// export function decodeAdapterAction(encoded: Hex): AdapterActionArgs {
-//   const [actionId, encodedActionArgs] = decodeAbiParameters(adapterActionEncoding, encoded);
-
-//   assertEnumType(AdapterAction, actionId);
-
-//   return {
-//     actionId,
-//     encodedActionArgs,
-//   };
-// }
-
 export type VaultCallOnContractParams = {
   comptrollerProxy: Address;
   contract: Address;

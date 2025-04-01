@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.6.0 <0.9.0;
 
-interface IEnzymeVaultAdapter {
+interface IEnzymeV4VaultAdapter {
     type SpendAssetsHandleType is uint8;
 
-    error EnzymeVaultAdapter__InvalidAction();
-    error EnzymeVaultAdapter__InvalidVaultProxy();
+    error EnzymeV4VaultAdapter__InvalidAction();
+    error EnzymeV4VaultAdapter__InvalidVaultProxy();
 
     function DISPATCHER() external view returns (address);
     function FUND_DEPLOYER_ADDRESS() external view returns (address);

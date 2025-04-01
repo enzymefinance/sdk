@@ -1,4 +1,4 @@
-export const IEnzymeVaultAdapter = [
+export const IEnzymeV4VaultAdapter = [
   {
     type: "constructor",
     inputs: [
@@ -133,12 +133,12 @@ export const IEnzymeVaultAdapter = [
   },
   {
     type: "error",
-    name: "EnzymeVaultAdapter__InvalidAction",
+    name: "EnzymeV4VaultAdapter__InvalidAction",
     inputs: [],
   },
   {
     type: "error",
-    name: "EnzymeVaultAdapter__InvalidVaultProxy",
+    name: "EnzymeV4VaultAdapter__InvalidVaultProxy",
     inputs: [],
   },
 ] as const;

@@ -133,12 +133,12 @@
   },
   {
     "type": "error",
-    "name": "EnzymeVaultAdapter__InvalidAction",
+    "name": "EnzymeV4VaultAdapter__InvalidAction",
     "inputs": []
   },
   {
     "type": "error",
-    "name": "EnzymeVaultAdapter__InvalidVaultProxy",
+    "name": "EnzymeV4VaultAdapter__InvalidVaultProxy",
     "inputs": []
   }
 ]
