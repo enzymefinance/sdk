@@ -273,9 +273,19 @@ export type KnownAddressListIdMappingPolygonSpecific = {
   gsnTrustedForwarders: bigint;
 };
 
-export interface KnownUintListIdMapping {
+export type KnownUintListIdMapping<TDeployment extends Deployment> = {
   allowedMorphoBlueVaults?: bigint;
-}
+} & (TDeployment extends Deployment.ETHEREUM
+  ? KnownUintListIdMappingEthereumSpecific
+  : TDeployment extends Deployment.BASE
+    ? KnownUintListIdMappingBaseChainSpecific
+    : {});
+
+export type KnownUintListIdMappingEthereumSpecific = {
+  allowedMorphoBlueVaults: bigint;
+};
+
+export type KnownUintListIdMappingBaseChainSpecific = KnownUintListIdMappingEthereumSpecific;
 
 export interface ExternalContractsMapping {
   readonly aaveUIIncentiveDataProvider: Address;
@@ -306,15 +316,12 @@ export interface ExternalContractsMapping {
   readonly gmxV2ReferralStorage: Address;
   readonly kilnStaking: Address;
   readonly lidoWithdrawalsQueue: Address;
-  readonly liquityCollSurplusPool: Address;
-  readonly liquityHintHelpers: Address;
-  readonly liquitySortedTroves: Address;
-  readonly liquityTroveManager: Address;
   readonly makerMCDPotAddress: Address;
   readonly morphoBlue: Address;
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;
   readonly paraswapV5TokenTransferProxy: Address;
+  readonly paraswapV6AugustusSwapper: Address;
   readonly pendlePtLpOracle: Address;
   readonly staderStakingPoolManager: Address;
   readonly staderUserWithdrawManager: Address;
@@ -355,7 +362,7 @@ export interface DeploymentDefinition<TDeployment extends Deployment> {
   /**
    * Ids for known uint lists.
    */
-  readonly knownUintLists: KnownUintListIdMapping;
+  readonly knownUintLists: KnownUintListIdMapping<TDeployment>;
   /**
    * The kind of the deployment (e.g. testnet or production).
    */

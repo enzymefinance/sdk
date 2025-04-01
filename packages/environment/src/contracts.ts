@@ -92,6 +92,7 @@ export interface SuluContracts extends CommonContracts {
   readonly EnzymeVaultPriceFeed: Address;
   readonly ERC4626Adapter: Address;
   readonly ERC4626PriceFeed: Address;
+  readonly ERC4626RateAggregatorFactory: Address;
   readonly EtherFiEthPriceFeed: Address;
   readonly ExitRateBurnFee: Address;
   readonly ExitRateDirectFee: Address;
@@ -112,8 +113,6 @@ export interface SuluContracts extends CommonContracts {
   readonly KilnStakingPositionParser: Address;
   readonly LidoWithdrawalsPositionLib: Address;
   readonly LidoWithdrawalsPositionParser: Address;
-  readonly LiquityDebtPositionLib: Address;
-  readonly LiquityDebtPositionParser: Address;
   readonly ManagementFee: Address;
   readonly ManualValueOracleFactory: Address;
   readonly MapleLiquidityPositionLib: Address;
@@ -130,7 +129,9 @@ export interface SuluContracts extends CommonContracts {
   readonly OnlyRemoveDustExternalPositionPolicy: Address;
   readonly OnlyUntrackDustOrPricelessAssetsPolicy: Address;
   readonly ParaSwapV5Adapter: Address;
+  readonly ParaSwapV6Adapter: Address;
   readonly PeggedDerivativesPriceFeed: Address;
+  readonly PeggedRateDeviationAggregatorFactory: Address;
   readonly PendleV2Adapter: Address;
   readonly PendleV2PositionLib: Address;
   readonly PendleV2PositionParser: Address;
@@ -146,6 +147,8 @@ export interface SuluContracts extends CommonContracts {
   readonly SharesSplitterFactory: Address;
   readonly SingleAssetRedemptionQueueLib: Address;
   readonly SingleAssetRedemptionQueueFactory: Address;
+  readonly SingleAssetDepositQueueLib: Address;
+  readonly SingleAssetDepositQueueFactory: Address;
   readonly SolvV2BondBuyerPositionLib: Address;
   readonly SolvV2BondBuyerPositionParser: Address;
   readonly SolvV2BondIssuerPositionLib: Address;

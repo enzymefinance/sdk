@@ -1,5 +1,29 @@
 # @enzymefinance/sdk
 
+## 1.2.11
+
+### Patch Changes
+
+- [#659](https://github.com/enzymefinance/sdk/pull/659) [`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add single asset deposit queue
+
+- Updated dependencies [[`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2)]:
+  - @enzymefinance/abis@1.2.4
+
+## 1.2.10
+
+### Patch Changes
+
+- [#680](https://github.com/enzymefinance/sdk/pull/680) [`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove liquity
+
+- Updated dependencies [[`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275)]:
+  - @enzymefinance/abis@1.2.3
+
+## 1.2.9
+
+### Patch Changes
+
+- [#658](https://github.com/enzymefinance/sdk/pull/658) [`4a06def`](https://github.com/enzymefinance/sdk/commit/4a06def2ddded3ad3a69fc909c89ad4d89b5cdd2) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add ParaSwapV6 Integration
+
 ## 1.2.8
 
 ### Patch Changes

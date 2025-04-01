@@ -5,6 +5,8 @@ export enum PriceFeedType {
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
   PRIMITIVE_CHAINLINK_LIKE_ETHX = "PRIMITIVE_CHAINLINK_LIKE_ETHX",
+  PRIMITIVE_CHAINLINK_LIKE_ERC4626 = "PRIMITIVE_CHAINLINK_LIKE_ERC4626",
+  PRIMITIVE_CHAINLINK_LIKE_QUOTED = "PRIMITIVE_CHAINLINK_LIKE_QUOTED",
   PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
   PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
@@ -31,6 +33,8 @@ export enum PriceFeedType {
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
   PriceFeedType.PRIMITIVE_REDSTONE,
@@ -66,6 +70,8 @@ export type PriceFeed =
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
   | PrimitiveChainlinkLikeEthxPriceFeed
+  | PrimitiveChainlinkLikeERC4626PriceFeed
+  | PrimitiveChainlinkLikeQuotedPriceFeed
   | PrimitiveChainlinkLikeWstEthPriceFeed
   | PrimitiveChainlinkLikeYnEthPriceFeed
   | PrimitiveRedstonePriceFeed
@@ -113,6 +119,18 @@ export interface PrimitiveChainlinkPriceFeed extends PriceFeedBase {
   readonly rateAsset: RateAsset;
 }
 
+export interface PrimitiveChainlinkLikeQuotedPriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset.ETH;
+}
+
 export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
   readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
   /**
@@ -123,6 +141,18 @@ export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
    * Rate Asset (ETH = 0, USD = 1)
    */
   readonly rateAsset: RateAsset.ETH;
+}
+
+export interface PrimitiveChainlinkLikeERC4626PriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset;
 }
 
 export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {

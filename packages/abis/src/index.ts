@@ -89,8 +89,6 @@ export { IIntegrationManager } from "./IIntegrationManager.js";
 export { IKilnStakingPositionLib } from "./IKilnStakingPositionLib.js";
 export { IKilnStakingPositionParser } from "./IKilnStakingPositionParser.js";
 export { ILidoWithdrawalsPositionLib } from "./ILidoWithdrawalsPositionLib.js";
-export { ILiquityDebtPositionLib } from "./ILiquityDebtPositionLib.js";
-export { ILiquityDebtPositionParser } from "./ILiquityDebtPositionParser.js";
 export { IManagementFee } from "./IManagementFee.js";
 export { IManualValueOracleFactory } from "./IManualValueOracleFactory.js";
 export { IManualValueOracleLib } from "./IManualValueOracleLib.js";
@@ -122,6 +120,7 @@ export { ISharePriceThrottledAssetManagerLib } from "./ISharePriceThrottledAsset
 export { ISharesSplitterFactory } from "./ISharesSplitterFactory.js";
 export { ISharesSplitterLib } from "./ISharesSplitterLib.js";
 export { ISingleAssetRedemptionQueueFactory } from "./ISingleAssetRedemptionQueueFactory.js";
+export { ISingleAssetDepositQueueLib } from "./ISingleAssetDepositQueueLib.js";
 export { ISingleAssetRedemptionQueueLib } from "./ISingleAssetRedemptionQueueLib.js";
 export { ISolvV2BondBuyerPositionLib } from "./ISolvV2BondBuyerPositionLib.js";
 export { ISolvV2BondBuyerPositionParser } from "./ISolvV2BondBuyerPositionParser.js";
