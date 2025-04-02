@@ -318,6 +318,7 @@ export interface ExternalContractsMapping {
   readonly lidoWithdrawalsQueue: Address;
   readonly makerMCDPotAddress: Address;
   readonly morphoBlue: Address;
+  readonly mysoV3Router: Address;
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;
   readonly paraswapV5TokenTransferProxy: Address;
