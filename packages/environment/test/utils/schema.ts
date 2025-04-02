@@ -113,6 +113,10 @@ export const MaplePoolV2Schema = CommonAssetSchema.extend({
   underlying: address,
 });
 
+export const EnzymeVaultSchema = CommonAssetSchema.extend({
+  type: z.literal(AssetType.ENZYME_VAULT),
+});
+
 export const ERC4626Schema = CommonAssetSchema.extend({
   type: z.literal(AssetType.ERC_4626),
   protocol: z.nativeEnum(Erc4626Protocol),

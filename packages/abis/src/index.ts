@@ -57,6 +57,7 @@ export { IDerivativePriceFeed } from "./IDerivativePriceFeed.js";
 export { IDisallowedAdapterIncomingAssetsPolicy } from "./IDisallowedAdapterIncomingAssetsPolicy.js";
 export { IDispatcher } from "./IDispatcher.js";
 export { IDispatcherOwnedBeaconFactory } from "./IDispatcherOwnedBeaconFactory.js";
+export { IEnzymeV4VaultAdapter } from "./IEnzymeV4VaultAdapter.js";
 export { IERC4626Adapter } from "./IERC4626Adapter.js";
 export { IERC4626PriceFeed } from "./IERC4626PriceFeed.js";
 export { IEntranceRateBurnFee } from "./IEntranceRateBurnFee.js";
