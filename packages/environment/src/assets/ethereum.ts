@@ -7934,9 +7934,9 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x419905009e4656fdc02418c7df35b1e61ed5f726",
-    name: "RSUP",
+    name: "Resupply",
     releases: [],
-    symbol: "Resupply",
+    symbol: "RSUP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
