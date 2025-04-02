@@ -1,5 +1,18 @@
 # @enzymefinance/environment
 
+## 6.3.36
+
+### Patch Changes
+
+- [#699](https://github.com/enzymefinance/sdk/pull/699) [`87337bd`](https://github.com/enzymefinance/sdk/commit/87337bd032c880734c148f0d9d322751ec1a7507) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix resupply
+
+## 6.3.35
+
+### Patch Changes
+
+- Updated dependencies [[`d1b938d`](https://github.com/enzymefinance/sdk/commit/d1b938d52790741ef5422e81fc9487a864be4a2d)]:
+  - @enzymefinance/sdk@1.2.12
+
 ## 6.3.34
 
 ### Patch Changes
