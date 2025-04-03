@@ -7398,24 +7398,28 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Lombard LBTC 27MAR2025",
     id: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 8,
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
     markets: ["0x70b70ac0445c3ef04e314dfda6caafd825428221"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
     decimals: 8,
     id: "0x813ff1cf08b381632d0087cc6d9e17ff73a7afc8",
     name: "ZeroLend PT Lombard LBTC 27MAR2025",
-    releases: [],
+    releases: [sulu],
     symbol: "z0PT-LBTC-27MAR2025",
     type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
     underlying: "0xec5a52c685cc3ad79a6a347abace330d69e0b1ed",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x83a017b13540a85dbfc056b66eb0b35bf72c09e3",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7423,24 +7427,28 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena sUSDE 27MAR2025",
     id: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
     decimals: 18,
     id: "0xb73ca924bf3e1c2c5ac4d7718700650d706aad73",
     name: "ZeroLend PT Ethena sUSDE 27MAR2025",
-    releases: [],
+    releases: [sulu],
     symbol: "z0PT-sUSDE-27MAR2025",
     type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7463,24 +7471,28 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena USDe 27MAR2025",
     id: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 18,
     underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
     decimals: 18,
     id: "0x691ad41906e3fe78c3fe1328ecddc9bd7c0e5eb8",
     name: "ZeroLend PT Ethena USDe 27MAR2025",
-    releases: [],
+    releases: [sulu],
     symbol: "z0PT-USDe-27MAR2025",
     type: AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3,
     underlying: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7488,12 +7500,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Corn SolvBTC Babylon 26DEC2024",
     id: "0x23e479ddcda990e8523494895759bd98cd2fdbf6",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 8,
     markets: ["0xeb4d3057738b9ed930f451be473c1ccc42988384"],
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x65427ee55ab33c00d467923af340b8fb3e73a0cd",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -7501,12 +7515,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Corn ether.fi eBTC 27MAR2025",
     id: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 8,
     underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
     markets: ["0x2c71ead7ac9ae53d05f8664e77031d4f9eba064b"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7514,11 +7530,13 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ZeroLend PT Corn ether.fi eBTC 27MAR2025",
     id: "0xe2e3075c8962010e0d0b3a945c4671cc652ad5b7",
     type: AssetType.ZERO_LEND_LRT_BTC_AAVE_V3,
-    releases: [],
+    releases: [sulu],
     decimals: 8,
     underlying: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7590,12 +7608,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena sUSDE 27MAR2025",
     id: "0xe00bd3df25fb187d6abbb620b3dfd19839947b81",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xcdd26eb5eb2ce0f203a84553853667ae69ca29ce"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x9f0d27b5df260736f49c023504ae7c2a50cebc61",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7618,12 +7638,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena USDe 27MAR2025",
     id: "0x8a47b431a7d947c6a3ed6e42d501803615a97eaa",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 18,
     underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xe0fa7b4fd6d05d166982f62f258ff5efa7c2692b",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7631,12 +7653,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Corn ether.fi eBTC 27MAR2025",
     id: "0x44a7876ca99460ef3218bf08b5f52e2dbe199566",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     decimals: 8,
     underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
     markets: ["0x2c71ead7ac9ae53d05f8664e77031d4f9eba064b"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x56579251c109537c239b783558792598e619cf2f",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
@@ -7754,12 +7778,14 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Savings USDS 27MAR2025",
     id: "0x152b8629fee8105248ba3b7ba6afb94f7a468302",
     type: AssetType.PENDLE_V2_PT,
-    releases: [],
+    releases: [sulu],
     markets: ["0xd3719a10991b6ca2cd32de536d6e81ccd46e9c02"],
     decimals: 18,
     underlying: "0xa3931d71877c0e7a3148cb7eb4463524fec27fbd",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xc20fef0e0c7f85c6a61dc50abe8e2d6fd862e979",
+      rateAsset: RateAsset.ETH,
     },
   },
   {
