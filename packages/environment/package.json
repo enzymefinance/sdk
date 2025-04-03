@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
+    "@types/jscodeshift": "^17.3.0",
     "jscodeshift": "^17.3.0",
     "p-throttle": "^6.2.0",
     "tsx": "^4.19.0",
