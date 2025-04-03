@@ -17,18 +17,18 @@ dotenv.config({ path: "../../.env" });
 // parse args
 const args = arg({
   // Types
-  "--pts": String,
+  "--ptMarkets": String,
   "--lps": String,
 });
 
-const ptArg = args["--pts"];
+const ptMarketsArg = args["--ptMarkets"];
 const lpArg = args["--lps"];
 
-if (!(ptArg || lpArg)) {
+if (!(ptMarketsArg || lpArg)) {
   throw new Error("Either --pts or --lps must be provided");
 }
 
-const pt = ptArg ? ptArg.split(",") : [];
+const ptMarkets = ptMarketsArg ? ptMarketsArg.split(",") : [];
 const lp = lpArg ? lpArg.split(",") : [];
 
 async function getAssetInfo(market: string) {
@@ -86,9 +86,11 @@ async function getLPAssetInfo(market: string) {
 }
 
 const assets = await Promise.all([
-  ...pt.map((market) => getPTAssetInfo(market)),
+  ...ptMarkets.map((market) => getPTAssetInfo(market)),
   ...lp.map((market) => getLPAssetInfo(market)),
 ]);
+
+console.log(assets);
 
 // Path to the file containing the array
 const __filename = fileURLToPath(import.meta.url);
