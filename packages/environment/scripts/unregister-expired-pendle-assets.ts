@@ -26,6 +26,8 @@ function isExpired(symbol) {
   return date < new Date();
 }
 
+const unregisteredAssets: Array<string> = [];
+
 // Modify expired assets
 // biome-ignore lint/complexity/noForEach: <explanation>
 root
@@ -33,7 +35,6 @@ root
   .filter((path) => {
     const symbolProperty = path.value.properties.find((prop) => prop.key.name === "symbol");
 
-    console.log("path", path);
     if (!symbolProperty || symbolProperty.value.type !== "Literal") {
       return false;
     }
@@ -42,24 +43,19 @@ root
   .forEach((path) => {
     // Set releases to empty array
     const releasesProp = path.value.properties.find((prop) => prop.key.name === "releases");
-    if (releasesProp) {
-      releasesProp.value.elements = [];
-    }
+    releasesProp.value.elements = [];
+
+    const idProperty = path.value.properties.find((prop) => prop.key.name === "id");
+    unregisteredAssets.push(idProperty.value.value);
 
     // Set priceFeed to { type: PriceFeedType.NONE }
     const priceFeedProp = path.value.properties.find((prop) => prop.key.name === "priceFeed");
-    if (priceFeedProp) {
-      priceFeedProp.value = j.objectExpression([
-        j.property(
-          "init",
-          j.identifier("type"),
-          j.memberExpression(j.identifier("PriceFeedType"), j.identifier("NONE")),
-        ),
-      ]);
-    }
+    priceFeedProp.value = j.objectExpression([
+      j.property("init", j.identifier("type"), j.memberExpression(j.identifier("PriceFeedType"), j.identifier("NONE"))),
+    ]);
   });
 
 // Write back to the file
 fs.writeFileSync(filePath, root.toSource(), "utf8");
 
-console.log("Expired assets modified successfully!");
+console.log("Unregistered assets:", unregisteredAssets);
