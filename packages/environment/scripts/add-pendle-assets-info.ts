@@ -76,9 +76,11 @@ root
         Object.entries(asset).map(([key, value]) => {
           if (key === "type") {
             // Use j.identifier to refer to AssetType.PENDLE_V2_PT directly
+            // @ts-ignore
             value = j.identifier(value);
           } else if (key === "priceFeed") {
             // Handle nested priceFeed object
+            // @ts-ignore
             value = j.objectExpression(
               Object.entries(value).map(([nestedKey, nestedValue]) => {
                 if (nestedValue === "") {
@@ -93,20 +95,26 @@ root
             );
           } else if (key === "releases" && Array.isArray(value)) {
             // Handle releases array
+            // @ts-ignore
             value = j.arrayExpression(
               value.map((item) => j.identifier(item)), // Convert string 'sulu' to identifier
             );
           } else {
             // Otherwise, just create a literal value (string, number, etc.)
+            // @ts-ignore
             value = j.literal(value);
           }
 
           // Return the property (key-value pair)
+          // @ts-ignore
           return j.property("init", j.identifier(key), value);
         }),
       );
 
       // Push the new object to the array
+      if (assetArray.type !== "ArrayExpression") {
+        throw new Error("assetArray is an ArrayExpression");
+      }
       assetArray.elements.push(newObject);
     });
   });
