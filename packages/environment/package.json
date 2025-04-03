@@ -19,7 +19,8 @@
     "build-esm": "tsc -b tsconfig.build.json",
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
-    "unregister:expired:pendle:assets": "tsx ./scripts/unregister-expired-pendle-assets.ts"
+    "unregister:expired:pendle:assets": "tsx ./scripts/unregister-expired-pendle-assets.ts",
+    "add:pendle:assets:info": "tsx ./scripts/add-pendle-assets-info.ts"
   },
   "peerDependencies": {
     "@enzymefinance/sdk": "workspace:*",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
     "@types/jscodeshift": "^17.3.0",
+    "dotenv": "^16.4.7",
     "jscodeshift": "^17.3.0",
     "p-throttle": "^6.2.0",
     "tsx": "^4.19.0",
