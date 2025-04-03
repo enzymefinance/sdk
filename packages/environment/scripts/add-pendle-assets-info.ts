@@ -90,8 +90,6 @@ const assets = await Promise.all([
   ...lp.map((market) => getLPAssetInfo(market)),
 ]);
 
-console.log(assets);
-
 // Path to the file containing the array
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -147,6 +145,12 @@ root
             value = j.arrayExpression(
               value.map((item) => j.identifier(item)), // Convert string 'sulu' to identifier
             );
+          } else if (key === "markets" && Array.isArray(value)) {
+            // Handle markets array
+            // @ts-ignore
+            value = j.arrayExpression(
+              value.map((item) => j.literal(item)), // Convert market addresses to string literals
+            );
           } else {
             // Otherwise, just create a literal value (string, number, etc.)
             // @ts-ignore
@@ -180,4 +184,8 @@ source = source.replace(/\n\s*\n/g, "\n"); // Remove empty lines between propert
 
 fs.writeFileSync(filePath, source, "utf8");
 
-console.log("New assets have been added!");
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+console.log(
+  "New assets have been added!",
+  assets.map((asset) => ({ id: asset.id, symbol: asset.symbol })),
+);
