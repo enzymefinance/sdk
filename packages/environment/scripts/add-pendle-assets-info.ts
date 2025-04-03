@@ -5,8 +5,6 @@ import { Asset } from "@enzymefinance/sdk";
 import dotenv from "dotenv";
 import jscodeshift from "jscodeshift";
 
-import { AssetType } from "../src/assets.js";
-import { AssetType } from "../src/assets.js";
 import { getEnvironmentForRelease } from "../src/deployments/all.js";
 import type { Release } from "../src/releases.js";
 import { toAddress } from "../src/utils.js";
@@ -113,7 +111,17 @@ root
     });
   });
 
-// Write the modified content back to the file
-fs.writeFileSync(filePath, root.toSource(), "utf8");
+// Write the modified content back to the file, removing unwanted line breaks
+let source = root.toSource({
+  quote: "single",
+  trailingComma: true,
+  tabWidth: 2, // Keep the indentations tight
+  useTabs: false, // Use spaces instead of tabs
+});
+
+// Post-process to remove empty lines between properties
+source = source.replace(/\n\s*\n/g, "\n"); // Remove empty lines between properties
+
+fs.writeFileSync(filePath, source, "utf8");
 
 console.log("New assets have been added!");

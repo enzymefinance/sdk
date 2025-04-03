@@ -10,16 +10,13 @@ import {
 import { Network } from "../networks.js";
 import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
-
 //---------------------------------------------------------------------------------------------
 //
 // Note: as of November 21, 2023, the v2 and v3 asset universe is no longer maintained
 // (v2 and v3 are deprecated as of this date)
 //
 //---------------------------------------------------------------------------------------------
-
 const { sulu, encore, phoenix } = releases.ethereum;
-
 export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
