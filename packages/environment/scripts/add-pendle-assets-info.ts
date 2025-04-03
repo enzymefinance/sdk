@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { Asset } from "@enzymefinance/sdk";
+import arg from "arg";
 import dotenv from "dotenv";
 import jscodeshift from "jscodeshift";
 
@@ -9,40 +10,85 @@ import { getEnvironmentForRelease } from "../src/deployments/all.js";
 import type { Release } from "../src/releases.js";
 import { toAddress } from "../src/utils.js";
 import { getClient } from "../test/utils/client.js";
-import { readTokensFromMarket } from "../test/utils/contractt/utils/pendle.js";
+import { getPendleMarketInfo } from "../test/utils/pendle.js";
 
 dotenv.config({ path: "../../.env" });
 
-// const env = getEnvironmentForRelease(process.env.VITE_RELEASE as Release);
+// parse args
+const args = arg({
+  // Types
+  "--pts": String,
+  "--lps": String,
+});
 
-// const client = getClient(env.network.id);
+const ptArg = args["--pts"];
+const lpArg = args["--lps"];
 
-// const market = "0x21d85ff3bedff031ef466c7d5295240c8ab2a2b8";
+if (!(ptArg || lpArg)) {
+  throw new Error("Either --pts or --lps must be provided");
+}
 
-// const { sy, pt } = await readTokensFromMarket(client, { market });
+const pt = ptArg ? ptArg.split(",") : [];
+const lp = lpArg ? lpArg.split(",") : [];
 
-// const marketInfo = await getPendleMarketInfo(env.network.id, market);
+async function getAssetInfo(market: string) {
+  const env = getEnvironmentForRelease(process.env.VITE_RELEASE as Release);
 
-// const ptSymbol = await Asset.getSymbol(client, { asset: toAddress(marketInfo.pt.address) });
+  const client = getClient(env.network.id);
 
-// console.log(sy, pt, marketInfo);
+  const marketInfo = await getPendleMarketInfo(env.network.id, market);
 
-// Define the new assets you want to add
-const newAssets = [
-  {
-    decimals: 18,
-    id: "0x00000000001547270b2be2c7c80b03a28f4b7f55",
-    name: "NewAsset2",
-    releases: ["sulu"],
-    symbol: "NA2",
+  const ptName = await Asset.getName(client, { asset: toAddress(marketInfo.pt.address) });
+
+  return {
+    marketInfo,
+    ptName,
+  };
+}
+
+async function getPTAssetInfo(market: string) {
+  const { marketInfo, ptName } = await getAssetInfo(market);
+
+  return {
+    symbol: marketInfo.pt.symbol,
+    name: ptName,
+    id: marketInfo.pt.address,
     type: "AssetType.PENDLE_V2_PT",
+    releases: ["sulu"],
+    decimals: marketInfo.pt.decimals,
+    underlying: marketInfo.underlyingAsset.address,
+    markets: [market],
     priceFeed: {
       type: "PriceFeedType.PRIMITIVE_PENDLE_V2",
       aggregator: "",
       rateAsset: "RateAsset.ETH",
     },
-  },
-];
+  };
+}
+
+async function getLPAssetInfo(market: string) {
+  const { marketInfo, ptName } = await getAssetInfo(market);
+
+  return {
+    symbol: marketInfo.pt.symbol.replace("PT", "LP"),
+    name: ptName.replace("PT", "LP"),
+    id: marketInfo.lp.address,
+    type: "AssetType.PENDLE_V2_LP",
+    releases: ["sulu"],
+    decimals: marketInfo.lp.decimals,
+    underlying: marketInfo.underlyingAsset.address,
+    priceFeed: {
+      type: "PriceFeedType.PRIMITIVE_PENDLE_V2",
+      aggregator: "",
+      rateAsset: "RateAsset.ETH",
+    },
+  };
+}
+
+const assets = await Promise.all([
+  ...pt.map((market) => getPTAssetInfo(market)),
+  ...lp.map((market) => getLPAssetInfo(market)),
+]);
 
 // Path to the file containing the array
 const __filename = fileURLToPath(import.meta.url);
@@ -70,7 +116,7 @@ root
 
     // Add new objects to the array (the array is a `ArrayExpression`)
     // biome-ignore lint/complexity/noForEach: <explanation>
-    newAssets.forEach((asset) => {
+    assets.forEach((asset) => {
       // Convert the asset into a jscodeshift object expression with correct literals
       const newObject = j.objectExpression(
         Object.entries(asset).map(([key, value]) => {

@@ -29,6 +29,7 @@
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
     "@types/jscodeshift": "^17.3.0",
+    "arg": "^5.0.2",
     "dotenv": "^16.4.7",
     "jscodeshift": "^17.3.0",
     "p-throttle": "^6.2.0",

@@ -191,6 +191,9 @@ importers:
       '@types/jscodeshift':
         specifier: ^17.3.0
         version: 17.3.0
+      arg:
+        specifier: ^5.0.2
+        version: 5.0.2
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
