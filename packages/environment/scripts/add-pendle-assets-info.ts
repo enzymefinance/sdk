@@ -5,12 +5,13 @@ import { Asset } from "@enzymefinance/sdk";
 import dotenv from "dotenv";
 import jscodeshift from "jscodeshift";
 
+import { AssetType } from "../src/assets.js";
+import { AssetType } from "../src/assets.js";
 import { getEnvironmentForRelease } from "../src/deployments/all.js";
 import type { Release } from "../src/releases.js";
 import { toAddress } from "../src/utils.js";
 import { getClient } from "../test/utils/client.js";
-import { readTokensFromMarket } from "../test/utils/contracts/PendleV2Tokens.js";
-import { getPendleMarketInfo } from "../test/utils/pendle.js";
+import { readTokensFromMarket } from "../test/utils/contractt/utils/pendle.js";
 
 dotenv.config({ path: "../../.env" });
 
@@ -32,24 +33,15 @@ dotenv.config({ path: "../../.env" });
 const newAssets = [
   {
     decimals: 18,
-    id: "0x00000000001b5c417ae3d15f4bce44c2341ff72c",
-    name: "NewAsset1",
-    releases: [],
-    symbol: "NA1",
-    type: "AssetType.PRIMITIVE",
-    priceFeed: {
-      type: "PriceFeedType.NONE",
-    },
-  },
-  {
-    decimals: 18,
     id: "0x00000000001547270b2be2c7c80b03a28f4b7f55",
     name: "NewAsset2",
-    releases: [],
+    releases: ["sulu"],
     symbol: "NA2",
-    type: "AssetType.PRIMITIVE",
+    type: "AssetType.PENDLE_V2_PT",
     priceFeed: {
-      type: "PriceFeedType.NONE",
+      type: "PriceFeedType.PRIMITIVE_PENDLE_V2",
+      aggregator: "",
+      rateAsset: "RateAsset.ETH",
     },
   },
 ];
@@ -84,12 +76,27 @@ root
       // Convert the asset into a jscodeshift object expression with correct literals
       const newObject = j.objectExpression(
         Object.entries(asset).map(([key, value]) => {
-          if (typeof value === "object") {
-            // If it's a nested object (like priceFeed), recursively handle that
+          if (key === "type") {
+            // Use j.identifier to refer to AssetType.PENDLE_V2_PT directly
+            value = j.identifier(value);
+          } else if (key === "priceFeed") {
+            // Handle nested priceFeed object
             value = j.objectExpression(
-              Object.entries(value).map(([nestedKey, nestedValue]) =>
-                j.property("init", j.identifier(nestedKey), j.literal(nestedValue)),
-              ),
+              Object.entries(value).map(([nestedKey, nestedValue]) => {
+                if (nestedValue === "") {
+                  // Handle the empty string case explicitly
+                  nestedValue = j.literal("");
+                } else {
+                  // Use j.identifier for other cases
+                  nestedValue = j.identifier(nestedValue);
+                }
+                return j.property("init", j.identifier(nestedKey), nestedValue); // Use the correct value
+              }),
+            );
+          } else if (key === "releases" && Array.isArray(value)) {
+            // Handle releases array
+            value = j.arrayExpression(
+              value.map((item) => j.identifier(item)), // Convert string 'sulu' to identifier
             );
           } else {
             // Otherwise, just create a literal value (string, number, etc.)
@@ -105,6 +112,7 @@ root
       assetArray.elements.push(newObject);
     });
   });
+
 // Write the modified content back to the file
 fs.writeFileSync(filePath, root.toSource(), "utf8");
 

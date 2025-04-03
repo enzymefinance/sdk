@@ -5536,7 +5536,6 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
-  // TODO: order assets below by id
   {
     decimals: 18,
     id: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
@@ -6998,7 +6997,6 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
-
   {
     symbol: "gtUSDAcore",
     name: "Gauntlet USDA Core",
