@@ -32,6 +32,8 @@ root
   .find(j.ObjectExpression)
   .filter((path) => {
     const symbolProperty = path.value.properties.find((prop) => prop.key.name === "symbol");
+
+    console.log("path", path);
     if (!symbolProperty || symbolProperty.value.type !== "Literal") {
       return false;
     }
