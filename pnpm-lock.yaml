@@ -46,9 +46,6 @@ importers:
       babel-plugin-annotate-pure-calls:
         specifier: ^0.4.0
         version: 0.4.0(@babel/core@7.25.2)
-      tsx:
-        specifier: ^4.19.0
-        version: 4.19.0
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
@@ -197,6 +194,9 @@ importers:
       p-throttle:
         specifier: ^6.2.0
         version: 6.2.0
+      tsx:
+        specifier: ^4.19.0
+        version: 4.19.0
       viem:
         specifier: ^2.21.44
         version: 2.21.44(typescript@5.5.4)(zod@3.23.8)
