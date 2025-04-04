@@ -10,7 +10,10 @@ import { getPendleAssetPrice } from "../utils/pendle.js";
 
 const client = getClient(environment.network.id);
 
-const pendleV2Assets = environment.getAssets({ types: [AssetType.PENDLE_V2_PT, AssetType.PENDLE_V2_LP] });
+const pendleV2Assets = environment.getAssets({
+  types: [AssetType.PENDLE_V2_PT, AssetType.PENDLE_V2_LP],
+  registered: true,
+});
 
 suite("prices are correct", async () => {
   const valueInterpreter = environment.getContract("ValueInterpreter");
