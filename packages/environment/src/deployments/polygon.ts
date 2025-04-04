@@ -217,6 +217,7 @@ export default defineDeployment<Deployment.POLYGON>({
         SingleAssetDepositQueueLib: "0xd33e75e1ae3185aa72d4365e1022ef23cd71233a",
         SingleAssetRedemptionQueueFactory: "0x4b6b342ba8bb29e2d1b542532e6b7be1cae026b9",
         SingleAssetRedemptionQueueLib: "0xe54065f5b303c2843c769fb232b95bb893cf0b87",
+        SmarDexUsdnNativeRateUsdAggregator: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionParser: "0x0000000000000000000000000000000000000000",
         SolvV2BondIssuerPositionLib: "0x0000000000000000000000000000000000000000",
