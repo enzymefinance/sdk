@@ -235,6 +235,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         SingleAssetDepositQueueLib: "0x9267feef36484d3cb3a8e7c9cf57da360d85e0ad",
         SingleAssetRedemptionQueueFactory: "0xfe84d5209054254389c9d6a754b821f3a297d56a",
         SingleAssetRedemptionQueueLib: "0x0012b7c26b8c081a29a61cd52526cf6305367968",
+        SmarDexUsdnNativeRateUsdAggregator: "0xd5004c5d3017862839e83981b110f27ee7b36eaa",
         SolvV2BondBuyerPositionLib: "0x0e7d828f9f9a3ce152d39f21f2e2d0ff89448b6b",
         SolvV2BondBuyerPositionParser: "0xa2ed786215d6f4da95338ee7abb84f28134dc19c",
         SolvV2BondIssuerPositionLib: "0x31c30bacb054f5db7f5bc96850b488440abb8991",
