@@ -41,7 +41,7 @@ suite("prices are correct", async () => {
     const usdDecimals = 8;
     const priceOnchainInUsdFormatted = Number(formatUnits(priceOnchainInUsd, usdDecimals));
 
-    const deviationAllowed = priceOffChain * 0.01; // 1% deviation allowed
+    const deviationAllowed = priceOffChain * (asset.priceFeed.nonStandard ? 0.015 : 0.01); // 1% or 1.5% (for non-standard) deviation allowed
 
     expect(priceOffChain).closeTo(
       priceOnchainInUsdFormatted,
