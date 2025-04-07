@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.38
+
+### Patch Changes
+
+- [#703](https://github.com/enzymefinance/sdk/pull/703) [`4de609c`](https://github.com/enzymefinance/sdk/commit/4de609ccf044a04428b7dcf7e6cd52deac151f90) Thanks [@iherger](https://github.com/iherger)! - USDN price feed
+
 ## 6.3.37
 
 ### Patch Changes
