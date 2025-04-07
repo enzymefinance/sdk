@@ -7596,7 +7596,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIME_CHAINLINK_LIKE_USDN,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN,
       aggregator: "0xd5004c5d3017862839e83981b110f27ee7b36eaa",
       rateAsset: RateAsset.USD,
     },
