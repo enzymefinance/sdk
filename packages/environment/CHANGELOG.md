@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.39
+
+### Patch Changes
+
+- [#705](https://github.com/enzymefinance/sdk/pull/705) [`a1092b2`](https://github.com/enzymefinance/sdk/commit/a1092b21485a70e2c5af932eb013a456a1094fb4) Thanks [@iherger](https://github.com/iherger)! - Price Feed Typo
+
 ## 6.3.38
 
 ### Patch Changes
