@@ -1,15 +1,17 @@
-import type { Address } from "viem";
-import jscodeshift from "jscodeshift";
-import type { CallExpression, Property } from "jscodeshift";
 import { readFileSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import jscodeshift from "jscodeshift";
+import type { ObjectProperty, Property } from "jscodeshift";
+import type { Address } from "viem";
 
 const j = jscodeshift.withParser("ts");
 
-const assetsFilePath = resolve(
-  __dirname,
-  "../../../src/assets/ethereum.ts",
-);
+// Get the directory name in ES module scope
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const assetsFilePath = resolve(__dirname, "../../src/assets/ethereum.ts");
 
 export function updateAssetsFilePriceFeeds(
   oraclesInfo: Array<{
@@ -22,10 +24,7 @@ export function updateAssetsFilePriceFeeds(
   const root = j(source);
 
   const oraclesMap = new Map<string, Address>(
-    oraclesInfo.map((info) => [
-      info.assetId.toLowerCase(),
-      info.deployedPendleOracle,
-    ]),
+    oraclesInfo.map((info) => [info.assetId.toLowerCase(), info.deployedPendleOracle]),
   );
 
   const defineAssetListCalls = root.find(j.CallExpression, {
@@ -36,7 +35,7 @@ export function updateAssetsFilePriceFeeds(
     const assetsArray = path.value.arguments[1];
     if (assetsArray?.type !== "ArrayExpression") {
       console.warn("Could not find assets array in defineAssetList call.");
-      continue; 
+      continue;
     }
 
     for (const element of assetsArray.elements) {
@@ -45,40 +44,40 @@ export function updateAssetsFilePriceFeeds(
       }
 
       let currentAssetId: string | null = null;
-      let priceFeedProperty: Property | null = null;
+      let priceFeedProperty: ObjectProperty | null = null;
 
       for (const prop of element.properties) {
+        // console.log({ prop });
+
         if (
-          prop.type === "Property" &&
+          prop.type === "ObjectProperty" &&
           prop.key.type === "Identifier" &&
           prop.key.name === "id" &&
-          prop.value.type === "StringLiteral" 
+          prop.value.type === "StringLiteral"
         ) {
+          // console.log({ prop });
           currentAssetId = prop.value.value.toLowerCase();
-        } else if (
-          prop.type === "Property" &&
-          prop.key.type === "Identifier" &&
-          prop.key.name === "priceFeed"
-        ) {
+        } else if (prop.type === "ObjectProperty" && prop.key.type === "Identifier" && prop.key.name === "priceFeed") {
           priceFeedProperty = prop;
         }
       }
 
       const newOracleAddress = currentAssetId ? oraclesMap.get(currentAssetId) : undefined;
 
+      if (newOracleAddress) {
+        console.log(`Updating oracle for asset ${currentAssetId} to ${newOracleAddress}`, { priceFeedProperty });
+      }
+
       if (newOracleAddress && priceFeedProperty && priceFeedProperty.value.type === "ObjectExpression") {
         const priceFeedObject = priceFeedProperty.value;
 
         for (const feedProp of priceFeedObject.properties) {
           if (
-            feedProp.type === "Property" &&
+            feedProp.type === "ObjectProperty" &&
             feedProp.key.type === "Identifier" &&
             feedProp.key.name === "aggregator"
           ) {
             feedProp.value = j.stringLiteral(newOracleAddress);
-            console.log(
-              `Updated aggregator for asset ${currentAssetId} to ${newOracleAddress}`,
-            );
             break;
           }
         }

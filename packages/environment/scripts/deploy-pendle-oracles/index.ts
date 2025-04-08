@@ -6,6 +6,7 @@ import { asHex } from "../../../sdk/dist/src/Utils/hex";
 import { toAddress } from "../../src/utils.js";
 import { decryptKeystore } from "./decrypt-keystore.js";
 import { deployOracles } from "./deploy-oracles.js";
+import { updateAssetsFilePriceFeeds } from "./update-assets-file.js";
 
 dotenv.config({ path: "../../../.env" });
 
@@ -36,12 +37,12 @@ if (!(ptMarketsArg || lpArg)) {
 const ptMarkets = ptMarketsArg ? ptMarketsArg.split(",") : [];
 const lps = lpArg ? lpArg.split(",") : [];
 
-const wallet = await decryptKeystore({
-  keystoreFilePath,
-});
+// const wallet = await decryptKeystore({
+//   keystoreFilePath,
+// });
 
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-console.log("Decrypted wallet", wallet.address);
+// // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+// console.log("Decrypted wallet", wallet.address);
 
 // const results = await deployOracles({
 //   lpMarkets: lps.map((lp) => toAddress(lp)),
@@ -60,7 +61,9 @@ const results = [
     success: true,
     market: "0xb6b2cf977c512bcd195b58e2ccfb3fb15535cb19",
   },
-];
+] as const;
+
+updateAssetsFilePriceFeeds(results.filter((r) => r.success));
 
 // biome-ignore lint/suspicious/noConsoleLog: <explanation>
 console.log("All oracles deployed");
