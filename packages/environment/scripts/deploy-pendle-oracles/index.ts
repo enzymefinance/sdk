@@ -1,7 +1,10 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import arg from "arg";
+import dotenv from "dotenv";
 import { decryptKeystore } from "./decrypt-keystore.js";
+
+dotenv.config({ path: "../../../.env" });
 
 const args = arg({
   "--keystore-path": String,
