@@ -317,6 +317,7 @@ export interface ExternalContractsMapping {
   readonly kilnStaking: Address;
   readonly lidoWithdrawalsQueue: Address;
   readonly makerMCDPotAddress: Address;
+  readonly merklDistributor: Address;
   readonly morphoBlue: Address;
   readonly multicall: Address;
   readonly paraswapV5AugustusSwapper: Address;
