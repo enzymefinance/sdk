@@ -1,7 +1,6 @@
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 import * as path from "node:path";
-import * as RLP from "node:readline/promises";
 import arg, { type Result } from "arg";
 
 const ALGORITHM = "aes-256-cbc";
@@ -12,12 +11,6 @@ const IV_LENGTH = 16; // bytes for AES
 // Function to prompt for password securely (hides input)
 async function getPassword(promptMessage: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    const rl = RLP.createInterface({
-      input: process.stdin,
-      output: process.stdout,
-      terminal: true, // Ensure terminal features are enabled
-    });
-
     process.stdout.write(promptMessage);
 
     let password = "";
@@ -26,22 +19,22 @@ async function getPassword(promptMessage: string): Promise<string> {
 
       switch (char) {
         case "\r": // Enter key
-        case "\n": // Enter key (alternative)
+        case "\n": {
+          // Enter key (alternative)
           process.stdin.removeListener("data", onData);
           process.stdin.setRawMode(false);
-          process.stdin.pause(); // Allow node process to exit if this is the last async op
           process.stdout.write("\n");
-          rl.close();
           resolve(password);
           break;
-        case "\x03": // Ctrl+C
+        }
+        case "\x03": {
+          // Ctrl+C
           process.stdin.removeListener("data", onData);
           process.stdin.setRawMode(false);
-          process.stdin.pause();
-          rl.close();
           reject(new Error("Input cancelled by user"));
           process.exit(); // Exit the process on Ctrl+C
           break;
+        }
         case "\x08": // Backspace (Windows)
         case "\x7f": // Backspace (macOS/Linux)
           if (password.length > 0) {
@@ -112,6 +105,8 @@ if (!password) {
   console.error("Error: Password is required.");
   process.exit(1);
 }
+
+console.log("password", password);
 
 console.log("\nDeriving key and decrypting file...");
 
