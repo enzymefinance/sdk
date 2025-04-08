@@ -6,7 +6,6 @@ export const RECOMMENDED_DURATION = 900; // 15 minutes
 export const underlyingToAggregatorInfo = {
   "0xd9d920aa40f578ab794426f5c90f6c731d159def": {
     aggregator: "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419",
-    inverted: true,
     nonStandard: true,
   },
 } as const;
