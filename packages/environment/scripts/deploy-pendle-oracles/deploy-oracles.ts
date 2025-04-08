@@ -44,11 +44,17 @@ export async function deployOracles({
   for (const market of lpMarkets) {
     const result = await deployOracle({ market, walletClient, publicClient, type: "lp" });
     results.push(result);
+
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Deployed oracle for LP market:", result);
   }
 
   for (const market of ptMarkets) {
     const result = await deployOracle({ market, walletClient, publicClient, type: "pt" });
     results.push(result);
+
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Deployed oracle for PT market:", result);
   }
 
   return results;
@@ -65,6 +71,8 @@ async function deployOracle({
   publicClient: PublicClient;
   type: "lp" | "pt";
 }) {
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  console.log(`Deploying ${type} oracle for market: ${market}...`);
   const marketInfo = await getPendleMarketInfo(Network.ETHEREUM, market);
 
   const quoteAggregatorInfo = underlyingToAggregatorInfo[marketInfo.underlyingAsset.address];
@@ -86,6 +94,8 @@ async function deployOracle({
   });
 
   if (oracleState.increaseCardinalityRequired) {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Increasing cardinality");
     const { request } = await increaseObservationsCardinalityNext(walletClient, {
       market,
       cardinalityNext: oracleState.cardinalityRequired,
@@ -94,8 +104,20 @@ async function deployOracle({
 
     const hash = await walletClient.writeContract(request);
 
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Increased cardinality tx created:", hash);
+
     await publicClient.waitForTransactionReceipt({ hash });
+
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Increased cardinality tx mined:", hash);
+  } else {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("No need to increase cardinality");
   }
+
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  console.log("Creating oracle...");
 
   const { request, result } = await createOracleWithQuote(walletClient, {
     factory: PENDLE_FACTORY,
@@ -108,7 +130,13 @@ async function deployOracle({
 
   const hash = await walletClient.writeContract(request);
 
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  console.log("Created oracle tx created:", hash, result);
+
   await publicClient.waitForTransactionReceipt({ hash });
+
+  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+  console.log("Created oracle tx mined:", hash);
 
   return {
     deployedPendleOracle: result,

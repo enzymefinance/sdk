@@ -13,7 +13,7 @@ const args = arg({
   "--keystore-path": String,
   "--pt-markets": String,
   "--lps": String,
-  "-kp": "--keystore-path",
+  "-k": "--keystore-path",
 });
 
 const keystorePathArg = args["--keystore-path"];
@@ -40,8 +40,14 @@ const wallet = await decryptKeystore({
   keystoreFilePath,
 });
 
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+console.log("Decrypted wallet", wallet.address);
+
 const results = await deployOracles({
   lpMarkets: lps.map((lp) => toAddress(lp)),
   ptMarkets: ptMarkets.map((pt) => toAddress(pt)),
   privateKey: asHex(wallet.privateKey),
 });
+
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+console.log("All oracles deployed");
