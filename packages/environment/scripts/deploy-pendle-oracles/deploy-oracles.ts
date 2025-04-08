@@ -46,7 +46,7 @@ export async function deployOracles({
     results.push(result);
 
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("Deployed oracle for LP market:", result);
+    console.log("Oracle for LP market:", result);
   }
 
   for (const market of ptMarkets) {
@@ -54,7 +54,7 @@ export async function deployOracles({
     results.push(result);
 
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("Deployed oracle for PT market:", result);
+    console.log("Oracle for PT market:", result);
   }
 
   return results;
@@ -131,7 +131,7 @@ async function deployOracle({
   const hash = await walletClient.writeContract(request);
 
   // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  console.log("Created oracle tx created:", hash, result);
+  console.log("Created oracle tx created:", hash);
 
   await publicClient.waitForTransactionReceipt({ hash });
 
