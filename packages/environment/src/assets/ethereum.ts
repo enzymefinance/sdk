@@ -7940,19 +7940,4 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
-  {
-    symbol: "PT-SolvBTC.BBN-26JUN2025",
-    name: "PT SolvBTC Babylon 26JUN2025",
-    id: "0x4f62a7a25a4fd6ae386e957284afb5fbf1e1f32c",
-    type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
-    decimals: 8,
-    underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
-    markets: ["0xb6b2cf977c512bcd195b58e2ccfb3fb15535cb19"],
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "",
-      rateAsset: RateAsset.ETH,
-    },
-  },
 ]);

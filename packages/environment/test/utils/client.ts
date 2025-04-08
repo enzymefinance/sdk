@@ -11,17 +11,15 @@ export function getClient(network: Network) {
         : network === Network.POLYGON
           ? polygon
           : mainnet;
-  // const url = `https://${
-  //   network === Network.ARBITRUM
-  //     ? "arb"
-  //     : network === Network.BASE
-  //       ? "base"
-  //       : network === Network.POLYGON
-  //         ? "polygon"
-  //         : "eth"
-  // }-mainnet.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_API_KEY}`;
-
-  const url = "https://virtual.mainnet.rpc.tenderly.co/5edd8a18-0355-4fa9-8ad4-2caf8715d6d1";
+  const url = `https://${
+    network === Network.ARBITRUM
+      ? "arb"
+      : network === Network.BASE
+        ? "base"
+        : network === Network.POLYGON
+          ? "polygon"
+          : "eth"
+  }-mainnet.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_API_KEY}`;
 
   return createPublicClient({
     chain,

@@ -95,7 +95,7 @@ async function deployOracle({
 
   if (oracleState.increaseCardinalityRequired) {
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    console.log("Increasing cardinality");
+    console.log("Increasing cardinality...");
     const { request } = await increaseObservationsCardinalityNext(walletClient, {
       market,
       cardinalityNext: oracleState.cardinalityRequired,

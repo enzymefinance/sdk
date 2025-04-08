@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import jscodeshift from "jscodeshift";
-import type { ObjectProperty, Property } from "jscodeshift";
+import type { ObjectProperty } from "jscodeshift";
 import type { Address } from "viem";
 
 const j = jscodeshift.withParser("ts");
@@ -20,6 +20,8 @@ export function updateAssetsFilePriceFeeds(
     assetId: Address;
   }>,
 ) {
+  const updatedAssetIds: Array<string> = [];
+
   const source = readFileSync(assetsFilePath, "utf8");
   const root = j(source);
 
@@ -50,15 +52,12 @@ export function updateAssetsFilePriceFeeds(
       let priceFeedProperty: ObjectProperty | null = null;
 
       for (const prop of element.properties) {
-        // console.log({ prop });
-
         if (
           prop.type === "ObjectProperty" &&
           prop.key.type === "Identifier" &&
           prop.key.name === "id" &&
           prop.value.type === "StringLiteral"
         ) {
-          // console.log({ prop });
           currentAssetId = prop.value.value.toLowerCase();
         } else if (prop.type === "ObjectProperty" && prop.key.type === "Identifier" && prop.key.name === "priceFeed") {
           priceFeedProperty = prop;
@@ -67,11 +66,12 @@ export function updateAssetsFilePriceFeeds(
 
       const quoteAggregatorInfo = currentAssetId ? oraclesMap.get(currentAssetId) : undefined;
 
-      if (quoteAggregatorInfo) {
-        console.log(`Updating oracle for asset ${currentAssetId} to ${quoteAggregatorInfo}`, { priceFeedProperty });
-      }
-
-      if (quoteAggregatorInfo && priceFeedProperty && priceFeedProperty.value.type === "ObjectExpression") {
+      if (
+        quoteAggregatorInfo &&
+        priceFeedProperty &&
+        priceFeedProperty.value.type === "ObjectExpression" &&
+        currentAssetId
+      ) {
         const priceFeedObject = priceFeedProperty.value;
 
         for (const feedProp of priceFeedObject.properties) {
@@ -80,7 +80,7 @@ export function updateAssetsFilePriceFeeds(
             feedProp.key.type === "Identifier" &&
             feedProp.key.name === "aggregator"
           ) {
-            feedProp.value = j.stringLiteral(quoteAggregatorInfo.deployedPendleOracle);
+            feedProp.value = j.stringLiteral(quoteAggregatorInfo.deployedPendleOracle.toLowerCase());
             break;
           }
         }
@@ -90,14 +90,14 @@ export function updateAssetsFilePriceFeeds(
           const nonStandardProp = j.objectProperty(j.identifier("nonStandard"), j.booleanLiteral(true));
           priceFeedObject.properties.push(nonStandardProp);
         }
-      } else if (quoteAggregatorInfo && priceFeedProperty) {
-        console.warn(`Price feed for asset ${currentAssetId} is not an object expression.`);
+        updatedAssetIds.push(currentAssetId);
       }
     }
+
+    const updatedSource = root.toSource({ quote: "double" });
+    writeFileSync(assetsFilePath, updatedSource, "utf8");
+
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    console.log("Successfully updated price feeds for assets:", updatedAssetIds);
   }
-
-  const updatedSource = root.toSource({ quote: "double" });
-  writeFileSync(assetsFilePath, updatedSource, "utf8");
-
-  console.log(`Successfully updated price feeds in ${assetsFilePath}`);
 }
