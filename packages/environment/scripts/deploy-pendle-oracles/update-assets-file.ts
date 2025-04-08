@@ -23,8 +23,11 @@ export function updateAssetsFilePriceFeeds(
   const source = readFileSync(assetsFilePath, "utf8");
   const root = j(source);
 
-  const oraclesMap = new Map<string, Address>(
-    oraclesInfo.map((info) => [info.assetId.toLowerCase(), info.deployedPendleOracle]),
+  const oraclesMap = new Map<string, { deployedPendleOracle: Address; quoteAggregatorInfo: { nonStandard: boolean } }>(
+    oraclesInfo.map((info) => [
+      info.assetId.toLowerCase(),
+      { deployedPendleOracle: info.deployedPendleOracle, quoteAggregatorInfo: info.quoteAggregatorInfo },
+    ]),
   );
 
   const defineAssetListCalls = root.find(j.CallExpression, {
@@ -62,13 +65,13 @@ export function updateAssetsFilePriceFeeds(
         }
       }
 
-      const newOracleAddress = currentAssetId ? oraclesMap.get(currentAssetId) : undefined;
+      const quoteAggregatorInfo = currentAssetId ? oraclesMap.get(currentAssetId) : undefined;
 
-      if (newOracleAddress) {
-        console.log(`Updating oracle for asset ${currentAssetId} to ${newOracleAddress}`, { priceFeedProperty });
+      if (quoteAggregatorInfo) {
+        console.log(`Updating oracle for asset ${currentAssetId} to ${quoteAggregatorInfo}`, { priceFeedProperty });
       }
 
-      if (newOracleAddress && priceFeedProperty && priceFeedProperty.value.type === "ObjectExpression") {
+      if (quoteAggregatorInfo && priceFeedProperty && priceFeedProperty.value.type === "ObjectExpression") {
         const priceFeedObject = priceFeedProperty.value;
 
         for (const feedProp of priceFeedObject.properties) {
@@ -77,11 +80,17 @@ export function updateAssetsFilePriceFeeds(
             feedProp.key.type === "Identifier" &&
             feedProp.key.name === "aggregator"
           ) {
-            feedProp.value = j.stringLiteral(newOracleAddress);
+            feedProp.value = j.stringLiteral(quoteAggregatorInfo.deployedPendleOracle);
             break;
           }
         }
-      } else if (newOracleAddress && priceFeedProperty) {
+
+        // Add nonStandard property if applicable
+        if (quoteAggregatorInfo.quoteAggregatorInfo.nonStandard) {
+          const nonStandardProp = j.objectProperty(j.identifier("nonStandard"), j.booleanLiteral(true));
+          priceFeedObject.properties.push(nonStandardProp);
+        }
+      } else if (quoteAggregatorInfo && priceFeedProperty) {
         console.warn(`Price feed for asset ${currentAssetId} is not an object expression.`);
       }
     }
