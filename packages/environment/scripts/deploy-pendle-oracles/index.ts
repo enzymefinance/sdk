@@ -2,7 +2,10 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import arg from "arg";
 import dotenv from "dotenv";
+import { asHex } from "../../../sdk/dist/src/Utils/hex";
+import { toAddress } from "../../src/utils.js";
 import { decryptKeystore } from "./decrypt-keystore.js";
+import { deployOracles } from "./deploy-oracles.js";
 
 dotenv.config({ path: "../../../.env" });
 
@@ -35,4 +38,10 @@ const lps = lpArg ? lpArg.split(",") : [];
 
 const wallet = await decryptKeystore({
   keystoreFilePath,
+});
+
+const results = await deployOracles({
+  lpMarkets: lps.map((lp) => toAddress(lp)),
+  ptMarkets: ptMarkets.map((pt) => toAddress(pt)),
+  privateKey: asHex(wallet.privateKey),
 });
