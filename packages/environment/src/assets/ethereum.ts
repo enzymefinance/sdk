@@ -716,7 +716,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      aggregator: "0x677f4b4cd52b2515790f464fe041e261a248f987",
       rateAsset: RateAsset.ETH,
       peggedTo: "BTC",
       nonStandard: true,
@@ -7938,6 +7938,21 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    symbol: "gtusdcf",
+    name: "Gauntlet USDC Frontier",
+    id: "0xc582f04d8a82795aa2ff9c8bb4c1c889fe7b754e",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
 ]);
