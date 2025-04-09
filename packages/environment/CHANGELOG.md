@@ -1,5 +1,26 @@
 # @enzymefinance/environment
 
+## 6.3.39
+
+### Patch Changes
+
+- [#705](https://github.com/enzymefinance/sdk/pull/705) [`a1092b2`](https://github.com/enzymefinance/sdk/commit/a1092b21485a70e2c5af932eb013a456a1094fb4) Thanks [@iherger](https://github.com/iherger)! - Price Feed Typo
+
+## 6.3.38
+
+### Patch Changes
+
+- [#703](https://github.com/enzymefinance/sdk/pull/703) [`4de609c`](https://github.com/enzymefinance/sdk/commit/4de609ccf044a04428b7dcf7e6cd52deac151f90) Thanks [@iherger](https://github.com/iherger)! - USDN price feed
+
+## 6.3.37
+
+### Patch Changes
+
+- [#664](https://github.com/enzymefinance/sdk/pull/664) [`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 Merkl Rewards
+
+- Updated dependencies [[`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684)]:
+  - @enzymefinance/sdk@1.2.13
+
 ## 6.3.36
 
 ### Patch Changes

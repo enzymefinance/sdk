@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 1.2.13
+
+### Patch Changes
+
+- [#664](https://github.com/enzymefinance/sdk/pull/664) [`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 Merkl Rewards
+
+- Updated dependencies [[`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684)]:
+  - @enzymefinance/abis@1.2.5
+
 ## 1.2.12
 
 ### Patch Changes
