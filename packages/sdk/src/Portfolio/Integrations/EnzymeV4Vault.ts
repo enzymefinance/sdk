@@ -25,7 +25,6 @@ export const decodeAdapterAction = IntegrationManager.createDecodeAdapterAction<
 export type BuySharesArgs = {
   actionId: typeof AdapterAction.BuyShares;
   vaultProxy: Address;
-  denominationAsset: Address;
   investmentAmount: bigint;
   minSharesQuantity: bigint;
 };
@@ -35,10 +34,6 @@ export const buyShares = IntegrationManager.makeUse(IntegrationManager.Selector.
 const buySharesEncoding = [
   {
     name: "vaultProxy",
-    type: "address",
-  },
-  {
-    name: "denominationAsset",
     type: "address",
   },
   {
@@ -54,7 +49,6 @@ const buySharesEncoding = [
 export function buySharesEncode(args: BuySharesArgs): Hex {
   const encodedActionArgs = encodeAbiParameters(buySharesEncoding, [
     args.vaultProxy,
-    args.denominationAsset,
     args.investmentAmount,
     args.minSharesQuantity,
   ]);
@@ -65,17 +59,13 @@ export function buySharesEncode(args: BuySharesArgs): Hex {
 export function buySharesDecode(encoded: Hex): BuySharesArgs {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
-  const [vaultProxy, denominationAsset, investmentAmount, minSharesQuantity] = decodeAbiParameters(
-    buySharesEncoding,
-    encodedActionArgs,
-  );
+  const [vaultProxy, investmentAmount, minSharesQuantity] = decodeAbiParameters(buySharesEncoding, encodedActionArgs);
 
   Assertion.invariant(actionId === AdapterAction.BuyShares, "Invalid actionId");
 
   return {
     actionId,
     vaultProxy,
-    denominationAsset,
     investmentAmount,
     minSharesQuantity,
   };
