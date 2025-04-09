@@ -78,7 +78,11 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH: {
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE: {
+        const decimals = await aggregatorDecimals(client, { aggregator: asset.priceFeed.aggregator });
+
+        expect(decimals).toBe(asset.priceFeed.rateAsset === 0 ? 18 : 8);
+
         break;
       }
 
@@ -124,13 +128,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       }
 
       case PriceFeedType.PRIMITIVE_CHAINLINK:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_QUOTED:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:
@@ -237,13 +235,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.NONE:
       case PriceFeedType.WETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
-      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_QUOTED:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:
