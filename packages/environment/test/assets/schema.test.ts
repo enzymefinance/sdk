@@ -3,7 +3,6 @@ import { expect, suite, test } from "vitest";
 import { Assertion } from "@enzymefinance/sdk/Utils";
 import { AssetType } from "../../src/index.js";
 import { environment } from "../utils/fixtures.js";
-import { EnzymeVaultSchema, ZeroLendRWAStablecoinsAaveV3Schema } from "../utils/schema.js";
 import {
   AaveSchema,
   AaveV3Schema,
@@ -15,6 +14,7 @@ import {
   CurvePoolGaugeSchema,
   CurvePoolLpSchema,
   ERC4626Schema,
+  EnzymeVaultSchema,
   IdleSchema,
   MaplePoolV1Schema,
   MaplePoolV2Schema,
@@ -26,6 +26,7 @@ import {
   UniswapV2PoolSchema,
   YearnVaultV2Schema,
   ZeroLendLRTBTCAaveV3Schema,
+  ZeroLendRWAStablecoinsAaveV3Schema,
   validate,
 } from "../utils/schema.js";
 
