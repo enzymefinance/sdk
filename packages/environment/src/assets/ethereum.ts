@@ -716,8 +716,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x677f4b4cd52b2515790f464fe041e261a248f987",
+      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
       rateAsset: RateAsset.ETH,
+      nonStandard: true,
     },
   },
   {
@@ -7364,34 +7365,6 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "gtLRTcore",
-    name: "Gauntlet LRT Core",
-    id: "0x4881ef0bf6d2365d3dd6499ccd7532bcdbce0658",
-    type: AssetType.ERC_4626,
-    protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
-    decimals: 18,
-    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
-    },
-  },
-  {
-    symbol: "gtusdcf",
-    name: "Gauntlet USDC Frontier",
-    id: "0xc582f04d8a82795aa2ff9c8bb4c1c889fe7b754e",
-    type: AssetType.ERC_4626,
-    protocol: Erc4626Protocol.MORPHO,
-    releases: [sulu],
-    decimals: 18,
-    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-    priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
-    },
-  },
-  {
     symbol: "SolvBTC",
     name: "Solv BTC",
     id: "0x7a56e1c57c7475ccf742a1832b028f0456652f97",
@@ -8007,9 +7980,8 @@ export default defineAssetList(Network.ETHEREUM, [
     markets: ["0xb6b2cf977c512bcd195b58e2ccfb3fb15535cb19"],
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x15f99cd46217641e6b3b56a49cf37be466b4e698",
+      aggregator: "0x2587fb3b40e76957c73f19f258faefcc61fa18a2",
       rateAsset: RateAsset.ETH,
-      nonStandard: true,
     },
   },
 ]);
