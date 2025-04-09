@@ -1,5 +1,23 @@
 # @enzymefinance/abis
 
+## 1.2.5
+
+### Patch Changes
+
+- [#664](https://github.com/enzymefinance/sdk/pull/664) [`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 Merkl Rewards
+
+## 1.2.4
+
+### Patch Changes
+
+- [#659](https://github.com/enzymefinance/sdk/pull/659) [`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add single asset deposit queue
+
+## 1.2.3
+
+### Patch Changes
+
+- [#680](https://github.com/enzymefinance/sdk/pull/680) [`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove liquity
+
 ## 1.2.2
 
 ### Patch Changes

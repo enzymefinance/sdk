@@ -55,6 +55,20 @@ export function getProtocolFeeRate(
   });
 }
 
+export function getDefaultProtocolFeeRate(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    protocolFeeTracker: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: Abis.IProtocolFeeTracker,
+    functionName: "getFeeBpsDefault",
+    address: args.protocolFeeTracker,
+  });
+}
+
 export async function getAccruedProtocolFee(
   client: Client,
   args: Viem.ContractCallParameters<{

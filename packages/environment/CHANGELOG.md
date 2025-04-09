@@ -1,5 +1,108 @@
 # @enzymefinance/environment
 
+## 6.3.39
+
+### Patch Changes
+
+- [#705](https://github.com/enzymefinance/sdk/pull/705) [`a1092b2`](https://github.com/enzymefinance/sdk/commit/a1092b21485a70e2c5af932eb013a456a1094fb4) Thanks [@iherger](https://github.com/iherger)! - Price Feed Typo
+
+## 6.3.38
+
+### Patch Changes
+
+- [#703](https://github.com/enzymefinance/sdk/pull/703) [`4de609c`](https://github.com/enzymefinance/sdk/commit/4de609ccf044a04428b7dcf7e6cd52deac151f90) Thanks [@iherger](https://github.com/iherger)! - USDN price feed
+
+## 6.3.37
+
+### Patch Changes
+
+- [#664](https://github.com/enzymefinance/sdk/pull/664) [`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 Merkl Rewards
+
+- Updated dependencies [[`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684)]:
+  - @enzymefinance/sdk@1.2.13
+
+## 6.3.36
+
+### Patch Changes
+
+- [#699](https://github.com/enzymefinance/sdk/pull/699) [`87337bd`](https://github.com/enzymefinance/sdk/commit/87337bd032c880734c148f0d9d322751ec1a7507) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix resupply
+
+## 6.3.35
+
+### Patch Changes
+
+- Updated dependencies [[`d1b938d`](https://github.com/enzymefinance/sdk/commit/d1b938d52790741ef5422e81fc9487a864be4a2d)]:
+  - @enzymefinance/sdk@1.2.12
+
+## 6.3.34
+
+### Patch Changes
+
+- [#696](https://github.com/enzymefinance/sdk/pull/696) [`a80ec5d`](https://github.com/enzymefinance/sdk/commit/a80ec5ddb0dcaf8f3ea7a81c5a0f245b1fa5f6a0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add RSUP
+
+## 6.3.33
+
+### Patch Changes
+
+- [#663](https://github.com/enzymefinance/sdk/pull/663) [`898a8b8`](https://github.com/enzymefinance/sdk/commit/898a8b825d88537402e94fd559748e52218787ac) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle V2 assets
+
+## 6.3.32
+
+### Patch Changes
+
+- [#689](https://github.com/enzymefinance/sdk/pull/689) [`e525c38`](https://github.com/enzymefinance/sdk/commit/e525c38fb88892690c9b9337a763b90fce32a125) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Fix ParaSwapV6.2 AugustusSwapperAddress
+
+## 6.3.31
+
+### Patch Changes
+
+- [#687](https://github.com/enzymefinance/sdk/pull/687) [`60ad801`](https://github.com/enzymefinance/sdk/commit/60ad8019153723a32d56f4796d799d6120b48397) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add ParaSwapV6AugustusSwapper to external contracts
+
+## 6.3.30
+
+### Patch Changes
+
+- [#682](https://github.com/enzymefinance/sdk/pull/682) [`df7cd76`](https://github.com/enzymefinance/sdk/commit/df7cd76a011ec24976be7e4e4b008541452548f4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Base adjustments
+
+## 6.3.29
+
+### Patch Changes
+
+- [#659](https://github.com/enzymefinance/sdk/pull/659) [`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add single asset deposit queue
+
+- Updated dependencies [[`76dc58e`](https://github.com/enzymefinance/sdk/commit/76dc58e33b617d3577959245179c9762a8ce11f2)]:
+  - @enzymefinance/sdk@1.2.11
+
+## 6.3.28
+
+### Patch Changes
+
+- [#679](https://github.com/enzymefinance/sdk/pull/679) [`176dd2a`](https://github.com/enzymefinance/sdk/commit/176dd2a4768a9332b88edd8d629b6bcfc45ed634) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add price feed factories
+
+- [#680](https://github.com/enzymefinance/sdk/pull/680) [`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove liquity
+
+- Updated dependencies [[`adf31fd`](https://github.com/enzymefinance/sdk/commit/adf31fdddcbe47200b0acc96423d8a41c9ae9275)]:
+  - @enzymefinance/sdk@1.2.10
+
+## 6.3.27
+
+### Patch Changes
+
+- [#658](https://github.com/enzymefinance/sdk/pull/658) [`4a06def`](https://github.com/enzymefinance/sdk/commit/4a06def2ddded3ad3a69fc909c89ad4d89b5cdd2) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add ParaSwapV6 Integration
+
+- Updated dependencies [[`4a06def`](https://github.com/enzymefinance/sdk/commit/4a06def2ddded3ad3a69fc909c89ad4d89b5cdd2)]:
+  - @enzymefinance/sdk@1.2.9
+
+## 6.3.26
+
+### Patch Changes
+
+- [#675](https://github.com/enzymefinance/sdk/pull/675) [`16b7203`](https://github.com/enzymefinance/sdk/commit/16b720317c8ede841815a093945c7cebec3e5455) Thanks [@iherger](https://github.com/iherger)! - Add additional Compound v3 tokens
+
+- [#674](https://github.com/enzymefinance/sdk/pull/674) [`d8e85a1`](https://github.com/enzymefinance/sdk/commit/d8e85a1d671c625f862b0940ab0b92574d942897) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add gsn trusted forwarders
+
+- [#676](https://github.com/enzymefinance/sdk/pull/676) [`88dec54`](https://github.com/enzymefinance/sdk/commit/88dec54c7997c8cacc811ef26085f9e280eb070f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update fund data provider router
+
 ## 6.3.25
 
 ### Patch Changes
