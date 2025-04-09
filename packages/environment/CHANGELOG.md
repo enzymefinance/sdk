@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.40
+
+### Patch Changes
+
+- [#681](https://github.com/enzymefinance/sdk/pull/681) [`93e7e9d`](https://github.com/enzymefinance/sdk/commit/93e7e9de9d3b4b5e7060c0b45efa83fdc958f821) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add enzyme vault integration
+
+- Updated dependencies [[`93e7e9d`](https://github.com/enzymefinance/sdk/commit/93e7e9de9d3b4b5e7060c0b45efa83fdc958f821)]:
+  - @enzymefinance/sdk@1.2.14
+
 ## 6.3.39
 
 ### Patch Changes
