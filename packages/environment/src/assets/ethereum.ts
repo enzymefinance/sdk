@@ -718,8 +718,6 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x677f4b4cd52b2515790f464fe041e261a248f987",
       rateAsset: RateAsset.ETH,
-      peggedTo: "BTC",
-      nonStandard: true,
     },
   },
   {
