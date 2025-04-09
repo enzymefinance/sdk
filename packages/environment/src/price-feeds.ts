@@ -7,6 +7,7 @@ export enum PriceFeedType {
   PRIMITIVE_CHAINLINK_LIKE_ETHX = "PRIMITIVE_CHAINLINK_LIKE_ETHX",
   PRIMITIVE_CHAINLINK_LIKE_ERC4626 = "PRIMITIVE_CHAINLINK_LIKE_ERC4626",
   PRIMITIVE_CHAINLINK_LIKE_QUOTED = "PRIMITIVE_CHAINLINK_LIKE_QUOTED",
+  PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN = "PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN",
   PRIMITIVE_CHAINLINK_LIKE_USDN = "PRIMITIVE_CHAINLINK_LIKE_USDN",
   PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
   PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
@@ -38,6 +39,7 @@ export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
   PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_QUOTED,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
@@ -78,6 +80,7 @@ export type PriceFeed =
   | PrimitiveRedstonePriceFeed
   | PrimitiveRedstoneQuotedPriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
+  | PrimitiveChainlinkLikeSolvBtcBbnPriceFeed
   | PrimitivePendleV2PriceFeed
   | DerivativeArrakisV2PriceFeed
   | DerivativeBalancerV2GaugeTokenPriceFeed
@@ -223,6 +226,18 @@ export interface PrimitiveNonStandardPrecisionPriceFeed extends PriceFeedBase {
    * Rate Asset (ETH = 0, USD = 1)
    */
   readonly rateAsset: RateAsset;
+}
+
+export interface PrimitiveChainlinkLikeSolvBtcBbnPriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN;
+  /**
+   * Aggregator address
+   */
+  readonly aggregator: Address;
+  /**
+   * Rate Asset (ETH = 0, USD = 1)
+   */
+  readonly rateAsset: RateAsset.USD;
 }
 
 export interface PrimitivePendleV2PriceFeed extends PriceFeedBase {

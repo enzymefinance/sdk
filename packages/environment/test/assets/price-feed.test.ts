@@ -130,6 +130,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_QUOTED:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:
@@ -242,6 +243,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH:
       case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH:
+      case PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN:
       case PriceFeedType.PRIMITIVE_REDSTONE:
       case PriceFeedType.PRIMITIVE_REDSTONE_QUOTED:
       case PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION:

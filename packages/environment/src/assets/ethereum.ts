@@ -7386,11 +7386,9 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregator: "0x24c8964338deb5204b096039147b8e8c3aea42cc",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_SOLV_BTC_BBN,
+      aggregator: "0xe16a36e1ae4538a579b5a249d042943b90878ef1",
       rateAsset: RateAsset.USD,
-      peggedTo: "SolvBTC",
-      nonStandard: true,
     },
   },
   {
