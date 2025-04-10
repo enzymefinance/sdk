@@ -1,8 +1,9 @@
 name: Verify Environment Assets
 
 on:
-  pull_request:
-    branches: [main] # Adjust branches as needed
+  workflow_call:
+
+permissions: {}
 
 jobs:
   changes:
@@ -64,16 +65,12 @@ jobs:
         release: ${{ fromJson(needs.changes.outputs.releases) }}
 
     steps:
-      - name: Log changed files
-        run: |
-          echo "Changed releases: ${{ matrix.release }}"
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
 
-      # - name: Install dependencies
-      #   uses: ./.github/actions/install-dependencies
-
-      # - name: Run tests
-      #   run: pnpm vitest --project @enzymefinance/environment
-      #   env:
-      #     VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
-      #     VITE_RELEASE: ${{ matrix.release }}
-      #     VITE_COINGECKO_MINUTE_RATE: 5
+      - name: Run tests
+        run: pnpm vitest --project @enzymefinance/environment
+        env:
+          VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+          VITE_RELEASE: ${{ matrix.release }}
+          VITE_COINGECKO_MINUTE_RATE: 5
