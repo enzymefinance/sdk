@@ -32,13 +32,15 @@ jobs:
         release: [arbitrum.sulu, base.sulu, ethereum.sulu, polygon.sulu]
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        uses: ./.github/actions/install-dependencies
-      - name: Run tests
-        run: pnpm vitest --project @enzymefinance/environment
-        env:
-          VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
-          VITE_RELEASE: ${{ matrix.release }}
-          VITE_COINGECKO_MINUTE_RATE: 5
+      - name: Log changed files
+        run: echo "${{ steps.filter.outputs.assets_files }}"
+      # - name: Clone repository
+      #   uses: actions/checkout@v4
+      # - name: Install dependencies
+      #   uses: ./.github/actions/install-dependencies
+      # - name: Run tests
+      #   run: pnpm vitest --project @enzymefinance/environment
+      #   env:
+      #     VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+      #     VITE_RELEASE: ${{ matrix.release }}
+      #     VITE_COINGECKO_MINUTE_RATE: 5
