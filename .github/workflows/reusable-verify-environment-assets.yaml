@@ -49,7 +49,8 @@ jobs:
             releases+=("base.sulu")
           fi
 
-          releases_json=$(echo "[\"${releases[@]}\"]" | jq -c .)  # Correct format
+          # Convert array to JSON string for passing to next job
+          releases_json=$(printf '%s\n' "${releases[@]}" | jq -R . | jq -s .)  # This creates a proper JSON array
           echo "releases=$releases_json" >> $GITHUB_OUTPUT
 
   verify_environment:
