@@ -16,6 +16,7 @@ jobs:
       - uses: dorny/paths-filter@v3
         id: filter
         with:
+          list-files: json
           filters: |
             assets:
               - 'packages/environment/src/assets/**'
