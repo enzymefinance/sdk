@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Log changed files
-        run: echo "${{ needs.changes.outputs.assets_files }}"
+        run: echo "${{ needs.changes.outputs }}"
       # - name: Clone repository
       #   uses: actions/checkout@v4
       # - name: Install dependencies
