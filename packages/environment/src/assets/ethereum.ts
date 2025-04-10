@@ -7377,8 +7377,8 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "SolvBTC.BBN",
-    name: "SolvBTC Babylon",
+    symbol: "xSolvBTC",
+    name: "xSolvBTC",
     id: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     type: AssetType.PRIMITIVE,
     releases: [sulu],
