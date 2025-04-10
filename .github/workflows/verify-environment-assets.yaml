@@ -9,10 +9,7 @@ jobs:
     name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
-      ethereum: ${{ steps.filter.outputs.ethereum }}
-      polygon: ${{ steps.filter.outputs.polygon }}
-      arbitrum: ${{ steps.filter.outputs.arbitrum }}
-      base: ${{ steps.filter.outputs.base }}
+      releases: ${{ steps.set-releases.outputs.releases }}
     steps:
       - uses: actions/checkout@v4
 
@@ -29,24 +26,51 @@ jobs:
             base:
               - 'packages/environment/src/assets/base.ts'
 
+      - name: Set releases based on changed files
+        id: set-releases
+        run: |
+          releases=()
+
+          # Check if any relevant file was changed, then add the corresponding release
+          if [[ "${{ steps.filter.outputs.ethereum }}" == "true" ]]; then
+            releases+=("ethereum.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.polygon }}" == "true" ]]; then
+            releases+=("polygon.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.arbitrum }}" == "true" ]]; then
+            releases+=("arbitrum.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.base }}" == "true" ]]; then
+            releases+=("base.sulu")
+          fi
+
+          # Convert array to JSON string for passing to next job
+          releases_json=$(echo ${releases[@]} | jq -R -s -c 'split(" ")')
+          echo "releases=$releases_json" >> $GITHUB_OUTPUT
+
   verify_environment:
     name: Test ${{ matrix.release }}
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.ethereum == 'true' || needs.changes.outputs.polygon == 'true' || needs.changes.outputs.arbitrum == 'true' || needs.changes.outputs.base == 'true'
+    if: needs.changes.outputs.releases != '[]'
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        release: [arbitrum.sulu, base.sulu, ethereum.sulu, polygon.sulu]
+        release: ${{ fromJson(needs.changes.outputs.releases) }}
 
     steps:
       - name: Log changed files
-        run: echo "Hello"
-      # - name: Clone repository
-      #   uses: actions/checkout@v4
+        run: |
+          echo "Changed releases: ${{ matrix.release }}"
+
       # - name: Install dependencies
       #   uses: ./.github/actions/install-dependencies
+
       # - name: Run tests
       #   run: pnpm vitest --project @enzymefinance/environment
       #   env:
