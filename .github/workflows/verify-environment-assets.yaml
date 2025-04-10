@@ -20,6 +20,9 @@ jobs:
           filters: |
             assets:
               - 'packages/environment/src/assets/**'
+      - name: Log changed files
+        if: ${{ steps.filter.outputs.assets == 'true' }}
+        run: echo "${{ steps.filter.outputs.assets_files }}"
 
   verify_environment:
     name: Test ${{ matrix.release }}
@@ -34,7 +37,7 @@ jobs:
 
     steps:
       - name: Log changed files
-        run: echo "${{ needs.changes.outputs }}"
+        run: echo "${{ needs.changes.outputs.assets_files}}"
       # - name: Clone repository
       #   uses: actions/checkout@v4
       # - name: Install dependencies
