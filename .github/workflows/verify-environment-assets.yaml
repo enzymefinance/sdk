@@ -9,26 +9,31 @@ jobs:
     name: Detect Changes
     runs-on: ubuntu-latest
     outputs:
-      assets: ${{ steps.filter.outputs.assets }}
+      ethereum: ${{ steps.filter.outputs.ethereum }}
+      polygon: ${{ steps.filter.outputs.polygon }}
+      arbitrum: ${{ steps.filter.outputs.arbitrum }}
+      base: ${{ steps.filter.outputs.base }}
     steps:
       - uses: actions/checkout@v4
 
       - uses: dorny/paths-filter@v3
         id: filter
         with:
-          list-files: json
           filters: |
-            assets:
-              - 'packages/environment/src/assets/**'
-      - name: Log changed files
-        if: ${{ steps.filter.outputs.assets == 'true' }}
-        run: echo "${{ steps.filter.outputs.assets_files }}"
+            ethereum:
+              - 'packages/environment/src/assets/ethereum.ts'
+            polygon:
+              - 'packages/environment/src/assets/polygon.ts'
+            arbitrum:
+              - 'packages/environment/src/assets/arbitrum.ts'
+            base:
+              - 'packages/environment/src/assets/base.ts'
 
   verify_environment:
     name: Test ${{ matrix.release }}
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.assets == 'true'
+    if: needs.changes.outputs.ethereum == 'true' || needs.changes.outputs.polygon == 'true' || needs.changes.outputs.arbitrum == 'true' || needs.changes.outputs.base == 'true'
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -37,7 +42,7 @@ jobs:
 
     steps:
       - name: Log changed files
-        run: echo "${{ needs.changes.outputs.assets_files}}"
+        run: echo "Hello"
       # - name: Clone repository
       #   uses: actions/checkout@v4
       # - name: Install dependencies
