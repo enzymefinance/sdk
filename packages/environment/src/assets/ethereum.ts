@@ -7180,7 +7180,7 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
-  },
+  }, //
   {
     symbol: "bbUSDT",
     name: "Flagship USDT",
