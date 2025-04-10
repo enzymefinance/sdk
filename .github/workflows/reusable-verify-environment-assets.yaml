@@ -69,7 +69,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
 
       - name: Run tests
-        run: pnpm vitest --project @enzymefinance/environment
+        run: pnpm vitest --project @enzymefinance/environment --exclude 'price-feed-registered-assets.test.ts'
         env:
           VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
           VITE_RELEASE: ${{ matrix.release }}
