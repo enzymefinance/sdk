@@ -18,7 +18,6 @@ export default defineAssetList(Network.ARBITRUM, [
       aggregator: "0xbe5ea816870d11239c543f84b71439511d70b94f",
       rateAsset: RateAsset.USD,
     },
-    //
   },
   {
     decimals: 18,
