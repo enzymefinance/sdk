@@ -50,7 +50,7 @@ jobs:
           fi
 
           # Convert array to JSON string for passing to next job
-          releases_json=$(printf '%s\n' "${releases[@]}" | jq -R . | jq -s .)  # This creates a proper JSON array
+          releases_json=$(printf '%s\n' "${releases[@]}" | jq -R -s -c 'split("\n") | map(select(length > 0))')
           echo "releases=$releases_json" >> $GITHUB_OUTPUT
 
   verify_environment:
