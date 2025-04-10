@@ -215,6 +215,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         SingleAssetRedemptionQueueFactory: "0xb658a26ec9638051a42160bb02319fed12299b25",
         SingleAssetRedemptionQueueLib: "0x137ac14e27de154e6a0a260570259f8cef436ba4",
         SmarDexUsdnNativeRateUsdAggregator: "0x0000000000000000000000000000000000000000",
+        SolvBtcYieldTokenRateUsdAggregatorFactory: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionParser: "0x0000000000000000000000000000000000000000",
         SolvV2BondIssuerPositionLib: "0x0000000000000000000000000000000000000000",
