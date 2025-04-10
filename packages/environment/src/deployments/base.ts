@@ -143,6 +143,8 @@ export default defineDeployment<Deployment.BASE>({
         Dispatcher: "0xd79fcd6eb56115f9757ec4c90fc2c5d143f83c16",
         EntranceRateBurnFee: "0xe34a4944a916330f54fd06508b674219c00725e2",
         EntranceRateDirectFee: "0xd5e0144464ec160ed2b4ce27f734a975bad2d938",
+        EnzymeV4VaultAdapter: "0x2eca3a9b9218dd8972699f14f409e5a60caa4fbd",
+        EnzymeVaultPriceFeed: "0xe32792c67d797784ced56f266e92a6611fe5e973",
         ERC4626Adapter: "0x7b6ad882fa39d45667df997c19afb4e1b225606f",
         ERC4626PriceFeed: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
         ERC4626RateAggregatorFactory: "0x6913bc793d486f8f80a9dc31a8fa2bf8bf09f866",

@@ -199,6 +199,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       case PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN:
       case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL:
       case PriceFeedType.DERIVATIVE_COMPOUND:
+      case PriceFeedType.DERIVATIVE_ENZYME_VAULT:
       case PriceFeedType.DERIVATIVE_ERC4626:
       case PriceFeedType.DERIVATIVE_ETHERFI:
       case PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES:
@@ -281,6 +282,12 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
       case PriceFeedType.DERIVATIVE_CURVE: {
         expect(asset.priceFeed.address).toBe(environment.contracts.CurvePriceFeed);
+
+        break;
+      }
+
+      case PriceFeedType.DERIVATIVE_ENZYME_VAULT: {
+        expect(asset.priceFeed.address).toBe(environment.contracts.EnzymeVaultPriceFeed);
 
         break;
       }
