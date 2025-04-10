@@ -715,7 +715,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "LBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX, // temporary
       aggregator: "0x677f4b4cd52b2515790f464fe041e261a248f987",
       rateAsset: RateAsset.ETH,
     },
