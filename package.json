@@ -9,6 +9,7 @@
     "unregister:expired:pendle:assets": "pnpm run --filter environment unregister:expired:pendle:assets",
     "add:pendle:assets:info": "pnpm run --filter environment add:pendle:assets:info",
     "deploy:pendle:oracles": "pnpm run --filter environment deploy:pendle:oracles",
+    "reupload:pendle:icons": "pnpm run --filter environment reupload:pendle:icons",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "typecheck": "tsc --build tsconfig.json",

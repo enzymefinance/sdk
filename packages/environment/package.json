@@ -21,7 +21,8 @@
     "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
     "unregister:expired:pendle:assets": "tsx ./scripts/unregister-expired-pendle-assets.ts",
     "add:pendle:assets:info": "tsx ./scripts/add-pendle-assets-info.ts",
-    "deploy:pendle:oracles": "tsx ./scripts/deploy-pendle-oracles/index.ts"
+    "deploy:pendle:oracles": "tsx ./scripts/deploy-pendle-oracles/index.ts",
+    "reupload:pendle:icons": "tsx ./scripts/reupload-pendle-icons.ts"
   },
   "peerDependencies": {
     "@enzymefinance/sdk": "workspace:*",
