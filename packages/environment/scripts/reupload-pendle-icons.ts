@@ -13,13 +13,18 @@ const streamPipeline = promisify(pipeline);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const outputPath = join(__dirname, "enzyme_icon.png");
-
 function getUrl(assetId: string) {
   return `https://app.enzyme.finance/asset/ethereum/${assetId}/icon?size=128`;
 }
 
 async function downloadIcon(assetId: string) {
+  const contentTypeToExt = {
+    "image/png": "png",
+    "image/jpeg": "jpg",
+    "image/svg+xml": "svg",
+    "image/webp": "webp",
+  } as const;
+
   const response = await fetch(getUrl(assetId));
 
   if (!response.ok) {
@@ -30,7 +35,25 @@ async function downloadIcon(assetId: string) {
     throw new Error("Failed to fetch image: No body in response");
   }
 
+  const contentType = response.headers.get("content-type");
+
+  if (!contentType) {
+    throw new Error("Failed to fetch image: No content type in response");
+  }
+
+  const extension = contentTypeToExt[contentType] as
+    | (typeof contentTypeToExt)[keyof typeof contentTypeToExt]
+    | undefined;
+
+  if (!extension) {
+    throw new Error(`Failed to fetch image: Unknown content type: ${contentType}`);
+  }
+
+  const outputPath = join(__dirname, `${assetId}.${extension}`);
+
   await streamPipeline(response.body, createWriteStream(outputPath));
+
+  return outputPath;
 }
 
 // parse args
