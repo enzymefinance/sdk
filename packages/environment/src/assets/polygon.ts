@@ -22,7 +22,7 @@ export default defineAssetList(Network.POLYGON, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
-    },
+    }, //
   },
   {
     decimals: 18,
