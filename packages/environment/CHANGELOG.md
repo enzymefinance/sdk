@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.42
+
+### Patch Changes
+
+- [#713](https://github.com/enzymefinance/sdk/pull/713) [`b212c57`](https://github.com/enzymefinance/sdk/commit/b212c57d68700ab40c30ea43bba72481f31306dc) Thanks [@iherger](https://github.com/iherger)! - Rename solvbtc.bbn
+
 ## 6.3.41
 
 ### Patch Changes
