@@ -1,5 +1,17 @@
 # @enzymefinance/environment
 
+## 6.3.42
+
+### Patch Changes
+
+- [#718](https://github.com/enzymefinance/sdk/pull/718) [`1ee59e2`](https://github.com/enzymefinance/sdk/commit/1ee59e2c80d2550a840619f9401d922d9ead9a2f) Thanks [@iherger](https://github.com/iherger)! - Use actually correct price feed type
+
+- [#717](https://github.com/enzymefinance/sdk/pull/717) [`3b6ed0e`](https://github.com/enzymefinance/sdk/commit/3b6ed0e37ac520600e55f3d96d7a48d7487297ff) Thanks [@iherger](https://github.com/iherger)! - Use correct price feed type for LBTC
+
+- [#710](https://github.com/enzymefinance/sdk/pull/710) [`e0ce42f`](https://github.com/enzymefinance/sdk/commit/e0ce42f799c8354985b14e7adbb50633b234ad1b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add solv btc bbn
+
+- [#713](https://github.com/enzymefinance/sdk/pull/713) [`b212c57`](https://github.com/enzymefinance/sdk/commit/b212c57d68700ab40c30ea43bba72481f31306dc) Thanks [@iherger](https://github.com/iherger)! - Rename solvbtc.bbn
+
 ## 6.3.41
 
 ### Patch Changes
