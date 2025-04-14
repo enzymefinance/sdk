@@ -88,6 +88,8 @@ export interface SuluContracts extends CommonContracts {
   readonly DisallowedAdapterIncomingAssetsPolicy: Address;
   readonly EntranceRateBurnFee: Address;
   readonly EntranceRateDirectFee: Address;
+  readonly EnzymeVaultPriceFeed: Address;
+  readonly EnzymeV4VaultAdapter: Address;
   readonly ERC4626Adapter: Address;
   readonly ERC4626PriceFeed: Address;
   readonly ERC4626RateAggregatorFactory: Address;
@@ -150,6 +152,7 @@ export interface SuluContracts extends CommonContracts {
   readonly SingleAssetDepositQueueLib: Address;
   readonly SingleAssetDepositQueueFactory: Address;
   readonly SmarDexUsdnNativeRateUsdAggregator: Address;
+  readonly SolvBtcYieldTokenRateUsdAggregatorFactory: Address;
   readonly SolvV2BondBuyerPositionLib: Address;
   readonly SolvV2BondBuyerPositionParser: Address;
   readonly SolvV2BondIssuerPositionLib: Address;

@@ -19,6 +19,7 @@ export enum AdapterType {
   CURVE_LIQUIDITY_EURS = "curve-liquidity-eurs",
   CURVE_LIQUIDITY_SETH = "curve-liquidity-seth",
   CURVE_LIQUIDITY_STETH = "curve-liquidity-steth",
+  ENZYME_V4_VAULT = "enzyme-v4-vault",
   ERC_4626 = "erc-4626",
   IDLE = "idle",
   KYBER_NETWORK = "kyber-network",
@@ -182,6 +183,11 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: undefined,
     name: "Curve Steth Pool",
     type: AdapterType.CURVE_LIQUIDITY_STETH,
+  },
+  [AdapterType.ENZYME_V4_VAULT]: {
+    contractName: "EnzymeV4VaultAdapter",
+    name: "Enzyme V4 Vault",
+    type: AdapterType.ENZYME_V4_VAULT,
   },
   [AdapterType.ERC_4626]: {
     contractName: "ERC4626Adapter",
