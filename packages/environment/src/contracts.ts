@@ -150,6 +150,7 @@ export interface SuluContracts extends CommonContracts {
   readonly SingleAssetDepositQueueLib: Address;
   readonly SingleAssetDepositQueueFactory: Address;
   readonly SmarDexUsdnNativeRateUsdAggregator: Address;
+  readonly SolvBtcYieldTokenRateUsdAggregatorFactory: Address;
   readonly SolvV2BondBuyerPositionLib: Address;
   readonly SolvV2BondBuyerPositionParser: Address;
   readonly SolvV2BondIssuerPositionLib: Address;

@@ -4,12 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
-  PRIMITIVE_CHAINLINK_LIKE_ETHX = "PRIMITIVE_CHAINLINK_LIKE_ETHX",
-  PRIMITIVE_CHAINLINK_LIKE_ERC4626 = "PRIMITIVE_CHAINLINK_LIKE_ERC4626",
-  PRIMITIVE_CHAINLINK_LIKE_QUOTED = "PRIMITIVE_CHAINLINK_LIKE_QUOTED",
-  PRIMITIVE_CHAINLINK_LIKE_USDN = "PRIMITIVE_CHAINLINK_LIKE_USDN",
-  PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
-  PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
+  PRIMITIVE_CHAINLINK_LIKE = "PRIMITIVE_CHAINLINK_LIKE",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_QUOTED = "PRIMITIVE_REDSTONE_QUOTED",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
@@ -33,12 +28,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_QUOTED,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
@@ -71,12 +61,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
-  | PrimitiveChainlinkLikeEthxPriceFeed
-  | PrimitiveChainlinkLikeERC4626PriceFeed
-  | PrimitiveChainlinkLikeQuotedPriceFeed
-  | PrimitiveChainlinkLikeUsdnPriceFeed
-  | PrimitiveChainlinkLikeWstEthPriceFeed
-  | PrimitiveChainlinkLikeYnEthPriceFeed
+  | PrimitiveChainlinkLikePriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveRedstoneQuotedPriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
@@ -122,43 +107,8 @@ export interface PrimitiveChainlinkPriceFeed extends PriceFeedBase {
   readonly rateAsset: RateAsset;
 }
 
-export interface PrimitiveChainlinkLikeQuotedPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-
-export interface PrimitiveChainlinkLikeUsdnPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_USDN;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.USD;
-}
-export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-
-export interface PrimitiveChainlinkLikeERC4626PriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626;
+export interface PrimitiveChainlinkLikePriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE;
   /**
    * Aggregator address
    */
@@ -167,29 +117,6 @@ export interface PrimitiveChainlinkLikeERC4626PriceFeed extends PriceFeedBase {
    * Rate Asset (ETH = 0, USD = 1)
    */
   readonly rateAsset: RateAsset;
-}
-
-export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-export interface PrimitiveChainlinkLikeEthxPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
 }
 
 export interface PrimitiveRedstonePriceFeed extends PriceFeedBase {
