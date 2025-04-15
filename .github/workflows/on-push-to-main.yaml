@@ -15,6 +15,11 @@ jobs:
     uses: ./.github/workflows/reusable-verify.yaml
     secrets: inherit
 
+  verify_environment:
+    name: Verify Environment
+    uses: ./.github/workflows/reusable-verify-environment.yaml
+    secrets: inherit
+
   docs:
     name: Documentation
     uses: ./.github/workflows/reusable-docs.yaml
