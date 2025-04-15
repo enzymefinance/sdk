@@ -4,12 +4,7 @@ export enum PriceFeedType {
   NONE = "NONE",
   WETH = "WETH",
   PRIMITIVE_CHAINLINK = "PRIMITIVE_CHAINLINK",
-  PRIMITIVE_CHAINLINK_LIKE_ETHX = "PRIMITIVE_CHAINLINK_LIKE_ETHX",
-  PRIMITIVE_CHAINLINK_LIKE_ERC4626 = "PRIMITIVE_CHAINLINK_LIKE_ERC4626",
-  PRIMITIVE_CHAINLINK_LIKE_QUOTED = "PRIMITIVE_CHAINLINK_LIKE_QUOTED",
-  PRIMITIME_CHAINLINK_LIKE_USDN = "PRIMITIME_CHAINLINK_LIKE_USDN",
-  PRIMITIVE_CHAINLINK_LIKE_WSTETH = "PRIMITIVE_CHAINLINK_LIKE_WSTETH",
-  PRIMITIVE_CHAINLINK_LIKE_YNETH = "PRIMITIVE_CHAINLINK_LIKE_YNETH",
+  PRIMITIVE_CHAINLINK_LIKE = "PRIMITIVE_CHAINLINK_LIKE",
   PRIMITIVE_REDSTONE = "PRIMITIVE_REDSTONE",
   PRIMITIVE_REDSTONE_QUOTED = "PRIMITIVE_REDSTONE_QUOTED",
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
@@ -20,6 +15,7 @@ export enum PriceFeedType {
   DERIVATIVE_BALANCER_V2_WEIGHTED_POOL = "DERIVATIVE_BALANCER_V2_WEIGHTED_POOL",
   DERIVATIVE_COMPOUND = "DERIVATIVE_COMPOUND",
   DERIVATIVE_CURVE = "DERIVATIVE_CURVE",
+  DERIVATIVE_ENZYME_VAULT = "DERIVATIVE_ENZYME_VAULT",
   DERIVATIVE_ERC4626 = "DERIVATIVE_ERC4626",
   DERIVATIVE_ETHERFI = "DERIVATIVE_ETHERFI",
   DERIVATIVE_PEGGED_DERIVATIVES = "DERIVATIVE_PEGGED_DERIVATIVES",
@@ -32,12 +28,7 @@ export enum PriceFeedType {
 
 export const primitivePriceFeeds = [
   PriceFeedType.PRIMITIVE_CHAINLINK,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED,
-  PriceFeedType.PRIMITIME_CHAINLINK_LIKE_USDN,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
-  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
+  PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
   PriceFeedType.PRIMITIVE_REDSTONE,
   PriceFeedType.PRIMITIVE_REDSTONE_QUOTED,
   PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
@@ -51,6 +42,7 @@ export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
   PriceFeedType.DERIVATIVE_COMPOUND,
   PriceFeedType.DERIVATIVE_CURVE,
+  PriceFeedType.DERIVATIVE_ENZYME_VAULT,
   PriceFeedType.DERIVATIVE_ERC4626,
   PriceFeedType.DERIVATIVE_ETHERFI,
   PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES,
@@ -69,12 +61,7 @@ export type PriceFeed =
   | NoPriceFeed
   | WethPriceFeed
   | PrimitiveChainlinkPriceFeed
-  | PrimitiveChainlinkLikeEthxPriceFeed
-  | PrimitiveChainlinkLikeERC4626PriceFeed
-  | PrimitiveChainlinkLikeQuotedPriceFeed
-  | PrimitiveChainlinkLikeUsdnPriceFeed
-  | PrimitiveChainlinkLikeWstEthPriceFeed
-  | PrimitiveChainlinkLikeYnEthPriceFeed
+  | PrimitiveChainlinkLikePriceFeed
   | PrimitiveRedstonePriceFeed
   | PrimitiveRedstoneQuotedPriceFeed
   | PrimitiveNonStandardPrecisionPriceFeed
@@ -85,6 +72,7 @@ export type PriceFeed =
   | DerivativeBalancerV2WeightedPoolPriceFeed
   | DerivativeCompoundPriceFeed
   | DerivativeCurvePriceFeed
+  | DerivativeEnzymeVaultPriceFeed
   | DerivativeERC4626PriceFeed
   | DerivativeEtherfiPriceFeed
   | DerivativePeggedDerivativesPriceFeed
@@ -119,43 +107,8 @@ export interface PrimitiveChainlinkPriceFeed extends PriceFeedBase {
   readonly rateAsset: RateAsset;
 }
 
-export interface PrimitiveChainlinkLikeQuotedPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-
-export interface PrimitiveChainlinkLikeUsdnPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIME_CHAINLINK_LIKE_USDN;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.USD;
-}
-export interface PrimitiveChainlinkLikeWstEthPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-
-export interface PrimitiveChainlinkLikeERC4626PriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626;
+export interface PrimitiveChainlinkLikePriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE;
   /**
    * Aggregator address
    */
@@ -164,29 +117,6 @@ export interface PrimitiveChainlinkLikeERC4626PriceFeed extends PriceFeedBase {
    * Rate Asset (ETH = 0, USD = 1)
    */
   readonly rateAsset: RateAsset;
-}
-
-export interface PrimitiveChainlinkLikeYnEthPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
-}
-export interface PrimitiveChainlinkLikeEthxPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX;
-  /**
-   * Aggregator address
-   */
-  readonly aggregator: Address;
-  /**
-   * Rate Asset (ETH = 0, USD = 1)
-   */
-  readonly rateAsset: RateAsset.ETH;
 }
 
 export interface PrimitiveRedstonePriceFeed extends PriceFeedBase {
@@ -291,6 +221,14 @@ export interface DerivativeCurvePriceFeed extends PriceFeedBase {
    * Invariant Proxy Asset (ipa)
    */
   readonly ipa: Address;
+}
+
+export interface DerivativeEnzymeVaultPriceFeed extends PriceFeedBase {
+  readonly type: PriceFeedType.DERIVATIVE_ENZYME_VAULT;
+  /**
+   * Price Feed address
+   */
+  readonly address: Address;
 }
 
 export interface DerivativeERC4626PriceFeed extends PriceFeedBase {

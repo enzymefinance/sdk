@@ -190,7 +190,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0x75c4dc3201015c78a60dbe673fc7247549527c1b",
       rateAsset: RateAsset.ETH,
     },
@@ -715,11 +715,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "LBTC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
+      aggregator: "0x677f4b4cd52b2515790f464fe041e261a248f987",
       rateAsset: RateAsset.ETH,
-      peggedTo: "BTC",
-      nonStandard: true,
     },
   },
   {
@@ -2594,7 +2592,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "wstETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_WSTETH,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
       rateAsset: RateAsset.ETH,
     },
@@ -3475,7 +3473,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ETHx",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ETHX,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0x75c4dc3201015c78a60dbe673fc7247549527c1b",
       rateAsset: RateAsset.ETH,
     },
@@ -6597,7 +6595,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ynETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_YNETH,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
       rateAsset: RateAsset.ETH,
       nonStandard: true,
@@ -7379,18 +7377,16 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "SolvBTC.BBN",
-    name: "SolvBTC Babylon",
+    symbol: "xSolvBTC",
+    name: "xSolvBTC",
     id: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     type: AssetType.PRIMITIVE,
     releases: [sulu],
     decimals: 18,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregator: "0x24c8964338deb5204b096039147b8e8c3aea42cc",
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
+      aggregator: "0xe16a36e1ae4538a579b5a249d042943b90878ef1",
       rateAsset: RateAsset.USD,
-      peggedTo: "SolvBTC",
-      nonStandard: true,
     },
   },
   {
@@ -7596,7 +7592,7 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIME_CHAINLINK_LIKE_USDN,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0xd5004c5d3017862839e83981b110f27ee7b36eaa",
       rateAsset: RateAsset.USD,
     },
@@ -7736,7 +7732,7 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "tETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_QUOTED,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0x8610172c4ea038a69565d9522db7187b34003761",
       rateAsset: RateAsset.ETH,
     },
@@ -7821,7 +7817,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     underlying: "0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0xe825080d444aa2772ece2648b48c320f8ddfbe62",
       rateAsset: RateAsset.ETH,
     },
@@ -7851,7 +7847,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 6,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0x740ee3b8e79ee324c66b33c227d3cd23f413200d",
       rateAsset: RateAsset.ETH,
     },
@@ -7895,7 +7891,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 6,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE_ERC4626,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
       aggregator: "0xfba3c30dfcac70eaf60ee01c1c9f3e452c5020f8",
       rateAsset: RateAsset.ETH,
     },
@@ -7983,6 +7979,21 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0x2587fb3b40e76957c73f19f258faefcc61fa18a2",
       rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "gtusdcf",
+    name: "Gauntlet USDC Frontier",
+    id: "0xc582f04d8a82795aa2ff9c8bb4c1c889fe7b754e",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
 ]);

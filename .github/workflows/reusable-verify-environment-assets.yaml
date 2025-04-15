@@ -1,0 +1,80 @@
+name: Verify Environment Assets
+
+on:
+  workflow_call:
+
+permissions: {}
+
+jobs:
+  changes:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      releases: ${{ steps.set-releases.outputs.releases }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            ethereum:
+              - 'packages/environment/src/assets/ethereum.ts'
+            polygon:
+              - 'packages/environment/src/assets/polygon.ts'
+            arbitrum:
+              - 'packages/environment/src/assets/arbitrum.ts'
+            base:
+              - 'packages/environment/src/assets/base.ts'
+
+      - name: Set releases based on changed files
+        id: set-releases
+        run: |
+          releases=()
+
+          # Check if any relevant file was changed, then add the corresponding release
+          if [[ "${{ steps.filter.outputs.ethereum }}" == "true" ]]; then
+            releases+=("ethereum.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.polygon }}" == "true" ]]; then
+            releases+=("polygon.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.arbitrum }}" == "true" ]]; then
+            releases+=("arbitrum.sulu")
+          fi
+
+          if [[ "${{ steps.filter.outputs.base }}" == "true" ]]; then
+            releases+=("base.sulu")
+          fi
+
+          # Convert array to JSON string for passing to next job
+          releases_json=$(printf '%s\n' "${releases[@]}" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "releases=$releases_json" >> $GITHUB_OUTPUT
+
+  verify_environment:
+    name: Test ${{ matrix.release }}
+    runs-on: ubuntu-latest
+    needs: changes
+    if: needs.changes.outputs.releases != '[]'
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        release: ${{ fromJson(needs.changes.outputs.releases) }}
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Log release
+        run: echo "${{ matrix.release }}"
+
+      - name: Run tests
+        run: pnpm vitest --project @enzymefinance/environment --exclude 'price-feed-registered-assets.test.ts'
+        env:
+          VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+          VITE_RELEASE: ${{ matrix.release }}
+          VITE_COINGECKO_MINUTE_RATE: 5 # low max rate (per app per shard)
