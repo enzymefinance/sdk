@@ -153,6 +153,7 @@ export default defineDeployment<Deployment.TESTNET>({
         SingleAssetRedemptionQueueFactory: "0xad1980b3301557eae118275e79c2554cb6efbd5a",
         SingleAssetRedemptionQueueLib: "0x78c357627c65c336a64abefa062a0b19ba6fa6f4",
         SmarDexUsdnNativeRateUsdAggregator: "0x0000000000000000000000000000000000000000",
+        SolvBtcYieldTokenRateUsdAggregatorFactory: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionLib: "0x0000000000000000000000000000000000000000",
         SolvV2BondBuyerPositionParser: "0x0000000000000000000000000000000000000000",
         SolvV2BondIssuerPositionLib: "0x0000000000000000000000000000000000000000",
