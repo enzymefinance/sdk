@@ -38,7 +38,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     makerMCDPotAddress: "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
     merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     morphoBlue: "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
-    mysoV3Router: "0xE442B5A7746C0DFB3e57de62ccB5f2Bc4f7caa72",
+    mysoV3Router: "0xe442b5a7746c0dfb3e57de62ccb5f2bc4f7caa72",
     multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     paraswapV5AugustusSwapper: "0xdef171fe48cf0115b1d80b88dc8eab59176fee57",
     paraswapV5TokenTransferProxy: "0x216b4b4ba9f3e719726886d34a177484278bfcae",

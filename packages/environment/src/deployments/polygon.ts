@@ -38,7 +38,7 @@ export default defineDeployment<Deployment.POLYGON>({
     makerMCDPotAddress: "0x0000000000000000000000000000000000000000",
     merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     morphoBlue: "0x0000000000000000000000000000000000000000",
-    mysoV3Router: "0xE442B5A7746C0DFB3e57de62ccB5f2Bc4f7caa72",
+    mysoV3Router: "0xe442b5a7746c0dfb3e57de62ccb5f2bc4f7caa72",
     multicall: "0xca11bde05977b3631167028862be2a173976ca11",
     staderStakingPoolManager: "0x0000000000000000000000000000000000000000",
     staderUserWithdrawManager: "0x0000000000000000000000000000000000000000",
