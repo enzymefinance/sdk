@@ -35,6 +35,7 @@ export default defineDeployment<Deployment.BASE>({
     gmxV2ReferralStorage: "0x0000000000000000000000000000000000000000",
     kilnStaking: "0x0000000000000000000000000000000000000000",
     lidoWithdrawalsQueue: "0x0000000000000000000000000000000000000000",
+    lmaxMarketMaker: "0x0000000000000000000000000000000000000000",
     morphoBlue: "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",
     mysoV3Router: "0x0000000000000000000000000000000000000000",
     paraswapV5AugustusSwapper: "0x59c7c832e96d2568bea6db468c1aadcbbda08a52",

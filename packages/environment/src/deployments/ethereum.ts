@@ -35,6 +35,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     gmxV2ReferralStorage: "0x0000000000000000000000000000000000000000",
     kilnStaking: "0x0816df553a89c4bff7ebfd778a9706a989dd3ce3",
     lidoWithdrawalsQueue: "0x889edc2edab5f40e902b864ad4d7ade8e412f9b1",
+    lmaxMarketMaker: "0x732e4f0cc80b61175f88c6f567088b2224bd7a24",
     makerMCDPotAddress: "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
     merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",
     morphoBlue: "0xbbbbbbbbbb9cc5e90e3b3af64bdaf62c37eeffcb",

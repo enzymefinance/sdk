@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.43
+
+### Patch Changes
+
+- [#720](https://github.com/enzymefinance/sdk/pull/720) [`048b41c`](https://github.com/enzymefinance/sdk/commit/048b41c46e0c61f2824e7ebefa93b29f7fb8d905) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add LMAX external contract
+
 ## 6.3.42
 
 ### Patch Changes
