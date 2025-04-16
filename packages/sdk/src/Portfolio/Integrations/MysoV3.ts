@@ -374,3 +374,23 @@ export function getEscrowIdxs(
     args: [args.from, args.numElements],
   });
 }
+
+export async function getEscrowAddress(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    mysoRouter: Address;
+    escrowId: bigint;
+  }>,
+) {
+  const escrowAddresses = await readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi([
+      "function getEscrows(uint256 from, uint256 numElements) view returns (address[] memory escrowArray)",
+    ]),
+    functionName: "getEscrows",
+    address: args.mysoRouter,
+    args: [args.escrowId, 1n],
+  });
+
+  return escrowAddresses[0];
+}
