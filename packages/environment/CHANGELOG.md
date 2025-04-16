@@ -1,5 +1,78 @@
 # @enzymefinance/environment
 
+## 6.3.42
+
+### Patch Changes
+
+- [#718](https://github.com/enzymefinance/sdk/pull/718) [`1ee59e2`](https://github.com/enzymefinance/sdk/commit/1ee59e2c80d2550a840619f9401d922d9ead9a2f) Thanks [@iherger](https://github.com/iherger)! - Use actually correct price feed type
+
+- [#717](https://github.com/enzymefinance/sdk/pull/717) [`3b6ed0e`](https://github.com/enzymefinance/sdk/commit/3b6ed0e37ac520600e55f3d96d7a48d7487297ff) Thanks [@iherger](https://github.com/iherger)! - Use correct price feed type for LBTC
+
+- [#710](https://github.com/enzymefinance/sdk/pull/710) [`e0ce42f`](https://github.com/enzymefinance/sdk/commit/e0ce42f799c8354985b14e7adbb50633b234ad1b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add solv btc bbn
+
+- [#713](https://github.com/enzymefinance/sdk/pull/713) [`b212c57`](https://github.com/enzymefinance/sdk/commit/b212c57d68700ab40c30ea43bba72481f31306dc) Thanks [@iherger](https://github.com/iherger)! - Rename solvbtc.bbn
+
+## 6.3.41
+
+### Patch Changes
+
+- [#709](https://github.com/enzymefinance/sdk/pull/709) [`08b8e14`](https://github.com/enzymefinance/sdk/commit/08b8e14f6fb1191b43babc4484ac31346b2884ff) Thanks [@iherger](https://github.com/iherger)! - Morpho
+
+## 6.3.40
+
+### Patch Changes
+
+- [#681](https://github.com/enzymefinance/sdk/pull/681) [`93e7e9d`](https://github.com/enzymefinance/sdk/commit/93e7e9de9d3b4b5e7060c0b45efa83fdc958f821) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add enzyme vault integration
+
+- Updated dependencies [[`93e7e9d`](https://github.com/enzymefinance/sdk/commit/93e7e9de9d3b4b5e7060c0b45efa83fdc958f821)]:
+  - @enzymefinance/sdk@1.2.14
+
+## 6.3.39
+
+### Patch Changes
+
+- [#705](https://github.com/enzymefinance/sdk/pull/705) [`a1092b2`](https://github.com/enzymefinance/sdk/commit/a1092b21485a70e2c5af932eb013a456a1094fb4) Thanks [@iherger](https://github.com/iherger)! - Price Feed Typo
+
+## 6.3.38
+
+### Patch Changes
+
+- [#703](https://github.com/enzymefinance/sdk/pull/703) [`4de609c`](https://github.com/enzymefinance/sdk/commit/4de609ccf044a04428b7dcf7e6cd52deac151f90) Thanks [@iherger](https://github.com/iherger)! - USDN price feed
+
+## 6.3.37
+
+### Patch Changes
+
+- [#664](https://github.com/enzymefinance/sdk/pull/664) [`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 Merkl Rewards
+
+- Updated dependencies [[`a1cbdcd`](https://github.com/enzymefinance/sdk/commit/a1cbdcdfd70fab88a7b5b2ef060935fb07233684)]:
+  - @enzymefinance/sdk@1.2.13
+
+## 6.3.36
+
+### Patch Changes
+
+- [#699](https://github.com/enzymefinance/sdk/pull/699) [`87337bd`](https://github.com/enzymefinance/sdk/commit/87337bd032c880734c148f0d9d322751ec1a7507) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix resupply
+
+## 6.3.35
+
+### Patch Changes
+
+- Updated dependencies [[`d1b938d`](https://github.com/enzymefinance/sdk/commit/d1b938d52790741ef5422e81fc9487a864be4a2d)]:
+  - @enzymefinance/sdk@1.2.12
+
+## 6.3.34
+
+### Patch Changes
+
+- [#696](https://github.com/enzymefinance/sdk/pull/696) [`a80ec5d`](https://github.com/enzymefinance/sdk/commit/a80ec5ddb0dcaf8f3ea7a81c5a0f245b1fa5f6a0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add RSUP
+
+## 6.3.33
+
+### Patch Changes
+
+- [#663](https://github.com/enzymefinance/sdk/pull/663) [`898a8b8`](https://github.com/enzymefinance/sdk/commit/898a8b825d88537402e94fd559748e52218787ac) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle V2 assets
+
 ## 6.3.32
 
 ### Patch Changes
