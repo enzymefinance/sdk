@@ -7462,14 +7462,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Corn SolvBTC Babylon 26DEC2024",
     id: "0x23e479ddcda990e8523494895759bd98cd2fdbf6",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 8,
     markets: ["0xeb4d3057738b9ed930f451be473c1ccc42988384"],
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x65427ee55ab33c00d467923af340b8fb3e73a0cd",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
