@@ -12,20 +12,17 @@ dotenv.config({ path: "../../../.env" });
 
 const args = arg({
   "--keystore-path": String,
+  "--private-key": String,
   "--pt-markets": String,
   "--lps": String,
   "-k": "--keystore-path",
+  "-pk": "--private-key",
 });
 
 const keystorePathArg = args["--keystore-path"];
-if (!keystorePathArg) {
-  throw new Error("--keystore-path argument is required");
-}
+const privateKeyArg = args["--private-key"];
 
-const keystoreFilePath = path.resolve(keystorePathArg);
-if (!fs.existsSync(keystoreFilePath)) {
-  throw new Error(`Keystore file not found at ${keystoreFilePath}`);
-}
+const privateKey = await getPrivateKey(privateKeyArg, keystorePathArg);
 
 const ptMarketsArg = args["--pt-markets"];
 const lpArg = args["--lps"];
@@ -37,20 +34,37 @@ if (!(ptMarketsArg || lpArg)) {
 const ptMarkets = ptMarketsArg ? ptMarketsArg.split(",") : [];
 const lps = lpArg ? lpArg.split(",") : [];
 
-const wallet = await decryptKeystore({
-  keystoreFilePath,
-});
-
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-console.log("Decrypted wallet", wallet.address);
-
 const results = await deployOracles({
   lpMarkets: lps.map((lp) => toAddress(lp)),
   ptMarkets: ptMarkets.map((pt) => toAddress(pt)),
-  privateKey: asHex(wallet.privateKey),
+  privateKey,
 });
 
 updateAssetsFilePriceFeeds(results.filter((r) => r.success));
 
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-console.log("All oracles deployed");
+console.info("All oracles deployed");
+
+function getPrivateKey(privateKeyArg?: string, keystorePathArg?: string) {
+  if (privateKeyArg !== undefined) {
+    return asHex(privateKeyArg);
+  }
+
+  if (keystorePathArg === undefined) {
+    throw new Error("Either --keystore-path or --private-key argument is required");
+  }
+
+  return getPrivateKeyFromWallet(keystorePathArg);
+}
+
+async function getPrivateKeyFromWallet(keystorePathArg: string) {
+  const keystoreFilePath = path.resolve(keystorePathArg);
+  if (keystoreFilePath && !fs.existsSync(keystoreFilePath)) {
+    throw new Error(`Keystore file not found at ${keystoreFilePath}`);
+  }
+  const wallet = await decryptKeystore({
+    keystoreFilePath,
+  });
+  console.info("Decrypted wallet", wallet.address);
+
+  return asHex(wallet.privateKey);
+}
