@@ -21,8 +21,6 @@ export function getClient(network: Network) {
           : "eth"
   }-mainnet.g.alchemy.com/v2/${process.env.VITE_ALCHEMY_API_KEY}`;
 
-  console.log();
-
   return createPublicClient({
     chain,
     transport: http(url, { batch: true }),
