@@ -316,6 +316,7 @@ export interface ExternalContractsMapping {
   readonly gmxV2ReferralStorage: Address;
   readonly kilnStaking: Address;
   readonly lidoWithdrawalsQueue: Address;
+  readonly lmaxMarketMaker: Address;
   readonly makerMCDPotAddress: Address;
   readonly merklDistributor: Address;
   readonly morphoBlue: Address;
