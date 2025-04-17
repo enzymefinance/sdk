@@ -10,16 +10,13 @@ import {
 import { Network } from "../networks.js";
 import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
-
 //---------------------------------------------------------------------------------------------
 //
 // Note: as of November 21, 2023, the v2 and v3 asset universe is no longer maintained
 // (v2 and v3 are deprecated as of this date)
 //
 //---------------------------------------------------------------------------------------------
-
 const { sulu, encore, phoenix } = releases.ethereum;
-
 export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
@@ -5533,8 +5530,7 @@ export default defineAssetList(Network.ETHEREUM, [
       aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
       rateAsset: RateAsset.ETH,
     },
-  },
-  // TODO: order assets below by id
+  }, // TODO: order assets below by id
   {
     decimals: 18,
     id: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
@@ -6996,7 +6992,6 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
-
   {
     symbol: "gtUSDAcore",
     name: "Gauntlet USDA Core",
@@ -7990,7 +7985,6 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",

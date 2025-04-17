@@ -188,7 +188,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         FundValueCalculator: "0x490e64e0690b4aa481fb02255aed3d052bad7bf1",
         FundValueCalculatorRouter: "0x7c728cd0cfa92401e01a4849a01b57ee53f5b2b9",
         GasRelayPaymasterFactory: "0x846bbe1925047023651de7ec289f329c24ded3a8",
-        GasRelayPaymasterLib: "0x2f1d153dd821258caa15656bde910e146e5f2f77",
+        GasRelayPaymasterLib: "0x131c220c18874e32abbe945eb8aa998b84f63625",
         GatedRedemptionQueueSharesWrapperFactory: "0x73b9c40530311b49b526f230d01bdf5725b3290d",
         GatedRedemptionQueueSharesWrapperLib: "0xe971375e3e8af54232f9b7c88cce143edf95c272",
         GenericAdapter: "0x0000000000000000000000000000000000000000",
