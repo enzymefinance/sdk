@@ -8,7 +8,7 @@ import { decryptKeystore } from "./decrypt-keystore.js";
 import { deployOracles } from "./deploy-oracles.js";
 import { updateAssetsFilePriceFeeds } from "./update-assets-file.js";
 
-dotenv.config({ path: "../../../.env" });
+dotenv.config({ path: "../../.env" });
 
 const args = arg({
   "--keystore-path": String,
@@ -22,14 +22,13 @@ const args = arg({
 const keystorePathArg = args["--keystore-path"];
 const privateKeyArg = args["--private-key"];
 
-const privateKey = await getPrivateKey(privateKeyArg, keystorePathArg);
-
 const ptMarketsArg = args["--pt-markets"];
 const lpArg = args["--lps"];
 
 if (!(ptMarketsArg || lpArg)) {
   throw new Error("Either --pt-markets or --lps must be provided");
 }
+const privateKey = await getPrivateKey(privateKeyArg, keystorePathArg);
 
 const ptMarkets = ptMarketsArg ? ptMarketsArg.split(",") : [];
 const lps = lpArg ? lpArg.split(",") : [];
@@ -41,7 +40,6 @@ const results = await deployOracles({
 });
 
 updateAssetsFilePriceFeeds(results.filter((r) => r.success));
-
 console.info("All oracles deployed");
 
 function getPrivateKey(privateKeyArg?: string, keystorePathArg?: string) {
