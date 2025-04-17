@@ -32,7 +32,6 @@ async function isRegistered(asset: Address) {
 
   return Protocol.isSupportedAsset(client, { valueInterpreter: c, asset });
 }
-
 let prices: Record<Address, number | undefined> = {};
 
 beforeAll(async () => {
