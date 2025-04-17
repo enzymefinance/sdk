@@ -73,7 +73,7 @@ jobs:
         run: echo "${{ matrix.release }}"
 
       - name: Run tests
-        run: pnpm vitest --project @enzymefinance/environment --exclude 'price-feed-registered-assets.test.ts'
+        run: pnpm vitest --project @enzymefinance/environment --exclude "**/*assets-registered.test.ts"
         env:
           VITE_ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
           VITE_RELEASE: ${{ matrix.release }}
