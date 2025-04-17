@@ -170,7 +170,7 @@ export default defineDeployment<Deployment.POLYGON>({
         FundValueCalculator: "0xcdf038dd3b66506d2e5378aee185b2f0084b7a33",
         FundValueCalculatorRouter: "0xd70389a7d6171e1dba6c3df4db7331811fd93f08",
         GasRelayPaymasterFactory: "0xed05786ef7b5e5bf909512f0ad46eb8f22cdc4ca",
-        GasRelayPaymasterLib: "0x44654bc1107caaa3297ed5ccb70d9cdb445f5592",
+        GasRelayPaymasterLib: "0x190e7045caeb09459bba12bced1d133e10d63715",
         GatedRedemptionQueueSharesWrapperFactory: "0x7a68d541af898c14fbd5ecbda3b402b18d8c17d4",
         GatedRedemptionQueueSharesWrapperLib: "0x9932120518b25e35d4653a8b8d316c58c8b6d7c9",
         GenericAdapter: "0x0000000000000000000000000000000000000000",
