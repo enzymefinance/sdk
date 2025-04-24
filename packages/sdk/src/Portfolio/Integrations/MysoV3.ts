@@ -1,3 +1,4 @@
+import * as Abis from "@enzymefinance/abis";
 import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
 import { readContract } from "viem/actions";
 import { Viem } from "../../Utils.js";
@@ -329,7 +330,7 @@ export const sweep = ExternalPositionManager.makeUse(Action.Sweep, sweepEncode);
 export function getNumOpenEscrows(client: Client, args: Viem.ContractCallParameters<{ position: Address }>) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: parseAbi(["function getNumOpenEscrows() view returns (uint256 numOpenEscrows_)"]),
+    abi: Abis.IMysoV3OptionWritingPositionLib,
     functionName: "getNumOpenEscrows",
     address: args.position,
     args: [],
@@ -346,9 +347,7 @@ export function getEscrowIdxs(
 ) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
-    abi: parseAbi([
-      "function getEscrowIdxs(uint256 _from, uint256 _numElements) view returns (uint32[] openEscrowsIdxs_)",
-    ]),
+    abi: Abis.IMysoV3OptionWritingPositionLib,
     functionName: "getEscrowIdxs",
     address: args.position,
     args: [args.from, args.numElements],
