@@ -326,26 +326,6 @@ export const sweep = ExternalPositionManager.makeUse(Action.Sweep, sweepEncode);
 //------------------------------------------------------------------------------
 // EXTERNAL READ FUNCTIONS
 //------------------------------------------------------------------------------
-export function getManagedAssets(client: Client, args: Viem.ContractCallParameters<{ position: Address }>) {
-  return readContract(client, {
-    ...Viem.extractBlockParameters(args),
-    abi: parseAbi(["function getManagedAssets() view returns (address[] assets_, uint256[] amounts_)"]),
-    functionName: "getManagedAssets",
-    address: args.position,
-    args: [],
-  });
-}
-
-export function getDebtAssets(client: Client, args: Viem.ContractCallParameters<{ position: Address }>) {
-  return readContract(client, {
-    ...Viem.extractBlockParameters(args),
-    abi: parseAbi(["function getDebtAssets() view returns (address[] assets_, uint256[] amounts_)"]),
-    functionName: "getDebtAssets",
-    address: args.position,
-    args: [],
-  });
-}
-
 export function getNumOpenEscrows(client: Client, args: Viem.ContractCallParameters<{ position: Address }>) {
   return readContract(client, {
     ...Viem.extractBlockParameters(args),
