@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.45
+
+### Patch Changes
+
+- [#707](https://github.com/enzymefinance/sdk/pull/707) [`275e17f`](https://github.com/enzymefinance/sdk/commit/275e17f930cc26b86cbfda52b82110e8d22a2165) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle, and Morpho assets
+
+- [#723](https://github.com/enzymefinance/sdk/pull/723) [`f778d59`](https://github.com/enzymefinance/sdk/commit/f778d59b59794c4f0bd53ee414bc90378f2578e8) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle USDe and syrup
+
 ## 6.3.44
 
 ### Patch Changes
