@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 1.2.7
+
+### Patch Changes
+
+- [#677](https://github.com/enzymefinance/sdk/pull/677) [`09cbf46`](https://github.com/enzymefinance/sdk/commit/09cbf46aa3224106f0af490028e783a4dd31b287) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add MysoV3 abis, environment variables and integration helpers
+
 ## 1.2.6
 
 ### Patch Changes
