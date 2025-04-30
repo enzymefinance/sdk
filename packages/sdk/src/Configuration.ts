@@ -69,25 +69,7 @@ export async function getAccruedContinuousFees(
   let highWaterMark: bigint | undefined;
 
   if (hasPerformanceFee) {
-    const { result: gav } = await simulateContract(client, {
-      ...Viem.extractBlockParameters(args),
-      abi: Abis.IComptrollerLib,
-      functionName: "calcGav",
-      address: args.comptrollerProxy,
-    });
-
-    const {
-      result: [_, __, sharesDue],
-    } = await simulateContract(client, {
-      ...Viem.extractBlockParameters(args),
-      abi: Abis.IPerformanceFee,
-      functionName: "settle",
-      address: args.performanceFee,
-      args: [args.comptrollerProxy, args.vaultProxy, 0, "0x", gav],
-      account: args.feeManager,
-    });
-
-    performanceFeeSharesDue = sharesDue;
+    performanceFeeSharesDue = await getAccruedPerformanceFee(client, args);
 
     const performanceFeeInfo = await getInfo(client, {
       performanceFee: args.performanceFee,
@@ -103,6 +85,36 @@ export async function getAccruedContinuousFees(
     managementFeeSharesDue,
     performanceFeeSharesDue,
   };
+}
+
+export async function getAccruedPerformanceFee(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    feeManager: Address;
+    performanceFee: Address;
+    comptrollerProxy: Address;
+    vaultProxy: Address;
+  }>,
+) {
+  const { result: gav } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: Abis.IComptrollerLib,
+    functionName: "calcGav",
+    address: args.comptrollerProxy,
+  });
+
+  const {
+    result: [_, __, sharesDue],
+  } = await simulateContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: Abis.IPerformanceFee,
+    functionName: "settle",
+    address: args.performanceFee,
+    args: [args.comptrollerProxy, args.vaultProxy, 0, "0x", gav],
+    account: args.feeManager,
+  });
+
+  return sharesDue;
 }
 
 export function getEnabledPolicies(
