@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.46
+
+### Patch Changes
+
+- [#694](https://github.com/enzymefinance/sdk/pull/694) [`c1e749c`](https://github.com/enzymefinance/sdk/commit/c1e749cff851aab353cd283e387244130f0123c6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Deregister Pendle assets
+
+- Updated dependencies [[`9048ba9`](https://github.com/enzymefinance/sdk/commit/9048ba9c59966ecd96e474ec43f5a4ff5dda9d9d)]:
+  - @enzymefinance/sdk@1.2.16
+
 ## 6.3.45
 
 ### Patch Changes
