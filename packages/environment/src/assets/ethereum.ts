@@ -10,16 +10,13 @@ import {
 import { Network } from "../networks.js";
 import { PriceFeedType, RateAsset } from "../price-feeds.js";
 import { releases } from "../releases.js";
-
 //---------------------------------------------------------------------------------------------
 //
 // Note: as of November 21, 2023, the v2 and v3 asset universe is no longer maintained
 // (v2 and v3 are deprecated as of this date)
 //
 //---------------------------------------------------------------------------------------------
-
 const { sulu, encore, phoenix } = releases.ethereum;
-
 export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
@@ -5533,8 +5530,7 @@ export default defineAssetList(Network.ETHEREUM, [
       aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
       rateAsset: RateAsset.ETH,
     },
-  },
-  // TODO: order assets below by id
+  }, // TODO: order assets below by id
   {
     decimals: 18,
     id: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
@@ -6996,7 +6992,6 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
-
   {
     symbol: "gtUSDAcore",
     name: "Gauntlet USDA Core",
@@ -7860,6 +7855,51 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    symbol: "PT-LBTC-26JUN2025",
+    name: "PT Lombard LBTC 26JUN2025",
+    id: "0x6ca4d5d2ecb72e3bbf17543b3367746b80d22694",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 8,
+    underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
+    markets: ["0x931f7ea0c31c14914a452d341bc5cb5d996be71d"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x0db642561beeed68b84cb7da288c03ffeea40bd0",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-EBTC-26JUN2025",
+    name: "PT ether.fi eBTC 26JUN2025",
+    id: "0xc653f79de1274ee65674befda54986020d6f8fc1",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 8,
+    underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
+    markets: ["0x523f9441853467477b4dde653c554942f8e17162"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x5f02260dc0e6566aff2e73c7f8d293e5c6804945",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-SolvBTC.BBN-26JUN2025",
+    name: "PT SolvBTC Babylon 26JUN2025",
+    id: "0x4f62a7a25a4fd6ae386e957284afb5fbf1e1f32c",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 8,
+    underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
+    markets: ["0xb6b2cf977c512bcd195b58e2ccfb3fb15535cb19"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x2587fb3b40e76957c73f19f258faefcc61fa18a2",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
     symbol: "gtusdcf",
     name: "Gauntlet USDC Frontier",
     id: "0xc582f04d8a82795aa2ff9c8bb4c1c889fe7b754e",
@@ -7868,10 +7908,39 @@ export default defineAssetList(Network.ETHEREUM, [
     releases: [sulu],
     decimals: 18,
     underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
+    symbol: "PT-syrupUSDC-28AUG2025",
+    name: "PT Syrup USDC 28AUG2025",
+    id: "0xcce7d12f683c6dae700154f0badf779c0ba1f89a",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 6,
+    underlying: "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
+    markets: ["0x9a63fa80b5ddfd3cab23803fdb93ad2c18f3d5aa"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x36cd1957d93918b6f7436d33b74b958604c3d35a",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-USDe-31JUL2025",
+    name: "PT Ethena USDe 31JUL2025",
+    id: "0x917459337caac939d41d7493b3999f571d20d667",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
+    markets: ["0x9df192d13d61609d1852461c4850595e1f56e714"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xbdbb726d6fd1cbeec085f97d0ceeb9282e482b86",
+      rateAsset: RateAsset.ETH,
     },
   },
 ]);

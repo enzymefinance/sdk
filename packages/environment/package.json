@@ -1,7 +1,7 @@
 {
   "name": "@enzymefinance/environment",
   "description": "Enzyme is an Ethereum-based protocol for decentralized on-chain asset management.",
-  "version": "6.3.43",
+  "version": "6.3.45",
   "type": "module",
   "publishConfig": {
     "access": "public",
@@ -18,7 +18,11 @@
     "build-prepare": "build-utils prepare-v2",
     "build-esm": "tsc -b tsconfig.build.json",
     "build-cjs": "babel build/esm --plugins @babel/transform-export-namespace-from --plugins @babel/transform-modules-commonjs --out-dir build/cjs --source-maps",
-    "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps"
+    "build-annotate": "babel build/esm --plugins annotate-pure-calls --out-dir build/esm --source-maps",
+    "unregister:expired:pendle:assets": "tsx ./scripts/unregister-expired-pendle-assets.ts",
+    "add:pendle:assets:info": "tsx ./scripts/add-pendle-assets-info.ts",
+    "deploy:pendle:oracles": "tsx ./scripts/deploy-pendle-oracles/index.ts",
+    "reupload:pendle:icons": "tsx ./scripts/reupload-pendle-icons.ts"
   },
   "peerDependencies": {
     "@enzymefinance/sdk": "workspace:*",
@@ -26,7 +30,14 @@
   },
   "devDependencies": {
     "@enzymefinance/sdk": "workspace:*",
+    "@types/jscodeshift": "^17.3.0",
+    "arg": "^5.0.2",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "inquirer": "^12.5.2",
+    "jscodeshift": "^17.3.0",
     "p-throttle": "^6.2.0",
+    "tsx": "^4.19.0",
     "viem": "^2.21.44",
     "zod": "^3.23.8"
   },
