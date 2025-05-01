@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.16
+
+### Patch Changes
+
+- [#727](https://github.com/enzymefinance/sdk/pull/727) [`9048ba9`](https://github.com/enzymefinance/sdk/commit/9048ba9c59966ecd96e474ec43f5a4ff5dda9d9d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add accrued performance fee
+
 ## 1.2.15
 
 ### Patch Changes
