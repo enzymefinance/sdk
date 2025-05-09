@@ -76,7 +76,6 @@ export function buySharesDecode(encoded: Hex): BuySharesArgs {
 //--------------------------------------------------------------------------------------------
 
 export type RedeemSharesForSpecificAssetsArgs = {
-  actionId: typeof AdapterAction.RedeemSharesForSpecificAssets;
   vaultProxy: Address;
   sharesQuantity: bigint;
   payoutAssets: ReadonlyArray<Address>;
@@ -121,10 +120,12 @@ export function redeemSharesForSpecificAssetsEncode(args: RedeemSharesForSpecifi
     args.minPayoutAssetAmounts,
   ]);
 
-  return encodeAdapterAction({ actionId: args.actionId, encodedActionArgs });
+  return encodeAdapterAction({ actionId: AdapterAction.RedeemSharesForSpecificAssets, encodedActionArgs });
 }
 
-export function redeemSharesForSpecificAssetsDecode(encoded: Hex): RedeemSharesForSpecificAssetsArgs {
+export function redeemSharesForSpecificAssetsDecode(
+  encoded: Hex,
+): RedeemSharesForSpecificAssetsArgs & { actionId: typeof AdapterAction.RedeemSharesForSpecificAssets } {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
   const [vaultProxy, sharesQuantity, payoutAssets, payoutAssetPercentages, minPayoutAssetAmounts] = decodeAbiParameters(
