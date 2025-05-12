@@ -273,6 +273,7 @@ export default defineAssetList(Network.BASE, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
+      nonStandard: true,
     },
   },
 ]);
