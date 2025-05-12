@@ -234,4 +234,17 @@ export default defineAssetList(Network.BASE, [
       nonStandard: true,
     },
   },
+  {
+    id: "0x236aa50979d5f3de3bd1eeb40e81137f22ab794b",
+    name: "Base tBTC v2",
+    symbol: "tBTC",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x6d75bfb5a5885f841b132198c9f0be8c872057bf",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);

@@ -7943,4 +7943,17 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    id: "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+    name: "tBTC v2",
+    symbol: "tBTC",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8350b7de6a6a2c1368e7d4bd968190e13e354297",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
