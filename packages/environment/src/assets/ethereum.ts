@@ -7867,7 +7867,7 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
-    id: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    id: "0xfa2b947eec368f42195f24f36d2af29f7c24cec2",
     name: "Falcon USD",
     releases: [],
     symbol: "USDf",
