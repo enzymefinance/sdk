@@ -1,5 +1,15 @@
 # @enzymefinance/environment
 
+## 6.3.48
+
+### Patch Changes
+
+- [#732](https://github.com/enzymefinance/sdk/pull/732) [`4507a54`](https://github.com/enzymefinance/sdk/commit/4507a5494f99310178f9438742f883deda9c0bc4) Thanks [@iherger](https://github.com/iherger)! - Add AFG Morpho vaults
+
+- [#729](https://github.com/enzymefinance/sdk/pull/729) [`6eec52b`](https://github.com/enzymefinance/sdk/commit/6eec52b31709d07fd3365407b5293116a67ed25a) Thanks [@iherger](https://github.com/iherger)! - Update Aave like Eps
+
+- [#731](https://github.com/enzymefinance/sdk/pull/731) [`d52428d`](https://github.com/enzymefinance/sdk/commit/d52428dd29acfc85d229e203c28594a876d74c83) Thanks [@iherger](https://github.com/iherger)! - Add new assets
+
 ## 6.3.47
 
 ### Patch Changes
