@@ -1,5 +1,4 @@
 import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
-import { Assertion } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -55,15 +54,12 @@ export function buySharesEncode(args: BuySharesArgs): Hex {
   return encodeAdapterAction({ actionId: AdapterAction.BuyShares, encodedActionArgs });
 }
 
-export function buySharesDecode(encoded: Hex): BuySharesArgs & { actionId: typeof AdapterAction.BuyShares } {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+export function buySharesDecode(encoded: Hex): BuySharesArgs {
+  const { encodedActionArgs } = decodeAdapterAction(encoded);
 
   const [vaultProxy, investmentAmount, minSharesQuantity] = decodeAbiParameters(buySharesEncoding, encodedActionArgs);
 
-  Assertion.invariant(actionId === AdapterAction.BuyShares, "Invalid actionId");
-
   return {
-    actionId,
     vaultProxy,
     investmentAmount,
     minSharesQuantity,
@@ -122,20 +118,15 @@ export function redeemSharesForSpecificAssetsEncode(args: RedeemSharesForSpecifi
   return encodeAdapterAction({ actionId: AdapterAction.RedeemSharesForSpecificAssets, encodedActionArgs });
 }
 
-export function redeemSharesForSpecificAssetsDecode(
-  encoded: Hex,
-): RedeemSharesForSpecificAssetsArgs & { actionId: typeof AdapterAction.RedeemSharesForSpecificAssets } {
-  const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
+export function redeemSharesForSpecificAssetsDecode(encoded: Hex): RedeemSharesForSpecificAssetsArgs {
+  const { encodedActionArgs } = decodeAdapterAction(encoded);
 
   const [vaultProxy, sharesQuantity, payoutAssets, payoutAssetPercentages, minPayoutAssetAmounts] = decodeAbiParameters(
     redeemSharesForSpecificAssetsEncoding,
     encodedActionArgs,
   );
 
-  Assertion.invariant(actionId === AdapterAction.RedeemSharesForSpecificAssets, "Invalid actionId");
-
   return {
-    actionId,
     vaultProxy,
     sharesQuantity,
     payoutAssets,
