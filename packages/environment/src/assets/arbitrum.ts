@@ -719,4 +719,17 @@ export default defineAssetList(Network.ARBITRUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    id: "0x6c84a8f1c29108f47a79964b5fe888d4f4d0de40",
+    name: "Arbitrum tBTC v2",
+    symbol: "tBTC",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xe808488e8627f6531ba79a13a9e0271b39abeb1c",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);

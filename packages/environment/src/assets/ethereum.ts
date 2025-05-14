@@ -7855,6 +7855,28 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 18,
+    id: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    name: "SmarDex Token",
+    releases: [],
+    symbol: "SDEX",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0xfa2b947eec368f42195f24f36d2af29f7c24cec2",
+    name: "Falcon USD",
+    releases: [],
+    symbol: "USDf",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
     symbol: "PT-LBTC-26JUN2025",
     name: "PT Lombard LBTC 26JUN2025",
     id: "0x6ca4d5d2ecb72e3bbf17543b3367746b80d22694",
@@ -7941,6 +7963,19 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_PENDLE_V2,
       aggregator: "0xbdbb726d6fd1cbeec085f97d0ceeb9282e482b86",
       rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    id: "0x18084fba666a33d37592fa2633fd49a74dd93a88",
+    name: "tBTC v2",
+    symbol: "tBTC",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x8350b7de6a6a2c1368e7d4bd968190e13e354297",
+      rateAsset: RateAsset.USD,
     },
   },
   {

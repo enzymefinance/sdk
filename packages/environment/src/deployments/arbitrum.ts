@@ -99,7 +99,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         AaveV2ATokenListOwner: "0x0000000000000000000000000000000000000000",
         AaveV3Adapter: "0xd0c6b9801fc1e70945f11b3f93340dcc7507fd7c",
         AaveV3ATokenListOwner: "0x575af64231a91b3a954d5e45a57187ace6549c81",
-        AaveV3DebtPositionLib: "0xbc5b899f30ad1aea465def210a1d5d029f9f8138",
+        AaveV3DebtPositionLib: "0x75f276d7a279cb0fb89ad29cc9f1fe03219c6e65",
         AaveV3DebtPositionParser: "0x91476db2128b324966ef0843b25d6df1bc8676c6",
         AaveV3FlashLoanAssetManagerFactory: "0xb49f8c0ce9df900e024dab48952bb8a8992c1795",
         AaveV3FlashLoanAssetManagerLib: "0xd38c8c77b250d80e743013c4019d02f6cc85b80e",

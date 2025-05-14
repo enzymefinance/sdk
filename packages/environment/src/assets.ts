@@ -227,14 +227,15 @@ export interface ERC4626Asset extends AssetBase {
 
 export enum Erc4626Protocol {
   ANGLE = "ANGLE",
+  BCOIN = "BCOIN",
   MORPHO = "MORPHO",
+  ORIGIN = "ORIGIN",
   RESOLV = "RESOLV",
   SKY = "SKY",
   SPARK = "SPARK",
   SUPERFORM = "SUPERFORM",
   SYRUP = "SYRUP",
   VAULTCRAFT = "VAULTCRAFT",
-  ORIGIN = "ORIGIN",
 }
 
 export enum BalancerStakingType {
