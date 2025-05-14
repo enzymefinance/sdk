@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.17
+
+### Patch Changes
+
+- [#730](https://github.com/enzymefinance/sdk/pull/730) [`3c0a348`](https://github.com/enzymefinance/sdk/commit/3c0a348d981d01f5b5c962a7e04c9337fb4d858d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Vault of vaults adjustments
+
 ## 1.2.16
 
 ### Patch Changes
