@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.47
+
+### Patch Changes
+
+- [#733](https://github.com/enzymefinance/sdk/pull/733) [`56be0f8`](https://github.com/enzymefinance/sdk/commit/56be0f884bfaf343d70ca3d8ab78fce5c36bce4d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add usdf and sdex
+
+- Updated dependencies [[`3c0a348`](https://github.com/enzymefinance/sdk/commit/3c0a348d981d01f5b5c962a7e04c9337fb4d858d)]:
+  - @enzymefinance/sdk@1.2.17
+
 ## 6.3.46
 
 ### Patch Changes

@@ -95,7 +95,7 @@ export default defineDeployment<Deployment.BASE>({
         AaveV2ATokenListOwner: "0x0000000000000000000000000000000000000000",
         AaveV3Adapter: "0xc16db2e93492e3ea512edc90787538652ec5c099",
         AaveV3ATokenListOwner: "0xceb47861043a70f8520d761e2ccf42edcc941512",
-        AaveV3DebtPositionLib: "0x6265dcc725c1620da617db4b3ff6af81626d0a34",
+        AaveV3DebtPositionLib: "0x5fe2db5abbb9fd2f840a51916abbda451151e56f",
         AaveV3DebtPositionParser: "0x211b9327c66f621c0b7248bfa6828ea8644f1f7c",
         AaveV3FlashLoanAssetManagerFactory: "0x2701ff78e93091b1285289a611838dd52fc07f4e",
         AaveV3FlashLoanAssetManagerLib: "0x89898c38d584166a8ed5c10cbd0ce7f4b0058c6c",
