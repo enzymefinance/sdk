@@ -104,7 +104,7 @@ export default defineDeployment<Deployment.POLYGON>({
         AaveV2ATokenListOwner: "0x6d5b95aa342f77e4825496334195e9c1c7d3208b",
         AaveV3Adapter: "0xb3b21dfa60b399ad00587b845aef7476a1659e9f",
         AaveV3ATokenListOwner: "0xeffb0467247b01e944203246694afb64d4af69ce",
-        AaveV3DebtPositionLib: "0x531f36dd62e3cef8edc80c611bc3d90b8178569d",
+        AaveV3DebtPositionLib: "0x3072cd10447605b66da7641f74cf5372eaace31a",
         AaveV3DebtPositionParser: "0x03acc0a48e0d6d24756481ff60b34af8f5def881",
         AaveV3FlashLoanAssetManagerFactory: "0xc393aab83371350e6c002b1c2db75c4f6b56308c",
         AaveV3FlashLoanAssetManagerLib: "0x12534065db54c01a73857febc6a0a9225b53309c",
