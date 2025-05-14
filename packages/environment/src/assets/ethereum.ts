@@ -7855,6 +7855,28 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 18,
+    id: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    name: "SmarDex Token",
+    releases: [],
+    symbol: "SDEX",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    decimals: 18,
+    id: "0x5de8ab7e27f6e7a1fff3e5b337584aa43961beef",
+    name: "Falcon USD",
+    releases: [],
+    symbol: "USDf",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
     symbol: "PT-LBTC-26JUN2025",
     name: "PT Lombard LBTC 26JUN2025",
     id: "0x6ca4d5d2ecb72e3bbf17543b3367746b80d22694",
