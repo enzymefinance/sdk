@@ -23,7 +23,6 @@ export const decodeAdapterAction = IntegrationManager.createDecodeAdapterAction<
 //--------------------------------------------------------------------------------------------
 
 export type BuySharesArgs = {
-  actionId: typeof AdapterAction.BuyShares;
   vaultProxy: Address;
   investmentAmount: bigint;
   minSharesQuantity: bigint;
@@ -53,10 +52,10 @@ export function buySharesEncode(args: BuySharesArgs): Hex {
     args.minSharesQuantity,
   ]);
 
-  return encodeAdapterAction({ actionId: args.actionId, encodedActionArgs });
+  return encodeAdapterAction({ actionId: AdapterAction.BuyShares, encodedActionArgs });
 }
 
-export function buySharesDecode(encoded: Hex): BuySharesArgs {
+export function buySharesDecode(encoded: Hex): BuySharesArgs & { actionId: typeof AdapterAction.BuyShares } {
   const { actionId, encodedActionArgs } = decodeAdapterAction(encoded);
 
   const [vaultProxy, investmentAmount, minSharesQuantity] = decodeAbiParameters(buySharesEncoding, encodedActionArgs);
