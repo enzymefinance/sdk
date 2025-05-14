@@ -7978,4 +7978,32 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    symbol: "AVGWETHCORE",
+    name: "Avantgarde WETH Core",
+    id: "0xf79f51f8f473ed34f6b2b13ee74c3208286d53eb",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
+    symbol: "AVGUSDCCORE",
+    name: "Avantgarde USDC Core",
+    id: "0x5b56f90340dbaa6a8693dadb141d620f0e154fe6",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
