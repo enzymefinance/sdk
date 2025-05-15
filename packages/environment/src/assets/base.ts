@@ -220,6 +220,33 @@ export default defineAssetList(Network.BASE, [
     },
   },
   {
+    id: "0x820c137fa70c8691f0e44dc420a5e53c168921dc",
+    name: "USDS Stablecoin",
+    symbol: "USDS",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x2330aae3bca5f05169d5f4597964d44522f62930",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    id: "0x5875eee11cf8398102fdad704c9e96607675467a",
+    name: "Savings USDS",
+    symbol: "sUSDS",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
+      aggregator: "0xfe769f237f814b9522ba370458da908ce56794b9",
+      rateAsset: RateAsset.USD,
+    },
+  },
+
+  {
     id: "0x7fcd174e80f264448ebee8c88a7c4476aaf58ea6",
     name: "Wrapped Super OETH",
     symbol: "wsuperOETHb",
