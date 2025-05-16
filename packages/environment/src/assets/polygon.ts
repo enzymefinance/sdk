@@ -1600,4 +1600,16 @@ export default defineAssetList(Network.POLYGON, [
       nonStandard: true,
     },
   },
+  {
+    symbol: "ENZF",
+    name: "test policies",
+    id: "0x0587aeb1ad08a0a8f2137b6c49eaac12e101b992",
+    type: AssetType.ENZYME_VAULT,
+    releases: [testnet.sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0x883544f533e4e0de7c6d549d4cb15e11456fe811",
+    },
+  },
 ]);
