@@ -8006,4 +8006,16 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    symbol: "ENZF",
+    name: "test policies",
+    id: "0x0587aeb1ad08a0a8f2137b6c49eaac12e101b992",
+    type: AssetType.ENZYME_VAULT,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0x883544f533e4e0de7c6d549d4cb15e11456fe811",
+    },
+  },
 ]);
