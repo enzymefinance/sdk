@@ -1609,7 +1609,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
-      address: "0x883544f533e4e0de7c6d549d4cb15e11456fe811",
+      address: "0xd723241915bb1d3ac829cdef656ffdbb87ca0cf1",
     },
   },
 ]);
