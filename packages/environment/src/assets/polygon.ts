@@ -1612,4 +1612,16 @@ export default defineAssetList(Network.POLYGON, [
       address: "0xd723241915bb1d3ac829cdef656ffdbb87ca0cf1",
     },
   },
+  {
+    symbol: "JAG",
+    name: "Jagodzianka",
+    id: "0x77e60f4fac131cef77d78e84599fef79e61f07d9",
+    type: AssetType.ENZYME_VAULT,
+    releases: [testnet.sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xd723241915bb1d3ac829cdef656ffdbb87ca0cf1",
+    },
+  },
 ]);
