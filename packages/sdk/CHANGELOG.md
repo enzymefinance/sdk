@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.18
+
+### Patch Changes
+
+- [#737](https://github.com/enzymefinance/sdk/pull/737) [`8668a1d`](https://github.com/enzymefinance/sdk/commit/8668a1d4e69f4b67617e7372ab069f7c0bd22d8d) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Get aggregator data
+
 ## 1.2.17
 
 ### Patch Changes
