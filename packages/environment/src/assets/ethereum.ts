@@ -5516,7 +5516,7 @@ export default defineAssetList(Network.ETHEREUM, [
       aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
       rateAsset: RateAsset.ETH,
     },
-  }, // TODO: order assets below by id
+  },
   {
     decimals: 18,
     id: "0xa700b4eb416be35b2911fd5dee80678ff64ff6c9",
