@@ -304,7 +304,7 @@ export default defineAssetList(Network.BASE, [
     },
   },
   {
-    symbol: "SAT",
+    symbol: "SATI",
     name: "Sati",
     id: "0xaabe20fbd2c38aaab42aedbe21872bd9964523eb",
     type: AssetType.ENZYME_VAULT,
