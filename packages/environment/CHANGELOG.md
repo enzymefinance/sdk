@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.50
+
+### Patch Changes
+
+- [#736](https://github.com/enzymefinance/sdk/pull/736) [`b546adc`](https://github.com/enzymefinance/sdk/commit/b546adc4862b91a0972f7948b31f468bedc929d0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add usds and susds on base
+
 ## 6.3.49
 
 ### Patch Changes
