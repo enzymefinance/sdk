@@ -303,4 +303,40 @@ export default defineAssetList(Network.BASE, [
       nonStandard: true,
     },
   },
+  {
+    symbol: "SAT",
+    name: "Sati",
+    id: "0xaabe20fbd2c38aaab42aedbe21872bd9964523eb",
+    type: AssetType.ENZYME_VAULT,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
+    },
+  },
+  {
+    symbol: "SAM",
+    name: "Samadhi",
+    id: "0x0c8be3e93cf0a7a383e54cb34cd471263f24b675",
+    type: AssetType.ENZYME_VAULT,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
+    },
+  },
+  {
+    symbol: "VIR",
+    name: "Viriya",
+    id: "0x9362ac7a5e189bf81cc9b09432926a6154537847",
+    type: AssetType.ENZYME_VAULT,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
+    },
+  },
 ]);
