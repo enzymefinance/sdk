@@ -33,3 +33,14 @@ test("create escrow by taking quote", () => {
 
   console.log({ to: populatedTx.params.address, txData: encodeFunctionData(populatedTx.params) });
 });
+
+test("sweep escrow", () => {
+  const populatedTx = Portfolio.Integrations.MysoV3.closeAndSweepEscrows({
+    comptrollerProxy,
+    externalPositionManager,
+    externalPositionProxy,
+    callArgs: { escrowIdxs: [], skipWithdrawFromEscrow: false },
+  });
+
+  console.log({ to: populatedTx.params.address, txData: encodeFunctionData(populatedTx.params) });
+});
