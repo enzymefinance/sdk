@@ -1007,6 +1007,20 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
+    id: "0x71aef7b30728b9bb371578f36c5a1f1502a5723e",
+    name: "Aave Ethereum 1INCH",
+    releases: [sulu],
+    symbol: "aEth1INCH",
+    underlying: "0x111111111117dc0aa78b770fa6a738034120c302",
+    type: AssetType.AAVE_V3,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x72afaecf99c9d9c8215ff44c77b94b99c28741e8",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
     id: "0x28fac5334c9f7262b3a3fe707e250e01053e07b5",
     name: "IdleUSDT v4 [Risk adjusted]",
     releases: [encore],
