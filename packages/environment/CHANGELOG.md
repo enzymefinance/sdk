@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.51
+
+### Patch Changes
+
+- [#742](https://github.com/enzymefinance/sdk/pull/742) [`149bfb7`](https://github.com/enzymefinance/sdk/commit/149bfb7c0092eae530a7b76a2fd67d199d623041) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add vault of vaults on Base
+
+- [#741](https://github.com/enzymefinance/sdk/pull/741) [`62a6ad1`](https://github.com/enzymefinance/sdk/commit/62a6ad1e0f7cf7df776d68932ab03ce05b9d667a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more pt assets
+
 ## 6.3.50
 
 ### Patch Changes
