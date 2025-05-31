@@ -1600,4 +1600,28 @@ export default defineAssetList(Network.POLYGON, [
       nonStandard: true,
     },
   },
+  {
+    symbol: "ENZF",
+    name: "test policies",
+    id: "0x0587aeb1ad08a0a8f2137b6c49eaac12e101b992",
+    type: AssetType.ENZYME_VAULT,
+    releases: [testnet.sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xd723241915bb1d3ac829cdef656ffdbb87ca0cf1",
+    },
+  },
+  {
+    symbol: "JAG",
+    name: "Jagodzianka",
+    id: "0x77e60f4fac131cef77d78e84599fef79e61f07d9",
+    type: AssetType.ENZYME_VAULT,
+    releases: [testnet.sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xd723241915bb1d3ac829cdef656ffdbb87ca0cf1",
+    },
+  },
 ]);
