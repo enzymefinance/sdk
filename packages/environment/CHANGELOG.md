@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.52
+
+### Patch Changes
+
+- [#743](https://github.com/enzymefinance/sdk/pull/743) [`963ca22`](https://github.com/enzymefinance/sdk/commit/963ca223b9031be701fda5a0036ddcafbec4ba1b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 1Inch
+
 ## 6.3.51
 
 ### Patch Changes
