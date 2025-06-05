@@ -85,35 +85,35 @@ export const redeemSharesForSpecificAssets = IntegrationManager.makeUse(
 
 const redeemSharesForSpecificAssetsEncoding = [
   {
-    name: "vaultProxy",
-    type: "address",
-  },
-  {
-    name: "sharesQuantity",
-    type: "uint256",
-  },
-  {
-    name: "payoutAssets",
-    type: "address[]",
-  },
-  {
-    name: "payoutAssetPercentages",
-    type: "uint256[]",
-  },
-  {
-    name: "minPayoutAssetAmounts",
-    type: "uint256[]",
+    components: [
+      {
+        name: "vaultProxy",
+        type: "address",
+      },
+      {
+        name: "sharesQuantity",
+        type: "uint256",
+      },
+      {
+        name: "payoutAssets",
+        type: "address[]",
+      },
+      {
+        name: "payoutAssetPercentages",
+        type: "uint256[]",
+      },
+      {
+        name: "minPayoutAssetAmounts",
+        type: "uint256[]",
+      },
+    ],
+    name: "encodedActionArgs",
+    type: "tuple",
   },
 ] as const;
 
 export function redeemSharesForSpecificAssetsEncode(args: RedeemSharesForSpecificAssetsArgs): Hex {
-  const encodedActionArgs = encodeAbiParameters(redeemSharesForSpecificAssetsEncoding, [
-    args.vaultProxy,
-    args.sharesQuantity,
-    args.payoutAssets,
-    args.payoutAssetPercentages,
-    args.minPayoutAssetAmounts,
-  ]);
+  const encodedActionArgs = encodeAbiParameters(redeemSharesForSpecificAssetsEncoding, [args]);
 
   return encodeAdapterAction({ actionId: AdapterAction.RedeemSharesForSpecificAssets, encodedActionArgs });
 }
@@ -121,10 +121,8 @@ export function redeemSharesForSpecificAssetsEncode(args: RedeemSharesForSpecifi
 export function redeemSharesForSpecificAssetsDecode(encoded: Hex): RedeemSharesForSpecificAssetsArgs {
   const { encodedActionArgs } = decodeAdapterAction(encoded);
 
-  const [vaultProxy, sharesQuantity, payoutAssets, payoutAssetPercentages, minPayoutAssetAmounts] = decodeAbiParameters(
-    redeemSharesForSpecificAssetsEncoding,
-    encodedActionArgs,
-  );
+  const [{ vaultProxy, sharesQuantity, payoutAssets, payoutAssetPercentages, minPayoutAssetAmounts }] =
+    decodeAbiParameters(redeemSharesForSpecificAssetsEncoding, encodedActionArgs);
 
   return {
     vaultProxy,
