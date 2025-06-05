@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.19
+
+### Patch Changes
+
+- [#748](https://github.com/enzymefinance/sdk/pull/748) [`f4dc264`](https://github.com/enzymefinance/sdk/commit/f4dc264e98f4b147e95d90fa493c28c7f3ae14b1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix Enzyme V4 Vault redeem encoding
+
 ## 1.2.18
 
 ### Patch Changes
