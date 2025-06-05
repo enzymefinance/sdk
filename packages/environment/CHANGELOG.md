@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.53
+
+### Patch Changes
+
+- [#746](https://github.com/enzymefinance/sdk/pull/746) [`1e71bdd`](https://github.com/enzymefinance/sdk/commit/1e71bddcc650ce737228cf96718d8b87558b62f0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add SharePriceThrottledAssetManager on Base
+
+- Updated dependencies [[`f4dc264`](https://github.com/enzymefinance/sdk/commit/f4dc264e98f4b147e95d90fa493c28c7f3ae14b1)]:
+  - @enzymefinance/sdk@1.2.19
+
 ## 6.3.52
 
 ### Patch Changes
