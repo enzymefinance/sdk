@@ -19,4 +19,7 @@ export const underlyingToAggregatorInfo = {
   "0xd9a442856c234a39a81a089c06451ebaa4306a72": {
     aggregator: "0x114e286b85aacd4032a8b399cd288944fc5b7a90",
   },
+  "0xdc035d45d973e3ec169d2276ddab16f1e407384f": {
+    aggregator: "0x6c966976008c37BF60e019E3A4a802DD798d3b4b", // USDS/ETH
+  },
 } as const;
