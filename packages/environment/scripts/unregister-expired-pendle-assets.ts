@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { Constants } from "@enzymefinance/sdk/Utils";
 import jscodeshift from "jscodeshift";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,7 +23,10 @@ function isExpired(symbol) {
   }
   const dateStr = match[0];
   const date = new Date(Date.parse(dateStr.replace(/(\d{2})([A-Z]{3})(\d{4})/, "$1 $2 $3")));
-  return date < new Date();
+
+  const expirationTime = new Date().getTime() - Number(Constants.ONE_WEEK_IN_SECONDS) * 1000 * 2; // expired for 2 weeks
+
+  return date.getTime() < expirationTime;
 }
 
 const unregisteredAssets: Array<string> = [];

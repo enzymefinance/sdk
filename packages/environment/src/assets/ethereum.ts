@@ -7789,14 +7789,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Syrup USDC 24APR2025",
     id: "0x2beeb2c4809954e5b514a3205afbdc097eb810b4",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 6,
     underlying: "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
     markets: ["0x580e40c15261f7baf18ea50f562118ae99361096"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x731573deb7da9aaaee9e7d848a69e38bb89bb93b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7804,13 +7802,11 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "LP Syrup USDC 24APR2025",
     id: "0x580e40c15261f7baf18ea50f562118ae99361096",
     type: AssetType.PENDLE_V2_LP,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x9c5da2b4c3474223b224ef42ae1b5fd6c90c7b99",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7833,14 +7829,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT SuperUSDC 17APR2025",
     id: "0x8fa8da847bc3e8a945bae061c73af74df6375a95",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 6,
     underlying: "0xf7de3c70f2db39a188a81052d2f3c8e3e217822a",
     markets: ["0x1bd1ae9d7a377e63cd0c584a2c42b8c614937e81"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xf3088fcd8dcd2d18939544023ba408bd7a201c02",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7848,13 +7842,11 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "LP SuperUSDC 17APR2025",
     id: "0x1bd1ae9d7a377e63cd0c584a2c42b8c614937e81",
     type: AssetType.PENDLE_V2_LP,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xf7de3c70f2db39a188a81052d2f3c8e3e217822a",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x06c9c8ff33b05f92993c06083f8e49c6651fd003",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
