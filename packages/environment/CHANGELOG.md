@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.54
+
+### Patch Changes
+
+- [#751](https://github.com/enzymefinance/sdk/pull/751) [`470d5a0`](https://github.com/enzymefinance/sdk/commit/470d5a0a0d9fefc6dc071d5a25f4fa98a353df05) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add ASF
+
 ## 6.3.53
 
 ### Patch Changes
