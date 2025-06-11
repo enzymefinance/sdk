@@ -7891,6 +7891,17 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 18,
+    id: "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+    name: "Asymmetry Finance Token",
+    releases: [],
+    symbol: "ASF",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
     symbol: "PT-LBTC-26JUN2025",
     name: "PT Lombard LBTC 26JUN2025",
     id: "0x6ca4d5d2ecb72e3bbf17543b3367746b80d22694",
