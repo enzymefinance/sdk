@@ -1007,6 +1007,20 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     decimals: 18,
+    id: "0x71aef7b30728b9bb371578f36c5a1f1502a5723e",
+    name: "Aave Ethereum 1INCH",
+    releases: [sulu],
+    symbol: "aEth1INCH",
+    underlying: "0x111111111117dc0aa78b770fa6a738034120c302",
+    type: AssetType.AAVE_V3,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x72afaecf99c9d9c8215ff44c77b94b99c28741e8",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    decimals: 18,
     id: "0x28fac5334c9f7262b3a3fe707e250e01053e07b5",
     name: "IdleUSDT v4 [Risk adjusted]",
     releases: [encore],
@@ -5530,7 +5544,7 @@ export default defineAssetList(Network.ETHEREUM, [
       aggregator: "0x6df09e975c830ecae5bd4ed9d90f3a95a4f88012",
       rateAsset: RateAsset.ETH,
     },
-  }, // TODO: order assets below by id
+  },
   {
     decimals: 18,
     id: "0xf57e7e7c23978c3caec3c3548e3d615c346e79ff",
@@ -7877,6 +7891,17 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    decimals: 18,
+    id: "0x59a529070fbb61e6d6c91f952ccb7f35c34cf8aa",
+    name: "Asymmetry Finance Token",
+    releases: [],
+    symbol: "ASF",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
     symbol: "PT-LBTC-26JUN2025",
     name: "PT Lombard LBTC 26JUN2025",
     id: "0x6ca4d5d2ecb72e3bbf17543b3367746b80d22694",
@@ -8004,6 +8029,51 @@ export default defineAssetList(Network.ETHEREUM, [
     priceFeed: {
       type: PriceFeedType.DERIVATIVE_ERC4626,
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
+    symbol: "PT-sUSDE-31JUL2025",
+    name: "PT Ethena sUSDE 31JUL2025",
+    id: "0x3b3fb9c57858ef816833dc91565efcd85d96f634",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    markets: ["0x4339ffe2b7592dc783ed13cce310531ab366deac"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x391115569cc95b788e159d287b03c13239a94276",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-pufETH-26JUN2025",
+    name: "PT Puffer ETH 26JUN2025",
+    id: "0x9cfc9917c171a384c7168d3529fc7e851a2e0d6d",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xd9a442856c234a39a81a089c06451ebaa4306a72",
+    markets: ["0x58612beb0e8a126735b19bb222cbc7fc2c162d2a"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x08d9d0372b586096bb0d757c5af1cf1a80359661",
+      rateAsset: RateAsset.ETH,
+    },
+  },
+  {
+    symbol: "PT-USDS-14AUG2025",
+    name: "PT USDS Stablecoin 14AUG2025",
+    id: "0xffec096c087c13cc268497b89a613cace4df9a48",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    markets: ["0xdace1121e10500e9e29d071f01593fd76b000f08"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x6359564ede3cc6a0aa5052b20988e04dd6773abe",
+      rateAsset: RateAsset.ETH,
     },
   },
 ]);

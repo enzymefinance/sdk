@@ -1,5 +1,40 @@
 # @enzymefinance/environment
 
+## 6.3.55
+
+### Patch Changes
+
+- [#749](https://github.com/enzymefinance/sdk/pull/749) [`7eb8a4b`](https://github.com/enzymefinance/sdk/commit/7eb8a4b9bb2cad2b5cc6b94a4a627a327abbf18b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle USDS 14AUG2025
+
+## 6.3.54
+
+### Patch Changes
+
+- [#751](https://github.com/enzymefinance/sdk/pull/751) [`470d5a0`](https://github.com/enzymefinance/sdk/commit/470d5a0a0d9fefc6dc071d5a25f4fa98a353df05) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add ASF
+
+## 6.3.53
+
+### Patch Changes
+
+- [#746](https://github.com/enzymefinance/sdk/pull/746) [`1e71bdd`](https://github.com/enzymefinance/sdk/commit/1e71bddcc650ce737228cf96718d8b87558b62f0) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add SharePriceThrottledAssetManager on Base
+
+- Updated dependencies [[`f4dc264`](https://github.com/enzymefinance/sdk/commit/f4dc264e98f4b147e95d90fa493c28c7f3ae14b1)]:
+  - @enzymefinance/sdk@1.2.19
+
+## 6.3.52
+
+### Patch Changes
+
+- [#743](https://github.com/enzymefinance/sdk/pull/743) [`963ca22`](https://github.com/enzymefinance/sdk/commit/963ca223b9031be701fda5a0036ddcafbec4ba1b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Aave V3 1Inch
+
+## 6.3.51
+
+### Patch Changes
+
+- [#742](https://github.com/enzymefinance/sdk/pull/742) [`149bfb7`](https://github.com/enzymefinance/sdk/commit/149bfb7c0092eae530a7b76a2fd67d199d623041) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add vault of vaults on Base
+
+- [#741](https://github.com/enzymefinance/sdk/pull/741) [`62a6ad1`](https://github.com/enzymefinance/sdk/commit/62a6ad1e0f7cf7df776d68932ab03ce05b9d667a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more pt assets
+
 ## 6.3.50
 
 ### Patch Changes
