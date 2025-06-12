@@ -8061,4 +8061,19 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    symbol: "PT-USDS-14AUG2025",
+    name: "PT USDS Stablecoin 14AUG2025",
+    id: "0xffec096c087c13cc268497b89a613cace4df9a48",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
+    markets: ["0xdace1121e10500e9e29d071f01593fd76b000f08"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0x6359564ede3cc6a0aa5052b20988e04dd6773abe",
+      rateAsset: RateAsset.ETH,
+    },
+  },
 ]);
