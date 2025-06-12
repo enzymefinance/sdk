@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.56
+
+### Patch Changes
+
+- [#754](https://github.com/enzymefinance/sdk/pull/754) [`2b85936`](https://github.com/enzymefinance/sdk/commit/2b859368e6087a2c76f9a3f9ec22fcae30ac7405) Thanks [@iherger](https://github.com/iherger)! - Add 31Third adapter on Base
+
 ## 6.3.55
 
 ### Patch Changes
