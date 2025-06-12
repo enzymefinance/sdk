@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.55
+
+### Patch Changes
+
+- [#749](https://github.com/enzymefinance/sdk/pull/749) [`7eb8a4b`](https://github.com/enzymefinance/sdk/commit/7eb8a4b9bb2cad2b5cc6b94a4a627a327abbf18b) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Pendle USDS 14AUG2025
+
 ## 6.3.54
 
 ### Patch Changes
