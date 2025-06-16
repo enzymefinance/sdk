@@ -8087,7 +8087,6 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x1c88503c9a52ae6aae1f9bb99b3b7e9b8ab35459",
       rateAsset: RateAsset.USD,
-      nonStandard: true,
     },
   },
 ]);
