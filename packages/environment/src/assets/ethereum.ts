@@ -8076,4 +8076,18 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    id: "0x77e06c9eccf2e797fd462a92b6d7642ef85b0a44",
+    name: "Wrapped TAO",
+    symbol: "wTAO",
+    decimals: 9,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x1c88503c9a52ae6aae1f9bb99b3b7e9b8ab35459",
+      rateAsset: RateAsset.USD,
+      nonStandard: true,
+    },
+  },
 ]);
