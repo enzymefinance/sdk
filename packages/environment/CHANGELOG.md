@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.57
+
+### Patch Changes
+
+- [#756](https://github.com/enzymefinance/sdk/pull/756) [`cda0474`](https://github.com/enzymefinance/sdk/commit/cda047491ac190a13b7d6a06abc4d27d9568a43f) Thanks [@iherger](https://github.com/iherger)! - Add wTAO
+
+- [#750](https://github.com/enzymefinance/sdk/pull/750) [`0b6ab25`](https://github.com/enzymefinance/sdk/commit/0b6ab25d4c372a0dcf3fbfca9d23c937b6c2d65c) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Unregister expired Pendle assets
+
 ## 6.3.56
 
 ### Patch Changes
