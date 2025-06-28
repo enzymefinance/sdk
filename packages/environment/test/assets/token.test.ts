@@ -33,7 +33,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
       case AssetType.ENZYME_VAULT: {
-        // We don't validate Enzyme Vaults names, as they can change.
+        // We don't validate Enzyme Vaults symbol, as they can change.
         // For example when Cointerminal update Vaults campaigns
         break;
       }
@@ -103,6 +103,12 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
 
         const onChainVersion = await getApiVersion(client, { yearnVault: asset.id });
         expect(partsYearn?.[2]).toEqual(onChainVersion);
+        break;
+      }
+
+      case AssetType.ENZYME_VAULT: {
+        // We don't validate Enzyme Vaults names, as they can change.
+        // For example when Cointerminal update Vaults campaigns
         break;
       }
 
