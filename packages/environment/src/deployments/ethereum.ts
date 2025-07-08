@@ -77,6 +77,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     zeroLendLRTBTCATokens: 738n,
     depositWrapperAllowedExchanges: 553n,
     gsnTrustedForwarders: 598n,
+    zeroExV4AllowedMakers: 487n,
   },
   knownUintLists: {
     allowedMorphoBlueVaults: 3n,

@@ -74,6 +74,7 @@ export default defineDeployment<Deployment.POLYGON>({
     aTokens: 735n,
     depositWrapperAllowedExchanges: 1121n,
     gsnTrustedForwarders: 1269n,
+    zeroExV4AllowedMakers: 948n,
   },
   knownUintLists: {},
   label: "Polygon",

@@ -258,18 +258,26 @@ export type KnownAddressListIdMapping<TDeployment extends Deployment> = {
   depositWrapperAllowedExchanges: bigint;
 } & (TDeployment extends Deployment.ETHEREUM
   ? KnownAddressListIdMappingEthereumSpecific
-  : TDeployment extends Deployment.POLYGON | Deployment.TESTNET
+  : TDeployment extends Deployment.POLYGON
     ? KnownAddressListIdMappingPolygonSpecific
-    : {});
+    : TDeployment extends Deployment.TESTNET
+      ? KnownAddressListIdMappingTestnetSpecific
+      : {});
 
 export type KnownAddressListIdMappingEthereumSpecific = {
   gsnTrustedForwarders: bigint;
   kilnStakingContracts: bigint;
   zeroLendRWAStablecoinsATokens: bigint;
   zeroLendLRTBTCATokens: bigint;
+  zeroExV4AllowedMakers: bigint;
 };
 
 export type KnownAddressListIdMappingPolygonSpecific = {
+  gsnTrustedForwarders: bigint;
+  zeroExV4AllowedMakers: bigint;
+};
+
+export type KnownAddressListIdMappingTestnetSpecific = {
   gsnTrustedForwarders: bigint;
 };
 
