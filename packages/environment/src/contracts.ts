@@ -186,7 +186,6 @@ export interface SuluContracts extends CommonContracts {
   readonly YearnVaultV2PriceFeed: Address;
   readonly ZeroExV2Adapter: Address;
   readonly ZeroExV4Adapter: Address;
-  readonly ZeroExV4AdapterPmm2Kyc: Address;
   readonly ZeroLendLRTBTCAaveV3Adapter: Address;
   readonly ZeroLendLRTBTCAaveV3ATokenListOwner: Address;
   readonly ZeroLendLRTBTCAaveV3DebtPositionLib: Address;

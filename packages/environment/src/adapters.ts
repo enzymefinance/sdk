@@ -290,7 +290,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.ZERO_EX_V4,
   },
   [AdapterType.ZERO_EX_V4_PMM_KYC]: {
-    contractName: "ZeroExV4AdapterPmm2Kyc",
+    contractName: undefined,
     name: "0x V4",
     type: AdapterType.ZERO_EX_V4_PMM_KYC,
   },
