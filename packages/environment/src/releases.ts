@@ -269,12 +269,10 @@ export type KnownAddressListIdMappingEthereumSpecific = {
   kilnStakingContracts: bigint;
   zeroLendRWAStablecoinsATokens: bigint;
   zeroLendLRTBTCATokens: bigint;
-  zeroExV4AllowedMakers: bigint;
 };
 
 export type KnownAddressListIdMappingPolygonSpecific = {
   gsnTrustedForwarders: bigint;
-  zeroExV4AllowedMakers: bigint;
 };
 
 export type KnownAddressListIdMappingTestnetSpecific = {
