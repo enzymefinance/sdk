@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.59
+
+### Patch Changes
+
+- [#763](https://github.com/enzymefinance/sdk/pull/763) [`4e24734`](https://github.com/enzymefinance/sdk/commit/4e24734cf77ad12a7065816d3a8ee481d9a3ff27) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update Stakewise addresses
+
+- [#762](https://github.com/enzymefinance/sdk/pull/762) [`d62d6cf`](https://github.com/enzymefinance/sdk/commit/d62d6cf6144984aad73357aba8dc5883dbafc6bb) Thanks [@iherger](https://github.com/iherger)! - Update ZeroExV4Adapter
+
 ## 6.3.58
 
 ### Patch Changes
