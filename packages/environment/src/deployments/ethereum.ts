@@ -77,7 +77,6 @@ export default defineDeployment<Deployment.ETHEREUM>({
     zeroLendLRTBTCATokens: 738n,
     depositWrapperAllowedExchanges: 553n,
     gsnTrustedForwarders: 598n,
-    zeroExV4AllowedMakers: 487n,
   },
   knownUintLists: {
     allowedMorphoBlueVaults: 3n,
@@ -277,7 +276,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         YearnVaultV2Adapter: "0x7ea777f9f6ecbf4d03dc5323d3f057b0730fc34a",
         YearnVaultV2PriceFeed: "0x3982e1cc26b99310747df54f445063745c54a324",
         ZeroExV2Adapter: "0xace8e944cda48439e8eeda4027115cfb6d942854",
-        ZeroExV4Adapter: "0xe073406c5306043eda44f09c67654a7729277a47",
+        ZeroExV4Adapter: "0x49affbe9326f2a5e5bf91dd77152a7b04601b2f4",
         ZeroLendLRTBTCAaveV3Adapter: "0xbc91fe394d7d372fbae757dbffd32b44a29b3f6e",
         ZeroLendLRTBTCAaveV3ATokenListOwner: "0x7affc39d73cb7d22a7fd099a16441d9eb96ef31b",
         ZeroLendLRTBTCAaveV3DebtPositionLib: "0xadd410d808fa17d9dc4d00e3958fc394b740bffa",
