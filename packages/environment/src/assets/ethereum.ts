@@ -8081,4 +8081,19 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    symbol: "PT-sUSDE-25SEP2025",
+    name: "PT Ethena sUSDE 25SEP2025",
+    id: "0x9f56094c450763769ba0ea9fe2876070c0fd5f77",
+    type: AssetType.PENDLE_V2_PT,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
+    markets: ["0xa36b60a14a1a5247912584768c6e53e1a269a9f7"],
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
+      aggregator: "0xcc7ff5845ad4f48c4dd49a41bae058a376a425fb",
+      rateAsset: RateAsset.ETH,
+    },
+  },
 ]);
