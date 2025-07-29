@@ -167,7 +167,7 @@ export default defineAssetList(Network.BASE, [
   {
     decimals: 18,
     id: "0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22",
-    name: "Coinbase Wrapped Staked ETH ",
+    name: "Coinbase Wrapped Staked ETH",
     releases: [sulu],
     symbol: "cbETH",
     type: AssetType.PRIMITIVE,
