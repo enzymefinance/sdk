@@ -31,7 +31,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     gmxV2ExchangeRouter: "0x96f257288f00a9ad8ba159294d373550fe2b6771",
     gmxV2ChainlinkPriceFeed: "0x0913ca02b93a2aa381a420aeac38490ee6284a32",
     gmxV2DataStore: "0xfd70de6b91282d8017aa4e741e9ae325cab992d8",
-    gmxV2Reader: "0xe739e72e0e434a2626d6be07590aca74c00c764c",
+    gmxV2Reader: "0xd42986afc0660dd1f1c8c76f248262ffcb37db79",
     gmxV2ReferralStorage: "0xe6fab3f0c7199b0d34d7fbe83394fc0e0d06e99d",
     kilnStaking: "0x0000000000000000000000000000000000000000",
     lidoWithdrawalsQueue: "0x0000000000000000000000000000000000000000",
