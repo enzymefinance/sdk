@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.61
+
+### Patch Changes
+
+- [#769](https://github.com/enzymefinance/sdk/pull/769) [`41402c0`](https://github.com/enzymefinance/sdk/commit/41402c0233c8f23fc98ddffe637a5242cbcd0dee) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add PT sUSDe 27 Nov 2025
+
 ## 6.3.60
 
 ### Patch Changes
