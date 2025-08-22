@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.20
+
+### Patch Changes
+
+- [#768](https://github.com/enzymefinance/sdk/pull/768) [`76c4c3c`](https://github.com/enzymefinance/sdk/commit/76c4c3ce0e9df5169df80662689099a42bc12e5f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update gmx to support version 2.2
+
 ## 1.2.19
 
 ### Patch Changes
