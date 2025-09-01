@@ -1135,9 +1135,9 @@ export default defineAssetList(Network.POLYGON, [
   {
     decimals: 6,
     id: "0xc2132d05d31c914a87c6611c10748aeb04b58e8f",
-    name: "(PoS) Tether USD",
+    name: "USDT0",
     releases: [polygon.sulu, testnet.sulu],
-    symbol: "USDT",
+    symbol: "USDT0",
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
