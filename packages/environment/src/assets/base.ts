@@ -339,4 +339,18 @@ export default defineAssetList(Network.BASE, [
       address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
     },
   },
+  {
+    decimals: 8,
+    id: "0xbdb9300b7cde636d9cd4aff00f6f009ffbbc8ee6",
+    name: "Aave Base cbBTC",
+    releases: [sulu],
+    symbol: "aBascbBTC",
+    type: AssetType.AAVE_V3,
+    underlying: "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x07da0e54543a844a80abe69c8a12f22b3aa59f9d",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
