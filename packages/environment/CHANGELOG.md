@@ -1,5 +1,15 @@
 # @enzymefinance/environment
 
+## 6.3.63
+
+### Patch Changes
+
+- [#777](https://github.com/enzymefinance/sdk/pull/777) [`bbe8dca`](https://github.com/enzymefinance/sdk/commit/bbe8dca4c61e95cd05c8f646de2164f279798f06) Thanks [@iherger](https://github.com/iherger)! - Add ETHFI on Ethereum
+
+- [#778](https://github.com/enzymefinance/sdk/pull/778) [`7dff80d`](https://github.com/enzymefinance/sdk/commit/7dff80de2873692c3cdb3a4cc2ebbb1e1ae5a40b) Thanks [@iherger](https://github.com/iherger)! - Add aBascbBTC on Base
+
+- [#775](https://github.com/enzymefinance/sdk/pull/775) [`b2c20bf`](https://github.com/enzymefinance/sdk/commit/b2c20bf897765a5d1aa5970e795793cb57e565fa) Thanks [@iherger](https://github.com/iherger)! - Rename USDT0
+
 ## 6.3.62
 
 ### Patch Changes
