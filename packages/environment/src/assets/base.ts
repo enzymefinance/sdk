@@ -166,6 +166,19 @@ export default defineAssetList(Network.BASE, [
   },
   {
     decimals: 18,
+    id: "0x2ae3f1ec7f1f5012cfeab0185bfc7aa3cf0dec22",
+    name: "Coinbase Wrapped Staked ETH",
+    releases: [sulu],
+    symbol: "cbETH",
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xd7818272b9e248357d13057aab0b417af31e817d",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    decimals: 18,
     id: "0xc1cba3fcea344f92d9239c08c0568f6f2f0ee452",
     name: "Wrapped liquid staked Ether 2.0",
     releases: [sulu],
