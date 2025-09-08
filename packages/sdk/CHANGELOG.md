@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.21
+
+### Patch Changes
+
+- [#779](https://github.com/enzymefinance/sdk/pull/779) [`d733cb1`](https://github.com/enzymefinance/sdk/commit/d733cb1e59d707b19c3d8a180e8fa40c6f657973) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add support for GMX v2.2
+
 ## 1.2.20
 
 ### Patch Changes
