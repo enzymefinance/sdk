@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.65
+
+### Patch Changes
+
+- [#767](https://github.com/enzymefinance/sdk/pull/767) [`22468b5`](https://github.com/enzymefinance/sdk/commit/22468b5fbd12c1725c573612dbcdd21d68460a60) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add cbETH
+
 ## 6.3.64
 
 ### Patch Changes
