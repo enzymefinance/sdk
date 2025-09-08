@@ -963,6 +963,7 @@ const readerAbi = [
       { internalType: "uint256", name: "positionSizeInUsd", type: "uint256" },
       { internalType: "uint256", name: "positionSizeInTokens", type: "uint256" },
       { internalType: "int256", name: "sizeDeltaUsd", type: "int256" },
+      { internalType: "int256", name: "pendingImpactAmount", type: "int256" },
       { internalType: "bool", name: "isLong", type: "bool" },
     ],
     name: "getExecutionPrice",
@@ -3265,6 +3266,7 @@ export function getExecutionPrice(
     positionSizeInUsd: bigint;
     positionSizeInTokens: bigint;
     sizeDeltaUsd: bigint;
+    pendingImpactAmount: bigint;
     isLong: boolean;
   }>,
 ) {
@@ -3280,6 +3282,7 @@ export function getExecutionPrice(
       args.positionSizeInUsd,
       args.positionSizeInTokens,
       args.sizeDeltaUsd,
+      args.pendingImpactAmount,
       args.isLong,
     ],
   });
