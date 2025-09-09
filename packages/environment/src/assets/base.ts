@@ -366,4 +366,28 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    id: "0x0e12705c69be36c1e9c093b2ec20510372f7116c",
+    name: "Etr",
+    symbol: "ETR",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.ENZYME_VAULT,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
+    },
+  },
+  {
+    id: "0x46983e7bd7620532415221c23a6ecb65defa9212",
+    name: "Btr",
+    symbol: "BTR",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.ENZYME_VAULT,
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ENZYME_VAULT,
+      address: "0xe32792c67d797784ced56f266e92a6611fe5e973",
+    },
+  },
 ]);
