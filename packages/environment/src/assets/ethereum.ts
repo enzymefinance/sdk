@@ -8113,4 +8113,17 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    symbol: "SKY",
+    name: "SKY Governance Token",
+    id: "0x56072c95faa701256059aa122697b133aded9279",
+    type: AssetType.PRIMITIVE,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xee10fe5e7aa92dd7b136597449c3d5813cfc5f18",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
