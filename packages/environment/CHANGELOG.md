@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.66
+
+### Patch Changes
+
+- [#783](https://github.com/enzymefinance/sdk/pull/783) [`7086301`](https://github.com/enzymefinance/sdk/commit/70863014c077121fbaac1893c858556962fd64f5) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Sky token
+
 ## 6.3.65
 
 ### Patch Changes
