@@ -22,4 +22,10 @@ export const underlyingToAggregatorInfo = {
   "0xdc035d45d973e3ec169d2276ddab16f1e407384f": {
     aggregator: "0x6c966976008c37BF60e019E3A4a802DD798d3b4b", // USDS/ETH
   },
+  "0xcccc62962d17b8914c62d74ffb843d73b2a3cccc": {
+    aggregator: "0xfb5860d875a0C2bCC80142f6Fc66079104123E80", // cUSD/ETH
+  },
+  "0x88887be419578051ff9f4eb6c858a951921d8888": {
+    aggregator: "0x0a11F761d81C8A736dFa9A4F4D3bA490F2A5146c", // stcUSD/ETH
+  },
 } as const;
