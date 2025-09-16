@@ -228,6 +228,7 @@ export interface ERC4626Asset extends AssetBase {
 export enum Erc4626Protocol {
   ANGLE = "ANGLE",
   BCOIN = "BCOIN",
+  CAP = "CAP",
   MORPHO = "MORPHO",
   ORIGIN = "ORIGIN",
   RESOLV = "RESOLV",
