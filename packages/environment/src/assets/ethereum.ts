@@ -8126,4 +8126,15 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    symbol: "DOLA",
+    name: "Dola USD Stablecoin",
+    id: "0x865377367054516e17014ccded1e7d814edc9ce4",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
