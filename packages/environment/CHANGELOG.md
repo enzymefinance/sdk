@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.67
+
+### Patch Changes
+
+- [#786](https://github.com/enzymefinance/sdk/pull/786) [`a67a7d5`](https://github.com/enzymefinance/sdk/commit/a67a7d5048012f3e989de9a7ddbde750d10aeeca) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Dola token
+
 ## 6.3.66
 
 ### Patch Changes
