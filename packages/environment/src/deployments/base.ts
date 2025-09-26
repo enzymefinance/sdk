@@ -102,6 +102,8 @@ export default defineDeployment<Deployment.BASE>({
         AddressListRegistry: "0x42232ff4f38639ed942e0c76723e76e1a0588899",
         AlicePositionLib: "0x0000000000000000000000000000000000000000",
         AlicePositionParser: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionLib: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0x65d2058e86a169e8df2e052ce37c856dc47e6bdf",
         AllowedAdaptersPerManagerPolicy: "0x6d3505a9fece30cc15514cedc7ae664ab39b2035",
         AllowedAdaptersPolicy: "0x3d627701ce55894509c59e5cb3e3cc337f3715aa",

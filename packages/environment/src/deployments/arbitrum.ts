@@ -106,6 +106,8 @@ export default defineDeployment<Deployment.ARBITRUM>({
         AddressListRegistry: "0x2c6bef68dabf0494bb5f727e63c8fb54f7d2c287",
         AlicePositionLib: "0x0000000000000000000000000000000000000000",
         AlicePositionParser: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionLib: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0x54325c3dc5ad60305a70bc565be7a9ce71224a76",
         AllowedAdaptersPerManagerPolicy: "0xeb036c294e54cc5047ab526c204752d056cc1952",
         AllowedAdaptersPolicy: "0x1768b813d17f82a8d70bd8b80a8c8c1562878337",
