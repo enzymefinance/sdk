@@ -8138,6 +8138,19 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    symbol: "PAXG",
+    name: "Paxos Gold",
+    id: "0x45804880de22913dafe09f4980848ece6ecbaf78",
+    type: AssetType.PRIMITIVE,
+    releases: [sulu],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x9944d86ceb9160af5c5feb251fd671923323f8c3",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
     symbol: "cUSD",
     name: "cap USD",
     id: "0xcccc62962d17b8914c62d74ffb843d73b2a3cccc",
