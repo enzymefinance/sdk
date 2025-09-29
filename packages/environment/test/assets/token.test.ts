@@ -142,5 +142,5 @@ const nameExceptions = [
   "Maven 11 WETH Pool", // onchain value: Maple Pool Token -> keep to differentiate
   "Enzyme (PoS)", // onchain value: Melon Token (PoS) -> keep to differentiate
   "Orthogonal Trading - USDC01", // onchain value: Maple Pool Token -> keep to differentiate
-  "Aave WBTC", // onchain value: Aave WBTC -> remove
+  "Aave WBTC", // onchain value: ATOKEN_IMPL -> remove
 ];
