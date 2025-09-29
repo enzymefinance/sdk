@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.68
+
+### Patch Changes
+
+- [#785](https://github.com/enzymefinance/sdk/pull/785) [`62ea027`](https://github.com/enzymefinance/sdk/commit/62ea02706d8ff902e26ced47561f064913168330) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add PT cUSD Pendle assets
+
+- [#788](https://github.com/enzymefinance/sdk/pull/788) [`b32abbc`](https://github.com/enzymefinance/sdk/commit/b32abbc229872403a0a116e3404552be4ef55acf) Thanks [@iherger](https://github.com/iherger)! - Add PAXG
+
 ## 6.3.67
 
 ### Patch Changes
