@@ -7436,19 +7436,6 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    symbol: "PT-sUSDE-29MAY2025",
-    name: "PT Ethena sUSDE 29MAY2025",
-    id: "0xb7de5dfcb74d25c2f21841fbd6230355c50d9308",
-    type: AssetType.PENDLE_V2_PT,
-    releases: [],
-    decimals: 18,
-    underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
-    markets: ["0xb162b764044697cf03617c2efbcb1f42e31e4766"],
-    priceFeed: {
-      type: PriceFeedType.NONE
-    },
-  },
-  {
     decimals: 18,
     id: "0x691ad41906e3fe78c3fe1328ecddc9bd7c0e5eb8",
     name: "ZeroLend PT Ethena USDe 27MAR2025",
@@ -7520,7 +7507,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7581,7 +7568,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xb162b764044697cf03617c2efbcb1f42e31e4766"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7689,7 +7676,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xd11c452fc99cf405034ee446803b6f6c1f6d5ed8",
     markets: ["0xbdb8f9729d3194f75fd1a3d9bc4ffe0dde3a404c"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7702,7 +7689,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xcd5fe23c85820f7b72d0926fc9b05b43e359b7ee",
     markets: ["0xf4cf59259d007a96c641b41621ab52c93b9691b1"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7895,7 +7882,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x8236a87084f8b84306f72007f36f2618a5634494",
     markets: ["0x931f7ea0c31c14914a452d341bc5cb5d996be71d"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7908,7 +7895,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
     markets: ["0x523f9441853467477b4dde653c554942f8e17162"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7921,7 +7908,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     markets: ["0xb6b2cf977c512bcd195b58e2ccfb3fb15535cb19"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7948,7 +7935,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x80ac24aa929eaf5013f6436cda2a7ba190f5cc0b",
     markets: ["0x9a63fa80b5ddfd3cab23803fdb93ad2c18f3d5aa"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7961,7 +7948,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x4c9edd5852cd905f086c759e8383e09bff1e68b3",
     markets: ["0x9df192d13d61609d1852461c4850595e1f56e714"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -8015,7 +8002,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0x4339ffe2b7592dc783ed13cce310531ab366deac"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -8028,7 +8015,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xd9a442856c234a39a81a089c06451ebaa4306a72",
     markets: ["0x58612beb0e8a126735b19bb222cbc7fc2c162d2a"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -8041,7 +8028,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xdc035d45d973e3ec169d2276ddab16f1e407384f",
     markets: ["0xdace1121e10500e9e29d071f01593fd76b000f08"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
