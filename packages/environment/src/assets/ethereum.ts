@@ -6025,17 +6025,6 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
-    decimals: 18,
-    id: "0x45804880de22913dafe09f4980848ece6ecbaf78",
-    name: "Paxos Gold",
-    releases: [],
-    symbol: "PAXG",
-    type: AssetType.PRIMITIVE,
-    priceFeed: {
-      type: PriceFeedType.NONE,
-    },
-  },
-  {
     decimals: 9,
     id: "0xd31a59c85ae9d8edefec411d448f90841571b89c",
     name: "Wrapped SOL",
@@ -6678,18 +6667,6 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0x8fffffd4afb6115b954bd326cbe7b4ba576818f6",
       rateAsset: RateAsset.USD,
-    },
-  },
-  {
-    decimals: 18,
-    id: "0xa17581a9e3356d9a858b789d68b4d866e593ae94",
-    name: "Compound WETH",
-    releases: [sulu],
-    symbol: "cWETHv3",
-    type: AssetType.COMPOUND_V3,
-    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-    priceFeed: {
-      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7582,19 +7559,6 @@ export default defineAssetList(Network.ETHEREUM, [
     markets: ["0xb451a36c8b6b2eac77ad0737ba732818143a0e25"],
     priceFeed: {
       type: PriceFeedType.NONE,
-    },
-  },
-  {
-    decimals: 8,
-    id: "0x657e8c867d8b37dcc18fa4caead9c45eb088c642",
-    name: "ether.fi BTC",
-    releases: [sulu],
-    symbol: "eBTC",
-    type: AssetType.PRIMITIVE,
-    priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_QUOTED,
-      aggregator: "0xb04f255f21bc7a45ef4790deb007926e01b1f1f5",
-      rateAsset: RateAsset.ETH,
     },
   },
   {
