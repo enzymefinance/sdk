@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.69
+
+### Patch Changes
+
+- [#792](https://github.com/enzymefinance/sdk/pull/792) [`5eac400`](https://github.com/enzymefinance/sdk/commit/5eac400bbd948cbe1e2eed6315168cfe9213ac9e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Unregister expired pendle assets
+
+- [#791](https://github.com/enzymefinance/sdk/pull/791) [`8e84d47`](https://github.com/enzymefinance/sdk/commit/8e84d47a224653f4503c735dba666121d020d7a4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Morpho Steak ETH
+
 ## 6.3.68
 
 ### Patch Changes
