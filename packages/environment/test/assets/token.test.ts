@@ -9,7 +9,7 @@ import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const assets = environment.getAssets();
+const assets = environment.assetsDefinition;
 
 suite.each(assets)("$symbol ($name): $id", (asset) => {
   test("defined decimals matches on-chain decimals", async () => {
