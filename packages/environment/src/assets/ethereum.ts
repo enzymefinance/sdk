@@ -8207,4 +8207,18 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.ETH,
     },
   },
+  {
+    symbol: "steakETH",
+    name: "Steakhouse ETH",
+    id: "0xbeef050ecd6a16c4e7bffbb52ebba7846c4b8cd4",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
