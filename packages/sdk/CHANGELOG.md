@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.22
+
+### Patch Changes
+
+- [#795](https://github.com/enzymefinance/sdk/pull/795) [`9228eb5`](https://github.com/enzymefinance/sdk/commit/9228eb5f2da29b872ad5ff2329de143e9108c49a) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add get positions for Uniswap V3
+
 ## 1.2.21
 
 ### Patch Changes
