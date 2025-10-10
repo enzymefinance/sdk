@@ -50,6 +50,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
     stakeWiseV3KeeperRewards: "0x6b5815467da09daa7dc83db21c9239d98bb487b5",
     theGraphDelegationStakingProxy: "0xf55041e37e12cd407ad00ce2910b8269b01263b9",
     theGraphEpochManagerProxy: "0x64f990bf16552a693dcb043bb7bf3866c5e05ddb",
+    threeOneThirdBatchTrade: "0xd20c024560cca40288c05bab650ac087ae9b0f6e",
     uniswapV3NonFungiblePositionManager: "0xc36442b4a4522e871399cd717abdd847ab11fe88",
     voteLockedConvexToken: "0x72a19342e8f1838460ebfccef09f6585e32db86e",
     votiumVoteProxy: "0xde1e6a7ed0ad3f61d531a8a78e83ccddbd6e0c49",

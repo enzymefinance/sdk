@@ -1,4 +1,6 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Client, type Hex, decodeAbiParameters, encodeAbiParameters, parseAbi } from "viem";
+import { readContract } from "viem/actions";
+import { Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -83,4 +85,23 @@ export function decodeBatchTrade(encoded: Hex): {
     trades,
     config,
   };
+}
+
+//--------------------------------------------------------------------------------------------
+// EXTERNAL READ FUNCTIONS
+//--------------------------------------------------------------------------------------------
+
+export function feeBasisPoints(
+  client: Client,
+  args: Viem.ContractCallParameters<{
+    batchTrade: Address;
+  }>,
+) {
+  return readContract(client, {
+    ...Viem.extractBlockParameters(args),
+    abi: parseAbi(["function feeBasisPoints() view returns (uint16)"]),
+    functionName: "feeBasisPoints",
+    address: args.batchTrade,
+    args: [],
+  });
 }

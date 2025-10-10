@@ -337,6 +337,7 @@ export interface ExternalContractsMapping {
   readonly stakeWiseV3KeeperRewards: Address;
   readonly theGraphDelegationStakingProxy: Address;
   readonly theGraphEpochManagerProxy: Address;
+  readonly threeOneThirdBatchTrade: Address;
   readonly uniswapV3NonFungiblePositionManager: Address;
   readonly voteLockedConvexToken: Address;
   readonly votiumVoteProxy: Address;

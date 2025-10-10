@@ -50,6 +50,7 @@ export default defineDeployment<Deployment.POLYGON>({
     stakeWiseV3KeeperRewards: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x0000000000000000000000000000000000000000",
     theGraphEpochManagerProxy: "0x0000000000000000000000000000000000000000",
+    threeOneThirdBatchTrade: "0xd20c024560cca40288c05bab650ac087ae9b0f6e",
     uniswapV3NonFungiblePositionManager: "0xc36442b4a4522e871399cd717abdd847ab11fe88",
     voteLockedConvexToken: "0x0000000000000000000000000000000000000000",
     votiumVoteProxy: "0x0000000000000000000000000000000000000000",

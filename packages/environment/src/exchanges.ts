@@ -4,4 +4,5 @@ export enum Exchange {
   PARASWAP_V6 = "PARASWAP_V6",
   UNISWAP_V2 = "UNISWAP_V2",
   UNISWAP_V3 = "UNISWAP_V3",
+  THREE_ONE_THIRD = "THREE_ONE_THIRD",
 }

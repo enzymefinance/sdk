@@ -50,6 +50,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     stakeWiseV3KeeperRewards: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x00669a4cf01450b64e8a2a20e9b1fcb71e61ef03",
     theGraphEpochManagerProxy: "0x5a843145c43d328b9bb7a4401d94918f131bb281",
+    threeOneThirdBatchTrade: "0xd20c024560cca40288c05bab650ac087ae9b0f6e",
     uniswapV3NonFungiblePositionManager: "0xc36442b4a4522e871399cd717abdd847ab11fe88",
     voteLockedConvexToken: "0x0000000000000000000000000000000000000000",
     votiumVoteProxy: "0x0000000000000000000000000000000000000000",
