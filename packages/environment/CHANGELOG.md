@@ -1,5 +1,28 @@
 # @enzymefinance/environment
 
+## 6.3.70
+
+### Patch Changes
+
+- Updated dependencies [[`9228eb5`](https://github.com/enzymefinance/sdk/commit/9228eb5f2da29b872ad5ff2329de143e9108c49a)]:
+  - @enzymefinance/sdk@1.2.22
+
+## 6.3.69
+
+### Patch Changes
+
+- [#792](https://github.com/enzymefinance/sdk/pull/792) [`5eac400`](https://github.com/enzymefinance/sdk/commit/5eac400bbd948cbe1e2eed6315168cfe9213ac9e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Unregister expired pendle assets
+
+- [#791](https://github.com/enzymefinance/sdk/pull/791) [`8e84d47`](https://github.com/enzymefinance/sdk/commit/8e84d47a224653f4503c735dba666121d020d7a4) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Morpho Steak ETH
+
+## 6.3.68
+
+### Patch Changes
+
+- [#785](https://github.com/enzymefinance/sdk/pull/785) [`62ea027`](https://github.com/enzymefinance/sdk/commit/62ea02706d8ff902e26ced47561f064913168330) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add PT cUSD Pendle assets
+
+- [#788](https://github.com/enzymefinance/sdk/pull/788) [`b32abbc`](https://github.com/enzymefinance/sdk/commit/b32abbc229872403a0a116e3404552be4ef55acf) Thanks [@iherger](https://github.com/iherger)! - Add PAXG
+
 ## 6.3.67
 
 ### Patch Changes

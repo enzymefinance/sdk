@@ -1,6 +1,6 @@
 import type { AdapterDefinition } from "./adapters.js";
 import { getAdaptersForRelease } from "./adapters.js";
-import type { Asset } from "./assets.js";
+import type { Asset, AssetDefinition } from "./assets.js";
 import { AssetType } from "./assets.js";
 import type { VersionContracts } from "./contracts.js";
 import { Version, isVersion } from "./contracts.js";
@@ -99,6 +99,7 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
   public readonly knownAddressLists: KnownAddressListIdMapping<TDeployment>;
   public readonly knownUintLists: KnownUintListIdMapping<TDeployment>;
   public readonly assets: Record<Address, Asset> = {};
+  public readonly assetsDefinition: Array<AssetDefinition> = [];
   public readonly adapters: Record<string, AdapterDefinition> = {};
   public readonly namedTokens: DeploymentNamedAssetsTokens<TDeployment>;
 
@@ -149,6 +150,8 @@ export class Environment<TVersion extends Version = Version, TDeployment extends
 
     const network = deployment.network;
     const assets = deployment.assets.filter((asset) => asset.network === network);
+
+    this.assetsDefinition = assets;
 
     this.release = release;
     this.contracts = release.contracts;

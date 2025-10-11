@@ -9,7 +9,7 @@ import { environment } from "../utils/fixtures.js";
 
 const client = getClient(environment.network.id);
 
-const assets = environment.getAssets();
+const assets = environment.assetsDefinition;
 
 suite.each(assets)("$symbol ($name): $id", (asset) => {
   test("defined decimals matches on-chain decimals", async () => {
@@ -125,6 +125,7 @@ const symbolExceptions = [
   "KNCL", // onchain value: KNC -> keep to differentiate from new token
   "FTT", // onchain value: FTX Token -> keep, name/symbol seems to be interchanged
   "USDC.e", // onchain value: USDC -> keep, to differentiate from native USDC
+  "aWBTC", // onchain value: ATOKEN_IMPL  -> remove
 ];
 
 const nameExceptions = [
@@ -141,4 +142,5 @@ const nameExceptions = [
   "Maven 11 WETH Pool", // onchain value: Maple Pool Token -> keep to differentiate
   "Enzyme (PoS)", // onchain value: Melon Token (PoS) -> keep to differentiate
   "Orthogonal Trading - USDC01", // onchain value: Maple Pool Token -> keep to differentiate
+  "Aave WBTC", // onchain value: ATOKEN_IMPL -> remove
 ];
