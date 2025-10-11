@@ -42,6 +42,8 @@ export default defineDeployment<Deployment.TESTNET>({
         AddressListRegistry: "0x477a4e56eabc94a871744d4f1d59e045fd53c1ef",
         AlicePositionLib: "0x0000000000000000000000000000000000000000",
         AlicePositionParser: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionLib: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0x390be32d5864fda0295d0e5f413d411eabd7c4ce",
         AllowedAdaptersPerManagerPolicy: "0xd63909b856ab759aff30eb52651e366d2625d1de",
         AllowedAdaptersPolicy: "0x35cf5a1fe0254f863c9f6c0cd5c2128ee61baf58",

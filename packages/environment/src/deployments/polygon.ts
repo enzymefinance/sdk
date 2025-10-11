@@ -111,6 +111,8 @@ export default defineDeployment<Deployment.POLYGON>({
         AddressListRegistry: "0x5ae15bf655a8f42b9c7d93e64f4476ec1da248f8",
         AlicePositionLib: "0x0000000000000000000000000000000000000000",
         AlicePositionParser: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionLib: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0xc192fd3b13549ad5bc3c0a0118a29556d0cdd482",
         AllowedAdaptersPerManagerPolicy: "0x30ed4e3cf5e1faf6fc9776d256d535f3470bb710",
         AllowedAdaptersPolicy: "0x4218783ae10bd1841e6664cf048ac295d8d27a4a",

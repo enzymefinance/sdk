@@ -129,6 +129,8 @@ export default defineDeployment<Deployment.ETHEREUM>({
         AddressListRegistry: "0x4eb4c7babfb5d54ab4857265b482fb6512d22dff",
         AlicePositionLib: "0xe57c868f97e8c1deaf24dc72b89d886ebfa24d9f",
         AlicePositionParser: "0xff60eb4b559d63beba1738281b63704266c6dac0",
+        AliceV2PositionLib: "0x0000000000000000000000000000000000000000",
+        AliceV2PositionParser: "0x0000000000000000000000000000000000000000",
         AllowedAdapterIncomingAssetsPolicy: "0x2f0e55830a173d845a886fd574f01a039a07fc37",
         AllowedAdaptersPerManagerPolicy: "0xa4507d51c5270ff91229b76300ff90774384d144",
         AllowedAdaptersPolicy: "0x720ef97bf835699fcf07591952cd2b132d63a6c0",

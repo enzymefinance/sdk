@@ -1,6 +1,7 @@
 export * as AaveV2 from "./Integrations/AaveV2.js";
 export * as AaveV3 from "./Integrations/AaveV3.js";
 export * as Alice from "./Integrations/Alice.js";
+export * as AliceV2 from "./Integrations/AliceV2.js";
 export * as ArbitraryLoan from "./Integrations/ArbitraryLoan.js";
 export * as ArrakisV2 from "./Integrations/ArrakisV2.js";
 export * as BalancerV2 from "./Integrations/BalancerV2.js";
