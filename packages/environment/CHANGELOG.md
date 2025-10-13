@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.71
+
+### Patch Changes
+
+- [#797](https://github.com/enzymefinance/sdk/pull/797) [`c5678cb`](https://github.com/enzymefinance/sdk/commit/c5678cb9adfb34482b2f69cf907741c2090badef) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Three One Third exchange
+
+- Updated dependencies [[`c5678cb`](https://github.com/enzymefinance/sdk/commit/c5678cb9adfb34482b2f69cf907741c2090badef)]:
+  - @enzymefinance/sdk@1.2.23
+
 ## 6.3.70
 
 ### Patch Changes

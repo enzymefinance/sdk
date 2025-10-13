@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.23
+
+### Patch Changes
+
+- [#797](https://github.com/enzymefinance/sdk/pull/797) [`c5678cb`](https://github.com/enzymefinance/sdk/commit/c5678cb9adfb34482b2f69cf907741c2090badef) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Three One Third exchange
+
 ## 1.2.22
 
 ### Patch Changes
