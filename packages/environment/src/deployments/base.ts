@@ -50,6 +50,7 @@ export default defineDeployment<Deployment.BASE>({
     zeroExExchangeProxy: "0x0000000000000000000000000000000000000000",
     theGraphEpochManagerProxy: "0x0000000000000000000000000000000000000000",
     theGraphDelegationStakingProxy: "0x0000000000000000000000000000000000000000",
+    threeOneThirdBatchTrade: "0xd20c024560cca40288c05bab650ac087ae9b0f6e",
     multicall: "0xca11bde05977b3631167028862be2fa173976ca11",
     makerMCDPotAddress: "0x0000000000000000000000000000000000000000",
     merklDistributor: "0x3ef3d8ba38ebe18db133cec108f4d14ce00dd9ae",

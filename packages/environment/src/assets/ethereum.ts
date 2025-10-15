@@ -7566,12 +7566,10 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "ether.fi governance token",
     symbol: "ETHFI",
     decimals: 18,
-    releases: [sulu],
+    releases: [],
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x19678515847d8de85034dad0390e09c3048d31cd",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
