@@ -137,9 +137,6 @@ export interface SuluContracts extends CommonContracts {
   readonly PeggedDerivativesPriceFeed: Address;
   readonly PeggedRateDeviationAggregatorFactory: Address;
   readonly PendleV2Adapter: Address;
-  readonly PendleV2PositionLib: Address;
-  readonly PendleV2PositionParser: Address;
-  readonly PendleMarketsRegistry: Address;
   readonly PerformanceFee: Address;
   readonly PoolTogetherV4Adapter: Address;
   readonly PoolTogetherV4PriceFeed: Address;
