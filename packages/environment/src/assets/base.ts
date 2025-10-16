@@ -366,4 +366,17 @@ export default defineAssetList(Network.BASE, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    id: "0xbaa5cc21fd487b8fcc2f632f3f4e8d37262a0842",
+    name: "Morpho Token",
+    symbol: "MORPHO",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0xe95e258bb6615d47515fc849f8542da651f12bf6",
+      rateAsset: RateAsset.USD,
+    },
+  },
 ]);
