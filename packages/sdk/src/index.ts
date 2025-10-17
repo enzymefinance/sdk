@@ -9,3 +9,4 @@ export * as Relayer from "./Relayer.js";
 export * as Tools from "./Tools.js";
 export * as Utils from "./Utils.js";
 export * as Vault from "./Vault.js";
+export * as Dispatcher from "./Dispatcher.js";
