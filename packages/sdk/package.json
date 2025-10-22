@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enzymefinance/enzyme-sdk.git",
+    "url": "https://github.com/enzymefinance/sdk.git",
     "directory": "packages/sdk"
   },
   "author": "Sebastian Lorenz <fubhy@fubhy.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/enzymefinance/enzyme-sdk/issues"
+    "url": "https://github.com/enzymefinance/sdk/issues"
   },
-  "homepage": "https://github.com/enzymefinance/enzyme-sdk",
+  "homepage": "https://github.com/enzymefinance/sdk",
   "scripts": {
     "build": "pnpm build-esm && pnpm build-annotate && pnpm build-cjs && build-utils pack-v2",
     "build-prepare": "build-utils prepare-v2",
