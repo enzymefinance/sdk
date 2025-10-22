@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.73
+
+### Patch Changes
+
+- [#805](https://github.com/enzymefinance/sdk/pull/805) [`a810d96`](https://github.com/enzymefinance/sdk/commit/a810d965ddd5b0f8f5a50504dd4823ad238238bf) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Fix repository url
+
+- Updated dependencies [[`a810d96`](https://github.com/enzymefinance/sdk/commit/a810d965ddd5b0f8f5a50504dd4823ad238238bf)]:
+  - @enzymefinance/sdk@1.2.25
+
 ## 6.3.72
 
 ### Patch Changes
