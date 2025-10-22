@@ -266,7 +266,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         TransferAssetsAdapter: "0xe0309fa2412b811a0bd40a73297093707259217f",
         UintListRegistry: "0x6ffd6fc068e7b365af18da4fdc39d3289159407b",
         UniswapV2ExchangeAdapter: "0x8c36435a653041bfd65515cc82502663c1ce6f0e",
-        UniswapV2LiquidityAdapter: "0xf78130afeda6d9df3394b34d36239aec7fae48d9",
+        UniswapV2LiquidityAdapter: "0x268001925c06b9beeeee6f15c8340db0cb38dca3",
         UniswapV2PoolPriceFeed: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
         UniswapV3Adapter: "0xed6a08e05cb4260388dc7cc60bc5fefccfab2793",
         UniswapV3LiquidityPositionLib: "0x20a2d4765be139475c34db7b7d856dcf25092c26",
