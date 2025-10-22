@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/enzymefinance/enzyme-sdk.git",
+    "url": "https://github.com/enzymefinance/sdk.git",
     "directory": "packages/environment"
   },
   "license": "MIT",
