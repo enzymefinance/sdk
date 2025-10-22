@@ -1,5 +1,13 @@
 # @enzymefinance/sdk
 
+## 1.2.24
+
+### Patch Changes
+
+- [#789](https://github.com/enzymefinance/sdk/pull/789) [`de28c5e`](https://github.com/enzymefinance/sdk/commit/de28c5e447cba54edd563c3cd9caf8c0d8eb0dde) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add AliceV2 (Lmax V2) to the sdk and environment
+
+- [#804](https://github.com/enzymefinance/sdk/pull/804) [`3eb167f`](https://github.com/enzymefinance/sdk/commit/3eb167fee82d0b720e34db39dbbbdb8daeebe761) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Protocol Fee Reserve
+
 ## 1.2.23
 
 ### Patch Changes

@@ -1,5 +1,22 @@
 # @enzymefinance/environment
 
+## 6.3.72
+
+### Patch Changes
+
+- [#799](https://github.com/enzymefinance/sdk/pull/799) [`cfdcc9f`](https://github.com/enzymefinance/sdk/commit/cfdcc9fa46b6b49928bf8c67aa0855428d7fe508) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Pendle EP
+
+- [#802](https://github.com/enzymefinance/sdk/pull/802) [`2188024`](https://github.com/enzymefinance/sdk/commit/2188024381a601634fcfe33c577b3d7db83c9b62) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Morpho token
+
+- [#801](https://github.com/enzymefinance/sdk/pull/801) [`326fd46`](https://github.com/enzymefinance/sdk/commit/326fd465843b7edcc595fe2ef710ddab9d94b31f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update UniswapV2LiquidityAdapter
+
+- [#789](https://github.com/enzymefinance/sdk/pull/789) [`de28c5e`](https://github.com/enzymefinance/sdk/commit/de28c5e447cba54edd563c3cd9caf8c0d8eb0dde) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add AliceV2 (Lmax V2) to the sdk and environment
+
+- [#794](https://github.com/enzymefinance/sdk/pull/794) [`78f61a3`](https://github.com/enzymefinance/sdk/commit/78f61a3de75a2cf726c92078585f85221973e40b) Thanks [@iherger](https://github.com/iherger)! - Remove ethfi token
+
+- Updated dependencies [[`de28c5e`](https://github.com/enzymefinance/sdk/commit/de28c5e447cba54edd563c3cd9caf8c0d8eb0dde), [`3eb167f`](https://github.com/enzymefinance/sdk/commit/3eb167fee82d0b720e34db39dbbbdb8daeebe761)]:
+  - @enzymefinance/sdk@1.2.24
+
 ## 6.3.71
 
 ### Patch Changes
