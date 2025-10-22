@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.26
+
+### Patch Changes
+
+- [#807](https://github.com/enzymefinance/sdk/pull/807) [`02c4107`](https://github.com/enzymefinance/sdk/commit/02c4107b3b4cd215480fb69eec90e9259dfafd76) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Get fund deployer for vault proxy
+
 ## 1.2.25
 
 ### Patch Changes
