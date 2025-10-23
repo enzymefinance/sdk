@@ -712,7 +712,7 @@ export default defineAssetList(Network.ARBITRUM, [
     decimals: 18,
     id: "0x25d887ce7a35172c62febfd67a1856f20faebb00",
     name: "Pepe",
-    releases: [sulu],
+    releases: [],
     symbol: "PEPE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
