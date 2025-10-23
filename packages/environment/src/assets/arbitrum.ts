@@ -712,7 +712,7 @@ export default defineAssetList(Network.ARBITRUM, [
     decimals: 18,
     id: "0x25d887ce7a35172c62febfd67a1856f20faebb00",
     name: "Pepe",
-    releases: [],
+    releases: [sulu],
     symbol: "PEPE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -729,6 +729,19 @@ export default defineAssetList(Network.ARBITRUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xe808488e8627f6531ba79a13a9e0271b39abeb1c",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    id: "0xa6525ae43edcd03dc08e775774dcabd3bb925872",
+    name: "BlackRock USD Institutional Digital Liquidity Fund",
+    symbol: "BUIDL",
+    decimals: 6,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xa8a94da411425634e3ed6c331a32ab4fd774aa43",
       rateAsset: RateAsset.USD,
     },
   },
