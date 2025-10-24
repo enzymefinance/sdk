@@ -85,6 +85,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
     dai: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
     grt: "0x9623063377ad1b27544c965ccd7342f7ea7e88c7",
     mln: "0x8f5c1a99b1df736ad685006cb6adca7b7ae4b514",
+    usdc: "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
     usdt: "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
     weth: "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
   },
