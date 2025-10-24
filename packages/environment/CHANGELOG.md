@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.75
+
+### Patch Changes
+
+- [#811](https://github.com/enzymefinance/sdk/pull/811) [`d0313c3`](https://github.com/enzymefinance/sdk/commit/d0313c3cab01e9a3e10a543880427bc86b147b8c) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add USDC to named tokens
+
 ## 6.3.74
 
 ### Patch Changes
