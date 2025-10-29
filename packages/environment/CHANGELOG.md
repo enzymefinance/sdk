@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.76
+
+### Patch Changes
+
+- [#809](https://github.com/enzymefinance/sdk/pull/809) [`75eee15`](https://github.com/enzymefinance/sdk/commit/75eee1557d4521d7ffa00f0a6809dc1485f9d03c) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - Add Paxos Gold and BUIDL on Arbitrum
+
 ## 6.3.75
 
 ### Patch Changes
