@@ -68,6 +68,7 @@ export interface SuluContracts extends CommonContracts {
   readonly BalancerV2LiquidityAdapter: Address;
   readonly BalancerV2StablePoolPriceFeed: Address;
   readonly BalancerV2WeightedPoolPriceFeed: Address;
+  readonly BebopBlendAdapter: Address;
   readonly ChainlinkLikeWstethPriceFeed: Address;
   readonly ChainlinkLikeYnEthPriceFeed: Address;
   readonly CompoundAdapter: Address;
