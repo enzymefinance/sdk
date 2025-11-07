@@ -5,6 +5,7 @@ export * as AliceV2 from "./Integrations/AliceV2.js";
 export * as ArbitraryLoan from "./Integrations/ArbitraryLoan.js";
 export * as ArrakisV2 from "./Integrations/ArrakisV2.js";
 export * as BalancerV2 from "./Integrations/BalancerV2.js";
+export * as BebopBlend from "./Integrations/BebopBlend.js";
 export * as CompoundV2 from "./Integrations/CompoundV2.js";
 export * as CompoundV3 from "./Integrations/CompoundV3.js";
 export * as Convex from "./Integrations/Convex.js";

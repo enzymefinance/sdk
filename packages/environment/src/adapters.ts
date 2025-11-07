@@ -10,6 +10,7 @@ export enum AdapterType {
   ALPHA_HOMORA_V1 = "alpha-homora-v1",
   AURA = "aura",
   BALANCER_V2 = "balancer-v2",
+  BEBOP_BLEND = "bebop-blend",
   COMPOUND_V2 = "compound-v2",
   COMPOUND_V3 = "compound-v3",
   CONVEX = "convex",
@@ -138,6 +139,11 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: "BalancerV2LiquidityAdapter",
     name: "Balancer V2",
     type: AdapterType.BALANCER_V2,
+  },
+  [AdapterType.BEBOP_BLEND]: {
+    contractName: "BebopBlendAdapter",
+    name: "Bebop",
+    type: AdapterType.BEBOP_BLEND,
   },
   [AdapterType.COMPOUND_V2]: {
     contractName: "CompoundAdapter",
