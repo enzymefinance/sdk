@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.27
+
+### Patch Changes
+
+- [#815](https://github.com/enzymefinance/sdk/pull/815) [`eed2815`](https://github.com/enzymefinance/sdk/commit/eed2815c931484c1b985c6f209166d92702fd2ca) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add BebopBlendAdapter sdk methods and testnet deployment address
+
 ## 1.2.26
 
 ### Patch Changes
