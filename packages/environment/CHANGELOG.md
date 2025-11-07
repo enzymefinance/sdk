@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.78
+
+### Patch Changes
+
+- [#817](https://github.com/enzymefinance/sdk/pull/817) [`ac01a00`](https://github.com/enzymefinance/sdk/commit/ac01a00e252090f3788231c67c780e48841af960) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add bebop blend to exchanges
+
 ## 6.3.77
 
 ### Patch Changes
