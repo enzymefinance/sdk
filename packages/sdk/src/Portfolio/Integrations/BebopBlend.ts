@@ -130,8 +130,4 @@ export function swapSingleDecode(encoded: Hex): SwapSingleActionArgs {
   };
 }
 
-export const swapSingle = IntegrationManager.makeUse(
-  IntegrationManager.Selector.Action,
-  swapSingleEncode,
-);
-
+export const swapSingle = IntegrationManager.makeUse(IntegrationManager.Selector.Action, swapSingleEncode);
