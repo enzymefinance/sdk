@@ -129,6 +129,7 @@ export default defineDeployment<Deployment.ARBITRUM>({
         BalancerV2LiquidityAdapter: "0xb3ea1f2f3d2cdbd81a3de91fdf9a2f3e3acd66c1",
         BalancerV2StablePoolPriceFeed: "0x8f30c0483c1cd32c100462f1af6d4ae6283086a9",
         BalancerV2WeightedPoolPriceFeed: "0xa95878965f3af1d88002e06ae25182a45943b9e2",
+        BebopBlendAdapter: "0x0000000000000000000000000000000000000000",
         ChainlinkLikeWstethPriceFeed: "0x0000000000000000000000000000000000000000",
         ChainlinkLikeYnEthPriceFeed: "0x0000000000000000000000000000000000000000",
         CompoundAdapter: "0x0000000000000000000000000000000000000000",

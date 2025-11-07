@@ -133,6 +133,7 @@ export default defineDeployment<Deployment.POLYGON>({
         BalancerV2LiquidityAdapter: "0xaa7f7b3daaabdeaf828f4c489379160b034d125b",
         BalancerV2StablePoolPriceFeed: "0xea9cf93260aee30a5c4fd892607920bbbeb8c409",
         BalancerV2WeightedPoolPriceFeed: "0x30ee2560675f8a523cd07b109fcb472a54b08314",
+        BebopBlendAdapter: "0x0000000000000000000000000000000000000000",
         ChainlinkLikeWstethPriceFeed: "0x0000000000000000000000000000000000000000",
         ChainlinkLikeYnEthPriceFeed: "0x0000000000000000000000000000000000000000",
         CompoundAdapter: "0x0000000000000000000000000000000000000000",
