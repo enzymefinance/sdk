@@ -1,4 +1,5 @@
 export enum Exchange {
+  BEBOP_BLEND = "BEBOP_BLEND",
   ONE_INCH_V5 = "ONE_INCH_V5",
   PARASWAP_V5 = "PARASWAP_V5",
   PARASWAP_V6 = "PARASWAP_V6",
