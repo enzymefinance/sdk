@@ -185,14 +185,6 @@ export interface SuluContracts extends CommonContracts {
   readonly YearnVaultV2PriceFeed: Address;
   readonly ZeroExV2Adapter: Address;
   readonly ZeroExV4Adapter: Address;
-  readonly ZeroLendLRTBTCAaveV3Adapter: Address;
-  readonly ZeroLendLRTBTCAaveV3ATokenListOwner: Address;
-  readonly ZeroLendLRTBTCAaveV3DebtPositionLib: Address;
-  readonly ZeroLendLRTBTCAaveV3DebtPositionParser: Address;
-  readonly ZeroLendRWAStablecoinsAaveV3Adapter: Address;
-  readonly ZeroLendRWAStablecoinsAaveV3ATokenListOwner: Address;
-  readonly ZeroLendRWAStablecoinsAaveV3DebtPositionLib: Address;
-  readonly ZeroLendRWAStablecoinsAaveV3DebtPositionParser: Address;
 }
 
 export interface EncoreContracts extends CommonContracts {
