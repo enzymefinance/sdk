@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.79
+
+### Patch Changes
+
+- [#813](https://github.com/enzymefinance/sdk/pull/813) [`140efac`](https://github.com/enzymefinance/sdk/commit/140efacfd87b8388dab517300e215f6474362043) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - Deregister xUSD on arbitrum
+
 ## 6.3.78
 
 ### Patch Changes
