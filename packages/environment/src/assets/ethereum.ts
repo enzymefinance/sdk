@@ -6101,7 +6101,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xa6f548df93de924d73be7d25dc02554c6bd66db5",
     name: "Balancer 50 WBTC 50 WETH",
-    releases: [sulu],
+    releases: [],
     symbol: "B-50WBTC-50WETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -6112,7 +6112,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x4e3c048be671852277ad6ce29fd5207aa12fabff",
     name: "Balancer B-50WBTC-50WETH Gauge Deposit",
-    releases: [sulu],
+    releases: [],
     symbol: "B-50WBTC-50WETH-gauge",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -6134,7 +6134,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x96646936b91d6b9d7d0c47c496afbf3d6ec7b6f8",
     name: "Balancer 50 USDC 50 WETH",
-    releases: [sulu],
+    releases: [],
     symbol: "B-50USDC-50WETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -6145,7 +6145,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x9ab7b0c7b154f626451c9e8a68dc04f58fb6e5ce",
     name: "Balancer B-50USDC-50WETH Gauge Deposit",
-    releases: [sulu],
+    releases: [],
     symbol: "B-50USDC-50WETH-gauge",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -6319,7 +6319,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x32296969ef14eb0c6d29669c550d4a0449130230",
     name: "Balancer stETH Stable Pool",
-    releases: [sulu],
+    releases: [],
     symbol: "B-stETH-STABLE",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -6330,7 +6330,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xcd4722b7c24c29e0413bdcd9e51404b4539d14ae",
     name: "Balancer B-stETH-STABLE Gauge Deposit",
-    releases: [sulu],
+    releases: [],
     symbol: "B-stETH-STABLE-gauge",
     type: AssetType.PRIMITIVE,
     priceFeed: {

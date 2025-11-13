@@ -43,7 +43,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x3d468ab2329f296e1b9d8476bb54dd77d8c2320f",
     name: "20WETH-80BAL",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [],
     symbol: "20WETH-80BAL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
