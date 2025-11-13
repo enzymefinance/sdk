@@ -132,6 +132,7 @@ const nameExceptions = [
   "Aave MANA v1", // onchain value: Aave interest bearing MANA -> keep to differentiate
   "Aave MANA v2", // onchain value: Aave interest bearing MANA -> keep to differentiate
   "Alameda Research - USDC", // onchain value: Maple Pool Token -> keep to differentiate
+  "Balancer 50OHM-25DAI-25WETH", // onchain value: 50OHM-25DAI-25WETH -> keep (Balancer inconsistency)
   "BlockTower Capital - USDC01", // onchain value: Maple Pool Token -> keep to differentiate
   "Celsius wETH Pool", // onchain value: Maple Pool Token -> keep to differentiate
   "Enzyme", // onchain value: Melon -> keep
