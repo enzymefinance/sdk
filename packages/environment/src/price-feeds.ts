@@ -10,9 +10,6 @@ export enum PriceFeedType {
   PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION = "PRIMITIVE_NON_STANDARD_PRECISION",
   PRIMITIVE_PENDLE_V2 = "PRIMITIVE_PENDLE_V2",
   DERIVATIVE_ARRAKIS_V2 = "DERIVATIVE_ARRAKIS_V2",
-  DERIVATIVE_BALANCER_V2_GAUGE_TOKEN = "DERIVATIVE_BALANCER_V2_GAUGE_TOKEN",
-  DERIVATIVE_BALANCER_V2_STABLE_POOL = "DERIVATIVE_BALANCER_V2_STABLE_POOL",
-  DERIVATIVE_BALANCER_V2_WEIGHTED_POOL = "DERIVATIVE_BALANCER_V2_WEIGHTED_POOL",
   DERIVATIVE_COMPOUND = "DERIVATIVE_COMPOUND",
   DERIVATIVE_CURVE = "DERIVATIVE_CURVE",
   DERIVATIVE_ENZYME_VAULT = "DERIVATIVE_ENZYME_VAULT",
@@ -37,9 +34,6 @@ export const primitivePriceFeeds = [
 
 export const derivativePriceFeeds = [
   PriceFeedType.DERIVATIVE_ARRAKIS_V2,
-  PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN,
-  PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL,
-  PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL,
   PriceFeedType.DERIVATIVE_COMPOUND,
   PriceFeedType.DERIVATIVE_CURVE,
   PriceFeedType.DERIVATIVE_ENZYME_VAULT,
@@ -67,9 +61,6 @@ export type PriceFeed =
   | PrimitiveNonStandardPrecisionPriceFeed
   | PrimitivePendleV2PriceFeed
   | DerivativeArrakisV2PriceFeed
-  | DerivativeBalancerV2GaugeTokenPriceFeed
-  | DerivativeBalancerV2StablePoolPriceFeed
-  | DerivativeBalancerV2WeightedPoolPriceFeed
   | DerivativeCompoundPriceFeed
   | DerivativeCurvePriceFeed
   | DerivativeEnzymeVaultPriceFeed
@@ -169,34 +160,6 @@ export interface PrimitivePendleV2PriceFeed extends PriceFeedBase {
 
 export interface DerivativeArrakisV2PriceFeed extends PriceFeedBase {
   readonly type: PriceFeedType.DERIVATIVE_ARRAKIS_V2;
-  /**
-   * Price Feed address
-   */
-  readonly address: Address;
-}
-
-export interface DerivativeBalancerV2GaugeTokenPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN;
-  /**
-   * Price Feed address
-   */
-  readonly address: Address;
-}
-
-export interface DerivativeBalancerV2StablePoolPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL;
-  /**
-   * Price Feed address
-   */
-  readonly address: Address;
-  /**
-   * Invariant Proxy Asset (ipa)
-   */
-  readonly ipa: Address;
-}
-
-export interface DerivativeBalancerV2WeightedPoolPriceFeed extends PriceFeedBase {
-  readonly type: PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL;
   /**
    * Price Feed address
    */

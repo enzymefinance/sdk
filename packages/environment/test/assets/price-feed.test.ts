@@ -108,24 +108,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_GAUGE_TOKEN: {
-        expect(asset.priceFeed.address).toBe(environment.contracts.BalancerV2GaugeTokenPriceFeed);
-
-        break;
-      }
-
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_STABLE_POOL: {
-        expect(asset.priceFeed.address).toBe(environment.contracts.BalancerV2StablePoolPriceFeed);
-
-        break;
-      }
-
-      case PriceFeedType.DERIVATIVE_BALANCER_V2_WEIGHTED_POOL: {
-        expect(asset.priceFeed.address).toBe(environment.contracts.BalancerV2WeightedPoolPriceFeed);
-
-        break;
-      }
-
       case PriceFeedType.DERIVATIVE_COMPOUND: {
         expect(asset.priceFeed.address).toBe(environment.contracts.CompoundPriceFeed);
 
