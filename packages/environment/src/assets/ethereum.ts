@@ -3073,13 +3073,12 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 8,
     id: "0x95b4ef2869ebd94beb4eee400a99824bf5dc325b",
     name: "Compound Maker",
-    releases: [sulu, encore],
+    releases: [],
     symbol: "cMKR",
     type: AssetType.COMPOUND_V2,
     underlying: "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_COMPOUND,
-      address: "0x6254e0538abbb668eac89d5e5bee27a9d0e62bbe",
+      type: PriceFeedType.NONE,
     },
   },
   {
