@@ -602,13 +602,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x308ba429a913d952275090fc35dea9c36a511b5a",
     name: "Wrapped Tezos (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [],
     symbol: "WXTZ",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x691e26ab58ff05800e028b0876a41b720b26fc65",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -880,13 +878,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x6f7c932e7684666c9fd1d44527765433e01ff61d",
     name: "MAKER (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [],
     symbol: "MKR",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x807b59d12520830d1864286fa0271c27baa94197",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
