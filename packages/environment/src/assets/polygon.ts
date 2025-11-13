@@ -602,11 +602,13 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x308ba429a913d952275090fc35dea9c36a511b5a",
     name: "Wrapped Tezos (PoS)",
-    releases: [],
+    releases: [polygon.sulu, testnet.sulu],
     symbol: "WXTZ",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.NONE,
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x691e26ab58ff05800e028b0876a41b720b26fc65",
+      rateAsset: RateAsset.USD,
     },
   },
   {
