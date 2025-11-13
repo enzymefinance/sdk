@@ -586,9 +586,7 @@ export default defineAssetList(Network.ARBITRUM, [
     symbol: "xUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x6548a81e640c000150e06ab413fb3f772682e9c5",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
