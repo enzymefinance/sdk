@@ -1,5 +1,18 @@
 # @enzymefinance/environment
 
+## 6.3.80
+
+### Patch Changes
+
+- [#822](https://github.com/enzymefinance/sdk/pull/822) [`daa2aa9`](https://github.com/enzymefinance/sdk/commit/daa2aa9579c8df82d12009c9cb1573845c2054f6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove balancer
+
+- [#820](https://github.com/enzymefinance/sdk/pull/820) [`6b44804`](https://github.com/enzymefinance/sdk/commit/6b448047ddd482dc2076769b199b9657e4902794) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove ZeroLend
+
+- [#823](https://github.com/enzymefinance/sdk/pull/823) [`bd58a84`](https://github.com/enzymefinance/sdk/commit/bd58a842be6724873d1b2d6b7dc3d06a0c2ddd6e) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Chainlink deprecated assets
+
+- Updated dependencies [[`daa2aa9`](https://github.com/enzymefinance/sdk/commit/daa2aa9579c8df82d12009c9cb1573845c2054f6)]:
+  - @enzymefinance/sdk@1.2.28
+
 ## 6.3.79
 
 ### Patch Changes
