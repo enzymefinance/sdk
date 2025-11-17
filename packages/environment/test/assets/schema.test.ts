@@ -25,8 +25,6 @@ import {
   SynthetixSchema,
   UniswapV2PoolSchema,
   YearnVaultV2Schema,
-  ZeroLendLRTBTCAaveV3Schema,
-  ZeroLendRWAStablecoinsAaveV3Schema,
   validate,
 } from "../utils/schema.js";
 
@@ -42,14 +40,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.AAVE_V3: {
           validate(AaveV3Schema, asset);
-          break;
-        }
-        case AssetType.ZERO_LEND_LRT_BTC_AAVE_V3: {
-          validate(ZeroLendLRTBTCAaveV3Schema, asset);
-          break;
-        }
-        case AssetType.ZERO_LEND_RWA_STABLECOINS_AAVE_V3: {
-          validate(ZeroLendRWAStablecoinsAaveV3Schema, asset);
           break;
         }
         case AssetType.PRIMITIVE: {
