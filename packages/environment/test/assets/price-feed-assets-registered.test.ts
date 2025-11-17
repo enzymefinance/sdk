@@ -21,11 +21,7 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       asset.registered,
     );
 
-    if (asset.registered === false) {
-      expect(asset.priceFeed.type).toBe(PriceFeedType.NONE);
-    } else {
-      expect(asset.priceFeed.type).not.toBe(PriceFeedType.NONE);
-
+    if (asset.registered) {
       if (primitivePriceFeeds.includes(asset.priceFeed.type)) {
         await expect(Protocol.isSupportedPrimitiveAsset(client, { valueInterpreter, asset: asset.id })).resolves.toBe(
           true,

@@ -142,6 +142,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         BalancerV2LiquidityAdapter: "0xab5da4aa08b56c7e5a9d5d8a5ff19cf09a88c305",
         BalancerV2StablePoolPriceFeed: "0x438254d66e2bc576819a76a0ecb11fe41195d39f",
         BalancerV2WeightedPoolPriceFeed: "0x083b8f465bba2bb274e48387e3f9c56323341286",
+        BebopBlendAdapter: "0x0000000000000000000000000000000000000000",
         ChainlinkLikeWstethPriceFeed: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
         ChainlinkLikeYnEthPriceFeed: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
         CompoundAdapter: "0x6ce8095a692aff6698c3aa8593be3976b6b8743d",

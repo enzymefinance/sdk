@@ -90,6 +90,7 @@ export interface DeploymentNamedTokensArbitrum {
   readonly dai: Address;
   readonly grt: Address;
   readonly mln: Address;
+  readonly usdc: Address;
   readonly usdt: Address;
   readonly weth: Address;
 }
@@ -98,6 +99,7 @@ export interface DeploymentNamedTokensBase {
   readonly comp: Address;
   readonly dai: Address;
   readonly mln: Address;
+  readonly usdc: Address;
   readonly usdt: Address;
   readonly weth: Address;
 }
@@ -168,6 +170,7 @@ export interface DeploymentNamedTokensAssetsArbitrum {
   readonly grt: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
   readonly nativeTokenWrapper: PrimitiveAsset;
+  readonly usdc: PrimitiveAsset;
   readonly usdt: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
 }
@@ -177,6 +180,7 @@ export interface DeploymentNamedTokensAssetsBase {
   readonly dai: PrimitiveAsset;
   readonly mln: PrimitiveAsset;
   readonly nativeTokenWrapper: PrimitiveAsset;
+  readonly usdc: PrimitiveAsset;
   readonly usdt: PrimitiveAsset;
   readonly weth: PrimitiveAsset;
 }

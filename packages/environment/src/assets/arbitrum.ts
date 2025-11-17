@@ -582,13 +582,11 @@ export default defineAssetList(Network.ARBITRUM, [
     decimals: 6,
     id: "0xe80772eaf6e2e18b651f160bc9158b2a5cafca65",
     name: "xUSD",
-    releases: [sulu],
+    releases: [],
     symbol: "xUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x6548a81e640c000150e06ab413fb3f772682e9c5",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -729,6 +727,32 @@ export default defineAssetList(Network.ARBITRUM, [
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
       aggregator: "0xe808488e8627f6531ba79a13a9e0271b39abeb1c",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    id: "0xa6525ae43edcd03dc08e775774dcabd3bb925872",
+    name: "BlackRock USD Institutional Digital Liquidity Fund",
+    symbol: "BUIDL",
+    decimals: 6,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xa8a94da411425634e3ed6c331a32ab4fd774aa43",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    id: "0xfeb4dfc8c4cf7ed305bb08065d08ec6ee6728429",
+    name: "Paxos Gold",
+    symbol: "PAXG",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x2ba975d4d7922cd264267af16f3bd177f206fe3c",
       rateAsset: RateAsset.USD,
     },
   },
