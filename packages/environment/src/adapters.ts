@@ -136,7 +136,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.AURA,
   },
   [AdapterType.BALANCER_V2]: {
-    contractName: "BalancerV2LiquidityAdapter",
+    contractName: undefined,
     name: "Balancer V2",
     type: AdapterType.BALANCER_V2,
   },

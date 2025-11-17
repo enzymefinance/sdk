@@ -305,11 +305,6 @@ export interface ExternalContractsMapping {
   readonly aliceOrderManager: Address;
   readonly arrakisV2Helper: Address;
   readonly arrakisV2Resolver: Address;
-  readonly balancerGaugeController: Address;
-  readonly balancerHelpers: Address;
-  readonly balancerMinter: Address;
-  readonly balancerProtocolFeesCollector: Address;
-  readonly balancerVault: Address;
   readonly chainlinkFeedsRegistry: Address;
   readonly compoundComptroller: Address;
   readonly compoundV3Rewards: Address;

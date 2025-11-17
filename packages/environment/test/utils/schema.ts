@@ -2,15 +2,8 @@ import { expect } from "vitest";
 import { z } from "zod";
 
 import { Erc4626Protocol } from "../../src/assets.js";
-import type { Address, Hex } from "../../src/index.js";
-import {
-  AssetType,
-  BalancerPoolType,
-  BalancerStakingType,
-  CurvePoolTemplate,
-  CurveStakingType,
-  Network,
-} from "../../src/index.js";
+import type { Address } from "../../src/index.js";
+import { AssetType, CurvePoolTemplate, CurveStakingType, Network } from "../../src/index.js";
 import { PriceFeedType } from "../../src/price-feeds.js";
 
 const address = z.string().regex(/^0x[0-9a-f]{40}$/) as z.Schema<Address>;
@@ -49,22 +42,6 @@ export const AaveSchema = CommonAssetSchema.extend({
 export const AaveV3Schema = CommonAssetSchema.extend({
   type: z.literal(AssetType.AAVE_V3),
   underlying: address,
-});
-
-export const BalancerPoolSchema = CommonAssetSchema.extend({
-  type: z.literal(AssetType.BALANCER_POOL),
-  poolFactory: address,
-  poolId: z.string().regex(/^0x[0-9a-f]{64}$/) as z.Schema<Hex>,
-  poolType: z.nativeEnum(BalancerPoolType),
-  staking: z.array(z.object({ token: address, type: z.nativeEnum(BalancerStakingType) })),
-  underlyings: z.array(address).min(1),
-});
-
-export const BalancerPoolGaugeSchema = CommonAssetSchema.extend({
-  type: z.literal(AssetType.BALANCER_POOL_GAUGE),
-  pool: address,
-  poolType: z.nativeEnum(BalancerPoolType),
-  underlyings: z.array(address).min(1),
 });
 
 export const CompoundSchema = CommonAssetSchema.extend({
@@ -147,7 +124,6 @@ export const AssetSchema = z.union([
   SynthetixSchema,
   AaveSchema,
   AaveV3Schema,
-  BalancerPoolSchema,
   CompoundSchema,
   IdleSchema,
   YearnVaultV2Schema,

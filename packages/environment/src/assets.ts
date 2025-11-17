@@ -1,7 +1,7 @@
 import type { Network } from "./networks.js";
 import type { PriceFeed } from "./price-feeds.js";
 import type { Release } from "./releases.js";
-import type { Address, Hex, NarrowByType } from "./types.js";
+import type { Address, NarrowByType } from "./types.js";
 
 interface AssetBase {
   /**
@@ -53,8 +53,6 @@ export type AssetDefinition = {
 export type Asset =
   | AaveV2Asset
   | AaveV3Asset
-  | BalancerPoolAsset
-  | BalancerPoolGaugeAsset
   | CompoundV2Asset
   | CompoundV3Asset
   | CurvePoolGaugeAsset
@@ -75,8 +73,6 @@ export type Asset =
 export enum AssetType {
   AAVE_V2 = "aave-v2",
   AAVE_V3 = "aave-v3",
-  BALANCER_POOL = "balancer-pool",
-  BALANCER_POOL_GAUGE = "balancer-pool-gauge",
   COMPOUND_V2 = "compound-v2",
   COMPOUND_V3 = "compound-v3",
   CURVE_POOL_LP = "curve-pool-lp",
@@ -217,68 +213,6 @@ export enum Erc4626Protocol {
   SUPERFORM = "SUPERFORM",
   SYRUP = "SYRUP",
   VAULTCRAFT = "VAULTCRAFT",
-}
-
-export enum BalancerStakingType {
-  NONE = "none",
-  GAUGE = "gauge",
-}
-
-export interface BalancerStaking {
-  readonly token: Address;
-  readonly type: BalancerStakingType;
-}
-
-export enum BalancerPoolType {
-  META_STABLE = "meta-stable",
-  STABLE = "stable",
-  WEIGHTED = "weighted",
-  COMPOSABLE_STABLE_V5 = "composable-stable-v5",
-}
-
-export interface BalancerPoolAsset extends AssetBase {
-  readonly type: AssetType.BALANCER_POOL;
-  /**
-   * Balancer pool factory.
-   */
-  readonly poolFactory: Address;
-  /**
-   * Staking options.
-   */
-  readonly staking: Array<BalancerStaking>;
-  /**
-   * Balancer Pool type.
-   */
-  readonly poolType: BalancerPoolType;
-  /**
-   * Underlying Assets.
-   */
-  readonly underlyings: Array<Address>;
-
-  /**
-   * Pool id.
-   */
-  readonly poolId: Hex;
-}
-
-export interface BalancerPoolGaugeAsset extends AssetBase {
-  readonly type: AssetType.BALANCER_POOL_GAUGE;
-  /**
-   * Balancer Pool.
-   */
-  readonly pool: Address;
-  /**
-   * Balancer gauge factory.
-   */
-  readonly gaugeFactory: Address;
-  /**
-   * Balancer Pool template.
-   */
-  readonly poolType: BalancerPoolType;
-  /**
-   * Underlying Assets.
-   */
-  readonly underlyings: Array<Address>;
 }
 
 export enum CurvePoolTemplate {

@@ -6,8 +6,6 @@ import { environment } from "../utils/fixtures.js";
 import {
   AaveSchema,
   AaveV3Schema,
-  BalancerPoolGaugeSchema,
-  BalancerPoolSchema,
   CommonAssetSchema,
   CompoundSchema,
   CompoundV3Schema,
@@ -52,14 +50,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.SYNTHETIX: {
           validate(SynthetixSchema, asset);
-          break;
-        }
-        case AssetType.BALANCER_POOL: {
-          validate(BalancerPoolSchema, asset);
-          break;
-        }
-        case AssetType.BALANCER_POOL_GAUGE: {
-          validate(BalancerPoolGaugeSchema, asset);
           break;
         }
         case AssetType.COMPOUND_V2: {

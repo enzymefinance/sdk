@@ -48,8 +48,6 @@ const constants = {
   kilnStakingContract: "0x0816DF553a89c4bFF7eBfD778A9706a989Dd3Ce3",
   aaveV2Adapter: "0xECe6B376af7C9273cebaf6528565c47Ea2Cb8a4C",
   aaveV3Adapter: "0x9cfb64D91Ce4eB821fF8EdC1C2fdA2E89E256707",
-  balancerV2Adapter: "0xAB5dA4aa08B56c7e5A9D5d8A5fF19cF09a88c305",
-  auraBalancerV2LpStakingAdapter: "0x581a1E865285144c32ebd8205CA144156920b5fd",
   compoundV2Adapter: "0x6ce8095a692afF6698c3Aa8593BE3976B6b8743D",
   compoundV3Adapter: "0xFaA9B9Cc98503F51A54F6038DfdD0E43AA0Ac98e",
   convexCurveLpStakingAdapter: "0xE8943F116c974C05F637920Fff3DFE0463528D9A",
@@ -66,7 +64,6 @@ const constants = {
   zeroExV4Adapter: "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5",
   staderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",
   // External contracts & misc addresses.
-  balancerMinter: "0x239e55F427D44C3cc793f49bFB507ebe76638a2b",
   voteLockedCvx: "0x72a19342e8F1838460eBFCCEf09F6585e32db86E",
   curve3crvPool: "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
   curveFraxUsdcPool: "0xDcEF968d416a41Cdac0ED8702fAC8128A64241A2",
