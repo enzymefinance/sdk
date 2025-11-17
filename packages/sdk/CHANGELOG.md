@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 1.2.28
+
+### Patch Changes
+
+- [#822](https://github.com/enzymefinance/sdk/pull/822) [`daa2aa9`](https://github.com/enzymefinance/sdk/commit/daa2aa9579c8df82d12009c9cb1573845c2054f6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove balancer
+
+- Updated dependencies [[`daa2aa9`](https://github.com/enzymefinance/sdk/commit/daa2aa9579c8df82d12009c9cb1573845c2054f6)]:
+  - @enzymefinance/abis@1.2.8
+
 ## 1.2.27
 
 ### Patch Changes
