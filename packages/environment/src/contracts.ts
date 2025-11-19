@@ -129,7 +129,6 @@ export interface SuluContracts extends CommonContracts {
   readonly OneInchV5Adapter: Address;
   readonly OnlyRemoveDustExternalPositionPolicy: Address;
   readonly OnlyUntrackDustOrPricelessAssetsPolicy: Address;
-  readonly ParaSwapV5Adapter: Address;
   readonly ParaSwapV6Adapter: Address;
   readonly PeggedDerivativesPriceFeed: Address;
   readonly PeggedRateDeviationAggregatorFactory: Address;

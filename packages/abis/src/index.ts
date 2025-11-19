@@ -98,7 +98,6 @@ export { IMysoV3OptionWritingPositionLib } from "./IMysoV3OptionWritingPositionL
 export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./INoDepegOnRedeemSharesForSpecificAssetsPolicy.js";
 export { IOnlyRemoveDustExternalPositionPolicy } from "./IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./IOnlyUntrackDustOrPricelessAssetsPolicy.js";
-export { IParaSwapV5Adapter } from "./IParaSwapV5Adapter.js";
 export { IPendleMarketsRegistry } from "./IPendleMarketsRegistry.js";
 export { IPendleV2Adapter } from "./IPendleV2Adapter.js";
 export { IPendleV2PositionLib } from "./IPendleV2PositionLib.js";

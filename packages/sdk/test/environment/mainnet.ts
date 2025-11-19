@@ -59,7 +59,6 @@ const constants = {
   yearnVaultV2Adapter: "0x7eA777F9F6ecBf4d03Dc5323d3F057B0730Fc34a",
   managementFee: "0xfaf2c3db614e9d38fe05edc634848be7ff0542b9",
   erc4626Adapter: "0x64Fa106DD89F21d6e687EEbE9384637F7d54f707",
-  paraswapV5Adapter: "0x871a7f0ef4917a1534e651d1fde3763a52a23ece",
   oneInchV5Adapter: "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677",
   zeroExV4Adapter: "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5",
   staderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",

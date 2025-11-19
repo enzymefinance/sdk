@@ -27,7 +27,6 @@ export enum AdapterType {
   OLYMPUS_V2 = "olympus-v2",
   ONE_INCH_V5 = "one-inch-v5",
   PARASWAP_V4 = "paraswap-v4",
-  PARASWAP_V5 = "paraswap-v5",
   PARASWAP_V6 = "paraswap-v6",
   PENDLE_V2 = "pendle-v2",
   POOLTOGETHER_V4 = "pooltogether-v4",
@@ -224,11 +223,6 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: undefined,
     name: "ParaSwap V4",
     type: AdapterType.PARASWAP_V4,
-  },
-  [AdapterType.PARASWAP_V5]: {
-    contractName: "ParaSwapV5Adapter",
-    name: "ParaSwap V5",
-    type: AdapterType.PARASWAP_V5,
   },
   [AdapterType.PARASWAP_V6]: {
     contractName: "ParaSwapV6Adapter",
