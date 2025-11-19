@@ -163,8 +163,6 @@ export default defineDeployment<Deployment.TESTNET>({
         StakeWiseV3StakingPositionParser: "0x0000000000000000000000000000000000000000",
         SwellStakingAdapter: "0x0000000000000000000000000000000000000000",
         SynthetixAdapter: "0x0000000000000000000000000000000000000000",
-        TermFinanceV1LendingPositionLib: "0x0000000000000000000000000000000000000000",
-        TermFinanceV1LendingPositionParser: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionLib: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionParser: "0x0000000000000000000000000000000000000000",
         ThreeOneThirdAdapter: "0x0c4dc97e6c0d94327f3ca1873ae5868f5d0a6f05",

@@ -160,8 +160,6 @@ export interface SuluContracts extends CommonContracts {
   readonly StakeWiseV3StakingPositionParser: Address;
   readonly SwellStakingAdapter: Address;
   readonly SynthetixAdapter: Address;
-  readonly TermFinanceV1LendingPositionLib: Address;
-  readonly TermFinanceV1LendingPositionParser: Address;
   readonly TheGraphDelegationPositionLib: Address;
   readonly TheGraphDelegationPositionParser: Address;
   readonly ThreeOneThirdAdapter: Address;

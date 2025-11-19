@@ -215,8 +215,6 @@ export default defineDeployment<Deployment.ARBITRUM>({
         StakeWiseV3StakingPositionParser: "0x0000000000000000000000000000000000000000",
         SwellStakingAdapter: "0x0000000000000000000000000000000000000000",
         SynthetixAdapter: "0x0000000000000000000000000000000000000000",
-        TermFinanceV1LendingPositionLib: "0x0000000000000000000000000000000000000000",
-        TermFinanceV1LendingPositionParser: "0x0000000000000000000000000000000000000000",
         TheGraphDelegationPositionLib: "0x92da9df390d3e9199d105289b297eca357ecc9b7",
         TheGraphDelegationPositionParser: "0xc2822eca13a7760141041a173c1b9b13e22515f6",
         ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",

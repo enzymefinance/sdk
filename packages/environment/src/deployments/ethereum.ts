@@ -235,8 +235,6 @@ export default defineDeployment<Deployment.ETHEREUM>({
         StakeWiseV3StakingPositionParser: "0x0aa852b87d5134df6b7233dbd2b8274d54e3ae0e",
         SwellStakingAdapter: "0x50bae03333dd8495263c9049091a8925063b068e",
         SynthetixAdapter: "0x4baf8282571febdfd8768b475551ec14e144edb3",
-        TermFinanceV1LendingPositionLib: "0x2817ab33b56ec310621592bfdbe1fad6470d19a0",
-        TermFinanceV1LendingPositionParser: "0xa95c7bab91692df52255b8ad50c5ed2bcc9064ad",
         TheGraphDelegationPositionLib: "0x6fff66d55698a601e91989c44349da8a2a9a7848",
         TheGraphDelegationPositionParser: "0x2226d7687109d6b6a0882f8eef2b4a4c90dc677e",
         ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",
