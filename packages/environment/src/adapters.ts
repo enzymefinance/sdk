@@ -34,7 +34,6 @@ export enum AdapterType {
   SYNTHETIX = "synthetix",
   THREE_ONE_THIRD = "three-one-third",
   TRACKED_ASSETS = "tracked-assets",
-  UNISWAP_V2 = "uniswap-v2",
   UNISWAP_V2_LIQUIDITY = "uniswap-v2-liquidity",
   UNISWAP_V3 = "uniswap-v3",
   UNKNOWN = "unknown",
@@ -258,11 +257,6 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: undefined,
     name: "Tracked Asset",
     type: AdapterType.TRACKED_ASSETS,
-  },
-  [AdapterType.UNISWAP_V2]: {
-    contractName: "UniswapV2ExchangeAdapter",
-    name: "Uniswap V2 Swap",
-    type: AdapterType.UNISWAP_V2,
   },
   [AdapterType.UNISWAP_V2_LIQUIDITY]: {
     contractName: "UniswapV2LiquidityAdapter",

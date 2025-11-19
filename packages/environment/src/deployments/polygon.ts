@@ -224,7 +224,6 @@ export default defineDeployment<Deployment.POLYGON>({
         ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",
         TransferAssetsAdapter: "0x52e83a4c9a123500e8324b9f489a681ffda92a17",
         UintListRegistry: "0x6ddd871c1607348ebb5be250f882255390166519",
-        UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2PoolPriceFeed: "0x0000000000000000000000000000000000000000",
         UniswapV3Adapter: "0xe11f3f7ac24a0839b3a3b13bd7eb5bc5e65e2483",

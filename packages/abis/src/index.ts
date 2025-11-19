@@ -129,7 +129,6 @@ export { ITheGraphDelegationPositionLib } from "./ITheGraphDelegationPositionLib
 export { ITheGraphDelegationPositionParser } from "./ITheGraphDelegationPositionParser.js";
 export { ITransferAssetsAdapter } from "./ITransferAssetsAdapter.js";
 export { IUintListRegistry } from "./IUintListRegistry.js";
-export { IUniswapV2ExchangeAdapter } from "./IUniswapV2ExchangeAdapter.js";
 export { IUniswapV2LiquidityAdapter } from "./IUniswapV2LiquidityAdapter.js";
 export { IUniswapV2PoolPriceFeed } from "./IUniswapV2PoolPriceFeed.js";
 export { IUniswapV3Adapter } from "./IUniswapV3Adapter.js";

@@ -216,7 +216,6 @@ export default defineDeployment<Deployment.BASE>({
         ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",
         TransferAssetsAdapter: "0x466c05433fa5a417c290e7eeed729dba9e1280e3",
         UintListRegistry: "0x305357dbb4f4a65601751eb25d275ad071466cd2",
-        UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2PoolPriceFeed: "0x0000000000000000000000000000000000000000",
         UniswapV3Adapter: "0x0000000000000000000000000000000000000000",

@@ -53,7 +53,6 @@ const constants = {
   convexCurveLpStakingAdapter: "0xE8943F116c974C05F637920Fff3DFE0463528D9A",
   curveExchangeAdapter: "0xC9c14a99cCF467EA1ff2e19584A5FaBA3671B8de",
   curveLiquidityAdapter: "0xEa0a896ddE31CFcB53A96ac767119B69D7B4f633",
-  uniswapV2ExchangeAdapter: "0x8c36435A653041BFd65515CC82502663C1ce6F0e",
   uniswapV2LiquidityAdapter: "0xF78130AfedA6d9Df3394b34d36239aeC7FAe48d9",
   uniswapV3Adapter: "0xeD6A08E05cB4260388dc7CC60Bc5fEFcCfab2793",
   yearnVaultV2Adapter: "0x7eA777F9F6ecBf4d03Dc5323d3F057B0730Fc34a",

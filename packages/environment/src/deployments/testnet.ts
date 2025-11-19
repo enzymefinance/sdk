@@ -168,7 +168,6 @@ export default defineDeployment<Deployment.TESTNET>({
         ThreeOneThirdAdapter: "0x0c4dc97e6c0d94327f3ca1873ae5868f5d0a6f05",
         TransferAssetsAdapter: "0x0000000000000000000000000000000000000000",
         UintListRegistry: "0xe296ea33a38108580dcae364239fb0c50c53591b",
-        UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2PoolPriceFeed: "0x0000000000000000000000000000000000000000",
         UniswapV3Adapter: "0x502631cfca0261f57243ef07a03aed6815ddb88d",

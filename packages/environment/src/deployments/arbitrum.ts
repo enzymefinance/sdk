@@ -220,7 +220,6 @@ export default defineDeployment<Deployment.ARBITRUM>({
         ThreeOneThirdAdapter: "0x5a1c0e89133c4cd844a8b345370565f1368a79a8",
         TransferAssetsAdapter: "0xe8db4924569a3c61aadfb721bbb009e3127196bd",
         UintListRegistry: "0xc438e48f5d2f99eb4a2b9865f8cccfc9915f227a",
-        UniswapV2ExchangeAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2LiquidityAdapter: "0x0000000000000000000000000000000000000000",
         UniswapV2PoolPriceFeed: "0x0000000000000000000000000000000000000000",
         UniswapV3Adapter: "0xea0f3cc847c8e388bd2f7adac130b64b6754f5e2",
