@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 1.2.29
+
+### Patch Changes
+
+- [#825](https://github.com/enzymefinance/sdk/pull/825) [`61e6846`](https://github.com/enzymefinance/sdk/commit/61e6846a0a82facd084e725886fe5ebd1f2fd556) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - remove paraswap v5, term finance v1 and uniswap v2 exchange
+
+- Updated dependencies [[`61e6846`](https://github.com/enzymefinance/sdk/commit/61e6846a0a82facd084e725886fe5ebd1f2fd556)]:
+  - @enzymefinance/abis@1.2.9
+
 ## 1.2.28
 
 ### Patch Changes
