@@ -18,7 +18,6 @@ export * as Maple from "./Integrations/Maple.js";
 export * as MorphoBlue from "./Integrations/MorphoBlue.js";
 export * as MysoV3 from "./Integrations/MysoV3.js";
 export * as OneInchV5 from "./Integrations/OneInchV5.js";
-export * as ParaSwapV5 from "./Integrations/ParaSwapV5.js";
 export * as ParaSwapV6 from "./Integrations/ParaSwapV6.js";
 export * as PendleV2 from "./Integrations/PendleV2.js";
 export * as Stader from "./Integrations/Stader.js";

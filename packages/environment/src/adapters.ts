@@ -226,7 +226,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.PARASWAP_V4,
   },
   [AdapterType.PARASWAP_V5]: {
-    contractName: "ParaSwapV5Adapter",
+    contractName: undefined,
     name: "ParaSwap V5",
     type: AdapterType.PARASWAP_V5,
   },
@@ -266,7 +266,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.TRACKED_ASSETS,
   },
   [AdapterType.UNISWAP_V2]: {
-    contractName: "UniswapV2ExchangeAdapter",
+    contractName: undefined,
     name: "Uniswap V2 Swap",
     type: AdapterType.UNISWAP_V2,
   },

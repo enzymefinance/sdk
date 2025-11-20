@@ -98,7 +98,6 @@ export { IMysoV3OptionWritingPositionLib } from "./IMysoV3OptionWritingPositionL
 export { INoDepegOnRedeemSharesForSpecificAssetsPolicy } from "./INoDepegOnRedeemSharesForSpecificAssetsPolicy.js";
 export { IOnlyRemoveDustExternalPositionPolicy } from "./IOnlyRemoveDustExternalPositionPolicy.js";
 export { IOnlyUntrackDustOrPricelessAssetsPolicy } from "./IOnlyUntrackDustOrPricelessAssetsPolicy.js";
-export { IParaSwapV5Adapter } from "./IParaSwapV5Adapter.js";
 export { IPendleMarketsRegistry } from "./IPendleMarketsRegistry.js";
 export { IPendleV2Adapter } from "./IPendleV2Adapter.js";
 export { IPendleV2PositionLib } from "./IPendleV2PositionLib.js";
@@ -130,7 +129,6 @@ export { ITheGraphDelegationPositionLib } from "./ITheGraphDelegationPositionLib
 export { ITheGraphDelegationPositionParser } from "./ITheGraphDelegationPositionParser.js";
 export { ITransferAssetsAdapter } from "./ITransferAssetsAdapter.js";
 export { IUintListRegistry } from "./IUintListRegistry.js";
-export { IUniswapV2ExchangeAdapter } from "./IUniswapV2ExchangeAdapter.js";
 export { IUniswapV2LiquidityAdapter } from "./IUniswapV2LiquidityAdapter.js";
 export { IUniswapV2PoolPriceFeed } from "./IUniswapV2PoolPriceFeed.js";
 export { IUniswapV3Adapter } from "./IUniswapV3Adapter.js";

@@ -129,7 +129,6 @@ export interface SuluContracts extends CommonContracts {
   readonly OneInchV5Adapter: Address;
   readonly OnlyRemoveDustExternalPositionPolicy: Address;
   readonly OnlyUntrackDustOrPricelessAssetsPolicy: Address;
-  readonly ParaSwapV5Adapter: Address;
   readonly ParaSwapV6Adapter: Address;
   readonly PeggedDerivativesPriceFeed: Address;
   readonly PeggedRateDeviationAggregatorFactory: Address;
@@ -161,14 +160,11 @@ export interface SuluContracts extends CommonContracts {
   readonly StakeWiseV3StakingPositionParser: Address;
   readonly SwellStakingAdapter: Address;
   readonly SynthetixAdapter: Address;
-  readonly TermFinanceV1LendingPositionLib: Address;
-  readonly TermFinanceV1LendingPositionParser: Address;
   readonly TheGraphDelegationPositionLib: Address;
   readonly TheGraphDelegationPositionParser: Address;
   readonly ThreeOneThirdAdapter: Address;
   readonly TransferAssetsAdapter: Address;
   readonly UintListRegistry: Address;
-  readonly UniswapV2ExchangeAdapter: Address;
   readonly UniswapV2LiquidityAdapter: Address;
   readonly UniswapV2PoolPriceFeed: Address;
   readonly UniswapV3Adapter: Address;
@@ -224,7 +220,6 @@ export interface EncoreContracts extends CommonContracts {
   readonly SynthetixAdapter: Address;
   readonly SynthetixPriceFeed: Address;
   readonly TrackedAssetsAdapter: Address;
-  readonly UniswapV2Adapter: Address;
   readonly UniswapV2PoolPriceFeed: Address;
   readonly ValueInterpreter: Address;
   readonly WdgldPriceFeed: Address;
@@ -274,7 +269,6 @@ export interface PhoenixContracts extends CommonContracts {
   readonly SynthetixAdapter: Address;
   readonly SynthetixPriceFeed: Address;
   readonly TrackedAssetsAdapter: Address;
-  readonly UniswapV2Adapter: Address;
   readonly UniswapV2PoolPriceFeed: Address;
   readonly ValueInterpreter: Address;
   readonly WdgldPriceFeed: Address;

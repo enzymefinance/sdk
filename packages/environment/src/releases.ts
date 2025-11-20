@@ -325,8 +325,6 @@ export interface ExternalContractsMapping {
   readonly morphoBlue: Address;
   readonly mysoV3Router: Address;
   readonly multicall: Address;
-  readonly paraswapV5AugustusSwapper: Address;
-  readonly paraswapV5TokenTransferProxy: Address;
   readonly paraswapV6AugustusSwapper: Address;
   readonly pendlePtLpOracle: Address;
   readonly staderStakingPoolManager: Address;
