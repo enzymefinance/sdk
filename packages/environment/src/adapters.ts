@@ -27,6 +27,7 @@ export enum AdapterType {
   OLYMPUS_V2 = "olympus-v2",
   ONE_INCH_V5 = "one-inch-v5",
   PARASWAP_V4 = "paraswap-v4",
+  PARASWAP_V5 = "paraswap-v5",
   PARASWAP_V6 = "paraswap-v6",
   PENDLE_V2 = "pendle-v2",
   POOLTOGETHER_V4 = "pooltogether-v4",
@@ -34,6 +35,7 @@ export enum AdapterType {
   SYNTHETIX = "synthetix",
   THREE_ONE_THIRD = "three-one-third",
   TRACKED_ASSETS = "tracked-assets",
+  UNISWAP_V2 = "uniswap-v2",
   UNISWAP_V2_LIQUIDITY = "uniswap-v2-liquidity",
   UNISWAP_V3 = "uniswap-v3",
   UNKNOWN = "unknown",
@@ -223,6 +225,11 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     name: "ParaSwap V4",
     type: AdapterType.PARASWAP_V4,
   },
+  [AdapterType.PARASWAP_V5]: {
+    contractName: undefined,
+    name: "ParaSwap V5",
+    type: AdapterType.PARASWAP_V5,
+  },
   [AdapterType.PARASWAP_V6]: {
     contractName: "ParaSwapV6Adapter",
     name: "ParaSwap V6",
@@ -257,6 +264,11 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     contractName: undefined,
     name: "Tracked Asset",
     type: AdapterType.TRACKED_ASSETS,
+  },
+  [AdapterType.UNISWAP_V2]: {
+    contractName: undefined,
+    name: "Uniswap V2 Swap",
+    type: AdapterType.UNISWAP_V2,
   },
   [AdapterType.UNISWAP_V2_LIQUIDITY]: {
     contractName: "UniswapV2LiquidityAdapter",
