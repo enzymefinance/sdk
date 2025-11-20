@@ -13,47 +13,6 @@ import { Assertion, BI, Viem } from "../../Utils.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
-// TAKE ORDER
-//--------------------------------------------------------------------------------------------
-
-export const takeOrder = IntegrationManager.makeUse(IntegrationManager.Selector.TakeOrder, takeOrderEncode);
-
-const takeOrderEncoding = [
-  {
-    name: "path",
-    type: "address[]",
-  },
-  {
-    name: "outgoingAssetAmount",
-    type: "uint256",
-  },
-  {
-    name: "minIncomingAssetAmount",
-    type: "uint256",
-  },
-] as const;
-
-export type TakeOrderArgs = {
-  path: ReadonlyArray<Address>;
-  outgoingAssetAmount: bigint;
-  minIncomingAssetAmount: bigint;
-};
-
-export function takeOrderEncode(args: TakeOrderArgs): Hex {
-  return encodeAbiParameters(takeOrderEncoding, [args.path, args.outgoingAssetAmount, args.minIncomingAssetAmount]);
-}
-
-export function takeOrderDecode(encoded: Hex): TakeOrderArgs {
-  const [path, outgoingAssetAmount, minIncomingAssetAmount] = decodeAbiParameters(takeOrderEncoding, encoded);
-
-  return {
-    path,
-    outgoingAssetAmount,
-    minIncomingAssetAmount,
-  };
-}
-
-//--------------------------------------------------------------------------------------------
 // LEND
 //--------------------------------------------------------------------------------------------
 
