@@ -131,7 +131,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         ArrakisV2Adapter: "0xc6e54fb0f526d3516224a5e09bd435323800ad94",
         ArrakisV2PriceFeed: "0xfff8d5c955d9d71f3a09e166521e12e28d3042c7",
         AssetValueCalculator: "0xfa3d84d841c55bb9175b0a6f215e2300c40cc5ab",
-        BebopBlendAdapter: "0x0000000000000000000000000000000000000000",
+        BebopBlendAdapter: "0x901cc21db61dea32e112e06ae0164de3a1acd248",
         ChainlinkLikeWstethPriceFeed: "0x92829c41115311ca43d5c9f722f0e9e7b9fcd30a",
         ChainlinkLikeYnEthPriceFeed: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
         CompoundAdapter: "0x6ce8095a692aff6698c3aa8593be3976b6b8743d",
