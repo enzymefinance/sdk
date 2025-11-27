@@ -61,6 +61,7 @@ const constants = {
   oneInchV5Adapter: "0x6c62b8f7b2fd1c60ffd3afc1a2b15d4318745677",
   zeroExV4Adapter: "0x5966cbe0167d95ea03ffad0bd9091849a52dfbd5",
   staderStakingAdapter: "0x7f1b68d5ed183cda6788a66520506eaf3544001c",
+  transferAssetsAdapter: "0xe0309fa2412b811a0bd40a73297093707259217f",
   // External contracts & misc addresses.
   voteLockedCvx: "0x72a19342e8F1838460eBFCCEf09F6585e32db86E",
   curve3crvPool: "0xbEbc44782C7dB0a1A60Cb6fe97d0b483032FF1C7",
