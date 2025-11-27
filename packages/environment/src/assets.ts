@@ -66,7 +66,6 @@ export type Asset =
   | PendleV2LPAsset
   | PrimitiveAsset
   | StaderAsset
-  | SynthetixAsset
   | UniswapV2PoolAsset
   | YearnVaultV2Asset;
 
@@ -82,7 +81,6 @@ export enum AssetType {
   PENDLE_V2_PT = "pendle-v2-pt",
   PRIMITIVE = "primitive",
   STADER = "stader",
-  SYNTHETIX = "synthetix",
   UNISWAP_V2_POOL = "uniswap-v2-pool",
   YEARN_VAULT_V2 = "yearn-vault-v2",
   MAPLE_V1 = "maple-v1",
@@ -93,10 +91,6 @@ export enum AssetType {
 
 export interface StaderAsset extends AssetBase {
   readonly type: AssetType.STADER;
-}
-
-export interface SynthetixAsset extends AssetBase {
-  readonly type: AssetType.SYNTHETIX;
 }
 
 export interface PrimitiveAsset extends AssetBase {
