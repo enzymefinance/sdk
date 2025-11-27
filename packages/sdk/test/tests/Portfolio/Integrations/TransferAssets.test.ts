@@ -30,8 +30,8 @@ test("transfer assets should work correctly", async () => {
       integrationAdapter: environment.constants.transferAssetsAdapter,
       callArgs: {
         recipient: transferRecipient,
-        assetAddresses: [environment.constants.weth, environment.constants.weth],
-        assetAmounts: [depositAmount / 2n, depositAmount / 2n],
+        assetAddresses: [environment.constants.weth],
+        assetAmounts: [depositAmount],
       },
     }),
   });
