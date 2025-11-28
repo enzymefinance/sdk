@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 1.2.30
+
+### Patch Changes
+
+- [#830](https://github.com/enzymefinance/sdk/pull/830) [`73c9b6d`](https://github.com/enzymefinance/sdk/commit/73c9b6d5dd1e84bc8cbd11962fdad0d3c53a09bd) Thanks [@iherger](https://github.com/iherger)! - Fix TransferAssetsAdapter
+
+- Updated dependencies [[`554ebf4`](https://github.com/enzymefinance/sdk/commit/554ebf451d7ec9a303ef9b7d1c8dc6064cc2a03f)]:
+  - @enzymefinance/abis@1.2.10
+
 ## 1.2.29
 
 ### Patch Changes
