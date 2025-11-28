@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.83
+
+### Patch Changes
+
+- [#833](https://github.com/enzymefinance/sdk/pull/833) [`90627c8`](https://github.com/enzymefinance/sdk/commit/90627c87b239db9ae35f02a1de7b4c02ce3fe8bc) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update AliceV2 Position and BebopBlendAdapter mainnet addresses"
+
 ## 6.3.82
 
 ### Patch Changes
