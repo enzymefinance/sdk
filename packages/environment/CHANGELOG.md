@@ -1,5 +1,14 @@
 # @enzymefinance/environment
 
+## 6.3.82
+
+### Patch Changes
+
+- [#832](https://github.com/enzymefinance/sdk/pull/832) [`554ebf4`](https://github.com/enzymefinance/sdk/commit/554ebf451d7ec9a303ef9b7d1c8dc6064cc2a03f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Syntethix and Zero Ex V2
+
+- Updated dependencies [[`73c9b6d`](https://github.com/enzymefinance/sdk/commit/73c9b6d5dd1e84bc8cbd11962fdad0d3c53a09bd)]:
+  - @enzymefinance/sdk@1.2.30
+
 ## 6.3.81
 
 ### Patch Changes

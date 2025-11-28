@@ -20,7 +20,6 @@ import {
   PendleV2PtSchema,
   PrimitiveSchema,
   StaderSchema,
-  SynthetixSchema,
   UniswapV2PoolSchema,
   YearnVaultV2Schema,
   validate,
@@ -46,10 +45,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.STADER: {
           validate(StaderSchema, asset);
-          break;
-        }
-        case AssetType.SYNTHETIX: {
-          validate(SynthetixSchema, asset);
           break;
         }
         case AssetType.COMPOUND_V2: {

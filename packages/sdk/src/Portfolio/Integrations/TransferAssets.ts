@@ -1,4 +1,4 @@
-import { type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
 
 //--------------------------------------------------------------------------------------------
@@ -9,29 +9,36 @@ export const transfer = IntegrationManager.makeUse(IntegrationManager.Selector.T
 
 const transferEncoding = [
   {
-    name: "actionData",
-    type: "bytes",
-  },
-  {
-    name: "assetData",
-    type: "bytes",
+    components: [
+      {
+        name: "recipient",
+        type: "address",
+      },
+      {
+        name: "assetAddresses",
+        type: "address[]",
+      },
+      {
+        name: "assetAmounts",
+        type: "uint256[]",
+      },
+    ],
+    type: "tuple",
   },
 ] as const;
 
 export type TransferArgs = {
-  actionData: Hex;
-  assetData: Hex;
+  recipient: Address;
+  assetAddresses: ReadonlyArray<Address>;
+  assetAmounts: ReadonlyArray<bigint>;
 };
 
 export function transferEncode(args: TransferArgs): Hex {
-  return encodeAbiParameters(transferEncoding, [args.actionData, args.assetData]);
+  return encodeAbiParameters(transferEncoding, [args]);
 }
 
 export function transferDecode(encoded: Hex): TransferArgs {
-  const [actionData, assetData] = decodeAbiParameters(transferEncoding, encoded);
+  const [{ recipient, assetAddresses, assetAmounts }] = decodeAbiParameters(transferEncoding, encoded);
 
-  return {
-    actionData,
-    assetData,
-  };
+  return { recipient, assetAddresses, assetAmounts };
 }

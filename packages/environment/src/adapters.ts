@@ -251,7 +251,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.SWELL_STAKING,
   },
   [AdapterType.SYNTHETIX]: {
-    contractName: "SynthetixAdapter",
+    contractName: undefined,
     name: "Synthetix",
     type: AdapterType.SYNTHETIX,
   },
@@ -286,7 +286,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.YEARN_VAULT_V2,
   },
   [AdapterType.ZERO_EX_V2]: {
-    contractName: "ZeroExV2Adapter",
+    contractName: undefined,
     name: "0x V2",
     type: AdapterType.ZERO_EX_V2,
   },

@@ -159,7 +159,6 @@ export interface SuluContracts extends CommonContracts {
   readonly StakeWiseV3StakingPositionLib: Address;
   readonly StakeWiseV3StakingPositionParser: Address;
   readonly SwellStakingAdapter: Address;
-  readonly SynthetixAdapter: Address;
   readonly TheGraphDelegationPositionLib: Address;
   readonly TheGraphDelegationPositionParser: Address;
   readonly ThreeOneThirdAdapter: Address;
@@ -176,7 +175,6 @@ export interface SuluContracts extends CommonContracts {
   readonly WstethPriceFeed: Address;
   readonly YearnVaultV2Adapter: Address;
   readonly YearnVaultV2PriceFeed: Address;
-  readonly ZeroExV2Adapter: Address;
   readonly ZeroExV4Adapter: Address;
 }
 
@@ -217,15 +215,12 @@ export interface EncoreContracts extends CommonContracts {
   readonly ParaSwapV4Adapter: Address;
   readonly PerformanceFee: Address;
   readonly StakehoundEthPriceFeed: Address;
-  readonly SynthetixAdapter: Address;
-  readonly SynthetixPriceFeed: Address;
   readonly TrackedAssetsAdapter: Address;
   readonly UniswapV2PoolPriceFeed: Address;
   readonly ValueInterpreter: Address;
   readonly WdgldPriceFeed: Address;
   readonly YearnVaultV2Adapter: Address;
   readonly YearnVaultV2PriceFeed: Address;
-  readonly ZeroExV2Adapter: Address;
 }
 
 export interface PhoenixContracts extends CommonContracts {
@@ -266,11 +261,8 @@ export interface PhoenixContracts extends CommonContracts {
   readonly ParaSwapV4Adapter: Address;
   readonly PerformanceFee: Address;
   readonly StakehoundEthPriceFeed: Address;
-  readonly SynthetixAdapter: Address;
-  readonly SynthetixPriceFeed: Address;
   readonly TrackedAssetsAdapter: Address;
   readonly UniswapV2PoolPriceFeed: Address;
   readonly ValueInterpreter: Address;
   readonly WdgldPriceFeed: Address;
-  readonly ZeroExV2Adapter: Address;
 }
