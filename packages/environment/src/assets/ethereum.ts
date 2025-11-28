@@ -201,7 +201,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sRUNE",
     releases: [],
     symbol: "sRUNE",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -412,7 +412,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sCHF",
     releases: [],
     symbol: "sCHF",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -423,7 +423,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iREN",
     releases: [],
     symbol: "iREN",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -496,7 +496,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iDEFI",
     releases: [],
     symbol: "iDEFI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -532,7 +532,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sDOT",
     releases: [],
     symbol: "sDOT",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -543,7 +543,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iAAVE",
     releases: [],
     symbol: "iAAVE",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -820,7 +820,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sETC",
     releases: [],
     symbol: "sETC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -856,7 +856,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sFTSE",
     releases: [],
     symbol: "sFTSE",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -902,7 +902,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sXAU",
     releases: [],
     symbol: "sXAU",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -926,7 +926,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iXRP",
     releases: [],
     symbol: "iXRP",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1019,7 +1019,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iLINK",
     releases: [],
     symbol: "iLINK",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1030,7 +1030,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sXTZ",
     releases: [],
     symbol: "sXTZ",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1078,7 +1078,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sUNI",
     releases: [],
     symbol: "sUNI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1168,7 +1168,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iCEX",
     releases: [],
     symbol: "iCEX",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1284,7 +1284,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iUNI",
     releases: [],
     symbol: "iUNI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1295,7 +1295,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sBCH",
     releases: [],
     symbol: "sBCH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1653,7 +1653,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iDOT",
     releases: [],
     symbol: "iDOT",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1724,7 +1724,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iXMR",
     releases: [],
     symbol: "iXMR",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1951,7 +1951,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sXMR",
     releases: [],
     symbol: "sXMR",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -1997,7 +1997,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iYFI",
     releases: [],
     symbol: "iYFI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2025,7 +2025,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sNFLX",
     releases: [],
     symbol: "sNFLX",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2100,7 +2100,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sETH",
     releases: [],
     symbol: "sETH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2161,7 +2161,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sBNB",
     releases: [],
     symbol: "sBNB",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2172,7 +2172,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iCOMP",
     releases: [],
     symbol: "iCOMP",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2263,7 +2263,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sXAG",
     releases: [],
     symbol: "sXAG",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2372,7 +2372,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sOIL",
     releases: [],
     symbol: "sOIL",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2481,7 +2481,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sAAPL",
     releases: [],
     symbol: "sAAPL",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2492,7 +2492,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sNIKKEI",
     releases: [],
     symbol: "sNIKKEI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2514,7 +2514,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iLTC",
     releases: [],
     symbol: "iLTC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2761,7 +2761,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sEOS",
     releases: [],
     symbol: "sEOS",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2807,7 +2807,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iADA",
     releases: [],
     symbol: "iADA",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2905,7 +2905,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iXTZ",
     releases: [],
     symbol: "iXTZ",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -2982,7 +2982,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sTSLA",
     releases: [],
     symbol: "sTSLA",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3074,7 +3074,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sGBP",
     releases: [],
     symbol: "sGBP",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3098,7 +3098,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sYFI",
     releases: [],
     symbol: "sYFI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3162,7 +3162,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sAMZN",
     releases: [],
     symbol: "sAMZN",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3420,7 +3420,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sXRP",
     releases: [],
     symbol: "sXRP",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3510,7 +3510,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iOIL",
     releases: [],
     symbol: "iOIL",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3573,7 +3573,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iETH",
     releases: [],
     symbol: "iETH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -3733,7 +3733,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iBNB",
     releases: [],
     symbol: "iBNB",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4035,7 +4035,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sLINK",
     releases: [],
     symbol: "sLINK",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4188,7 +4188,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sLTC",
     releases: [],
     symbol: "sLTC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4269,7 +4269,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iTRX",
     releases: [],
     symbol: "iTRX",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4291,7 +4291,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sGOOG",
     releases: [],
     symbol: "sGOOG",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4374,7 +4374,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iDASH",
     releases: [],
     symbol: "iDASH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4421,7 +4421,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth s1INCH",
     releases: [],
     symbol: "s1INCH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4541,7 +4541,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sAAVE",
     releases: [],
     symbol: "sAAVE",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4552,7 +4552,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sREN",
     releases: [],
     symbol: "sREN",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4587,7 +4587,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sCRV",
     releases: [],
     symbol: "sCRV",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4640,7 +4640,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iETC",
     releases: [],
     symbol: "iETC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4664,7 +4664,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iBTC",
     releases: [],
     symbol: "iBTC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4713,7 +4713,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sEUR",
     releases: [],
     symbol: "sEUR",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4939,7 +4939,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sDEFI",
     releases: [],
     symbol: "sDEFI",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -4989,7 +4989,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sADA",
     releases: [],
     symbol: "sADA",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5037,7 +5037,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sCEX",
     releases: [],
     symbol: "sCEX",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5048,7 +5048,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sCOMP",
     releases: [],
     symbol: "sCOMP",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5138,7 +5138,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sTRX",
     releases: [],
     symbol: "sTRX",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5173,7 +5173,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sAUD",
     releases: [],
     symbol: "sAUD",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5196,7 +5196,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iEOS",
     releases: [],
     symbol: "iEOS",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5207,7 +5207,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sFB",
     releases: [],
     symbol: "sFB",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5256,7 +5256,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sJPY",
     releases: [],
     symbol: "sJPY",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5284,7 +5284,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth iBCH",
     releases: [],
     symbol: "iBCH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5427,7 +5427,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sBTC",
     releases: [],
     symbol: "sBTC",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },
@@ -5438,7 +5438,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Synth sDASH",
     releases: [],
     symbol: "sDASH",
-    type: AssetType.SYNTHETIX,
+    type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
     },

@@ -26,10 +26,6 @@ export const StaderSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.STADER),
 });
 
-export const SynthetixSchema = CommonAssetSchema.extend({
-  type: z.literal(AssetType.SYNTHETIX),
-});
-
 export const PrimitiveSchema = CommonAssetSchema.extend({
   type: z.literal(AssetType.PRIMITIVE),
 });
@@ -121,7 +117,6 @@ export const PendleV2LpSchema = CommonAssetSchema.extend({
 export const AssetSchema = z.union([
   PrimitiveSchema,
   StaderSchema,
-  SynthetixSchema,
   AaveSchema,
   AaveV3Schema,
   CompoundSchema,

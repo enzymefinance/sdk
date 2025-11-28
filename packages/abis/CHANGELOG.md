@@ -1,5 +1,11 @@
 # @enzymefinance/abis
 
+## 1.2.10
+
+### Patch Changes
+
+- [#832](https://github.com/enzymefinance/sdk/pull/832) [`554ebf4`](https://github.com/enzymefinance/sdk/commit/554ebf451d7ec9a303ef9b7d1c8dc6064cc2a03f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Remove Syntethix and Zero Ex V2
+
 ## 1.2.9
 
 ### Patch Changes
