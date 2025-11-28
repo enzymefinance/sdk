@@ -124,7 +124,6 @@ export { IStaderWithdrawalsPositionLib } from "./IStaderWithdrawalsPositionLib.j
 export { IStakeWiseV3StakingPositionLib } from "./IStakeWiseV3StakingPositionLib.js";
 export { IStakeWiseV3StakingPositionParser } from "./IStakeWiseV3StakingPositionParser.js";
 export { IStakingWrapper } from "./IStakingWrapper.js";
-export { ISynthetixAdapter } from "./ISynthetixAdapter.js";
 export { ITheGraphDelegationPositionLib } from "./ITheGraphDelegationPositionLib.js";
 export { ITheGraphDelegationPositionParser } from "./ITheGraphDelegationPositionParser.js";
 export { ITransferAssetsAdapter } from "./ITransferAssetsAdapter.js";
