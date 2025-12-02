@@ -1,4 +1,4 @@
-import { type Address, type Hex, decodeAbiParameters, encodeAbiParameters } from "viem";
+import { type Address, type Hex, decodeAbiParameters, decodeFunctionData, encodeAbiParameters } from "viem";
 import { Assertion } from "../../Utils.js";
 import { assertEnumType } from "../../Utils/assertion.js";
 import * as IntegrationManager from "../../_internal/IntegrationManager.js";
@@ -131,3 +131,72 @@ export function swapSingleDecode(encoded: Hex): SwapSingleActionArgs {
 }
 
 export const swapSingle = IntegrationManager.makeUse(IntegrationManager.Selector.Action, swapSingleEncode);
+
+//--------------------------------------------------------------------------------------------
+// THIRD PARTY HELPERS
+//--------------------------------------------------------------------------------------------
+
+// Bebop Settlement Contract ABI for swapSingle
+// Reference: https://docs.bebop.xyz/bebop/smart-contracts/pmm-rfq-smart-contract
+const bebopSwapSingleAbi = [
+  {
+    name: "swapSingle",
+    type: "function",
+    inputs: [
+      {
+        name: "order",
+        type: "tuple",
+        components: [
+          { name: "expiry", type: "uint256" },
+          { name: "taker_address", type: "address" },
+          { name: "maker_address", type: "address" },
+          { name: "maker_nonce", type: "uint256" },
+          { name: "taker_token", type: "address" },
+          { name: "maker_token", type: "address" },
+          { name: "taker_amount", type: "uint256" },
+          { name: "maker_amount", type: "uint256" },
+          { name: "receiver", type: "address" },
+          { name: "packed_commands", type: "uint256" },
+          { name: "flags", type: "uint256" },
+        ],
+      },
+      {
+        name: "makerSignature",
+        type: "tuple",
+        components: [
+          { name: "signatureBytes", type: "bytes" },
+          { name: "flags", type: "uint256" },
+        ],
+      },
+      { name: "filledTakerAmount", type: "uint256" },
+    ],
+    outputs: [],
+  },
+] as const;
+
+/**
+ * Decode the maker's signature from the Bebop settlement contract calldata.
+ * Uses proper ABI decoding to extract the signature struct.
+ * Reference: https://docs.bebop.xyz/bebop/smart-contracts/pmm-rfq-smart-contract
+ */
+export function decodeMakerSignatureFromTxData(txData: Hex): { signatureBytes: Hex; flags: bigint } {
+  const decoded = decodeFunctionData({
+    abi: bebopSwapSingleAbi,
+    data: txData,
+  });
+
+  if (decoded.functionName !== "swapSingle") {
+    throw new Error(`Unexpected function: ${decoded.functionName}`);
+  }
+
+  if (!decoded.args || decoded.args.length < 2) {
+    throw new Error("Missing args in decoded function data");
+  }
+
+  const makerSignature = decoded.args[1] as { signatureBytes: Hex; flags: bigint };
+
+  return {
+    signatureBytes: makerSignature.signatureBytes,
+    flags: makerSignature.flags,
+  };
+}
