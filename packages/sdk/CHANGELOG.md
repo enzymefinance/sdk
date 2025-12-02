@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.31
+
+### Patch Changes
+
+- [#836](https://github.com/enzymefinance/sdk/pull/836) [`a972129`](https://github.com/enzymefinance/sdk/commit/a972129140b0b01b569f7ac4c847d170837a2029) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Add bebop maker signature decoding helper
+
 ## 1.2.30
 
 ### Patch Changes
