@@ -7952,4 +7952,26 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    symbol: "WFRAX",
+    name: "Wrapped Frax",
+    id: "0x04acaf8d2865c0714f79da09645c13fd2888977f",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    symbol: "YB",
+    name: "Yield Basis",
+    id: "0x01791f726b4103694969820be083196cc7c045ff",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
