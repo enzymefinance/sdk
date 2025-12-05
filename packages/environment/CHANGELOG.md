@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.85
+
+### Patch Changes
+
+- [#839](https://github.com/enzymefinance/sdk/pull/839) [`a98770b`](https://github.com/enzymefinance/sdk/commit/a98770b3baffe842b675228610b2a6dcc1a24a5f) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add YB and WFRAX
+
 ## 6.3.84
 
 ### Patch Changes
