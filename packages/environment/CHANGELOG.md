@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.86
+
+### Patch Changes
+
+- [#835](https://github.com/enzymefinance/sdk/pull/835) [`bfb1027`](https://github.com/enzymefinance/sdk/commit/bfb102779121ab12b865fd6e4bd256e4045f3890) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update GMX to v2.2b
+
 ## 6.3.85
 
 ### Patch Changes
