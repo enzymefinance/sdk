@@ -1243,8 +1243,8 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     id: "0x35d8949372d46b7a3d5a56006ae77b215fc69bc0",
-    name: "USD0 Liquid Bond",
-    symbol: "USD0++",
+    name: "Bond USD0",
+    symbol: "bUSD0",
     decimals: 18,
     releases: [sulu],
     type: AssetType.PRIMITIVE,
