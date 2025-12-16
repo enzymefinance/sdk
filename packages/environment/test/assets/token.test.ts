@@ -126,6 +126,7 @@ const symbolExceptions = [
   "FTT", // onchain value: FTX Token -> keep, name/symbol seems to be interchanged
   "USDC.e", // onchain value: USDC -> keep, to differentiate from native USDC
   "aWBTC", // onchain value: ATOKEN_IMPL  -> remove
+  "USD0++", // onchain value: bUSD0 -> keep to differentiate
 ];
 
 const nameExceptions = [
@@ -143,4 +144,5 @@ const nameExceptions = [
   "Enzyme (PoS)", // onchain value: Melon Token (PoS) -> keep to differentiate
   "Orthogonal Trading - USDC01", // onchain value: Maple Pool Token -> keep to differentiate
   "Aave WBTC", // onchain value: ATOKEN_IMPL -> remove
+  "USD0 Liquid Bond", // onchain value: Bond USD0 -> keep to differentiate
 ];
