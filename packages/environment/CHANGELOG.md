@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.87
+
+### Patch Changes
+
+- [#842](https://github.com/enzymefinance/sdk/pull/842) [`d519093`](https://github.com/enzymefinance/sdk/commit/d519093f0dbe5134df5213f21a151ed9e6470e98) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - Rename USD0++ name and symbol
+
 ## 6.3.86
 
 ### Patch Changes
