@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.88
+
+### Patch Changes
+
+- [#845](https://github.com/enzymefinance/sdk/pull/845) [`2c7332f`](https://github.com/enzymefinance/sdk/commit/2c7332f9b061d5a87376192ffd951c499450b012) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update LMAX marketmaker
+
 ## 6.3.87
 
 ### Patch Changes
