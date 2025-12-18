@@ -481,13 +481,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     name: "DefiPulse Index",
-    releases: [sulu, encore, phoenix],
+    releases: [],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -2393,14 +2391,12 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x6f634c6135d2ebd550000ac92f494f9cb8183dae",
     name: "Aave DPI",
-    releases: [sulu],
+    releases: [],
     symbol: "aDPI",
     type: AssetType.AAVE_V2,
     underlying: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
