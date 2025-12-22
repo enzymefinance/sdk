@@ -849,7 +849,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x724dc807b04555b71ed48a6896b6f41593b8c637",
     name: "Aave Polygon DPI",
-    releases: [],
+    releases: [testnet.sulu],
     symbol: "aPolDPI",
     type: AssetType.AAVE_V3,
     underlying: "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
