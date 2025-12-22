@@ -481,7 +481,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     name: "DefiPulse Index",
-    releases: [],
+    releases: [encore, phoenix],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
