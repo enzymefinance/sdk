@@ -837,7 +837,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x81fb82aacb4abe262fc57f06fd4c1d2de347d7b1",
     name: "Aave DPI",
-    releases: [],
+    releases: [testnet.sulu],
     symbol: "amDPI",
     type: AssetType.AAVE_V2,
     underlying: "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
