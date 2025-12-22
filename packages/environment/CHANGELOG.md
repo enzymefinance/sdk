@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.89
+
+### Patch Changes
+
+- [#844](https://github.com/enzymefinance/sdk/pull/844) [`5bf6df8`](https://github.com/enzymefinance/sdk/commit/5bf6df82094fd7561c3a71333a5188f8fa37edcb) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister pzeth due to deprecated price feed
+
+- [#847](https://github.com/enzymefinance/sdk/pull/847) [`247f3be`](https://github.com/enzymefinance/sdk/commit/247f3bec782e0a2f18f361a77160cb8fed783e30) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister DPI related tokens on Ethereum and Polygon
+
 ## 6.3.88
 
 ### Patch Changes
