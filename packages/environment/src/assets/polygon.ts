@@ -885,7 +885,7 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x85955046df4668e1dd369d2de9f3aeb98dd2a369",
     name: "DefiPulse Index (PoS)",
-    releases: [],
+    releases: [testnet.sulu],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
