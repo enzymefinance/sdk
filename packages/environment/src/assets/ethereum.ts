@@ -2847,13 +2847,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x8c9532a60e0e7c6bbd2b2c1303f63ace1c3e9811",
     name: "Renzo Restaked LST ", // Trailing space is correct (on-chain)
-    releases: [sulu],
+    releases: [],
     symbol: "pzETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0x62967dc5140fba7204cef0d4b55b38d9109a7fcb",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
