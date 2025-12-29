@@ -1202,7 +1202,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x3472a5a71965499acd81997a54bba8d852c6e53d",
     name: "Badger",
-    releases: [],
+    releases: [encore, phoenix],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
     priceFeed: {
@@ -4036,7 +4036,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
     name: "Perpetual",
-    releases: [],
+    releases: [encore, phoenix],
     symbol: "PERP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
