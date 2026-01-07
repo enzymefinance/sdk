@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.90
+
+### Patch Changes
+
+- [#851](https://github.com/enzymefinance/sdk/pull/851) [`2e38815`](https://github.com/enzymefinance/sdk/commit/2e38815a2e37dbde1ff0cde89433683472f0b961) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add pmUSD
+
 ## 6.3.89
 
 ### Patch Changes
