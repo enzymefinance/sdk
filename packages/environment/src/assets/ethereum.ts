@@ -7968,4 +7968,15 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    symbol: "pmUSD",
+    name: "Precious Metals USD",
+    id: "0xc0c17dd08263c16f6b64e772fb9b723bf1344ddf",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
