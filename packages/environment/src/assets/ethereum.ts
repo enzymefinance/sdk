@@ -7979,4 +7979,18 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    symbol: "AVGUSDCcons",
+    name: "Avantgarde USDC Conservative",
+    id: "0xebbae8cfabb0092d5b32f00ebee0c8139d24ddcd",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
