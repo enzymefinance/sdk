@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.91
+
+### Patch Changes
+
+- [#853](https://github.com/enzymefinance/sdk/pull/853) [`4fed714`](https://github.com/enzymefinance/sdk/commit/4fed714435dd9b2a62d59294a5619f38ffb44147) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add AVGUSDCcons asset to ethereum
+
 ## 6.3.90
 
 ### Patch Changes
