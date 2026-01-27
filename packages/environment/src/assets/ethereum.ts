@@ -7993,4 +7993,18 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    symbol: "AVGWETHcons",
+    name: "Avantgarde WETH Conservative",
+    id: "0x132fe294ea9b6fad8ca00554d211d5f2b905c1ad",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
