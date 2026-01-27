@@ -6396,14 +6396,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x09db87a538bd693e9d08544577d5ccfaa6373a48",
     name: "ynETH",
-    releases: [sulu],
+    releases: [],
     symbol: "ynETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
-      aggregator: "0xa8f6033ce40fab29c228f32ef44d38cb3043c5bc",
-      rateAsset: RateAsset.ETH,
-      nonStandard: true,
+      type: PriceFeedType.NONE,
     },
   },
   {
