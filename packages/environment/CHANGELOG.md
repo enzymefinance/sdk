@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.92
+
+### Patch Changes
+
+- [#855](https://github.com/enzymefinance/sdk/pull/855) [`c0b4454`](https://github.com/enzymefinance/sdk/commit/c0b4454ba3277cc51883bd6f4ff48214f4464189) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add AVGWETHcons asset on ethereum network
+
 ## 6.3.91
 
 ### Patch Changes
