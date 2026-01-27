@@ -489,13 +489,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0xe5417af564e4bfda1c483642db72007871397896",
     name: "Gains Network",
-    releases: [polygon.sulu],
+    releases: [],
     symbol: "GNS",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x9cb43aa3d036cb035a694ba0aaa91f8875b16ce1",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
