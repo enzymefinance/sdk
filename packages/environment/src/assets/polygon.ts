@@ -368,13 +368,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x1fcbe5937b0cc2adf69772d228fa4205acf4d9b2",
     name: "Badger (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x82c9d4e88862f194c2bd874a106a90ddd0d35aab",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
