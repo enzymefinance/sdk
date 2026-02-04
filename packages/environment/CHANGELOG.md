@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.93
+
+### Patch Changes
+
+- [#849](https://github.com/enzymefinance/sdk/pull/849) [`4488441`](https://github.com/enzymefinance/sdk/commit/4488441443142831d161313d600cc16c351daf35) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister badger and perp on ethereum and gns and badger on polygon
+
 ## 6.3.92
 
 ### Patch Changes
