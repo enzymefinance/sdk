@@ -368,13 +368,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x1fcbe5937b0cc2adf69772d228fa4205acf4d9b2",
     name: "Badger (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x82c9d4e88862f194c2bd874a106a90ddd0d35aab",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -489,13 +487,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0xe5417af564e4bfda1c483642db72007871397896",
     name: "Gains Network",
-    releases: [polygon.sulu],
+    releases: [],
     symbol: "GNS",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x9cb43aa3d036cb035a694ba0aaa91f8875b16ce1",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
