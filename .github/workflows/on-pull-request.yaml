@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run build
