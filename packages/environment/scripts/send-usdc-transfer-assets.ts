@@ -7,10 +7,6 @@
 
 import { Portfolio } from "@enzymefinance/sdk";
 import { type Address, encodeFunctionData } from "viem";
-
-// Recipient of the USDC transfers
-const RECIPIENT = "0x6fc727e229d8b26eeeb979322d84449c1bb51294" as Address;
-
 // Ethereum mainnet USDC (6 decimals)
 const USDC = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48" as Address;
 
@@ -20,19 +16,16 @@ const TRANSFER_ASSETS_ADAPTER = "0xe0309fa2412b811a0bd40a73297093707259217f" as 
 
 // Transfers to perform (amounts in USDC's 6-decimal units)
 const TRANSFERS: Array<{
+  recipient: Address;
   vaultProxy: Address;
   comptrollerProxy: Address;
   amount: bigint;
 }> = [
   {
+    recipient: "0x6Fc727E229D8b26eeEb979322D84449c1Bb51294" as Address,
     vaultProxy: "0xfa9fa21e2f38353b31ec7d67820f6df0b20f2a02" as Address,
     comptrollerProxy: "0xa0bC8040cb1314542B58989fd54a78620d23895C" as Address,
-    amount: 7_482_960_000n, // 7,482.96 USDC
-  },
-  {
-    vaultProxy: "0x249c85ece2dcf985ced87f4593c7398eb9881269" as Address,
-    comptrollerProxy: "0x16D6ed99d0197d938cfA68b62f8d9411Af12A975" as Address,
-    amount: 9_050_000_000n, // 9,050.00 USDC
+    amount: 9_083_330_000n, // 9,083.33 USDC
   },
 ];
 
@@ -43,13 +36,22 @@ function formatUsdc(amount: bigint): string {
 }
 
 function main() {
+  console.log("=".repeat(70));
+  console.log("USDC TRANSFERS VIA TRANSFER ASSETS ADAPTER (ETHEREUM)");
+  console.log("=".repeat(70));
+  console.log();
+  console.log("USDC:", USDC);
+  console.log("IntegrationManager:", INTEGRATION_MANAGER);
+  console.log("TransferAssetsAdapter:", TRANSFER_ASSETS_ADAPTER);
+  console.log();
+
   TRANSFERS.forEach((transfer, idx) => {
     const populated = Portfolio.Integrations.TransferAssets.transfer({
       comptrollerProxy: transfer.comptrollerProxy,
       integrationManager: INTEGRATION_MANAGER,
       integrationAdapter: TRANSFER_ASSETS_ADAPTER,
       callArgs: {
-        recipient: RECIPIENT,
+        recipient: transfer.recipient,
         assetAddresses: [USDC],
         assetAmounts: [transfer.amount],
       },
@@ -60,7 +62,19 @@ function main() {
       functionName: populated.params.functionName,
       args: populated.params.args,
     });
+
+    console.log("-".repeat(70));
+    console.log(`TX ${idx + 1}: Send USDC`);
+    console.log(`  Recipient: ${transfer.recipient}`);
+    console.log(`  Vault Proxy: ${transfer.vaultProxy}`);
+    console.log(`  Comptroller Proxy: ${transfer.comptrollerProxy}`);
+    console.log(`  Amount: ${formatUsdc(transfer.amount)} USDC`);
+    console.log(`  To (call target): ${populated.params.address}`);
+    console.log(`  Data: ${txData}`);
+    console.log();
   });
+
+  console.log("Done. Review and submit the above transactions from the vault owner.");
 }
 
 main();
