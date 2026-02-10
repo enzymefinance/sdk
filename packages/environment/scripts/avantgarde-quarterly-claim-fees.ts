@@ -23,11 +23,6 @@ const UNPERMISSIONED_ACTIONS_WRAPPER = "0xcfab4fcbfe059d5c1840d9dc285a9bfa0f96a1
 export const FEE_ROUTING: Record<Address, Record<Address, Array<Address>>> = {
   // AAMB revenue wallet
   "0xE44E7B3B6836281562319db238Cd2078B3176660": {
-    // Avantgarde Equal Weight Fund
-    "0x249c85ece2dcf985ced87f4593c7398eb9881269": [
-      "0xfc376af3c1ce6fd03c135d2ba85fd980162500c4", // EW Fund fee splitter
-    ],
-
     // Avantgarde DeFi Yield Fund
     "0xfa9fa21e2f38353b31ec7d67820f6df0b20f2a02": [
       "0x61f5c7878752f2280ed81de60c76b94da93f2064", // DeFi Yield Fund fee splitter
