@@ -481,13 +481,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     name: "DefiPulse Index",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "DPI",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -1204,13 +1202,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x3472a5a71965499acd81997a54bba8d852c6e53d",
     name: "Badger",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "BADGER",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x58921ac140522867bf50b9e009599da0ca4a2379",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -1243,8 +1239,8 @@ export default defineAssetList(Network.ETHEREUM, [
   },
   {
     id: "0x35d8949372d46b7a3d5a56006ae77b215fc69bc0",
-    name: "USD0 Liquid Bond",
-    symbol: "USD0++",
+    name: "Bond USD0",
+    symbol: "bUSD0",
     decimals: 18,
     releases: [sulu],
     type: AssetType.PRIMITIVE,
@@ -2393,14 +2389,12 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x6f634c6135d2ebd550000ac92f494f9cb8183dae",
     name: "Aave DPI",
-    releases: [sulu],
+    releases: [],
     symbol: "aDPI",
     type: AssetType.AAVE_V2,
     underlying: "0x1494ca1f11d487c2bbe4543e90080aeba4ba3c2b",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x029849bbc0b1d93b85a8b6190e979fd38f5760e2",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -2851,13 +2845,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x8c9532a60e0e7c6bbd2b2c1303f63ace1c3e9811",
     name: "Renzo Restaked LST ", // Trailing space is correct (on-chain)
-    releases: [sulu],
+    releases: [],
     symbol: "pzETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0x62967dc5140fba7204cef0d4b55b38d9109a7fcb",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -4044,13 +4036,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xbc396689893d065f41bc2c6ecbee5e0085233447",
     name: "Perpetual",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "PERP",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x3b41d5571468904d4e53b6a8d93a6bac43f02dc9",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7972,6 +7962,45 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    symbol: "pmUSD",
+    name: "Precious Metals USD",
+    id: "0xc0c17dd08263c16f6b64e772fb9b723bf1344ddf",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
+  {
+    symbol: "AVGUSDCcons",
+    name: "Avantgarde USDC Conservative",
+    id: "0xebbae8cfabb0092d5b32f00ebee0c8139d24ddcd",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
+  {
+    symbol: "AVGWETHcons",
+    name: "Avantgarde WETH Conservative",
+    id: "0x132fe294ea9b6fad8ca00554d211d5f2b905c1ad",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
 ]);

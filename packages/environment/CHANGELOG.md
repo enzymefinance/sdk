@@ -1,5 +1,49 @@
 # @enzymefinance/environment
 
+## 6.3.93
+
+### Patch Changes
+
+- [#849](https://github.com/enzymefinance/sdk/pull/849) [`4488441`](https://github.com/enzymefinance/sdk/commit/4488441443142831d161313d600cc16c351daf35) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister badger and perp on ethereum and gns and badger on polygon
+
+## 6.3.92
+
+### Patch Changes
+
+- [#855](https://github.com/enzymefinance/sdk/pull/855) [`c0b4454`](https://github.com/enzymefinance/sdk/commit/c0b4454ba3277cc51883bd6f4ff48214f4464189) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add AVGWETHcons asset on ethereum network
+
+## 6.3.91
+
+### Patch Changes
+
+- [#853](https://github.com/enzymefinance/sdk/pull/853) [`4fed714`](https://github.com/enzymefinance/sdk/commit/4fed714435dd9b2a62d59294a5619f38ffb44147) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add AVGUSDCcons asset to ethereum
+
+## 6.3.90
+
+### Patch Changes
+
+- [#851](https://github.com/enzymefinance/sdk/pull/851) [`2e38815`](https://github.com/enzymefinance/sdk/commit/2e38815a2e37dbde1ff0cde89433683472f0b961) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add pmUSD
+
+## 6.3.89
+
+### Patch Changes
+
+- [#844](https://github.com/enzymefinance/sdk/pull/844) [`5bf6df8`](https://github.com/enzymefinance/sdk/commit/5bf6df82094fd7561c3a71333a5188f8fa37edcb) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister pzeth due to deprecated price feed
+
+- [#847](https://github.com/enzymefinance/sdk/pull/847) [`247f3be`](https://github.com/enzymefinance/sdk/commit/247f3bec782e0a2f18f361a77160cb8fed783e30) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister DPI related tokens on Ethereum and Polygon
+
+## 6.3.88
+
+### Patch Changes
+
+- [#845](https://github.com/enzymefinance/sdk/pull/845) [`2c7332f`](https://github.com/enzymefinance/sdk/commit/2c7332f9b061d5a87376192ffd951c499450b012) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update LMAX marketmaker
+
+## 6.3.87
+
+### Patch Changes
+
+- [#842](https://github.com/enzymefinance/sdk/pull/842) [`d519093`](https://github.com/enzymefinance/sdk/commit/d519093f0dbe5134df5213f21a151ed9e6470e98) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - Rename USD0++ name and symbol
+
 ## 6.3.86
 
 ### Patch Changes
