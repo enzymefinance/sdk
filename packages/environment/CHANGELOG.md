@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.94
+
+### Patch Changes
+
+- [#861](https://github.com/enzymefinance/sdk/pull/861) [`4a4f026`](https://github.com/enzymefinance/sdk/commit/4a4f026a19c2913841c437c8e7ee3b69397621c8) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister bal asset on arbitrum
+
+- [#860](https://github.com/enzymefinance/sdk/pull/860) [`ef6431c`](https://github.com/enzymefinance/sdk/commit/ef6431c7c0cd085526e1b74d2ff69e719be3a512) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister maticx, stmatic and related assets in polygon due to deprecated price feeds
+
 ## 6.3.93
 
 ### Patch Changes
