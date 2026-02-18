@@ -10,13 +10,11 @@ export default defineAssetList(Network.ARBITRUM, [
     decimals: 18,
     id: "0x040d1edc9569d4bab2d15287dc5a4f10f56a56b8",
     name: "Balancer",
-    releases: [sulu],
+    releases: [],
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xbe5ea816870d11239c543f84b71439511d70b94f",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
