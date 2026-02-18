@@ -8003,4 +8003,15 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    symbol: "tBTC",
+    name: "tBTC v2",
+    id: "0x18084fbA666a33d37592fA2633fD49a74DD93a88",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
