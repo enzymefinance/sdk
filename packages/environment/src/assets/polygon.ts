@@ -942,13 +942,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x95c300e7740d2a88a44124b424bfc1cb2f9c3b89",
     name: "Alchemix (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "ALCX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x5db6e61b6159b20f068dc15a47df2e5931b14f29",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -1155,13 +1153,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0xe4bf2864ebec7b7fdf6eeca9bacae7cdfdaffe78",
     name: "DODO bird (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "DODO",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x59161117086a4c7a9beda16c66e40bdaa1c5a8b6",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
