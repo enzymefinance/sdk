@@ -192,7 +192,7 @@ export default defineDeployment<Deployment.BASE>({
         ProtocolFeeTracker: "0x44ddf1831fb1f9cd62bd07b4c351c826751594a6",
         SharePriceThrottledAssetManagerFactory: "0xb120f5de3c5afd8ddefc938f46a5821980e35d66",
         SharePriceThrottledAssetManagerLib: "0x7a5125491025cf44380b6d95ec385ddd37455c22",
-        SharesSplitterFactory: "0x0000000000000000000000000000000000000000",
+        SharesSplitterFactory: "0x7d38dcb69116a73ab20aff04b41c22db37b431ad",
         SingleAssetDepositQueueFactory: "0x633d9deb8fe276000fb31b4255e5ad83d96ede25",
         SingleAssetDepositQueueLib: "0x092523489a789b0984adf41e83371eb1e3c49d63",
         SingleAssetRedemptionQueueFactory: "0x785f1779ae48bfa8f8d89ce140c62a603c104f36",
