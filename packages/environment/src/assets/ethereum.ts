@@ -8004,6 +8004,19 @@ export default defineAssetList(Network.ETHEREUM, [
     },
   },
   {
+    id: "0x82957d600963ae0c529c3819ac7c349c4d49269b",
+    name: "Ultimate Synthetic Dollar - No Rebase",
+    symbol: "USDnr",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
+      aggregator: "0xd5004c5d3017862839e83981b110f27ee7b36eaa",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
     symbol: "AVGUSDCdyn",
     name: "Avantgarde USDC Dynamic",
     id: "0x8e56cb6bc1a8961ed9062b99045d3299b27cdb4d",

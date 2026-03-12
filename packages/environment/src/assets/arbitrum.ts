@@ -284,7 +284,7 @@ export default defineAssetList(Network.ARBITRUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x05bc6e5fb110589bb366a3cd7cdbe143eeba2168",
+      aggregator: "0xecd471ef663eceffc7d731a0c7e51007433e6d6e",
       rateAsset: RateAsset.ETH,
     },
   },

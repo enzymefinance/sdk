@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.95
+
+### Patch Changes
+
+- [#868](https://github.com/enzymefinance/sdk/pull/868) [`a0871ef`](https://github.com/enzymefinance/sdk/commit/a0871ef5498eb21de460f745fddfce9dd69b77e1) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add shares splitter factory on Base and Arbitrum
+
 ## 6.3.94
 
 ### Patch Changes
