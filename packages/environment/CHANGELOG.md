@@ -1,5 +1,17 @@
 # @enzymefinance/environment
 
+## 6.3.96
+
+### Patch Changes
+
+- [#865](https://github.com/enzymefinance/sdk/pull/865) [`729b78d`](https://github.com/enzymefinance/sdk/commit/729b78d0dc4b78188cae24ac68222e31d8049775) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add AVGUSDCdyn to ethereum
+
+- [#867](https://github.com/enzymefinance/sdk/pull/867) [`b5d6a55`](https://github.com/enzymefinance/sdk/commit/b5d6a551a5d051f8e57ac7b07a1475777b5ebbe9) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - change swETH price feed address on arbitrum
+
+- [#866](https://github.com/enzymefinance/sdk/pull/866) [`5326fe2`](https://github.com/enzymefinance/sdk/commit/5326fe2f7aaaffea938de78cdb19ebca7a2f5f2e) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - register USDnr asset on ethereum
+
+- [#864](https://github.com/enzymefinance/sdk/pull/864) [`37b7f67`](https://github.com/enzymefinance/sdk/commit/37b7f67d3f1511dd5be9d78459e62fe74b448f3c) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister ALCX and DODO assets on polygon due to deprecating price feeds
+
 ## 6.3.95
 
 ### Patch Changes
