@@ -7403,14 +7403,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT stETH 25DEC2025",
     id: "0xf99985822fb361117fcf3768d34a6353e6022f5f",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     markets: ["0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x2f87e86e0da687c590508717904633e341fc17b5",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7498,14 +7496,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Wrapped stUSR 25SEP2025",
     id: "0x23e60d1488525bf4685f53b3aa8e676c30321066",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x1202f5c7b4b9e47a1a484e8b270be34dbbc75055",
     markets: ["0x09fa04aac9c6d1c6131352ee950cd67ecc6d4fb9"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0x6ccfbea0ed4dc77fe5167ea057eb603e31c98e2c",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7809,14 +7805,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena sUSDE 25SEP2025",
     id: "0x9f56094c450763769ba0ea9fe2876070c0fd5f77",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xa36b60a14a1a5247912584768c6e53e1a269a9f7"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xcc7ff5845ad4f48c4dd49a41bae058a376a425fb",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7824,14 +7818,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Ethena sUSDE 27NOV2025",
     id: "0xe6a934089bbee34f832060ce98848359883749b3",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xb6ac3d5da138918ac4e84441e924a20daa60dbdd"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xb04820ba8c7d08f37c75cddc42ec8145bfffb1c4",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7903,14 +7895,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT cap USD 29JAN2026",
     id: "0x545a490f9ab534adf409a2e682bc4098f49952e3",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0xcccc62962d17b8914c62d74ffb843d73b2a3cccc",
     markets: ["0x307c15f808914df5a5dbe17e5608f84953ffa023"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xc67021c6b6c079fbccbe649f75adbda6f60e0c4f",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {
@@ -7918,14 +7908,12 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "PT Staked cap USD 29JAN2026",
     id: "0xc3c7e5e277d31cd24a3ac4cc9af3b6770f30ea33",
     type: AssetType.PENDLE_V2_PT,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x88887be419578051ff9f4eb6c858a951921d8888",
     markets: ["0xcc781b043933c10a04409b22aada3a3d1a7f29d4"],
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_PENDLE_V2,
-      aggregator: "0xd68bb8bdfd5e742f581178798cbf36500198a6e5",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE
     },
   },
   {

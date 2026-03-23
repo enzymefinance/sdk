@@ -505,13 +505,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x3066818837c5e6ed6601bd5a91b0762877a6b731",
     name: "UMA Voting Token v1 (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "UMA",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x33d9b1baadcf4b26ab6f8e83e9cb8a611b2b3956",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
