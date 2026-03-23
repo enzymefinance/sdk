@@ -7408,7 +7408,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0",
     markets: ["0xc374f7ec85f8c7de3207a10bb1978ba104bda3b2"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7501,7 +7501,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x1202f5c7b4b9e47a1a484e8b270be34dbbc75055",
     markets: ["0x09fa04aac9c6d1c6131352ee950cd67ecc6d4fb9"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7810,7 +7810,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xa36b60a14a1a5247912584768c6e53e1a269a9f7"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7823,7 +7823,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x9d39a5de30e57443bff2a8307a4256c8797a3497",
     markets: ["0xb6ac3d5da138918ac4e84441e924a20daa60dbdd"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7900,7 +7900,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0xcccc62962d17b8914c62d74ffb843d73b2a3cccc",
     markets: ["0x307c15f808914df5a5dbe17e5608f84953ffa023"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7913,7 +7913,7 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x88887be419578051ff9f4eb6c858a951921d8888",
     markets: ["0xcc781b043933c10a04409b22aada3a3d1a7f29d4"],
     priceFeed: {
-      type: PriceFeedType.NONE
+      type: PriceFeedType.NONE,
     },
   },
   {
