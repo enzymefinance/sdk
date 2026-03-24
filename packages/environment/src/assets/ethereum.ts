@@ -8003,4 +8003,31 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    id: "0x82957d600963ae0c529c3819ac7c349c4d49269b",
+    name: "Ultimate Synthetic Dollar - No Rebase",
+    symbol: "USDnr",
+    decimals: 18,
+    releases: [sulu],
+    type: AssetType.PRIMITIVE,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
+      aggregator: "0xd5004c5d3017862839e83981b110f27ee7b36eaa",
+      rateAsset: RateAsset.USD,
+    },
+  },
+  {
+    symbol: "AVGUSDCdyn",
+    name: "Avantgarde USDC Dynamic",
+    id: "0x8e56cb6bc1a8961ed9062b99045d3299b27cdb4d",
+    type: AssetType.ERC_4626,
+    protocol: Erc4626Protocol.MORPHO,
+    releases: [sulu],
+    decimals: 18,
+    underlying: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    priceFeed: {
+      type: PriceFeedType.DERIVATIVE_ERC4626,
+      address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
+    },
+  },
 ]);
