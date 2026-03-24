@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.32
+
+### Patch Changes
+
+- [#873](https://github.com/enzymefinance/sdk/pull/873) [`b99bab2`](https://github.com/enzymefinance/sdk/commit/b99bab2f247dea42fb12aeb878e852222901bcf6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add more GMX tokens
+
 ## 1.2.31
 
 ### Patch Changes
