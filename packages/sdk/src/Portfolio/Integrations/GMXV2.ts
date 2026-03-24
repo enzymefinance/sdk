@@ -3721,6 +3721,43 @@ export const arbitrumGMXIndexTokens = [
     address: "0x3E57D02f9d196873e55727382974b02EdebE6bfd",
     decimals: 18,
   },
+  {
+    name: "SUI",
+    symbol: "SUI",
+    address: "0x197aa2DE1313c7AD50184234490E12409B2a1f95",
+    decimals: 9,
+  },
+  {
+    name: "Hyperliquid",
+    symbol: "HYPE",
+    address: "0xfDFA0A749dA3bCcee20aE0B4AD50E39B26F58f7C",
+    decimals: 8,
+  },
+  {
+    name: "Tether Gold",
+    symbol: "XAUT",
+    address: "0x7624cccCc59361D583F28BEC40D37e7771d2ef5D",
+    decimals: 18,
+  },
+  {
+    name: "Monero",
+    symbol: "XMR",
+    address: "0x13674172E6E44D31d4bE489d5184f3457c40153A",
+    decimals: 12,
+  },
+  {
+    name: "Ethena Governance Token",
+    symbol: "ENA",
+    address: "0xfe1Aac2CD9C5cC77b58EeCfE75981866ed0c8b7a",
+    decimals: 18,
+  },
+  {
+    name: "Venice Token",
+    symbol: "VVV",
+    address: "0xB79Eb5BA64A167676694bB41bc1640F95d309a2F",
+    decimals: 18,
+  },
+  { name: "TAO", symbol: "TAO", address: "0x938aef36CAaFbcB37815251B602168087eC14648", decimals: 9 },
 ] as const;
 
 export const uiFeeReceiver = "0xbF70734E9E1da98149E4550025B1055Facd60583"; // UI fee receiver address set in the Enzyme integration contract. The fee is currently set to 0
