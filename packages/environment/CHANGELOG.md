@@ -1,5 +1,13 @@
 # @enzymefinance/environment
 
+## 6.3.98
+
+### Patch Changes
+
+- [#828](https://github.com/enzymefinance/sdk/pull/828) [`a47be82`](https://github.com/enzymefinance/sdk/commit/a47be8298e42ee564e8af7bd6cf395252f614dcb) Thanks [@gabrocheleau](https://github.com/gabrocheleau)! - Update LMAX market maker
+
+- [#872](https://github.com/enzymefinance/sdk/pull/872) [`c474929`](https://github.com/enzymefinance/sdk/commit/c47492949bde740566357bb6bcf560653e9ea3bc) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister UMA asset on polygon and pendle expired assets on ethereum
+
 ## 6.3.97
 
 ### Patch Changes
