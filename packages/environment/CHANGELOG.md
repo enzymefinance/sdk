@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.99
+
+### Patch Changes
+
+- [#877](https://github.com/enzymefinance/sdk/pull/877) [`6e086f2`](https://github.com/enzymefinance/sdk/commit/6e086f26ea124ca689d704c41acf47dcae736017) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add reUSD asset to ethereum for votium
+
 ## 6.3.98
 
 ### Patch Changes
