@@ -8018,4 +8018,15 @@ export default defineAssetList(Network.ETHEREUM, [
       address: "0x66aa5b2fdfb453f8a27f9bd1d9124947ef3886bb",
     },
   },
+  {
+    symbol: "reUSD",
+    name: "Resupply USD",
+    id: "0x57ab1e0003f623289cd798b1824be09a793e4bec",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
