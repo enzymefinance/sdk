@@ -292,7 +292,7 @@ export default defineAssetList(Network.BASE, [
     name: "Backed Coinbase Global",
     symbol: "bCOIN",
     decimals: 18,
-    releases: [sulu],
+    releases: [],
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.NONE,
@@ -303,7 +303,7 @@ export default defineAssetList(Network.BASE, [
     name: "Wrapped Backed Coinbase Global",
     id: "0xdec933e2392ad908263e70a386fbf34e703ffe8f",
     type: AssetType.PRIMITIVE,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.NONE,
