@@ -295,25 +295,18 @@ export default defineAssetList(Network.BASE, [
     releases: [sulu],
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfb2487ee6e6a1f51d31e64d969c9f437235633f0",
-      rateAsset: RateAsset.USD,
-      nonStandard: true,
+      type: PriceFeedType.NONE,
     },
   },
   {
     symbol: "wbCOIN",
     name: "Wrapped Backed Coinbase Global",
     id: "0xdec933e2392ad908263e70a386fbf34e703ffe8f",
-    type: AssetType.ERC_4626,
-    protocol: Erc4626Protocol.BCOIN,
+    type: AssetType.PRIMITIVE,
     releases: [sulu],
     decimals: 18,
-    underlying: "0xbbcb0356bb9e6b3faa5cbf9e5f36185d53403ac9",
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_ERC4626,
-      address: "0x6889790fb10a03bbf9dc86f1bed3219b509f5367",
-      nonStandard: true,
+      type: PriceFeedType.NONE,
     },
   },
   {
