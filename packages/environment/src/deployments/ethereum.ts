@@ -175,7 +175,7 @@ export default defineDeployment<Deployment.ETHEREUM>({
         GasRelayPaymasterFactory: "0x846bbe1925047023651de7ec289f329c24ded3a8",
         GasRelayPaymasterLib: "0x131c220c18874e32abbe945eb8aa998b84f63625",
         GatedRedemptionQueueSharesWrapperFactory: "0x73b9c40530311b49b526f230d01bdf5725b3290d",
-        GatedRedemptionQueueSharesWrapperLib: "0xe971375e3e8af54232f9b7c88cce143edf95c272",
+        GatedRedemptionQueueSharesWrapperLib: "0xbb8401cbdd96174762ae451039595d934cb61357",
         GenericAdapter: "0x0000000000000000000000000000000000000000",
         GlobalConfigLib: "0x6682e70860d48a039f52daccda917250349a3fb3",
         GlobalConfigProxy: "0x5611df74a77efd198de5fc7f83a482dcfe0c7a7a",
