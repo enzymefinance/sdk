@@ -7467,13 +7467,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110",
     name: "Resolv USD",
-    releases: [sulu],
+    releases: [],
     symbol: "USR",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregator: "0x107dd3391a6357248f2093698014e7c6130779ee",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7482,13 +7480,11 @@ export default defineAssetList(Network.ETHEREUM, [
     id: "0x1202f5c7b4b9e47a1a484e8b270be34dbbc75055",
     type: AssetType.ERC_4626,
     protocol: Erc4626Protocol.RESOLV,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     underlying: "0x66a1e37c9b0eaddca17d3662d6c05f4decf3e110",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
-      aggregator: "0xe825080d444aa2772ece2648b48c320f8ddfbe62",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
