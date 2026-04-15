@@ -159,7 +159,7 @@ export default defineDeployment<Deployment.POLYGON>({
         GasRelayPaymasterFactory: "0xed05786ef7b5e5bf909512f0ad46eb8f22cdc4ca",
         GasRelayPaymasterLib: "0x190e7045caeb09459bba12bced1d133e10d63715",
         GatedRedemptionQueueSharesWrapperFactory: "0x7a68d541af898c14fbd5ecbda3b402b18d8c17d4",
-        GatedRedemptionQueueSharesWrapperLib: "0x9932120518b25e35d4653a8b8d316c58c8b6d7c9",
+        GatedRedemptionQueueSharesWrapperLib: "0xe6ae7ba4224a40adb10d2eac2fa7b1e5a069586f",
         GenericAdapter: "0x0000000000000000000000000000000000000000",
         GlobalConfigLib: "0xcbbd50255cf49797badb28ce625a4ea217c67a64",
         GlobalConfigProxy: "0x905448cb27f51d9a663fb18d57d76c49d19be837",
