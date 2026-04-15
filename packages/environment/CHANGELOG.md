@@ -1,5 +1,15 @@
 # @enzymefinance/environment
 
+## 6.3.100
+
+### Patch Changes
+
+- [#881](https://github.com/enzymefinance/sdk/pull/881) [`4abe2db`](https://github.com/enzymefinance/sdk/commit/4abe2dbc75620c3328242c4d8d063fe8629c4f37) Thanks [@iherger](https://github.com/iherger)! - Update GatedRedemptionQueueSharesWrapper
+
+- [#879](https://github.com/enzymefinance/sdk/pull/879) [`0ae0f3e`](https://github.com/enzymefinance/sdk/commit/0ae0f3e41c7ca14e467e932b4c13b5b74cf6e8df) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister USR and wstUSR assets on ethereum
+
+- [#882](https://github.com/enzymefinance/sdk/pull/882) [`fb27371`](https://github.com/enzymefinance/sdk/commit/fb273713ec366fb4ef3beae332b2db78a371fa01) Thanks [@iherger](https://github.com/iherger)! - Remove bCOIN
+
 ## 6.3.99
 
 ### Patch Changes
