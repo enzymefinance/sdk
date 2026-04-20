@@ -208,13 +208,11 @@ export default defineAssetList(Network.BASE, [
     decimals: 18,
     id: "0x1bc71130a0e39942a7658878169764bbd8a45993",
     name: "KelpDao Restaked ETH",
-    releases: [sulu],
+    releases: [],
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xd7221b10fbbc1e1ba95fd0b4d031c15f7f365296",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {

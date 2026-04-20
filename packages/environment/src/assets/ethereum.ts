@@ -3348,13 +3348,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xa1290d69c65a6fe4df752f95823fae25cb99e5a7",
     name: "rsETH",
-    releases: [sulu],
+    releases: [],
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0xf387707bc4df894607a93f83d58a835cacd370f1",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
