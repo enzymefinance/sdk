@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.101
+
+### Patch Changes
+
+- [#884](https://github.com/enzymefinance/sdk/pull/884) [`5d7229e`](https://github.com/enzymefinance/sdk/commit/5d7229e46847a7963c0fc627079b5ccf2294b897) Thanks [@iherger](https://github.com/iherger)! - De-register rsETH
+
 ## 6.3.100
 
 ### Patch Changes
