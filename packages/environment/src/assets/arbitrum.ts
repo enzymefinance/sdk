@@ -151,13 +151,11 @@ export default defineAssetList(Network.ARBITRUM, [
     decimals: 18,
     id: "0x4186bfc76e2e237523cbc30fd220fe055156b41f",
     name: "KelpDao Restaked ETH",
-    releases: [sulu],
+    releases: [],
     symbol: "rsETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xb0ea543f9f8d4b818550365d13f66da747e1476a",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
