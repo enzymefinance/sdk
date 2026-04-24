@@ -142,6 +142,7 @@ const bebopSwapSingleAbi = [
   {
     name: "swapSingle",
     type: "function",
+    stateMutability: "nonpayable",
     inputs: [
       {
         name: "order",
@@ -175,28 +176,15 @@ const bebopSwapSingleAbi = [
 ] as const;
 
 /**
- * Decode the maker's signature from the Bebop settlement contract calldata.
- * Uses proper ABI decoding to extract the signature struct.
+ * Decode the args from the Bebop settlement contract calldata.
  * Reference: https://docs.bebop.xyz/bebop/smart-contracts/pmm-rfq-smart-contract
  */
-export function decodeMakerSignatureFromTxData(txData: Hex): { signatureBytes: Hex; flags: bigint } {
-  const decoded = decodeFunctionData({
-    abi: bebopSwapSingleAbi,
-    data: txData,
-  });
+ export function decodeSwapSingleFromTxData(txData: Hex) {
+   const { args } = decodeFunctionData({
+     abi: bebopSwapSingleAbi,
+     data: txData,
+   });
 
-  if (decoded.functionName !== "swapSingle") {
-    throw new Error(`Unexpected function: ${decoded.functionName}`);
-  }
-
-  if (!decoded.args || decoded.args.length < 2) {
-    throw new Error("Missing args in decoded function data");
-  }
-
-  const makerSignature = decoded.args[1] as { signatureBytes: Hex; flags: bigint };
-
-  return {
-    signatureBytes: makerSignature.signatureBytes,
-    flags: makerSignature.flags,
-  };
-}
+   const [order, makerSignature, filledTakerAmount] = args;
+   return { order, makerSignature, filledTakerAmount };
+ }
