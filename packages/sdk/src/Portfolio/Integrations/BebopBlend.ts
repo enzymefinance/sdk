@@ -179,12 +179,12 @@ const bebopSwapSingleAbi = [
  * Decode the args from the Bebop settlement contract calldata.
  * Reference: https://docs.bebop.xyz/bebop/smart-contracts/pmm-rfq-smart-contract
  */
- export function decodeSwapSingleFromTxData(txData: Hex) {
-   const { args } = decodeFunctionData({
-     abi: bebopSwapSingleAbi,
-     data: txData,
-   });
+export function decodeSwapSingleFromTxData(txData: Hex) {
+  const { args } = decodeFunctionData({
+    abi: bebopSwapSingleAbi,
+    data: txData,
+  });
 
-   const [order, makerSignature, filledTakerAmount] = args;
-   return { order, makerSignature, filledTakerAmount };
- }
+  const [order, makerSignature, filledTakerAmount] = args;
+  return { order, makerSignature, filledTakerAmount };
+}

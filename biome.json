@@ -4,6 +4,7 @@
   },
   "files": {
     "ignore": [
+      ".zed",
       ".direnv",
       "dist",
       "build",
