@@ -1,5 +1,11 @@
 # @enzymefinance/sdk
 
+## 1.2.33
+
+### Patch Changes
+
+- [#886](https://github.com/enzymefinance/sdk/pull/886) [`663c79d`](https://github.com/enzymefinance/sdk/commit/663c79d41529101b9ca32e66d7a6b3ef635c7b50) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Update decoding args of bebop tx data
+
 ## 1.2.32
 
 ### Patch Changes

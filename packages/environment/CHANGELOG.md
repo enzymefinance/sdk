@@ -1,5 +1,12 @@
 # @enzymefinance/environment
 
+## 6.3.102
+
+### Patch Changes
+
+- Updated dependencies [[`663c79d`](https://github.com/enzymefinance/sdk/commit/663c79d41529101b9ca32e66d7a6b3ef635c7b50)]:
+  - @enzymefinance/sdk@1.2.33
+
 ## 6.3.101
 
 ### Patch Changes
