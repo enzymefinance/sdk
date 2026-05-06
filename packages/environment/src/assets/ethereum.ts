@@ -314,13 +314,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x090185f2135308bad17527004364ebcc2d37e5f6",
     name: "Spell Token",
-    releases: [sulu, encore],
+    releases: [encore],
     symbol: "SPELL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x8c110b94c5f1d347facf5e1e938ab2db60e3c9a8",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -955,9 +953,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V2,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -969,9 +965,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -3964,13 +3958,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xba100000625a3754423978a60c9317c58a424e3d",
     name: "Balancer",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "BAL",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xc1438aa3823a6ba0c159cfa8d98df5a994ba120b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
