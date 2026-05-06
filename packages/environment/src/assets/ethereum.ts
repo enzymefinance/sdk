@@ -948,7 +948,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x272f97b7a56a387ae942350bbc7df5700f8a4576",
     name: "Aave BAL",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "aBAL",
     type: AssetType.AAVE_V2,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
