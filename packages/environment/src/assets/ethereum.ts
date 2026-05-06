@@ -960,7 +960,7 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x2516e7b3f76294e03c42aa4c5b5b4dce9c436fb8",
     name: "Aave Ethereum BAL",
-    releases: [sulu],
+    releases: [],
     symbol: "aEthBAL",
     type: AssetType.AAVE_V3,
     underlying: "0xba100000625a3754423978a60c9317c58a424e3d",
