@@ -3542,13 +3542,12 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xa70d458a4d9bc0e6571565faee18a48da5c0d593",
     name: "Uniswap BAL/ETH Pool",
-    releases: [sulu, encore, phoenix],
+    releases: [encore, phoenix],
     symbol: "UNI-V2",
     type: AssetType.UNISWAP_V2_POOL,
     underlyings: ["0xba100000625a3754423978a60c9317c58a424e3d", "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"],
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_UNISWAP_V2_POOL,
-      address: "0xdbc1162ea1ab770f0ba5fb494e0010e68351e3b0",
+      type: PriceFeedType.NONE,
     },
   },
   {
