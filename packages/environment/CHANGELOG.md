@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.103
+
+### Patch Changes
+
+- [#888](https://github.com/enzymefinance/sdk/pull/888) [`d8cd512`](https://github.com/enzymefinance/sdk/commit/d8cd5124ebc365cbe197ce713eb066a2528c1bdb) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister bal and spell assets on ethereum and polygon, deregister Uniswap BAL/ETH pool on ethereum
+
 ## 6.3.102
 
 ### Patch Changes
