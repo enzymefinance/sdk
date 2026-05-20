@@ -44,11 +44,21 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Update npm
         run: npm install -g npm@latest
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1
+        with:
+          app-id: ${{ secrets.CHANGESETS_APP_ID }}
+          private-key: ${{ secrets.CHANGESETS_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
       - name: Manage changesets
         uses: changesets/action@v1
         with:
+          version: pnpm ci:version
           publish: pnpm release
           commit: "chore: publish package(s)"
           title: "chore: publish package(s)"
+          commitMode: "github-api"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
