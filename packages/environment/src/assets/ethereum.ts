@@ -7145,12 +7145,10 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Solv BTC",
     id: "0x7a56e1c57c7475ccf742a1832b028f0456652f97",
     type: AssetType.PRIMITIVE,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE,
-      aggregator: "0x24c8964338deb5204b096039147b8e8c3aea42cc",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -7158,12 +7156,10 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "xSolvBTC",
     id: "0xd9d920aa40f578ab794426f5c90f6c731d159def",
     type: AssetType.PRIMITIVE,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
-      aggregator: "0xe16a36e1ae4538a579b5a249d042943b90878ef1",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {

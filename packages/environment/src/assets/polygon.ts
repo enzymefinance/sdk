@@ -297,13 +297,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x1a3acf6d19267e2d3e7f898f42803e90c9219062",
     name: "Frax Share",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "FXS",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x6c0fe985d3cacbcde428b84fc9431792694d0f51",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -323,13 +321,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x1c954e8fe737f99f68fa1ccda3e51ebdb291948c",
     name: "Kyber Network Crystal v2 (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "KNC",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x10e5f3dfc81b3e5ef4e648c4454d04e79e1e41e2",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -575,13 +571,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x3cef98bb43d732e2f285ee605a8158cde967d219",
     name: "Basic Attention Token (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "BAT",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x2346ce62bd732c62618944e51cbfa09d985d86d2",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
