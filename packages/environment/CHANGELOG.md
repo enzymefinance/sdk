@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.104
+
+### Patch Changes
+
+- [#892](https://github.com/enzymefinance/sdk/pull/892) [`d3baf7e`](https://github.com/enzymefinance/sdk/commit/d3baf7efda9d222a67add84124e41f8ff01d49e3) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister solvBTC, xSolvBTC on ethereum, FXS, KNC and BAT on polygon
+
 ## 6.3.103
 
 ### Patch Changes
