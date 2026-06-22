@@ -2,4 +2,4 @@
 "@enzymefinance/environment": patch
 ---
 
-deregister apxETH on ethereum
+deregister apxETH on ethereum & TUSD on polygon

@@ -1185,13 +1185,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x2e1ad108ff1d8c782fcbbb89aad783ac49586756",
     name: "TrueUSD (PoS)",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "TUSD",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x7c5d415b64312d38c56b54358449d0a4058339d2",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
