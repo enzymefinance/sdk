@@ -62,7 +62,7 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Run tests
         working-directory: packages/sdk
-        run: pnpm vitest --shard ${{ matrix.shard }} test/tests/Portfolio/Integrations --maxWorkers=1
+        run: pnpm vitest --shard ${{ matrix.shard }} --no-file-parallelism
         env:
           VITE_ANVIL_FORK_URL: ${{ secrets.VITE_ANVIL_FORK_URL }}
           VITE_ANVIL_FORK_BLOCK_NUMBER: ${{ secrets.VITE_ANVIL_FORK_BLOCK_NUMBER }}
