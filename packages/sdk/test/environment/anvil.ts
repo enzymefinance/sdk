@@ -139,6 +139,10 @@ export function createSetup({
 
       const receipt = await client.waitForTransactionReceipt({ hash });
 
+      if (receipt.status === "reverted") {
+        throw new Error(`Transaction reverted: ${hash}`);
+      }
+
       return { request, result, receipt, hash } as const;
     };
 

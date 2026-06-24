@@ -7,7 +7,7 @@ const environment = TestSetup.mainnet();
 
 const vaultOwner = environment.constants.alice;
 const sharesBuyer = environment.constants.bob;
-const depositAmount = Utils.Conversion.toWei(250);
+const depositAmount = Utils.Conversion.toWei(10);
 
 let comptrollerProxy: Address;
 let vaultProxy: Address;
@@ -22,6 +22,13 @@ test("create vault", async () => {
 });
 
 test("lend should work correctly", async () => {
+  await TestActions.assertBalanceOf({
+    environment,
+    asset: environment.constants.weth,
+    owner: vaultProxy,
+    expected: depositAmount,
+  });
+
   await environment.send({
     account: vaultOwner,
     transaction: Portfolio.Integrations.AaveV2.lend({

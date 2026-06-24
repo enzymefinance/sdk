@@ -3116,13 +3116,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x9ba021b0a9b958b5e75ce9f6dff97c7ee52cb3e6",
     name: "Autocompounding Pirex Ether",
-    releases: [sulu],
+    releases: [],
     symbol: "apxETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0xc11a2312987f6adb5d1abfa89d488e8b806b699e",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
