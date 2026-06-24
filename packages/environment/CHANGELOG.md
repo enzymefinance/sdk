@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.105
+
+### Patch Changes
+
+- [#895](https://github.com/enzymefinance/sdk/pull/895) [`2a48ca2`](https://github.com/enzymefinance/sdk/commit/2a48ca2ae6e8fd9869ad49ad12e89d777e631c3d) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister apxETH on ethereum & TUSD and related assets on polygon
+
 ## 6.3.104
 
 ### Patch Changes
