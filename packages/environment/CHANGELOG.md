@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.106
+
+### Patch Changes
+
+- [#897](https://github.com/enzymefinance/sdk/pull/897) [`0b8d306`](https://github.com/enzymefinance/sdk/commit/0b8d30684b2501e11573e90d00db1e0255826667) Thanks [@iherger](https://github.com/iherger)! - Add SYRUP
+
 ## 6.3.105
 
 ### Patch Changes
