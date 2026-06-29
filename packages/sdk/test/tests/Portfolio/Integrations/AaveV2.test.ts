@@ -1,28 +1,22 @@
 import { Asset, Portfolio, Utils } from "@enzymefinance/sdk";
 import { TestActions, TestSetup } from "@enzymefinance/sdk/test";
-import type { Address } from "viem";
-import { beforeAll, describe, test } from "vitest";
+import { describe, test } from "vitest";
 
-const environment = TestSetup.mainnet();
+const environment = TestSetup.mainnet({ resetHook: "beforeEach" });
 
 const vaultOwner = environment.constants.alice;
 const sharesBuyer = environment.constants.bob;
 const depositAmount = Utils.Conversion.toWei(10);
 
 describe("AaveV2", () => {
-  let comptrollerProxy: Address;
-  let vaultProxy: Address;
-
-  beforeAll(async () => {
-    ({ comptrollerProxy, vaultProxy } = await TestActions.createVaultAndBuyShares({
+  test("lend and redeem should work correctly", async () => {
+    const { comptrollerProxy, vaultProxy } = await TestActions.createVaultAndBuyShares({
       environment,
       vaultOwner,
       sharesBuyer,
       depositAmount,
-    }));
-  });
+    });
 
-  test("lend and redeem should work correctly", async () => {
     await TestActions.assertBalanceOf({
       environment,
       asset: environment.constants.weth,
