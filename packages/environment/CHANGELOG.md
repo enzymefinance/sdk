@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.107
+
+### Patch Changes
+
+- [#899](https://github.com/enzymefinance/sdk/pull/899) [`a68dbe3`](https://github.com/enzymefinance/sdk/commit/a68dbe34b65197996ce5c373cbca329d54b9064e) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister eCRV and related assets on ethereum
+
 ## 6.3.106
 
 ### Patch Changes
