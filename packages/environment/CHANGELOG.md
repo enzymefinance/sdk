@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.108
+
+### Patch Changes
+
+- [#901](https://github.com/enzymefinance/sdk/pull/901) [`bba6323`](https://github.com/enzymefinance/sdk/commit/bba632345b3c7103cb390a51a6915512da3c2d19) Thanks [@iherger](https://github.com/iherger)! - Change token name
+
 ## 6.3.107
 
 ### Patch Changes
