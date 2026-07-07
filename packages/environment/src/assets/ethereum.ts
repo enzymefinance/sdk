@@ -1958,7 +1958,7 @@ export default defineAssetList(Network.ETHEREUM, [
   {
     decimals: 18,
     id: "0x57ab1ec28d129707052df4df418d58a2d46d5f51",
-    name: "Synth sUSD",
+    name: "Synth sUSD (retired)",
     releases: [sulu, encore],
     symbol: "sUSD",
     type: AssetType.PRIMITIVE,
