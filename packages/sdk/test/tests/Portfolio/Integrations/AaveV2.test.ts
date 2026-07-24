@@ -1,18 +1,41 @@
-import { Asset, Portfolio, Utils } from "@enzymefinance/sdk";
+import { Portfolio, Utils } from "@enzymefinance/sdk";
 import { TestActions, TestSetup } from "@enzymefinance/sdk/test";
+import { parseAbi } from "viem";
 import { describe, test } from "vitest";
 
 const environment = TestSetup.mainnet({ resetHook: "beforeEach" });
 
 const vaultOwner = environment.constants.alice;
 const sharesBuyer = environment.constants.bob;
-// Keep this modest: Aave V2 WETH liquidity at the pinned fork block can be tight.
+const liquidityProvider = environment.constants.dave;
+// Modest size; Aave V2 WETH utilization at the pinned fork block is high.
 const depositAmount = Utils.Conversion.toWei(1);
-// aToken / WETH amounts can drift by a few wei from interest + ray rounding.
 const amountFuzziness = Utils.Conversion.toWei(1) / 1000n; // 0.001 ETH
 
+/**
+ * Aave V2 aTokens hold underlying ERC20 balances. At some fork blocks WETH utilization is so
+ * high that withdraws revert with `SafeERC20: low-level call failed` even right after a deposit.
+ * Seeding extra WETH onto the aToken contract makes the underlying transfer succeed.
+ */
+async function seedAaveV2WethLiquidity(amount: bigint) {
+  await TestActions.wrapEther({
+    account: liquidityProvider,
+    amount,
+    environment,
+  });
+
+  await environment.send({
+    account: liquidityProvider,
+    transaction: new Utils.Viem.PopulatedTransaction({
+      abi: parseAbi(["function transfer(address to, uint256 amount) returns (bool)"] as const),
+      functionName: "transfer",
+      address: environment.constants.weth,
+      args: [environment.constants.aaveV2AWeth, amount],
+    }),
+  });
+}
+
 describe("AaveV2", () => {
-  // Fork/RPC + Aave V2 liquidity make this integration path intermittently revert on CI.
   test(
     "lend and redeem should work correctly",
     async () => {
@@ -52,13 +75,10 @@ describe("AaveV2", () => {
         fuzziness: amountFuzziness,
       });
 
-      // Leave 1 wei of aToken to avoid Aave V2 ray-math rounding reverts on full exits.
-      const aTokenBalance = await Asset.getBalanceOf(environment.client, {
-        owner: vaultProxy,
-        asset: environment.constants.aaveV2AWeth,
-      });
-      const redeemAmount = aTokenBalance > 1n ? aTokenBalance - 1n : aTokenBalance;
+      // CI Anvil + this fork block otherwise fails redeem with SafeERC20 on the WETH transfer.
+      await seedAaveV2WethLiquidity(Utils.Conversion.toWei(10));
 
+      // Redeem the deposited amount (not full aToken balance) to avoid ray-math overshoot.
       await environment.send({
         account: vaultOwner,
         transaction: Portfolio.Integrations.AaveV2.redeem({
@@ -67,7 +87,7 @@ describe("AaveV2", () => {
           integrationAdapter: environment.constants.aaveV2Adapter,
           callArgs: {
             aToken: environment.constants.aaveV2AWeth,
-            redeemAmount,
+            redeemAmount: depositAmount,
           },
         }),
       });
@@ -80,6 +100,6 @@ describe("AaveV2", () => {
         fuzziness: amountFuzziness,
       });
     },
-    { retry: 2, timeout: 60_000 },
+    { timeout: 60_000 },
   );
 });
