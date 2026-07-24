@@ -8019,7 +8019,7 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "BOLD Stablecoin",
     id: "0x6440f144b7e50d6a8439336510312d2f54beb01d",
     type: AssetType.PRIMITIVE,
-    releases: [sulu],
+    releases: [],
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.NONE,
