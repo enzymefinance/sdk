@@ -8014,4 +8014,15 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    symbol: "BOLD",
+    name: "BOLD Stablecoin",
+    id: "0x6440f144b7e50d6a8439336510312d2f54beb01d",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
