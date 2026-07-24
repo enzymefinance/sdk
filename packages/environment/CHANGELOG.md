@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.109
+
+### Patch Changes
+
+- [#903](https://github.com/enzymefinance/sdk/pull/903) [`a317fd4`](https://github.com/enzymefinance/sdk/commit/a317fd45f9d08640791ebf2d9d28393ec30b757d) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add BOLD token to ethereum
+
 ## 6.3.108
 
 ### Patch Changes
