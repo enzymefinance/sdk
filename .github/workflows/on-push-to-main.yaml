@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
       - name: Update npm
-        run: npm install -g npm@latest
+        run: npm install -g npm@11
       - name: Generate GitHub App token
         id: app-token
         uses: actions/create-github-app-token@d72941d797fd3113feb6b93fd0dec494b13a2547 # v1
