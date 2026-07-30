@@ -57,7 +57,7 @@ jobs:
       - name: Install foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
-          version: stable
+          version: nightly
       - name: Install dependencies
         uses: ./.github/actions/install-dependencies
       - name: Run tests
