@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.110
+
+### Patch Changes
+
+- [#907](https://github.com/enzymefinance/sdk/pull/907) [`7b1934e`](https://github.com/enzymefinance/sdk/commit/7b1934e6645249d78c554d3dff199b453e315786) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add Frax USD
+
 ## 6.3.109
 
 ### Patch Changes
