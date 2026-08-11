@@ -658,13 +658,11 @@ export default defineAssetList(Network.POLYGON, [
     decimals: 18,
     id: "0x45c32fa6df82ead1e2ef74d17b76547eddfaff89",
     name: "Frax",
-    releases: [polygon.sulu, testnet.sulu],
+    releases: [testnet.sulu],
     symbol: "FRAX",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0x00dbeb1e45485d53df7c2f0df1aa0b6dc30311d3",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
