@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.111
+
+### Patch Changes
+
+- [#906](https://github.com/enzymefinance/sdk/pull/906) [`bb7ddb3`](https://github.com/enzymefinance/sdk/commit/bb7ddb3995230786e4b4d96f252ef97c4c5f86ed) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister FRAX on polygon
+
 ## 6.3.110
 
 ### Patch Changes
