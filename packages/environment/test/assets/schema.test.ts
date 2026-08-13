@@ -12,7 +12,6 @@ import {
   CurvePoolGaugeSchema,
   CurvePoolLpSchema,
   ERC4626Schema,
-  EnzymeVaultSchema,
   IdleSchema,
   MaplePoolV1Schema,
   MaplePoolV2Schema,
@@ -81,10 +80,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         }
         case AssetType.MAPLE_V2: {
           validate(MaplePoolV2Schema, asset);
-          break;
-        }
-        case AssetType.ENZYME_VAULT: {
-          validate(EnzymeVaultSchema, asset);
           break;
         }
         case AssetType.ERC_4626: {

@@ -120,12 +120,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
         break;
       }
 
-      case PriceFeedType.DERIVATIVE_ENZYME_VAULT: {
-        expect(asset.priceFeed.address).toBe(environment.contracts.EnzymeVaultPriceFeed);
-
-        break;
-      }
-
       case PriceFeedType.DERIVATIVE_ERC4626: {
         expect(asset.priceFeed.address).toBe(environment.contracts.ERC4626PriceFeed);
 

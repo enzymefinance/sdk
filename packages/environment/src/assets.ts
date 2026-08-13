@@ -57,7 +57,6 @@ export type Asset =
   | CompoundV3Asset
   | CurvePoolGaugeAsset
   | CurvePoolLpAsset
-  | EnzymeVaultAsset
   | ERC4626Asset
   | IdleAsset
   | MapleV1Asset
@@ -85,7 +84,6 @@ export enum AssetType {
   YEARN_VAULT_V2 = "yearn-vault-v2",
   MAPLE_V1 = "maple-v1",
   MAPLE_V2 = "maple-v2",
-  ENZYME_VAULT = "enzyme-vault",
   ERC_4626 = "erc-4626",
 }
 
@@ -177,10 +175,6 @@ export interface MapleV2Asset extends AssetBase {
    */
   readonly underlying: Address;
   readonly poolManager: Address;
-}
-
-export interface EnzymeVaultAsset extends AssetBase {
-  readonly type: AssetType.ENZYME_VAULT;
 }
 
 export interface ERC4626Asset extends AssetBase {
