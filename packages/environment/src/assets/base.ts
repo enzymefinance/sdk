@@ -320,7 +320,7 @@ export default defineAssetList(Network.BASE, [
   },
   {
     symbol: "SAM",
-    name: "Samadhi",
+    name: "Samadhi II",
     id: "0x0c8be3e93cf0a7a383e54cb34cd471263f24b675",
     type: AssetType.PRIMITIVE,
     releases: [],
