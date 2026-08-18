@@ -96,7 +96,6 @@ suite.each(assets)("$symbol ($name): $id", (asset) => {
       // TODO: check derivative price feed details
       case PriceFeedType.DERIVATIVE_ARRAKIS_V2:
       case PriceFeedType.DERIVATIVE_COMPOUND:
-      case PriceFeedType.DERIVATIVE_ENZYME_VAULT:
       case PriceFeedType.DERIVATIVE_ERC4626:
       case PriceFeedType.DERIVATIVE_ETHERFI:
       case PriceFeedType.DERIVATIVE_PEGGED_DERIVATIVES:
