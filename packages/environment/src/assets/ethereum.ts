@@ -6616,13 +6616,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0xbf5495efe5db9ce00f80364c8b423567e58d2110",
     name: "Renzo Restaked ETH",
-    releases: [sulu],
+    releases: [],
     symbol: "ezETH",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_REDSTONE_NON_STANDARD_PRECISION,
-      aggregator: "0xc7e813d31de68c012caf8ea1df323fdac97e2fd0",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.NONE,
     },
   },
   {
