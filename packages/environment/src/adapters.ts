@@ -191,7 +191,7 @@ const knownAdapterDefinitions: AdapterDefinitionRecord<KnownAdapterType> = {
     type: AdapterType.CURVE_LIQUIDITY_STETH,
   },
   [AdapterType.ENZYME_V4_VAULT]: {
-    contractName: "EnzymeV4VaultAdapter",
+    contractName: undefined,
     name: "Enzyme V4 Vault",
     type: AdapterType.ENZYME_V4_VAULT,
   },

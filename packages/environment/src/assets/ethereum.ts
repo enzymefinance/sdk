@@ -8023,4 +8023,15 @@ export default defineAssetList(Network.ETHEREUM, [
       type: PriceFeedType.NONE,
     },
   },
+  {
+    symbol: "frxUSD",
+    name: "Frax USD",
+    id: "0xcacd6fd266af91b8aed52accc382b4e165586e29",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
