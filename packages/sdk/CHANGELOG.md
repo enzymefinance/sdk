@@ -1,5 +1,14 @@
 # @enzymefinance/sdk
 
+## 1.2.34
+
+### Patch Changes
+
+- [#910](https://github.com/enzymefinance/sdk/pull/910) [`8593046`](https://github.com/enzymefinance/sdk/commit/8593046eebfcce874e28b9a071b7a6626505a354) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Deregister Enzyme vault assets and remove the Enzyme vault adapter and price feed
+
+- Updated dependencies [[`8593046`](https://github.com/enzymefinance/sdk/commit/8593046eebfcce874e28b9a071b7a6626505a354)]:
+  - @enzymefinance/abis@1.2.11
+
 ## 1.2.33
 
 ### Patch Changes

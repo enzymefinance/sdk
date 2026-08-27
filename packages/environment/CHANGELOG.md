@@ -1,5 +1,16 @@
 # @enzymefinance/environment
 
+## 6.3.112
+
+### Patch Changes
+
+- [#910](https://github.com/enzymefinance/sdk/pull/910) [`8593046`](https://github.com/enzymefinance/sdk/commit/8593046eebfcce874e28b9a071b7a6626505a354) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Deregister Enzyme vault assets and remove the Enzyme vault adapter and price feed
+
+- [#914](https://github.com/enzymefinance/sdk/pull/914) [`753de72`](https://github.com/enzymefinance/sdk/commit/753de72ba801426949313cd569a78787a8ac5d11) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister ezETH on ethereum due to stale price feed
+
+- Updated dependencies [[`8593046`](https://github.com/enzymefinance/sdk/commit/8593046eebfcce874e28b9a071b7a6626505a354)]:
+  - @enzymefinance/sdk@1.2.34
+
 ## 6.3.111
 
 ### Patch Changes
