@@ -179,9 +179,9 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.AAVE_V3,
     underlying: "0xa35b1b31ce002fbf2058d22f30f95d405200a15b",
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
-      aggregator: "0x75c4dc3201015c78a60dbe673fc7247549527c1b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xfabeb1474c2ab34838081bfddce4132f640e7d2d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
@@ -3412,9 +3412,9 @@ export default defineAssetList(Network.ETHEREUM, [
     symbol: "ETHx",
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK_LIKE,
-      aggregator: "0x75c4dc3201015c78a60dbe673fc7247549527c1b",
-      rateAsset: RateAsset.ETH,
+      type: PriceFeedType.PRIMITIVE_REDSTONE,
+      aggregator: "0xfabeb1474c2ab34838081bfddce4132f640e7d2d",
+      rateAsset: RateAsset.USD,
     },
   },
   {
