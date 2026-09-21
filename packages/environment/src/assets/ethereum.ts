@@ -830,8 +830,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
+      rateAsset: RateAsset.USD,
       peggedTo: "BTC",
     },
   },
@@ -1079,13 +1079,11 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     id: "0x30d20208d987713f46dfd34ef128bb16c404d10f",
     name: "Stader",
-    releases: [sulu],
+    releases: [],
     symbol: "SD",
     type: AssetType.STADER,
     priceFeed: {
-      type: PriceFeedType.DERIVATIVE_STADER_SD,
-      address: "0x9938b14a25a4910531d5cbdf3c41510b19aaf016",
-      nonStandard: true,
+      type: PriceFeedType.NONE,
     },
   },
   {
@@ -8032,6 +8030,19 @@ export default defineAssetList(Network.ETHEREUM, [
     decimals: 18,
     priceFeed: {
       type: PriceFeedType.NONE,
+    },
+  },
+  {
+    symbol: "cbBTC",
+    name: "Coinbase Wrapped BTC",
+    id: "0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf",
+    type: AssetType.PRIMITIVE,
+    releases: [sulu],
+    decimals: 8,
+    priceFeed: {
+      type: PriceFeedType.PRIMITIVE_CHAINLINK,
+      aggregator: "0x2665701293fcbeb223d11a08d826563edcce423a",
+      rateAsset: RateAsset.USD,
     },
   },
 ]);
