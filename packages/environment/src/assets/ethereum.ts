@@ -830,7 +830,7 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
+      aggregator: "0xf4030086522a5beea4988f8ca5b36dbc97bee88c", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
       rateAsset: RateAsset.USD,
       peggedTo: "BTC",
     },
