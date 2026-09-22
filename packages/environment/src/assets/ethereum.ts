@@ -2634,8 +2634,8 @@ export default defineAssetList(Network.ETHEREUM, [
     type: AssetType.PRIMITIVE,
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8",
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xf4030086522a5beea4988f8ca5b36dbc97bee88c",
+      rateAsset: RateAsset.USD,
       peggedTo: "BTC",
       nonStandard: true,
     },
@@ -3236,8 +3236,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xf4030086522a5beea4988f8ca5b36dbc97bee88c", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
+      rateAsset: RateAsset.USD,
       peggedTo: "BTC",
     },
   },
@@ -3251,8 +3251,8 @@ export default defineAssetList(Network.ETHEREUM, [
     underlying: "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
     priceFeed: {
       type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xdeb288f737066589598e9214e782fa5a8ed689e8", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
-      rateAsset: RateAsset.ETH,
+      aggregator: "0xf4030086522a5beea4988f8ca5b36dbc97bee88c", // TODO: update when Price Feed utils available, so we can create WBTC/USD, and WBTC/ETH price feeds
+      rateAsset: RateAsset.USD,
       peggedTo: "BTC",
     },
   },
