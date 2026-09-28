@@ -1234,12 +1234,10 @@ export default defineAssetList(Network.ETHEREUM, [
     name: "Bond USD0",
     symbol: "bUSD0",
     decimals: 18,
-    releases: [sulu],
+    releases: [],
     type: AssetType.PRIMITIVE,
     priceFeed: {
-      type: PriceFeedType.PRIMITIVE_CHAINLINK,
-      aggregator: "0xfc9e30cf89f8a00dba3d34edf8b65bcdadecc1cb",
-      rateAsset: RateAsset.USD,
+      type: PriceFeedType.NONE,
     },
   },
   {
