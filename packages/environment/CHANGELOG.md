@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.113
+
+### Patch Changes
+
+- [#916](https://github.com/enzymefinance/sdk/pull/916) [`3fa5669`](https://github.com/enzymefinance/sdk/commit/3fa5669dca043cc00d9d7df56fa52327c13bfdc6) Thanks [@KedziaPawel](https://github.com/KedziaPawel)! - Add cbBTC, remove SD, and update WBTC price feeds
+
 ## 6.3.112
 
 ### Patch Changes
