@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.114
+
+### Patch Changes
+
+- [#918](https://github.com/enzymefinance/sdk/pull/918) [`811cd82`](https://github.com/enzymefinance/sdk/commit/811cd82d5e56f5d935f8d8c40fc0c2b15ebe9270) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - deregister bond usd from ethereum
+
 ## 6.3.113
 
 ### Patch Changes
