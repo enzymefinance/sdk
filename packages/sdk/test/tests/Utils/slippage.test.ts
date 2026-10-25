@@ -17,6 +17,17 @@ test("multiplyBySlippage should work correctly", () => {
   ).toMatchInlineSnapshot("2116n");
 });
 
+test("convertFromRatioToBps should not lose a basis point to float rounding", () => {
+  // 0.0003 * 10000 is 2.9999999999999996 in floating point
+  expect(Slippage.convertFromRatioToBps(0.0003)).toBe(3n);
+  expect(Slippage.convertFromRatioToBps(0.0029)).toBe(29n);
+  expect(Slippage.multiplyBySlippage({ value: 10000n, slippage: 0.0003 })).toBe(9997n);
+
+  for (let bps = 1; bps < 10000; bps++) {
+    expect(Slippage.convertFromRatioToBps(bps / 10000)).toBe(BigInt(bps));
+  }
+});
+
 test.each([
   {
     value: 100n,
