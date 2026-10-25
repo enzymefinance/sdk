@@ -1,3 +1,5 @@
+import { toBps } from "./conversion.js";
+
 export function multiplyBySlippage({ value, slippage }: { value: bigint; slippage?: number }) {
   if (!slippage) {
     return value;
@@ -13,5 +15,5 @@ export function applySlippage(value: bigint, slippageInBps: bigint) {
 }
 
 export function convertFromRatioToBps(ratio: number) {
-  return BigInt(Math.floor(ratio * 10000));
+  return toBps(ratio);
 }
