@@ -8043,4 +8043,15 @@ export default defineAssetList(Network.ETHEREUM, [
       rateAsset: RateAsset.USD,
     },
   },
+  {
+    symbol: "SWAN",
+    name: "SwanDAO",
+    id: "0xd0a32f6d4850f9d6df7d4f8f84af1fcd3cf993cc",
+    type: AssetType.PRIMITIVE,
+    releases: [],
+    decimals: 18,
+    priceFeed: {
+      type: PriceFeedType.NONE,
+    },
+  },
 ]);
