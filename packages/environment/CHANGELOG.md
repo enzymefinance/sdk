@@ -1,5 +1,11 @@
 # @enzymefinance/environment
 
+## 6.3.115
+
+### Patch Changes
+
+- [#922](https://github.com/enzymefinance/sdk/pull/922) [`ee05e6b`](https://github.com/enzymefinance/sdk/commit/ee05e6bc045c54d42912ad8a9f97b0e2c2ca4ad1) Thanks [@saurabhfegade](https://github.com/saurabhfegade)! - add SWAN token to ethereum
+
 ## 6.3.114
 
 ### Patch Changes
